@@ -1,0 +1,90 @@
+mage of shadows,1,r,350,World//Zero
+mage of shadows,2,e,350,World//Zero
+mage of shadows,3,r,350,World//Zero
+mage of shadows,4,f,350,World//Zero
+mage of shadows,5,r,350,World//Zero
+mage of shadows,6,1,350,World//Zero
+mage of shadows,7,r,350,World//Zero
+mage of shadows,8,x,350,World//Zero
+summoner,1,f,350,World//Zero
+summoner,2,e,350,World//Zero
+summoner,3,f,350,World//Zero
+summoner,4,r,350,World//Zero
+summoner,5,f,350,World//Zero
+summoner,6,1,350,World//Zero
+summoner,7,f,350,World//Zero
+summoner,8,x,350,World//Zero
+summoner:rev,1,f,350,World//Zero
+summoner:rev,2,e,350,World//Zero
+summoner:rev,3,f,350,World//Zero
+summoner:rev,4,r,350,World//Zero
+summoner:rev,5,f,350,World//Zero
+summoner:rev,6,1,350,World//Zero
+summoner:rev,7,f,350,World//Zero
+summoner:rev,8,x,350,World//Zero
+spirit archer,1,LButton,650,World//Zero
+spirit archer,2,LButton,650,World//Zero
+spirit archer,3,e,650,World//Zero
+spirit archer,4,LButton,650,World//Zero
+spirit archer,5,LButton,650,World//Zero
+spirit archer,6,r,650,World//Zero
+spirit archer,7,LButton,650,World//Zero
+spirit archer,8,LButton,650,World//Zero
+spirit archer,9,e,650,World//Zero
+spirit archer,10,LButton,650,World//Zero
+spirit archer,11,LButton,650,World//Zero
+spirit archer,12,f,650,World//Zero
+spirit archer,13,LButton,650,World//Zero
+spirit archer,14,LButton,650,World//Zero
+spirit archer,15,e,650,World//Zero
+spirit archer,16,LButton,650,World//Zero
+spirit archer,17,LButton,650,World//Zero
+spirit archer,18,1,650,World//Zero
+spirit archer,19,LButton,650,World//Zero
+spirit archer,20,LButton,650,World//Zero
+spirit archer,21,x,650,World//Zero
+spirit archer:rev,1,x,350,World//Zero
+spirit archer:rev,2,e,350,World//Zero
+spirit archer:rev,3,1,350,World//Zero
+spirit archer:rev,4,e,350,World//Zero
+spirit archer:rev,5,r,350,World//Zero
+spirit archer:rev,6,e,350,World//Zero
+spirit archer:rev,7,f,350,World//Zero
+spirit archer:rev,8,e,350,World//Zero
+Malva:Heal-U,1,w,850,Shatterline
+Malva:Heal-U,2,d,650,Shatterline
+Malva:Heal-U,3,q,250,Shatterline
+Malva:Heal-U,4,c,250,Shatterline
+AFK: Pale Heart,1,"send(""{3}"")",1000,Destiny 2
+AFK: Pale Heart,3,"mouseMove(-(a_screenwidth/2)+200,0,50,""R"")",2000,Destiny 2
+AFK: Pale Heart,5,"mouseMove((a_screenwidth/2)-355,((a_screenHeight-40)/2)-7,50,)",500,Destiny 2
+AFK: Pale Heart,7,"send(""{LButton Down}"")",1800,Destiny 2
+AFK: Pale Heart,9,"send(""{LButton Up}"")",8000,Destiny 2
+AFK: Pale Heart,11,"send(""{w down}"")",9500,Destiny 2
+AFK: Pale Heart,13,"send(""{w up}"")",250,Destiny 2
+AFK: Pale Heart,15,"dllCall(""mouse_event"",""UInt"",""0x01"",""Int"",-1600,""Int"",0,""UInt"",0,""UInt"",0)",250,Destiny 2
+AFK: Pale Heart,17,"send(""{w down}"")",6000,Destiny 2
+AFK: Pale Heart,19,"send(""{w up}"")",100,Destiny 2
+AFK: Pale Heart,20,"dllCall(""mouse_event"",""UInt"",""0x01"",""Int"",-3600,""Int"",0,""UInt"",0,""UInt"",0)",30000,Destiny 2
+AFK: Pale Heart,22,"send(""{w down}"")",6500,Destiny 2
+AFK: Pale Heart,24,"send(""{d down}"")",1600,Destiny 2
+AFK: Pale Heart,26,"send(""{d up}"")",6100,Destiny 2
+AFK: Pale Heart,28,"send(""{w up}"")",100,Destiny 2
+AFK: Pale Heart,29,"dllCall(""mouse_event"",""UInt"",""0x01"",""Int"",-1600,""Int"",0,""UInt"",0,""UInt"",0)",100,Destiny 2
+AFK: Pale Heart,30,"send(""{e down}"")",1800,Destiny 2
+AFK: Pale Heart,32,"send(""{e up}"")",1500,Destiny 2
+AFK: Good Boy Protocol,1,e,800,Destiny 2
+strand:webdash,1,w,550,Destiny 2
+strand:webdash,2,c,350,Destiny 2
+strand:webdash,3,w,550,Destiny 2
+strand:webdash,4,c,350,Destiny 2
+strand:webdash,5,q,250,Destiny 2
+solar:deadeye,1,1,350,Destiny 2
+solar:deadeye,2,rbutton d,800,Destiny 2
+solar:deadeye,3,lbutton,250,Destiny 2
+solar:deadeye,4,rbutton u,250,Destiny 2
+statis:crystall,1,d,350,Destiny 2
+statis:crystall,2,space,250,Destiny 2
+statis:crystall,3,space,250,Destiny 2
+statis:crystall,4,q,800,Destiny 2
+<disabled>,,,,<disabled>
