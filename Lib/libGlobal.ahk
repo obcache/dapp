@@ -557,15 +557,15 @@ loadScreen(visible := true,NotifyMsg := "dapp Loading",Duration := 10) {
 		ui.notifyGui.Opt("+AlwaysOnTop -Caption +ToolWindow")  ; +ToolWindow avoids a taskbar button and an alt-tab menu item.
 		ui.notifyGui.BackColor := "c0c0c0" ; Can be any RGB color (it will be made transparent below).
 		ui.notifyGui.SetFont("s22")  ; Set a large font size (32-point).
-		ui.notifyGui.addText("section x1 y1 w348 h94 background353535")
-		ui.notifyGui.addPicture("y5 x65 w-1 h88 backgroundTrans","./img/dapp.png")
-		ui.loadingProgress := ui.notifyGui.addProgress("smooth x1 y96 w348 h20 caaaaaa background353535")
+		ui.notifyGui.addText("section x1 y1 w238 h92 background353535")
+		ui.notifyGui.addPicture("y1 x2 w237 h92 backgroundTrans","./img/dapp_logo.png")
+		ui.loadingProgress := ui.notifyGui.addProgress("smooth x2 y94 w236 h21 caaaaaa background353535")
 		ui.notifyGui.AddText("xs hidden")
 		tmpX := iniRead(cfg.file,"Interface","GuiX",200)
 		tmpY := iniRead(cfg.file,"Interface","GuiY",200)
 		winGetPos(&x,&y,&w,&h,ui.notifyGui.hwnd)
 		winSetTransparent(0,ui.notifyGui)
-		ui.notifyGui.show("w350 h117 x" (tmpX+100)-(w/2) " y" (tmpY+50)-(h/2))
+		ui.notifyGui.show("w240 h116 x" (tmpX+100)-(w/2) " y" (tmpY+50)-(h/2))
 		while transparent < 245 {
 			winSetTransparent(transparent,ui.notifyGui.hwnd)
 			transparent += 8
