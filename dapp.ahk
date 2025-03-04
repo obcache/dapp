@@ -1,4 +1,4 @@
-A_FileVersion := "1.5.1.7"
+A_FileVersion := "1.5.1.8"
 a_appName := "dapp"
 if (fileExist("./dapp_currentBuild.dat"))
 a_fileVersion := fileRead("./dapp_currentBuild.dat")
@@ -61,23 +61,25 @@ ui.AfkHeight 	:= 170
 ui.latestVersion := ""
 ui.installedVersion := ""
 ui.incursionDebug := false
-loadScreen()
 
+
+loadScreen()
+advProgress(5)
 MonitorGet(MonitorGetprimary(),
 	&primaryMonitorTop,
 	&primaryMonitorRight,
 	&primaryMonitorBottom)
-
 MonitorGetWorkArea(MonitorGetprimary(),
 	&primaryWorkAreaLeft,
 	&primaryWorkAreaTop,
 	&primaryWorkAreaRight,
 	&primaryWorkAreaBottom)
+
 advProgress(5)	
 cfgLoad(&cfg, &ui)
 advProgress(5)
-initTrayMenu()
 
+initTrayMenu()
 initGui(&cfg, &ui)
 advProgress(5)
 
@@ -95,7 +97,6 @@ advProgress(2)
 advProgress(2)
 #include <libWinMgr>
 advProgress(2)
-
 #include <libInstall>
 advProgress(2)
 #include <libGuiSetupTab>
@@ -130,14 +131,10 @@ ui.mainGui.Show("x" cfg.guix " y" cfg.guiy " w567 h215 NoActivate")
 ui.gameSettingsGui.show("x" cfg.guiX+34 " y" cfg.guiY+30 " w495 h182 noActivate")
 ui.gameTabGui.show("w497 h32 noActivate x" cfg.guiX+34 " y" cfg.guiY+183)
 advProgress(5)
-
-
-ui.gameTabs.choose(cfg.gameModuleList[cfg.activeGameTab])
-
-advProgress(5)
 monitorResChanged()
+advProgress(5)
 ui.MainGuiTabs.Choose(cfg.mainTabList[cfg.activeMainTab])
-
+ui.gameTabs.choose(cfg.gameModuleList[cfg.activeGameTab])
 advProgress(5)
 if (cfg.startMinimizedEnabled) {
 	ui.mainGui.hide()
@@ -145,6 +142,7 @@ if (cfg.startMinimizedEnabled) {
 	ui.gameTabGui.hide()
 } else
 	fadeIn()
+advProgress(5)
 
 try {
 	ui.notifyGui.hide()
@@ -158,17 +156,10 @@ try {
 	whr.WaitForResponse()
 	iniWrite(whr.ResponseText,cfg.file,"Game","LastIncursion")
 }
-	
-autoUpdate()
 
-if (cfg.AlwaysOnTopEnabled) {
-	ui.MainGui.Opt("+AlwaysOnTop")
-} else {
-	ui.MainGui.Opt("-AlwaysOnTop")
-	ui.AfkGui.Opt("-AlwaysOnTop")	
-}
+winSetAlwaysOnTop(cfg.alwaysOnTopEnabled,ui.MainGui)
+autoUpdate()
 	
-cfg.consoleVisible := !cfg.consoleVisible	
 d2AutoGameConfigOverride()
 ui.isActiveWindow:=""
 ;setTimer () => (ui.isActiveWindow:=(winActive("ahk_exe destiny2.exe")) ? (ui.isActiveWindow) ? 1 : (setCapsLockState(cfg.d2AlwaysRunEnabled),1) : (ui.isActiveWindow) ? (0,setCapsLockState(0)) : 0),500
