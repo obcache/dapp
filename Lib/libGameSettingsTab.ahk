@@ -1659,13 +1659,46 @@ this2.y:=1
 	drawOutlineNamed("vaultCleanerButton",ui.gameSettingsGui,13,82,230,58,cfg.themeBorderLightColor,cfg.themeBorderDarkColor,2)
 	this2.d2LaunchVaultCleanerButton := ui.gameSettingsGui.addPicture("x17 y87 w50  h50 backgroundTrans","./img/button_vault_up.png")
 	this2.d2LaunchVaultCleanerButton.onEvent("click",toggleVaultMode)
-	this.d2LaunchVaultCleanerText:=ui.gameSettingsGui.addText("x73 y92 w180 h50 backgroundTrans c" cfg.themeFont4Color,'Click button to enter`nVault Cleaning mode.')
-	this.d2LaunchVaultCleanerText.setFont("s12 c353535 bold","Arial")
+	this2.d2LaunchVaultCleanerText:=ui.gameSettingsGui.addText("x73 y92 w180 h50 backgroundTrans c" cfg.themeFont4Color,'Vault Mode: Off`nClick to Toggle.')
+	this2.d2LaunchVaultCleanerText.setFont("s10 c353535 bold","Arial")
 	
+	isWindowedFullscreen(*) {
+		static tx:=""
+		static ty:=""
+		static tw:=""
+		static th:=""
+		
+		winGetPos(&tx,&ty,&tw,&th,this.gameWin)
+		if winGetMinMax(this.gameWin) == 0 && a_screenwidth==tw  {
+			return 1
+		} else {
+			return 0
+		}
+	}
 	toggleVaultMode(*) {
-		if winGetMinMax(this.gameWin) != 0 {
-			winRestore(this.gameWin)
-			winMove(0,0,1280,720,this.gameWin)
+		static vaultMode:=false
+	
+		(vaultMode:=!vaultMode) 
+			? vaultModeOn()
+			: vaultModeOff()
+			
+		vaultModeOn(*) {
+			if isWindowedFullscreen() {
+				this2.d2LaunchVaultCleanerButton.value:="./img/button_vault_down.png"
+				this2.d2LaunchVaultCleanerButton.redraw()
+				this2.d2LaunchVaultCleanerText.text:="Vault Mode: On`nClick to Toggle"
+				vaultCleaner()			
+		}
+		}
+		vaultModeOff(*) {
+			winActivate(this.gameWin)
+			this2.d2LaunchVaultCleanerButton.value:="./img/button_vault_up.png"
+			this2.d2LaunchVaultCleanerButton.redraw()
+			this2.d2LaunchVaultCleanerText.text:="Vault Mode: Off`nClick to Toggle"
+			if winGetMinMax(this.gameWin) != 0 {
+				winRestore(this.gameWin)
+				winMove(0,0,a_screenwidth,a_screenHeight,this.gameWin)
+			}
 		}
 	}
 	ui.gameTabs.useTab("Mouse")

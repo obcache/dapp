@@ -209,6 +209,7 @@ preAutoExec(InstallDir,ConfigFileName) {
 			FileInstall("./dapp_currentBuild.dat",InstallDir "/dapp_currentBuild.dat",1)			
 			FileInstall("./img/button_afk_ready.png",InstallDir "/img/button_afk_ready.png",true)
 			fileInstall("./img/dapp_icon.ico",installDir "/img/dapp_icon.ico",1)
+			fileInstall("./img/dapp_logo.png",installDir "/img/dapp_logo.png",1)
 			pbConsole("`nINSTALL COMPLETED SUCCESSFULLY!")
 			installLog("Copied Assets to: " InstallDir)	
 		
