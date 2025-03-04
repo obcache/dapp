@@ -11,7 +11,12 @@ if (InStr(A_LineFile,A_ScriptFullPath)){
 restoreWin(*) {
 	if !cfg.topDockEnabled {
 		ui.mainGui.show()
+		ui.gameSettingsGui.show()
+		ui.gameTabGui.show()
 		guiVis(ui.mainGui,true)
+		guiVis(ui.gameSettingsGui,true)
+		guiVis(ui.gameTabGui,true)
+		
 		tabsChanged()
 		;ui.mainGui.opt("-toolWindow")
 	}

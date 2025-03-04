@@ -104,7 +104,7 @@ d2drawPanel1(*) {
 	ui.d2ClassSelectBg2			:= ui.gameSettingsGui.addText("hidden xs-2 y+-14 w38 h16 background" cfg.themeDark1Color)
 	ui.d2ClassSelectBgLine		:= ui.gameSettingsGui.addText("x441 y+-19 w40 h1 background" cfg.themeBright2Color)
 	ui.d2ClassSelectBgLine		:= ui.gameSettingsGui.addText("x441 y+15 w40 h1 background" cfg.themeBright2Color)
-	; ui.d2ClassSelectBg3			:= ui.gameSettingsGui.addText("xs+40 y+-13 w38 h12 background" cfg.themePanel2Color)
+	 ui.d2ClassSelectBg3			:= ui.gameSettingsGui.addText("xs+43 y+-15 w38 h12 background" cfg.themePanel2Color)
 	ui.d2ClassIcon				:= ui.gameSettingsGui.addPicture("x443 y10 w37 h26 center backgroundTrans","")
 	ui.d2ClassIconDown			:= ui.gameSettingsGui.addText("x443 y37 w18 h13 center backgroundTrans c" cfg.themeButtonOnColor,"←")
 	ui.d2ClassIconUp			:= ui.gameSettingsGui.addText("x462 y37 w19 h13 center backgroundTrans c" cfg.themeButtonOnColor,"→")
@@ -513,6 +513,7 @@ d2changeKeybindPanelTab(panelNum := 2) {
 			,ui.dappSwordFlyKey
 			,ui.dappSwordFlyKeyData
 			,ui.dappSwordFlyKeyLabel
+			,ui.d2ClassSelectBgLine
 			,ui.dappReloadKey
 			,ui.dappReloadKeyData
 			,ui.dappReloadKeyLabel
@@ -551,6 +552,7 @@ d2changeKeybindPanelTab(panelNum := 2) {
 			,ui.d2GameReloadKey
 			,ui.d2GameReloadKeyData
 			,ui.d2GameReloadKeyLabel
+			,ui.d2ClassSelectBgLine
 			,ui.d2GameGrenadeKey
 			,ui.d2GameGrenadeKeyData
 			,ui.d2GameGrenadeKeyLabel
@@ -564,7 +566,7 @@ d2changeKeybindPanelTab(panelNum := 2) {
 			,ui.d2Panel1Tab2Bg2
 			,ui.d2Panel1Tab2Bg3
 			,ui.d2Panel1Tab2Bg4
-			]
+		]
 
 	if panelNum == 1 {
 		ui.d2ToggleAppFunctions.opt("-hidden")
@@ -1600,28 +1602,28 @@ this2.y:=1
 	
 	ui.gametabs.useTab("222Vault Cleaner222")
 	ui.gameSettingsGui.addText("x5 y3 w488 h146 background" cfg.themePanel1Color)
-	drawOutlineNamed("vaultStats",ui.gameSettingsGui,9,7,480,66,cfg.themeBright2Color,cfg.themeBorderDarkColor,2)
-	ui.gameSettingsGui.addText("x11 y10 w118 h20 backgroundcccccc")
-	ui.gameSettingsGui.addText("x11 y10 w475 h20 backgroundcccccc")
-	ui.gameSettingsGui.addText("x12 y11 w473 h19 background656565")
-	ui.gameSettingsGui.addText("x11 y29 w475 h42 backgroundcccccc")
+	drawOutlineNamed("vaultStats",ui.gameSettingsGui,9,7,480,66,cfg.themeBorderLightColor,cfg.themeBorderDarkColor,2)
+	ui.gameSettingsGui.addText("x11 y10 w118 h20 background" cfg.themePanel4Color)
+	ui.gameSettingsGui.addText("x11 y10 w475 h20 background" cfg.themePanel2Color)
+	ui.gameSettingsGui.addText("x12 y11 w473 h19 background" cfg.themePanel4Color)
+	ui.gameSettingsGui.addText("x11 y29 w475 h42 background" cfg.themePanel3Color)
 	;ui.gameSettingsGui.addText("x11 y35 w474 h20 backgroundffffff")
-	ui.gameSettingsGui.addText("x12 y30 w473 h19 background656565")
-	this2.statusText:=ui.gameSettingsGui.addText("x18 y30 w473 h20 backgroundTrans cbbFF33","Please Wait....")
+	ui.gameSettingsGui.addText("x12 y30 w473 h19 background" cfg.themePanel3Color)
+	this2.statusText:=ui.gameSettingsGui.addText("x18 y30 w473 h20 backgroundTrans c" cfg.themeFont4Color,"Please Wait....")
 	this2.statusText.setFont("s12","Maze-X")
 
 	
 
-	this2.mainButtonBg:=ui.gameSettingsGui.addText("x13 y11 w46 h17 background252525")
+	this2.mainButtonBg:=ui.gameSettingsGui.addText("x13 y12 w46 h17 background" cfg.themePanel4Color)
 
 	this2.mainButton:=ui.gameSettingsGui.addText("section center x13 y12 w46 h17 background33FF33 c00FFFF","")
 		this2.mainButtonText:=ui.gameSettingsGui.addText("section center x11 y8 w48 h19 backgroundTrans c353535","Start")
 	this2.mainButtonText.setFont("s14","Ubuntu One")
 	
-	ui.gameSettingsGui.addText("x60 y11 w67 h17 background252525")
-	this2.mainButtonHotkey:=ui.gameSettingsGui.addText("left x60 y12 background656565 c252525 h17 w67")
+	;ui.gameSettingsGui.addText("x60 y11 w67 h17 backgroundffffff")
+	this2.mainButtonHotkey:=ui.gameSettingsGui.addText("left x40 y10 background" cfg.themePanel1Color " c" cfg.themeFont3Color " h17 w67")
 	
-	this2.mainButtonHotkeyText:=ui.gameSettingsGui.addText("left x68 y10 backgroundTrans cbbbbbb h19 w163","Hotkey: Shift + \")
+	this2.mainButtonHotkeyText:=ui.gameSettingsGui.addText("left x68 y10 backgroundTrans c" cfg.themeFont3Color " h19 w163","Hotkey: Shift + \")
 	this2.mainButtonHotkeyText.setFont("s11 cbbbbbb","Ubuntu One")
 	this2.mainButton.onEvent("click",cleanVaultStart)
 	this2.mainButtonText.onEvent("click",cleanVaultStart)

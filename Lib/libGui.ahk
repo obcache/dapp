@@ -143,6 +143,7 @@ advProgress(2)
 	OnMessage(0x0202, WM_LBUTTONDOWN)
 	OnMessage(0x47, WM_WINDOWPOSCHANGED)
 	advProgress(2)
+
 	ui.MainGuiTabs.UseTab("")
 
 	advProgress(2)

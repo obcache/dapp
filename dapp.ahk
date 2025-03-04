@@ -1,4 +1,4 @@
-A_FileVersion := "1.5.1.5"
+A_FileVersion := "1.5.1.6"
 a_appName := "dapp"
 if (fileExist("./dapp_currentBuild.dat"))
 a_fileVersion := fileRead("./dapp_currentBuild.dat")
@@ -89,12 +89,13 @@ advProgress(5)
 advProgress(2)
 #include <class_lv_colors>
 advProgress(2)
+#include <libGlobal>
+advProgress(2)
 #include <libGui>
 advProgress(2)
 #include <libWinMgr>
 advProgress(2)
-#include <libGlobal>
-advProgress(2)
+
 #include <libInstall>
 advProgress(2)
 #include <libGuiSetupTab>
@@ -117,28 +118,34 @@ advProgress(2)
 
 OnExit(ExitFunc)
 
-ui.gameTabs.choose(cfg.gameModuleList[cfg.activeGameTab])
 tabsChanged()
 advProgress(5)
 
-try
-	guiVis("all",false)
+; try
+	; guiVis("all",false)
 
 winSetRegion("33-0 w498 h214",ui.mainGui)
+guiVis("ALL",false)
 ui.mainGui.Show("x" cfg.guix " y" cfg.guiy " w567 h215 NoActivate")
 ui.gameSettingsGui.show("x" cfg.guiX+34 " y" cfg.guiY+30 " w495 h182 noActivate")
 ui.gameTabGui.show("w497 h32 noActivate x" cfg.guiX+34 " y" cfg.guiY+183)
 advProgress(5)
 
-if (cfg.startMinimizedEnabled)
-	ui.mainGui.hide()
+
+ui.gameTabs.choose(cfg.gameModuleList[cfg.activeGameTab])
 
 advProgress(5)
 monitorResChanged()
 ui.MainGuiTabs.Choose(cfg.mainTabList[cfg.activeMainTab])
 
 advProgress(5)
-fadeIn()
+if (cfg.startMinimizedEnabled) {
+	ui.mainGui.hide()
+	ui.gameSettingsGui.hide()
+	ui.gameTabGui.hide()
+} else
+	fadeIn()
+
 try {
 	ui.notifyGui.hide()
 	ui.notifyGui.destroy()
@@ -166,3 +173,4 @@ d2AutoGameConfigOverride()
 ui.isActiveWindow:=""
 ;setTimer () => (ui.isActiveWindow:=(winActive("ahk_exe destiny2.exe")) ? (ui.isActiveWindow) ? 1 : (setCapsLockState(cfg.d2AlwaysRunEnabled),1) : (ui.isActiveWindow) ? (0,setCapsLockState(0)) : 0),500
 loadScreen(0)
+
