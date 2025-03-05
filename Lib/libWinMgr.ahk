@@ -30,9 +30,9 @@ collateGuis(hwnd := ui.mainGui.hwnd) {
 			case ui.pbConsoleBg.hwnd:
 				winGetPos(&winX,&winY,,,ui.pbConsoleBg.hwnd)
 				ui.pbConsole.move(winX,winY)
-			case vaultGui.hwnd:
-				winGetPos(&tX,&tY,,,vaultGui.hwnd)
-				winMove(tx+5,ty+35,,,"ahk_exe destiny2.exe")
+			case vaultTopGui.hwnd:
+				winGetPos(&tX,&tY,,,vaultTopGui.hwnd)
+				winMove(tx+0,ty+30,,,"ahk_exe destiny2.exe")
 			
 		} 
 	}

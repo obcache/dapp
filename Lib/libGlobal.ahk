@@ -499,7 +499,7 @@ DialogBoxClose(*)
 	tabsChanged()
 }
 
-NotifyOSD(NotifyMsg,Duration := 10,Alignment := "Left",YN := "")
+NotifyOSD(NotifyMsg,Duration := 2000,guiName:=ui.mainGui,Alignment := "Left",YN := "")
 {
 	if !InStr("LeftRightCenter",Alignment)
 		Alignment := "Left"
@@ -508,7 +508,7 @@ NotifyOSD(NotifyMsg,Duration := 10,Alignment := "Left",YN := "")
 		ui.notifyGui.Destroy()
 	ui.notifyGui			:= Gui()
 	ui.notifyGui.Title 		:= "Notify"
-	ui.notifyGui.Opt("+AlwaysOnTop -Caption +ToolWindow +Owner" ui.mainGui.hwnd)  ; +ToolWindow avoids a taskbar button and an alt-tab menu item.
+	ui.notifyGui.Opt("+AlwaysOnTop -Caption +ToolWindow +Owner" guiName.hwnd)  ; +ToolWindow avoids a taskbar button and an alt-tab menu item.
 	ui.notifyGui.BackColor := cfg.ThemePanel1Color  ; Can be any RGB color (it will be made transparent below).
 	ui.notifyGui.SetFont("s16")  ; Set a large font size (32-point).
 	ui.notifyGui.AddText("c" cfg.ThemeFont1Color " " Alignment " BackgroundTrans",NotifyMsg)  ; XX & YY serve to 00auto-size the window.
@@ -551,7 +551,7 @@ fadeOSD() {
 	}
 	try
 		guiVis(ui.notifyGui,false)
-	ui.Transparent := ""
+	ui.Transparent := 0
 }
 
 loadScreen(visible := true,NotifyMsg := "dapp Loading",Duration := 10) {

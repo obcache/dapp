@@ -76,21 +76,18 @@ libVaultInit(*) {
 		
 		vaultBottomGui.backColor:=setting.transColor
 		vaultBottomGui.setFont("s10 c000000","Calibri")
-		vaultBottomGui.opt("-border")	
+		vaultBottomGui.opt("-border alwaysOnTop")	
 		vaultBottomGui.backColor:=setting.transColor	
 		
 		vaultTopGui.backColor:=setting.transColor
 		vaultTopGui.setFont("s10 c000000","Calibri")
-		vaultTopGui.opt("-border")	
+		vaultTopGui.opt("-border alwaysOnTop")	
 		vaultTopGui.backColor:=setting.transColor
 		vaultTopGui.setFont("s10 c000000","Calibri")
 		;vaultBottomGui.opt("-border owner" winGetID("ahk_exe destiny2.exe"))	
-	
 
-		;winSetTransColor(setting.transColor,vaultBottomGui.hwnd)
-		;help:=vaultBottomGui.addText("section x5 y5 w650 h40 backgroundTrans c00FFFF",
 		titleBarBg:=vaultTopGui.addText("x0 y0 w1254 h34 background454545")
-		titleBarBg.onEvent("click",WM_LBUTTONDOWN_callback)
+		;titleBarBg.onEvent("click",WM_LBUTTONDOWN_callback)
 		titleBarText:=vaultTopGui.addText("x10 y-2 w500 h32 backgroundTrans c212121","VaultCleaner for Destiny2 (v1.2)" )
 		titleBarText.setFont("s20 bold cbbbbbb","calibri")
 		closeButton:=vaultTopGui.addText("x1250 y0 w30 h32 cBBBBBB background454545","T")
@@ -102,14 +99,18 @@ libVaultInit(*) {
 		footerBarBg:=vaultBottomGui.addText("x0 y" this.yOffset " w1284 h100 background454545")
 		vaultBottomGui.addText("x0 y30 w1284 h2 background959595")
 		vaultBottomGui.addText("x0 y" this.YOffset " w1284 h2 background959595")
-		onMessage(0x47,this_WINDOWPOSCHANGED)
+		;onMessage(0x47,this_WINDOWPOSCHANGED)
 		this_WINDOWPOSCHANGED(*) {
 			try {
-				winGetPos(&tX,&tY,,,vaultBottomGui.hwnd)
-				winSetAlwaysOnTop(1,this.gameWin)
-				winMove(tx+3,ty+35,,,this.gameWin)
-				winSetAlwaysOnTop(0,this.gameWin)
+				if this==ui.vaultTopGui {
+				winGetPos(&tX,&tY,&tw,&th,vaultTopGui.hwnd)
+				;winSetAlwaysOnTop(1,this.gameWin)
+				winMove(tx+0,ty+30,,,this.gameWin)
+				}
+				winMove(tx+0,ty+3,,,ui.vaultBottomGui.hwnd)
+				;winSetAlwaysOnTop(0,this.gameWin)
 				;winMove(tx,ty,,,vaultBottomGui.hwnd)
+				
 			}		
 		}
 		; this_LBUTTONDOWN_callback(this_control*) {
@@ -185,9 +186,11 @@ libVaultInit(*) {
 			winMove((a_screenwidth/2)-640,(a_screenHeight/2)-360,1280,720,this.gameWin)
 			winSetStyle("-0xC00000",this.GameWin)
 			winActivate(this.gameWin)
+			;msgBox('here')
 			winWait(this.gameWin)
 			sleep(2000)
-			vaultBottomGui.show("x" this.gameWinX+2 " y" this.gameWinY-28 " w1280 h" 30+720+94 " noActivate")
+			vaultTopGui.show("x" this.gameWinX+0 " y" this.gameWinY-30 " w" this.gameWinW " h30")
+			vaultBottomGui.show("x" this.gameWinX+0 " y" this.gameWinY+this.gameWinH " w" this.gameWinW " h94 noActivate")
 		;vaultBottomGui.show("x" this.gameWinX+2 " y" this.gameWinY-28 " w1280 h" 30+720+94 " noActivate")
 			;winSetAlwaysOnTop(true,this.gameWin)
 			;winSetTransColor("830303","ahk_exe destiny2.exe")
