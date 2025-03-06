@@ -105,26 +105,27 @@ ThemeButtonAlertColor=FFCC00
 
 [Neon]
 ThemeBackgroundColor=202020
-ThemeBorderLightColor=FF0180
-ThemeBorderDarkColor=400180
-ThemeBright1Color=1FFFF
-ThemeBright2Color=1FF01
-ThemeFont1Color=80FF01
-ThemeFont3Color=FE2C6A
-ThemePanel1Color=140123
-ThemePanel3Color=400180
-ThemePanel4Color=FF8601
+ThemeBorderLightColor=8001FF
+ThemeBorderDarkColor=FF0180
+ThemeBright1Color=FFFFFF
+ThemeBright2Color=1FFFF
+ThemeFont1Color=1FFFF
+ThemeFont3Color=1FFFF
+ThemePanel1Color=2D034E
+ThemePanel3Color=3C013C
+ThemePanel4Color=400180
 ThemePanel2Color=140123
-ThemeEditboxColor=10101
-ThemeDisabledColor=FF8001
-ThemeButtonOnColor=FF8605
-ThemeButtonReadyColor=BD039A
-ThemeButtonAlertColor=FFCC00
-ThemeFont2Color=98FE33
-ThemeDark2Color=C40089
+ThemeEditboxColor=8001FF
+ThemeDisabledColor=1FFFF
+ThemeButtonOnColor=FF0180
+ThemeButtonReadyColor=FF01FF
+ThemeButtonAlertColor=FF0180
+ThemeFont2Color=1FF01
+ThemeDark2Color=FF01FF
 ThemeFont3Color=FF0180
-ThemeProgressColor=FFFF01
+ThemeProgressColor=FF01FF
 ThemeDark1Color=1FFFF
+ThemeFont4Color=FF01FF
 
 [Custom]
 ThemeBright2Color=A8A8A8
@@ -149,6 +150,7 @@ ThemeButtonOnColor=BFFF01
 ThemeButtonReadyColor=AAAAAA
 ThemeButtonAlertColor=F3850C
 ThemeFont4Color=959595
+ThemeTitlebarImage=E:\Documents\Resources\AutoHotKey\__dapp\Img\lightBurst.png
 
 [Alien]
 ThemeButtonReadyColor=AAAAAA

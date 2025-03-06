@@ -211,6 +211,7 @@ cfgLoad(&cfg, &ui) {
 	cfg.ThemeButtonAlertColor	:= IniRead(cfg.themeFile,cfg.Theme,"ThemeButtonAlertColor","3C3C3C")
 	cfg.ThemeButtonOnColor		:= IniRead(cfg.themeFile,cfg.Theme,"ThemeButtonOnColor","FF01FF")
 	cfg.ThemeButtonReadyColor	:= IniRead(cfg.themeFile,cfg.Theme,"ThemeButtonReadyColor","1FFFF0")
+	cfg.titlebarImage		:= iniRead(cfg.themeFile,cfg.Theme,"ThemeTitlebarImage","./img/dapp_titlebar.png")
 	cfg.holdToCrouchEnabled 	:= IniRead(cfg.file,"game","HoldToCrouch",true)
 	cfg.cs2HoldToScopeEnabled	:= IniRead(cfg.file,"game","cs2HoldToScopeEnabled",true)
 	cfg.dappPauseKey			:= iniRead(cfg.file,"Game","dappPauseKey","<UNSET>")
@@ -235,6 +236,7 @@ cfgLoad(&cfg, &ui) {
 	cfg.d2GameMouseMiddleButtonKey := iniRead(cfg.file,"Mouse","MouseMiddleButton","LButton")
 	cfg.d2GameMouseBackButtonKey := iniRead(cfg.file,"Mouse","MouseBackButton","LButton")
 	cfg.d2GameMouseForwardButtonKey := iniRead(cfg.file,"Mouse","MouseForwardButton","LButton")
+	cfg.titleBarImage			:= iniRead(cfg.file,"Interface","TitlebarImage","./img/dapp_titlebar.png")
 	
 	runWait("./redist/mouseSC_x64.exe /verticalScroll:1",,"hide")
 }
@@ -315,6 +317,7 @@ WriteConfig() {
 		IniWrite(cfg.themeButtonOnColor,cfg.themeFile,"Custom","ThemeButtonOnColor")
 		IniWrite(cfg.themeButtonReadyColor,cfg.themeFile,"Custom","ThemeButtonReadyColor")
 		IniWrite(cfg.themeButtonAlertColor,cfg.themeFile,"Custom","ThemeButtonAlertColor")
+		iniWrite(cfg.titlebarImage,cfg.themeFile,"Custom","ThemeTitlebarImage")
 		IniWrite(ui.mainGuiTabs.value,cfg.file,"Interface","ActiveMainTab")
 		IniWrite(ui.gameTabs.value,cfg.file,"Interface","ActiveGameTab")
 		iniWrite(cfg.activeEditorTab,cfg.file,"Interface","ActiveEditorTab")
@@ -697,7 +700,7 @@ resetKeyStates() {
 			; }
 		; }		
 	; }
-; }
+		; }
 
 appChangeTrans(transLevel) {
 	try

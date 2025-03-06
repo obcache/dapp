@@ -182,12 +182,13 @@ d2ReadyToSprint(*) {
 	
 d2startSprinting(*) {
 	;msgBox('.')
+	;send("{w down}")
 	ui.d2IsSprinting := true
 	;send("{w down}")
 	if (cfg.d2AlwaysRunEnabled) {
 		send("{" strLower(cfg.d2GameToggleSprintKey) "}")
 	}
-	setCapsLockState("Off")
+	;setCapsLockState("Off")
 	keyWait("w","L")
 	send("{w up}")
 }

@@ -79,17 +79,10 @@ advProgress(2)
 	ui.2_SetupButton := ui.mainGui.addText("y3 x114 w80 h22 center backgroundTrans","Setup")
 	ui.3_FillOutline:=ui.mainGui.addText("x196 y2 w280 h28 left background" cfg.themePanel3Color,"           dapp")
 	ui.3_fillOutline.setFont("s16 cDDCCFF","Move-X")
-	ui.3_FillBg:=ui.mainGui.addText("y0 x194 w260 h30 background" cfg.themePanel1Color)
+	ui.3_FillBg:=ui.mainGui.addText("y0 x194 w280 h30 background" cfg.themePanel1Color)
 	ui.3_FillOutline.onEvent("click",WM_LBUTTONDOWN_callback)
-
-	ui.mainGui.addText("y5 x394 w72 h20 background959595")
-	ui.mainGui.addText("y5 x394 w71 h19 background505050")
-	ui.mainGui.addText("y7 x396 w68 h16 backgroundC0B5C5")
 	
-	ui.3_FillText:=ui.mainGui.addText("y5 x397 w66 h16 center backgroundTrans","build" strSplit(a_fileVersion)[1] "" strSplit(a_fileVersion)[2] "" strSplit(a_fileVersion)[3] "" strSplit(a_fileVersion)[4])
-	ui.3_fillText.setFont("s12 c151025","Notu Sans")
-	
-	ui.titleBar:=ui.mainGui.addPicture("x195 y2 w280 h28 left backgroundTrans","./img/dapp_titlebar.png")
+	ui.titleBar:=ui.mainGui.addPicture("x195 y2 w280 h28 left backgroundTrans",cfg.titleBarImage)
 	advProgress(2)
 	
 	line(ui.mainGui,194,28,330,2,cfg.themeBright1Color)
@@ -114,8 +107,8 @@ advProgress(2)
 	ui.rightHandlebarBg 	:= ui.mainGui.addText("hidden x529 y32 w31 h182 background" cfg.themeBright1Color,"")
 	ui.rightHandlebarImage2 := ui.mainGui.AddPicture("hidden x528 w31 y33 h180 section")
 	ui.ExitButtonBorder 	:= ui.mainGui.AddText("x472 y0 w60 h29 Background" cfg.ThemeBright1Color,"")
-	ui.ExitButton 			:= ui.mainGui.AddPicture("x501 y2 w28 h29 Background" cfg.ThemeButtonOnColor,"./Img/button_power_ready.png")
-	ui.DownButton 			:= ui.mainGui.AddPicture("x474 y2 w27 h29 section Background" cfg.ThemeFont1Color,"./Img/button_minimize.png")
+	ui.ExitButton 			:= ui.mainGui.AddPicture("x501 y2 w28 h28 Background" cfg.ThemeButtonReadyColor,"./Img/button_power_ready.png")
+	ui.DownButton 			:= ui.mainGui.AddPicture("x474 y2 w27 h28 section Background" cfg.ThemeButtonReadyColor,"./Img/button_minimize.png")
 	ui.ExitButton.OnEvent("Click",ExitButtonPushed)
 	ui.DownButton.OnEvent("Click",HideGui)
 	advProgress(2)
@@ -148,6 +141,8 @@ advProgress(2)
 
 	advProgress(2)
 line(ui.mainGui,34,211,496,2,cfg.themeBright1Color)
+
+
 }
 
 line(this_gui,startingX,startingY,length,thickness,color,vertical:=false) {
@@ -678,3 +673,4 @@ fadeOut(*) {
 
 d2KeybindGameTabClicked()
 d2KeybindAppTabClicked()
+line(ui.mainGui,34,30,198,2,cfg.themeBright1Color,"vert")

@@ -17,6 +17,7 @@ ui.incursionDebug := false
 ui.d2FlyEnabled := false
 
 d2drawPanel1(*) {
+	
 	guiName := ui.gameSettingsGui
 	ui.d2KeybindWidth := 60
 	labelX := 280
@@ -149,11 +150,11 @@ d2drawPanel1(*) {
 		case 1:
 		case 2:
 		hotif(d2ReadyToSwordFly)
-			hotkey("~*" cfg.dappSwordFlyKey,d2SwordFly)
+			hotkey("*" cfg.dappSwordFlyKey,d2SwordFly)
 		hotif()
 		case 3:
 		hotif(d2ReadyToSwordFly)
-			hotkey("~*" cfg.dappSwordFlyKey,d2MorgethWarlock)
+			hotkey("*" cfg.dappSwordFlyKey,d2MorgethWarlock)
 		hotif()
 		default:
 	}
@@ -322,7 +323,9 @@ d2drawPanel1(*) {
 	ui.d2ToggleAppFunctionsOutline := ui.gameSettingsGui.addText("ys+3 x+0 w1 h32 background" cfg.themeDark2Color)
 	ui.d2ToggleAppFunctionsLabel := ui.gameSettingsGui.addText("xs-5 y+-1 w28 h10 backgroundTrans center","Pause")
 	ui.d2ToggleAppFunctionsLabel.setFont("s8")
+
 }
+
 
 
 d2AutoGameConfigOverride(*) {
@@ -713,7 +716,7 @@ GuiGameTab() {
 	ui.gameTabs.setFont("s16")
 	ui.gameTabs.onEvent("Change",gameTabChanged)
 	ui.MainGui.GetPos(&winX,&winY,,)
-
+	winSetRegion("2-0 w600 h250",ui.gameSettingsGui)
 	Loop cfg.gameList.length {
 		try {
 			runWait("./lib/lib" cfg.gameList[a_index])
@@ -907,7 +910,6 @@ drawGameTabs(tabNum := 1) {
 	line(ui.gameTabGui,362,30,180,2,cfg.themeDark2Color)
 
 }
-			
 
 MouseRemap(*) {
 	 return (winActive("ahk_exe destiny2.exe"))
@@ -916,7 +918,6 @@ MouseRemap(*) {
 					: 0
 				: 0
 }
-
 
 ; #hotIf MouseRemap()
 	;forward&back mappings
@@ -939,6 +940,7 @@ isGameActive(*) {
 	else
 		return 0
 }
+
 ; hotIf(isGameActive)
 ; hotkey("XButton1",XButton1Down)
 ; hotkey("XButton2",XButton2Down)
@@ -946,6 +948,7 @@ isGameActive(*) {
 ; hotkey("RButton",RButtonDown)
 ; hotkey("MButton",MButtonDown)
 ; hotIf()
+
 XButton1Down(*) {
 	send("{" cfg.d2GameMouseBackButtonKey " down}")
 	keywait("XButton1")
@@ -972,17 +975,17 @@ MButtonDown(*) {
 	send("{" cfg.d2GameMouseMiddleButtonKey " up")
 }
 
-ui.d2Log								:= ui.gameSettingsGui.addText("x405 y10 w68 h80 hidden background" cfg.themePanel3color " c" cfg.themeFont3color," Destiny 2`n Log Started`n Waiting for Input")
+ui.d2Log									:= ui.gameSettingsGui.addText("x405 y10 w68 h80 hidden background" cfg.themePanel3color " c" cfg.themeFont3color," Destiny 2`n Log Started`n Waiting for Input")
 ui.d2Log.setFont("s7","ariel")
 
-ui.d2ToggleAppFunctions.ToolTip 		:= "Toggles holdToCrouch"
-ui.d2LaunchDIMbutton.ToolTip			:= "Launch DIM in Browser"
+ui.d2ToggleAppFunctions.ToolTip 			:= "Toggles holdToCrouch"
+ui.d2LaunchDIMbutton.ToolTip				:= "Launch DIM in Browser"
 ui.d2LaunchVaultCleanerButton.toolTip 		:= "Launch Vault Cleaner"
-ui.d2LaunchBlueberriesButton.toolTip	:= "Launch Blueberries.gg in Browser"
-ui.d2Launchd2CheckListButton.toolTip	:= "Launch D2Checklist.com in Browser"
-ui.d2LaunchDestinyTrackerButton.toolTip	:= "Launch DestinyTracker.com in Browser"
-ui.d2LaunchBrayTechButton.toolTip		:= "Launch Bray.Tech in Browser"
-ui.d2Launchd2FoundryButton.toolTip		:= "Launch d2Foundry"
+ui.d2LaunchBlueberriesButton.toolTip		:= "Launch Blueberries.gg in Browser"
+ui.d2Launchd2CheckListButton.toolTip		:= "Launch D2Checklist.com in Browser"
+ui.d2LaunchDestinyTrackerButton.toolTip		:= "Launch DestinyTracker.com in Browser"
+ui.d2LaunchBrayTechButton.toolTip			:= "Launch Bray.Tech in Browser"
+ui.d2Launchd2FoundryButton.toolTip			:= "Launch d2Foundry"
 
 ui.d2ToggleAppFunctions.OnEvent("Click", d2ToggleAppFunctions)
 ui.d2ToggleAutoGameConfig.OnEvent("Click", d2ToggleAutoGameConfig)

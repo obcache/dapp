@@ -29,8 +29,8 @@ ui.themeEditorTitlebar.onEvent("click",wm_lButtonDown_callback)
 
 
 guiVis(ui.themeEditorGui,false)
-ui.themeEditorGui.show("w320 h215 noActivate")
-drawOutlineNamed("themeOutline",ui.themeEditorGui,0,0,320,215,cfg.ThemeBorderDarkColor,cfg.ThemeBorderLightColor,3)
+ui.themeEditorGui.show("w320 h250 noActivate")
+drawOutlineNamed("themeOutline",ui.themeEditorGui,0,0,320,250,cfg.ThemeBorderDarkColor,cfg.ThemeBorderLightColor,3)
 drawOutlineNamed("themeOutline",ui.themeEditorGui,1,0,320,25,cfg.ThemeBorderDarkColor,cfg.ThemeBorderLightColor,2)
 ui.ColorSelectorLabel2 := ui.themeEditorGui.AddText("x11 y34 h23 section w75 BackgroundTrans c"
 	((cfg.ColorPickerEnabled) 
@@ -110,6 +110,20 @@ Loop ui.ThemeElements.Length
 	ui.%this_color%Picker := ui.themeEditorGui.AddText("xs y+2 section w30 h20 Border Background" cfg.%this_color% " c" cfg.%this_color%,this_color)
 	ui.%this_color%Label := ui.themeEditorGui.AddText("x+5 ys+2 c" cfg.ThemeFont1Color,StrReplace(SubStr(this_color,6),"Color"))
 	ui.%this_color%Picker.OnEvent("Click",PickColor)
+}
+
+ui.titlebarEdit:=ui.themeEditorGui.addPicture("section x4 y214 w32 h-1 backgroundTrans","./img/button_edit.png")
+ui.titlebarPreview:=ui.themeEditorGui.addPicture("x37 ys+0 w280 h-1",cfg.titleBarImage)
+;ui.titleBarPreviewLabel:=ui.themeEditorGui.addText("x5 y+5 w40 backgroundTrans center","Titlebar Image")
+;ui.titlebarPreviewLabel.setFont("s9 c" cfg.themeFont2Color,"ubuntu one")
+ui.titlebarPreview.onEvent("click",changeTitlebar)
+ui.titlebarEdit.onEvent("click",changeTitlebar)
+
+changeTitlebar(*) {
+	cfg.titleBarImage:=fileSelect(,a_scriptDir "\img\","Select Titlebar Image","*.png;*.jpg")
+	ui.titlebarPreview.value:=cfg.titleBarImage
+	iniWrite(cfg.titleBarImage,cfg.file,"Interface","TitleBarImage")
+	
 }
 
 ControlFocus(ui.toggleColorSelector,ui.themeEditorGui)

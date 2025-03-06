@@ -1,4 +1,4 @@
-A_FileVersion := "1.5.1.9"
+A_FileVersion := "1.5.2.0"
 a_appName := "dapp"
 if (fileExist("./dapp_currentBuild.dat"))
 a_fileVersion := fileRead("./dapp_currentBuild.dat")
@@ -133,6 +133,7 @@ ui.gameTabGui.show("w497 h32 noActivate x" cfg.guiX+34 " y" cfg.guiY+183)
 advProgress(5)
 monitorResChanged()
 advProgress(5)
+
 ui.MainGuiTabs.Choose(cfg.mainTabList[cfg.activeMainTab])
 ui.gameTabs.choose(cfg.gameModuleList[cfg.activeGameTab])
 advProgress(5)
@@ -162,6 +163,7 @@ autoUpdate()
 	
 d2AutoGameConfigOverride()
 ui.isActiveWindow:=""
+
 ;setTimer () => (ui.isActiveWindow:=(winActive("ahk_exe destiny2.exe")) ? (ui.isActiveWindow) ? 1 : (setCapsLockState(cfg.d2AlwaysRunEnabled),1) : (ui.isActiveWindow) ? (0,setCapsLockState(0)) : 0),500
 loadScreen(0)
 

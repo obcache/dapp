@@ -189,7 +189,7 @@ preAutoExec(InstallDir,ConfigFileName) {
 			FileInstall("./Img/button_power_on.png",InstallDir "/Img/button_power_on.png",1)
 			FileInstall("./Img/button_power_ready.png",InstallDir "/Img/button_power_ready.png",1)
 			FileInstall("./Img/button_save_up.png",InstallDir "/Img/button_save_up.png",1)
-
+			fileInstall("./img/button_edit.png",installDir "/img/button_edit.png",1)
 			FileInstall("./Img/button_up.png",InstallDir "/Img/button_up.png",1)
 			FileInstall("./Img/button_down.png",InstallDir "/Img/button_down.png",1)
 			fileInstall("./img/button_vault_up.png",installDir "/img/button_vault_up.png",1)
