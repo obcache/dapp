@@ -9,8 +9,8 @@ if (InStr(A_LineFile,A_ScriptFullPath)) { ;run main app
 }
 
 hotIfWinActive("ahk_exe destiny2.exe")
-	hotKey(cfg.dappToggleSprintKey,d2ToggleAlwaysSprint)
-	hotKey(cfg.dappPauseKey,d2ToggleAppFunctions)
+	hotKey("~*" cfg.dappToggleSprintKey,d2ToggleAlwaysSprint)
+	hotKey("~*" cfg.dappPauseKey,d2ToggleAppFunctions)
 hotIf()
 
 hotIf(d2RemapCrouchEnabled)
