@@ -1,4 +1,4 @@
-A_FileVersion := "1.5.2.1"
+A_FileVersion := "1.5.2.3"
 a_appName := "dapp"
 if (fileExist("./dapp_currentBuild.dat"))
 a_fileVersion := fileRead("./dapp_currentBuild.dat")
@@ -119,7 +119,7 @@ advProgress(2)
 
 OnExit(ExitFunc)
 
-tabsChanged()
+
 advProgress(5)
 
 ; try
@@ -127,6 +127,9 @@ advProgress(5)
 
 winSetRegion("33-0 w498 h214",ui.mainGui)
 guiVis("ALL",false)
+guiVis(ui.mainGui,false)
+guiVis(ui.gameSettingsGui,false)
+guiVis(ui.gameTabGui,false)
 ui.mainGui.Show("x" cfg.guix " y" cfg.guiy " w567 h215 NoActivate")
 ui.gameSettingsGui.show("x" cfg.guiX+34 " y" cfg.guiY+30 " w495 h182 noActivate")
 ui.gameTabGui.show("w497 h32 noActivate x" cfg.guiX+34 " y" cfg.guiY+183)
@@ -142,7 +145,10 @@ if (cfg.startMinimizedEnabled) {
 	ui.gameSettingsGui.hide()
 	ui.gameTabGui.hide()
 } else
-	fadeIn()
+
+ui.mainGuiTabs.choose(1)
+tabsChanged()
+fadeIn()
 advProgress(5)
 
 try {

@@ -49,7 +49,7 @@ wm_winActivated(this_control,info,msg,hwnd) {
 }
 
 WM_LBUTTONDOWN_callback(thisControl,info) {
-	postMessage("0xA1",2,,,"A")
+	postMessage("0xA1",2,,,thisControl)
 	;WM_LBUTTONDOWN(0,0,0,thisControl)	
 }
 

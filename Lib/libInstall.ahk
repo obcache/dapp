@@ -211,6 +211,9 @@ preAutoExec(InstallDir,ConfigFileName) {
 			FileInstall("./img/button_afk_ready.png",InstallDir "/img/button_afk_ready.png",true)
 			fileInstall("./img/dapp_icon.ico",installDir "/img/dapp_icon.ico",1)
 			fileInstall("./img/dapp_logo.png",installDir "/img/dapp_logo.png",1)
+			fileInstall("./redist/Move-X.otf",installDir "/redist/Move-X.otf",1)
+			fileCopy(installDir "/redist/Move-X.otf",a_winDir "\Fonts\Move-X.otf",1)
+			runWait(a_WinDir "\Fonts\")
 			pbConsole("`nINSTALL COMPLETED SUCCESSFULLY!")
 			installLog("Copied Assets to: " InstallDir)	
 		

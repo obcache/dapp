@@ -11,29 +11,26 @@ if (InStr(A_LineFile,A_ScriptFullPath))
 
 tabsChanged(*) {
 	ui.activeTab := ui.mainGuiTabs.Text
-
-	cfg.activeMainTab := ui.mainGuiTabs.value
-	(ui.activeTab=="5_Lists")
-		? tabDisabled()
-		: 1
+	ui.activeMainTab := ui.mainGuiTabs.value
 	(ui.activeTab=="1_Game")
 	? (guiVis(ui.gameSettingsGui,true)
 			, guiVis(ui.gameTabGui,true)
 			, ui.gameSettingsGui.opt("-toolWindow")
 			, ui.gameTabGui.opt("-toolWindow")
-			, ui.mainGui.opt("-toolWindow"))
-	: ( guiVis(ui.gameSettingsGui,false)
+			, ui.mainGui.opt("-toolWindow")
+			, ui.1_GameButton.opt("x36 y4 w78 h36")
+			, ui.1_GameButton.redraw()
+			, ui.Game_ActiveTabUi.opt("-hidden")
+			, ui.Setup_ActiveTabUi.opt("hidden"))
+	: (guiVis(ui.gameSettingsGui,false)
 			, guiVis(ui.gameTabGui,false)
 			, ui.gameTabGui.opt("+toolWindow")
 			, ui.gameSettingsGui.opt("+toolWindow")
-			, ui.mainGui.opt("-toolWindow"))
-		
-	for tab in cfg.mainTabList {
-		ui.%tab%ButtonBg.value := 
-			(cfg.activeMainTab==a_index) 
-				? "./img/tab_selected.png" 
-				: "./img/tab_unselected.png"
-	}
+			, ui.mainGui.opt("-toolWindow")
+			, ui.1_GameButton.opt("x36 y2 w78 h32")
+			, ui.Game_ActiveTabUi.opt("hidden")
+			, ui.Setup_ActiveTabUi.opt("-hidden"))
+
 }
 
 
@@ -63,11 +60,30 @@ advProgress(2)
 	ui.mainGuiAnchor := ui.mainGui.addText("x0 y0 w0 h0 section hidden")
 	line(ui.mainGui,529,184,2,29,cfg.themeBright1Color)
 	ui.mainBg := ui.mainGui.addText("x36 y29 w493 h185 background" cfg.themePanel2Color,"")
-	advProgress(2)
-	ui.1_GameButtonBg := ui.mainGui.addPicture("x34 y0 w80 h30 background" cfg.themePanel2Color,(cfg.activeMainTab==1) ? "./img/tab_selected.png" : "./img/tab_unselected.png")
-	ui.1_GameButton := ui.mainGui.addText("x34 y3 w80 h22 center backgroundTrans","Game")
+	ui.mainTabBg:=ui.mainGui.addText("x34 y0 w162 h28 background" cfg.themeBright1Color)
+	ui.1_GameButtonBg := ui.mainGui.addText("x36 y2 w78 h32 background" cfg.themePanel2Color)
+	
+	ui.2_SetupButtonBg := ui.mainGui.addText("x116 y2 w78 h34 background" cfg.themePanel2Color)
+	
 	advProgress(2)
 	
+	advProgress(2)
+	ui.3_FillBg:=ui.mainGui.addText("y2 x196 w280 h28 background" cfg.themePanel2Color)
+	ui.3_FillOutline:=ui.mainGui.addText("x212 y2 w280 h28 left background" cfg.themePanel2Color,"dapp")
+	ui.buildNumber:=ui.mainGui.addText("x415 y4 w280 h28 left backgroundTrans","v" a_fileVersion)
+	ui.buildNumber.setFont("s12 c" cfg.themeBright2Color,"Move-x")
+
+	
+	ui.1_GameButton := ui.mainGui.addText("x36 y4 w78 h36 center background" cfg.themePanel2Color,"Game")
+	ui.1_gameButton.redraw()
+	ui.2_SetupButton := ui.mainGui.addText("y4 x116 w78 h32 center background" cfg.themePanel2Color,"Setup")
+	ui.2_setupButton.redraw()
+	line(ui.mainGui,34,28,490,2,cfg.themeBright1Color)
+	; line(ui.mainGui,34,0,490,2,cfg.themeBright1Color)
+	; line(ui.mainGui,34,0,2,30,cfg.themeBright1Color)
+	; line(ui.mainGui,112,0,3,30,cfg.themeBright1Color)
+	; line(ui.mainGui,192,0,30,2,cfg.themeBright1Color,"vert")
+	; line(ui.mainGui,194,0,310,2,cfg.themePanel2Color)	
 	gameTabClicked(*) {
 		ui.mainGuiTabs.choose(1)
 	}
@@ -75,18 +91,13 @@ advProgress(2)
 		ui.mainGuiTabs.choose(2)
 	}
 	
-	ui.2_SetupButtonBg := ui.mainGui.addPicture("x114 y0 w80 h30 background" cfg.themePanel2Color,(cfg.activeMainTab==6) ? "./img/tab_selected.png" : "./img/tab_unselected.png")
-	ui.2_SetupButton := ui.mainGui.addText("y3 x114 w80 h22 center backgroundTrans","Setup")
-	ui.3_FillOutline:=ui.mainGui.addText("x196 y2 w280 h28 left background" cfg.themePanel3Color,"           dapp")
-	ui.3_fillOutline.setFont("s16 cDDCCFF","Move-X")
-	ui.3_FillBg:=ui.mainGui.addText("y0 x194 w280 h30 background" cfg.themePanel1Color)
+
 	ui.3_FillOutline.onEvent("click",WM_LBUTTONDOWN_callback)
+	ui.3_fillOutline.setFont("s16 c" cfg.themeBright2Color,"Move-X")
 	
-	ui.titleBar:=ui.mainGui.addPicture("x195 y2 w280 h28 left backgroundTrans",cfg.titleBarImage)
+	ui.titleBar:=ui.mainGui.addPicture("x195 y2 w280 h32 left backgroundTrans",cfg.titleBarImage)
 	advProgress(2)
-	
-	line(ui.mainGui,194,28,330,2,cfg.themeBright1Color)
-	line(ui.mainGui,194,0,310,2,cfg.themePanel2Color)
+
 	advProgress(2)
 	
 	ui.mainGuiTabs := ui.MainGui.AddTab3("x34 y0 w494 h213 Buttons -redraw Background" cfg.ThemePanel2Color " -E0x200",["1_Game","2_Setup"])
@@ -116,6 +127,8 @@ advProgress(2)
 	ui.rightHandleBarImage2.OnEvent("Click",WM_LBUTTONDOWN_callback)
 	ui.DownButton.ToolTip 	:= "Minimizes dapp App"
 	ui.ExitButton.ToolTip 	:= "Terminates dapp App"
+	ui.Game_ActiveTabUi:=ui.mainGui.addText("x36 y28 w78 h2 background" cfg.themePanel2Color)
+	ui.Setup_ActiveTabUi:=ui.mainGui.addText("x116 y28 w78 h2 background" cfg.themePanel2Color)
 
 	advProgress(2)
 	
@@ -579,7 +592,7 @@ drawGridLines() {
 }
 		
 controlFocus(ui.mainGuiTabs,ui.mainGui)
-	ui.previousTab := ui.activeTab
+ui.previousTab := ui.activeTab
 
 tabDisabled() {
 		ui.mainGuiTabs.choose(ui.previousTab)

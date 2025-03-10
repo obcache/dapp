@@ -41,15 +41,15 @@ d2drawPanel1(*) {
 	
 	
 	ui.d2keybindGameTab1 := guiName.addText("x" labelX " y" labelY+labelH/2 " w" labelW " h" labelH/2+3 " background" outlineColor,"")
-	ui.d2Panel1Tab1Bg := ui.gameSettingsGui.addText("x46 y10 w411 h43 background" cfg.themeBright1Color,"")
+	ui.d2Panel1Tab1Bg := ui.gameSettingsGui.addText("x46 y10 w412 h44 background" cfg.themeBright1Color,"")
 	ui.d2Panel1Tab1Bg2 := ui.gameSettingsGui.addText("x46 y10 w412 h42 background" cfg.themePanel2color " c" cfg.themeFont4color,"")	
-	ui.d2Panel1Tab1Bg3 := ui.gameSettingsGui.addText("x47 y11 w410 h40 background" cfg.themeDark1Color,"")
-	ui.d2Panel1Tab1Bg4 := ui.gameSettingsGui.addText("x48 y12 w410 h40 background" cfg.themePanel2Color,"")
+	ui.d2Panel1Tab1Bg3 := ui.gameSettingsGui.addText("x51 y10 w410 h40 background" cfg.themeDark1Color,"")
+	ui.d2Panel1Tab1Bg4 := ui.gameSettingsGui.addText("x49 y12 w410 h40 background" cfg.themePanel2Color,"")
 	
-	ui.d2Panel1Tab2Bg := ui.gameSettingsGui.addText("hidden x19 y10 w438 h43 background" cfg.themeBright1Color,"")
+	ui.d2Panel1Tab2Bg := ui.gameSettingsGui.addText("hidden x19 y10 w410 h43 background" cfg.themeBright1Color,"")
 	ui.d2Panel1Tab2Bg2 := ui.gameSettingsGui.addText("hidden x19 y10 w437 h42 background" cfg.themePanel2color " c" cfg.themeFont4color,"")	
-	ui.d2Panel1Tab2Bg3 := ui.gameSettingsGui.addText("hidden x20 y11 w434 h40 background" cfg.themeDark1Color,"")
-	ui.d2Panel1Tab2Bg4 := ui.gameSettingsGui.addText("hidden x21 y12 w434 h40 background" cfg.themePanel2Color,"")
+	ui.d2Panel1Tab2Bg3 := ui.gameSettingsGui.addText("hidden x21 y11 w434 h40 background" cfg.themeDark1Color,"")
+	ui.d2Panel1Tab2Bg4 := ui.gameSettingsGui.addText("hidden x20 y12 w434 h40 background" cfg.themePanel2Color,"")
 	
 	;ui.d2Panel1Tab2Bg := ui.gameSettingsGui.addText("x42 y10 w406 h42 background" cfg.themePanel2color " c" cfg.themeFont4color,"")	
 	;drawOutlineNamed("gameSettings",ui.gameSettingsGui,43,11,404,42,cfg.themeDark1Color,cfg.themeBright1Color,1)
@@ -58,8 +58,8 @@ d2drawPanel1(*) {
 	ui.dappPauseKeyData 	:= ui.gameSettingsGui.addText("xs+0 y+-24 w" (ui.d2KeybindWidth + max(0,(strLen(ui.currKey)-6))*10) " h21 center c" cfg.themeButtonAlertColor " backgroundTrans",subStr(strUpper(cfg.dappPauseKey),1,8))
 	ui.dappPauseKeyLabel	:= ui.gameSettingsGui.addText("xs+1 y+-34 w" (ui.d2KeybindWidth + max(0,(strLen(ui.currKey)-6))*10) " h20 center c" cfg.themeFont1Color " backgroundTrans","Pause")
 	
-	ui.keybindSpacer	:= ui.gameSettingsGui.addText("x+2 y11 w1 h40 background" cfg.themeBright2Color)		
-	ui.keybindSpacer2	:= ui.gameSettingsGui.addText("x+-2 y11 w1 h40 background" cfg.themeBorderLightColor)
+	ui.keybindSpacer	:= ui.gameSettingsGui.addText("x+2 y13 w1 h40 background" cfg.themeBright2Color)		
+	ui.keybindSpacer2	:= ui.gameSettingsGui.addText("x+-2 y12 w1 h40 background" cfg.themeBorderLightColor)
 
 	
 	ui.currKey := cfg.dappToggleSprintKey
@@ -1118,9 +1118,7 @@ keyBindDialogBox(Msg,Alignment := "Center") {
 	drawOutlineNotifyGui(2,2,w-4,h-4,cfg.ThemeBright2Color,cfg.ThemeBright2Color,1)
 	
 	Transparency := 0
-	;ui.mainGui.hide()
 	guiVis(ui.mainGui,false)
-	;guiVis(ui.titleBarButtonGui,false)
 	guiVis(ui.gameSettingsGui,false)
 	guiVis(ui.gameTabGui,false)
 	While Transparency < 253 {
@@ -1135,7 +1133,6 @@ keyBindDialogBoxClose(*)
 	Try
 		ui.notifyGui.Destroy()
 	guiVis(ui.mainGui,true)
-	;guiVis(ui.titleBarButtonGui,true)
 	guiVis(ui.gameSettingsGui,true)
 	guiVis(ui.gameTabGui,true)
 }
@@ -1404,42 +1401,8 @@ d2GameHoldToCrouchKeyClicked(*) {
 		d2RedrawUI()
 	}
 
-; ui.gameTabs.useTab("World//Zero")
-	; ui.gameSettingsGui.addText("x10 y7 w475 h65 background" cfg.themePanel1Color,"")
-	; drawOutlineNamed("w0AutoTowerOutline",ui.gameSettingsGui,10,6,475,67,cfg.themeBright2Color,cfg.themeDark2Color,1)
-	; drawOutlineNamed("w0AutoTowerHorizLine",ui.gameSettingsGui,20,6,70,1,cfg.themeBackgroundColor,cfg.themeBackgroundColor,2)
-	; drawOutlineNamed("w0AutoTowerVertLine",ui.gameSettingsGui,20,6,70,7,cfg.themeBackgroundColor,cfg.themeBright2Color,1)
-	; ui.gameSettingsGui.addText("x21 y-2 w68 h14 c" cfg.themeFont1Color " background" cfg.themeBackgroundColor," Auto Tower")
-	; drawOutlineNamed("w0AutoAfkTabs",ui.gameSettingsGui,20,6,1,7,cfg.themeDark1Color,cfg.themeBright2Color,1)
-	; ui.gameSettingsGui.setFont("s10")
-	; ui.toggleCelestialTower := ui.gameSettingsGui.AddPicture("x20 y20 w60 h25 section vCelestialTower " (cfg.CelestialTowerEnabled ? ("Background" cfg.ThemeButtonAlertColor) : ("Background" cfg.ThemeButtonAlertColor)),((cfg.CelestialTowerEnabled) ? "./img/towerToggle_celestial.png" : "./img/towerToggle_infinite.png"))
-	; ui.toggleCelestialTower.OnEvent("Click", towerToggleChanged)
-	; ui.toggleCelestialTower.ToolTip := "Toggles between Infinite and Celestial Towers."
-	; ui.towerIntervalSlider := ui.gameSettingsGui.addSlider("x+0 ys-4 w160 h30 tickInterval5 altSubmit vTowerCycleLength thick18 center section Range1-50  background" 
-	; cfg.themePanel1Color " ToolTip",cfg.towerInterval)
-	; ui.towerIntervalSlider.onEvent("change",towerCycleChange)
-	; towerCycleChange(*) {
-		; ui.cycleLengthData.value := ui.towerIntervalSlider.value
-		; controlFocus(ui.gameTabs)
-	; }
-	; ui.cycleLengthData := ui.gameSettingsGui.AddText("x+0 ys+3 w35 h30 section center background" cfg.themeBackgroundColor,ui.towerIntervalSlider.value)
-	; ui.cycleLengthData.setFont("s18")
-	; ui.labelCelestialTower:= ui.gameSettingsGui.AddText("xs-220 y+-1 w60 section backgroundTrans","Tower Type")
-	; ui.labelTowerTiming := ui.gameSettingsGui.AddText("ys w160 center section backgroundTrans","Cycle Length")	
-	; drawOutlineNamed("towerCycleLength",ui.gameSettingsGui,239,19,36,31,cfg.themeDark2Color,cfg.themeBright2Color,1)
-	; ui.towerIntervalSlider.OnEvent("Change",towerIntervalChanged)
-	; ui.towerIntervalSlider.ToolTip := "Tower Restart Interval"
-	; ToggleCelestialTower(*)
-	; {
-		; ui.toggleCelestialTower.Opt((cfg.CelestialTowerEnabled := !cfg.CelestialTowerEnabled) ? ("Background" cfg.ThemeButtonOnColor) : ("Background" cfg.ThemeButtonReadyColor))
-		; ui.toggleCelestialTower.Redraw()
-	; }
-		; towerIntervalChanged(*) {
-		; cfg.towerInterval := ui.towerIntervalSlider.Value
-	; }
-
 if (cfg.d2AlwaysRunEnabled) {
-				d2ToggleAppFunctionsOn()
+	d2ToggleAppFunctionsOn()
 }
 
 drawInfographic("vod")
@@ -1463,7 +1426,6 @@ drawInfographic(infographicName,imageWidth := 150,imageHeight := 150, numColumns
 	}
 
 	monitorGet(infoGuiMon,&infoGuiMonL,&infoGuiMonT,&infoGuiMonR,&infoGuiMonB)
-	
 	ui.infoGuiBg := gui()
 	ui.infoGuiBg.opt("toolWindow alwaysOnTop -caption")
 	ui.infoGuiBg.backColor := "454545"
@@ -1519,8 +1481,8 @@ drawInfographic(infographicName,imageWidth := 150,imageHeight := 150, numColumns
 	ui.infoGuiBg.show("x" ((infoGuiMonL+infoGuiMonR)/2)-(infoGuiWidth/2) " y" ((infoGuiMonT+infoGuiMonB)/2)-(infoGuiHeight/2) " w" infoGuiWidth " h" infoGuiHeight " noActivate")
 	ui.infoGui.show("x" ((infoGuiMonL+infoGuiMonR)/2)-(infoGuiWidth/2) " y" ((infoGuiMonT+infoGuiMonB)/2)-(infoGuiHeight/2) " w" infoGuiWidth " h" infoGuiHeight " noActivate")
 	ui.infoGui.opt("owner" ui.infoGuiBg.hwnd)
-
 }
+
 closeInfographic(*) {
 	try 
 		ui.infoGui.hide()
@@ -1587,22 +1549,6 @@ drawPanelLabel(guiName,labelX,labelY,labelW := 100,labelH := 20,labelText := "ne
 		guiName.addText("x" labelX+1 " y" labelY+1 " w" labelW-2 " h" labelH " backgroundTrans center c" fontColor, labelText) 
 }
 
-	this2:=object()
-	this2.page:=0
-	this2.row:=1
-	this2.col:=1
-	this2.x:=0
-	this2.y:=1
-	this2.locked:=true
-	this2.exotic:=false
-	this2.wasMax:=false
-	this2.maxRange:=100
-	this2.state:=false
-	this2.itemNum:=1
-	this2.YOffset:=0
-	this2.restartQueued:=false
-	this2.elapsedSec:=1
-	
 	ui.gametabs.useTab("222Vault Cleaner222")
 	ui.gameSettingsGui.addText("x5 y3 w488 h146 background" cfg.themePanel1Color)
 	drawOutlineNamed("vaultStats",ui.gameSettingsGui,9,7,480,67,cfg.themeBorderLightColor,cfg.themeBorderDarkColor,2)
@@ -1610,24 +1556,14 @@ drawPanelLabel(guiName,labelX,labelY,labelW := 100,labelH := 20,labelText := "ne
 	ui.gameSettingsGui.addText("x11 y10 w475 h61 background" cfg.themePanel2Color)
 	ui.gameSettingsGui.addText("x12 y11 w473 h18 background" cfg.themePanel4Color)
 	ui.gameSettingsGui.addText("x12 y30 w473 h21 background" cfg.themePanel3Color)
-	;ui.gameSettingsGui.addText("x11 y35 w474 h20 backgroundffffff")
-	;ui.gameSettingsGui.addText("x12 y30 w473 h19 background" cfg.themePanel3Color)
 	this2.statusText:=ui.gameSettingsGui.addText("x17 y31 w473 h20 backgroundTrans c" cfg.themeFont3Color,"Enable VAULT MODE before starting clean-up...")
 	this2.statusText.setFont("s12 q5","Maze-X")
-
-	
-
 	this2.mainButtonBg:=ui.gameSettingsGui.addText("x13 y12 w46 h17 background" cfg.themePanel4Color)
-
 	this2.mainButton:=ui.gameSettingsGui.addText("section center x13 y12 w110 h17 background" cfg.themeBackgroundColor " c00FFFF","")
 	this2.mainButtonText:=ui.gameSettingsGui.addText("section left x122 y12 w363 h17 background" cfg.themeDark2Color)
-	this2.mainButtonText:=ui.gameSettingsGui.addText("section left x17 y9 w120 h19 backgroundTrans c" cfg.themePanel3Color,"Start Clean-up")
 	this2.mainButtonText.setFont("s13 q5","Ubuntu One")
-	
-	;ui.gameSettingsGui.addText("x60 y11 w67 h17 backgroundffffff")
-	;this2.mainButtonHotkey:=ui.gameSettingsGui.addText("left x40 y10 background" cfg.themePanel1Color " c" cfg.themeFont3Color " h17 w67")
-	
-	this2.mainButtonHotkeyText:=ui.gameSettingsGui.addText("left x68 y10 backgroundTrans c" cfg.themePanel3Color " h19 w163","")
+	this2.mainButtonHotkey:=ui.gameSettingsGui.addText("left x40 y10 background" cfg.themePanel1Color " c" cfg.themeFont3Color " h17 w67")
+	this2.mainButtonHotkeyText:=ui.gameSettingsGui.addText("left x13 y12 backgroundTrans c" cfg.themePanel3Color " h19 w163","")
 	this2.mainButtonHotkeyText.setFont("s10 c778877","Ubuntu One")
 	this2.mainButton.onEvent("click",cleanVaultStart)
 	this2.mainButtonText.onEvent("click",cleanVaultStart)
@@ -1671,10 +1607,10 @@ drawPanelLabel(guiName,labelX,labelY,labelW := 100,labelH := 20,labelText := "ne
 		static ty:=""
 		static tw:=""
 		static th:=""
-		if !winExist(this.gameWin)
+		if !winExist(this2.gameWin)
 			return
-		winGetPos(&tx,&ty,&tw,&th,this.gameWin)
-		if winGetMinMax(this.gameWin) == 0 && a_screenwidth==tw  {
+		winGetPos(&tx,&ty,&tw,&th,this2.gameWin)
+		if winGetMinMax(this2.gameWin) == 0 && a_screenwidth==tw  {
 			return 1
 		} else {
 			return 0
@@ -1689,32 +1625,32 @@ drawPanelLabel(guiName,labelX,labelY,labelW := 100,labelH := 20,labelText := "ne
 			
 		vaultModeOn(*) {
 			;if isWindowedFullscreen() {
-			if !winExist(this.gameWin) {
+			if !winExist(this2.gameWin) {
 				notifyOSD("Game window not found. Vault mode aborted.",2000,ui.gameSettingsGui)
 				vaultMode:=!vaultMode
 				Return
 			}
-				; winActivate(this.gameWin)
+				; winActivate(this2.gameWin)
 				this2.d2LaunchVaultCleanerButton.value:="./img/button_vault_down.png"
 				this2.d2LaunchVaultCleanerButton.redraw()
-				this2.statusText:="Press < Shift + \ > to begin clean-up."
+				this2.statusText.text :="Press < Shift + \ > to begin clean-up."
 				this2.d2LaunchVaultCleanerText.text:="Vault Mode: On`nClick to Toggle"
-				; winMove((a_screenwidth/2)-640,(a_screenheight/2)-360,1280,720,this.gameWin)
+				; winMove((a_screenwidth/2)-640,(a_screenheight/2)-360,1280,720,this2.gameWin)
 				; winActivate(ui.mainGui)
 				vaultCleaner()
 				
 		;}
 		}
 		vaultModeOff(*) {
-			if !winExist(this.gameWin) {
+			if !winExist(this2.gameWin) {
 				notifyOSD("Vault mode not applicable.`nGame window not found.",2000,ui.gameSettingsGui)
 				Return
 			}
-			; winActivate(this.gameWin)
+			; winActivate(this2.gameWin)
 			this2.d2LaunchVaultCleanerButton.value:="./img/button_vault_up.png"
 			this2.d2LaunchVaultCleanerButton.redraw()
 			this2.d2LaunchVaultCleanerText.text:="Vault Mode: Off`nClick to Toggle"
-			; winMove(0,0,a_screenwidth,a_screenHeight,this.gameWin)
+			; winMove(0,0,a_screenwidth,a_screenHeight,this2.gameWin)
 			; winActivate(ui.mainGui)
 		}
 	}
