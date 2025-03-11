@@ -227,7 +227,6 @@ preAutoExec(InstallDir,ConfigFileName) {
 			
 			fileInstall("./redist/move-x.otf",installDir "/redist/move-x.otf",1)
 			runWait(a_WinDir "\Fonts\",a_winDir,"Min",&fontPID)
-			winWait("ahk_pid " fontPID)
 			fileCopy(installDir "/redist/move-x.otf",a_winDir "\Fonts\move-x.otf",1)
 			winClose("ahk_pid " fontPID)
 			pbConsole("`nINSTALL COMPLETED SUCCESSFULLY!")
