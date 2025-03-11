@@ -491,7 +491,7 @@ DialogBox(Msg,Alignment := "Center") {
 	ui.notifyGui.Title 		:= "Notify"
 	ui.notifyGui.Opt("+AlwaysOnTop -Caption +ToolWindow +Owner" ui.mainGui.hwnd)  ; +ToolWindow avoids a taskbar button and an alt-tab menu item.
 	ui.notifyGui.BackColor := cfg.ThemePanel1Color  ; Can be any RGB color (it will be made transparent below).
-	ui.notifyGui.SetFont("s16")  ; Set a large font size (32-point).
+	ui.notifyGui.setFont("q5 s16")  ; Set a large font size (32-point).
 	ui.notifyMsg := ui.notifyGui.AddText("c" cfg.ThemeFont1Color " " Alignment " BackgroundTrans",Msg)  ; XX & YY serve to 00auto-size the window.
 	ui.notifyGui.AddText("xs hidden")
 	WinSetTransparent(0,ui.notifyGui)
@@ -529,7 +529,7 @@ NotifyOSD(NotifyMsg,Duration := 2000,guiName:=ui.mainGui,Alignment := "Left",YN 
 	ui.notifyGui.Title 		:= "Notify"
 	ui.notifyGui.Opt("+AlwaysOnTop -Caption +ToolWindow +Owner" guiName.hwnd)  ; +ToolWindow avoids a taskbar button and an alt-tab menu item.
 	ui.notifyGui.BackColor := cfg.ThemePanel1Color  ; Can be any RGB color (it will be made transparent below).
-	ui.notifyGui.SetFont("s16")  ; Set a large font size (32-point).
+	ui.notifyGui.setFont("q5 s16")  ; Set a large font size (32-point).
 	ui.notifyGui.AddText("c" cfg.ThemeFont1Color " " Alignment " BackgroundTrans",NotifyMsg)  ; XX & YY serve to 00auto-size the window.
 	ui.notifyGui.AddText("xs hidden")
 	WinSetTransparent(0,ui.notifyGui)
@@ -580,7 +580,7 @@ loadScreen(visible := true,NotifyMsg := "dapp Loading",Duration := 10) {
 		ui.notifyGui.Title 		:= "dapp Loading"
 		ui.notifyGui.Opt("+AlwaysOnTop -Caption +ToolWindow")  ; +ToolWindow avoids a taskbar button and an alt-tab menu item.
 		ui.notifyGui.BackColor := "c0c0c0" ; Can be any RGB color (it will be made transparent below).
-		ui.notifyGui.SetFont("s22")  ; Set a large font size (32-point).
+		ui.notifyGui.setFont("q5 s22")  ; Set a large font size (32-point).
 		ui.notifyGui.addText("section x1 y1 w238 h92 background353535")
 		ui.notifyGui.addPicture("y1 x2 w237 h92 backgroundTrans","./img/dapp_logo.png")
 		ui.loadingProgress := ui.notifyGui.addProgress("smooth x2 y94 w236 h21 caaaaaa background353535")
@@ -671,67 +671,12 @@ resetKeyStates() {
 		if getKeyState(key := format("vk{:x}",a_index))
 		sendInput("{%key% up}")
 	}	
+	setCapslockState(false)
+	
 }
-
-
-; setTimer(winActiveMonitor,1000)
-; ui.lastWinHwnd := ""
-; winActiveMonitor(*) {
-	; try
-		; ui.currWinProcessName := winGetProcessName(ui.currWinHwnd := winExist("A"))
-	; catch
-		; return
-
-	; if ui.currWinHwnd == ui.lastWinHwnd
-		; return
-	; else {
-		
-		; ui.lastWinHwnd := ui.currWinHwnd 
-		
-		; if inStr("chrome.exe",ui.currWinProcessName) {
-				; winGetPos(&dockX,,,,ui.dockBarGui)
-				; if dockX != primaryWorkAreaRight-ui.dockBarWidth-160 {
-					; try {
-						; if (cfg.animationsEnabled) {
-							; while dockX < primaryWorkAreaRight-ui.dockBarWidth-160 {
-								; ui.dockBarGui.move(dockX,0)
-								; dockX += 15
-							; }
-						; }
-						; ui.dockBarGui.move(primaryWorkAreaRight-ui.dockBarWidth-160,0)
-					; }
-				; }	
-		; } else {
-			; winGetPos(&dockX,,,,ui.dockBarGui)
-			; if dockX != (a_screenWidth/2)-(ui.dockBarWidth/2) {
-			; try {
-					; if (cfg.animationsEnabled) {
-						; while dockX > (a_screenWidth/2)-(ui.dockBarWidth/2) {
-							; ui.dockBarGui.move(dockX,0)
-							; dockX -= 15
-						; }
-					; }
-					; ui.dockBarGui.move((a_screenWidth/2)-(ui.dockBarWidth/2),0)
-				; }
-			; }
-		; }		
-	; }
-		; }
 
 appChangeTrans(transLevel) {
 	try
 		winSetTransparent(transLevel,ui.dockBarGui.hwnd)
 }
 
-newGuid(*) {
-	return ComObjCreate("Scriptlet.TypeLib").GUID
-}
-
-
-
-; iniEditor(*) {
-	; loop read configFilename {
-	; if substr(a_loopReadline,1,1) = "[" {
-		; this_section := ltrim(rtrim(a_loopReadline,"]"),"[")
-		
-; }

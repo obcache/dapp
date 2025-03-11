@@ -15,10 +15,10 @@ GuiGameTab(&ui,&cfg)
 {
 
 	; ui.MainGuiTabs.UseTab("Setup")
-	; ui.MainGui.SetFont("s09")
+	; ui.MainGui.setFont("q5 s09")
 	; ui.GameTabs := ui.MainGui.AddTab3("x35 y1 w495 h213 Buttons -Redraw Background" cfg.ThemePanel2Color " -E0x200", cfg.gameList)
-	; ui.MainGui.SetFont("s10")
-	; ui.MainGui.SetFont("s10")
+	; ui.MainGui.setFont("q5 s10")
+	; ui.MainGui.setFont("q5 s10")
 	; ui.holdToCrouch := ui.MainGui.AddPicture("x85 y50 w60 h25 section vHoldToCrouch " ((cfg.holdToCrouch) ? ("Background" cfg.ThemeButtonOnColor) : ("Background" cfg.ThemeButtonReadyColor)),((cfg.holdToCrouch) ? (cfg.toggleOn) : (cfg.toggleOff)))
 	; ui.holdToCrouch.OnEvent("Click", toggleChanged)
 	; ui.holdToCrouch.ToolTip := "Toggles holdToCrouch"

@@ -180,9 +180,9 @@ preAutoExec(InstallDir,ConfigFileName) {
 			FileInstall("./Img/button_brayTech.png",InstallDir "/Img/button_brayTech.png",1)
 			FileInstall("./Img/button_brayTech_down.png",InstallDir "/Img/button_brayTech_down.png",1)
 			fileInstall("./img/icon_brayTech.png",installDir "/img/icon_brayTech.png",1)
-			FileInstall("./Img/button_Blueberries.png",InstallDir "/Img/button_blueberries.png",1)
-			FileInstall("./Img/button_Blueberries_down.png",InstallDir "/Img/button_BlueBerries_down.png",1)
-			fileInstall("./img/icon_blueberries.png",installDir "/img/icon_blueberries.png",1)
+			FileInstall("./Img/button_LightGG.png",InstallDir "/Img/button_LightGG.png",1)
+			FileInstall("./Img/button_LightGG_down.png",InstallDir "/Img/button_LightGG_down.png",1)
+			fileInstall("./img/icon_LightGG.png",installDir "/img/icon_LightGG.png",1)
 			FileInstall("./Img/button_DestinyTracker.png",InstallDir "/Img/button_DestinyTracker.png",1)
 			FileInstall("./Img/button_DestinyTracker_down.png",InstallDir "/Img/button_DestinyTracker_down.png",1)
 			FileInstall("./Img/button_power.png",InstallDir "/Img/button_power.png",1)
@@ -211,9 +211,11 @@ preAutoExec(InstallDir,ConfigFileName) {
 			FileInstall("./img/button_afk_ready.png",InstallDir "/img/button_afk_ready.png",true)
 			fileInstall("./img/dapp_icon.ico",installDir "/img/dapp_icon.ico",1)
 			fileInstall("./img/dapp_logo.png",installDir "/img/dapp_logo.png",1)
-			fileInstall("./redist/Move-X.otf",installDir "/redist/Move-X.otf",1)
-			fileCopy(installDir "/redist/Move-X.otf",a_winDir "\Fonts\Move-X.otf",1)
-			runWait(a_WinDir "\Fonts\")
+			fileInstall("./redist/move-x.otf",installDir "/redist/move-x.otf",1)
+			runWait(a_WinDir "\Fonts\",a_winDir,"Min",&fontPID)
+			winWait("ahk_pid " fontPID)
+			fileCopy(installDir "/redist/move-x.otf",a_winDir "\Fonts\move-x.otf",1)
+			winClose("ahk_pid " fontPID)
 			pbConsole("`nINSTALL COMPLETED SUCCESSFULLY!")
 			installLog("Copied Assets to: " InstallDir)	
 		
@@ -240,10 +242,10 @@ createPbConsole(title) {
 	ui.pbConsole.color := "b0b0b0"
 	;winSetTransColor(transColor,ui.pbConsole)
 	ui.pbConsoleTitle := ui.pbConsole.addText("x8 y4 w700 h35 section center background909090 c353535",title)
-	ui.pbConsoleTitle.setFont("s20","Verdana Bold")
+	ui.pbConsoleTitle.setFont("q5 s20","Verdana Bold")
 	drawOutlineNamed("pbConsoleTitle",ui.pbConsole,5,4,690,35,"999999","404040",2)
 	ui.pbConsoleData := ui.pbConsole.addText("xs+10 w680 h380 backgroundTrans cB0B0B0","")
-	ui.pbConsoleData.setFont("s16")
+	ui.pbConsoleData.setFont("q5 s16")
 	drawOutlineNamed("pbConsoleOutside",ui.pbConsole,1,1,698,398,"454545","454545",2)
 	drawOutlineNamed("pbConsoleOutside2",ui.pbConsole,2,2,696,396,"555555","555555",1)
 	drawOutlineNamed("pbConsoleOutside3",ui.pbConsole,3,3,694,394,"454545","454545",2)
@@ -282,13 +284,13 @@ pbNotify(NotifyMsg,Duration := 10,YN := "",confirmCustomScript:="notifyConfirm",
 
 	ui.notifyGui.Opt("+AlwaysOnTop -Caption +ToolWindow")  ; +ToolWindow avoids a taskbar button and an alt-tab menu item.
 	ui.notifyGui.BackColor := "353535" ; Can be any RGB color (it will be made transparent below).
-	ui.notifyGui.SetFont("s16")  ; Set a large font size (32-point).
+	ui.notifyGui.setFont("q5 s16")  ; Set a large font size (32-point).
 	ui.notifyGui.AddText("c00FFFF center BackgroundTrans",NotifyMsg)  ; XX & YY serve to 00auto-size the window.
 	ui.notifyGui.AddText("xs hidden")
 	
 	if (YN) {
 		ui.notifyGui.AddText("xs hidden")
-		ui.notifyGui.SetFont("s10")
+		ui.notifyGui.setFont("q5 s10")
 		ui.notifyYesButton := ui.notifyGui.AddButton("ys section w60 h25","Proceed")
 		ui.notifyYesButton.OnEvent("Click",%confirmCustomScript%)
 		ui.notifyNoButton := ui.notifyGui.AddButton("xs w60 h25","Cancel")

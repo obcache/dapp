@@ -1,4 +1,4 @@
-A_FileVersion := "1.5.2.3"
+A_FileVersion := "1.5.2.6"
 a_appName := "dapp"
 if (fileExist("./dapp_currentBuild.dat"))
 a_fileVersion := fileRead("./dapp_currentBuild.dat")
@@ -86,27 +86,28 @@ advProgress(5)
 initConsole(&ui)
 advProgress(5)
 
-
 #include <class_sqliteDb>
-advProgress(2)
+advProgress(1)
 #include <class_lv_colors>
-advProgress(2)
+advProgress(1)
+#include <lib_snbGuiTools>
+advProgress(1)
 #include <libGlobal>
 advProgress(2)
 #include <libGui>
-advProgress(2)
+advProgress(3)
 #include <libWinMgr>
-advProgress(2)
+advProgress(1)
 #include <libInstall>
-advProgress(2)
+advProgress(3)
 #include <libGuiSetupTab>
 advProgress(2)
 #include <libGameAssists>
-advProgress(2)
+advProgress(1)
 #include <libVaultCleaner>
 advProgress(2)
 #include <libGameSettingsTab>
-advProgress(2)
+advProgress(4)
 #include <libIncursionCheck>
 advProgress(2)
 #include <libHotkeys>
@@ -114,18 +115,12 @@ advProgress(2)
 #include <libRoutines>
 advProgress(2)
 #include <libThemeEditor>
-advProgress(2)
-
+advProgress(1)
 
 OnExit(ExitFunc)
 
-
-advProgress(5)
-
-; try
-	; guiVis("all",false)
-
 winSetRegion("33-0 w498 h214",ui.mainGui)
+advProgress(5)
 guiVis("ALL",false)
 guiVis(ui.mainGui,false)
 guiVis(ui.gameSettingsGui,false)

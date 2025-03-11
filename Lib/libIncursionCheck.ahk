@@ -66,11 +66,11 @@ incursionNotice(this_trigger := "") {
 		drawOutlineNamed("notice",ui.incursionGui,1,1,348,48,cfg.themeDark2Color,cfg.themeBright2Color,2)			
 		drawPanelLabel(ui.incursionGui,224,0,100,20,"Destiny2 Event",cfg.themeFont3Color,cfg.themeBright2Color,cfg.themePanel3Color)
 		ui.incursionNotice := ui.incursionGui.addText("x10 y5 w339 h70 backgroundTrans c" cfg.themeFont3Color,"Vex Incursion!")
-		ui.incursionGui.setFont("s9 c" cfg.themeFont3Color,"Cascadia Code")
+		ui.incursionGui.setFont("q5 s9 c" cfg.themeFont3Color,"Cascadia Code")
 		ui.incursionTime := ui.incursionGui.addText("x15 y27 w260 h16 backgroundTrans"," Timestamp:" formatTime("T12"," MM/dd hh:mm:ss "))
 		ui.incursionClose := ui.incursionGui.addPicture("x330 y0 w20 h20 background" cfg.themeButtonAlertColor,"./img/button_quit.png")
 		drawOutlineNamed("incursionClose",ui.incursionGui,329,-2,21,22,cfg.themeBright2Color,cfg.themeBright2Color,1)
-		ui.incursionGui.setFont("s12","Arial")
+		ui.incursionGui.setFont("q5 s12","Arial")
 		ui.incursionOptOut := ui.incursionGui.addPicture("x224 y27 w13 h13 section backgroundTrans c" cfg.themeFont3Color,)
 			
 		if cfg.pushNotificationsEnabled	== true {
@@ -80,10 +80,10 @@ incursionNotice(this_trigger := "") {
 		}
 				
 		ui.incursionOptOutLabel := ui.incursionGui.addText("x+6 ys-1 w359 backgroundTrans c" cfg.themeFont3Color,"Dont Show Again")
-		ui.incursionOptOutLabel.setFont("s9","Arial")
+		ui.incursionOptOutLabel.setFont("q5 s9","Arial")
 		ui.incursionClose.onEvent("click", closeIncursionNotice)
 		ui.incursionOptOut.onEvent("click",toggleIncursionNotice)
-		ui.incursionNotice.setFont("s19 c" cfg.themeFont3Color,"Courier")
+		ui.incursionNotice.setFont("q5 s19 c" cfg.themeFont3Color,"Courier")
 
 
 		

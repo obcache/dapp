@@ -52,17 +52,17 @@ libVaultInit(*) {
 			vaultTopGui.destroy()
 		vaultTopGui := gui()
 		vaultTopGui.backColor:=setting.transColor
-		vaultTopGui.setFont("s10 c000000","Calibri")
+		vaultTopGui.setFont("q5 s10 c000000","calibri")
 		vaultTopGui.opt("-border alwaysOnTop")	
 		vaultTopGui.backColor:=setting.transColor
-		vaultTopGui.setFont("s10 c000000","Calibri")
+		vaultTopGui.setFont("q5 s10 c000000","calibri")
 
 		titleBarBg:=vaultTopGui.addText("x0 y0 w1250 h34 vTitleBarBg background777777")
 		titleBarBg.onEvent("click",WM_LBUTTONDOWN_callback)
 		titleBarText:=vaultTopGui.addText("x10 y-2 w500 h32 backgroundTrans c992121","Vault Mode Enabled. Ready to dismantle unlocked items.")
-		titleBarText.setFont("s20 bold cffffff","calibri")
+		titleBarText.setFont("q5 s20 bold cffffff","calibri")
 		closeButton:=vaultTopGui.addText("x" setting.gameW-36 " y0 w30 h32 cffffff background777777","T")
-		closeButton.setFont("s24","WingDings 2")
+		closeButton.setFont("q5 s24","WingDings 2")
 		closeButton.onEvent("click",closeProgram)
 		closeProgram(*) {
 			exitApp
@@ -111,7 +111,7 @@ libVaultInit(*) {
 			sleep(600)
 			send("{w}")
 			sleep(600)
-			this2.mainButtonHotkey.setFont("c00FFFFE")
+			this2.mainButtonHotkey.setFont("q5 c00FFFFE")
 			this2.statusText.text:="Dismantles ALL unlocked items. *DIM Search 'is:unlocked' to review"
 			this2.mainButton.opt("background22aa11")
 			this2.mainButton.redraw()

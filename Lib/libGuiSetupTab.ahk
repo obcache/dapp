@@ -25,13 +25,13 @@ GuiSetupTab(&ui,&cfg) {
 	global
 	ui.MainGuiTabs.UseTab("2_Setup")
 	
-	drawPanel(ui.mainGui,40,39,218,164,cfg.themePanel1Color,cfg.themeBorderDarkColor,cfg.themeBorderLightColor,1,1,"none",100,"Features","Calibri",cfg.themeFont1Color)
-	drawPanel(ui.mainGui,261,39,214,104,cfg.themePanel1Color,cfg.themeBorderDarkColor,cfg.themeBorderLightColor,1,1,"none",100,"Features","Calibri",cfg.themeFont1Color)
-	drawPanel(ui.mainGui,261,151,214,53,cfg.themePanel1Color,cfg.themeBorderDarkColor,cfg.themeBorderLightColor,1,1,"none",100,"Features","Calibri",cfg.themeFont1Color)
-	drawPanel(ui.mainGui,478,39,42,165,cfg.themePanel1Color,cfg.themeBorderDarkColor,cfg.themeBorderLightColor,1,1,"none",100,"Features","Calibri",cfg.themeFont1Color)
+	drawPanel(ui.mainGui,40,39,218,164,cfg.themePanel1Color,cfg.themeBorderDarkColor,cfg.themeBorderLightColor,1,1,"none",100,"Features","calibri",cfg.themeFont1Color)
+	drawPanel(ui.mainGui,261,39,214,104,cfg.themePanel1Color,cfg.themeBorderDarkColor,cfg.themeBorderLightColor,1,1,"none",100,"Features","calibri",cfg.themeFont1Color)
+	drawPanel(ui.mainGui,261,151,214,53,cfg.themePanel1Color,cfg.themeBorderDarkColor,cfg.themeBorderLightColor,1,1,"none",100,"Features","calibri",cfg.themeFont1Color)
+	drawPanel(ui.mainGui,478,39,42,165,cfg.themePanel1Color,cfg.themeBorderDarkColor,cfg.themeBorderLightColor,1,1,"none",100,"Features","calibri",cfg.themeFont1Color)
 	line(ui.mainGui,34,0,2,30,cfg.themePanel2Color)	
 	
-	ui.MainGui.SetFont("s09")
+	ui.MainGui.setFont("q5 s09")
 	drawOutlineNamed("autoClicker",ui.mainGui,486,45,27,145,cfg.themeBorderDarkColor,cfg.themeBorderDarkColor,1)
 	ui.AutoClickerSpeedSlider := ui.MainGui.AddSlider("x487 y45 w25 h144 Range1-64 Vertical Left TickInterval8 Invert ToolTipTop",cfg.AutoClickerSpeed)
 	ui.AutoClickerSpeedSliderLabel2 := ui.MainGui.AddText("x475 y190 w50 r1 Center BackgroundTrans","CPS")
@@ -39,7 +39,7 @@ GuiSetupTab(&ui,&cfg) {
 	ui.AutoClickerSpeedSlider.OnEvent("Change",AutoClickerSpeedChanged)
 
 	
-	ui.MainGui.SetFont("s10 c" cfg.themeFont1Color)
+	ui.MainGui.setFont("q5 s10 c" cfg.themeFont1Color)
 	drawOutlineMainGui(34,28,497,190,cfg.ThemeBright1Color,cfg.ThemeBright1Color,2)
 	ui.mainGui.addText("hidden section x48 y26")
 	cfg.toolTipsEnabled			:= iniRead(cfg.file,"Toggles","ToolTipsEnabled",true)
@@ -192,7 +192,7 @@ GuiSetupTab(&ui,&cfg) {
 	line(ui.mainGui,0,36,2,155,cfg.themeBright1Color)
 
 	ui.checkForUpdatesLabel := ui.mainGui.addtext("x303 y46 w160 h30 section backgroundTrans c" cfg.themeFont3Color,"Check For Updates")
-	ui.checkForUpdatesLabel.SetFont("s12")
+	ui.checkForUpdatesLabel.setFont("q5 s12")
 	ui.checkForUpdatesButton := ui.mainGui.addPicture("xs-15 y+-9 w30 h30 section background" cfg.themeButtonOnColor,"./img/button_update.png")
 	ui.checkForUpdatesButton.onEvent("Click",checkForUpdates)
 	ui.checkForUpdatesButton.Tooltip := "Checks to see if a more recent version is available"	
@@ -204,10 +204,10 @@ GuiSetupTab(&ui,&cfg) {
 	ui.monitorResDDL.onEvent("change",monitorResChanged)
 	ui.monitorResLabel := ui.mainGui.AddText("x+4 y+-25 w65 c" cfg.themeFont1Color " backgroundTrans","Screen")	
 	ui.monitorResLabel2 := ui.mainGui.AddText("y+-2 w65 c" cfg.themeFont1Color " backgroundTrans","Size")
-	ui.monitorResLabel.setFont("s9")
-	ui.monitorResLabel2.setFont("s9")
+	ui.monitorResLabel.setFont("q5 s9")
+	ui.monitorResLabel2.setFont("q5 s9")
 	ui.monitorAutoLabel := ui.mainGui.addText("x+-28 y+-12 w25 h12 section c" cfg.themeFont1Color " backgroundTrans","Auto")
-	ui.monitorAutoLabel.setFont("s8")
+	ui.monitorAutoLabel.setFont("q5 s8")
 	ui.monitorAuto := ui.mainGui.addCheckbox("x+-18 y+-27 w15 h15",cfg.displaySizeAuto)
 	ui.monitorAuto.onEvent("Click",toggleAutoDisplaySize)
 
@@ -215,10 +215,10 @@ GuiSetupTab(&ui,&cfg) {
 	ui.macroSpeed := ui.mainGui.addText("x+8 y+-15 w35 h16 center border section")
 	ui.macroSpeed := ui.mainGui.addUpDown("vMacroSpeed range1-10",cfg.dappLoadoutMultiplier)
 	ui.macroSpeedLabel := ui.mainGui.addText("x+-31 ys+16 w30 backgroundTrans","Delay")
-	ui.macroSpeedLabel.setFont("s8")
+	ui.macroSpeedLabel.setFont("q5 s8")
 	ui.macroSpeed.onEvent("change",macroSpeedChanged)
-	ui.installedVersionText.setFont("s10")
-	ui.latestVersionText.setFont("s10")
+	ui.installedVersionText.setFont("q5 s10")
+	ui.latestVersionText.setFont("q5 s10")
 
 	macroSpeedChanged(*) {
 		cfg.dappLoadoutMultiplier := ui.macroSpeed.value
@@ -246,7 +246,7 @@ GuiSetupTab(&ui,&cfg) {
 	}
 	ui.themeEditorButton := ui.mainGui.addPicture("x275 y161 w35 h35 section backgroundTrans","./img/color_swatches.png")
 	ui.themeEditorLabel := ui.mainGui.addText("x+8 ys+4 w150 h35 section background" cfg.themePanel1Color,"Theme Editor")
-	ui.themeEditorLabel.setFont("s14")
+	ui.themeEditorLabel.setFont("q5 s14")
 	ui.themeEditorButton.onEvent("click",showThemeEditor)
 	
   	AutoClickerSpeedChanged(*) {

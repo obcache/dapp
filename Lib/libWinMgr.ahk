@@ -49,7 +49,7 @@ wm_winActivated(this_control,info,msg,hwnd) {
 }
 
 WM_LBUTTONDOWN_callback(thisControl,info) {
-	postMessage("0xA1",2,,,thisControl)
+	postMessage("0xA1",2,,,"A")
 	;WM_LBUTTONDOWN(0,0,0,thisControl)	
 }
 
@@ -213,41 +213,6 @@ getTaskbarHeight() {
 
 } ;end utility functions
 
-drawPanel(targetGui,panelX,panelY,panelW,panelH,panelColor,outlineColor,outlineColor2,outlineWidth := 1,outlineOffset := 1,labelPos := "none",labelW := 0,labelText := "",labelFont := "Calibri",labelFontColor := "white") {
-	labelH := 20
-	static panelId := 0
-	panelId+=1
-	
-
-	
-
-	ui.backPanel%panelId% := targetGui.addText("x" panelX " y" panelY " w" panelW " h" panelH " background" panelColor)		
-
-	ui.panelOutline2%panelId% := targetGui.addText("x" panelX+outlineOffset " y" panelY+outlineOffset " w" panelW-outlineOffset*2 " h" panelH-outlineOffset*2 " background" outlineColor2)		
-
-	ui.panelOutline1%panelId% := targetGui.addText("x" panelX+outlineOffset " y" panelY+outlineOffset " w" panelW-outlineWidth-outlineOffset*2 " h" panelH-outlineWidth-outlineOffset*2 " background" outlineColor)	
-		
-	ui.panel%panelId% := targetGui.addText("x" panelX+outlineWidth+outlineOffset " y" panelY+outlineWidth+outlineOffset " w" panelW-outlineWidth*2-outlineOffset*2 " h" panelH-outlineWidth*2-outlineOffset*2 " background" panelColor)	
-
-if (labelPos != "none") {
-	labelX := panelX+panelW*labelPos
-	labelY := panelY
-	
-
-	ui.label%panelId% := targetGui.addText("x" labelX " y" labelY+1 " w" labelW " h" labelH " background" outlineColor,"")
-	
-	ui.label%panelId%.setFont("s10")
-	
-	ui.labelTop%panelId% := targetGui.addText("x" labelX+1 " y" labelY " w" labelW-2 " h" labelH " background" cfg.themeBackgroundcolor " center c" labelFontColor) 
-	
-	ui.labelTop%panelId%.setFont("s10")
-	ui.labelBottom%panelId% := targetGui.addText("x" labelX+1 " y" labelY+2 " w" labelW-2 " h" labelH " backgroundTrans center c" labelFontColor, labelText) 
-	
-	ui.labelBottom%panelId%.setFont("s10")		
-	}
-	return panelId
-}
-
 
 
 drawPanel2(params) {
@@ -283,7 +248,7 @@ drawPanel2(params) {
 	labelPos 		:= (params.length >= 11) ? params[11] : .5
 	outlineWidth 	:= (params.length >= 12) ? params[12] : 1
 	outlineOffset 	:= (params.length >= 13) ? params[13] : 0
-	labelFont 		:= (params.length >= 14) ? params[14] : "Calibri"
+	labelFont 		:= (params.length >= 14) ? params[14] : "calibri"
 	labelFontColor 	:= (params.length >= 15) ? params[15] : "white"
 		
 	labelH := 20
@@ -311,30 +276,30 @@ drawPanel2(params) {
 
 		ui.labelTop%panelId% := ui.%targetGui%.addText("x" labelX-outlineWidth " y" labelY-outlineOffset " w" labelW+outlineWidth*2 " h" labelH-2 " background" labelOutlineColor " center c" labelFontColor) 
 		
-		ui.labelTop%panelId%.setFont("s10")
+		ui.labelTop%panelId%.setFont("q5 s10")
 		
 		if (labelBottom) {
 			ui.labelTop%panelId% := ui.%targetGui%.addText("x" labelX-outlineWidth " y" labelY+outlineOffset " w" labelW+outlineWidth*2 " h" labelH-outlineWidth " background" labelOutlineColor " center c" labelFontColor) 
 		
-			ui.labelTop%panelId%.setFont("s10")			
+			ui.labelTop%panelId%.setFont("q5 s10")			
 			ui.label%panelId% := ui.%targetGui%.addText("x" labelX " y" labelY+(outlineWidth) " w" labelW " h" labelH-outlineWidth*2 " background" ui.%targetGui%.backColor,"")
-			ui.label%panelId%.setFont("s10")
+			ui.label%panelId%.setFont("q5 s10")
 
 			ui.labelBottom%panelId% := ui.%targetGui%.addText("x" labelX+1 " y" labelY+3 " w" labelW-2 " h" labelH " backgroundTrans center c" labelFontColor, labelText) 
-			ui.labelBottom%panelId%.setFont("s10")
+			ui.labelBottom%panelId%.setFont("q5 s10")
 		} else {
 			ui.labelTop%panelId% := ui.%targetGui%.addText("x" labelX-outlineWidth " y" labelY+outlineOffset " w" labelW+outlineWidth*2 " h" labelH-2 " background" labelOutlineColor " center c" labelFontColor) 
 		
-		ui.labelTop%panelId%.setFont("s10")
+		ui.labelTop%panelId%.setFont("q5 s10")
 			ui.label%panelId% := ui.%targetGui%.addText("x" labelX " y" labelY-1 " w" labelW " h" labelH-outlineWidth*2 " background" ui.%targetGui%.backColor,"")
 		
 		
-			ui.label%panelId%.setFont("s10")
+			ui.label%panelId%.setFont("q5 s10")
 		
 
 			ui.labelBottom%panelId% := ui.%targetGui%.addText("x" labelX+1 " y" labelY-2 " w" labelW-2 " h" labelH " backgroundTrans center c" labelFontColor, labelText) 
 		
-			ui.labelBottom%panelId%.setFont("s10")
+			ui.labelBottom%panelId%.setFont("q5 s10")
 		}
 				
 	}

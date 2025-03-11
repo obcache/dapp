@@ -24,7 +24,7 @@ ui.themeEditorGui.backColor := cfg.themeBackgroundColor
 ui.themeEditorGui.color := cfg.themeBackgroundColor
 ui.themeEditorTitlebar := ui.themeEditorGui.addText("x0 y0 w295 h25 background" cfg.themePanel1Color " c" cfg.themeFont1Color,"")
 ui.themeEditorTitlebarText := ui.themeEditorGui.addText("x5 y3 w100 h25 backgroundTrans c" cfg.themeFont1Color,"Theme Editor" )
-ui.themeEditorTitlebarText.setFont("s13","calibri bold")
+ui.themeEditorTitlebarText.setFont("q5 s13","calibri bold")
 ui.themeEditorTitlebar.onEvent("click",wm_lButtonDown_callback)
 
 
@@ -42,7 +42,7 @@ ui.ColorSelectorLabel2 := ui.themeEditorGui.AddText("x11 y34 h23 section w75 Bac
 ui.themeEditorCancelButton := ui.themeEditorGui.addPicture("x295 y0 w25 h25","./img/button_quit.png")
 ui.themeEditorCancelButton.onEvent("click", (*) => guiVis(ui.themeEditorGui,false))
 drawOutlineNamed("themeEditorCancelButtonOutline",ui.themeEditorGui,295,0,25,25,cfg.themeBorderDarkColor,cfg.themeBorderLightColor,2)
-ui.ColorSelectorLabel2.setFont("s13","calibri bold")
+ui.ColorSelectorLabel2.setFont("q5 s13","calibri bold")
 drawOutlineNamed("ThemeOutlineShadow",ui.themeEditorGui,86,32,60,26,cfg.ThemeBorderDarkColor,cfg.ThemeBorderDarkColor,2)
 
 
@@ -70,7 +70,7 @@ ui.ThemeDDL := ui.themeEditorGui.AddDDL("ys+0 x+1 w120 section center c" cfg.the
 ui.ThemeDDL.OnEvent("Change",ThemeChanged)
 ui.ThemeDDL.OnEvent("Focus",RepaintThemeDDL)
 ui.ThemeDDL.OnEvent("LoseFocus",RepaintThemeDDL)
-ui.themeEditorGui.SetFont("s09")
+ui.themeEditorGui.setFont("q5 s09")
 ui.ThemeDDL.ToolTip := "Select Theme Preset"
 ui.buttonDelTheme := ui.themeEditorGui.AddPicture("ys+1 x+-2 w23 h22 Background" cfg.ThemeButtonReadyColor,"./Img/button_minus_ready.png")	
 ui.buttonDelTheme.OnEvent("Click",removeTheme)
@@ -87,7 +87,7 @@ Loop cfg.ThemeList.Length {
 	}
 }
 
-ui.ThemeDDL.SetFont("s11")
+ui.ThemeDDL.setFont("q5 s13")
 ui.ThemeElements := [
 	"ThemePanel1Color",		"ThemePanel2Color",		
 	"ThemeFont1Color",		"ThemeFont2Color",
@@ -99,7 +99,7 @@ ui.ThemeElements := [
 	"ThemeBorderDarkColor",	"ThemeBorderLightColor",
 	"ThemeButtonReadyColor","ThemeButtonOnColor", 	"ThemeButtonAlertColor"]
 
-ui.themeEditorGui.SetFont("s10")
+ui.themeEditorGui.setFont("q5 s10")
 ui.themeEditorGui.AddText("x10 y52 section hidden")
 
 Loop ui.ThemeElements.Length
@@ -115,7 +115,7 @@ Loop ui.ThemeElements.Length
 ui.titlebarEdit:=ui.themeEditorGui.addPicture("section x4 y214 w32 h-1 backgroundTrans","./img/button_edit.png")
 ui.titlebarPreview:=ui.themeEditorGui.addPicture("x37 ys+0 w280 h-1",cfg.titleBarImage)
 ;ui.titleBarPreviewLabel:=ui.themeEditorGui.addText("x5 y+5 w40 backgroundTrans center","Titlebar Image")
-;ui.titlebarPreviewLabel.setFont("s9 c" cfg.themeFont2Color,"ubuntu one")
+;ui.titlebarPreviewLabel.setFont("q5 s9 c" cfg.themeFont2Color,"ubuntu one")
 ui.titlebarPreview.onEvent("click",changeTitlebar)
 ui.titlebarEdit.onEvent("click",changeTitlebar)
 
@@ -213,7 +213,7 @@ addTheme(*) {
 	ui.newThemeGui.BackColor := "505050"
 	ui.newThemeGui.Color := "212121"
 	ui.newThemeGui.Opt("-Caption -Border +AlwaysOnTop")
-	ui.newThemeGui.SetFont("s16 cFF00FF", "Calibri Bold")
+	ui.newThemeGui.setFont("q5 s16 cFF00FF", "calibri Bold")
 	
 	ui.newThemeGui.AddText("x10 y10 section","Choose Name for New Custom Theme")
 	ui.newThemeEdit := ui.newThemeGui.AddEdit("xs section w180","")

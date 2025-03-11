@@ -8,7 +8,7 @@ if (InStr(A_LineFile,A_ScriptFullPath)) { ;run main app
 	Return
 }
 
-
+setStoreCapslockMode(0)
 inputHookAllowedKeys := "{All}{LControl}{RControl}{LAlt}{RAlt}{LShift}{RShift}{LWin}{RWin}{AppsKey}{F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Home}{End}{PgUp}{PgDn}{Del}{Ins}{Left}{Right}{Up}{Down}{BS}{CapsLock}{NumLock}{PrintScreen}{Pause}{Tab}{Enter}{ScrollLock}{LButton}{MButton}{RButton}"	
 
 ui.d2FlashingIncursionNotice := false
@@ -22,7 +22,7 @@ d2drawPanel1(*) {
 	ui.d2KeybindWidth := 60
 	labelX := 280
 	labelY := 44
-	labelW := 80
+	labelW := 66
 	labelH := 23
 	backColor := cfg.themePanel2Color
 	fontColor := cfg.themeFont2Color
@@ -30,9 +30,9 @@ d2drawPanel1(*) {
 	labelText := "Keybinds"
 	ui.d2keybindAppTab1 := guiName.addText("x" labelX " y" labelY+labelH/2 " w" labelW " h" labelH/2+3 " background" outlineColor,"")
 		     
-	labelX := 360
+	labelX := 346
 	labelY := 44
-	labelW := 900
+	labelW := 96
 	labelH := 23
 	backColor := cfg.themePanel2Color
 	fontColor := cfg.themeFont4Color
@@ -98,15 +98,15 @@ d2drawPanel1(*) {
 	ui.dappSwordFlyKey			:= ui.gameSettingsGui.addPicture("x+11 ys w36 h30 section backgroundTrans","./img/keyboard_key_up.png")
 	ui.dappSwordFlyKeyData 	:= ui.gameSettingsGui.addText("xs+0 y+-24 w36 h21 center c" cfg.themeButtonAlertColor " backgroundTrans"
 		,subStr(strUpper(cfg.dappSwordFlyKey),1,8))
-	ui.dappSwordFlyKeyLabel 	:= ui.gameSettingsGui.addText("xs+0 y+-34 w36 h20 center c" cfg.themeFont1Color " backgroundTrans","Fly")
-	ui.d2ClassSelectOutline		:= ui.gameSettingsGui.addText("xs+40 y+-20 w41 h42 background" cfg.themeDark2Color)
-	ui.d2ClassSelectOutline2	:= ui.gameSettingsGui.addText("xs+42 y+-41 w40 h42 background" cfg.themeBright1Color)
-	ui.d2ClassSelectBg			:= ui.gameSettingsGui.addText("x442 y+-42 w38 h42 background" cfg.themePanel2Color)
-	ui.d2ClassSelectBg2			:= ui.gameSettingsGui.addText("hidden xs-2 y+-14 w38 h16 background" cfg.themeDark1Color)
+	ui.dappSwordFlyKeyLabel 	:= ui.gameSettingsGui.addText("xs+0 y+-34 w40 h20 center c" cfg.themeFont1Color " backgroundTrans","Fly")
+	ui.d2ClassSelectOutline		:= ui.gameSettingsGui.addText("xs+40 y+-16 w40 h40 background" cfg.themeDark2Color)
+	ui.d2ClassSelectOutline2	:= ui.gameSettingsGui.addText("xs+42 y+-43 w40 h42 background" cfg.themeBright1Color)
+	ui.d2ClassSelectBg			:= ui.gameSettingsGui.addText("x438 y+-42 w42 h42 background" cfg.themePanel2Color)
+	ui.d2ClassSelectBg2			:= ui.gameSettingsGui.addText("hidden xs-2 y+-14 w56 h16 background" cfg.themeDark1Color)
 	ui.d2ClassSelectBgLine		:= ui.gameSettingsGui.addText("x441 y+-19 w40 h1 background" cfg.themeBright2Color)
 	ui.d2ClassSelectBgLine		:= ui.gameSettingsGui.addText("x441 y+15 w40 h1 background" cfg.themeBright2Color)
 	 ui.d2ClassSelectBg3			:= ui.gameSettingsGui.addText("xs+43 y+-15 w38 h12 background" cfg.themePanel2Color)
-	ui.d2ClassIcon				:= ui.gameSettingsGui.addPicture("x443 y10 w37 h26 center backgroundTrans","")
+	ui.d2ClassIcon				:= ui.gameSettingsGui.addPicture("x443 y10 w37 h28 center backgroundTrans","")
 	ui.d2ClassIconDown			:= ui.gameSettingsGui.addText("x443 y37 w18 h13 center backgroundTrans c" cfg.themeButtonOnColor,"←")
 	ui.d2ClassIconUp			:= ui.gameSettingsGui.addText("x462 y37 w19 h13 center backgroundTrans c" cfg.themeButtonOnColor,"→")
 	ui.d2ClassSelectSpacer 		:= ui.gameSettingsGui.addText("hidden x461 y36 w1 h15 background" cfg.themeBright2Color)
@@ -178,17 +178,17 @@ d2drawPanel1(*) {
 	ui.dappReloadKeyData.ToolTip  			:= "Click to Assign"
 	ui.dappReloadKeyLabel.ToolTip			:= "Click to Assign"
 
-	ui.dappLoadoutKeyData.setFont("s11")
-	ui.dappPauseKeyData.setFont("s11")
+	ui.dappLoadoutKeyData.setFont("s13")
+	ui.dappPauseKeyData.setFont("s13")
 	ui.dappPauseKeyLabel.setFont("s9")
-	ui.dappReloadKeyData.setFont("s11")
+	ui.dappReloadKeyData.setFont("s13")
 	ui.dappReloadKeyLabel.setFont("s9")
-	ui.dappHoldToCrouchKeyData.setFont("s11")
-	ui.dappToggleSprintKeyData.setFont("s11")
+	ui.dappHoldToCrouchKeyData.setFont("s13")
+	ui.dappToggleSprintKeyData.setFont("s13")
 	ui.dappHoldToCrouchKeyLabel.setFont("s9")
 	ui.dappLoadoutKeyLabel.setFont("s9")
 	ui.dappToggleSprintKeyLabel.setFont("s9")
-	ui.dappSwordFlyKeyData.setFont("s11")
+	ui.dappSwordFlyKeyData.setFont("s13")
 	ui.dappSwordFlyKeyLabel.setFont("s9")
 
 	ui.dappPauseKey.onEvent("click",dappPauseKeyClicked)
@@ -271,14 +271,14 @@ d2drawPanel1(*) {
 	ui.d2GameHoldToCrouchKeyLabel.ToolTip	:= "Click to Assign"
 
 	ui.d2gameToggleSprintKeyLabel.setFont("s9")
-	ui.d2gameToggleSprintKeyData.setFont("s11")
-	ui.d2GameReloadKeyData.setFont("s11")
+	ui.d2gameToggleSprintKeyData.setFont("s9")
+	ui.d2GameReloadKeyData.setFont("s9")
 	ui.d2GameReloadKeylabel.setFont("s9")
-	ui.d2GameSuperKeyData.setFont("s11")
+	ui.d2GameSuperKeyData.setFont("s9")
 	ui.d2GameSuperKeylabel.setFont("s9")
-	ui.d2GameGrenadeKeyData.setFont("s11")
+	ui.d2GameGrenadeKeyData.setFont("s9")
 	ui.d2GameGrenadeKeylabel.setFont("s9")
-	ui.d2GameHoldToCrouchKeyData.setFont("s11")
+	ui.d2GameHoldToCrouchKeyData.setFont("s9")
 	ui.d2GameHoldToCrouchKeyLabel.setFont("s9")
 
 	labelX := 280
@@ -294,7 +294,7 @@ d2drawPanel1(*) {
 	ui.d2keybindAppTab3 := guiName.addText("x" labelX+1 " y" labelY+8 " w" labelW-2 " h" labelH " backgroundTrans center c" fontColor, labelText) 
 	ui.d2keybindAppTab3.setFont("s10","thin")
 
-	labelX := 344
+	labelX := 346
 	labelY := 44
 	labelW := 96
 	labelH := 23
@@ -618,16 +618,23 @@ d2drawPanel3(*) {
 	ui.gameTabs.useTab("Gameplay")
 	ui.gameSettingsGui.addText("x7 y78 w481 h67 background" cfg.themePanel1Color,"")
 	ui.gameSettingsGui.addText("x12 y81 w470 h58 c" cfg.themePanel1Color " background" cfg.themePanel2Color)
-	drawOutlineNamed("d2linkPanel",ui.gameSettingsGui,13,82,470,57,cfg.themeDark1Color,cfg.themeBright2Color,1)
-	drawOutlineNamed("d2AlwaysRunOutline",ui.gameSettingsGui,6,76,484,68,cfg.themeBright1Color,cfg.themeBright1Color,1)
+	drawOutlineNamed("d2linkPanel",ui.gameSettingsGui,13,82,470,57,cfg.themeDark1Color,cfg.themeBright1Color,1)
+	drawOutlineNamed("d2AlwaysRunOutline",ui.gameSettingsGui,6,76,484,68,cfg.themeBright1Color,cfg.themeBorderDarkColor,1)
 	ui.gameSettingsGui.addText("hidden x19 y21 section")
-	ui.d2LaunchDIMbutton				:= ui.gameSettingsGui.addPicture("x25 y+49 section w50 h50 backgroundTrans","./img/button_DIM.png")
-	ui.d2LaunchVaultCleanerButton			:= ui.gameSettingsGui.addPicture("x+15 ys w50  h50 backgroundTrans","./img/button_vault_up.png")
-	ui.d2LaunchBlueberriesButton 		:= ui.gameSettingsGui.addPicture("x+15 ys w50  h50 backgroundTrans","./img/button_blueberries.png")
-	ui.d2LaunchD2CheckListButton 		:= ui.gameSettingsGui.addPicture("x+15 ys w50  h50 backgroundTrans","./img/button_d2CheckList.png")
-	ui.d2LaunchDestinyTrackerButton 	:= ui.gameSettingsGui.addPicture("x+15 ys w50  h50 backgroundTrans","./img/button_DestinyTracker.png")
-	ui.d2Launchd2FoundryButton 			:= ui.gameSettingsGui.addPicture("x+15 ys w50  h50 backgroundTrans","./img/button_d2Foundry.png")
-	ui.d2LaunchBrayTechButton 			:= ui.gameSettingsGui.addPicture("x+15 ys w50  h50 vBrayTechButton backgroundTrans","./img/button_braytech.png")
+	ui.d2LaunchDIMbuttonBg				:= ui.gameSettingsGui.addText("x25 y+51 section w46 h46 background" cfg.themeBright1Color)
+	ui.d2LaunchDIMbutton				:= ui.gameSettingsGui.addPicture("x+-44 ys+2 w42 h42 backgroundTrans","./img/button_DIM.png")
+	ui.d2LaunchVaultCleanerButtonBg			:= ui.gameSettingsGui.addText("x+15 ys w46  h46 background" cfg.themeBright1Color)
+	ui.d2LaunchVaultCleanerButton			:= ui.gameSettingsGui.addPicture("x+-44 ys+2 w42 h42 backgroundTrans","./img/button_vault_up.png")
+	ui.d2LaunchLightGGButtonBg 		:= ui.gameSettingsGui.addText("x+15 ys w46  h46 background" cfg.themeBright1Color)
+	ui.d2LaunchLightGGButton 		:= ui.gameSettingsGui.addPicture("x+-44 ys+2 w42  h42 backgroundTrans","./img/button_LightGG.png")
+	ui.d2LaunchD2CheckListButtonBg 		:= ui.gameSettingsGui.addText("x+15 ys w46  h46 background" cfg.themeBright1Color)
+	ui.d2LaunchD2CheckListButton 		:= ui.gameSettingsGui.addPicture("x+-44 ys+2 w42  h42 backgroundTrans","./img/button_d2CheckList.png")
+	ui.d2LaunchDestinyTrackerButtonBg 	:= ui.gameSettingsGui.addText("x+15 ys w46  h46 background" cfg.themeBright1Color)
+	ui.d2LaunchDestinyTrackerButton 	:= ui.gameSettingsGui.addPicture("x+-44 ys+2 w42  h42 backgroundTrans","./img/button_DestinyTracker.png")
+	ui.d2Launchd2FoundryButtonBg 			:= ui.gameSettingsGui.addText("x+17 ys w46  h46 background" cfg.themeBright1Color)
+	ui.d2Launchd2FoundryButton 			:= ui.gameSettingsGui.addPicture("x+-44 ys+2 w42  h42 backgroundTrans","./img/button_d2Foundry.png")
+	ui.d2LaunchBrayTechButtonBg 			:= ui.gameSettingsGui.addText("x+15 ys w46  h46 vBrayTechButtonBg background" cfg.themeBright1Color)
+	ui.d2LaunchBrayTechButton 			:= ui.gameSettingsGui.addPicture("x+-44 ys+2 w42  h42 vBrayTechButton backgroundTrans","./img/button_braytech.png")
 }
 
 d2KeybindTabChange(this_button,*) {
@@ -709,7 +716,7 @@ GuiGameTab() {
 	ui.gameSettingsGui.Color := cfg.themePanel2Color
 	ui.gameSettingsGui.MarginX := 5
 	ui.gameSettingsGui.Opt("-Caption -Border +AlwaysOnTop +Owner" ui.MainGui.Hwnd)
-	ui.gameSettingsGui.SetFont("s14 c" cfg.ThemeFont1Color,"Calibri")
+	ui.gameSettingsGui.SetFont("s14 c" cfg.ThemeFont1Color,"calibri")
 	ui.gameTabs := ui.gameSettingsGui.addTab3("x0 y-5 h194 0x400 bottom c" cfg.themeFont1Color " choose" cfg.activeGameTab,cfg.gameModuleList)
 
 	ui.gameTabs.choose(cfg.gameModuleList[cfg.activeGameTab])
@@ -981,7 +988,7 @@ ui.d2Log.setFont("s7","ariel")
 ui.d2ToggleAppFunctions.ToolTip 			:= "Toggles holdToCrouch"
 ui.d2LaunchDIMbutton.ToolTip				:= "Launch DIM in Browser"
 ui.d2LaunchVaultCleanerButton.toolTip 		:= "Launch Vault Cleaner"
-ui.d2LaunchBlueberriesButton.toolTip		:= "Launch Blueberries.gg in Browser"
+ui.d2LaunchLightGGButton.toolTip		:= "Launch LightGG.gg in Browser"
 ui.d2Launchd2CheckListButton.toolTip		:= "Launch D2Checklist.com in Browser"
 ui.d2LaunchDestinyTrackerButton.toolTip		:= "Launch DestinyTracker.com in Browser"
 ui.d2LaunchBrayTechButton.toolTip			:= "Launch Bray.Tech in Browser"
@@ -996,7 +1003,7 @@ ui.dappToggleSprintKeyData.onEvent("click",dappToggleSprintKeyClicked)
 ui.d2LaunchDIMbutton.onEvent("click",d2launchDIMbuttonClicked)
 
 ui.d2LaunchD2checkListButton.onEvent("click",d2launchD2checklistButtonClicked)
-ui.d2LaunchBlueberriesButton.onEvent("click",d2launchBlueBerriesButtonClicked)
+ui.d2LaunchLightGGButton.onEvent("click",d2launchLightGGButtonClicked)
 ui.d2LaunchDestinyTrackerButton.onEvent("click",d2LaunchDestinyTrackerButtonClicked)
 ui.d2Launchd2FoundryButton.onEvent("click",toggleGlyphWindow)
 ui.d2LaunchBrayTechButton.onEvent("click",d2LaunchBrayTechButtonClicked)
@@ -1024,10 +1031,10 @@ d2LaunchNewVaultCleanerButtonClicked(*) {
 	vaultCleaner()	
 }
 
-d2LaunchBlueBerriesButtonClicked(*) {
-	ui.d2LaunchBlueberriesButton.value := "./img/button_blueberries_down.png"
-	setTimer () => ui.d2LaunchBlueberriesButton.value := "./img/button_blueberries.png",-400
-	run("chrome.exe https://www.blueberries.gg")
+d2LaunchLightGGButtonClicked(*) {
+	ui.d2LaunchLightGGButton.value := "./img/button_LightGG_down.png"
+	setTimer () => ui.d2LaunchLightGGButton.value := "./img/button_LightGG.png",-400
+	run("chrome.exe https://www.Light.gg")
 }
 	
 d2Launchd2CheckListButtonClicked(*) {
@@ -1098,7 +1105,7 @@ keyBindDialogBox(Msg,Alignment := "Center") {
 	ui.notifyGui.AddText("c" cfg.ThemeButtonOnColor " " Alignment " BackgroundTrans","Press desired key to use for: ")
 	ui.notifyGui.setFont("s14")
 	ui.notifyGui.addText("ys-4 x+0 c" cfg.themeButtonAlertColor,Msg)
-	ui.notifyGui.setFont("s11 c" cfg.themeButtonOnColor,"Courier Narrow Bold")
+	ui.notifyGui.setFont("s13 c" cfg.themeButtonOnColor,"Courier Narrow Bold")
 	ui.notifyGui.addText("xs y+0","Or click target with desired mouse button")  ; XX & YY serve to 00auto-size the window.
 	ui.mouseBindingTarget := ui.notifyGui.addPicture("x+15 y+-18 w25 h25 backgroundTrans",".\img\button_keyBindTarget.png")
 	ui.mouseBindingTarget.onEvent("click",keybindMouseButtonClicked)
@@ -1593,7 +1600,7 @@ drawPanelLabel(guiName,labelX,labelY,labelW := 100,labelH := 20,labelText := "ne
 	this2.dismantledTotal:=ui.gameSettingsGui.addText("x+0 ys+1 left w80 h25 c00FFFF backgroundTrans",format("{:03d}","000"))
 	this2.vaultProgressLabelBg:=ui.gameSettingsGui.addText("x12 y52 w64 h18 background" cfg.themeBackgroundColor " c151515","")
 	this2.vaultProgressLabel:=ui.gameSettingsGui.addText("x17 y52 w60 h21 backgroundTrans ccccccc","Progress")
-	this2.vaultProgressLabel.setFont("s11 c" cfg.themePanel3Color,"Ubuntu One")
+	this2.vaultProgressLabel.setFont("s13 c" cfg.themePanel3Color,"Ubuntu One")
 	this2.vaultProgress := ui.gameSettingsGui.addProgress("x77 y52 w408 h18 c" cfg.themeButtonReadyColor " background151515 range1-500")
 	this2.completeMsg := ui.gameSettingsGui.addText("x33 y61 w500 h30 backgroundTrans c00FFFF","")
 	drawOutlineNamed("vaultCleanerButton",ui.gameSettingsGui,13,82,230,58,cfg.themeBorderLightColor,cfg.themeBorderDarkColor,2)

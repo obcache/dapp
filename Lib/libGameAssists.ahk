@@ -25,7 +25,6 @@ hotIf(d2ReadyToSprint)
 	hotKey("~*w",d2StartSprinting)
 hotIf()
 
-hotIf()
 
 togglePrismatic(*) {
 	send("{F1}")
@@ -167,7 +166,7 @@ d2ReadyToSprint(*) {
 		? (cfg.d2AlwaysRunEnabled)
 			? (!cfg.dappPaused)
 				? (!getKeyState("RButton")) 
-					? (!getKeyState("z"))
+					? (!getKeyState("["))
 						? (!getKeyState("LButton")) 
 							? (!getKeyState(cfg.dappHoldToCrouchKey)) 
 								? 1
@@ -181,14 +180,10 @@ d2ReadyToSprint(*) {
 }
 	
 d2startSprinting(*) {
-	;msgBox('.')
-	;send("{w down}")
 	ui.d2IsSprinting := true
-	;send("{w down}")
 	if (cfg.d2AlwaysRunEnabled) {
 		send("{" strLower(cfg.d2GameToggleSprintKey) "}")
 	}
-	;setCapsLockState("Off")
 	keyWait("w","L")
 	send("{w up}")
 }

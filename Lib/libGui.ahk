@@ -56,22 +56,24 @@ advProgress(2)
 	advProgress(2)
 	ui.MainGui.MarginX := 0
 	ui.MainGui.MarginY := 0
-	ui.MainGui.SetFont("s13 c" cfg.ThemeFont1Color,"Calibri")
+	ui.MainGui.setFont("q5 s13 c" cfg.ThemeFont1Color,"calibri")
 	ui.mainGuiAnchor := ui.mainGui.addText("x0 y0 w0 h0 section hidden")
 	line(ui.mainGui,529,184,2,29,cfg.themeBright1Color)
 	ui.mainBg := ui.mainGui.addText("x36 y29 w493 h185 background" cfg.themePanel2Color,"")
 	ui.mainTabBg:=ui.mainGui.addText("x34 y0 w162 h28 background" cfg.themeBright1Color)
 	ui.1_GameButtonBg := ui.mainGui.addText("x36 y2 w78 h32 background" cfg.themePanel2Color)
 	
-	ui.2_SetupButtonBg := ui.mainGui.addText("x116 y2 w78 h34 background" cfg.themePanel2Color)
+	ui.2_SetupButtonBg := ui.mainGui.addText("x116 y2 w78 h34 background" cfg.themePanel1Color)
 	
 	advProgress(2)
 	
 	advProgress(2)
-	ui.3_FillBg:=ui.mainGui.addText("y2 x196 w280 h28 background" cfg.themePanel2Color)
-	ui.3_FillOutline:=ui.mainGui.addText("x212 y2 w280 h28 left background" cfg.themePanel2Color,"dapp")
-	ui.buildNumber:=ui.mainGui.addText("x415 y4 w280 h28 left backgroundTrans","v" a_fileVersion)
-	ui.buildNumber.setFont("s12 c" cfg.themeBright2Color,"Move-x")
+	ui.3_FillBg:=ui.mainGui.addText("y2 x196 w280 h28 background" cfg.themeFont3Color)
+	ui.titleBar:=ui.mainGui.addPicture("x190 y2 w280 h32 left backgroundTrans",cfg.titleBarImage)
+	ui.3_FillOutline:=ui.mainGui.addText("x216 y-1 w280 h28 left backgroundTrans","dapp")
+	ui.3_FillOutline.setFont("q5 s18 c" cfg.themeBright1Color,"move-x")
+	ui.buildNumber:=ui.mainGui.addText("x424 y12 w280 h28 left backgroundTrans","v" a_fileVersion)
+	ui.buildNumber.setFont("q5 s10 c" cfg.themeDark1Color,"move-x")
 
 	
 	ui.1_GameButton := ui.mainGui.addText("x36 y4 w78 h36 center background" cfg.themePanel2Color,"Game")
@@ -93,19 +95,18 @@ advProgress(2)
 	
 
 	ui.3_FillOutline.onEvent("click",WM_LBUTTONDOWN_callback)
-	ui.3_fillOutline.setFont("s16 c" cfg.themeBright2Color,"Move-X")
 	
-	ui.titleBar:=ui.mainGui.addPicture("x195 y2 w280 h32 left backgroundTrans",cfg.titleBarImage)
+	
 	advProgress(2)
 
 	advProgress(2)
 	
-	ui.mainGuiTabs := ui.MainGui.AddTab3("x34 y0 w494 h213 Buttons -redraw Background" cfg.ThemePanel2Color " -E0x200",["1_Game","2_Setup"])
+	ui.mainGuiTabs := ui.MainGui.AddTab3("x34 y2 w494 h213 Buttons -redraw Background" cfg.ThemePanel2Color " -E0x200",["1_Game","2_Setup"])
 	ui.MainGuiTabs.useTab("")
-	ui.mainGuiTabs.setFont("s13")
-	ui.MainGui.SetFont("s12 c" cfg.ThemeFont1Color,"Calibri")
+	ui.mainGuiTabs.setFont("q5 s10 q5")
+	ui.MainGui.setFont("q5 s10 q5 c" cfg.ThemeFont1Color,"calibri")
 	ui.MainGuiTabs.OnEvent("Change",TabsChanged)
-	
+	line(ui.mainGui,196,1,300,1,cfg.themeBright2Color)
 	advProgress(2)
 	ui.activeTab 				:= ui.mainGuiTabs.Text
 	ui.previousTab 				:= ui.activeTab
@@ -315,9 +316,9 @@ exitMenuShow(this_button) {
 	ui.exitMenuGui.Opt("-caption -border toolWindow AlwaysOnTop Owner" ui.mainGui.hwnd)
 	ui.exitMenuGui.BackColor := ui.transparentColor
 	ui.gamingModeLabel := ui.exitMenuGui.addText("x0 y2 w72 h15 center background" cfg.themePanel3color " c" cfg.themeButtonOnColor," Gaming Mode")
-	ui.gamingModeLabel.setFont("s8")
+	ui.gamingModeLabel.setFont("q5 s8")
 	ui.gamingLabels := ui.exitMenuGui.addText("x0 y16 w72 h52 center background" cfg.themePanel3color " c" cfg.themeButtonAlertColor," Stop   Start ")
-	ui.gamingLabels.setFont("s10")
+	ui.gamingLabels.setFont("q5 s10")
 	ui.stopGamingButton := ui.exitMenuGui.addPicture("x0 y32 section w35 h35 background" cfg.themeFont2Color,"./img/button_quit.png")
 	ui.startGamingButton := ui.exitMenuGui.addPicture("x+2 ys w35 h35 background" cfg.themeFont2Color,"./img/button_exit_gaming.png")
 	ui.stopGamingButton.onEvent("Click",exitAppCallback)
@@ -394,6 +395,15 @@ exitButtonPushed(this_button,*) {
 		}
 } 
 
+; drawLinks(guiName:=ui.mainGui,linkArr:=["DIM"]) {
+		; linkW:=40
+		; linkH:=40
+		; linkBgColor:=cfg.themeDark2Color
+		; for link in linkArr {
+		; guiName.addText("x5 y5 w" linkW " h" linkH " background" linkBgColor )}
+	
+; }
+
 stopGaming(*) {
 	winCloseAll("Gaming Mode")
 	exitApp()
@@ -413,7 +423,7 @@ quickOSD(*) {
 	ui.quickOSD.opt("-caption -border toolWindow alwaysOnTop")
 	ui.quickOSD.backColor := "010203"
 	ui.msgLog := ui.quickOSD.AddText("x10 y15 w600 h800 backgroundTrans cLime","")
-	ui.msgLog.setFont("s12")
+	ui.msgLog.setFont("q5 s12")
 	winSetTransparent(155,ui.quickOsdBg.hwnd)
 	winSetTransColor("010203",ui.quickOSD.hwnd)
 }
@@ -507,7 +517,7 @@ initConsole(&ui) {
 	ui.gvMonitorSelectGui := Gui()
 	ui.gvMonitorSelectGui.Opt("-Theme -Border -Caption toolWindow +AlwaysOnTop +Parent" ui.MainGui.Hwnd " +Owner" ui.MainGui.Hwnd)
 	ui.gvMonitorSelectGui.BackColor := "212121"
-	ui.gvMonitorSelectGui.SetFont("s16 c00FFFF","Calibri Bold")
+	ui.gvMonitorSelectGui.setFont("q5 s16 c00FFFF","calibri Bold")
 	ui.gvMonitorSelectGui.Add("Text",,"Click anywhere on the screen`nyou'd like your AppDock on.")
 }
 
