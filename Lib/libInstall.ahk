@@ -223,6 +223,7 @@ preAutoExec(InstallDir,ConfigFileName) {
 			fileInstall("./img/d2_Glyphs_thumb.png",installDir "/img/d2_Glyphs_thumb.png",1)
 			fileInstall("./img/d2_Runes.png",installDir "/img/d2_Runes.png",1)
 			fileInstall("./img/d2_Runes_thumb.png",installDir "/img/d2_Runes_thumb.png",1)
+			fileInstall("./img/d2_WishCodes_thumb.png",installDir "/img/d2_WishCodes_thumb.png",1)
 			fileInstall("./img/button_glyph.png",installDir "/img/button_glyph.png",1)
 			fileInstall("./img/button_glyph_down.png",installDir "/img/button_glyph_down.png",1)
 			
