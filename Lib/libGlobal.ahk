@@ -128,7 +128,7 @@ cfgLoad(&cfg, &ui) {
 	this2.YOffset:=748
 	this2.restartQueued:=false
 	this2.elapsedSec:=1
-	cfg.gameModuleList			:= strSplit(iniRead(cfg.file,"Game","GameModuleList"," Gameplay  , Vault Cleaner ,Links"),",")
+	cfg.gameModuleList			:= strSplit(iniRead(cfg.file,"Game","GameModuleList"," Gameplay  , Vault Cleaner ,InfoGFX"),",")
 	cfg.gameList				:= StrSplit(IniRead(cfg.file,"Game","GameList","Roblox,Rocket League"),",")
 	cfg.mainTabList				:= strSplit(IniRead(cfg.file,"Interface","MainTabList","1_GAME,2_SETUP"),",")
 	cfg.mainGui					:= IniRead(cfg.file,"System","MainGui","MainGui")

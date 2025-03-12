@@ -619,48 +619,57 @@ d2DrawUi(*) {
 }
 
 d2drawPanel3(*) {
+	tileSize:=74
+	
+	ui.gameTabs.useTab("InfoGFX")
+	ui.gameSettingsGui.addText("x8 y5 w480 h144 background" cfg.themePanel1Color,"")
+	ui.gameSettingsGui.addText("x10 y7 w476 h140 c" cfg.themePanel1Color " background" cfg.themePanel4Color)
+	drawOutlineNamed("d2linkPanel",ui.gameSettingsGui,8,5,480,144,cfg.themeBorderDarkColor,cfg.themeBorderLightColor,1)
+	drawOutlineNamed("d2AlwaysRunOutline",ui.gameSettingsGui,10,7,476,140,cfg.themeBorderLightColor,cfg.themeBorderDarkColor,1)
+	ui.gameSettingsGui.addText("hidden x19 y21 section")
+	ui.d2LaunchGlyphsbuttonBg				:= ui.gameSettingsGui.addText("x+0 y+0 section w" tileSize " h" tileSize "46 background" cfg.themeBright1Color)
+	ui.d2LaunchGlyphsbutton				:= ui.gameSettingsGui.addPicture("x+-44 ys+2 w" tileSize " h" tileSize "46 backgroundTrans","./img/d2_ShuroChi_thumb.png")
+	ui.d2LaunchRunesButtonBg			:= ui.gameSettingsGui.addText("x+15 ys w" tileSize " h" tileSize "46 background" cfg.themeBright1Color)
+	ui.d2LaunchRunesButton			:= ui.gameSettingsGui.addPicture("x+-44 ys+2 w" tileSize " h" tileSize "46 backgroundTrans","./img/d2_MorgethBridge_thumb.png")
+	ui.d2LaunchWish3ButtonBg 		:= ui.gameSettingsGui.addText("x+15 ys w" tileSize " h" tileSize "46 background" cfg.themeBright1Color)
+	ui.d2LaunchWish3Button 		:= ui.gameSettingsGui.addPicture("x+-44 ys+2 w" tileSize " h" tileSize "46 backgroundTrans","./img/d2_CorruptedEggs_thumb.png")
+	ui.d2LaunchWish4ButtonBg 		:= ui.gameSettingsGui.addText("x+15 ys w" tileSize " h" tileSize "46 background" cfg.themeBright1Color)
+	ui.d2LaunchWish4Button 		:= ui.gameSettingsGui.addPicture("x+-44 ys+2 w" tileSize " h" tileSize "46 backgroundTrans","./img/d2_numbersOfPowerEmblem_thumb.png")
+
+	ui.d2LaunchWish1ButtonBg 			:= ui.gameSettingsGui.addText("x+17 ys w" tileSize " h" tileSize "46 background" cfg.themeBright1Color)
+	ui.d2LaunchWish1Button 			:= ui.gameSettingsGui.addPicture("x+-44 ys+2 w" tileSize " h" tileSize "46 backgroundTrans","./img/d2_Glyphs.png")
+	ui.d2LaunchWish2ButtonBg 			:= ui.gameSettingsGui.addText("x+15 ys w" tileSize " h" tileSize "46 background" cfg.themeBright1Color)
+	ui.d2LaunchWish2Button 			:= ui.gameSettingsGui.addPicture("x+-44 ys+2 w" tileSize " h" tileSize "46 backgroundTrans","./img/d2_MorgethBridge.png")
+}
+
+d2drawPanel4(*) {
 	ui.gameTabs.useTab("Gameplay")
 	ui.gameSettingsGui.addText("x7 y78 w481 h67 background" cfg.themePanel1Color,"")
 	ui.gameSettingsGui.addText("x12 y81 w470 h58 c" cfg.themePanel1Color " background" cfg.themePanel2Color)
 	drawOutlineNamed("d2linkPanel",ui.gameSettingsGui,13,82,470,57,cfg.themeBorderDarkColor,cfg.themeBorderLightColor,1)
 	drawOutlineNamed("d2AlwaysRunOutline",ui.gameSettingsGui,6,76,484,68,cfg.themeBorderLightColor,cfg.themeBorderDarkColor,1)
-	ui.gameSettingsGui.addText("hidden x19 y21 section")
-	ui.d2LaunchGlyphsbuttonBg				:= ui.gameSettingsGui.addText("x25 y+51 section w46 h46 background" cfg.themeBright1Color)
-	ui.d2LaunchGlyphsbutton				:= ui.gameSettingsGui.addPicture("x+-44 ys+2 w42 h42 backgroundTrans","./img/d2_ShuroChi_thumb.png")
-	ui.d2LaunchRunesButtonBg			:= ui.gameSettingsGui.addText("x+15 ys w46  h46 background" cfg.themeBright1Color)
-	ui.d2LaunchRunesButton			:= ui.gameSettingsGui.addPicture("x+-44 ys+2 w42 h42 backgroundTrans","./img/d2_MorgethBridge_thumb.png")
-	ui.d2LaunchWish3ButtonBg 		:= ui.gameSettingsGui.addText("x+15 ys w46  h46 background" cfg.themeBright1Color)
-	ui.d2LaunchWish3Button 		:= ui.gameSettingsGui.addPicture("x+-44 ys+2 w42  h42 backgroundTrans","./img/d2_CorruptedEggs_thumb.png")
-	ui.d2LaunchWish4ButtonBg 		:= ui.gameSettingsGui.addText("x+15 ys w46  h46 background" cfg.themeBright1Color)
-	ui.d2LaunchWish4Button 		:= ui.gameSettingsGui.addPicture("x+-44 ys+2 w42  h42 backgroundTrans","./img/d2_numbersOfPowerEmblem_thumb.png")
+	;ui.gameSettingsGui.addText("hidden x219 y21 section")
+	ui.d2LaunchDIMbuttonBg				:= ui.gameSettingsGui.addText("x85 y85 w50 h50 background" cfg.themeBright1Color)
+	ui.d2LaunchDIMbutton				:= ui.gameSettingsGui.addPicture("x81 y81 w56 h56 backgroundTrans","./img/button_DIM.png")
+	drawOutline(ui.gameSettingsGui,85,85,50,50,cfg.themeBright1Color,cfg.themeDark1Color,1)
+	ui.d2Launchd2FoundryButtonBg 			:= ui.gameSettingsGui.addText("x140 y85 w50  h50 background" cfg.themeBright1Color)
+	ui.d2Launchd2FoundryButton 			:= ui.gameSettingsGui.addPicture("x136 y81 w56 h56 backgroundTrans",".\Img\button_glyph.png")
+	drawOutline(ui.gameSettingsGui,140,85,50,50,cfg.themeBright1Color,cfg.themeDark1Color,1)
+	ui.d2LaunchBrayTechButtonBg 			:= ui.gameSettingsGui.addText("x195 y85 w50  h50 vBrayTechButtonBg background" cfg.themeBright1Color)
+	ui.d2LaunchBrayTechButton 			:= ui.gameSettingsGui.addPicture("x191 y81 w56  h56 vBrayTechButton backgroundTrans","./img/button_braytech.png")
+	drawOutline(ui.gameSettingsGui,195,85,50,50,cfg.themeBright1Color,cfg.themeDark1Color,1)
+	ui.d2LaunchVaultCleanerButtonBg			:= ui.gameSettingsGui.addText("x250 y85 w50  h50 background" cfg.themeBright1Color)
+	ui.d2LaunchVaultCleanerButton			:= ui.gameSettingsGui.addPicture("x246 y81 w56 h56 backgroundTrans","./img/button_vault_up.png")
+	drawOutline(ui.gameSettingsGui,250,85,50,50,cfg.themeBright1Color,cfg.themeDark1Color,1)
+	ui.d2LaunchLightGGButtonBg 		:= ui.gameSettingsGui.addText("x305 y85 w50  h50 background" cfg.themeBright1Color)
+	ui.d2LaunchLightGGButton 		:= ui.gameSettingsGui.addPicture("x301 y81 w56  h56 backgroundTrans","./img/button_LightGG.png")
+	drawOutline(ui.gameSettingsGui,305,85,50,50,cfg.themeBright1Color,cfg.themeDark1Color,1)
+	ui.d2LaunchD2CheckListButtonBg 		:= ui.gameSettingsGui.addText("x360 y85 w50  h50 background" cfg.themeBright1Color)
+	ui.d2LaunchD2CheckListButton 		:= ui.gameSettingsGui.addPicture("x356 y81 w56  h56 backgroundTrans","./img/button_d2CheckList.png")
+	drawOutline(ui.gameSettingsGui,360,85,50,50,cfg.themeBright1Color,cfg.themeDark1Color,1)
+	ui.d2LaunchDestinyTrackerButtonBg 	:= ui.gameSettingsGui.addText("hidden x+5 ys w46  h46 background" cfg.themeBright1Color)
+	ui.d2LaunchDestinyTrackerButton 	:= ui.gameSettingsGui.addPicture("hidden x+-50 ys-3 w53  h53 backgroundTrans","./img/button_DestinyTracker.png")
 
-	ui.d2LaunchWish1ButtonBg 			:= ui.gameSettingsGui.addText("x+17 ys w46  h46 background" cfg.themeBright1Color)
-	ui.d2LaunchWish1Button 			:= ui.gameSettingsGui.addPicture("x+-44 ys+2 w42  h42 backgroundTrans","./img/d2_Glyphs.png")
-	ui.d2LaunchWish2ButtonBg 			:= ui.gameSettingsGui.addText("x+15 ys w46  h46 background" cfg.themeBright1Color)
-	ui.d2LaunchWish2Button 			:= ui.gameSettingsGui.addPicture("x+-44 ys+2 w42  h42 backgroundTrans","./img/d2_MorgethBridge.png")
-}
-
-d2drawPanel4(*) {
-	ui.gameTabs.useTab("Links")
-	ui.gameSettingsGui.addText("x7 y78 w481 h67 background" cfg.themePanel1Color,"")
-	ui.gameSettingsGui.addText("x12 y81 w470 h58 c" cfg.themePanel1Color " background" cfg.themePanel2Color)
-	drawOutlineNamed("d2linkPanel",ui.gameSettingsGui,13,82,470,57,cfg.themeBorderDarkColor,cfg.themeBorderLightColor,1)
-	drawOutlineNamed("d2AlwaysRunOutline",ui.gameSettingsGui,6,76,484,68,cfg.themeBorderLightColor,cfg.themeBorderDarkColor,1)
-	ui.gameSettingsGui.addText("hidden x19 y21 section")
-	ui.d2LaunchDIMbuttonBg				:= ui.gameSettingsGui.addText("x25 y+51 section w46 h46 background" cfg.themeBright1Color)
-	ui.d2LaunchDIMbutton				:= ui.gameSettingsGui.addPicture("x+-44 ys+2 w42 h42 backgroundTrans","./img/button_DIM.png")
-	ui.d2LaunchVaultCleanerButtonBg			:= ui.gameSettingsGui.addText("x+15 ys w46  h46 background" cfg.themeBright1Color)
-	ui.d2LaunchVaultCleanerButton			:= ui.gameSettingsGui.addPicture("x+-44 ys+2 w42 h42 backgroundTrans","./img/button_vault_up.png")
-	ui.d2LaunchLightGGButtonBg 		:= ui.gameSettingsGui.addText("x+15 ys w46  h46 background" cfg.themeBright1Color)
-	ui.d2LaunchLightGGButton 		:= ui.gameSettingsGui.addPicture("x+-44 ys+2 w42  h42 backgroundTrans","./img/button_LightGG.png")
-	ui.d2LaunchD2CheckListButtonBg 		:= ui.gameSettingsGui.addText("x+15 ys w46  h46 background" cfg.themeBright1Color)
-	ui.d2LaunchD2CheckListButton 		:= ui.gameSettingsGui.addPicture("x+-44 ys+2 w42  h42 backgroundTrans","./img/button_d2CheckList.png")
-	ui.d2LaunchDestinyTrackerButtonBg 	:= ui.gameSettingsGui.addText("x+15 ys w46  h46 background" cfg.themeBright1Color)
-	ui.d2LaunchDestinyTrackerButton 	:= ui.gameSettingsGui.addPicture("x+-44 ys+2 w42  h42 backgroundTrans","./img/button_DestinyTracker.png")
-	ui.d2Launchd2FoundryButtonBg 			:= ui.gameSettingsGui.addText("x+17 ys w46  h46 background" cfg.themeBright1Color)
-	ui.d2Launchd2FoundryButton 			:= ui.gameSettingsGui.addPicture("x+-44 ys+2 w42  h42 backgroundTrans","./img/button_d2Foundry.png")
-	ui.d2LaunchBrayTechButtonBg 			:= ui.gameSettingsGui.addText("x+15 ys w46  h46 vBrayTechButtonBg background" cfg.themeBright1Color)
-	ui.d2LaunchBrayTechButton 			:= ui.gameSettingsGui.addPicture("x+-44 ys+2 w42  h42 vBrayTechButton backgroundTrans","./img/button_braytech.png")
 }
 
 d2KeybindTabChange(this_button,*) {
@@ -895,13 +904,13 @@ drawGameTabs(tabNum := 1) {
 		? ui.gameTabGui.addText("y0 x298 w2 h34 section background" cfg.themeBright1Color,"")
 		: ui.gameTabGui.addText("y2 x298 w2 h30 section background" cfg.themeDark2Color,""))
 	((tabNum == 4)
-		? ui.gameTab4SkinOutline := ui.gameTabGui.addText("x300 y0 w60 h32 background" cfg.themeBright1Color,"" )
-		: ui.gameTab4SkinOutline := ui.gameTabGui.addText("x300 y2 w60 h32 background" cfg.themeDark2Color,""))
+		? ui.gameTab4SkinOutline := ui.gameTabGui.addText("x300 y0 w70 h32 background" cfg.themeBright1Color,"" )
+		: ui.gameTab4SkinOutline := ui.gameTabGui.addText("x300 y2 w70 h32 background" cfg.themeDark2Color,""))
 	ui.gameTab4Skin := ui.gameTabGui.addText(
 		((tabNum == 4) 
 			? "y0 h30" 
 			: "y2 h28")
-				" x300 w60 center background" 
+				" x300 w70 center background" 
 		((tabNum == 4) 
 			? cfg.themePanel2Color 
 			: cfg.themePanel1Color)
@@ -918,29 +927,29 @@ drawGameTabs(tabNum := 1) {
 		((tabNum == 4) 
 			? "y2 h28" 
 			: "y5 h32")
-		" x300 w58 center backgroundTrans c" 
+		" x300 w68 center backgroundTrans c" 
 		((tabNum == 4)
 		? cfg.themeFont1Color 
 			: cfg.themeFont4Color)
-		,"Links")
+		,"InfoGFX")
 	ui.gameTab4Label.setFont(
 		((tabNum == 4)
 			? "s14" 
 			: "s12")
 		,"Impact")
-	ui.gameTabWidth += 60
+	ui.gameTabWidth += 70
 	((tabNum == 4)
-		? ui.gameTabGui.addText("y0 x360 w2 h34 section background" cfg.themeBright1Color,"")
-		: ui.gameTabGui.addText("y2 x360 w2 h30 section background" cfg.themeDark2Color,""))
+		? ui.gameTabGui.addText("y0 x370 w2 h34 section background" cfg.themeBright1Color,"")
+		: ui.gameTabGui.addText("y2 x370 w2 h30 section background" cfg.themeDark2Color,""))
 
 	
 	winGetPos(&mainGuiX,&mainGuiY,,,ui.mainGui.hwnd)
-		ui.gameTabGui.addText("y2 x362 w" 498-(ui.gameTabWidth+3) " h28 background" cfg.themePanel1Color)
+		ui.gameTabGui.addText("y2 x372 w" 498-(ui.gameTabWidth+3) " h28 background" cfg.themePanel1Color)
 	if !(mainGuiX==0 && mainGuiY==0) {
 		ui.gameTabGui.show("w495 h32 noActivate x" mainGuiX+34 " y" mainGuiY+183)
 		
 	}
-	line(ui.gameTabGui,362,30,180,2,cfg.themeDark2Color)
+	line(ui.gameTabGui,372,30,180,2,cfg.themeDark2Color)
 
 }
 
@@ -1093,6 +1102,9 @@ toggleCodeWindow(lparam,wparam*) {
 }
 	
 showCodeWindow(*) {
+	ui.codesArr:=["ShuroChi","MorgethBridge","CorruptedEggs","Glyphs","Runes","NumbersOfPowerEmblem"]
+	ui.codeImageSize:=80
+	
 	ui.d2LaunchBrayTechButton.value := "./img/button_brayTech_down.png"
 	d2wwCodesGuiHwnd := false
 	try 
@@ -1103,12 +1115,55 @@ showCodeWindow(*) {
 		ui.d2wwCodesGui.opt("alwaysOnTop -caption toolWindow owner" ui.mainGui.hwnd)
 		ui.d2wwCodesGui.backColor := "080203"
 		winSetTransColor("080203",ui.d2wwCodesGui)
-		ui.d2wwCodeImg := ui.d2wwCodesGui.addPicture("x20 y20 w800 h600","./img/d2CodeMorgeth.png")
-		ui.d2CodeExit := ui.d2wwCodesGui.addPicture("x805 y5 w30 h30 background" cfg.themeBright2Color,"./img/button_quit.png")
-		ui.d2CodeExit.onEvent("click",hideCodeWindow)
-		ui.d2wwCodeImg.onEvent("click",WM_LBUTTONDOWN_callback)
+		numColumns:=3
+		tileNum:=1
+		;msgBox(tileNum "," ui.codesArr[tileNum])
+		ui.%ui.codesArr[tileNum]%Tile:=ui.d2wwCodesGui.addPicture("section x5 y30 w400 h400 v" ui.codesArr[tileNum] " backgroundTrans","./img/d2_" ui.codesArr[tileNum] ".png")
+		ui.%ui.codesArr[tileNum]%Tile.onEvent("click",viewCode)
+		while tileNum < ui.codesArr.length {
+			if mod(tileNum,numColumns)==0 {	
+				tileNum+=1				
+				;msgBox(tileNum "," ui.codesArr[tileNum])
+				ui.%ui.codesArr[tileNum]%Tile:=ui.d2wwCodesGui.addPicture("section xs+0 y+0 w400 h400 v" ui.codesArr[tileNum] " backgroundTrans","./img/d2_" ui.codesArr[tileNum] ".png")
+			} else {
+				tileNum+=1
+				;msgBox(tileNum "," ui.codesArr[tileNum])
+				ui.%ui.codesArr[tileNum]%Tile:=ui.d2wwCodesGui.addPicture("x+0 ys+0 w400 h400 v" ui.codesArr[tileNum] " backgroundTrans","./img/d2_" ui.codesArr[tileNum] ".png")
+				
+			}
+			ui.%ui.codesArr[tileNum]%Tile.onEvent("click",viewCode)
+		}
+
+				
+		
 	}
-	ui.d2wwCodesGui.show("x200 y200 w840 h640 noactivate")
+	viewCode(this_code,*) {
+		try 
+			destroy ui.codeWindow
+		ui.codeWindow:=gui()
+		ui.codeWindow.opt("-caption -border toolWindow alwaysOnTop")
+		ui.codeWindow.backColor:="010203"
+		ui.codeWindow.color:="010203"
+		;msgBox(this_code.name)
+		ui.fullSizedCode:=ui.codeWindow.addPicture("x0 y20 w1200 h-1 v" this_code.name,"./img/d2_" this_code.name ".png")
+		ui.fullSizedCode.onEvent("click",closeCode)
+		ui.codeWindow.show()
+		
+		closeCode(this_code,*) {
+			try
+				ui.codeWindow.destroy()
+		}
+	}
+
+		
+		
+	;ui.d2wwCodeImg := ui.d2wwCodesGui.addPicture("x20 y20 w800 h600","./img/d2CodeMorgeth.png")
+	ui.d2CodeTitlebar:=ui.d2wwCodesGui.addText("x5 y0 w1200 h30 background" cfg.themeBackgroundColor)
+	ui.d2CodeExit := ui.d2wwCodesGui.addPicture("x1175 y0 w30 h30 background" cfg.themePanel3Color,"./img/button_quit.png")
+	ui.d2CodeExit.onEvent("click",hideCodeWindow)
+	;ui.d2wwCodeImg.onEvent("click",WM_LBUTTONDOWN_callback)
+	
+	ui.d2wwCodesGui.show()
 }																																																																																																																																																																																																																				
 
 hideCodeWindow(*) {
@@ -1537,13 +1592,13 @@ toggleGlyphWindow(*) {
 showGlyphWindow(*) {
 	ui.infoGuiBg.show("noActivate") 
 	ui.infoGui.show("noActivate")
-	ui.d2Launchd2FoundryButton.value := "./img/button_d2Foundry_down.png"
+	ui.d2Launchd2FoundryButton.value := "./img/button_glyph_down.png"
 	winSetTransparent(255,ui.infoGuiBg.hwnd)
 	winSetTransparent(255,ui.infoGui.hwnd)
 }
 
 hideGlyphWindow(*) {
-	ui.infoGui.hide(), ui.infoGuiBg.hide(),ui.d2Launchd2FoundryButton.value := "./img/button_d2Foundry.png"
+	ui.infoGui.hide(), ui.infoGuiBg.hide(),ui.d2Launchd2FoundryButton.value := "./img/button_glyph.png"
 }
 
 
