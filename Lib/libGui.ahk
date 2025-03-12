@@ -12,7 +12,7 @@ if (InStr(A_LineFile,A_ScriptFullPath))
 tabsChanged(*) {
 	ui.activeTab := ui.mainGuiTabs.Text
 	ui.activeMainTab := ui.mainGuiTabs.value
-	(ui.activeTab=="1_Game")
+	(ui.activeTab=="1_Game____")
 	? (guiVis(ui.gameSettingsGui,true)
 			, guiVis(ui.gameTabGui,true)
 			, ui.gameSettingsGui.opt("-toolWindow")
@@ -86,12 +86,12 @@ advProgress(2)
 	; line(ui.mainGui,112,0,3,30,cfg.themeBright1Color)
 	; line(ui.mainGui,192,0,30,2,cfg.themeBright1Color,"vert")
 	; line(ui.mainGui,194,0,310,2,cfg.themePanel2Color)	
-	gameTabClicked(*) {
-		ui.mainGuiTabs.choose(1)
-	}
-	setupTabClicked(*) {
-		ui.mainGuiTabs.choose(2)
-	}
+	; gameTabClicked(*) {
+		; ui.mainGuiTabs.choose(1)
+	; }
+	; setupTabClicked(*) {
+		; ui.mainGuiTabs.choose(2)
+	; }
 	
 
 	ui.3_FillOutline.onEvent("click",WM_LBUTTONDOWN_callback)
@@ -101,7 +101,7 @@ advProgress(2)
 
 	advProgress(2)
 	
-	ui.mainGuiTabs := ui.MainGui.AddTab3("x34 y2 w494 h213 Buttons -redraw Background" cfg.ThemePanel2Color " -E0x200",["1_Game","2_Setup"])
+	ui.mainGuiTabs := ui.MainGui.AddTab3("x34 y2 w494 h213 Buttons -redraw Background" cfg.ThemePanel2Color " -E0x200",["1_Game____","2_Setup____"])
 	ui.MainGuiTabs.useTab("")
 	ui.mainGuiTabs.setFont("q5 s10 q5")
 	ui.MainGui.setFont("q5 s10 q5 c" cfg.ThemeFont1Color,"calibri")
@@ -122,7 +122,12 @@ advProgress(2)
 	ui.ExitButton 			:= ui.mainGui.AddPicture("x501 y2 w28 h28 Background" cfg.ThemeButtonReadyColor,"./Img/button_power_ready.png")
 	ui.DownButton 			:= ui.mainGui.AddPicture("x474 y2 w27 h28 section Background" cfg.ThemeButtonReadyColor,"./Img/button_minimize.png")
 	ui.ExitButton.OnEvent("Click",ExitButtonPushed)
-	ui.DownButton.OnEvent("Click",HideGui)
+	ui.DownButton.OnEvent("Click",guiHide)
+	guiHide(*) {
+		ui.mainGui.hide()
+		ui.gameSettingsGui.hide()
+		
+	}
 	advProgress(2)
 	ui.handleBarImage.OnEvent("Click",WM_LBUTTONDOWN_callback)
 	ui.rightHandleBarImage2.OnEvent("Click",WM_LBUTTONDOWN_callback)
@@ -217,7 +222,7 @@ fadeIn() {
 			guiVis(ui.dockBarGui,true)
 		} else {
 			switch ui.mainGuiTabs.text {
-				case "1_Game":
+				case "1_Game____":
 					guiVis(ui.gameTabGui,true)
 					while transparency < 223 {
 						transparency += 4
@@ -586,7 +591,7 @@ drawOpsOutlines() {
 }
 
 drawGridLines() {
-	ui.MainGuiTabs.UseTab("2_SETUP")
+	ui.MainGuiTabs.UseTab("2_SETUP____")
 		drawOutline(ui.MainGui,101,62,157,100,cfg.ThemeBright2Color,cfg.ThemeBright2Color,2) 	;Win1 Info Frame
 		drawOutline(ui.MainGui,102,62,156,100,cfg.ThemeBright1Color,cfg.ThemeBright1Color,1) 	;Win1 Info Frame
 		drawOutline(ui.MainGui,101,76,157,16,cfg.ThemeBright2Color,cfg.ThemeBright2Color,2)		;Win1 Info Gridlines  
@@ -670,7 +675,7 @@ fadeOut(*) {
 				}
 
 				guiVis(ui.afkGui,false)
-			case "1_GAME":
+			case "1_GAME____":
 				while(transValue > 20) {
 					transValue -= 10
 					;winSetTransparent(transValue,ui.titleBarButtonGui)

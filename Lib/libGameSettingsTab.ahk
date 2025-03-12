@@ -8,7 +8,7 @@ if (InStr(A_LineFile,A_ScriptFullPath)) { ;run main app
 	Return
 }
 
-setStoreCapslockMode(0)
+;setStoreCapslockMode(0)
 inputHookAllowedKeys := "{All}{LControl}{RControl}{LAlt}{RAlt}{LShift}{RShift}{LWin}{RWin}{AppsKey}{F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Home}{End}{PgUp}{PgDn}{Del}{Ins}{Left}{Right}{Up}{Down}{BS}{CapsLock}{NumLock}{PrintScreen}{Pause}{Tab}{Enter}{ScrollLock}{LButton}{MButton}{RButton}"	
 
 ui.d2FlashingIncursionNotice := false
@@ -16,8 +16,58 @@ ui.d2ShowingIncursionNotice := false
 ui.incursionDebug := false
 ui.d2FlyEnabled := false
 
+GuiGameTab() {
+	global	
+	loop cfg.gameModuleList.length {
+		if fileExist("./lib/lib" cfg.gameModuleList[A_Index])
+			runWait("./lib/lib" cfg.gameModuleList[A_Index])
+	}
+	try
+		ui.gameSettingsGui.destroy()
+		
+	ui.gameSettingsGui := Gui()
+	ui.gameSettingsGui.Name := "dapp"
+	ui.gameSettingsGui.BackColor := cfg.themePanel2Color
+	ui.gameSettingsGui.Color := cfg.themePanel2Color
+	ui.gameSettingsGui.MarginX := 5
+	ui.gameSettingsGui.Opt("-Caption -Border +AlwaysOnTop +Owner" ui.MainGui.Hwnd)
+	ui.gameSettingsGui.SetFont("s14 c" cfg.ThemeFont1Color,"calibri")
+	ui.gameTabs := ui.gameSettingsGui.addTab3("x0 y-5 h194 0x400 bottom c" cfg.themeFont1Color " choose" cfg.activeGameTab,cfg.gameModuleList)
+
+	ui.gameTabs.choose(cfg.gameModuleList[cfg.activeGameTab])
+	ui.gameTabs.setFont("s16")
+	ui.gameTabs.onEvent("Change",gameTabChanged)
+	ui.MainGui.GetPos(&winX,&winY,,)
+	winSetRegion("2-0 w600 h250",ui.gameSettingsGui)
+	Loop cfg.gameList.length {
+		try {
+			runWait("./lib/lib" cfg.gameList[a_index])
+			ui.gameTabs.value([cfg.gameList[a_index]])
+			ui.gameTabs.useTab(cfg.gameList[a_index])
+		}
+	}
+	d2drawUi()
+	drawGameTabs(cfg.activeGameTab)
+}	 
+
+d2DrawUi(*) { 
+	ui.gameTabs.useTab("Gameplay") 
+	ui.d2Sliding := false
+	ui.d2HoldingRun := false         
+	ui.d2cleanupNeeded := false
+	ui.gameSettingsGui.setFont("s10")
+	d2drawTopPanel()
+	d2drawPanel1()
+	d2drawPanel3()
+	d2drawPanel4()
+	if d2ActivePanel == 1 
+		d2ChangeKeybindPanelTab(1)
+	else
+		d2ChangeKeybindPanelTab(2)	
+}
+
+
 d2drawPanel1(*) {
-	
 	guiName := ui.gameSettingsGui
 	ui.d2KeybindWidth := 60
 	labelX := 280
@@ -602,21 +652,6 @@ d2drawTopPanel(*) {
 	drawOutlineNamed("d2AlwaysRunOutline",ui.gameSettingsGui,6,3,484,69,cfg.themeBright2Color,cfg.themeBright1Color,1)
 }
 
-d2DrawUi(*) { 
-	ui.gameTabs.useTab("Gameplay") 
-	ui.d2Sliding := false
-	ui.d2HoldingRun := false         
-	ui.d2cleanupNeeded := false
-	ui.gameSettingsGui.setFont("s10")
-	d2drawTopPanel()
-	d2drawPanel1()
-	d2drawPanel3()
-	d2drawPanel4()
-	if d2ActivePanel == 1 
-		d2ChangeKeybindPanelTab(1)
-	else
-		d2ChangeKeybindPanelTab(2)	
-}
 
 d2drawPanel3(*) {
 	tileSize:=74
@@ -643,34 +678,77 @@ d2drawPanel3(*) {
 }
 
 d2drawPanel4(*) {
+	static xPos:=16
+	static yPos:=86
+	
+	cfg.button_link1:=["DIM","URL","https://destinyitemmanager.com","./img/button_DIM.png"]
+	cfg.button_link2:=["Glyphs","Function","toggleGlyphWindow","./img/d2_glyphs_thumb.png"]
+	cfg.button_link3:=["Runes","Function","toggleRuneWindow","./img/d2_runes_thumb.png"]
+	cfg.button_link4:=["WishCodes","Function","toggleCodeWindow","./img/d2_wishCodes_thumb.png"]
+	cfg.button_link5:=["Vault","Function","toggleVaultMode","./img/button_vault_up.png"]
+	cfg.button_link6:=["Glyphs","Function","toggleGlyphWindow","./img/button_glyph.png"]
+	cfg.button_link7:=["Runes","Function","toggleGlyphWindow","./img/button_glyph.png"]
+	cfg.button_link8:=["Vault","Function","toggleVaultMode","./img/button_vault_up.png"]
+	ui.button_link1:=""
+	ui.button_link2:=""
+	ui.button_link3:=""
+	ui.button_link4:=""
+	ui.button_link5:=""
+	ui.button_link6:=""
+	ui.button_link7:=""
+	ui.button_link8:=""
+	
+	cfg.button_link_size:=50
 	ui.gameTabs.useTab("Gameplay")
 	ui.gameSettingsGui.addText("x7 y78 w481 h67 background" cfg.themePanel1Color,"")
 	ui.gameSettingsGui.addText("x12 y81 w470 h58 c" cfg.themePanel1Color " background" cfg.themePanel2Color)
 	drawOutlineNamed("d2linkPanel",ui.gameSettingsGui,13,82,470,57,cfg.themeBorderDarkColor,cfg.themeBorderLightColor,1)
-	drawOutlineNamed("d2AlwaysRunOutline",ui.gameSettingsGui,6,76,484,68,cfg.themeBorderLightColor,cfg.themeBorderDarkColor,1)
-	;ui.gameSettingsGui.addText("hidden x219 y21 section")
-	ui.d2LaunchDIMbuttonBg				:= ui.gameSettingsGui.addText("x85 y85 w50 h50 background" cfg.themeBright1Color)
-	ui.d2LaunchDIMbutton				:= ui.gameSettingsGui.addPicture("x81 y81 w56 h56 backgroundTrans","./img/button_DIM.png")
-	drawOutline(ui.gameSettingsGui,85,85,50,50,cfg.themeBright1Color,cfg.themeDark1Color,1)
-	ui.d2Launchd2FoundryButtonBg 			:= ui.gameSettingsGui.addText("x140 y85 w50  h50 background" cfg.themeBright1Color)
-	ui.d2Launchd2FoundryButton 			:= ui.gameSettingsGui.addPicture("x136 y81 w56 h56 backgroundTrans",".\Img\button_glyph.png")
-	drawOutline(ui.gameSettingsGui,140,85,50,50,cfg.themeBright1Color,cfg.themeDark1Color,1)
-	ui.d2LaunchBrayTechButtonBg 			:= ui.gameSettingsGui.addText("x195 y85 w50  h50 vBrayTechButtonBg background" cfg.themeBright1Color)
-	ui.d2LaunchBrayTechButton 			:= ui.gameSettingsGui.addPicture("x191 y81 w56  h56 vBrayTechButton backgroundTrans","./img/button_braytech.png")
-	drawOutline(ui.gameSettingsGui,195,85,50,50,cfg.themeBright1Color,cfg.themeDark1Color,1)
-	ui.d2LaunchVaultCleanerButtonBg			:= ui.gameSettingsGui.addText("x250 y85 w50  h50 background" cfg.themeBright1Color)
-	ui.d2LaunchVaultCleanerButton			:= ui.gameSettingsGui.addPicture("x246 y81 w56 h56 backgroundTrans","./img/button_vault_up.png")
-	drawOutline(ui.gameSettingsGui,250,85,50,50,cfg.themeBright1Color,cfg.themeDark1Color,1)
-	ui.d2LaunchLightGGButtonBg 		:= ui.gameSettingsGui.addText("x305 y85 w50  h50 background" cfg.themeBright1Color)
-	ui.d2LaunchLightGGButton 		:= ui.gameSettingsGui.addPicture("x301 y81 w56  h56 backgroundTrans","./img/button_LightGG.png")
-	drawOutline(ui.gameSettingsGui,305,85,50,50,cfg.themeBright1Color,cfg.themeDark1Color,1)
-	ui.d2LaunchD2CheckListButtonBg 		:= ui.gameSettingsGui.addText("x360 y85 w50  h50 background" cfg.themeBright1Color)
-	ui.d2LaunchD2CheckListButton 		:= ui.gameSettingsGui.addPicture("x356 y81 w56  h56 backgroundTrans","./img/button_d2CheckList.png")
-	drawOutline(ui.gameSettingsGui,360,85,50,50,cfg.themeBright1Color,cfg.themeDark1Color,1)
-	ui.d2LaunchDestinyTrackerButtonBg 	:= ui.gameSettingsGui.addText("hidden x+5 ys w46  h46 background" cfg.themeBright1Color)
-	ui.d2LaunchDestinyTrackerButton 	:= ui.gameSettingsGui.addPicture("hidden x+-50 ys-3 w53  h53 backgroundTrans","./img/button_DestinyTracker.png")
+	drawOutlineNamed("d2AlwaysRunOutline",ui.gameSettingsGui,6,76,484,68,cfg.themeBorderLightColor,cfg.themeBorderDarkColor,1)	
+	
+	loop 8 {
+		ui.button_link%a_index%:=ui.gameSettingsGui.addPicture("x" xPos " y" yPos " w" cfg.button_link_size " h" cfg.button_link_size " vbutton_link" a_index " background" cfg.themePanel1Color,cfg.button_link%a_index%[4])
+		drawOutline(ui.gameSettingsGui,xPos,yPos,cfg.button_link_size,cfg.button_link_size,cfg.themeBright1Color,cfg.themeDark1Color,1)
+		this_action:=cfg.button_link%a_index%[3]
+		if cfg.button_link%a_index%[2]=="URL" {
+			ui.button_link%a_index%.onEvent("click",openUrl)
+		} else {
+			ui.button_link%a_index%.onEvent("click",%this_action%)
+		}
+		xPos+=cfg.button_link_size+9
 
+	}
+	openUrl(this_Url,*) {
+		run("chrome.exe " cfg.%this_Url.name%[3])
+	}
+	
+		
+
+	;ui.gameSettingsGui.addText("hidden x219 y21 section")
+	; ui.d2LaunchDIMbuttonBg				:= ui.gameSettingsGui.addText("x85 y85 w50 h50 background" cfg.themeButtonReadyColor)
+	; ui.d2LaunchDIMbutton				:= ui.gameSettingsGui.addPicture("x81 y81 w56 h56 backgroundTrans","./img/button_DIM.png")
+	; drawOutline(ui.gameSettingsGui,85,85,50,50,cfg.themeBright1Color,cfg.themeDark1Color,1)
+	; ui.d2Launchd2FoundryButtonBg 			:= ui.gameSettingsGui.addText("x140 y85 w50  h50 background" cfg.themeButtonReadyColor)
+	; ui.d2Launchd2FoundryButton 			:= ui.gameSettingsGui.addPicture("x136 y81 w56 h56 backgroundTrans",".\Img\button_glyph.png")
+	; drawOutline(ui.gameSettingsGui,140,85,50,50,cfg.themeBright1Color,cfg.themeDark1Color,1)
+	; ui.d2LaunchBrayTechButtonBg 			:= ui.gameSettingsGui.addText("x195 y85 w50  h50 vBrayTechButtonBg background" cfg.themeButtonReadyColor)
+	; ui.d2LaunchBrayTechButton 			:= ui.gameSettingsGui.addPicture("x191 y81 w56  h56 vBrayTechButton backgroundTrans","./img/button_braytech.png")
+	; drawOutline(ui.gameSettingsGui,195,85,50,50,cfg.themeBright1Color,cfg.themeDark1Color,1)
+	; ui.d2LaunchVaultCleanerButtonBg			:= ui.gameSettingsGui.addText("x250 y85 w50  h50 background" cfg.themeButtonReadyColor)
+	; ui.d2LaunchVaultCleanerButton			:= ui.gameSettingsGui.addPicture("x246 y81 w56 h56 backgroundTrans","./img/button_vault_up.png")
+	; drawOutline(ui.gameSettingsGui,250,85,50,50,cfg.themeBright1Color,cfg.themeDark1Color,1)
+	; ui.d2LaunchLightGGButtonBg 		:= ui.gameSettingsGui.addText("x305 y85 w50  h50 background" cfg.themeButtonReadyColor)
+	; ui.d2LaunchLightGGButton 		:= ui.gameSettingsGui.addPicture("x301 y81 w56  h56 backgroundTrans","./img/button_LightGG.png")
+	; drawOutline(ui.gameSettingsGui,305,85,50,50,cfg.themeBright1Color,cfg.themeDark1Color,1)
+	; ui.d2LaunchD2CheckListButtonBg 		:= ui.gameSettingsGui.addText("x360 y85 w50  h50 background" cfg.themeButtonReadyColor)
+	; ui.d2LaunchD2CheckListButton 		:= ui.gameSettingsGui.addPicture("x356 y81 w56  h56 backgroundTrans","./img/button_d2CheckList.png")
+	; drawOutline(ui.gameSettingsGui,360,85,50,50,cfg.themeBright1Color,cfg.themeDark1Color,1)
+	; ui.d2LaunchDestinyTrackerButtonBg 	:= ui.gameSettingsGui.addText("hidden x+5 ys w46  h46 background" cfg.themeButtonReadyColor)
+	; ui.d2LaunchDestinyTrackerButton 	:= ui.gameSettingsGui.addPicture("hidden x+-50 ys-3 w53  h53 backgroundTrans","./img/button_DestinyTracker.png")
 }
+	
+	
+
+
 
 d2KeybindTabChange(this_button,*) {
 }
@@ -736,40 +814,6 @@ drawKeybind(x,y,bindName,labelText := bindName,gui := ui.mainGui,w := 84,h := 30
 		}
 	}		
 
-GuiGameTab() {
-	global	
-	loop cfg.gameModuleList.length {
-		if fileExist("./lib/lib" cfg.gameModuleList[A_Index])
-			runWait("./lib/lib" cfg.gameModuleList[A_Index])
-	}
-	try
-		ui.gameSettingsGui.destroy()
-		
-	ui.gameSettingsGui := Gui()
-	ui.gameSettingsGui.Name := "dapp"
-	ui.gameSettingsGui.BackColor := cfg.themePanel2Color
-	ui.gameSettingsGui.Color := cfg.themePanel2Color
-	ui.gameSettingsGui.MarginX := 5
-	ui.gameSettingsGui.Opt("-Caption -Border +AlwaysOnTop +Owner" ui.MainGui.Hwnd)
-	ui.gameSettingsGui.SetFont("s14 c" cfg.ThemeFont1Color,"calibri")
-	ui.gameTabs := ui.gameSettingsGui.addTab3("x0 y-5 h194 0x400 bottom c" cfg.themeFont1Color " choose" cfg.activeGameTab,cfg.gameModuleList)
-
-	ui.gameTabs.choose(cfg.gameModuleList[cfg.activeGameTab])
-	ui.gameTabs.setFont("s16")
-	ui.gameTabs.onEvent("Change",gameTabChanged)
-	ui.MainGui.GetPos(&winX,&winY,,)
-	winSetRegion("2-0 w600 h250",ui.gameSettingsGui)
-	Loop cfg.gameList.length {
-		try {
-			runWait("./lib/lib" cfg.gameList[a_index])
-			ui.gameTabs.value([cfg.gameList[a_index]])
-			ui.gameTabs.useTab(cfg.gameList[a_index])
-		}
-	}
-	d2drawUi()
-	drawGameTabs(cfg.activeGameTab)
-	
-}	 
 
 gameTabChanged(*) {
 	cfg.activeGameTab := ui.gametabs.value
@@ -1020,92 +1064,19 @@ MButtonDown(*) {
 ui.d2Log									:= ui.gameSettingsGui.addText("x405 y10 w68 h80 hidden background" cfg.themePanel3color " c" cfg.themeFont3color," Destiny 2`n Log Started`n Waiting for Input")
 ui.d2Log.setFont("s7","ariel")
 
-ui.d2ToggleAppFunctions.ToolTip 			:= "Toggles holdToCrouch"
-ui.d2LaunchDIMbutton.ToolTip				:= "Launch DIM in Browser"
-ui.d2LaunchVaultCleanerButton.toolTip 		:= "Launch Vault Cleaner"
-ui.d2LaunchLightGGButton.toolTip		:= "Launch LightGG.gg in Browser"
-ui.d2Launchd2CheckListButton.toolTip		:= "Launch D2Checklist.com in Browser"
-ui.d2LaunchDestinyTrackerButton.toolTip		:= "Launch DestinyTracker.com in Browser"
-ui.d2LaunchBrayTechButton.toolTip			:= "Launch Bray.Tech in Browser"
-ui.d2Launchd2FoundryButton.toolTip			:= "Launch d2Foundry"
 
-ui.d2ToggleAppFunctions.OnEvent("Click", d2ToggleAppFunctions)
-ui.d2ToggleAutoGameConfig.OnEvent("Click", d2ToggleAutoGameConfig)
-ui.dappLoadoutKey.onEvent("click",dappLoadoutKeyClicked)
-ui.dappLoadoutKeyData.onEvent("click",dappLoadoutKeyClicked)
-ui.dappToggleSprintKey.onEvent("click",dappToggleSprintKeyClicked)
-ui.dappToggleSprintKeyData.onEvent("click",dappToggleSprintKeyClicked)
-ui.d2LaunchDIMbutton.onEvent("click",d2launchDIMbuttonClicked)
-
-ui.d2LaunchD2checkListButton.onEvent("click",d2launchD2checklistButtonClicked)
-ui.d2LaunchLightGGButton.onEvent("click",d2launchLightGGButtonClicked)
-ui.d2LaunchDestinyTrackerButton.onEvent("click",d2LaunchDestinyTrackerButtonClicked)
-ui.d2Launchd2FoundryButton.onEvent("click",toggleGlyphWindow)
-ui.d2LaunchBrayTechButton.onEvent("click",d2LaunchBrayTechButtonClicked)
-
-d2RedrawUI(*) {
-	reload()
-}
-
-d2LaunchDIMButtonClicked(*) {
-	ui.d2LaunchDIMbutton.value := "./img/button_DIM_down.png"
-	setTimer () => ui.d2LaunchDIMbutton.value := "./img/button_DIM.png",-400
-	
-	run("chrome.exe http://app.destinyitemmanager.com")
-}
-
-d2LaunchVaultCleanerButtonClicked(*) {
-	ui.d2LaunchVaultCleanerButton.value := "./img/button_vault_down.png"
-	setTimer () => ui.d2LaunchVaultCleanerButton.value := "./img/button_vault_up.png",-400
-	vaultCleaner()	
-}
-
-d2LaunchNewVaultCleanerButtonClicked(*) {
-	ui.d2LaunchVaultCleanerButton.value := "./img/button_vault_down.png"
-	setTimer () => ui.d2LaunchVaultCleanerButton.value := "./img/button_vault_up.png",-400
-	vaultCleaner()	
-}
-
-d2LaunchLightGGButtonClicked(*) {
-	ui.d2LaunchLightGGButton.value := "./img/button_LightGG_down.png"
-	setTimer () => ui.d2LaunchLightGGButton.value := "./img/button_LightGG.png",-400
-	run("chrome.exe https://www.Light.gg")
-}
-	
-d2Launchd2CheckListButtonClicked(*) {
-	ui.d2Launchd2ChecklistButton.value := "./img/button_d2Checklist_down.png"
-	setTimer () => ui.d2Launchd2ChecklistButton.value := "./img/button_d2Checklist.png",-400
-	run("chrome.exe https://www.d2checklist.com")
-}
-
-d2LaunchDestinyTrackerButtonClicked(*) {
-	ui.d2LaunchDestinyTrackerButton.value := "./img/button_DestinyTracker_down.png"
-	setTimer () => ui.d2LaunchDestinyTrackerButton.value := "./img/button_DestinyTracker.png",-400
-	run("chrome.exe https://www.DestinyTracker.com")
-}
-
-d2Launchd2FoundryButtonClicked(*) {
-		if winActive("ahk_exe destiny2.exe")
-	; run("chrome.exe https://www.d2foundry.gg")
-		 toggleGlyphWindow()
-}	
-
-d2LaunchBrayTechButtonClicked(lparam,wparam*) {
-			toggleCodeWindow(lparam)
-}
-
-toggleCodeWindow(lparam,wparam*) {
+toggleCodeWindow(lparam,*) {
 	static codeWindowVisible := false
 		(codeWindowVisible := !codeWindowVisible)
 			? showCodeWindow()
-			: hideCodeWindow()
+			: hideCodeWindow() 
 }
 	
 showCodeWindow(*) {
 	ui.codesArr:=["ShuroChi","MorgethBridge","CorruptedEggs","Glyphs","Runes","NumbersOfPowerEmblem"]
 	ui.codeImageSize:=80
 	
-	ui.d2LaunchBrayTechButton.value := "./img/button_brayTech_down.png"
+	;ui.d2LaunchBrayTechButton.value := "./img/button_brayTech_down.png"
 	d2wwCodesGuiHwnd := false
 	try 
 		d2wwCodesGuiHwnd := ui.d2wwCodesGui.hwnd
@@ -1167,8 +1138,9 @@ showCodeWindow(*) {
 }																																																																																																																																																																																																																				
 
 hideCodeWindow(*) {
-	ui.d2LaunchBrayTechButton.value := "./img/button_brayTech.png"
-	ui.d2wwCodesGui.hide()
+	;ui.d2LaunchBrayTechButton.value := "./img/button_brayTech.png"
+	try
+		ui.d2wwCodesGui.destroy()
 }
 	
 keyBindDialogBox(Msg,Alignment := "Center") {
@@ -1590,17 +1562,40 @@ toggleGlyphWindow(*) {
 }
 
 showGlyphWindow(*) {
-	ui.infoGuiBg.show("noActivate") 
-	ui.infoGui.show("noActivate")
-	ui.d2Launchd2FoundryButton.value := "./img/button_glyph_down.png"
-	winSetTransparent(255,ui.infoGuiBg.hwnd)
-	winSetTransparent(255,ui.infoGui.hwnd)
+	ui.glyphGui:=gui()
+	ui.glyphGui.opt("-caption -border alwaysOnTop")
+	ui.glyphGui.backColor:="010203"
+	winSetTransColor("010203",ui.glyphGui)
+	ui.glyphGuiContent:=ui.glyphGui.addPicture("","./img/d2_glyphs.png")
+	ui.glyphGui.show()
+	ui.glyphGuiContent.onEvent("click",toggleGlyphWindow)
 }
 
 hideGlyphWindow(*) {
-	ui.infoGui.hide(), ui.infoGuiBg.hide(),ui.d2Launchd2FoundryButton.value := "./img/button_glyph.png"
+	ui.glyphGui.hide()
 }
 
+toggleRuneWindow(*) {
+	static runeWindowVisible := false
+	(runeWindowVisible := !runeWindowVisible)
+		? showruneWindow()		
+		: hideruneWindow()
+}
+
+showRuneWindow(*) {
+	ui.runeGui:=gui()
+	ui.runeGui.opt("-caption -border alwaysOnTop")
+	ui.runeGui.backColor:="010203"
+	winSetTransColor("010203",ui.runeGui)
+	ui.runeGuiContent:=ui.runeGui.addPicture("","./img/d2_runes.png")
+	ui.runeGui.show()
+	ui.runeGuiContent.onEvent("click",toggleRuneWindow)
+}
+
+hideRuneWindow(*) {
+	ui.runeGui.hide()
+	;ui.infoGui.hide(), ui.infoGuiBg.hide(),ui.d2Launchd2FoundryButton.value := "./img/button_glyph.png"
+}
 
 d2DoubleClickedGlyph(lparam,wparam*) {
 	winActivate("ahk_exe destiny2.exe")
@@ -1642,7 +1637,7 @@ drawPanelLabel(guiName,labelX,labelY,labelW := 100,labelH := 20,labelText := "ne
 	drawOutlineNamed("vaultStats",ui.gameSettingsGui,9,7,480,67,cfg.themeBorderLightColor,cfg.themeBorderDarkColor,2)
 	ui.gameSettingsGui.addText("x11 y8 w118 h60 background" cfg.themePanel4Color)
 	ui.gameSettingsGui.addText("x11 y10 w475 h61 background" cfg.themePanel2Color)
-	ui.gameSettingsGui.addText("x12 y11 w473 h18 background" cfg.themePanel4Color)
+ui.gameSettingsGui.addText("x12 y11 w473 h18 background" cfg.themePanel4Color)
 	ui.gameSettingsGui.addText("x12 y30 w473 h21 background" cfg.themePanel3Color)
 	this2.statusText:=ui.gameSettingsGui.addText("x17 y31 w473 h20 backgroundTrans c" cfg.themeFont3Color,"Enable VAULT MODE before starting clean-up...")
 	this2.statusText.setFont("s12 q5","Maze-X")
