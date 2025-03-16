@@ -67,7 +67,6 @@ advProgress(2)
 	ui.mainBg := ui.mainGui.addText("x36 y29 w493 h185 background" cfg.themePanel2Color,"")
 	ui.mainTabBg:=ui.mainGui.addText("x34 y0 w162 h28 background" cfg.themeBright1Color)
 	ui.1_GameButtonBg := ui.mainGui.addText("x34 y0 w80 h30 background" cfg.themeBright1Color)
-	
 	ui.2_SetupButtonBg := ui.mainGui.addText("x116 y0 w80 h30 background" cfg.themeBright2Color)
 	
 	advProgress(2)
@@ -76,10 +75,10 @@ advProgress(2)
 	ui.3_FillBg:=ui.mainGui.addText("y2 x196 w280 h28 background" cfg.themeDisabledColor)
 	ui.titleBar:=ui.mainGui.addPicture("x190 y2 w280 h32 left backgroundTrans",cfg.titleBarImage)
 	ui.titleBar.onEvent("click",wm_lbuttonDown_callback)
-	ui.3_FillOutline:=ui.mainGui.addText("hidden x216 y-1 w280 h30 left backgroundTrans","dapp")
-	ui.3_FillOutline.setFont("q5 s19 c" cfg.themeBright1Color)
-	ui.buildNumber:=ui.mainGui.addText("x430 y10 w280 h28 left backgroundTrans","v" a_fileVersion)
-	ui.buildNumber.setFont("q5 s11 c" cfg.themeDark2Color,"impact")
+	ui.3_FillOutline:=ui.mainGui.addText("x216 y-1 w280 h30 left backgroundTrans","dapp")
+	ui.3_FillOutline.setFont("q5 s19 c" cfg.themeBright1Color,"Move-X")
+	ui.buildNumber:=ui.mainGui.addText("x400 y10 w280 h28 left backgroundTrans","v" a_fileVersion)
+	ui.buildNumber.setFont("q5 s10 c" cfg.themeDark2Color,"Move-X")
 
 	
 	ui.1_GameButton := ui.mainGui.addText("x36 y2 w78 h28 center background" cfg.themePanel2Color,"Game")

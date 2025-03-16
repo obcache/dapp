@@ -65,7 +65,7 @@ ToggleColorSelector(*) {
 ui.buttonNewTheme := ui.themeEditorGui.AddPicture("x+0 ys+1  section w23 h22 Background" cfg.ThemeButtonReadyColor,"./Img/button_plus_ready.png")
 ui.buttonNewTheme.OnEvent("Click",addTheme)
 ui.ThemeDDL := ui.themeEditorGui.AddDDL("ys+0 x+1 w120 section center c" cfg.themeFont1Color " Background" cfg.ThemeEditboxColor,cfg.ThemeList)
-
+ui.themeDDL.setFont("s10")
 ;
 ui.ThemeDDL.OnEvent("Change",ThemeChanged)
 ui.ThemeDDL.OnEvent("Focus",RepaintThemeDDL)

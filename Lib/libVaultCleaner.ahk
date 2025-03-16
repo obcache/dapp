@@ -222,13 +222,11 @@ dismantle(thisCol,thisRow) {
 	
 	mouseMove(x,y)
 	sleep(300)
-	send("{f}")
-	sleep(30)
-	send("{f}")
+	send("{f down}")
 	this.isExotic:=false
 	this.isLocked:=false
 	loop 30 {
-			this.tileColor:=pixelGetColor((thisCol<6) ? x-(setting.tileSize/2)+1 : x+(setting.tileSize/2)-3,y)	
+		this.tileColor:=pixelGetColor((thisCol<6) ? x-(setting.tileSize/2)+1 : x+(setting.tileSize/2)-3,y)	
 		; (thisCol<6)
 			; ? logTxt:="Check Locked," formatTime("T12","yyMMddhhmmss") "," thisRow ":" thisCol "," x ":" y "," x-(setting.tileSize/2) ":" y "," this.tileColor
 			; : logTxt:="Check Locked," formatTime("T12","yyMMddhhmmss") "," thisRow ":" thisCol "," x ":" y "," x+(setting.tileSize/2) ":" y "," this.tileColor 
@@ -236,15 +234,14 @@ dismantle(thisCol,thisRow) {
 		rValue:="0x" substr(this.tileColor,3,1)
 		gValue:="0x" substr(this.tileColor,5,1)
 		if (rValue - gValue > 1) || (rValue - gValue < -1) {
-			this.isLocked:=true
+			this.isLocked:=true  
 			break
 		}
 	}
-	send("{f}")	
+	
 	if !this.isLocked {
-		while pixelGetColor((thisCol<6) ? x-(setting.tileSize/2)+1 : x+(setting.tileSize/2)-3,y) == this.tileColor {
-			send("{f down}")
-			sleep(100)
+		;while (pixelGetColor((thisCol<6) ? x-(setting.tileSize/2)+1 : x+(setting.tileSize/2)-3,y) == this.tileColor) && isIdle()   {
+			sleep(2750)
 			if a_index > 30 
 				this.isExotic:=true
 		}
@@ -252,7 +249,7 @@ dismantle(thisCol,thisRow) {
 			this.dismantledExotics.text+=1
 		else
 			this.dismantledLegendary.text+=1
-	}
+	
 		; loop 30 {
 			; this.tileColor:=pixelGetColor((thisCol<6) ? x-(setting.tileSize/2)+1 : x+(setting.tileSize/2)-3,y)	
 			; (thisCol<6)
