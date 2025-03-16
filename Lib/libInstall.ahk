@@ -225,7 +225,7 @@ preAutoExec(InstallDir,ConfigFileName) {
 			fileInstall("./img/d2_WishCodes_thumb.png",installDir "/img/d2_WishCodes_thumb.png",1)
 			fileInstall("./img/button_glyph.png",installDir "/img/button_glyph.png",1)
 			fileInstall("./img/button_glyph_down.png",installDir "/img/button_glyph_down.png",1)
-			
+			fileInstall("./img/d2_button_unbound.png",installDir "/img/d2_button_unbound.png",1)
 			
 			fileInstall("./redist/move-x.otf",installDir "/redist/move-x.otf",1)
 			runWait(a_WinDir "\Fonts\",a_winDir,"Min",&fontPID)
