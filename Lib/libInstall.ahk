@@ -180,8 +180,6 @@ preAutoExec(InstallDir,ConfigFileName) {
 			FileInstall("./Img/button_brayTech.png",InstallDir "/Img/button_brayTech.png",1)
 			FileInstall("./Img/button_brayTech_down.png",InstallDir "/Img/button_brayTech_down.png",1)
 			fileInstall("./img/icon_brayTech.png",installDir "/img/icon_brayTech.png",1)
-			FileInstall("./Img/button_LightGG.png",InstallDir "/Img/button_LightGG.png",1)
-			FileInstall("./Img/button_LightGG_down.png",InstallDir "/Img/button_LightGG_down.png",1)
 			fileInstall("./img/icon_LightGG.png",installDir "/img/icon_LightGG.png",1)
 			FileInstall("./Img/button_DestinyTracker.png",InstallDir "/Img/button_DestinyTracker.png",1)
 			FileInstall("./Img/button_DestinyTracker_down.png",InstallDir "/Img/button_DestinyTracker_down.png",1)
@@ -218,6 +216,7 @@ preAutoExec(InstallDir,ConfigFileName) {
 			fileInstall("./img/d2_CorruptedEggs.png",installDir "/img/d2_CorruptedEggs.png",1)
 			fileInstall("./img/d2_CorruptedEggs_thumb.png",installDir "/img/d2_CorruptedEggs_thumb.png",1)
 			fileInstall("./img/d2_NumbersOfPowerEmblem.png",installDir "/img/d2_NumbersOfPowerEmblem.png",1)
+			fileInstall("./img/dapp_lightburst.png",installDir "/img/dapp_lightburst.png",1)
 			fileInstall("./img/d2_NumbersOfPowerEmblem_thumb.png",installDir "/img/d2_NumbersOfPowerEmblem_thumb.png",1)
 			fileInstall("./img/d2_Glyphs.png",installDir "/img/d2_Glyphs.png",1)
 			fileInstall("./img/d2_Glyphs_thumb.png",installDir "/img/d2_Glyphs_thumb.png",1)
@@ -230,7 +229,6 @@ preAutoExec(InstallDir,ConfigFileName) {
 			
 			fileInstall("./redist/move-x.otf",installDir "/redist/move-x.otf",1)
 			runWait(a_WinDir "\Fonts\",a_winDir,"Min",&fontPID)
-			msgBox(fontPID)
 			fileCopy(installDir "/redist/move-x.otf",a_winDir "\Fonts\move-x.otf",1)
 			try
 				winClose("ahk_exe explorer.exe","C:\Windows\Fonts`nShellView")

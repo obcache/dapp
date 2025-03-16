@@ -653,8 +653,8 @@ d2drawTopPanel(*) {
 }
 
 
-d2drawPanel3(*) {
-	tileSize:=74
+d2drawPanel4(*) {
+	tileSize:=90
 	
 	ui.gameTabs.useTab("InfoGFX")
 	ui.gameSettingsGui.addText("x8 y5 w480 h144 background" cfg.themePanel1Color,"")
@@ -662,33 +662,33 @@ d2drawPanel3(*) {
 	drawOutlineNamed("d2linkPanel",ui.gameSettingsGui,8,5,480,144,cfg.themeBorderDarkColor,cfg.themeBorderLightColor,1)
 	drawOutlineNamed("d2AlwaysRunOutline",ui.gameSettingsGui,10,7,476,140,cfg.themeBorderLightColor,cfg.themeBorderDarkColor,1)
 	ui.gameSettingsGui.addText("hidden x19 y21 section")
-	ui.d2LaunchGlyphsbuttonBg				:= ui.gameSettingsGui.addText("x+0 y+0 section w" tileSize " h" tileSize "46 background" cfg.themeBright1Color)
-	ui.d2LaunchGlyphsbutton				:= ui.gameSettingsGui.addPicture("x+-44 ys+2 w" tileSize " h" tileSize "46 backgroundTrans","./img/d2_ShuroChi_thumb.png")
-	ui.d2LaunchRunesButtonBg			:= ui.gameSettingsGui.addText("x+15 ys w" tileSize " h" tileSize "46 background" cfg.themeBright1Color)
-	ui.d2LaunchRunesButton			:= ui.gameSettingsGui.addPicture("x+-44 ys+2 w" tileSize " h" tileSize "46 backgroundTrans","./img/d2_MorgethBridge_thumb.png")
-	ui.d2LaunchWish3ButtonBg 		:= ui.gameSettingsGui.addText("x+15 ys w" tileSize " h" tileSize "46 background" cfg.themeBright1Color)
-	ui.d2LaunchWish3Button 		:= ui.gameSettingsGui.addPicture("x+-44 ys+2 w" tileSize " h" tileSize "46 backgroundTrans","./img/d2_CorruptedEggs_thumb.png")
-	ui.d2LaunchWish4ButtonBg 		:= ui.gameSettingsGui.addText("x+15 ys w" tileSize " h" tileSize "46 background" cfg.themeBright1Color)
-	ui.d2LaunchWish4Button 		:= ui.gameSettingsGui.addPicture("x+-44 ys+2 w" tileSize " h" tileSize "46 backgroundTrans","./img/d2_numbersOfPowerEmblem_thumb.png")
+	ui.d2LaunchGlyphsbuttonBg				:= ui.gameSettingsGui.addText("x+0 y+0 section w" tileSize " h" tileSize " background" cfg.themeBright1Color)
+	ui.d2LaunchGlyphsbutton				:= ui.gameSettingsGui.addPicture("x+-" (tileSize) " ys+2 w" tileSize " h" tileSize " backgroundTrans","./img/d2_glyphs_thumb.png")
+	ui.d2LaunchRunesButtonBg			:= ui.gameSettingsGui.addText("x+15 ys w" tileSize " h" tileSize " background" cfg.themeBright1Color)
+	ui.d2LaunchRunesButton			:= ui.gameSettingsGui.addPicture("x+-" (tileSize) " ys+2 w" tileSize " h" tileSize " backgroundTrans","./img/d2_runes_thumb.png")
+	ui.d2LaunchWish3ButtonBg 		:= ui.gameSettingsGui.addText("x+15 ys w" tileSize " h" tileSize " background" cfg.themeBright1Color)
+	ui.d2LaunchWish3Button 		:= ui.gameSettingsGui.addPicture("x+-44 ys+2 w" tileSize " h" tileSize " backgroundTrans","./img/d2_wishCodes_thumb.png")
+	; ui.d2LaunchWish4ButtonBg 		:= ui.gameSettingsGui.addText("x+15 ys w" tileSize " h" tileSize " background" cfg.themeBright1Color)
+	; ui.d2LaunchWish4Button 		:= ui.gameSettingsGui.addPicture("x+-44 ys+2 w" tileSize " h" tileSize " backgroundTrans","./img/d2_numbersOfPowerEmblem_thumb.png")
 
-	ui.d2LaunchWish1ButtonBg 			:= ui.gameSettingsGui.addText("x+17 ys w" tileSize " h" tileSize "46 background" cfg.themeBright1Color)
-	ui.d2LaunchWish1Button 			:= ui.gameSettingsGui.addPicture("x+-44 ys+2 w" tileSize " h" tileSize "46 backgroundTrans","./img/d2_Glyphs.png")
-	ui.d2LaunchWish2ButtonBg 			:= ui.gameSettingsGui.addText("x+15 ys w" tileSize " h" tileSize "46 background" cfg.themeBright1Color)
-	ui.d2LaunchWish2Button 			:= ui.gameSettingsGui.addPicture("x+-44 ys+2 w" tileSize " h" tileSize "46 backgroundTrans","./img/d2_MorgethBridge.png")
+	; ui.d2LaunchWish1ButtonBg 			:= ui.gameSettingsGui.addText("x+17 ys w" tileSize " h" tileSize " background" cfg.themeBright1Color)
+	; ui.d2LaunchWish1Button 			:= ui.gameSettingsGui.addPicture("x+-44 ys+2 w" tileSize " h" tileSize " backgroundTrans","./img/d2_Glyphs.png")
+	; ui.d2LaunchWish2ButtonBg 			:= ui.gameSettingsGui.addText("x+15 ys w" tileSize " h" tileSize " background" cfg.themeBright1Color)
+	; ui.d2LaunchWish2Button 			:= ui.gameSettingsGui.addPicture("x+-44 ys+2 w" tileSize " h" tileSize " backgroundTrans","./img/d2_MorgethBridge.png")
 }
 
-d2drawPanel4(*) {
-	static xPos:=16
-	static yPos:=86
+d2drawPanel3(*) {
+	static xPos:=15
+	static yPos:=82
 	
 	cfg.button_link1:=["DIM","URL","https://destinyitemmanager.com","./img/button_DIM.png"]
 	cfg.button_link2:=["Glyphs","Function","toggleGlyphWindow","./img/d2_glyphs_thumb.png"]
 	cfg.button_link3:=["Runes","Function","toggleRuneWindow","./img/d2_runes_thumb.png"]
 	cfg.button_link4:=["WishCodes","Function","toggleCodeWindow","./img/d2_wishCodes_thumb.png"]
-	cfg.button_link5:=["Vault","Function","toggleVaultMode","./img/button_vault_up.png"]
-	cfg.button_link6:=["Glyphs","Function","toggleGlyphWindow","./img/button_glyph.png"]
-	cfg.button_link7:=["Runes","Function","toggleGlyphWindow","./img/button_glyph.png"]
-	cfg.button_link8:=["Vault","Function","toggleVaultMode","./img/button_vault_up.png"]
+	cfg.button_link5:=["Vault","Function","toggleVaultMode","./img/d2_button_unbound.png"]
+	cfg.button_link6:=["Glyphs","Function","toggleGlyphWindow","./img/d2_button_unbound.png"]
+	cfg.button_link7:=["Runes","Function","toggleGlyphWindow","./img/d2_button_unbound.png"]
+	cfg.button_link8:=["Vault","Function","toggleVaultMode","./img/d2_button_unbound.png"]
 	ui.button_link1:=""
 	ui.button_link2:=""
 	ui.button_link3:=""
@@ -698,23 +698,25 @@ d2drawPanel4(*) {
 	ui.button_link7:=""
 	ui.button_link8:=""
 	
-	cfg.button_link_size:=50
+	cfg.button_link_size:=54
 	ui.gameTabs.useTab("Gameplay")
-	ui.gameSettingsGui.addText("x7 y78 w481 h67 background" cfg.themePanel1Color,"")
-	ui.gameSettingsGui.addText("x12 y81 w470 h58 c" cfg.themePanel1Color " background" cfg.themePanel2Color)
-	drawOutlineNamed("d2linkPanel",ui.gameSettingsGui,13,82,470,57,cfg.themeBorderDarkColor,cfg.themeBorderLightColor,1)
-	drawOutlineNamed("d2AlwaysRunOutline",ui.gameSettingsGui,6,76,484,68,cfg.themeBorderLightColor,cfg.themeBorderDarkColor,1)	
+	ui.gameSettingsGui.addText("x7 y75 w485 h70 background" cfg.themePanel1Color,"")
+	ui.gameSettingsGui.addText("x11 y79 w475 h61 c" cfg.themePanel1Color " background" cfg.themePanel2Color)
+	drawOutlineNamed("d2linkPanel",ui.gameSettingsGui,12,80,474,60,cfg.themeDark2Color,cfg.themeBright2Color,1)
+	drawOutlineNamed("d2linkPanel",ui.gameSettingsGui,6,74,486,72,cfg.themeBorderDarkColor,cfg.themeBorderLightColor,1)
+	drawOutlineNamed("d2AlwaysRunOutline",ui.gameSettingsGui,7,75,484,70,cfg.themeBorderLightColor,cfg.themeBorderDarkColor,1)	
 	
 	loop 8 {
-		ui.button_link%a_index%:=ui.gameSettingsGui.addPicture("x" xPos " y" yPos " w" cfg.button_link_size " h" cfg.button_link_size " vbutton_link" a_index " background" cfg.themePanel1Color,cfg.button_link%a_index%[4])
-		drawOutline(ui.gameSettingsGui,xPos,yPos,cfg.button_link_size,cfg.button_link_size,cfg.themeBright1Color,cfg.themeDark1Color,1)
+		ui.button_link%a_index%:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos+1 " w" cfg.button_link_size-2 " h" cfg.button_link_size-2 " vbutton_link" a_index " background" cfg.themePanel4Color,cfg.button_link%a_index%[4])
+		drawOutline(ui.gameSettingsGui,xPos,yPos,cfg.button_link_size,cfg.button_link_size,cfg.themeDark2Color,cfg.themeDark1Color,1)
+		drawOutline(ui.gameSettingsGui,xPos+1,yPos+1,cfg.button_link_size-2,cfg.button_link_size-2,cfg.themeBright2Color,cfg.themeDark2Color,1)
 		this_action:=cfg.button_link%a_index%[3]
 		if cfg.button_link%a_index%[2]=="URL" {
 			ui.button_link%a_index%.onEvent("click",openUrl)
 		} else {
 			ui.button_link%a_index%.onEvent("click",%this_action%)
 		}
-		xPos+=cfg.button_link_size+9
+		xPos+=cfg.button_link_size+5
 
 	}
 	openUrl(this_Url,*) {
@@ -1017,7 +1019,7 @@ MouseRemap(*) {
  ; XButton1 & MButton::x
  
  ; XButton2::LAlt
-; #hotIf
+ ; #hotIf
 
 
 isGameActive(*) {
@@ -1628,72 +1630,74 @@ drawPanelLabel(guiName,labelX,labelY,labelW := 100,labelH := 20,labelText := "ne
 		guiName.setFont("s9")
 		guiName.addText("x" labelX " y" labelY " w" labelW " h" labelH " background" outlineColor,"")
 		guiName.setFont("s10")
-		guiName.addText("x" labelX+1 " y" labelY+1 " w" labelW-2 " h" labelH-2 " background" backColor " center c" fontColor) 
+		guiName.addText("x" labelX+1 " y" labelY+1 " w" labelW-2 " h" labelH-2 " background" backColor " center c" fontColor)  
 		guiName.addText("x" labelX+1 " y" labelY+1 " w" labelW-2 " h" labelH " backgroundTrans center c" fontColor, labelText) 
 }
 
-	ui.gametabs.useTab("222Vault Cleaner222")
+ui.gametabs.useTab("222Vault Cleaner222")
 	ui.gameSettingsGui.addText("x5 y3 w488 h146 background" cfg.themePanel1Color)
-	drawOutlineNamed("vaultStats",ui.gameSettingsGui,9,7,480,67,cfg.themeBorderLightColor,cfg.themeBorderDarkColor,2)
-	ui.gameSettingsGui.addText("x11 y8 w118 h60 background" cfg.themePanel4Color)
-	ui.gameSettingsGui.addText("x11 y10 w475 h61 background" cfg.themePanel2Color)
-ui.gameSettingsGui.addText("x12 y11 w473 h18 background" cfg.themePanel4Color)
-	ui.gameSettingsGui.addText("x12 y30 w473 h21 background" cfg.themePanel3Color)
-	this2.statusText:=ui.gameSettingsGui.addText("x17 y31 w473 h20 backgroundTrans c" cfg.themeFont3Color,"Enable VAULT MODE before starting clean-up...")
-	this2.statusText.setFont("s12 q5","Maze-X")
-	this2.mainButtonBg:=ui.gameSettingsGui.addText("x13 y12 w46 h17 background" cfg.themePanel4Color)
-	this2.mainButton:=ui.gameSettingsGui.addText("section center x13 y12 w110 h17 background" cfg.themeBackgroundColor " c00FFFF","")
-	this2.mainButtonText:=ui.gameSettingsGui.addText("section left x122 y12 w363 h17 background" cfg.themeDark2Color)
-	this2.mainButtonText.setFont("s13 q5","Ubuntu One")
-	this2.mainButtonHotkey:=ui.gameSettingsGui.addText("left x40 y10 background" cfg.themePanel1Color " c" cfg.themeFont3Color " h17 w67")
-	this2.mainButtonHotkeyText:=ui.gameSettingsGui.addText("left x13 y12 backgroundTrans c" cfg.themePanel3Color " h19 w163","")
-	this2.mainButtonHotkeyText.setFont("s10 c778877","Ubuntu One")
-	this2.mainButton.onEvent("click",cleanVaultStart)
-	this2.mainButtonText.onEvent("click",cleanVaultStart)
+	drawOutlineNamed("vaultStats",ui.gameSettingsGui,9,8,480,66,cfg.themeBorderLightColor,cfg.themeBorderDarkColor,2)
+	;ui.gameSettingsGui.addText("x11 y8 w118 h60 background" cfg.themePanel4Color)
+	ui.gameSettingsGui.addText("x9 y8 w478 h66 background" cfg.themePanel2Color)
+ui.gameSettingsGui.addText("x12 y11 w473 h18 background" cfg.themePanel2Color)
+	ui.gameSettingsGui.addText("x11 y30 w475 h23 background" cfg.themePanel3Color)
+	drawOutline(ui.gameSettingsGui,10,9,478,64,cfg.themeDark1Color,cfg.themeDark1Color,2)
+	this.mainButtonBg:=ui.gameSettingsGui.addText("x13 y12 w46 h17 background" cfg.themeDark1Color)
+	this.mainButton:=ui.gameSettingsGui.addText("section center x13 y12 w74 h17 background" cfg.themeDark1Color " c" cfg.themeFont2Color,"")
+	this.mainButtonTextBg:=ui.gameSettingsGui.addText("section left x87 y12 w398 h17 background" cfg.themeBackgroundColor)
+	this.mainButtonText:=ui.gameSettingsGui.addText("section center x12 y10 w74 h17 backgroundTrans","Start")
+	this.mainButtonText.setFont("s13 q5 c" cfg.themeFont4Color,"Ubuntu Mono")
+	;this.mainButtonHotkey:=ui.gameSettingsGui.addText("left x40 y10 background" cfg.themePanel1Color " c" cfg.themeFont3Color " h17 w67")
+	this.mainButtonHotkeyText:=ui.gameSettingsGui.addText("left x93 y11 backgroundTrans c" cfg.themePanel3Color " h19 w280","Press [Del] to START")
+	this.mainButtonHotkeyText.setFont("s10 c778877 q5","Ubuntu Mono")
+	this.mainButton.onEvent("click",cleanVaultStart)
+	this.mainButtonText.onEvent("click",cleanVaultStart)
+	this.statusText:=ui.gameSettingsGui.addText("x17 y31 w470 h20 backgroundTrans c" cfg.themeFont3Color,"Toggle VAULT MODE to enable START button")
+	this.statusText.setFont("s12 q5","Ubuntu Mono")
 	toggleButton2(*) {
-		(this2.state:=!this2.state)
+		(this.state:=!this.state)
 			? vaultCleaner()
 			: vault_exitFunc()
 	}
 	ui.gameSettingsGui.setFont("s12")
 	drawOutlineNamed("vaultStats",ui.gameSettingsGui,9,78,480,66,cfg.themeBright2Color,cfg.themeBorderDarkColor,2)
-	this2.statBg:=ui.gameSettingsGui.addText("x11 y80 w476 h62 background" cfg.themeDark2Color)
+	this.statBg:=ui.gameSettingsGui.addText("x11 y80 w476 h62 background" cfg.themeDark2Color)
 	ui.gameSettingsGui.addText("x245 y80 w242 h62 background" cfg.themePanel4Color)
 	drawOutlineNamed("vaultStats2",ui.gameSettingsGui,245,78,244,66,cfg.themeBright2Color,cfg.themeBorderDarkColor,2)
-	this2.pageLabel:=ui.gameSettingsGui.addText("right x370 y80 w80 h25 backgroundTrans c00FFFF","Page: ")
-	this2.pageCount:=ui.gameSettingsGui.addText("x420 y81 right w56 h25 c00FFFF backgroundTrans",format("{:03d}",this2.page))
-	this2.statusHeaderLabel:=ui.gameSettingsGui.addText("x420 y81 w140 left h25 c00FFFF backgroundTrans","")
-	this2.elapsed:=ui.gameSettingsGui.addText("x340 y100 w80 right h25 c00FFFF backgroundTrans","Elapsed: ")
-	this2.elapsedTime:=ui.gameSettingsGui.addText("x420 y100 left w80 h25 c00FFFF backgroundTrans","00:00:00")
-	this2.remaining:=ui.gameSettingsGui.addText("x340 y120 right w80 h25 c00FFFF backgroundTrans","Remaining: ")
-	this2.remainingtime:=ui.gameSettingsGui.addText("x420 y120 left w80 h25 c00FFFF backgroundTrans","00:00:00")
-	this2.dismantledHeaderLabel:=ui.gameSettingsGui.addText("x250 y0 w110 right h25 c00FFFF backgroundTrans","")
-	this2.dismantledLegendaryLabel:=ui.gameSettingsGui.addText("section x250 y80  left h25 c00FFFF backgroundTrans","Legendary: ")
-	this2.dismantledLegendary:=ui.gameSettingsGui.addText("x+0 ys+1 left w80 h25 c00FFFF backgroundTrans",format("{:03d}","000"))
-	this2.dismantledExoticLabel:=ui.gameSettingsGui.addText("section x250 y100 left h25 c00FFFF backgroundTrans","Exotic: ")
-	this2.dismantledExotics:=ui.gameSettingsGui.addText("x+0 ys+1 left w80 h25 c00FFFF backgroundTrans",format("{:03d}","000"))
-	this2.dismantledTotalLabel:=ui.gameSettingsGui.addText("section x250 y120 left h25 c00FFFF backgroundTrans","Total: ")
-	this2.dismantledTotal:=ui.gameSettingsGui.addText("x+0 ys+1 left w80 h25 c00FFFF backgroundTrans",format("{:03d}","000"))
-	this2.vaultProgressLabelBg:=ui.gameSettingsGui.addText("x12 y52 w64 h18 background" cfg.themeBackgroundColor " c151515","")
-	this2.vaultProgressLabel:=ui.gameSettingsGui.addText("x17 y52 w60 h21 backgroundTrans ccccccc","Progress")
-	this2.vaultProgressLabel.setFont("s13 c" cfg.themePanel3Color,"Ubuntu One")
-	this2.vaultProgress := ui.gameSettingsGui.addProgress("x77 y52 w408 h18 c" cfg.themeButtonReadyColor " background151515 range1-500")
-	this2.completeMsg := ui.gameSettingsGui.addText("x33 y61 w500 h30 backgroundTrans c00FFFF","")
+	this.pageLabel:=ui.gameSettingsGui.addText("right x370 y80 w80 h25 backgroundTrans c00FFFF","Page: ")
+	this.pageCount:=ui.gameSettingsGui.addText("x420 y81 right w56 h25 c00FFFF backgroundTrans",format("{:03d}",this.page))
+	this.statusHeaderLabel:=ui.gameSettingsGui.addText("x420 y81 w140 left h25 c00FFFF backgroundTrans","")
+	this.elapsed:=ui.gameSettingsGui.addText("x340 y100 w80 right h25 c00FFFF backgroundTrans","Elapsed: ")
+	this.elapsedTime:=ui.gameSettingsGui.addText("x420 y100 left w80 h25 c00FFFF backgroundTrans","00:00:00")
+	this.remaining:=ui.gameSettingsGui.addText("x340 y120 right w80 h25 c00FFFF backgroundTrans","Remaining: ")
+	this.remainingtime:=ui.gameSettingsGui.addText("x420 y120 left w80 h25 c00FFFF backgroundTrans","00:00:00")
+	this.dismantledHeaderLabel:=ui.gameSettingsGui.addText("x250 y0 w110 right h25 c00FFFF backgroundTrans","")
+	this.dismantledLegendaryLabel:=ui.gameSettingsGui.addText("section x255 y80  left h25 c00FFFF backgroundTrans","Legendary: ")
+	this.dismantledLegendary:=ui.gameSettingsGui.addText("x+0 ys+1 left w80 h25 c00FFFF backgroundTrans",format("{:03d}","000"))
+	this.dismantledExoticLabel:=ui.gameSettingsGui.addText("section x255 y100 left h25 c00FFFF backgroundTrans","Exotic: ")
+	this.dismantledExotics:=ui.gameSettingsGui.addText("x+0 ys+1 left w80 h25 c00FFFF backgroundTrans",format("{:03d}","000"))
+	this.dismantledTotalLabel:=ui.gameSettingsGui.addText("section x255 y120 left h25 c00FFFF backgroundTrans","Total: ")
+	this.dismantledTotal:=ui.gameSettingsGui.addText("x+0 ys+1 left w80 h25 c00FFFF backgroundTrans",format("{:03d}","000"))
+	this.vaultProgressLabelBg:=ui.gameSettingsGui.addText("x13 y52 w74 h18 background" cfg.themeBackgroundColor " c151515","")
+	this.vaultProgressLabel:=ui.gameSettingsGui.addText("x17 y51 w65 h21 backgroundTrans ccccccc","Progress")
+	this.vaultProgressLabel.setFont("s13 c" cfg.themeFont4Color,"Ubuntu Mono")
+	this.vaultProgress := ui.gameSettingsGui.addProgress("x87 y52 w398 h18 c" cfg.themeButtonReadyColor " background151515 range1-500")
+	this.completeMsg := ui.gameSettingsGui.addText("x33 y61 w500 h30 backgroundTrans c00FFFF","")
 	drawOutlineNamed("vaultCleanerButton",ui.gameSettingsGui,13,82,230,58,cfg.themeBorderLightColor,cfg.themeBorderDarkColor,2)
-	this2.d2LaunchVaultCleanerButton := ui.gameSettingsGui.addPicture("x19 y86 w50  h50 backgroundTrans","./img/button_vault_up.png")
-	this2.d2LaunchVaultCleanerButton.onEvent("click",toggleVaultMode)
-	this2.d2LaunchVaultCleanerText:=ui.gameSettingsGui.addText("x60 y91 w180 h50 center backgroundTrans c" cfg.themeFont1Color,'Vault Mode: Off`nClick to Toggle.')
-	this2.d2LaunchVaultCleanerText.setFont("s12 caaaaaa bold","Ubuntu One")
+	this.d2LaunchVaultCleanerButton := ui.gameSettingsGui.addPicture("x9 y76 w70  h70 backgroundTrans","./img/button_vault_up.png")
+	this.d2LaunchVaultCleanerButton.onEvent("click",toggleVaultMode)
+	this.d2LaunchVaultCleanerText:=ui.gameSettingsGui.addText("x60 y91 w180 h50 center backgroundTrans c" cfg.themeFont1Color,'Vault Mode: Off`nClick to Toggle.')
+	this.d2LaunchVaultCleanerText.setFont("s12 c" cfg.themeFont1Color " bold","Arial")
 	
 	isWindowedFullscreen(*) {
 		static tx:=""
 		static ty:=""
 		static tw:=""
 		static th:=""
-		if !winExist(this2.gameWin)
+		if !winExist(this.gameWin)
 			return
-		winGetPos(&tx,&ty,&tw,&th,this2.gameWin)
-		if winGetMinMax(this2.gameWin) == 0 && a_screenwidth==tw  {
+		winGetPos(&tx,&ty,&tw,&th,this.gameWin)
+		if winGetMinMax(this.gameWin) == 0 && a_screenwidth==tw  {
 			return 1
 		} else {
 			return 0
@@ -1706,45 +1710,55 @@ ui.gameSettingsGui.addText("x12 y11 w473 h18 background" cfg.themePanel4Color)
 			? vaultModeOn()
 			: vaultModeOff()
 			
-		vaultModeOn(*) {
-			;if isWindowedFullscreen() {
-			if !winExist(this2.gameWin) {
-				notifyOSD("Game window not found. Vault mode aborted.",2000,ui.gameSettingsGui)
-				vaultMode:=!vaultMode
-				Return
-			}
-				; winActivate(this2.gameWin)
-				this2.d2LaunchVaultCleanerButton.value:="./img/button_vault_down.png"
-				this2.d2LaunchVaultCleanerButton.redraw()
-				this2.statusText.text :="Press < Shift + \ > to begin clean-up."
-				this2.d2LaunchVaultCleanerText.text:="Vault Mode: On`nClick to Toggle"
-				; winMove((a_screenwidth/2)-640,(a_screenheight/2)-360,1280,720,this2.gameWin)
-				; winActivate(ui.mainGui)
-				vaultCleaner()
-				
-		;}
-		}
-		vaultModeOff(*) {
-			if !winExist(this2.gameWin) {
-				notifyOSD("Vault mode not applicable.`nGame window not found.",2000,ui.gameSettingsGui)
-				Return
-			}
-			; winActivate(this2.gameWin)
-			this2.d2LaunchVaultCleanerButton.value:="./img/button_vault_up.png"
-			this2.d2LaunchVaultCleanerButton.redraw()
-			this2.d2LaunchVaultCleanerText.text:="Vault Mode: Off`nClick to Toggle"
-			; winMove(0,0,a_screenwidth,a_screenHeight,this2.gameWin)
-			; winActivate(ui.mainGui)
-		}
 	}
-	
+
+	vaultModeOn(*) {
+		;if isWindowedFullscreen() {
+		if !winExist(this.gameWin) {
+			notifyOSD("Game window not found. Vault mode aborted.",2000,ui.gameSettingsGui)
+			vaultMode:=!vaultMode
+			Return
+		}
+			; winActivate(this.gameWin)
+			this.d2LaunchVaultCleanerButton.value:="./img/button_vault_down.png"
+			this.d2LaunchVaultCleanerButton.redraw()
+			this.statusText.text :="[Del] to begin clean-up."
+			this.d2LaunchVaultCleanerText.text:="Vault Mode: On`nClick to Toggle"
+			; winMove((a_screenwidth/2)-640,(a_screenheight/2)-360,1280,720,this.gameWin)
+			; winActivate(ui.mainGui)
+			vaultCleaner()
+			
+	;}
+	}
+
+
+	vaultModeOff(*) {
+		if !winExist(this.gameWin) {
+			notifyOSD("Vault mode not applicable.`nGame window not found.",2000,ui.gameSettingsGui)
+			Return
+		}
+		winActivate(this.gameWin)
+		this.mainButtonHotkeyText.text:="Click Vault Icon to Toggle VAULT MODE"
+		this.statusText.text:="Cannot START vault cleaning when not in VAULT MODE"
+		this.d2LaunchVaultCleanerButton.value:="./img/button_vault_up.png"
+		; this.d2LaunchVaultCleanerButton.redraw()
+		this.d2LaunchVaultCleanerText.text:="Vault Mode: Off`nClick to Toggle"
+		try 
+			vaultTopGui.destroy()
+		winMove(0,0,a_screenwidth,a_screenHeight,this.gameWin)
+		winRestore(this.gameWin)
+		winActivate(ui.mainGui)
+		
+		
+	}
+
 	ui.gameTabs.useTab("Mouse")
 	cfg.rmbBind:=iniRead(cfg.file,"Game","RButtonBind","RButton")
 	cfg.lmbBind:=iniRead(cfg.file,"Game","LButtonBind","LButton")
 	cfg.mmbBind:=iniRead(cfg.file,"Game","MButtonBind","MButton")
 	cfg.fbBind:=iniRead(cfg.file,"Game","XButton2Bind","XButton2")
 	cfg.bbBind:=iniRead(cfg.file,"Game","XButton1Bind","XButton1")
-	ui.mouse_lmb:=ui.gameSettingsGui.addPicture("section x15 y5 w65 h-1 vMouseLeftButton backgroundTrans","./img/mouse_lmb.png")
+	ui.mouse_lmb:=ui.gameSettingsGui.addPicture("section x15 y10 w65 h-1 vMouseLeftButton backgroundTrans","./img/mouse_lmb.png")
 	ui.mouse_rmb:=ui.gameSettingsGui.addPicture("x+35 ys w65 h-1 vMouseRightButton backgroundTrans","./img/mouse_rmb.png")
 	ui.mouse_mmb:=ui.gameSettingsGui.addPicture("x+35 ys w65 h-1 vMouseMiddleButton backgroundTrans","./img/mouse_mmb.png")
 	ui.mouse_bb:=ui.gameSettingsGui.addPicture("x+35 ys w65 h-1 vMouseBackButton backgroundTrans","./img/mouse_bb.png")
