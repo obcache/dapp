@@ -144,9 +144,9 @@ cleanVaultStart(*) {
 	
 	(this.restartQueued) ? (this.restartQueued:=false,exit) : 0
 	
-	this.mainButtonHotkey.text:="[Delete]" 	
-	this.mainButton.opt("background" cfg.themeButtonOnColor " c" cfg.themeFont2Color)
-	this.mainButtonText.text:="Stop"
+	; this.mainButtonHotkey.text:="[Delete]" 	
+	; this.mainButton.opt("background" cfg.themeButtonOnColor " c" cfg.themeFont2Color)
+	; this.mainButtonText.text:="Stop"
 	mouseMove(955,170)
 	sleep(500)
 	notLastPage:=true
