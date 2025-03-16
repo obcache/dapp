@@ -91,15 +91,15 @@ d2drawPanel1(*) {
 	
 	
 	ui.d2keybindGameTab1 := guiName.addText("x" labelX " y" labelY+labelH/2 " w" labelW " h" labelH/2+3 " background" outlineColor,"")
-	ui.d2Panel1Tab1Bg := ui.gameSettingsGui.addText("x45 y9 w440 h44 background" cfg.themeBright1Color,"")
-	ui.d2Panel1Tab1Bg2 := ui.gameSettingsGui.addText("x44 y10 w440 h42 background" cfg.themePanel2color " c" cfg.themeFont4color,"")	
+	ui.d2Panel1Tab1Bg := ui.gameSettingsGui.addText("x44 y10 w440 h42 background" cfg.themeBright1Color,"")
+	ui.d2Panel1Tab1Bg2 := ui.gameSettingsGui.addText("x44 y11 w440 h40 background" cfg.themePanel2color " c" cfg.themeFont4color,"")	
 	ui.d2Panel1Tab1Bg3 := ui.gameSettingsGui.addText("x44 y11 w440 h40 background" cfg.themeDark1Color,"")
-	ui.d2Panel1Tab1Bg4 := ui.gameSettingsGui.addText("x44 y12 w440 h40 background" cfg.themePanel2Color,"")
+	ui.d2Panel1Tab1Bg4 := ui.gameSettingsGui.addText("x44 y11 w440 h40 background" cfg.themePanel2Color,"")
 	
-	ui.d2Panel1Tab2Bg := ui.gameSettingsGui.addText("hidden x19 y10 w410 h43 background" cfg.themeBright1Color,"")
-	ui.d2Panel1Tab2Bg2 := ui.gameSettingsGui.addText("hidden x19 y10 w437 h42 background" cfg.themePanel2color " c" cfg.themeFont4color,"")	
-	ui.d2Panel1Tab2Bg3 := ui.gameSettingsGui.addText("hidden x21 y11 w434 h40 background" cfg.themeDark1Color,"")
-	ui.d2Panel1Tab2Bg4 := ui.gameSettingsGui.addText("hidden x20 y12 w434 h40 background" cfg.themePanel2Color,"")
+	ui.d2Panel1Tab2Bg := ui.gameSettingsGui.addText("hidden x19 y10 w437 h42 background" cfg.themeBright1Color,"")
+	ui.d2Panel1Tab2Bg2 := ui.gameSettingsGui.addText("hidden x20 y11 w437 h40 background" cfg.themePanel2color " c" cfg.themeFont4color,"")	
+	ui.d2Panel1Tab2Bg3 := ui.gameSettingsGui.addText("hidden x21 y10 w434 h40 background" cfg.themeDark1Color,"")
+	ui.d2Panel1Tab2Bg4 := ui.gameSettingsGui.addText("hidden x20 y10 w434 h40 background" cfg.themePanel2Color,"")
 	
 	;ui.d2Panel1Tab2Bg := ui.gameSettingsGui.addText("x42 y10 w406 h42 background" cfg.themePanel2color " c" cfg.themeFont4color,"")	
 	;drawOutlineNamed("gameSettings",ui.gameSettingsGui,43,11,404,42,cfg.themeDark1Color,cfg.themeBright1Color,1)
@@ -108,8 +108,8 @@ d2drawPanel1(*) {
 	ui.dappPauseKeyData 	:= ui.gameSettingsGui.addText("xs+0 y+-24 w" (ui.d2KeybindWidth + max(0,(strLen(ui.currKey)-6))*10) " h21 center c" cfg.themeButtonAlertColor " backgroundTrans",subStr(strUpper(cfg.dappPauseKey),1,8))
 	ui.dappPauseKeyLabel	:= ui.gameSettingsGui.addText("xs+1 y+-34 w" (ui.d2KeybindWidth + max(0,(strLen(ui.currKey)-6))*10) " h20 center c" cfg.themeFont1Color " backgroundTrans","Pause")
 	
-	ui.keybindSpacer	:= ui.gameSettingsGui.addText("x+2 y13 w1 h40 background" cfg.themeBright2Color)		
-	ui.keybindSpacer2	:= ui.gameSettingsGui.addText("x+-2 y12 w1 h40 background" cfg.themeBorderLightColor)
+	ui.keybindSpacer	:= ui.gameSettingsGui.addText("x112 y11 w1 h40 background" cfg.themeBright2Color)		
+	ui.keybindSpacer2	:= ui.gameSettingsGui.addText("x113 y11 w1 h40 background" cfg.themeBorderLightColor)
 
 	
 	ui.currKey := cfg.dappToggleSprintKey
@@ -149,25 +149,33 @@ d2drawPanel1(*) {
 	ui.dappSwordFlyKeyData 	:= ui.gameSettingsGui.addText("xs+0 y+-24 w36 h21 center c" cfg.themeButtonAlertColor " backgroundTrans"
 		,subStr(strUpper(cfg.dappSwordFlyKey),1,8))
 	ui.dappSwordFlyKeyLabel 	:= ui.gameSettingsGui.addText("xs+0 y+-34 w40 h20 center c" cfg.themeFont1Color " backgroundTrans","Fly")
-	ui.d2ClassSelectOutline		:= ui.gameSettingsGui.addText("xs+42 y+-15 w39 h39 background" cfg.themeDark2Color)
-	ui.d2ClassSelectOutline2	:= ui.gameSettingsGui.addText("xs+43 y+-41 w38 h38 background" cfg.themeBright1Color)
-	ui.d2ClassSelectBg			:= ui.gameSettingsGui.addText("x442 y+-41 w42 h43 background" cfg.themePanel2Color)
+	ui.d2ClassSelectOutline		:= ui.gameSettingsGui.addText("xs+42 y11 w39 h39 background" cfg.themeDark2Color)
+	ui.d2ClassSelectOutline2	:= ui.gameSettingsGui.addText("xs+43 y11 w38 h38 background" cfg.themeBright1Color)
+	ui.d2ClassSelectBg			:= ui.gameSettingsGui.addText("x440 y11 w45 h40 background" cfg.themePanel2Color)
 	;ui.d2ClassSelectBg2			:= ui.gameSettingsGui.addText("xs+35 y+-14 w56 h16 background" cfg.themeDark1Color)
-	ui.d2ClassSelectBgLine		:= ui.gameSettingsGui.addText("hidden x442 y+-15 w42 h1 background" cfg.themeBright2Color)
-	ui.d2ClassSelectBgLine2		:= ui.gameSettingsGui.addText("hidden x442 y+13 w42 h1 background" cfg.themeBright2Color)
-	ui.d2ClassSelectBg3			:= ui.gameSettingsGui.addText("hidden xs+44 y+-17 w41 h16 background" cfg.themePanel2Color)
-	ui.d2ClassIcon				:= ui.gameSettingsGui.addPicture("x442 y10 w42 h28 center backgroundTrans","")
-	ui.d2ClassIconDown			:= ui.gameSettingsGui.addText("x445 y37 w18 h13 center backgroundTrans c" cfg.themeButtonOnColor,"←")
+
+	ui.d2ClassSelectBg3			:= ui.gameSettingsGui.addText("hidden xs+42 y+-14 w42 h14 background" cfg.themePanel2Color)
+	ui.d2ClassIcon				:= ui.gameSettingsGui.addPicture("x441 y9 w42 h30 center backgroundTrans","")
+	ui.d2ClassIconDown			:= ui.gameSettingsGui.addText("x443 y37 w18 h13 center backgroundTrans c" cfg.themeButtonOnColor,"←")
 	ui.d2ClassIconUp			:= ui.gameSettingsGui.addText("x464 y37 w19 h13 center backgroundTrans c" cfg.themeButtonOnColor,"→")
-	ui.d2ClassSelectSpacer 		:= ui.gameSettingsGui.addText("hidden x463 y36 w1 h15 background" cfg.themeBright2Color)
+	ui.d2ClassSelectSpacer 		:= ui.gameSettingsGui.addText("hidden x462 y37 w1 h14 background" cfg.themeBright2Color)
+	ui.d2ClassSelectBgLine		:= ui.gameSettingsGui.addText("hidden x442 y11 w42 h1 background" cfg.themeBright2Color)
+	ui.d2ClassSelectBgLine1		:= ui.gameSettingsGui.addText("hidden x442 y11 w42 h1 background" cfg.themeBright2Color)
+	ui.d2ClassSelectBgLine2		:= ui.gameSettingsGui.addText("hidden x442 y11 w42 h1 background" cfg.themeBright2Color)
 	ui.d2KeyBindHelpMsg			:= ui.gameSettingsGui.addText("x47 y52 w350 h12 backgroundTrans c" cfg.themeFont1Color,"")
 	ui.d2ClassIcon.toolTip 		:= "Click to Enable/Disable the Fly Macro"
 	ui.d2ClassIconDown.tooltip 	:= "Click to switch between character classes for the Fly Macro"
 	ui.d2ClassIconUp.tooltip 	:= "Click to switch between character classes for the Fly Macro"
-	ui.keybindSpacer3			:= ui.gameSettingsGui.addText("x441 y11 w1 h42 background" cfg.themeBright2Color)		
-	ui.keybindSpacer4			:= ui.gameSettingsGui.addText("x442 y11 w1 h42 background" cfg.themeBorderLightColor)	
-	ui.d2ClassIconSpacer		:= ui.gameSettingsGui.addText("x391 y11 w1 h41 background" cfg.themeBright2Color,"")
-	ui.d2ClassIconSpacer2		:= ui.gameSettingsGui.addText("x392 y11 w1 h41 background" cfg.themeBorderLightColor,"")
+	ui.keybindSpacer5	:= ui.gameSettingsGui.addText("x44 y10 w1 h42 background" cfg.themeBright2Color)		
+	ui.keybindSpacer6	:= ui.gameSettingsGui.addText("x45 y10 w1 h42 background" cfg.themeBorderLightColor)
+	ui.keybindSpacer3			:= ui.gameSettingsGui.addText("x510 y11 w1 h40 background" cfg.themeBright2Color)		
+	ui.keybindSpacer4			:= ui.gameSettingsGui.addText("x512 y11 w1 h40 background" cfg.themeBorderLightColor)	
+	ui.keybindSpacer7			:= ui.gameSettingsGui.addText("x393 y11 w1 h40 background" cfg.themeBright2Color)		
+	ui.keybindSpacer8			:= ui.gameSettingsGui.addText("x394 y11 w1 h40 background" cfg.themeBorderLightColor)	
+	ui.d2ClassIconSpacer		:= ui.gameSettingsGui.addText("x440 y11 w1 h40 background" cfg.themeBright2Color,"")
+	ui.d2ClassIconSpacer2		:= ui.gameSettingsGui.addText("x441 y11 w1 h40 background" cfg.themeBorderLightColor,"")
+	ui.d2ClassIconSpacer3		:= ui.gameSettingsGui.addText("x483 y11 w1 h40 background" cfg.themeBright2Color,"")
+	ui.d2ClassIconSpacer4		:= ui.gameSettingsGui.addText("x484 y11 w1 h40 background" cfg.themeBorderLightColor,"")
 	ui.d2ClassIconDown.setFont("s9")
 	ui.d2ClassIconDown.onEvent("click",d2ClassIconDownChanged)
 	ui.d2ClassIconUp.setFont("s9")
@@ -708,6 +716,7 @@ d2drawPanel3(*) {
 	
 	loop 8 {
 		ui.button_link%a_index%:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos+1 " w" cfg.button_link_size-2 " h" cfg.button_link_size-2 " vbutton_link" a_index " background" cfg.themePanel4Color,cfg.button_link%a_index%[4])
+		ui.button_link%a_index%_detail:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos+1 " w" cfg.button_link_size-2 " h" cfg.button_link_size-2 " backgroundTrans","./img/lightburst_br_light.png")
 		drawOutline(ui.gameSettingsGui,xPos,yPos,cfg.button_link_size,cfg.button_link_size,cfg.themeDark2Color,cfg.themeDark1Color,1)
 		drawOutline(ui.gameSettingsGui,xPos+1,yPos+1,cfg.button_link_size-2,cfg.button_link_size-2,cfg.themeBright2Color,cfg.themeDark2Color,1)
 		this_action:=cfg.button_link%a_index%[3]
@@ -1684,6 +1693,7 @@ ui.gametabs.useTab("222Vault Cleaner222")
 	this.vaultProgressLabel:=ui.gameSettingsGui.addText("x17 y51 w65 h21 backgroundTrans ccccccc","Progress")
 	this.vaultProgressLabel.setFont("s13 c" cfg.themeFont4Color,"Ubuntu Mono")
 	this.vaultProgress := ui.gameSettingsGui.addProgress("x87 y52 w398 h18 c" cfg.themeButtonReadyColor " background151515 range1-500")
+	this.vaultDetail:=ui.gameSettingsGui.addPicture("x87 y52 w398 h18 backgroundTrans","./img/lightburst_bottom_light.png")
 	this.completeMsg := ui.gameSettingsGui.addText("x33 y61 w500 h30 backgroundTrans c" cfg.themeFont1Color "","")
 	drawOutlineNamed("vaultCleanerButton",ui.gameSettingsGui,13,82,230,58,cfg.themeBorderLightColor,cfg.themeBorderDarkColor,2)
 	drawOutlineNamed("vaultCleanerButton",ui.gameSettingsGui,250,82,235,58,cfg.themeBorderLightColor,cfg.themeBorderDarkColor,2)

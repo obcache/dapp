@@ -4,24 +4,25 @@ ThemeList=Modern Class,Cold Steel,Militarized,Neon,Ocean,Alien,tmp
 [Modern Class]
 ThemeBorderLightColor=408080
 ThemeBorderDarkColor=5AADAD
-ThemeBright1Color=8DC7C7
+ThemeBright1Color=C2E0E0
 ThemeBright2Color=408080
 ThemeBackgroundColor=D2C35
 ThemeFont1Color=E6FFFF
-ThemeFont3Color=F4D146
-ThemePanel1Color=355051
+ThemeFont3Color=FFFFFF
+ThemePanel1Color=234747
 ThemePanel3Color=804001
-ThemePanel4Color=405C5E
-ThemePanel2Color=254949
+ThemePanel4Color=2C413F
+ThemePanel2Color=1B9B9
 ThemeEditboxColor=B4144
 ThemeDisabledColor=212121
 ThemeButtonOnColor=FFC6FF
 ThemeButtonReadyColor=FF01FF
-ThemeButtonAlertColor=FFAF09
+ThemeButtonAlertColor=1FFFF
 ThemeFont2Color=99CCCC
 ThemeFont3Color=1F2527
-ThemeFont4Color=FFB366
-ThemeDark2Color=1E3C3C
+ThemeFont4Color=1FFFF
+ThemeDark2Color=408080
+ThemeDark1Color=17D7D
 
 [Cold Steel]
 ThemeBorderLightColor=B2B2B2
@@ -150,7 +151,7 @@ ThemeButtonOnColor=BFFF01
 ThemeButtonReadyColor=BFBFBF
 ThemeButtonAlertColor=E1B664
 ThemeFont4Color=959595
-ThemeTitlebarImage=E:\Documents\Resources\AutoHotKey\__dapp\Img\lightBurst_top_light.png
+ThemeTitlebarImage=E:\Documents\Resources\AutoHotKey\__dapp\Img\lightBurst_tr.png
 
 [Alien]
 ThemeButtonReadyColor=BFBFBF
