@@ -54,7 +54,7 @@ libVaultInit(*) {
 		vaultTopGui := gui()
 		vaultTopGui.backColor:=setting.transColor
 		vaultTopGui.setFont("q5 s10 c000000","calibri")
-		vaultTopGui.opt("-border owner" winGetID(this.gameWin))	
+		vaultTopGui.opt("-border")	
 		vaultTopGui.backColor:=setting.transColor
 		vaultTopGui.setFont("q5 s10 c000000","calibri")
 
@@ -221,8 +221,8 @@ dismantle(thisCol,thisRow) {
 	}
 	
 	mouseMove(x,y)
-	sleep(300)
-	send("{f down}")
+	sleep(200)
+	send("{f}")
 	this.isExotic:=false
 	this.isLocked:=false
 	loop 30 {
@@ -240,8 +240,10 @@ dismantle(thisCol,thisRow) {
 	}
 	
 	if !this.isLocked {
-		;while (pixelGetColor((thisCol<6) ? x-(setting.tileSize/2)+1 : x+(setting.tileSize/2)-3,y) == this.tileColor) && isIdle()   {
-			sleep(2750)
+		sleep(300)
+		send("{f down}")
+		while pixelGetColor((thisCol<6) ? x-(setting.tileSize/2)+1 : x+(setting.tileSize/2)-3,y) == this.tileColor && isIdle()   {
+			sleep(100)
 			if a_index > 30 
 				this.isExotic:=true
 		}
@@ -249,27 +251,7 @@ dismantle(thisCol,thisRow) {
 			this.dismantledExotics.text+=1
 		else
 			this.dismantledLegendary.text+=1
-	
-		; loop 30 {
-			; this.tileColor:=pixelGetColor((thisCol<6) ? x-(setting.tileSize/2)+1 : x+(setting.tileSize/2)-3,y)	
-			; (thisCol<6)
-				; ? logTxt:="Check Exotic," formatTime("T12","yyMMddhhmmss") "," thisRow ":" thisCol "," x ":" y "," x-((setting.tileSize-1.5)/2) ":" y "," this.tileColor
-				; : logTxt:="Check Exotic," formatTime("T12","yyMMddhhmmss") "," thisRow ":" thisCol "," x ":" y "," x+((setting.tileSize+2.5)/2) ":" y "," this.tileColor 
-			; fileAppend(logTxt "`n" ,"./.debug.txt","`n")
-			; rValue:="0x" substr(this.tileColor,3,1)
-			; gValue:="0x" substr(this.tileColor,5,1)
-			; if (rValue - gValue > 1) || (rValue - gValue < -1) {
-				; this.isExotic:=true
-				; break
-		; }
-			
-		; }
-		
-		; !(this.isExotic) 
-			; ? this.dismantledLegendary.text+=1
-			; : (this.dismantledExotics.text+=1,sleep(4000))
-	
-	
+	}
 	send("{f up}")
 }
 

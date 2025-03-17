@@ -30,7 +30,7 @@ GuiGameTab() {
 	ui.gameSettingsGui.BackColor := cfg.themePanel2Color
 	ui.gameSettingsGui.Color := cfg.themePanel2Color
 	ui.gameSettingsGui.MarginX := 5
-	ui.gameSettingsGui.Opt("-Caption -Border +AlwaysOnTop +Owner" ui.MainGui.Hwnd)
+	ui.gameSettingsGui.Opt("-Caption -Border +AlwaysOnTop owner" ui.mainGui.hwnd)
 	ui.gameSettingsGui.SetFont("s14 c" cfg.ThemeFont1Color,"calibri")
 	ui.gameTabs := ui.gameSettingsGui.addTab3("x0 y-5 h194 0x400 bottom c" cfg.themeFont1Color " choose" cfg.activeGameTab,cfg.gameModuleList)
 
@@ -1656,7 +1656,7 @@ ui.gametabs.useTab("222Vault Cleaner222")
 	this.mainButtonTextBg:=ui.gameSettingsGui.addText("section left x87 y12 w398 h17 background" cfg.themeBackgroundColor)
 	this.mainButtonText:=ui.gameSettingsGui.addText("section center x12 y10 w74 h17 backgroundTrans","Start")
 	this.mainButtonText.setFont("s13 q5 c" cfg.themeFont4Color,"Ubuntu Mono")
-	;this.mainButtonHotkey:=ui.gameSettingsGui.addText("left x40 y10 background" cfg.themePanel1Color " c" cfg.themeFont3Color " h17 w67")
+	this.mainButtonHotkey:=ui.gameSettingsGui.addText("hidden left x40 y10 background" cfg.themePanel1Color " c" cfg.themeFont3Color " h17 w67")
 	this.mainButtonHotkeyText:=ui.gameSettingsGui.addText("left x93 y11 backgroundTrans c" cfg.themePanel3Color " h19 w280","Press [Del] to START")
 	this.mainButtonHotkeyText.setFont("s10 c778877 q5","Ubuntu Mono")
 	this.mainButton.onEvent("click",cleanVaultStart)

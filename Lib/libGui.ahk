@@ -38,6 +38,31 @@ tabsChanged(*) {
 
 }
 
+tabsInit(*) {
+	ui.activeTab := ui.mainGuiTabs.Text
+	ui.activeMainTab := ui.mainGuiTabs.value
+	(ui.activeTab=="1_Game____")
+	? (ui.gameSettingsGui.opt("-toolWindow")
+		, ui.gameTabGui.opt("-toolWindow")
+		, ui.mainGui.opt("-toolWindow")
+		, ui.1_GameButton.opt("x36 y2 w78 h30 background" cfg.themePanel2Color)
+		, ui.1_GameButtonBg.opt("background" cfg.themeBright1Color)
+		, ui.2_SetupButton.opt("background" cfg.themePanel4Color)
+		, ui.2_SetupButtonBg.opt("background" cfg.themeBright2Color)
+		, ui.Game_ActiveTabUi.opt("-hidden")
+		, ui.Setup_ActiveTabUi.opt("hidden"))
+	: (ui.gameTabGui.opt("+toolWindow")
+		, ui.gameSettingsGui.opt("+toolWindow")
+		, ui.mainGui.opt("-toolWindow")
+		, ui.1_GameButton.opt("x36 y-4 w78 h18 background" cfg.themePanel4Color)
+		, ui.1_GameButtonBg.opt("background" cfg.themeBright2Color)
+		, ui.2_SetupButton.opt("y2 h32 background" cfg.themePanel2Color)
+		, ui.2_SetupButtonBg.opt("background" cfg.themeBright1Color)
+		, ui.Game_ActiveTabUi.opt("hidden")
+		, ui.Setup_ActiveTabUi.opt("-hidden"))
+
+}
+
 
 	initGui(&cfg, &ui) {
 		
@@ -75,8 +100,8 @@ advProgress(2)
 	ui.3_FillBg:=ui.mainGui.addText("y2 x196 w280 h28 background" cfg.themeDisabledColor)
 	ui.titleBar:=ui.mainGui.addPicture("x190 y2 w280 h28 left backgroundTrans",cfg.titleBarImage)
 	ui.titleBar.onEvent("click",wm_lbuttonDown_callback)
-	ui.3_FillOutline:=ui.mainGui.addText("x216 y-1 w280 h30 left backgroundTrans","dapp")
-	ui.3_FillOutline.setFont("q5 s19 c" cfg.themeBright1Color,"Move-X")
+	ui.3_FillOutline:=ui.mainGui.addText("x206 y1 w280 h30 left backgroundTrans","dapp")
+	ui.3_FillOutline.setFont("q5 s17 c" cfg.themeBright1Color,"Move-X")
 	ui.buildNumber:=ui.mainGui.addText("x420 y12 w280 h28 left backgroundTrans","v" a_fileVersion)
 	ui.buildNumber.setFont("q5 s10 c" cfg.themeDark2Color,"Move-X")
 
@@ -168,7 +193,7 @@ advProgress(2)
 
 	ui.MainGuiTabs.UseTab("")
 
-	advProgress(2)
+advProgress(2)
 line(ui.mainGui,34,211,496,2,cfg.themeBright1Color)
 
 

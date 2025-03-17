@@ -597,16 +597,14 @@ loadScreen(visible := true,NotifyMsg := "dapp Loading",Duration := 10) {
 		} 
 		winSetTransparent("Off",ui.notifyGui.hwnd)
 	} else {
-		try {
-			setTimer(loadingProgressStep,0)
-			transparent := 255
-			while transparent > 20 {
-				winSetTransparent(transparent,ui.notifyGui.hwnd)
-				transparent -= 8
-				sleep(1)
-			}
-
+		transparent := 255
+		while transparent > 10 {
+			winSetTransparent(transparent,ui.notifyGui.hwnd)
+			transparent -= 1
+			sleep(20)
 		}
+		ui.notifyGui.hide()
+		ui.notifyGui.destroy()
 	}
 }
 
