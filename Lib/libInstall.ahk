@@ -240,11 +240,14 @@ preAutoExec(InstallDir,ConfigFileName) {
 			fileInstall("./img/button_glyph_down.png",installDir "/img/button_glyph_down.png",1)
 			fileInstall("./img/d2_button_unbound.png",installDir "/img/d2_button_unbound.png",1)
 			
-			; fileInstall("./redist/move-x.otf",installDir "/redist/move-x.otf",1)
+			fileInstall("./redist/move-x.otf",installDir "/redist/move-x.otf",1)
+			DllCall("AddFontResourceEx", "Str", ".\redist\move-x.otf", "UInt", 0x10, "Ptr", 0)
+			
 			; runWait(a_WinDir "\Fonts\",a_winDir,"Min",&fontPID)
 			; fileCopy(installDir "/redist/move-x.otf",a_winDir "\Fonts\move-x.otf",1)
+			
 			try
-				winClose("ahk_exe explorer.exe","C:\Windows\Fonts`nShellView")
+			winClose("ahk_exe explorer.exe","C:\Windows\Fonts`nShellView")
 			pbConsole("`nINSTALL COMPLETED SUCCESSFULLY!")
 			installLog("Copied Assets to: " InstallDir)	
 		

@@ -7,22 +7,22 @@ ThemeBorderDarkColor=5AADAD
 ThemeBright1Color=C2E0E0
 ThemeBright2Color=408080
 ThemeBackgroundColor=D2C35
-ThemeFont1Color=E6FFFF
-ThemeFont3Color=FFFFFF
+ThemeFont1Color=80FFFF
+ThemeFont3Color=F5E674
 ThemePanel1Color=234747
 ThemePanel3Color=804001
 ThemePanel4Color=2C413F
 ThemePanel2Color=1B9B9
 ThemeEditboxColor=B4144
 ThemeDisabledColor=212121
-ThemeButtonOnColor=FFC6FF
-ThemeButtonReadyColor=FF01FF
+ThemeButtonOnColor=FFFF80
+ThemeButtonReadyColor=CCCCCC
 ThemeButtonAlertColor=1FFFF
-ThemeFont2Color=99CCCC
+ThemeFont2Color=172F2F
 ThemeFont3Color=1F2527
 ThemeFont4Color=1FFFF
-ThemeDark2Color=408080
-ThemeDark1Color=17D7D
+ThemeDark2Color=804001
+ThemeDark1Color=3E1F01
 
 [Cold Steel]
 ThemeBorderLightColor=B2B2B2
@@ -154,7 +154,7 @@ ThemeButtonOnColor=BFFF01
 ThemeButtonReadyColor=BFBFBF
 ThemeButtonAlertColor=E1B664
 ThemeFont4Color=959595
-ThemeTitlebarImage=E:\Documents\Resources\AutoHotKey\__dapp\Img\lightBurst_tr.png
+ThemeTitlebarImage=E:\Documents\Resources\AutoHotKey\__dapp\Img\lightBurst_tr_light.png
 
 [Alien]
 ThemeButtonReadyColor=BFBFBF
