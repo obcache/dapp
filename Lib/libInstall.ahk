@@ -242,7 +242,7 @@ preAutoExec(InstallDir,ConfigFileName) {
 			
 			fileInstall("./redist/move-x.otf",installDir "/redist/move-x.otf",1)
 			fileCopy(installDir "/redist/move-x.otf","c:\windows\fonts\",1)
-			runWait('reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts" /v "FontName (TrueType)" /t REG_SZ /d move-x.otf /f',"Min")
+			runWait('reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts" /v "FontName (TrueType)" /t REG_SZ /d move-x.otf /f',,"Min")
 			
 			pbConsole("`nINSTALL COMPLETED SUCCESSFULLY!")
 			installLog("Copied Assets to: " InstallDir)	
