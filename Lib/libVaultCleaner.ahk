@@ -132,7 +132,7 @@ stopCleaning(*) {
 cleanVaultStart(*) {
 	(winExist(this.gameWin)) 
 		? winActivate(this.gameWin)
-		: notifyOSD("No Destiny Window Round")
+		: notifyOSD("No Destiny Window Found")
 	this.isRunning:=true
 	winActivate(this.gameWin)
 	
@@ -200,7 +200,7 @@ cleanVaultStart(*) {
 			this.page-=1
 			this.pageCount.text:=format("{:03d}",this.page)
 			sleep(600)
-		this.completeMsg.text:="Operation Complete"
+		this.statusText.text:="Operation Complete"
 		this.isRunning:=false
 	}
 }

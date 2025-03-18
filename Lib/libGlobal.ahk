@@ -527,7 +527,7 @@ NotifyOSD(NotifyMsg,Duration := 2000,guiName:=ui.mainGui,Alignment := "Left",YN 
 		ui.notifyGui.Destroy()
 	ui.notifyGui			:= Gui()
 	ui.notifyGui.Title 		:= "Notify"
-	ui.notifyGui.Opt("+AlwaysOnTop -Caption +ToolWindow +Owner" guiName.hwnd)  ; +ToolWindow avoids a taskbar button and an alt-tab menu item.
+	ui.notifyGui.Opt(" -Caption +ToolWindow +Owner" guiName.hwnd)  ; +ToolWindow avoids a taskbar button and an alt-tab menu item.
 	ui.notifyGui.BackColor := cfg.ThemePanel1Color  ; Can be any RGB color (it will be made transparent below).
 	ui.notifyGui.setFont("q5 s16")  ; Set a large font size (32-point).
 	ui.notifyGui.AddText("c" cfg.ThemeFont1Color " " Alignment " BackgroundTrans",NotifyMsg)  ; XX & YY serve to 00auto-size the window.
@@ -536,7 +536,7 @@ NotifyOSD(NotifyMsg,Duration := 2000,guiName:=ui.mainGui,Alignment := "Left",YN 
 	ui.notifyGui.Show("NoActivate Autosize")  ; NoActivate avoids deactivating the currently active window.
 	ui.notifyGui.GetPos(&x,&y,&w,&h)
 	winGetPos(&GuiX,&GuiY,&GuiW,&GuiH,ui.mainGui.hwnd)
-	ui.notifyGui.Show("x" (GuiX+(GuiW/2)-(w/2)) " y" GuiY+(100-(h/2)) " NoActivate")
+	ui.notifyGui.Show("x" (GuiX+(GuiW/2)-(w/2)) " y" GuiY+(100-(h/2)) )
 	guiVis(ui.notifyGui,true)
 	drawOutlineNotifyGui(1,1,w,h,cfg.ThemeBorderDarkColor,cfg.ThemeBorderLightColor,1)
 	drawOutlineNotifyGui(2,2,w-2,h-2,cfg.ThemeBright2Color,cfg.ThemeBright2Color,1)

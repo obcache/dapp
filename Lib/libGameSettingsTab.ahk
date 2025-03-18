@@ -662,20 +662,30 @@ d2drawTopPanel(*) {
 
 
 d2drawPanel4(*) {
-	tileSize:=90
+	tileSize:=105
 	
 	ui.gameTabs.useTab("InfoGFX")
 	ui.gameSettingsGui.addText("x8 y5 w480 h144 background" cfg.themePanel1Color,"")
 	ui.gameSettingsGui.addText("x10 y7 w476 h140 c" cfg.themePanel1Color " background" cfg.themePanel4Color)
 	drawOutlineNamed("d2linkPanel",ui.gameSettingsGui,8,5,480,144,cfg.themeBorderDarkColor,cfg.themeBorderLightColor,1)
 	drawOutlineNamed("d2AlwaysRunOutline",ui.gameSettingsGui,10,7,476,140,cfg.themeBorderLightColor,cfg.themeBorderDarkColor,1)
-	ui.gameSettingsGui.addText("hidden x19 y21 section")
-	ui.d2LaunchGlyphsbuttonBg				:= ui.gameSettingsGui.addText("x+0 y+0 section w" tileSize " h" tileSize " background" cfg.themeBright1Color)
-	ui.d2LaunchGlyphsbutton				:= ui.gameSettingsGui.addPicture("x+-" (tileSize) " ys+2 w" tileSize " h" tileSize " backgroundTrans","./img/d2_glyphs_thumb.png")
-	ui.d2LaunchRunesButtonBg			:= ui.gameSettingsGui.addText("x+15 ys w" tileSize " h" tileSize " background" cfg.themeBright1Color)
-	ui.d2LaunchRunesButton			:= ui.gameSettingsGui.addPicture("x+-" (tileSize) " ys+2 w" tileSize " h" tileSize " backgroundTrans","./img/d2_runes_thumb.png")
-	ui.d2LaunchWish3ButtonBg 		:= ui.gameSettingsGui.addText("x+15 ys w" tileSize " h" tileSize " background" cfg.themeBright1Color)
-	ui.d2LaunchWish3Button 		:= ui.gameSettingsGui.addPicture("x+-44 ys+2 w" tileSize " h" tileSize " backgroundTrans","./img/d2_wishCodes_thumb.png")
+	ui.gameSettingsGui.addText("hidden x5 y15 section")
+	ui.d2LaunchGlyphsbuttonBg	:= ui.gameSettingsGui.addText("x+13 y+0 section w" tileSize " h" tileSize " background" cfg.themePanel1Color)
+	ui.d2LaunchGlyphsbutton		:= ui.gameSettingsGui.addPicture("x+-" (tileSize) " ys+2 w" tileSize " h" tileSize " backgroundTrans","./img/d2_glyphs_thumb.png")
+	ui.d2LaunchGlyphsButtonDetail:=ui.gameSettingsGui.addPicture("x+-" tileSize+20 " ys+" tilesize/2 " w" tileSize+40 " h" tileSize/2 " backgroundTrans","./img/lightburst_bottom_light.png")
+	ui.d2LaunchRunesButtonBg	:= ui.gameSettingsGui.addText("x+-10 ys+0 w" tileSize " h" tileSize " background" cfg.themePanel1Color)
+	ui.d2LaunchRunesButton		:= ui.gameSettingsGui.addPicture("x+-" (tileSize) " ys+2 w" tileSize " h" tileSize " backgroundTrans","./img/d2_runes_thumb.png")
+	ui.d2LaunchGlyphsButtonDetail:=ui.gameSettingsGui.addPicture("x+-" tileSize+20 " ys+" tilesize/2 " w" tileSize+40 " h" tileSize/2 " backgroundTrans","./img/lightburst_bottom_light.png")
+	ui.d2LaunchWish3ButtonBg 	:= ui.gameSettingsGui.addText("x+-10 ys+0 w" tileSize " h" tileSize " background" cfg.themePanel1Color)
+	ui.d2LaunchWish3Button 		:= ui.gameSettingsGui.addPicture("x+-" tileSize " ys+2 w" tileSize " h" tileSize " backgroundTrans","./img/d2_wishCodes_thumb.png")
+	ui.d2LaunchGlyphsButtonDetail:=ui.gameSettingsGui.addPicture("x+-" tileSize+20 " ys+" tilesize/2 " w" tileSize+40 " h" tileSize/2 " backgroundTrans","./img/lightburst_bottom_light.png")
+	ui.d2LaunchMapsButtonBg		:= ui.gameSettingsGui.addText("x+-10 ys+0 w" tileSize " h" tileSize " background" cfg.themePanel1Color)
+	ui.d2LaunchMapsButton		:= ui.gameSettingsGui.addPicture("x+-" tileSize " ys+2 w" tileSize " h" tileSize " backgroundTrans","./img/d2_maps_thumb.png")
+	ui.d2LaunchGlyphsButtonDetail:=ui.gameSettingsGui.addPicture("x+-" tileSize+20 " ys+" tilesize/2 " w" tileSize+40 " h" tileSize/2 " backgroundTrans","./img/lightburst_bottom_light.png")
+	drawOutline(ui.gameSettingsGui,23,26,111,110,cfg.themeBorderLightColor,cfg.themeBorderDarkColor,2)
+	drawOutline(ui.gameSettingsGui,138,26,111,110,cfg.themeBorderLightColor,cfg.themeBorderDarkColor,2)
+	drawOutline(ui.gameSettingsGui,253,26,111,110,cfg.themeBorderLightColor,cfg.themeBorderDarkColor,2)
+	drawOutline(ui.gameSettingsGui,368,26,111,110,cfg.themeBorderLightColor,cfg.themeBorderDarkColor,2)
 	; ui.d2LaunchWish4ButtonBg 		:= ui.gameSettingsGui.addText("x+15 ys w" tileSize " h" tileSize " background" cfg.themeBright1Color)
 	; ui.d2LaunchWish4Button 		:= ui.gameSettingsGui.addPicture("x+-44 ys+2 w" tileSize " h" tileSize " backgroundTrans","./img/d2_numbersOfPowerEmblem_thumb.png")
 
@@ -825,11 +835,22 @@ drawKeybind(x,y,bindName,labelText := bindName,gui := ui.mainGui,w := 84,h := 30
 		}
 	}		
 
-
+ui.prevGameTab:=cfg.activeGameTab
 gameTabChanged(*) {
+	
 	cfg.activeGameTab := ui.gametabs.value
-	drawGameTabs(ui.gameTabs.value)
-	guiVis(ui.gameTabGui,true)
+	if ui.gametabs.value>2 && !cfg.debugEnabled {
+		notifyOSD("In Development. Coming Soon")
+		setTimer () => ui.gametabs.choose(cfg.gameModuleList[ui.prevGameTab]),-3000
+		setTimer () => drawGameTabs(ui.gameTabs.value),-3500
+		
+		cfg.activeGameTab:=ui.prevGameTab
+	} else {
+		ui.prevGameTab:=cfg.activeGameTab
+		drawGameTabs(ui.gameTabs.value)
+	}
+	;guiVis(ui.gameTabGui,true)
+	
 	;tabsChanged()
 }
 
@@ -1661,8 +1682,8 @@ ui.gametabs.useTab("222Vault Cleaner222")
 	this.mainButtonHotkeyText.setFont("s10 c778877 q5","Ubuntu Mono")
 	this.mainButton.onEvent("click",cleanVaultStart)
 	this.mainButtonText.onEvent("click",cleanVaultStart)
-	this.statusText:=ui.gameSettingsGui.addText("x17 y31 w470 h20 backgroundTrans c" cfg.themeFont3Color,"Toggle VAULT MODE to enable START button")
-	this.statusText.setFont("s12 q5","Ubuntu Mono")
+	this.statusText:=ui.gameSettingsGui.addText("x17 y31 w470 h20 backgroundTrans","Toggle VAULT MODE to enable START button")
+	this.statusText.setFont("s12 q5 c" cfg.themeFont3Color,"Ubuntu")
 	toggleButton2(*) {
 		(this.state:=!this.state)
 			? vaultCleaner()
@@ -1694,7 +1715,7 @@ ui.gametabs.useTab("222Vault Cleaner222")
 	this.vaultProgressLabel.setFont("s13 c" cfg.themeFont4Color,"Ubuntu Mono")
 	this.vaultProgress := ui.gameSettingsGui.addProgress("x87 y52 w398 h18 c" cfg.themeButtonReadyColor " background151515 range1-500")
 	this.vaultDetail:=ui.gameSettingsGui.addPicture("x87 y52 w398 h18 backgroundTrans","./img/lightburst_bottom_light.png")
-	this.completeMsg := ui.gameSettingsGui.addText("x33 y61 w500 h30 backgroundTrans c" cfg.themeFont1Color "","")
+	this.completeMsg := ui.gameSettingsGui.addText("hidden x33 y61 w500 h30 backgroundTrans c" cfg.themeFont1Color "","")
 	drawOutlineNamed("vaultCleanerButton",ui.gameSettingsGui,13,82,230,58,cfg.themeBorderLightColor,cfg.themeBorderDarkColor,2)
 	drawOutlineNamed("vaultCleanerButton",ui.gameSettingsGui,250,82,235,58,cfg.themeBorderLightColor,cfg.themeBorderDarkColor,2)
 	this.d2LaunchVaultCleanerButton := ui.gameSettingsGui.addPicture("x9 y76 w70 h70 backgroundTrans","./img/button_vault_up.png")
