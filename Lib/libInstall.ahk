@@ -241,13 +241,9 @@ preAutoExec(InstallDir,ConfigFileName) {
 			fileInstall("./img/d2_button_unbound.png",installDir "/img/d2_button_unbound.png",1)
 			
 			fileInstall("./redist/move-x.otf",installDir "/redist/move-x.otf",1)
-			DllCall("AddFontResourceEx", "Str", ".\redist\move-x.otf", "UInt", 0x10, "Ptr", 0)
+			fileCopy(installDir "/redist/move-x.otf","c:\windows\fonts\",1)
+			runWait('reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts" /v "FontName (TrueType)" /t REG_SZ /d move-x.otf /f',"Min")
 			
-			; runWait(a_WinDir "\Fonts\",a_winDir,"Min",&fontPID)
-			; fileCopy(installDir "/redist/move-x.otf",a_winDir "\Fonts\move-x.otf",1)
-			
-			try
-			winClose("ahk_exe explorer.exe","C:\Windows\Fonts`nShellView")
 			pbConsole("`nINSTALL COMPLETED SUCCESSFULLY!")
 			installLog("Copied Assets to: " InstallDir)	
 		
