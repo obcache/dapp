@@ -240,7 +240,10 @@ preAutoExec(InstallDir,ConfigFileName) {
 			fileInstall("./img/button_glyph_down.png",installDir "/img/button_glyph_down.png",1)
 			fileInstall("./img/d2_button_unbound.png",installDir "/img/d2_button_unbound.png",1)
 			
-			fileInstall("./redist/move-x.otf","c:\windows\fonts\move-x.otf",1)
+			
+			if !fileExist("c:\windows\fonts\move-x.otf")
+				fileInstall("./redist/move-x.otf","c:\windows\fonts\move-x.otf",1)
+			
 			runWait('reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts" /v "FontName (TrueType)" /t REG_SZ /d move-x.otf /f',,"Min")
 			
 			pbConsole("`nINSTALL COMPLETED SUCCESSFULLY!")
