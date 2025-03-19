@@ -11,7 +11,7 @@ if (InStr(A_LineFile,A_ScriptFullPath))
 
 
 ^+a:: {
-	toggleAfk()
+	toggleVaultOn()
 }
 
 

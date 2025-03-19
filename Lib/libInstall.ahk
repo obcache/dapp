@@ -71,7 +71,7 @@ preAutoExec(InstallDir,ConfigFileName) {
 					} 
 					case "Yes": 
 					{
-						cfg.ThemeFont1Color := "00FFFF"
+						cfg.fontColor1 := "00FFFF"
 						sleep(1000)
 						pbConsole("`nPreserving existing configuration may cause issues.")
 						pbConsole("If you encounter issues,try installing again, choosing NO.")

@@ -1,4 +1,4 @@
-A_FileVersion := "1.5.5.6"
+A_FileVersion := "1.5.5.7"
 a_appName := "dapp"
 if (fileExist("./dapp_currentBuild.dat"))
 a_fileVersion := fileRead("./dapp_currentBuild.dat")
@@ -169,4 +169,9 @@ d2AutoGameConfigOverride()
 ui.isActiveWindow:=""
 ;setTimer () => (ui.isActiveWindow:=(winActive("ahk_exe destiny2.exe")) ? (ui.isActiveWindow) ? 1 : (setCapsLockState(cfg.d2AlwaysRunEnabled),1) : (ui.isActiveWindow) ? (0,setCapsLockState(0)) : 0),500
 loadScreen(0)
+
+;themeColors:=map("primaryColor","afafaf","accentColor","688015")
+
+;colorMap:=map("baseColor","afafaf",")
+
 

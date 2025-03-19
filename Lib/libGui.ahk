@@ -18,10 +18,10 @@ tabsChanged(*) {
 			, ui.gameSettingsGui.opt("-toolWindow")
 			, ui.gameTabGui.opt("-toolWindow")
 			, ui.mainGui.opt("-toolWindow")
-			, ui.1_GameButton.opt("x36 y2 w78 h30 background" cfg.themePanel2Color)
-			, ui.1_GameButtonBg.opt("background" cfg.themeBright1Color)
-			, ui.2_SetupButton.opt("background" cfg.themePanel4Color)
-			, ui.2_SetupButtonBg.opt("background" cfg.themeBright2Color)
+			, ui.1_GameButton.opt("x36 y2 w78 h30 background" cfg.bgColor2)
+			, ui.1_GameButtonBg.opt("background" cfg.accentColor3)
+			, ui.2_SetupButton.opt("background" cfg.bgColor3)
+			, ui.2_SetupButtonBg.opt("background" cfg.accentColor4)
 			, ui.Game_ActiveTabUi.opt("-hidden")
 			, ui.Setup_ActiveTabUi.opt("hidden"))
 	: (guiVis(ui.gameSettingsGui,false)
@@ -29,10 +29,10 @@ tabsChanged(*) {
 			, ui.gameTabGui.opt("+toolWindow")
 			, ui.gameSettingsGui.opt("+toolWindow")
 			, ui.mainGui.opt("-toolWindow")
-			, ui.1_GameButton.opt("x36 y-4 w78 h18 background" cfg.themePanel4Color)
-			, ui.1_GameButtonBg.opt("background" cfg.themeBright2Color)
-			, ui.2_SetupButton.opt("y2 h32 background" cfg.themePanel2Color)
-			, ui.2_SetupButtonBg.opt("background" cfg.themeBright1Color)
+			, ui.1_GameButton.opt("x36 y-4 w78 h18 background" cfg.bgColor3)
+			, ui.1_GameButtonBg.opt("background" cfg.accentColor4)
+			, ui.2_SetupButton.opt("y2 h32 background" cfg.bgColor2)
+			, ui.2_SetupButtonBg.opt("background" cfg.accentColor3)
 			, ui.Game_ActiveTabUi.opt("hidden")
 			, ui.Setup_ActiveTabUi.opt("-hidden"))
 
@@ -45,19 +45,19 @@ tabsInit(*) {
 	? (ui.gameSettingsGui.opt("-toolWindow")
 		, ui.gameTabGui.opt("-toolWindow")
 		, ui.mainGui.opt("-toolWindow")
-		, ui.1_GameButton.opt("x36 y2 w78 h30 background" cfg.themePanel2Color)
-		, ui.1_GameButtonBg.opt("background" cfg.themeBright1Color)
-		, ui.2_SetupButton.opt("background" cfg.themePanel4Color)
-		, ui.2_SetupButtonBg.opt("background" cfg.themeBright2Color)
+		, ui.1_GameButton.opt("x36 y2 w78 h30 background" cfg.bgColor2)
+		, ui.1_GameButtonBg.opt("background" cfg.accentColor3)
+		, ui.2_SetupButton.opt("background" cfg.bgColor3)
+		, ui.2_SetupButtonBg.opt("background" cfg.accentColor4)
 		, ui.Game_ActiveTabUi.opt("-hidden")
 		, ui.Setup_ActiveTabUi.opt("hidden"))
 	: (ui.gameTabGui.opt("+toolWindow")
 		, ui.gameSettingsGui.opt("+toolWindow")
 		, ui.mainGui.opt("-toolWindow")
-		, ui.1_GameButton.opt("x36 y-4 w78 h18 background" cfg.themePanel4Color)
-		, ui.1_GameButtonBg.opt("background" cfg.themeBright2Color)
-		, ui.2_SetupButton.opt("y2 h32 background" cfg.themePanel2Color)
-		, ui.2_SetupButtonBg.opt("background" cfg.themeBright1Color)
+		, ui.1_GameButton.opt("x36 y-4 w78 h18 background" cfg.bgColor3)
+		, ui.1_GameButtonBg.opt("background" cfg.accentColor4)
+		, ui.2_SetupButton.opt("y2 h32 background" cfg.bgColor2)
+		, ui.2_SetupButtonBg.opt("background" cfg.accentColor3)
 		, ui.Game_ActiveTabUi.opt("hidden")
 		, ui.Setup_ActiveTabUi.opt("-hidden"))
 
@@ -69,7 +69,7 @@ tabsInit(*) {
 advProgress(2)
 	ui.TransparentColor 	:= "010203"
 	ui.MainGui 				:= Gui()
-	drawOutlineMainGui(34,29,497,155,cfg.ThemeBright1Color,cfg.themeBright1Color,2)
+	drawOutlineMainGui(34,29,497,155,cfg.accentColor3,cfg.accentColor3,2)
 	advProgress(2)
 	ui.MainGui.Name 		:= "dapp"
 	ui.mainGui.Title		:= "dapp"
@@ -86,36 +86,36 @@ advProgress(2)
 	advProgress(2)
 	ui.MainGui.MarginX := 0
 	ui.MainGui.MarginY := 0
-	ui.MainGui.setFont("q5 s13 c" cfg.ThemeFont1Color,"calibri")
+	ui.MainGui.setFont("q5 s13 c" cfg.fontColor1,"calibri")
 	ui.mainGuiAnchor := ui.mainGui.addText("x0 y0 w0 h0 section hidden")
-	line(ui.mainGui,529,184,2,29,cfg.themeBright1Color)
-	ui.mainBg := ui.mainGui.addText("x36 y29 w493 h185 background" cfg.themePanel2Color,"")
-	ui.mainTabBg:=ui.mainGui.addText("x34 y0 w162 h28 background" cfg.themeBright1Color)
-	ui.1_GameButtonBg := ui.mainGui.addText("x34 y0 w80 h30 background" cfg.themeBright1Color)
-	ui.2_SetupButtonBg := ui.mainGui.addText("x116 y0 w80 h30 background" cfg.themeBright2Color)
+	line(ui.mainGui,529,184,2,29,cfg.accentColor3)
+	ui.mainBg := ui.mainGui.addText("x36 y29 w493 h185 background" cfg.bgColor2,"")
+	ui.mainTabBg:=ui.mainGui.addText("x34 y0 w162 h28 background" cfg.accentColor3)
+	ui.1_GameButtonBg := ui.mainGui.addText("x34 y0 w80 h30 background" cfg.accentColor3)
+	ui.2_SetupButtonBg := ui.mainGui.addText("x116 y0 w80 h30 background" cfg.accentColor4)
 	
 	advProgress(2)
 	
 	advProgress(2)
-	ui.3_FillBg:=ui.mainGui.addText("y2 x196 w280 h28 background" cfg.themePanel3Color)
+	ui.3_FillBg:=ui.mainGui.addText("y2 x196 w280 h28 background" cfg.trimColor1)
 	ui.titleBar:=ui.mainGui.addPicture("x190 y2 w280 h28 left backgroundTrans",cfg.titleBarImage)
 	ui.titleBar.onEvent("click",wm_lbuttonDown_callback)
 	ui.3_FillOutline:=ui.mainGui.addText("x206 y1 w280 h30 left backgroundTrans","dapp")
-	ui.3_FillOutline.setFont("q5 s17 c" cfg.themeFont3Color,"Move-X")
+	ui.3_FillOutline.setFont("q5 s17 c" cfg.fontColor3,"Move-X")
 	ui.buildNumber:=ui.mainGui.addText("x420 y12 w280 h28 left backgroundTrans","v" a_fileVersion)
-	ui.buildNumber.setFont("q5 s10 c" cfg.themeFont3Color,"Move-X")
+	ui.buildNumber.setFont("q5 s10 c" cfg.fontColor3,"Move-X")
 
 	
-	ui.1_GameButton := ui.mainGui.addText("x36 y2 w78 h28 center background" cfg.themePanel2Color,"Game")
+	ui.1_GameButton := ui.mainGui.addText("x36 y2 w78 h28 center background" cfg.bgColor2,"Game")
 	ui.1_gameButton.redraw()
-	ui.2_SetupButton := ui.mainGui.addText("y2 x116 w78 h32 center background" cfg.themePanel4Color,"Setup")
+	ui.2_SetupButton := ui.mainGui.addText("y2 x116 w78 h32 center background" cfg.bgColor3,"Setup")
 	ui.2_setupButton.redraw()
-	line(ui.mainGui,34,28,490,2,cfg.themeBright1Color)
-	; line(ui.mainGui,34,0,490,2,cfg.themeBright1Color)
-	; line(ui.mainGui,34,0,2,30,cfg.themeBright1Color)
-	; line(ui.mainGui,112,0,3,30,cfg.themeBright1Color)
-	; line(ui.mainGui,192,0,30,2,cfg.themeBright1Color,"vert")
-	; line(ui.mainGui,194,0,310,2,cfg.themePanel2Color)	
+	line(ui.mainGui,34,28,490,2,cfg.accentColor3)
+	; line(ui.mainGui,34,0,490,2,cfg.accentColor3)
+	; line(ui.mainGui,34,0,2,30,cfg.accentColor3)
+	; line(ui.mainGui,112,0,3,30,cfg.accentColor3)
+	; line(ui.mainGui,192,0,30,2,cfg.accentColor3,"vert")
+	; line(ui.mainGui,194,0,310,2,cfg.bgColor2)	
 	; gameTabClicked(*) {
 		; ui.mainGuiTabs.choose(1)
 	; }
@@ -131,30 +131,30 @@ advProgress(2)
 
 	advProgress(2)
 	
-	ui.mainGuiTabs := ui.MainGui.AddTab3("x34 y2 w494 h213 Buttons -redraw Background" cfg.ThemePanel2Color " -E0x200",["1_Game____","2_Setup____"])
+	ui.mainGuiTabs := ui.MainGui.AddTab3("x34 y2 w494 h213 Buttons -redraw Background" cfg.bgColor2 " -E0x200",["1_Game____","2_Setup____"])
 	ui.MainGuiTabs.useTab("")
 	ui.mainGuiTabs.setFont("q5 s10 q5")
-	ui.MainGui.setFont("q5 s10 q5 c" cfg.ThemeFont1Color,"calibri")
+	ui.MainGui.setFont("q5 s10 q5 c" cfg.fontColor1,"calibri")
 	ui.MainGuiTabs.OnEvent("Change",TabsChanged)
-	line(ui.mainGui,196,1,300,1,cfg.themeBright2Color)
+	line(ui.mainGui,196,1,300,1,cfg.accentColor4)
 	advProgress(2)
 	ui.activeTab 				:= ui.mainGuiTabs.Text
 	ui.previousTab 				:= ui.activeTab
-	ui.handleBarBorder 			:= ui.mainGui.addText("hidden x0 y0 w34 h220 background" cfg.themeBright1Color,"")
+	ui.handleBarBorder 			:= ui.mainGui.addText("hidden x0 y0 w34 h220 background" cfg.accentColor3,"")
 	ui.handleBarImage 			:= ui.MainGui.AddPicture("hidden x1 y2 w33 h220 backgroundTrans")
 	ui.ButtonHandlebarDebug 	:= ui.MainGui.AddPicture("hidden x2 y185 w30 h27")
 	ui.handleBarImage.ToolTip 	:= "Drag Handlebar to Move.`nDouble-Click to collapse/uncollapse."
 	advProgress(2)
 	
-	ui.rightHandlebarBg 	:= ui.mainGui.addText("hidden x529 y32 w31 h182 background" cfg.themeBright1Color,"")
+	ui.rightHandlebarBg 	:= ui.mainGui.addText("hidden x529 y32 w31 h182 background" cfg.accentColor3,"")
 	ui.rightHandlebarImage2 := ui.mainGui.AddPicture("hidden x528 w31 y33 h180 section")
-	ui.ExitButtonBorder 	:= ui.mainGui.AddText("x470 y0 w64 h30 Background" cfg.ThemeBright1Color,"")
-	ui.ExitButtonbg 			:= ui.mainGui.AddText("x501 y1 w28 h27 center Background" cfg.ThemePanel1Color)
+	ui.ExitButtonBorder 	:= ui.mainGui.AddText("x470 y0 w64 h30 Background" cfg.accentColor3,"")
+	ui.ExitButtonbg 			:= ui.mainGui.AddText("x501 y1 w28 h27 center Background" cfg.bgColor1)
 	ui.ExitButton 			:= ui.mainGui.AddText("x501 y2 w28 h28 center BackgroundTrans","r")
-	ui.exitButton.setFont("s18 c" cfg.themeFont1Color,"Webdings")
-	ui.DownButtonbg 			:= ui.mainGui.AddText("x471 y1 w29 h27 center section Background" cfg.ThemePanel1Color)
+	ui.exitButton.setFont("s18 c" cfg.fontColor1,"Webdings")
+	ui.DownButtonbg 			:= ui.mainGui.AddText("x471 y1 w29 h27 center section Background" cfg.bgColor1)
 	ui.DownButton 			:= ui.mainGui.AddText("x473 y-2 w28 h28 center section BackgroundTrans","6")
-	ui.downButton.setFont("s23 c" cfg.themeFont1Color,"Webdings")
+	ui.downButton.setFont("s23 c" cfg.fontColor1,"Webdings")
 	ui.ExitButton.OnEvent("Click",ExitButtonPushed)
 	ui.DownButton.OnEvent("Click",guiHide)
 	guiHide(*) {
@@ -168,13 +168,13 @@ advProgress(2)
 	ui.rightHandleBarImage2.OnEvent("Click",WM_LBUTTONDOWN_callback)
 	ui.DownButton.ToolTip 	:= "Minimizes dapp App"
 	ui.ExitButton.ToolTip 	:= "Terminates dapp App"
-	ui.Game_ActiveTabUi:=ui.mainGui.addText("x36 y28 w78 h2 background" cfg.themePanel2Color)
-	ui.Setup_ActiveTabUi:=ui.mainGui.addText("x116 y28 w78 h2 background" cfg.themePanel2Color)
+	ui.Game_ActiveTabUi:=ui.mainGui.addText("x36 y28 w78 h2 background" cfg.bgColor2)
+	ui.Setup_ActiveTabUi:=ui.mainGui.addText("x116 y28 w78 h2 background" cfg.bgColor2)
 
 	advProgress(2)
 	
-	ui.gvConsole 		:= ui.MainGui.AddListBox("x0 y214 w560 h192 +Background" cfg.ThemePanel1Color)
-	ui.gvConsole.Color 	:= cfg.ThemeBright1Color	
+	ui.gvConsole 		:= ui.MainGui.AddListBox("x0 y214 w560 h192 +Background" cfg.bgColor1)
+	ui.gvConsole.Color 	:= cfg.accentColor3	
 	advProgress(2)
 	afk 				:= Object()	
 
@@ -194,7 +194,7 @@ advProgress(2)
 	ui.MainGuiTabs.UseTab("")
 
 advProgress(2)
-line(ui.mainGui,34,211,496,2,cfg.themeBright1Color)
+line(ui.mainGui,34,211,496,2,cfg.accentColor3)
 
 
 }
@@ -213,15 +213,15 @@ line(this_gui,startingX,startingY,length,thickness,color,vertical:=false) {
 toggleChanged(toggleControl,*) {
 	toggleControl.value := 
 		(cfg.%toggleControl.name%Enabled := !cfg.%toggleControl.name%Enabled)
-			? (toggleControl.Opt("Background" cfg.ThemeButtonOnColor),cfg.toggleOn)
-			: (toggleControl.Opt("Background" cfg.ThemeButtonReadyColor),cfg.toggleOff)
+			? (toggleControl.Opt("Background" cfg.trimColor3),cfg.toggleOn)
+			: (toggleControl.Opt("Background" cfg.trimColor2),cfg.toggleOff)
 			iniWrite(cfg.%toggleControl.name%Enabled,cfg.file,"Toggles",toggleControl.name "Enabled")
 			trayTip(toggleControl.name " changed to " ((cfg.%toggleControl.name%Enabled) ? "On" : "Off"),"dapp Config Change","Iconi Mute")
 
 		; reload()
 		}
 		
-toggleChange(name,onOff := "",toggleOnImg := cfg.toggleOn,toggleOffImg := cfg.toggleOff,toggleOnColor := cfg.themeButtonOnColor,toggleOffColor := cfg.themeButtonReadyColor) {
+toggleChange(name,onOff := "",toggleOnImg := cfg.toggleOn,toggleOffImg := cfg.toggleOff,toggleOnColor := cfg.trimColor3,toggleOffColor := cfg.trimColor2) {
 	 (onOff)
 		? (%name%.Opt("Background" toggleOnColor),toggleOnImg) 
 		: (%name%.Opt("Background" toggleOffColor),toggleOffImg)
@@ -355,16 +355,16 @@ exitMenuShow(this_button) {
 	ui.exitMenuGui := gui()
 	ui.exitMenuGui.Opt("-caption -border toolWindow AlwaysOnTop Owner" ui.mainGui.hwnd)
 	ui.exitMenuGui.BackColor := ui.transparentColor
-	ui.gamingModeLabel := ui.exitMenuGui.addText("x0 y2 w72 h15 center background" cfg.themePanel3color " c" cfg.themeButtonOnColor," Gaming Mode")
+	ui.gamingModeLabel := ui.exitMenuGui.addText("x0 y2 w72 h15 center background" cfg.trimColor1 " c" cfg.trimColor3," Gaming Mode")
 	ui.gamingModeLabel.setFont("q5 s8")
-	ui.gamingLabels := ui.exitMenuGui.addText("x0 y16 w72 h52 center background" cfg.themePanel3color " c" cfg.themeButtonAlertColor," Stop   Start ")
+	ui.gamingLabels := ui.exitMenuGui.addText("x0 y16 w72 h52 center background" cfg.trimColor1 " c" cfg.trimColor4," Stop   Start ")
 	ui.gamingLabels.setFont("q5 s10")
-	ui.stopGamingButton := ui.exitMenuGui.addPicture("x0 y32 section w35 h35 background" cfg.themeFont2Color,"./img/button_quit.png")
-	ui.startGamingButton := ui.exitMenuGui.addPicture("x+2 ys w35 h35 background" cfg.themeFont2Color,"./img/button_exit_gaming.png")
+	ui.stopGamingButton := ui.exitMenuGui.addPicture("x0 y32 section w35 h35 background" cfg.fontColor2,"./img/button_quit.png")
+	ui.startGamingButton := ui.exitMenuGui.addPicture("x+2 ys w35 h35 background" cfg.fontColor2,"./img/button_exit_gaming.png")
 	ui.stopGamingButton.onEvent("Click",exitAppCallback)
 	ui.startGamingButton.onEvent("Click",stopGaming)
 	WinSetTransColor(ui.transparentColor,ui.exitMenuGui)
-	drawOutlineNamed("exitMenuBorder",ui.exitMenuGui,0,0,74,68,cfg.themeFont3Color,cfg.themeFont3Color,2)
+	drawOutlineNamed("exitMenuBorder",ui.exitMenuGui,0,0,74,68,cfg.fontColor3,cfg.fontColor3,2)
 	ui.exitMenuGui.show("x" tbX+490 " y" tbY-70 " AutoSize noActivate")
 	loop 70 {
 		ui.exitMenuGui.move(tbX+490,tbY-a_index)
@@ -438,9 +438,9 @@ exitButtonPushed(this_button,*) {
 ; drawLinks(guiName:=ui.mainGui,linkArr:=["DIM"]) {
 		; linkW:=40
 		; linkH:=40
-		; linkBgColor:=cfg.themeDark2Color
+		; linkBgColor:=cfg.accentColor2
 		; for link in linkArr {
-		; guiName.addText("x5 y5 w" linkW " h" linkH " background" linkBgColor )}
+		; guiName.addText("x5 y5 w" linkW " h" linkH " background" linkbaseColor )}
 	
 ; }
 
@@ -512,9 +512,9 @@ showGui(*) {
 		; cfg.ConsoleVisible := true
 		
 		; ui.ButtonDebug.Value := "./Img/button_console_on.png"
-		; ui.ButtonDebug.Opt("Background" cfg.ThemeButtonOnColor)
+		; ui.ButtonDebug.Opt("Background" cfg.trimColor3)
 		; ui.buttonHandlebarDebug.value := "./img/button_console_on.png"
-		; ui.buttonHandlebarDebug.opt("background" cfg.themeButtonOnColor)
+		; ui.buttonHandlebarDebug.opt("background" cfg.trimColor3)
 		; if (cfg.AnimationsEnabled) {
 		; GuiH := 214	
 			; While (GuiH < 395)
@@ -532,9 +532,9 @@ showGui(*) {
 	; } else {
 		; cfg.ConsoleVisible := false
 		; ui.ButtonDebug.Value := "./Img/button_console_ready.png"
-		; ui.ButtonDebug.Opt("Background" cfg.ThemeButtonReadyColor)
+		; ui.ButtonDebug.Opt("Background" cfg.trimColor2)
 		; ui.buttonHandlebarDebug.value := "./img/button_console_ready.png"
-		; ui.buttonHandlebarDebug.opt("background" cfg.themeButtonReadyColor)
+		; ui.buttonHandlebarDebug.opt("background" cfg.trimColor2)
 
 		; winGetPos(&GuiX,&GuiY,&GuiW,&GuiH,ui.mainGui)
 		; if (cfg.AnimationsEnabled) {
@@ -618,7 +618,7 @@ initConsole(&ui) {
 
 drawMainOutlines() {
 	ui.mainGuiTabs.useTab("")
-	drawOutlineNamed("consolePanelOutline",ui.mainGui,34,200,498,2,cfg.ThemeBorderDarkColor,cfg.ThemeBorderLightColor,2) 		;Log Panel Outline
+	drawOutlineNamed("consolePanelOutline",ui.mainGui,34,200,498,2,cfg.outlineColor2,cfg.outlineColor1,2) 		;Log Panel Outline
 }
 
 drawOpsOutlines() {
@@ -627,18 +627,18 @@ drawOpsOutlines() {
 
 drawGridLines() {
 	ui.MainGuiTabs.UseTab("2_SETUP____")
-		drawOutline(ui.MainGui,101,62,157,100,cfg.ThemeBright2Color,cfg.ThemeBright2Color,2) 	;Win1 Info Frame
-		drawOutline(ui.MainGui,102,62,156,100,cfg.ThemeBright1Color,cfg.ThemeBright1Color,1) 	;Win1 Info Frame
-		drawOutline(ui.MainGui,101,76,157,16,cfg.ThemeBright2Color,cfg.ThemeBright2Color,2)		;Win1 Info Gridlines  
-		drawOutline(ui.MainGui,102,76,156,15,cfg.ThemeBright1Color,cfg.ThemeBright1Color,1)		;Win1 Line above ClassDDL
-		drawOutline(ui.MainGui,101,90,157,17,cfg.ThemeBright2Color,cfg.ThemeBright2Color,2)		;Win1 Line above ClassDDL
-		drawOutline(ui.MainGui,102,90,156,15,cfg.ThemeBright1Color,cfg.ThemeBright1Color,1)		;Win1 Line above ClassDDL
-		drawOutline(ui.MainGui,306,62,156,100,cfg.ThemeBright2Color,cfg.ThemeBright2Color,1)		;WIn2 Info Frame
-		drawOutline(ui.MainGui,306,62,155,100,cfg.ThemeBright1Color,cfg.ThemeBright1Color,2)	;WIn2 Info Frame
-		drawOutline(ui.MainGui,306,76,156,16,cfg.ThemeBright2Color,cfg.ThemeBright2Color,2)		;Win2 Info Gridlines
-		drawOutline(ui.MainGui,306,76,155,15,cfg.ThemeBright1Color,cfg.ThemeBright1Color,1)		;Win2 Line above ClassDDL
-		drawOutline(ui.MainGui,306,90,156,16,cfg.ThemeBright2Color,cfg.ThemeBright2Color,2)		;Win2 Line above ClassDDL
-		drawOutline(ui.MainGui,306,90,155,15,cfg.ThemeBright1Color,cfg.ThemeBright1Color,1)		;Win2 Line above ClassDDL
+		drawOutline(ui.MainGui,101,62,157,100,cfg.accentColor4,cfg.accentColor4,2) 	;Win1 Info Frame
+		drawOutline(ui.MainGui,102,62,156,100,cfg.accentColor3,cfg.accentColor3,1) 	;Win1 Info Frame
+		drawOutline(ui.MainGui,101,76,157,16,cfg.accentColor4,cfg.accentColor4,2)		;Win1 Info Gridlines  
+		drawOutline(ui.MainGui,102,76,156,15,cfg.accentColor3,cfg.accentColor3,1)		;Win1 Line above ClassDDL
+		drawOutline(ui.MainGui,101,90,157,17,cfg.accentColor4,cfg.accentColor4,2)		;Win1 Line above ClassDDL
+		drawOutline(ui.MainGui,102,90,156,15,cfg.accentColor3,cfg.accentColor3,1)		;Win1 Line above ClassDDL
+		drawOutline(ui.MainGui,306,62,156,100,cfg.accentColor4,cfg.accentColor4,1)		;WIn2 Info Frame
+		drawOutline(ui.MainGui,306,62,155,100,cfg.accentColor3,cfg.accentColor3,2)	;WIn2 Info Frame
+		drawOutline(ui.MainGui,306,76,156,16,cfg.accentColor4,cfg.accentColor4,2)		;Win2 Info Gridlines
+		drawOutline(ui.MainGui,306,76,155,15,cfg.accentColor3,cfg.accentColor3,1)		;Win2 Line above ClassDDL
+		drawOutline(ui.MainGui,306,90,156,16,cfg.accentColor4,cfg.accentColor4,2)		;Win2 Line above ClassDDL
+		drawOutline(ui.MainGui,306,90,155,15,cfg.accentColor3,cfg.accentColor3,1)		;Win2 Line above ClassDDL
 }
 		
 controlFocus(ui.mainGuiTabs,ui.mainGui)
@@ -736,4 +736,4 @@ fadeOut(*) {
 
 d2KeybindGameTabClicked()
 d2KeybindAppTabClicked()
-line(ui.mainGui,34,30,198,2,cfg.themeBright1Color,"vert")
+line(ui.mainGui,34,30,198,2,cfg.accentColor3,"vert")

@@ -9,8 +9,8 @@ if (InStr(A_LineFile,A_ScriptFullPath)) { ;run main app
 }
 
 hotIfWinActive("ahk_exe destiny2.exe")
-	hotKey("~*" cfg.dappToggleSprintKey,d2ToggleAlwaysSprint)
-	hotKey("~*" cfg.dappPauseKey,d2ToggleAppFunctions)
+	hotKey("*" cfg.dappToggleSprintKey,d2ToggleAlwaysSprint)
+	hotKey("*" cfg.dappPauseKey,d2ToggleAppFunctions)
 hotIf()
 
 hotIf(d2RemapCrouchEnabled)
@@ -97,43 +97,31 @@ d2MorgethWarlock(*) {
 }
 
 d2reload(*) {
-	startReload()
-	stopReload()
+	ui.d2GameReloadKeyData.opt("c" cfg.trimColor3)
+	ui.d2GameReloadKeyData.redraw()
+	ui.dappReloadKeyData.opt("c" cfg.trimColor3)
+	ui.dappReloadKeyData.redraw()
+	ui.d2IsReloading := true
+	d2ToggleAppFunctionsOff()
 	
-	startReload() {
-		ui.d2GameReloadKeyData.opt("c" cfg.themeButtonOnColor)
-		ui.d2GameReloadKeyData.redraw()
-		ui.dappReloadKeyData.opt("c" cfg.themeButtonOnColor)
-		ui.dappReloadKeyData.redraw()
-		ui.d2IsReloading := true
-		d2ToggleAppFunctionsOff()
-	}
-	
-	stopReload() {
-		; ui.d2IsReloading := false
-		; d2ToggleAppFunctionsOn()
-		; ui.dappReloadKeyData.opt("c" cfg.themeButtonAlertcolor)
-		; ui.d2GameReloadKeyData.opt("c" cfg.themeButtonAlertColor)
-		; ui.d2GameReloadKeyData.redraw()
-		setTimer () => (ui.d2IsReloading := false
-			,d2ToggleAppFunctionsOn()
-			,ui.dappReloadKeyData.opt("c" cfg.themeButtonAlertcolor)
-			,ui.d2GameReloadKeyData.opt("c" cfg.themeButtonAlertColor)
-			,ui.d2GameReloadKeyData.redraw()),-2600
-	}
+	setTimer () => (ui.d2IsReloading := false
+		,d2ToggleAppFunctionsOn()
+		,ui.dappReloadKeyData.opt("c" cfg.trimColor4)
+		,ui.d2GameReloadKeyData.opt("c" cfg.trimColor4)
+		,ui.d2GameReloadKeyData.redraw()),-2600
 }	
 
 d2HoldToCrouch(*) {
-	ui.dappHoldToCrouchKeyData.opt("c" cfg.themeButtonOnColor)
+	ui.dappHoldToCrouchKeyData.opt("c" cfg.trimColor3)
 	if (cfg.topDockEnabled) {
-		ui.dockBarD2HoldToCrouch.opt("background" cfg.themeButtonAlertColor)
+		ui.dockBarD2HoldToCrouch.opt("background" cfg.trimColor4)
 		ui.dockBarD2HoldToCrouch.redraw()
 	}
 	send("{" cfg.d2gameHoldToCrouchKey " down}")
 	keywait(cfg.dappHoldToCrouchKey)
-	ui.dappHoldToCrouchKeyData.opt("c" cfg.themeButtonAlertColor)
+	ui.dappHoldToCrouchKeyData.opt("c" cfg.trimColor4)
 	if (cfg.topDockEnabled) {
-		ui.dockBarD2HoldToCrouch.opt("background" cfg.themeButtonOnColor)
+		ui.dockBarD2HoldToCrouch.opt("background" cfg.trimColor3)
 		ui.dockBarD2HoldToCrouch.redraw()
 	}
 	send("{" cfg.d2gameHoldToCrouchKey " Up}")
@@ -167,12 +155,12 @@ d2ReadyToSprint(*) {
 			? (!cfg.dappPaused)
 				? (!getKeyState("RButton")) 
 					? (!getKeyState("["))
-						? (!getKeyState("LButton")) 
+						;? (!getKeyState("LButton")) 
 							? (!getKeyState(cfg.dappHoldToCrouchKey)) 
 								? 1
 								: 0
 							: 0
-						: 0
+						;: 0
 					: 0
 				: 0
 			: 0
@@ -300,14 +288,14 @@ d2LoadoutModifier(hotKeyName,isController := false) {
 	d2LoadoutCoordsStr := rtrim(d2LoadoutCoordsStr,",")
 
 	try {
-		ui.dockBarLoadouts.opt("background" cfg.themeButtonAlertColor)
+		ui.dockBarLoadouts.opt("background" cfg.trimColor4)
 		ui.dockBarLoadouts.redraw()
 	}
 	
 	ui.dappLoadoutKeyData.text := cfg.dappLoadoutKey " - " subStr(hotKeyName,-1)
-	ui.dappLoadoutKeyData.opt("c" cfg.themeButtonOnColor)
+	ui.dappLoadoutKeyData.opt("c" cfg.trimColor3)
 	ui.dappLoadoutKeyData.redraw()
-	setTimer () => (ui.dappLoadoutKeyData.text := cfg.dappLoadoutKey,ui.dappLoadoutKeyData.opt("c" cfg.themeButtonAlertColor),ui.dappLoadoutKeyData.redraw()),-1000
+	setTimer () => (ui.dappLoadoutKeyData.text := cfg.dappLoadoutKey,ui.dappLoadoutKeyData.opt("c" cfg.trimColor4),ui.dappLoadoutKeyData.redraw()),-1000
 
 	loadoutX := strSplit(cfg.d2LoadoutCoords[subStr(hotKeyName,-1)],":")[1]
 	loadoutY := strSplit(cfg.d2LoadoutCoords[subStr(hotKeyName,-1)],":")[2]
@@ -336,23 +324,23 @@ d2LoadoutModifier(hotKeyName,isController := false) {
 	sleep(100*cfg.dappLoadoutMultiplier)
 	send("{F1}")
 	try {
-		ui.dockBarLoadouts.opt("background" cfg.themeButtonOnColor)
+		ui.dockBarLoadouts.opt("background" cfg.trimColor3)
 		ui.dockBarLoadouts.redraw()
 	}
 }
 	
 d2ToggleAlwaysSprint(*) {
 	(cfg.d2AlwaysRunEnabled := !cfg.d2AlwaysRunEnabled)
-		? (ui.dappToggleSprintKeyData.opt("c" cfg.themeButtonOnColor)
+		? (ui.dappToggleSprintKeyData.opt("c" cfg.trimColor3)
 			,ui.dappToggleSprintKeyData.redraw()
-			,ui.d2GameToggleSprintKeyData.opt("c" cfg.themeButtonOnColor)
+			,ui.d2GameToggleSprintKeyData.opt("c" cfg.trimColor3)
 			,ui.d2GameToggleSprintKeyData.redraw()
 			,SetCapsLockState("Off"))
 		: (ui.d2IsSprinting := false
 			,SetCapsLockState("Off")
-			,ui.dappToggleSprintKeyData.opt("c" cfg.themeButtonAlertColor)
+			,ui.dappToggleSprintKeyData.opt("c" cfg.trimColor4)
 			,ui.dappToggleSprintKeyData.redraw()
-			,ui.d2GameToggleSprintKeyData.opt("c" cfg.themebuttonAlertColor)
+			,ui.d2GameToggleSprintKeyData.opt("c" cfg.trimColor4)
 			,ui.d2GameToggleSprintKeyData.redraw()
 			,((ui.d2IsSprinting)
 				? send("{" cfg.dappToggleSprintKey "}")
@@ -366,22 +354,22 @@ d2ToggleAppFunctions(*) {
 }
 
 d2ToggleAppFunctionsOn() {
-	ui.d2ToggleAppFunctions.Opt("Background" cfg.ThemeButtonOnColor)
+	ui.d2ToggleAppFunctions.Opt("Background" cfg.trimColor3)
 	ui.d2ToggleAppFunctions.value := "./img/toggle_vertical_trans_on.png"
 	try {				
-		ui.dockBarD2AlwaysRun.Opt("Background" cfg.ThemeButtonOnColor)
+		ui.dockBarD2AlwaysRun.Opt("Background" cfg.trimColor3)
 		ui.dockBarD2AlwaysRun.value := "./img/toggle_vertical_trans_on.png"
 	}
 }
 
 d2ToggleAppFunctionsOff() {
 	ui.dappFunctionsEnabled := false
-	ui.d2ToggleAppFunctions.opt("background" cfg.ThemeButtonReadyColor)
+	ui.d2ToggleAppFunctions.opt("background" cfg.trimColor2)
 	ui.d2ToggleAppFunctions.value := "./img/toggle_vertical_trans_off.png"
 	ui.d2ToggleAppFunctions.redraw()
 	try {
-		ui.dockBarD2AlwaysRun.opt("background" cfg.ThemeButtonAlertColor)
-		ui.dockBarRunIcon.opt("background" cfg.themeButtonOnColor)
+		ui.dockBarD2AlwaysRun.opt("background" cfg.trimColor4)
+		ui.dockBarRunIcon.opt("background" cfg.trimColor3)
 		ui.dockBarRunIcon.redraw()
 		ui.dockBarD2AlwaysRun.value := "./img/toggle_vertical_trans_off.png"
 	}
@@ -396,13 +384,13 @@ d2ToggleAutoGameConfig(*) {
 	
 d2ToggleAutoGameConfigOn() {
 	;ui.d2Log.text := " start: SPRINT`n rcvd: " strUpper(subStr(cfg.dappToggleSprintKey,1,8)) "`n" ui.d2Log.text
-	ui.d2ToggleAutoGameConfig.Opt("Background" cfg.ThemeButtonOnColor)
+	ui.d2ToggleAutoGameConfig.Opt("Background" cfg.trimColor3)
 	ui.d2ToggleAutoGameConfig.value := "./img/toggle_vertical_trans_on.png"
 }
 
 d2ToggleAutoGameConfigOff() {
 	ui.d2AutoGameConfigEnabled := false
-	ui.d2ToggleAutoGameConfig.opt("background" cfg.ThemeButtonReadyColor)
+	ui.d2ToggleAutoGameConfig.opt("background" cfg.trimColor2)
 	ui.d2ToggleAutoGameConfig.value := "./img/toggle_vertical_trans_off.png"
 	ui.d2ToggleAutoGameConfig.redraw()
 }

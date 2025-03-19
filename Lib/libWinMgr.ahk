@@ -78,7 +78,7 @@ wm_mouseMove(wParam, lParam, msg, hwnd) {
 			(ui.incursionNoticeHwnd == hwnd)
 				? (setTimer(d2FlashIncursionNoticeA,0)
 					,setTimer(d2FlashIncursionNoticeB,0)
-					,ui.incursionGuiBg.opt("background" cfg.themeFont3Color))
+					,ui.incursionGuiBg.opt("background" cfg.fontColor3))
 				: prevHwnd:=hwnd
 			prevHwnd:=hwnd
 }

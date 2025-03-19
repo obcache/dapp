@@ -48,6 +48,8 @@ libVaultInit(*) {
 			exit
 		}
 		
+		
+		msgBox(winGetMinMax("ahk_exe destiny2.exe"))
 		pbNotify('If Destiny 2 is not already set to "Windowed Fullscreen",`n please do it now and then click "Proceed"',30,"YN","fullscreenProcess","fullscreenCancel")
 		try 
 			vaultTopGui.destroy()
@@ -89,13 +91,14 @@ libVaultInit(*) {
 			this.origGameWinY:=gameWinY
 			this.origGameWinW:=gameWinW
 			this.origGameWinH:=gameWinH
+			vaultTopGui.show("x" (a_screenwidth/2)-640 " y" (a_screenHeight/2)-360 " w" setting.gameW-6 " h30")
+			if winGetMinMax(this.gameWin) > 0 {
+				send("{alt}{enter}")
 			winMove((a_screenwidth/2)-640,(a_screenHeight/2)-360,1280,720,this.gameWin)
 			winSetStyle("-0xC00000",this.GameWin)
 			winActivate(this.gameWin)
-
 			winWait(this.gameWin)
-			sleep(2000)
-			vaultTopGui.show("x" (a_screenwidth/2)-640 " y" (a_screenHeight/2)-360 " w" setting.gameW-6 " h30")
+			;sleep(2000)
 
 			send("{F1}")
 			sleep(600)
@@ -105,8 +108,8 @@ libVaultInit(*) {
 			sleep(600)
 			;this.mainButtonHotkey.setFont("q5 c00FFFFE")
 			this.statusText.text:="Dismantles ALL unlocked items. *DIM Search 'is:unlocked' to review"
-			this.mainButton.opt("background" cfg.themeButtonAlertColor)
-			this.mainButtonText.setFont("c" cfg.themeFont2Color)
+			this.mainButton.opt("background" cfg.trimColor4)
+			this.mainButtonText.setFont("c" cfg.fontColor2)
 			this.mainButton.redraw()
 			;this.vaultProgressLabelBg.opt("backgroundD0D0F0")
 			;this.vaultProgressLabelBg.redraw()
@@ -114,6 +117,7 @@ libVaultInit(*) {
 				msgBox("Process " setting.gameExe " not Running")
 		}
 	}
+}
 
 vault_LBUTTONDOWN_callback(thisControl,info) {
 	postMessage("0xA1",2,,,"A")
@@ -123,7 +127,7 @@ stopCleaning(*) {
 	this.isRunning:=false
 	this.mainButtonText.text:="Start"
 	this.statusText.text:="[Del] to start cleaning"
-	this.mainButton.opt("background" cfg.themeButtonAlertColor "c" cfg.themeFont4Color)
+	this.mainButton.opt("background" cfg.trimColor4 "c" cfg.fontColor4)
 	setTimer(timer,0)
 	this.restartQueue:=false
 	exit
@@ -145,7 +149,7 @@ cleanVaultStart(*) {
 	(this.restartQueued) ? (this.restartQueued:=false,exit) : 0
 	
 	; this.mainButtonHotkey.text:="[Delete]" 	
-	; this.mainButton.opt("background" cfg.themeButtonOnColor " c" cfg.themeFont2Color)
+	; this.mainButton.opt("background" cfg.trimColor3 " c" cfg.fontColor2)
 	; this.mainButtonText.text:="Stop"
 	mouseMove(955,170)
 	sleep(500)
