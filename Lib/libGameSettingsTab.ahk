@@ -1708,10 +1708,10 @@ ui.gametabs.useTab("222Vault Cleaner222")
 	this.dismantledTotalLabel:=ui.gameSettingsGui.addText("section x255 y118 left h25 c" cfg.fontColor3 " backgroundTrans","Total: ")
 	this.dismantledTotal:=ui.gameSettingsGui.addText("x+0 ys+0 left w80 h25 c" cfg.fontColor3 " backgroundTrans",format("{:03d}","000"))
 	
-	this.vaultProgressLabelBg:=ui.gameSettingsGui.addText("x10 y52 w110 h18 background" cfg.baseColor,"")
-	this.vaultProgressLabel:=ui.gameSettingsGui.addText("x20 y52 w110 h21 backgroundTrans c" cfg.fontColor1,"Progress")
+	this.vaultProgressLabelBg:=ui.gameSettingsGui.addText("x10 y52 w126 h20 background" cfg.baseColor,"")
+	this.vaultProgressLabel:=ui.gameSettingsGui.addText("x18 y54 w110 h21 backgroundTrans c" cfg.fontColor1,"Progress")
 	this.vaultProgressLabel.setFont("s10","move-x")
-	this.vaultProgress := ui.gameSettingsGui.addProgress("x90 y52 w398 h18 c" cfg.trimColor5 " background151515 range1-500")
+	this.vaultProgress := ui.gameSettingsGui.addProgress("x106 y54 w380 h18 c" cfg.trimColor5 " background151515 range1-500")
 	this.vaultDetail:=ui.gameSettingsGui.addPicture("x60 y52 w398 h17 backgroundTrans","./img/lightburst_tl.png")
 	this.completeMsg := ui.gameSettingsGui.addText("hidden x33 y61 w500 h30 backgroundTrans c" cfg.fontColor1 "","")
 	
@@ -1725,12 +1725,6 @@ ui.gametabs.useTab("222Vault Cleaner222")
 	this.d2LaunchVaultCleanerText:=ui.gameSettingsGui.addText("x60 y91 w180 h50 center backgroundTrans c" cfg.fontColor1,'Vault Mode: Off`nClick to Toggle.')
 	this.d2LaunchVaultCleanerText.setFont("s12 c" cfg.fontColor1 " bold","Arial")
 	
-
-
-
-
-
-
 	isWindowedFullscreen(*) {
 		static tx:=""
 		static ty:=""
