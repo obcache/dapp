@@ -22,8 +22,8 @@ ui.themeEditorGui := gui()
 ui.themeEditorGui.opt("-caption alwaysOnTop toolWindow owner" ui.mainGui.hwnd)
 ui.themeEditorGui.backColor := cfg.themeBackgroundColor
 ui.themeEditorGui.color := cfg.themeBackgroundColor
-ui.themeEditorTitlebar := ui.themeEditorGui.addText("x0 y0 w400 h27 background" cfg.themePanel1Color " c" cfg.themeFont1Color,"")
-ui.themeEditorTitlebarText := ui.themeEditorGui.addText("x5 y3 w100 h27 backgroundTrans c" cfg.themeFont1Color,"Theme Editor" )
+ui.themeEditorTitlebar := ui.themeEditorGui.addText("x0 y0 w400 h21 background" cfg.themePanel1Color " c" cfg.themeFont1Color,"")
+ui.themeEditorTitlebarText := ui.themeEditorGui.addText("x5 y3 w100 h21 backgroundTrans c" cfg.themeFont1Color,"Theme Editor" )
 ui.themeEditorTitlebarText.setFont("q5 s13","calibri bold")
 ui.themeEditorTitlebar.onEvent("click",wm_lButtonDown_callback)
 
@@ -31,20 +31,20 @@ ui.themeEditorTitlebar.onEvent("click",wm_lButtonDown_callback)
 guiVis(ui.themeEditorGui,false)
 ui.themeEditorGui.show("w320 h250 noActivate")
 drawOutlineNamed("themeOutline",ui.themeEditorGui,0,0,324,250,cfg.ThemeBorderDarkColor,cfg.ThemeBorderLightColor,3)
-;drawOutlineNamed("themeOutline",ui.themeEditorGui,1,0,324,30,cfg.ThemeBorderDarkColor,cfg.ThemeBorderLightColor,2)
-ui.ColorSelectorLabel2 := ui.themeEditorGui.AddText("x11 y33 h29 section w80 BackgroundTrans c"
+;drawOutlineNamed("themeOutline",ui.themeEditorGui,1,0,324,24,cfg.ThemeBorderDarkColor,cfg.ThemeBorderLightColor,2)
+ui.ColorSelectorLabel2 := ui.themeEditorGui.AddText("x11 y33 h23 section w80 BackgroundTrans c"
 	((cfg.ColorPickerEnabled) 
 		? cfg.ThemeFont3Color " background" cfg.themePanel3Color 
 		: cfg.ThemeFont3Color " background" cfg.themePanel3Color) 
 	,((cfg.ColorPickerEnabled) 
 		? (" Color App") 
 		: (" Swatches ")))
-drawOutlineNamed("themeEditorCancelButtonOutline",ui.themeEditorGui,295,0,25,30,cfg.themeBorderDarkColor,cfg.themeBorderLightColor,2)
+drawOutlineNamed("themeEditorCancelButtonOutline",ui.themeEditorGui,295,0,25,24,cfg.themeBorderDarkColor,cfg.themeBorderLightColor,2)
 ui.ColorSelectorLabel2.setFont("q5 s13","calibri bold")
 ;drawOutlineNamed("ThemeOutlineShadow",ui.themeEditorGui,10,32,60,28,cfg.ThemeBorderDarkColor,cfg.ThemeBorderDarkColor,2)
 
 
-ui.toggleColorSelector := ui.themeEditorGui.AddPicture("y33 x93 section w60 h30 background" cfg.themeBackgroundColor, (cfg.ColorPickerEnabled) ? ("./Img/toggle_on.png") : ("./Img/toggle_off.png"))
+ui.toggleColorSelector := ui.themeEditorGui.AddPicture("y33 x93 section w60 h24 background" cfg.themeBackgroundColor, (cfg.ColorPickerEnabled) ? ("./Img/toggle_on.png") : ("./Img/toggle_off.png"))
 ui.toggleColorSelector.OnEvent("Click", ToggleColorSelector)
 ui.toggleColorSelector.ToolTip := "Select color picking method for theming features"
 
@@ -60,25 +60,31 @@ ToggleColorSelector(*) {
 	ui.toggleColorSelector.Redraw()
 }
 
-ui.buttonNewTheme := ui.themeEditorGui.AddPicture("x+0 ys+0  section w25 h28 Background" cfg.ThemeButtonReadyColor,"./Img/button_plus_ready.png")
+ui.buttonNewTheme := ui.themeEditorGui.AddPicture("x+0 ys+0  section w25 h22 Background" cfg.ThemeButtonReadyColor,"./Img/button_plus_ready.png")
 ui.buttonNewTheme.OnEvent("Click",addTheme)
-ui.themeEditorGui.setFont("s6")
-ui.ThemeDDL := ui.themeEditorGui.AddDDL("ys-1 x+1 w115 section center c" cfg.themeFont1Color " Background" cfg.ThemeEditboxColor,cfg.ThemeList)
-PostMessage(0x0153, -1, 22, ui.themeDDL)  ; Set height of selection field.
-PostMessage(0x0153, 0, 22, ui.themeDDL)  ; Set height of list items.
+
+ui.ThemeDDL := ui.themeEditorGui.AddDDL("ys+0 x+1 w115 section center c" cfg.themeFont1Color " Background" cfg.ThemeEditboxColor,cfg.ThemeList)
 ui.ThemeDDL.OnEvent("Change",ThemeChanged)
 ui.ThemeDDL.OnEvent("Focus",RepaintThemeDDL)
 ui.ThemeDDL.OnEvent("LoseFocus",RepaintThemeDDL)
 
 ui.ThemeDDL.ToolTip := "Select Theme Preset"
-ui.buttonDelTheme := ui.themeEditorGui.AddPicture("ys+1 x+-2 w25 h28 Background" cfg.ThemeButtonReadyColor,"./Img/button_minus_ready.png")	
+ui.buttonDelTheme := ui.themeEditorGui.AddPicture("ys+1 x+-2 w25 h22 Background" cfg.ThemeButtonReadyColor,"./Img/button_minus_ready.png")	
 ui.buttonDelTheme.OnEvent("Click",removeTheme)
 ;drawOutlineNamed("ThemeOutline",ui.themeEditorGui,10,29,302,27,cfg.ThemeBorderLightColor,cfg.ThemeBorderLightColor,3)
-drawOutlineNamed("ThemeOutlineShadow",ui.themeEditorGui,9,31,306,30,cfg.ThemeBorderLightColor,cfg.ThemeBorderDarkColor,2)
+drawOutlineNamed("ThemeOutlineShadow",ui.themeEditorGui,8,31,306,28,cfg.ThemeBorderDarkColor,cfg.ThemeBorderLightColor,2)
 
 ;drawOutlineNamed("ThemeOutline",ui.themeEditorGui,85,32,61,26,cfg.ThemeBorderLightColor,cfg.ThemeBorderLightColor,1)
-ui.themeEditorCancelButton := ui.themeEditorGui.addPicture("x297 y2 w23 h30","./img/button_quit.png")
-ui.themeEditorCancelButton.onEvent("click", (*) => guiVis(ui.themeEditorGui,false))
+ui.themeEditorCancelButton := ui.themeEditorGui.addText("x297 y1 w24 h22 background" cfg.themeButtonReadyColor,"r")
+ui.themeEditorCancelButton.setFont("s18","Webdings")
+ui.themeEditorCancelButton.onEvent("click", closeThemeEditor)
+
+closeThemeEditor(*) {
+	try {
+		ui.themeEditorGui.Hide()
+		ui.themeEditor.destroy()
+		}
+}
 
 ui.ThemeDDL.Choose(1)
 Loop cfg.ThemeList.Length {
@@ -120,8 +126,10 @@ drawOutline(ui.themeEditorGui,37,214,280,30,cfg.themeBorderLightColor,cfg.themeB
 ;ui.titlebarPreviewLabel.setFont("q5 s9 c" cfg.themeFont2Color,"ubuntu one")
 ui.titlebarPreview.onEvent("click",changeTitlebar)
 ui.titlebarEdit.onEvent("click",changeTitlebar)
-ui.themeEditorCancelButton := ui.themeEditorGui.addPicture("x297 y2 w23 h30","./img/button_quit.png")
-ui.themeEditorCancelButton.onEvent("click", (*) => guiVis(ui.themeEditorGui,false))
+; ui.themeEditorCancelButton := ui.themeEditorGui.addPicture("x297 y2 w23 h30","./img/button_quit.png")
+; ui.themeEditorCancelButton.onEvent("click", (*) => guiVis(ui.themeEditorGui,false))
+PostMessage(0x0153, -1, 14, ui.themeDDL)  ; Set height of selection field.
+PostMessage(0x0153, 0, 14, ui.themeDDL)  ; Set height of list items.
 
 changeTitlebar(*) {
 	cfg.titleBarImage:=fileSelect(,a_scriptDir "\img\","Select Titlebar Image","*.png;*.jpg")

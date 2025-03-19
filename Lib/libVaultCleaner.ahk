@@ -122,8 +122,8 @@ vault_LBUTTONDOWN_callback(thisControl,info) {
 stopCleaning(*) {
 	this.isRunning:=false
 	this.mainButtonText.text:="Start"
-	this.statusText.text:="[Spacebar] to start cleaning"
-	this.mainButton.opt("background" cfg.themeButtonReadyColor "c" cfg.themeFont4Color)
+	this.statusText.text:="[Del] to start cleaning"
+	this.mainButton.opt("background" cfg.themeButtonAlertColor "c" cfg.themeFont4Color)
 	setTimer(timer,0)
 	this.restartQueue:=false
 	exit
@@ -137,7 +137,7 @@ cleanVaultStart(*) {
 	winActivate(this.gameWin)
 	
 
-	this.statusText.text:="[Spacebar] to Stop/Exit"
+	this.statusText.text:="[End] to Stop"
 	setTimer(timer,1000)
 	timer()
 	coordMode("mouse","client")

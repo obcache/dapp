@@ -1672,12 +1672,12 @@ ui.gametabs.useTab("222Vault Cleaner222")
 	ui.gameSettingsGui.addText("x12 y11 w473 h18 background" cfg.themePanel2Color)
 	ui.gameSettingsGui.addPicture("x11 y30 w475 h23 background" cfg.themePanel3Color,"./img/lightburst_top_light.png")
 	drawOutline(ui.gameSettingsGui,10,9,478,64,cfg.themeDark1Color,cfg.themeDark1Color,2)
-	this.mainButtonBg:=ui.gameSettingsGui.addText("x13 y12 w46 h17 background" cfg.themeDark1Color)
-	this.mainButton:=ui.gameSettingsGui.addText("section center x13 y12 w74 h17 background" cfg.themeButtonReadyColor " c" cfg.themeFont2Color,"")
-	this.mainButtonTextBg:=ui.gameSettingsGui.addText("section left x87 y12 w398 h17 background" cfg.themeBackgroundColor)
+	this.mainButtonBg:=ui.gameSettingsGui.addPicture("x13 y12 w46 h17 background" cfg.themeDark1Color,"./img/lightburst_br.png")
+	this.mainButton:=ui.gameSettingsGui.addPicture("section center x13 y12 w74 h17 background" cfg.themePanel3Color " c" cfg.themeFont3Color,"./img/lightburst_tl_light.png")
+	this.mainButtonTextBg:=ui.gameSettingsGui.addPicture("section left x87 y12 w398 h17 background" cfg.themeBackgroundColor,"./img/lightburst_br_light.png")
 	this.mainButtonText:=ui.gameSettingsGui.addText("section center x12 y10 w74 h17 backgroundTrans","Start")
 	this.mainButtonText.setFont("s13 q5 c" cfg.themeFont4Color,"Ubuntu Mono")
-	this.mainButtonHotkey:=ui.gameSettingsGui.addText("hidden left x40 y10 background" cfg.themePanel1Color " c" cfg.themeFont3Color " h17 w67")
+	this.mainButtonHotkey:=ui.gameSettingsGui.addPicture("hidden left x40 y10 background" cfg.themePanel3Color " c" cfg.themeFont3Color " h17 w67","./img/lightburst_bottom_light.png")
 	this.mainButtonHotkeyText:=ui.gameSettingsGui.addText("left x93 y11 backgroundTrans c" cfg.themePanel3Color " h19 w280","Press [Del] to START")
 	this.mainButtonHotkeyText.setFont("s10 c778877 q5","Ubuntu Mono")
 	this.mainButton.onEvent("click",cleanVaultStart)
@@ -1692,6 +1692,7 @@ ui.gametabs.useTab("222Vault Cleaner222")
 	ui.gameSettingsGui.setFont("s12 c" cfg.themeFont3Color)
 	drawOutlineNamed("vaultStats",ui.gameSettingsGui,9,78,480,66,cfg.themeBright2Color,cfg.themeBorderDarkColor,2)
 	this.statBg:=ui.gameSettingsGui.addPicture("x11 y80 w275 h62 background" cfg.themePanel2Color,"./img/lightburst_tr_light.png")
+	this.statBg.onEvent("click",toggleVaultMode)
 	this.statBg2:=ui.gameSettingsGui.addPicture("x245 y80 w244 h62 background" cfg.themePanel3Color)
 	;ui.gameSettingsGui.addText("x245 y78 w244 h66 background" cfg.themePanel3Color " c" cfg.themeFont3Color)
 	ui.gameSettingsGui.addPicture("x245 y80 w242 h62 background" cfg.themePanel3Color,"./img/lightburst_tl.png")
@@ -1716,7 +1717,7 @@ ui.gametabs.useTab("222Vault Cleaner222")
 	this.vaultProgressLabel:=ui.gameSettingsGui.addText("x17 y51 w65 h21 backgroundTrans ccccccc","Progress")
 	this.vaultProgressLabel.setFont("s13 c" cfg.themeFont4Color,"Ubuntu Mono")
 	this.vaultProgress := ui.gameSettingsGui.addProgress("x87 y52 w398 h18 c" cfg.themeProgressColor " background151515 range1-500")
-	this.vaultDetail:=ui.gameSettingsGui.addPicture("x87 y52 w398 h18 backgroundTrans","./img/lightburst_bottom_light.png")
+	this.vaultDetail:=ui.gameSettingsGui.addPicture("x87 y52 w398 h18 backgroundTrans","./img/lightburst_tl.png")
 	this.completeMsg := ui.gameSettingsGui.addText("hidden x33 y61 w500 h30 backgroundTrans c" cfg.themeFont1Color "","")
 	
 	drawOutlineNamed("vaultCleanerButton",ui.gameSettingsGui,13,82,230,58,cfg.themeBorderLightColor,cfg.themeBorderDarkColor,2)
@@ -1727,6 +1728,12 @@ ui.gametabs.useTab("222Vault Cleaner222")
 	this.d2LaunchVaultCleanerText:=ui.gameSettingsGui.addText("x60 y91 w180 h50 center backgroundTrans c" cfg.themeFont1Color,'Vault Mode: Off`nClick to Toggle.')
 	this.d2LaunchVaultCleanerText.setFont("s12 c" cfg.themeFont1Color " bold","Arial")
 	
+
+
+
+
+
+
 	isWindowedFullscreen(*) {
 		static tx:=""
 		static ty:=""
@@ -1754,7 +1761,7 @@ ui.gametabs.useTab("222Vault Cleaner222")
 		;if isWindowedFullscreen() {
 		if !winExist(this.gameWin) {
 			notifyOSD("Game window not found. Vault mode aborted.",2000,ui.gameSettingsGui)
-			vaultMode:=!vaultMode
+			vaultMode:=false
 			Return
 		}
 			; winActivate(this.gameWin)
@@ -1762,6 +1769,10 @@ ui.gametabs.useTab("222Vault Cleaner222")
 			this.d2LaunchVaultCleanerButton.redraw()
 			this.statusText.text :="[Del] to begin clean-up."
 			this.d2LaunchVaultCleanerText.text:="Vault Mode: On`nClick to Toggle"
+			this.statBg.opt("background" cfg.themePanel1Color)
+			this.statBg.value:="./img/lightburst_tl.png"
+			drawOutlineNamed("vaultCleanerButton",ui.gameSettingsGui,13,82,230,58,cfg.themeBright1Color,cfg.themeBright1Color,2)
+			this.d2LaunchVaultCleanerButton:="./img/button_vault_down.png"
 			; winMove((a_screenwidth/2)-640,(a_screenheight/2)-360,1280,720,this.gameWin)
 			; winActivate(ui.mainGui)
 			vaultCleaner()
@@ -1781,6 +1792,10 @@ ui.gametabs.useTab("222Vault Cleaner222")
 		this.d2LaunchVaultCleanerButton.value:="./img/button_vault_up.png"
 		; this.d2LaunchVaultCleanerButton.redraw()
 		this.d2LaunchVaultCleanerText.text:="Vault Mode: Off`nClick to Toggle"
+		this.statBg.opt("background" cfg.themePanel2Color)
+		this.statBg.value:="./img/lightburst_br_light.png"
+		drawOutlineNamed("vaultCleanerButton",ui.gameSettingsGui,13,82,230,58,cfg.themeBorderLightColor,cfg.themeBorderDarkColor,2)
+		this.d2LaunchVaultCleanerButton:="./img/button_vault_up.png"
 		try 
 			vaultTopGui.destroy()
 		winMove(0,0,a_screenwidth,a_screenHeight,this.gameWin)
