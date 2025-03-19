@@ -126,16 +126,16 @@ trimColor5=FFFF01
 
 [Custom]
 accentColor2=818181
-accentColor1=252525
+accentColor1=515151
 accentColor4=AEAEAE
 accentColor3=FFFFFF
 outlineColor2=C3C3C3
-outlineColor1=303030
+outlineColor1=5B5B5B
 baseColor=606060
 fontColor1=FFFFFF
-fontColor3=272727
+fontColor3=353535
 fontColor3=2D2D2D
-fontColor2=AAAAAA
+fontColor2=C1C1C1
 bgColor1=4D4D4D
 bgColor3=585858
 trimColor1=61823A
@@ -156,21 +156,21 @@ bgColor1=4D4D4D
 bgColor3=585858
 fontColor4=E6E6E6
 trimColor1=61823A
-fontColor3=272727
+fontColor3=353535
 trimColor3=BFFF01
 trimColor4=F3850C
 bgColor2=7F7F7F
 baseColor=606060
 outlineColor2=C3C3C3
-outlineColor1=303030
+outlineColor1=5B5B5B
 trimColor6=404040
 trimColor5=E7F0D9
-accentColor1=252525
+accentColor1=515151
 accentColor3=FFFFFF
 bgColor0=575757
 accentColor2=818181
 accentColor4=AEAEAE
-fontColor2=AAAAAA
+fontColor2=C1C1C1
 
 [tmp]
 trimColor2=838383
