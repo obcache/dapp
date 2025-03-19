@@ -49,7 +49,7 @@ libVaultInit(*) {
 		}
 		
 		
-		msgBox(winGetMinMax("ahk_exe destiny2.exe"))
+		;msgBox(winGetMinMax("ahk_exe destiny2.exe"))
 		pbNotify('If Destiny 2 is not already set to "Windowed Fullscreen",`n please do it now and then click "Proceed"',30,"YN","fullscreenProcess","fullscreenCancel")
 		try 
 			vaultTopGui.destroy()
@@ -86,14 +86,21 @@ libVaultInit(*) {
 		this.elapsedSeconds:=""
 		
 		if this.gameWin {
+			DetectHiddenWindows(1)
+			GameWindowMode:=winGetMinMax(this.gameWin)
+			switch GameWindowMode {
+				case 1:
+					send("{alt}{enter}")
+				case -1: 
+					winActivate(this.gameWin)
+				
+			}
 			winGetPos(&gameWinX,&gameWinY,&gameWinW,&gameWinH,this.gameWin)
 			this.origGameWinX:=gameWinX
 			this.origGameWinY:=gameWinY
 			this.origGameWinW:=gameWinW
 			this.origGameWinH:=gameWinH
 			vaultTopGui.show("x" (a_screenwidth/2)-640 " y" (a_screenHeight/2)-360 " w" setting.gameW-6 " h30")
-			if winGetMinMax(this.gameWin) > 0 {
-				send("{alt}{enter}")
 			winMove((a_screenwidth/2)-640,(a_screenHeight/2)-360,1280,720,this.gameWin)
 			winSetStyle("-0xC00000",this.GameWin)
 			winActivate(this.gameWin)
@@ -116,8 +123,8 @@ libVaultInit(*) {
 	} else {
 				msgBox("Process " setting.gameExe " not Running")
 		}
-	}
 }
+
 
 vault_LBUTTONDOWN_callback(thisControl,info) {
 	postMessage("0xA1",2,,,"A")

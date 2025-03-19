@@ -35,7 +35,7 @@ GuiGameTab() {
 	ui.gameTabs := ui.gameSettingsGui.addTab3("x0 y-5 h194 0x400 bottom c" cfg.fontColor1 " choose" cfg.activeGameTab,cfg.gameModuleList)
 
 	ui.gameTabs.choose(cfg.gameModuleList[cfg.activeGameTab])
-	ui.gameTabs.setFont("s16")
+	ui.gameTabs.setFont("s16","move-x")
 	ui.gameTabs.onEvent("Change",gameTabChanged)
 	ui.MainGui.GetPos(&winX,&winY,,)
 	winSetRegion("2-0 w600 h250",ui.gameSettingsGui)
@@ -55,7 +55,7 @@ d2DrawUi(*) {
 	ui.d2Sliding := false
 	ui.d2HoldingRun := false         
 	ui.d2cleanupNeeded := false
-	ui.gameSettingsGui.setFont("s10")
+	ui.gameSettingsGui.setFont("s12 bold","calibri")
 	d2drawTopPanel()
 	d2drawPanel1()
 	d2drawPanel3()
@@ -70,9 +70,9 @@ d2DrawUi(*) {
 d2drawPanel1(*) {
 	guiName := ui.gameSettingsGui
 	ui.d2KeybindWidth := 60
-	labelX := 280
+	labelX := 270
 	labelY := 44
-	labelW := 68
+	labelW := 74
 	labelH := 20
 	backColor := cfg.bgColor2
 	fontColor := cfg.fontColor2
@@ -80,9 +80,9 @@ d2drawPanel1(*) {
 	labelText := "Keybinds"
 	ui.d2keybindAppTab1 := guiName.addText("x" labelX " y" labelY+labelH/2 " w" labelW " h" labelH/2+3 " background" outlineColor,"")
 		     
-	labelX := 356
+	labelX := 346
 	labelY := 44
-	labelW := 98
+	labelW := 105
 	labelH := 20
 	backColor := cfg.bgColor2
 	fontColor := cfg.fontColor4
@@ -110,7 +110,7 @@ d2drawPanel1(*) {
 	
 	ui.keybindSpacer	:= ui.gameSettingsGui.addText("x112 y11 w1 h40 background" cfg.accentColor4)		
 	ui.keybindSpacer2	:= ui.gameSettingsGui.addText("x113 y11 w1 h40 background" cfg.outlineColor1)
-
+	;ui.gameSettingsGui.setFont("s11","Arial")
 	
 	ui.currKey := cfg.dappToggleSprintKey
 	ui.dappToggleSprintKey			:= ui.gameSettingsGui.addPicture("x+4 y17 w" (ui.d2KeybindWidth + max(0,(strLen(ui.currKey)-6))*10) 
@@ -141,14 +141,14 @@ d2drawPanel1(*) {
 		"  h30 section backgroundTrans","./img/keyboard_key_up.png")
 	ui.dappLoadoutKeyData 			:= ui.gameSettingsGui.addText("xs-3 y+-24 w" (ui.d2KeybindWidth + max(0,(strLen(ui.currKey)-6))*10) 
 		"  h21 center c" cfg.trimColor4 " backgroundTrans",subStr(strUpper(cfg.dappLoadoutKey),1,8))
-	ui.dappLoadoutKeyLabel 		:= ui.gameSettingsGui.addText("xs-1 y+-34 w" (ui.d2KeybindWidth + max(0,(strLen(ui.currKey)-6))*10) 
+	ui.dappLoadoutKeyLabel 		:= ui.gameSettingsGui.addText("xs-5 y+-34 w" (ui.d2KeybindWidth + max(0,(strLen(ui.currKey)))*10) 
 		"  h20 center c" cfg.fontColor1 " backgroundTrans","Loadout")
 	
 	ui.currKey 					:= cfg.dappSwordFlyKey
-	ui.dappSwordFlyKey			:= ui.gameSettingsGui.addPicture("x+11 ys w36 h30 section backgroundTrans","./img/keyboard_key_up.png")
+	ui.dappSwordFlyKey			:= ui.gameSettingsGui.addPicture("x+5 ys w36 h30 section backgroundTrans","./img/keyboard_key_up.png")
 	ui.dappSwordFlyKeyData 	:= ui.gameSettingsGui.addText("xs+0 y+-24 w36 h21 center c" cfg.trimColor4 " backgroundTrans"
 		,subStr(strUpper(cfg.dappSwordFlyKey),1,8))
-	ui.dappSwordFlyKeyLabel 	:= ui.gameSettingsGui.addText("xs+0 y+-34 w40 h20 center c" cfg.fontColor1 " backgroundTrans","Fly")
+	ui.dappSwordFlyKeyLabel 	:= ui.gameSettingsGui.addText("xs-4 y+-34 w40 h20 center c" cfg.fontColor1 " backgroundTrans","Fly")
 	ui.d2ClassSelectOutline		:= ui.gameSettingsGui.addText("xs+42 y11 w39 h39 background" cfg.accentColor2)
 	ui.d2ClassSelectOutline2	:= ui.gameSettingsGui.addText("xs+43 y11 w38 h38 background" cfg.accentColor3)
 	ui.d2ClassSelectBg			:= ui.gameSettingsGui.addText("x440 y11 w45 h40 background" cfg.bgColor2)
@@ -237,18 +237,18 @@ d2drawPanel1(*) {
 	ui.dappReloadKeyData.ToolTip  			:= "Click to Assign"
 	ui.dappReloadKeyLabel.ToolTip			:= "Click to Assign"
 
-	ui.dappLoadoutKeyData.setFont("s13")
-	ui.dappPauseKeyData.setFont("s13")
-	ui.dappPauseKeyLabel.setFont("s9")
-	ui.dappReloadKeyData.setFont("s13")
-	ui.dappReloadKeyLabel.setFont("s9")
-	ui.dappHoldToCrouchKeyData.setFont("s13")
-	ui.dappToggleSprintKeyData.setFont("s13")
-	ui.dappHoldToCrouchKeyLabel.setFont("s9")
-	ui.dappLoadoutKeyLabel.setFont("s9")
-	ui.dappToggleSprintKeyLabel.setFont("s9")
-	ui.dappSwordFlyKeyData.setFont("s13")
-	ui.dappSwordFlyKeyLabel.setFont("s9")
+	ui.dappLoadoutKeyData.setFont("s12 q5","calibri")
+	ui.dappPauseKeyData.setFont("s12 q5","calibri")
+	ui.dappPauseKeyLabel.setFont("s10 q5")
+	ui.dappReloadKeyData.setFont("s12 q5","calibri")
+	ui.dappReloadKeyLabel.setFont("s10 q5")
+	ui.dappHoldToCrouchKeyData.setFont("s12 q5","calibri")
+	ui.dappToggleSprintKeyData.setFont("s12 q5","calibri")
+	ui.dappHoldToCrouchKeyLabel.setFont("s10 q5")
+	ui.dappLoadoutKeyLabel.setFont("s11 q5")
+	ui.dappToggleSprintKeyLabel.setFont("s10 q5")
+	ui.dappSwordFlyKeyData.setFont("s12 q5","calibri")
+	ui.dappSwordFlyKeyLabel.setFont("s10 q5")
 
 	ui.dappPauseKey.onEvent("click",dappPauseKeyClicked)
 	ui.dappHoldToCrouchKey.onEvent("click",dappHoldToCrouchKeyClicked)
@@ -1672,18 +1672,19 @@ ui.gametabs.useTab("222Vault Cleaner222")
 	ui.gameSettingsGui.addText("x12 y11 w473 h18 background" cfg.bgColor2)
 	ui.gameSettingsGui.addPicture("x11 y30 w475 h23 background" cfg.trimColor1,"./img/lightburst_top_light.png")
 	drawOutline(ui.gameSettingsGui,10,9,478,64,cfg.accentColor1,cfg.accentColor1,2)
+	ui.gameSettingsGui.setFont("s10 c" cfg.fontColor1)
 	this.mainButtonBg:=ui.gameSettingsGui.addPicture("x13 y12 w46 h17 background" cfg.accentColor1,"./img/lightburst_br.png")
 	this.mainButton:=ui.gameSettingsGui.addPicture("section center x13 y12 w74 h17 background" cfg.fontColor3 " c" cfg.fontColor3,"./img/lightburst_tl_light.png")
 	this.mainButtonTextBg:=ui.gameSettingsGui.addPicture("section left x87 y12 w398 h17 background" cfg.baseColor,"./img/lightburst_br_light.png")
-	this.mainButtonText:=ui.gameSettingsGui.addText("section center x12 y10 w74 h17 backgroundTrans","Start")
+	this.mainButtonText:=ui.gameSettingsGui.addText("section center x12 y9 w74 h17 backgroundTrans","Start")
 	this.mainButtonText.setFont("s13 q5 c" cfg.fontColor4,"Ubuntu Mono")
 	this.mainButtonHotkey:=ui.gameSettingsGui.addPicture("hidden left x40 y10 background" cfg.trimColor1 " c" cfg.fontColor1 " h17 w67","./img/lightburst_bottom_light.png")
-	this.mainButtonHotkeyText:=ui.gameSettingsGui.addText("left x93 y11 backgroundTrans c" cfg.fontColor3 " h19 w280","Press [Del] to START")
-	this.mainButtonHotkeyText.setFont("s10 q5","Ubuntu Mono")
+	this.mainButtonHotkeyText:=ui.gameSettingsGui.addText("left x93 y12 backgroundTrans c" cfg.fontColor3 " h19 w280","Press [Del] to START")
+	this.mainButtonHotkeyText.setFont("s10 q5"," Helvetica")
 	this.mainButton.onEvent("click",cleanVaultStart)
 	this.mainButtonText.onEvent("click",cleanVaultStart)
 	this.statusText:=ui.gameSettingsGui.addText("x17 y31 w470 h20 backgroundTrans","Toggle VAULT MODE to enable START button")
-	this.statusText.setFont("s12 q5 c" cfg.fontColor3,"Ubuntu")
+	this.statusText.setFont("s12 q5 c" cfg.fontColor2,"calibri")
 	toggleButton2(*) {
 		(this.state:=!this.state)
 			? vaultCleaner()
@@ -1697,6 +1698,7 @@ ui.gametabs.useTab("222Vault Cleaner222")
 	;ui.gameSettingsGui.addText("x245 y78 w244 h66 background" cfg.trimColor1 " c" cfg.fontColor3)
 	ui.gameSettingsGui.addPicture("x245 y80 w242 h62 background" cfg.trimColor1,"./img/lightburst_tl.png")
 	drawOutlineNamed("vaultStats2",ui.gameSettingsGui,245,78,244,66,cfg.accentColor1,cfg.accentColor1,2)
+	ui.gameSettingsGui.setFont("s8")
 	this.pageLabel:=ui.gameSettingsGui.addText("right section x370 y82 w80 h25 backgroundTrans c" cfg.fontColor3 "","Page: ")
 	this.pageCount:=ui.gameSettingsGui.addText("x420 ys+1 right w56 h25 c" cfg.fontColor3 " backgroundTrans",format("{:03d}",this.page))
 	this.elapsedLabel:=ui.gameSettingsGui.addText("section x340 y100 w80 right h25 c" cfg.fontColor3 " backgroundTrans","Elapsed: ")
@@ -1705,7 +1707,6 @@ ui.gametabs.useTab("222Vault Cleaner222")
 	this.remainingtime:=ui.gameSettingsGui.addText("x420 ys+0 left w80 h25 c" cfg.fontColor3 " backgroundTrans","00:00:00")
 	
 	;this.dismantledHeaderLabel:=ui.gameSettingsGui.addText("x250 y0 w110 right h25 c" cfg.fontColor1 " backgroundTrans","")
-	
 	this.dismantledLegendaryLabel:=ui.gameSettingsGui.addText("section x255 y82  left h25 c" cfg.fontColor3 " backgroundTrans","Legendary: ")
 	this.dismantledLegendary:=ui.gameSettingsGui.addText("x+0 ys+1 left w83 h25 c" cfg.fontColor3 " backgroundTrans",format("{:03d}","000"))
 	this.dismantledExoticLabel:=ui.gameSettingsGui.addText("section x255 y100 left h25 c" cfg.fontColor3 " backgroundTrans","Exotic: ")
@@ -1713,11 +1714,11 @@ ui.gametabs.useTab("222Vault Cleaner222")
 	this.dismantledTotalLabel:=ui.gameSettingsGui.addText("section x255 y118 left h25 c" cfg.fontColor3 " backgroundTrans","Total: ")
 	this.dismantledTotal:=ui.gameSettingsGui.addText("x+0 ys+0 left w80 h25 c" cfg.fontColor3 " backgroundTrans",format("{:03d}","000"))
 	
-	this.vaultProgressLabelBg:=ui.gameSettingsGui.addText("x13 y52 w74 h18 background" cfg.baseColor " c151515","")
-	this.vaultProgressLabel:=ui.gameSettingsGui.addText("x17 y51 w65 h21 backgroundTrans ccccccc","Progress")
-	this.vaultProgressLabel.setFont("s13 c" cfg.fontColor4,"Ubuntu Mono")
-	this.vaultProgress := ui.gameSettingsGui.addProgress("x87 y52 w398 h18 c" cfg.trimColor5 " background151515 range1-500")
-	this.vaultDetail:=ui.gameSettingsGui.addPicture("x87 y52 w398 h18 backgroundTrans","./img/lightburst_tl.png")
+	this.vaultProgressLabelBg:=ui.gameSettingsGui.addText("x13 y52 w110 h18 background" cfg.baseColor,"")
+	this.vaultProgressLabel:=ui.gameSettingsGui.addText("x20 y52 w110 h21 backgroundTrans c" cfg.fontColor1,"Progress")
+	this.vaultProgressLabel.setFont("s10","move-x")
+	this.vaultProgress := ui.gameSettingsGui.addProgress("x120 y52 w398 h18 c" cfg.trimColor5 " background151515 range1-500")
+	this.vaultDetail:=ui.gameSettingsGui.addPicture("x60 y52 w398 h17 backgroundTrans","./img/lightburst_tl.png")
 	this.completeMsg := ui.gameSettingsGui.addText("hidden x33 y61 w500 h30 backgroundTrans c" cfg.fontColor1 "","")
 	
 	drawOutlineNamed("vaultCleanerButton",ui.gameSettingsGui,13,82,230,58,cfg.outlineColor1,cfg.outlineColor2,2)
