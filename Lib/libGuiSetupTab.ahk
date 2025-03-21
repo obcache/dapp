@@ -32,7 +32,7 @@ GuiSetupTab(&ui,&cfg) {
 	line(ui.mainGui,34,0,2,30,cfg.bgColor2)	
 	
 	ui.MainGui.setFont("q5 s09")
-	drawOutlineNamed("autoClicker",ui.mainGui,486,45,27,145,cfg.outlineColor2,cfg.outlineColor2,1)
+	;drawOutlineNamed("autoClicker",ui.mainGui,486,45,27,145,cfg.outlineColor2,cfg.outlineColor2,1)
 	ui.AutoClickerSpeedSlider := ui.MainGui.AddSlider("x487 y45 w25 h144 Range1-64 Vertical Left TickInterval8 Invert ToolTipTop",cfg.AutoClickerSpeed)
 	ui.AutoClickerSpeedSliderLabel2 := ui.MainGui.AddText("x475 y190 w50 r1 Center BackgroundTrans","CPS")
 	ui.AutoClickerSpeedSlider.ToolTip := "AutoClicker Speed"
@@ -181,9 +181,9 @@ GuiSetupTab(&ui,&cfg) {
 	ui.toggleDebug.ToolTip := "Keeps this app on top of all other windows."
 	ui.labelDebug:= ui.MainGui.AddText("x+5 ys+2 backgroundTrans","  Debug")
 
-	drawOutlineNamed("toggleBlock",ui.mainGui,49,45,51,154,cfg.accentColor1,cfg.accentColor1,1)
-	drawOutlineNamed("toggleBlock",ui.mainGui,48,44,50,153,cfg.accentColor2,cfg.accentColor2,1)
-	drawOutlineNamed("toggleBlock",ui.mainGui,48,45,51,155,cfg.outlineColor2,cfg.outlineColor2,1)
+	drawOutlineNamed("toggleBlock",ui.mainGui,48,44,52,155,cfg.accentColor1,cfg.accentColor1,1)
+	drawOutlineNamed("toggleBlock",ui.mainGui,48,44,52,155,cfg.accentColor2,cfg.accentColor2,1)
+	drawOutlineNamed("toggleBlock",ui.mainGui,48,44,52,155,cfg.outlineColor2,cfg.outlineColor2,1)
 	
 	ui.mainGui.addText("x270 y44 w197 h62 background" cfg.trimColor1)
 	ui.mainGui.addText("x271 y45 w195 h60 background" cfg.outlineColor2)

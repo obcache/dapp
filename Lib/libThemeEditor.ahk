@@ -20,9 +20,9 @@ showThemeEditor(*) {
 
 ui.themeEditorGui := gui()
 ui.themeEditorGui.opt("-caption alwaysOnTop toolWindow owner" ui.mainGui.hwnd)
-ui.themeEditorGui.backColor := cfg.baseColor
+ui.themeEditorGui.backColor := cfg.bgColor2
 ui.themeEditorGui.color := cfg.baseColor
-ui.themeEditorTitlebar := ui.themeEditorGui.addText("x0 y0 w400 h21 background" cfg.bgColor1 " c" cfg.fontColor1,"")
+ui.themeEditorTitlebar := ui.themeEditorGui.addText("x0 y0 w300 h21 background" cfg.bgColor1 " c" cfg.fontColor1,"")
 ui.themeEditorTitlebarText := ui.themeEditorGui.addText("x5 y3 w100 h21 backgroundTrans c" cfg.fontColor1,"Theme Editor" )
 ui.themeEditorTitlebarText.setFont("q5 s13","calibri bold")
 ui.themeEditorTitlebar.onEvent("click",wm_lButtonDown_callback)
@@ -39,7 +39,7 @@ ui.ColorSelectorLabel2 := ui.themeEditorGui.AddText("x6 y33 h23 center section w
 	,((cfg.ColorPickerEnabled) 
 		? (" Color App") 
 		: (" Swatches ")))
-drawOutlineNamed("themeEditorCancelButtonOutline",ui.themeEditorGui,300,2,24,24,cfg.outlineColor2,cfg.outlineColor1,2)
+;drawOutlineNamed("themeEditorCancelButtonOutline",ui.themeEditorGui,300,2,24,24,cfg.outlineColor2,cfg.outlineColor1,2)
 ui.ColorSelectorLabel2.setFont("q5 s13","calibri bold")
 ;drawOutlineNamed("ThemeOutlineShadow",ui.themeEditorGui,10,32,60,28,cfg.outlineColor2,cfg.outlineColor2,2)
 
@@ -63,19 +63,19 @@ ToggleColorSelector(*) {
 ui.buttonNewTheme := ui.themeEditorGui.AddPicture("x+0 ys+0  section w25 h22 Background" cfg.trimColor2,"./Img/button_plus_ready.png")
 ui.buttonNewTheme.OnEvent("Click",addTheme)
 
+ui.themeEditorGui.setFont("s10",)
 ui.ThemeDDL := ui.themeEditorGui.AddDDL("ys+0 x+1 w115 section center c" cfg.fontColor1 " Background" cfg.trimColor6,cfg.ThemeList)
 ui.ThemeDDL.OnEvent("Change",ThemeChanged)
 ui.ThemeDDL.OnEvent("Focus",RepaintThemeDDL)
 ui.ThemeDDL.OnEvent("LoseFocus",RepaintThemeDDL)
-
 ui.ThemeDDL.ToolTip := "Select Theme Preset"
 ui.buttonDelTheme := ui.themeEditorGui.AddPicture("ys+1 x+-2 w25 h22 Background" cfg.trimColor2,"./Img/button_minus_ready.png")	
 ui.buttonDelTheme.OnEvent("Click",removeTheme)
 ;drawOutlineNamed("ThemeOutline",ui.themeEditorGui,10,29,302,27,cfg.outlineColor1,cfg.outlineColor1,3)
-drawOutlineNamed("ThemeOutlineShadow",ui.themeEditorGui,8,31,306,28,cfg.outlineColor2,cfg.outlineColor1,2)
+drawOutlineNamed("ThemeOutlineShadow",ui.themeEditorGui,7,31,306,28,cfg.outlineColor2,cfg.outlineColor1,2)
 
 ;drawOutlineNamed("ThemeOutline",ui.themeEditorGui,85,32,61,26,cfg.outlineColor1,cfg.outlineColor1,1)
-ui.themeEditorCancelButton := ui.themeEditorGui.addText("x295 y0 w22 h22 background" cfg.trimColor2,"r")
+ui.themeEditorCancelButton := ui.themeEditorGui.addText("x295 y0 w22 h22 background" cfg.bgColor1 " c" cfg.fontColor1,"r")
 ui.themeEditorCancelButton.setFont("s18","Webdings")
 ui.themeEditorCancelButton.onEvent("click", closeThemeEditor)
 
@@ -126,6 +126,7 @@ Loop ui.ThemeElements.Length
 }
 
 ui.hideTitleTextLabel:=ui.themeEditorGui.addText("section x4 y174 w120 h20 right backgroundTrans","Hide Titlebar Text")
+ui.HideTitleTextLabel.setFont("s14 c" cfg.fontColor1)
 ui.hidetitleTextCbValue:=iniRead(cfg.themeFile,cfg.theme,"HideTitlebarText",0)
 ui.hideTitleTextCb:=ui.themeEditorGui.addCheckbox("x4 ys w10 h10 vHideTitleBarTextCb",ui.hideTitleTextCbValue)
 ui.hideTitleTextCb.value:=ui.hideTitleTextCbValue

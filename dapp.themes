@@ -17,11 +17,11 @@ outlineColor2=C3C3C3
 outlineColor1=A6A6A6
 trimColor6=CECECE
 trimColor5=E7F0D9
-accentColor1=DBDBDB
+accentColor1=606060
 accentColor3=595959
 bgColor0=E4E4E4
-accentColor2=818181
-accentColor4=9A9A9A
+accentColor2=606060
+accentColor4=606060
 fontColor2=C1C1C1
 HideTitlebarText=0
 TitleBarImage=E:\Documents\Resources\AutoHotKey\__dapp\Img\lightburst_br_light.png
@@ -65,9 +65,9 @@ outlineColor2=FFC980
 outlineColor1=95561E
 fontColor3=FFC959
 trimColor1=653E1B
-trimColor2=FFDA8C
-baseColor=856B3A
-trimColor3=FFFF80
+trimColor2=9F9F9F
+baseColor=FE9833
+trimColor3=FE9833
 fontColor2=845704
 
 [Militarized]
