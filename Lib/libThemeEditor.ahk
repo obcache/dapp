@@ -294,13 +294,13 @@ addTheme(*) {
 	}
 }
 
-ui.bgColor1Objects:=[ui.exitButtonBg,ui.downButtonBg,ui.gvConsole,ui.d2TopPanelBg,ui.panel4box1,ui.panel4box2,ui.d2LaunchGlyphsButtonBg,ui.d2LaunchRunesButtonBg,ui.d2LaunchWishButtonBg,ui.d2LaunchMapsButtonBg]
+; ui.bgColor1Objects:=[ui.exitButtonBg,ui.downButtonBg,ui.gvConsole,ui.d2TopPanelBg,ui.panel4box1,ui.panel4box2,ui.d2LaunchGlyphsButtonBg,ui.d2LaunchRunesButtonBg,ui.d2LaunchWishButtonBg,ui.d2LaunchMapsButtonBg]
 
-updateColors(*) {
-	for bgColor1Obj in ui.bgColorObjects {
-		bgColor1Obj.opt("background" ui.bgColor1)
-	}
-}
+; updateColors(*) {
+	; for bgColor1Obj in ui.bgColorObjects {
+		; bgColor1Obj.opt("background" ui.bgColor1)
+	; }
+; }
 
 
 removeTheme(*) {

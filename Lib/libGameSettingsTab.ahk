@@ -32,7 +32,7 @@ GuiGameTab() {
 	ui.gameSettingsGui.MarginX := 5
 	ui.gameSettingsGui.Opt("-Caption -Border +AlwaysOnTop owner" ui.mainGui.hwnd)
 	ui.gameSettingsGui.SetFont("s14 c" cfg.fontColor1,"calibri")
-	ui.gameTabs := ui.gameSettingsGui.addTab3("x0 y-5 h194 0x400 bottom c" cfg.fontColor1 " choose" cfg.activeGameTab,cfg.gameModuleList)
+	ui.gameTabs := ui.gameSettingsGui.addTab3("x0 y-5 h194 0x400 bottom c" cfg.fontColor1 " choose" cfg.activeGameTab,["Gameplay","222Vault Cleaner222"])
 
 	ui.gameTabs.choose(cfg.gameModuleList[cfg.activeGameTab])
 	ui.gameTabs.setFont("s16","move-x")
@@ -59,7 +59,7 @@ d2DrawUi(*) {
 	d2drawTopPanel()
 	d2drawPanel1()
 	d2drawPanel3()
-	d2drawPanel4()
+	;d2drawPanel4()
 	if d2ActivePanel == 1 
 		d2ChangeKeybindPanelTab(1)
 	else
@@ -668,23 +668,23 @@ d2drawPanel4(*) {
 	ui.panel4box2:=ui.gameSettingsGui.addText("x10 y7 w476 h140 c" cfg.bgColor1 " background" cfg.bgColor3)
 	drawOutlineNamed("d2linkPanel",ui.gameSettingsGui,8,5,480,144,cfg.outlineColor2,cfg.outlineColor1,1)
 	drawOutlineNamed("d2AlwaysRunOutline",ui.gameSettingsGui,10,7,476,140,cfg.outlineColor1,cfg.outlineColor2,1)
-	ui.gameSettingsGui.addText("hidden x5 y15 section")
+	ui.gameSettingsGui.addText("hidden x3 y10 section")
 	ui.d2LaunchGlyphsbuttonBg	:= ui.gameSettingsGui.addText("x+13 y+0 section w" tileSize " h" tileSize " background" cfg.bgColor1)
-	ui.d2LaunchGlyphsbutton		:= ui.gameSettingsGui.addPicture("x+-" (tileSize) " ys+2 w" tileSize " h" tileSize " backgroundTrans","./img/d2_glyphs_thumb.png")
-	ui.d2LaunchGlyphsButtonDetail:=ui.gameSettingsGui.addPicture("x+-" tileSize+20 " ys+" tilesize/2 " w" tileSize+40 " h" tileSize/2 " backgroundTrans","./img/lightburst_bottom_light.png")
-	ui.d2LaunchRunesButtonBg	:= ui.gameSettingsGui.addText("x+-10 ys+0 w" tileSize " h" tileSize " background" cfg.bgColor1)
-	ui.d2LaunchRunesButton		:= ui.gameSettingsGui.addPicture("x+-" (tileSize) " ys+2 w" tileSize " h" tileSize " backgroundTrans","./img/d2_runes_thumb.png")
-	ui.d2LaunchGlyphsButtonDetail:=ui.gameSettingsGui.addPicture("x+-" tileSize+20 " ys+" tilesize/2 " w" tileSize+40 " h" tileSize/2 " backgroundTrans","./img/lightburst_bottom_light.png")
-	ui.d2LaunchWishButtonBg 	:= ui.gameSettingsGui.addText("x+-10 ys+0 w" tileSize " h" tileSize " background" cfg.bgColor1)
-	ui.d2LaunchWishButton 		:= ui.gameSettingsGui.addPicture("x+-" tileSize " ys+2 w" tileSize " h" tileSize " backgroundTrans","./img/d2_wishCodes_thumb.png")
-	ui.d2LaunchGlyphsButtonDetail:=ui.gameSettingsGui.addPicture("x+-" tileSize+20 " ys+" tilesize/2 " w" tileSize+40 " h" tileSize/2 " backgroundTrans","./img/lightburst_bottom_light.png")
-	ui.d2LaunchMapsButtonBg		:= ui.gameSettingsGui.addText("x+-10 ys+0 w" tileSize " h" tileSize " background" cfg.bgColor1)
-	ui.d2LaunchMapsButton		:= ui.gameSettingsGui.addPicture("x+-" tileSize " ys+2 w" tileSize " h" tileSize " backgroundTrans","./img/d2_maps_thumb.png")
-	ui.d2LaunchGlyphsButtonDetail:=ui.gameSettingsGui.addPicture("x+-" tileSize+20 " ys+" tilesize/2 " w" tileSize+40 " h" tileSize/2 " backgroundTrans","./img/lightburst_bottom_light.png")
-	drawOutline(ui.gameSettingsGui,23,26,111,110,cfg.outlineColor1,cfg.outlineColor2,2)
-	drawOutline(ui.gameSettingsGui,138,26,111,110,cfg.outlineColor1,cfg.outlineColor2,2)
-	drawOutline(ui.gameSettingsGui,253,26,111,110,cfg.outlineColor1,cfg.outlineColor2,2)
-	drawOutline(ui.gameSettingsGui,368,26,111,110,cfg.outlineColor1,cfg.outlineColor2,2)
+	ui.d2LaunchGlyphsbutton		:= ui.gameSettingsGui.addPicture("x+-" (tileSize)-2 " ys+2 w" tileSize-4 " h" tileSize-2 " backgroundTrans","./img/d2_glyphs_thumb.png")
+	ui.d2LaunchGlyphsButtonDetail:=ui.gameSettingsGui.addPicture("x+-" tileSize+40 " ys+" tilesize/2 " w" tileSize+80 " h" tileSize/2 " backgroundTrans","./img/lightburst_bottom_light.png")
+	ui.d2LaunchRunesButtonBg	:= ui.gameSettingsGui.addText("x+-30 ys+0 w" tileSize " h" tileSize " background" cfg.bgColor1)
+	ui.d2LaunchRunesButton		:= ui.gameSettingsGui.addPicture("x+-" (tileSize)  " ys+2 w" tileSize " h" tileSize-2 " backgroundTrans","./img/d2_runes_thumb.png")
+	ui.d2LaunchGlyphsButtonDetail:=ui.gameSettingsGui.addPicture("x+-" tileSize+40 " ys+" tilesize/2 " w" tileSize+80 " h" tileSize/2 " backgroundTrans","./img/lightburst_bottom_light.png")
+	ui.d2LaunchWishButtonBg 	:= ui.gameSettingsGui.addText("x+-30 ys+0 w" tileSize " h" tileSize " background" cfg.bgColor1)
+	ui.d2LaunchWishButton 		:= ui.gameSettingsGui.addPicture("x+-" tileSize " ys+2 w" tileSize " h" tileSize-2 " backgroundTrans","./img/d2_wishCodes_thumb.png")
+	ui.d2LaunchGlyphsButtonDetail:=ui.gameSettingsGui.addPicture("x+-" tileSize+40 " ys+" tilesize/2 " w" tileSize+80 " h" tileSize/2 " backgroundTrans","./img/lightburst_bottom_light.png")
+	ui.d2LaunchMapsButtonBg		:= ui.gameSettingsGui.addText("x+-30 ys+0 w" tileSize " h" tileSize " background" cfg.bgColor1)
+	ui.d2LaunchMapsButton		:= ui.gameSettingsGui.addPicture("x+-" tileSize " ys+2 w" tileSize " h" tileSize-2 " backgroundTrans","./img/d2_maps_thumb.png")
+	ui.d2LaunchGlyphsButtonDetail:=ui.gameSettingsGui.addPicture("x+-" tileSize+40 " ys+" tilesize/2 " w" tileSize+80 " h" tileSize/2 " backgroundTrans","./img/lightburst_bottom_light.png")
+	drawOutline(ui.gameSettingsGui,23,28,111,110,cfg.outlineColor1,cfg.outlineColor2,2)
+	drawOutline(ui.gameSettingsGui,138,28,111,110,cfg.outlineColor1,cfg.outlineColor2,2)
+	drawOutline(ui.gameSettingsGui,253,28,111,110,cfg.outlineColor1,cfg.outlineColor2,2)
+	drawOutline(ui.gameSettingsGui,368,28,111,110,cfg.outlineColor1,cfg.outlineColor2,2)
 	; ui.d2LaunchWish4ButtonBg 		:= ui.gameSettingsGui.addText("x+15 ys w" tileSize " h" tileSize " background" cfg.accentColor3)
 	; ui.d2LaunchWish4Button 		:= ui.gameSettingsGui.addPicture("x+-44 ys+2 w" tileSize " h" tileSize " backgroundTrans","./img/d2_numbersOfPowerEmblem_thumb.png")
 
@@ -856,18 +856,21 @@ gameTabChanged(*) {
 	
 	cfg.activeGameTab := ui.gametabs.value
 	if ui.gametabs.value>2 && !cfg.debugEnabled {
-		notifyOSD("In Development. Coming Soon")
-		setTimer () => ui.gametabs.choose(cfg.gameModuleList[ui.prevGameTab]),-3000
-		setTimer () => drawGameTabs(ui.gameTabs.value),-3500
+		
+		ui.gametabs.choose(cfg.gameModuleList[ui.prevGameTab])
+		
+		drawGameTabs(ui.gameTabs.value)
 		
 		cfg.activeGameTab:=ui.prevGameTab
+		notifyOSD("In Development. Coming Soon")
 	} else {
 		ui.prevGameTab:=cfg.activeGameTab
 		drawGameTabs(ui.gameTabs.value)
 	}
-	;guiVis(ui.gameTabGui,true)
+	ui.prevGameTab:=cfg.activeGameTab
+	guiVis(ui.gameTabGui,true)
 	
-	;tabsChanged()
+;	tabsChanged()
 }
 
 drawGameTabs(tabNum := 1) {
@@ -1681,7 +1684,7 @@ drawPanelLabel(guiName,labelX,labelY,labelW := 100,labelH := 20,labelText := "ne
 }
 
 
-
+drawPanel5(*) {
 	ui.gameTabs.useTab("Mouse")
 	cfg.rmbBind:=iniRead(cfg.file,"Game","RButtonBind","RButton")
 	cfg.lmbBind:=iniRead(cfg.file,"Game","LButtonBind","LButton")
@@ -1732,7 +1735,7 @@ drawPanelLabel(guiName,labelX,labelY,labelW := 100,labelH := 20,labelText := "ne
 	ui.MouseMiddleButtonText:=ui.gameSettingsGui.addText("x+5 ys w95 center background" cfg.bgColor2 " c" cfg.fontColor2,cfg.d2GameMouseMiddleButtonKey)
 	ui.MouseBackButtonText:=ui.gameSettingsGui.addText("x+5 ys w95 center background" cfg.bgColor2 " c" cfg.fontColor2,cfg.d2GameMouseBackButtonKey)
 	ui.MouseForwardButtonText:=ui.gameSettingsGui.addText("x+5 ys w95 center background" cfg.bgColor2 " c" cfg.fontColor2,cfg.d2GameMouseForwardButtonKey)
-
+}
 
 ;line(ui.mainGui,529,0,2,30,cfg.accentColor2)
 line(ui.gameTabGui,495,2,2,32,cfg.accentColor2)
