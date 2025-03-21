@@ -150,17 +150,18 @@ d2ReadyToReload(*) {
 }
 
 d2ReadyToSprint(*) {
+	
 	return (winActive("ahk_exe destiny2.exe")) 
 		? (cfg.d2AlwaysRunEnabled)
 			? (!cfg.dappPaused)
-				? (!getKeyState("RButton")) 
-					? (!getKeyState("["))
-						;? (!getKeyState("LButton")) 
-							? (!getKeyState(cfg.dappHoldToCrouchKey)) 
+				? (!getKeyState("LButton")) 
+					? (!getKeyState("RButton")) 
+						? (!getKeyState("["))
+						 	? (!getKeyState(cfg.dappHoldToCrouchKey)) 
 								? 1
 								: 0
 							: 0
-						;: 0
+						: 0
 					: 0
 				: 0
 			: 0

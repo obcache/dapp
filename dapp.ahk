@@ -1,4 +1,4 @@
-A_FileVersion := "1.5.6.4"
+A_FileVersion := "1.5.6.5"
 a_appName := "dapp"
 if (fileExist("./dapp_currentBuild.dat"))
 a_fileVersion := fileRead("./dapp_currentBuild.dat")
@@ -173,5 +173,7 @@ loadScreen(0)
 ;themeColors:=map("primaryColor","afafaf","accentColor","688015")
 
 ;colorMap:=map("baseColor","afafaf",")
+
+
 
 

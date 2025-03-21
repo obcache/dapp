@@ -29,17 +29,17 @@ ui.themeEditorTitlebar.onEvent("click",wm_lButtonDown_callback)
 
 
 guiVis(ui.themeEditorGui,false)
-ui.themeEditorGui.show("w320 h250 noActivate")
-drawOutlineNamed("themeOutline",ui.themeEditorGui,0,0,324,250,cfg.outlineColor2,cfg.outlineColor1,3)
+ui.themeEditorGui.show("w330 h250 noActivate")
+drawOutlineNamed("themeOutline",ui.themeEditorGui,0,0,324,250,cfg.outlineColor2,cfg.outlineColor2,3)
 ;drawOutlineNamed("themeOutline",ui.themeEditorGui,1,0,324,24,cfg.outlineColor2,cfg.outlineColor1,2)
-ui.ColorSelectorLabel2 := ui.themeEditorGui.AddText("x6 y33 h23 section w80 BackgroundTrans c"
+ui.ColorSelectorLabel2 := ui.themeEditorGui.AddText("x6 y33 h23 center section w85 BackgroundTrans c"
 	((cfg.ColorPickerEnabled) 
 		? cfg.fontColor3 " background" cfg.trimColor1 
 		: cfg.fontColor3 " background" cfg.trimColor1) 
 	,((cfg.ColorPickerEnabled) 
 		? (" Color App") 
 		: (" Swatches ")))
-drawOutlineNamed("themeEditorCancelButtonOutline",ui.themeEditorGui,295,0,25,24,cfg.outlineColor2,cfg.outlineColor1,2)
+drawOutlineNamed("themeEditorCancelButtonOutline",ui.themeEditorGui,300,2,24,24,cfg.outlineColor2,cfg.outlineColor1,2)
 ui.ColorSelectorLabel2.setFont("q5 s13","calibri bold")
 ;drawOutlineNamed("ThemeOutlineShadow",ui.themeEditorGui,10,32,60,28,cfg.outlineColor2,cfg.outlineColor2,2)
 
@@ -118,15 +118,31 @@ Loop ui.ThemeElements.Length
 	this_color := ui.ThemeElements[A_Index]
 	if (A_Index == 6 || A_Index == 10 || a_index == 16)
 		ui.themeEditorGui.AddText("x+8 y48 section hidden")
-	ui.themeEditorGui.addText("xs-1 y+4 section w30 h20 background" cfg.outlineColor2)
+	ui.themeEditorGui.addText("xs-1 y+0 section w30 h20 background" cfg.outlineColor2)
 	ui.%this_color%Picker := ui.themeEditorGui.AddText("section xs+1 y+-19 w28 h18 Border Background" cfg.%this_color% " c" cfg.%this_color%,this_color)
 	ui.%this_color%picker.redraw()
-	ui.%this_color%Label := ui.themeEditorGui.AddText("x+6 ys+2 c" cfg.fontColor1,StrReplace(this_color,"Color"))
+	ui.%this_color%Label := ui.themeEditorGui.AddText("x+6 ys+0 c" cfg.fontColor1,StrReplace(this_color,"Color"))
 	ui.%this_color%Picker.OnEvent("Click",PickColor)
 }
 
-ui.titlebarEdit:=ui.themeEditorGui.addPicture("section x4 y214 w30 h-1 backgroundTrans","./img/button_edit.png")
-ui.titlebarPreview:=ui.themeEditorGui.addPicture("x37 ys+0 w280 h-1 background000000",cfg.titleBarImage)
+ui.hideTitleTextLabel:=ui.themeEditorGui.addText("section x4 y174 w120 h20 right backgroundTrans","Hide Titlebar Text")
+ui.hidetitleTextCbValue:=iniRead(cfg.themeFile,cfg.theme,"HideTitlebarText",0)
+ui.hideTitleTextCb:=ui.themeEditorGui.addCheckbox("x4 ys w10 h10 vHideTitleBarTextCb",ui.hideTitleTextCbValue)
+ui.hideTitleTextCb.value:=ui.hideTitleTextCbValue
+ui.hideTitleTextCb.onEvent("click", toggleTitleText)
+toggleTitleText(*) {
+	
+	iniWrite((ui.hideTitleTextCb.value),cfg.themeFile,cfg.theme,"HideTitlebarText")
+	reload()
+	;msgBox("value: " ui.hideTitleTextCb.value "`nFile: " cfg.themeFile)
+}
+
+ui.titleBarEditBgText:=ui.themeEditorGui.addText("section x47 y214 w280 h30 backgroundTrans","dapp")
+ui.titleBarEditBgText.setFont("s14 c" cfg.fontColor2,"move-x")
+(ui.hideTitleTextCbValue) ? ui.titleBarEditBgText.opt("hidden") : ui.titleBarEditBgText.opt("-hidden")
+
+ui.titlebarEdit:=ui.themeEditorGui.addPicture("section x4 y214 w30 h30 backgroundTrans","./img/button_edit.png")
+ui.titlebarPreview:=ui.themeEditorGui.addPicture("x37 ys+0 w280 h30 backgroundTrans",cfg.titleBarImage)
 ;ui.titleBarPreviewLabel:=ui.themeEditorGui.addText("x5 y+5 w40 backgroundTrans center","Titlebar Image")
 drawOutline(ui.themeEditorGui,37,214,282,30,cfg.outlineColor1,cfg.outlineColor2,2)
 ;ui.titlebarPreviewLabel.setFont("q5 s9 c" cfg.fontColor2,"ubuntu one")
@@ -140,8 +156,8 @@ PostMessage(0x0153, 0, 18, ui.themeDDL)  ; Set height of list items.
 changeTitlebar(*) {
 	cfg.titleBarImage:=fileSelect(,a_scriptDir "\img\","Select Titlebar Image","*.png;*.jpg")
 	ui.titlebarPreview.value:=cfg.titleBarImage
-	iniWrite(cfg.titleBarImage,cfg.file,"Interface","TitleBarImage")
-	
+	iniWrite(cfg.titleBarImage,cfg.themeFile,cfg.theme,"TitleBarImage")
+	reload()
 }
 
 ControlFocus(ui.toggleColorSelector,ui.themeEditorGui)
@@ -277,6 +293,15 @@ addTheme(*) {
 		
 	}
 }
+
+ui.bgColor1Objects:=[ui.exitButtonBg,ui.downButtonBg,ui.gvConsole,ui.d2TopPanelBg,ui.panel4box1,ui.panel4box2,ui.d2LaunchGlyphsButtonBg,ui.d2LaunchRunesButtonBg,ui.d2LaunchWishButtonBg,ui.d2LaunchMapsButtonBg]
+
+updateColors(*) {
+	for bgColor1Obj in ui.bgColorObjects {
+		bgColor1Obj.opt("background" ui.bgColor1)
+	}
+}
+
 
 removeTheme(*) {
 	if cfg.themeList.Length == 1 {

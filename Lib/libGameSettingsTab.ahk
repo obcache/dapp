@@ -350,11 +350,11 @@ d2drawPanel1(*) {
 	labelText := "Keybinds"
 	
 	ui.d2keybindAppTab2 := guiName.addText("x" labelX+1 " y" labelY+8 " w" labelW-2 " h" labelH-1 " background" backColor " center c" fontColor) 
-	ui.d2keybindAppTab3 := guiName.addText("x" labelX+1 " y" labelY+8 " w" labelW-2 " h" labelH " backgroundTrans center c" fontColor, labelText) 
+	ui.d2keybindAppTab3 := guiName.addText("x" labelX+1 " y" labelY-6 " w" labelW-2 " h" labelH " backgroundTrans center c" fontColor, labelText) 
 	ui.d2keybindAppTab3.setFont("s10","thin")
 
 	labelX := 346
-	labelY := 44
+	labelY := 42
 	labelW := 96
 	labelH := 23
 	backColor := cfg.bgColor2
@@ -362,7 +362,7 @@ d2drawPanel1(*) {
 	outlineColor := cfg.accentColor4
 	labelText := "Game Settings"
 	ui.d2keybindGameTab2 := guiName.addText("x" labelX+1 " y" labelY+8 " w" labelW-2 " h" labelH " background" backColor " center c" fontColor) 
-	ui.d2keybindGameTab3 := guiName.addText("x" labelX+1 " y" labelY+8 " w" labelW-2 " backgroundTrans center c" fontColor, labelText) 
+	ui.d2keybindGameTab3 := guiName.addText("x" labelX+1 " y" labelY-6 " w" labelW-2 " backgroundTrans center c" fontColor, labelText) 
 	ui.d2keybindGameTab3.setFont("s10","bold")
 
 	ui.d2keybindAppTab1.onEvent("click",d2keybindAppTabClicked)
@@ -520,14 +520,14 @@ ui.d2KeyBindHelpMsg.text := "         Assign keys you'd like to use for each fun
 		ui.d2keybindGameTab3.setFont("s10 c" cfg.fontColor4,"thin")
 		ui.d2keybindGameTab1.move(348,labelY+10,92,13)
 		ui.d2keybindGameTab2.move(348,labelY+9,90,13)
-		ui.d2keybindGameTab3.move(346,labelY+8,,14)
+		ui.d2keybindGameTab3.move(346,labelY+6,,14)
 
 		ui.d2keybindAppTab1.opt("background" cfg.accentColor3)
 		ui.d2keybindAppTab2.opt("background" cfg.bgColor2)
 		ui.d2keybindAppTab3.setFont("s10 c" cfg.fontColor1,"bold")
 		ui.d2keybindAppTab1.move(labelx+0,labelY+6,70,17)
 		ui.d2keybindAppTab2.move(labelx+1,labelY+6,66,16)
-		ui.d2keybindAppTab3.move(282,labelY+8,,14)
+		ui.d2keybindAppTab3.move(282,labelY+6,,14)
 		d2changeKeybindPanelTab(2)
 	}
 
@@ -545,7 +545,7 @@ guiName := ui.gameSettingsGui
 		ui.d2keybindAppTab3.setFont("s10 c" cfg.fontColor4,"thin")
 		ui.d2keybindAppTab1.move(280,labelY+10,70,13)
 		ui.d2keybindAppTab2.move(281,labelY+9,65,13)
-		ui.d2keybindAppTab3.move(280,labelY+8,,14)
+		ui.d2keybindAppTab3.move(280,labelY+6,,14)
 
 		ui.d2keybindGameTab1.opt("background" cfg.accentColor3)
 		ui.d2keybindGameTab2.opt("background" cfg.bgColor2)
@@ -554,7 +554,7 @@ guiName := ui.gameSettingsGui
 		ui.d2keybindGameTab2.move(labelx+1,labelY+6,90,16)
 		ui.d2keybindGameTab2.redraw()
 	
-		ui.d2keybindGameTab3.move(,labelY+8,,14)
+		ui.d2keybindGameTab3.move(,labelY+6,,14)
 	d2changeKeybindPanelTab(1)
 }
 
@@ -660,13 +660,12 @@ d2drawTopPanel(*) {
 	drawOutlineNamed("d2AlwaysRunOutline",ui.gameSettingsGui,6,3,484,69,cfg.accentColor4,cfg.accentColor3,1)
 }
 
-
 d2drawPanel4(*) {
 	tileSize:=105
 	
 	ui.gameTabs.useTab("InfoGFX")
-	ui.gameSettingsGui.addText("x8 y5 w480 h144 background" cfg.bgColor1,"")
-	ui.gameSettingsGui.addText("x10 y7 w476 h140 c" cfg.bgColor1 " background" cfg.bgColor3)
+	ui.panel4box1:=ui.gameSettingsGui.addText("x8 y5 w480 h144 background" cfg.bgColor1,"")
+	ui.panel4box2:=ui.gameSettingsGui.addText("x10 y7 w476 h140 c" cfg.bgColor1 " background" cfg.bgColor3)
 	drawOutlineNamed("d2linkPanel",ui.gameSettingsGui,8,5,480,144,cfg.outlineColor2,cfg.outlineColor1,1)
 	drawOutlineNamed("d2AlwaysRunOutline",ui.gameSettingsGui,10,7,476,140,cfg.outlineColor1,cfg.outlineColor2,1)
 	ui.gameSettingsGui.addText("hidden x5 y15 section")
@@ -676,8 +675,8 @@ d2drawPanel4(*) {
 	ui.d2LaunchRunesButtonBg	:= ui.gameSettingsGui.addText("x+-10 ys+0 w" tileSize " h" tileSize " background" cfg.bgColor1)
 	ui.d2LaunchRunesButton		:= ui.gameSettingsGui.addPicture("x+-" (tileSize) " ys+2 w" tileSize " h" tileSize " backgroundTrans","./img/d2_runes_thumb.png")
 	ui.d2LaunchGlyphsButtonDetail:=ui.gameSettingsGui.addPicture("x+-" tileSize+20 " ys+" tilesize/2 " w" tileSize+40 " h" tileSize/2 " backgroundTrans","./img/lightburst_bottom_light.png")
-	ui.d2LaunchWish3ButtonBg 	:= ui.gameSettingsGui.addText("x+-10 ys+0 w" tileSize " h" tileSize " background" cfg.bgColor1)
-	ui.d2LaunchWish3Button 		:= ui.gameSettingsGui.addPicture("x+-" tileSize " ys+2 w" tileSize " h" tileSize " backgroundTrans","./img/d2_wishCodes_thumb.png")
+	ui.d2LaunchWishButtonBg 	:= ui.gameSettingsGui.addText("x+-10 ys+0 w" tileSize " h" tileSize " background" cfg.bgColor1)
+	ui.d2LaunchWishButton 		:= ui.gameSettingsGui.addPicture("x+-" tileSize " ys+2 w" tileSize " h" tileSize " backgroundTrans","./img/d2_wishCodes_thumb.png")
 	ui.d2LaunchGlyphsButtonDetail:=ui.gameSettingsGui.addPicture("x+-" tileSize+20 " ys+" tilesize/2 " w" tileSize+40 " h" tileSize/2 " backgroundTrans","./img/lightburst_bottom_light.png")
 	ui.d2LaunchMapsButtonBg		:= ui.gameSettingsGui.addText("x+-10 ys+0 w" tileSize " h" tileSize " background" cfg.bgColor1)
 	ui.d2LaunchMapsButton		:= ui.gameSettingsGui.addPicture("x+-" tileSize " ys+2 w" tileSize " h" tileSize " backgroundTrans","./img/d2_maps_thumb.png")
@@ -718,22 +717,30 @@ d2drawPanel3(*) {
 	
 	cfg.button_link_size:=54
 	ui.gameTabs.useTab("Gameplay")
-	ui.gameSettingsGui.addText("x7 y75 w485 h70 background" cfg.bgColor1,"")
-	ui.gameSettingsGui.addText("x11 y79 w475 h61 c" cfg.bgColor1 " background" cfg.bgColor2)
+	ui.panel4box3:=ui.gameSettingsGui.addText("x7 y75 w485 h70 background" cfg.bgColor1,"")
+	ui.panel4box4:=ui.gameSettingsGui.addText("x11 y79 w475 h61 c" cfg.bgColor1 " background" cfg.bgColor2)
 	drawOutlineNamed("d2linkPanel",ui.gameSettingsGui,12,80,474,60,cfg.accentColor2,cfg.accentColor4,1)
 	drawOutlineNamed("d2linkPanel",ui.gameSettingsGui,6,74,486,72,cfg.outlineColor2,cfg.outlineColor1,1)
 	drawOutlineNamed("d2AlwaysRunOutline",ui.gameSettingsGui,7,75,484,70,cfg.outlineColor1,cfg.outlineColor2,1)	
 	
 	loop 8 {
-		ui.button_link%a_index%:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos+1 " w" cfg.button_link_size-2 " h" cfg.button_link_size-2 " vbutton_link" a_index " background" cfg.bgColor3,cfg.button_link%a_index%[4])
-		ui.button_link%a_index%_detail:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos+1 " w" cfg.button_link_size-2 " h" cfg.button_link_size-2 " backgroundTrans","./img/lightburst_br_light.png")
+		ui.button_link%a_index% := object()
+		ui.button_link%a_index%.name:=cfg.button_link%a_index%[1]
+		ui.button_link%a_index%.type:=cfg.button_link%a_index%[2]
+		ui.button_link%a_index%.action:=cfg.button_link%a_index%[3]
+		ui.button_link%a_index%.thumb:=cfg.button_link%a_index%[4]
+		ui.button_link%a_index%.bg:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos+1 " w" cfg.button_link_size-2 " h" cfg.button_link_size-2 " vbutton_link" a_index " background" cfg.bgColor3,ui.button_link%a_index%.thumb)
+		ui.button_link%a_index%.fx:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos+1 " w" cfg.button_link_size-2 " h" cfg.button_link_size-2 " backgroundTrans","./img/lightburst_br_light.png")
 		drawOutline(ui.gameSettingsGui,xPos,yPos,cfg.button_link_size,cfg.button_link_size,cfg.accentColor2,cfg.accentColor1,1)
 		drawOutline(ui.gameSettingsGui,xPos+1,yPos+1,cfg.button_link_size-2,cfg.button_link_size-2,cfg.accentColor4,cfg.accentColor2,1)
+
 		this_action:=cfg.button_link%a_index%[3]
 		if cfg.button_link%a_index%[2]=="URL" {
-			ui.button_link%a_index%.onEvent("click",openUrl)
+			ui.button_link%a_index%.bg.onEvent("click",openUrl)
+			ui.button_link%a_index%.fx.onEvent("click",openUrl)
 		} else {
-			ui.button_link%a_index%.onEvent("click",%this_action%)
+			ui.button_link%a_index%.bg.onEvent("click",%this_action%)
+			ui.button_link%a_index%.fx.onEvent("click",%this_action%)
 		}
 		xPos+=cfg.button_link_size+5
 
@@ -742,8 +749,17 @@ d2drawPanel3(*) {
 		run("chrome.exe " cfg.%this_Url.name%[3])
 	}
 	
-		
+	static xPos:=15
+	static yPos:=82
+	loop 8 {
+		ui.button_link%a_index%.edit:=ui.gameSettingsGui.addPicture("x" xPos-6 " y" yPos+cfg.button_link_size-12 " w18 h19 vbutton_link_edit" a_index,"./img/button_edit.png")
+		ui.button_link%a_index%.edit.onEvent("click",editLinkBox)
+		xPos+=cfg.button_link_size+5
+	}
 
+	editLinkBox(lParam, ID, *) {
+		msgBox(lParam.name)
+	}
 	;ui.gameSettingsGui.addText("hidden x219 y21 section")
 	; ui.d2LaunchDIMbuttonBg				:= ui.gameSettingsGui.addText("x85 y85 w50 h50 background" cfg.trimColor2)
 	; ui.d2LaunchDIMbutton				:= ui.gameSettingsGui.addPicture("x81 y81 w56 h56 backgroundTrans","./img/button_DIM.png")
@@ -869,7 +885,7 @@ drawGameTabs(tabNum := 1) {
 			;drawOutlineNamed("gameTabs",ui.gameTabGui,ui.gameTabWidth-0,0,498-ui.gameTabWidth,32,cfg.accentColor3,cfg.accentColor1,1)
 	ui.gameTabGui.addText("x1 y0 w0 h27 section background" cfg.accentColor3,"")
 	((tabNum == 1)
-		? ui.gameTab1SkinOutline := ui.gameTabGui.addText("section x0 y0 w94 h32 background" cfg.accentColor3,"" )
+		? ui.gameTab1SkinOutline := ui.gameTabGui.addText("section x0 y0 w94 h32 background" cfg.accentColor1,"" )
 		: ui.gameTab1SkinOutline := ui.gameTabGui.addText("section x0 y2 w94 h30 background" cfg.accentColor2,""))
 	ui.gameTab1Skin := ui.gameTabGui.addText(
 		((tabNum == 1) 
@@ -877,7 +893,7 @@ drawGameTabs(tabNum := 1) {
 			: "y2 h28")
 				" x2 w88  background" 
 		((tabNum == 1) 
-			? cfg.bgColor2 
+			? cfg.bgColor2
 			: cfg.bgColor1) 
 		" c" ((tabNum == 1) 
 			? cfg.fontColor2
@@ -892,8 +908,8 @@ drawGameTabs(tabNum := 1) {
 			: "ys2 h28")
 				" x+-90 w90 center backgroundTrans c" 
 		((tabNum == 1) 
-			? cfg.fontColor1 
-			: cfg.fontColor4)
+			? cfg.fontColor2 
+			: cfg.fontColor1)
 				,"Gameplay")
 	ui.gameTab1Label.setFont((tabNum == 1 
 		? "s14" 
@@ -901,10 +917,10 @@ drawGameTabs(tabNum := 1) {
 			,"Impact")
 	ui.gameTabWidth += 92
 	((tabNum == 1 || tabNum == 2)
-		? ui.gameTabGui.addText("y0 x90 w2 h34 background" cfg.accentColor3,"")
+		? ui.gameTabGui.addText("y0 x90 w2 h34 background" cfg.accentColor1,"")
 		: ui.gameTabGui.addText("y2 x90 w2 h30 background" cfg.accentColor2,""))
 	((tabNum == 2)
-		? ui.gameTab2SkinOutline := ui.gameTabGui.addText("x92 y0 w122 h32 background" cfg.accentColor3,"" )
+		? ui.gameTab2SkinOutline := ui.gameTabGui.addText("x92 y0 w122 h32 background" cfg.accentColor1,"" )
 		: ui.gameTab2SkinOutline := ui.gameTabGui.addText("x92 y2 w122 h30 background" cfg.accentColor2,""))
 	ui.gameTab2Skin := ui.gameTabGui.addText(
 		((tabNum == 2) 
@@ -915,8 +931,8 @@ drawGameTabs(tabNum := 1) {
 			? cfg.bgColor2 
 			: cfg.bgColor1)
 				" c" ((tabNum == 2)
-			? cfg.fontColor1 
-			: cfg.fontColor4)
+			? cfg.fontColor2 
+			: cfg.fontColor1)
 				,"")
 	ui.gameTab2Skin.setFont(
 		((tabNum == 2)
@@ -929,8 +945,8 @@ drawGameTabs(tabNum := 1) {
 			: "y5 h32")
 		" x92 w120 center backgroundTrans c" 
 		((tabNum == 2)
-		? cfg.fontColor1 
-			: cfg.fontColor4)
+		? cfg.fontColor2 
+			: cfg.fontColor1)
 		,"Vault Cleaner")
 	ui.gameTab2Label.setFont(
 		((tabNum == 2)
@@ -939,10 +955,10 @@ drawGameTabs(tabNum := 1) {
 		,"Impact")
 	ui.gameTabWidth += 102	
 	((tabNum == 2 || tabNum == 3)
-		? ui.gameTabGui.addText("y0 x212 w2 h34 background" cfg.accentColor3,"")
+		? ui.gameTabGui.addText("y0 x212 w2 h34 background" cfg.accentColor1,"")
 		: ui.gameTabGui.addText("y2 x212 w2 h30 background" cfg.accentColor2,""))
 	((tabNum == 3)
-		? ui.gameTab3SkinOutline := ui.gameTabGui.addText("x214 y0 w86 h32 background" cfg.accentColor3,"" )
+		? ui.gameTab3SkinOutline := ui.gameTabGui.addText("x214 y0 w86 h32 background" cfg.accentColor1,"" )
 		: ui.gameTab3SkinOutline := ui.gameTabGui.addText("x214 y2 w86 h32 background" cfg.accentColor2,""))
 	ui.gameTab3Skin := ui.gameTabGui.addText(
 		((tabNum == 3) 
@@ -953,8 +969,8 @@ drawGameTabs(tabNum := 1) {
 			? cfg.bgColor2 
 			: cfg.bgColor1)
 				" c" ((tabNum == 3)
-			? cfg.fontColor1 
-			: cfg.fontColor4)
+			? cfg.fontColor2 
+			: cfg.fontColor1)
 				,"")
 	ui.gameTab3Skin.setFont(
 		((tabNum == 3)
@@ -967,8 +983,8 @@ drawGameTabs(tabNum := 1) {
 			: "y5 h32")
 		" x214 w84 center backgroundTrans c" 
 		((tabNum == 3)
-		? cfg.fontColor1 
-			: cfg.fontColor4)
+		? cfg.fontColor2 
+			: cfg.fontColor1)
 		,"Mouse")
 	ui.gameTab3Label.setFont(
 		((tabNum == 3)
@@ -977,10 +993,10 @@ drawGameTabs(tabNum := 1) {
 		,"Impact")
 	ui.gameTabWidth += 86
 	((tabNum == 3 || tabNum == 4)
-		? ui.gameTabGui.addText("y0 x298 w2 h34 section background" cfg.accentColor3,"")
-		: ui.gameTabGui.addText("y2 x298 w2 h30 section background" cfg.accentColor2,""))
+		? ui.gameTabGui.addText("y0 x298 w2 h34 section background" cfg.accentColor1,"")
+		: ui.gameTabGui.addText("y2 x298 w2 h30 section background" cfg.accentColor1,""))
 	((tabNum == 4)
-		? ui.gameTab4SkinOutline := ui.gameTabGui.addText("x300 y0 w70 h32 background" cfg.accentColor3,"" )
+		? ui.gameTab4SkinOutline := ui.gameTabGui.addText("x300 y0 w70 h32 background" cfg.accentColor1,"" )
 		: ui.gameTab4SkinOutline := ui.gameTabGui.addText("x300 y2 w70 h32 background" cfg.accentColor2,""))
 	ui.gameTab4Skin := ui.gameTabGui.addText(
 		((tabNum == 4) 
@@ -991,8 +1007,8 @@ drawGameTabs(tabNum := 1) {
 			? cfg.bgColor2 
 			: cfg.bgColor1)
 				" c" ((tabNum == 4)
-			? cfg.fontColor1 
-			: cfg.fontColor4)
+			? cfg.fontColor2 
+			: cfg.fontColor1)
 				,"")
 	ui.gameTab4Skin.setFont(
 		((tabNum == 4)
@@ -1005,8 +1021,8 @@ drawGameTabs(tabNum := 1) {
 			: "y5 h32")
 		" x300 w68 center backgroundTrans c" 
 		((tabNum == 4)
-		? cfg.fontColor1 
-			: cfg.fontColor4)
+		? cfg.fontColor2 
+			: cfg.fontColor1)
 		,"InfoGFX")
 	ui.gameTab4Label.setFont(
 		((tabNum == 4)
@@ -1015,12 +1031,12 @@ drawGameTabs(tabNum := 1) {
 		,"Impact")
 	ui.gameTabWidth += 70
 	((tabNum == 4)
-		? ui.gameTabGui.addText("y0 x370 w2 h34 section background" cfg.accentColor3,"")
+		? ui.gameTabGui.addText("y0 x370 w2 h34 section background" cfg.accentColor1,"")
 		: ui.gameTabGui.addText("y2 x370 w2 h30 section background" cfg.accentColor2,""))
 
 	
 	winGetPos(&mainGuiX,&mainGuiY,,,ui.mainGui.hwnd)
-		ui.gameTabGui.addText("y2 x372 w" 498-(ui.gameTabWidth+3) " h28 background" cfg.bgColor1)
+		ui.gameTabGui.addText("y2 x372 w" 498-(ui.gameTabWidth+3) " h28 background" cfg.bgColor2)
 	if !(mainGuiX==0 && mainGuiY==0) {
 		ui.gameTabGui.show("w495 h32 noActivate x" mainGuiX+34 " y" mainGuiY+183)
 		
@@ -1664,136 +1680,7 @@ drawPanelLabel(guiName,labelX,labelY,labelW := 100,labelH := 20,labelText := "ne
 		guiName.addText("x" labelX+1 " y" labelY+1 " w" labelW-2 " h" labelH " backgroundTrans center c" fontColor, labelText) 
 }
 
-ui.gametabs.useTab("222Vault Cleaner222")
-	ui.gameSettingsGui.addText("x5 y3 w488 h146 background" cfg.bgColor1)
-	drawOutlineNamed("vaultStats",ui.gameSettingsGui,5,4,472,58,cfg.outlineColor1,cfg.outlineColor2,2)
-	;ui.gameSettingsGui.addText("x11 y8 w118 h60 background" cfg.bgColor3)
-	ui.gameSettingsGui.addText("x9 y8 w478 h66 background" cfg.bgColor1)
-	ui.gameSettingsGui.addText("x10 y11 w473 h18 background" cfg.bgColor2)
-	ui.gameSettingsGui.addPicture("x10 y30 w475 h23 background" cfg.trimColor1,"./img/lightburst_top_light.png")
-	;drawOutline(ui.gameSettingsGui,10,9,478,64,cfg.accentColor1,cfg.accentColor1,2)
-	ui.gameSettingsGui.setFont("s10 c" cfg.fontColor1)
-	this.mainButtonBg:=ui.gameSettingsGui.addPicture("x10 y10 w46 h17 background" cfg.accentColor1,"./img/lightburst_br.png")
-	this.mainButton:=ui.gameSettingsGui.addPicture("section center x10 y11 w75 h18 background" cfg.fontColor3 " c" cfg.fontColor3,"./img/lightburst_tl_light.png")
-	this.mainButtonTextBg:=ui.gameSettingsGui.addPicture("section left x87 y12 w398 h17 background" cfg.baseColor,"./img/lightburst_br_light.png")
-	this.mainButtonText:=ui.gameSettingsGui.addText("section center x10 y9 w74 h17 backgroundTrans","Start")
-	this.mainButtonText.setFont("s13 q5 c" cfg.fontColor4,"Ubuntu Mono")
-	this.mainButtonHotkey:=ui.gameSettingsGui.addPicture("hidden left x40 y10 background" cfg.trimColor1 " c" cfg.fontColor1 " h17 w67","./img/lightburst_bottom_light.png")
-	this.mainButtonHotkeyText:=ui.gameSettingsGui.addText("left x93 y12 backgroundTrans c" cfg.fontColor2 " h19 w280","Press [Del] to START")
-	this.mainButtonHotkeyText.setFont("s10 q5"," Helvetica")
-	this.mainButton.onEvent("click",cleanVaultStart)
-	this.mainButtonText.onEvent("click",cleanVaultStart)
-	ui.gameSettingsGui.setFont("s12 c" cfg.fontColor3)
-	this.statusText:=ui.gameSettingsGui.addText("x20 y31 w470 h20 backgroundTrans","Toggle VAULT MODE to enable START button")
 
-	this.statBg:=ui.gameSettingsGui.addPicture("x10 y80 w235 h62 background" cfg.bgColor2,"./img/lightburst_tr_light.png")
-	this.statBg.onEvent("click",toggleVaultMode)
-	this.statBg2:=ui.gameSettingsGui.addPicture("hidden x260 y84 w220 h64 background" cfg.trimColor1)
-	;ui.gameSettingsGui.addText("x245 y78 w244 h66 background" cfg.trimColor1 " c" cfg.fontColor3)
-	ui.gameSettingsGui.addPicture("x246 y81 w240 h60 background" cfg.trimColor1,"./img/lightburst_tl.png")
-	;drawOutlineNamed("vaultStats2",ui.gameSettingsGui,250,78,244,66,cfg.accentColor1,cfg.accentColor1,2)
-	ui.gameSettingsGui.setFont("s12")
-	this.pageLabel:=ui.gameSettingsGui.addText("right section x370 y82 w80 h25 backgroundTrans c" cfg.fontColor3 "","Page: ")
-	this.pageCount:=ui.gameSettingsGui.addText("x420 ys+1 right w56 h25 c" cfg.fontColor3 " backgroundTrans",format("{:03d}",this.page))
-	this.elapsedLabel:=ui.gameSettingsGui.addText("section x340 y100 w80 right h25 c" cfg.fontColor3 " backgroundTrans","Elapsed: ")
-	this.elapsedTime:=ui.gameSettingsGui.addText("x420 ys+0 left w80 h25 c" cfg.fontColor3 " backgroundTrans","00:00:00")
-	this.remaining:=ui.gameSettingsGui.addText("section x340 y118 right w80 h25 c" cfg.fontColor3 " backgroundTrans","Remaining: ")
-	this.remainingtime:=ui.gameSettingsGui.addText("x420 ys+0 left w80 h25 c" cfg.fontColor3 " backgroundTrans","00:00:00")
-	
-	;this.dismantledHeaderLabel:=ui.gameSettingsGui.addText("x250 y0 w110 right h25 c" cfg.fontColor1 " backgroundTrans","")
-	this.dismantledLegendaryLabel:=ui.gameSettingsGui.addText("section x255 y82  left h25 c" cfg.fontColor3 " backgroundTrans","Legendary: ")
-	this.dismantledLegendary:=ui.gameSettingsGui.addText("x+0 ys+1 left w83 h25 c" cfg.fontColor3 " backgroundTrans",format("{:03d}","000"))
-	this.dismantledExoticLabel:=ui.gameSettingsGui.addText("section x255 y100 left h25 c" cfg.fontColor3 " backgroundTrans","Exotic: ")
-	this.dismantledExotics:=ui.gameSettingsGui.addText("x+0 ys+0 left w80 h25 c" cfg.fontColor3 " backgroundTrans",format("{:03d}","000"))
-	this.dismantledTotalLabel:=ui.gameSettingsGui.addText("section x255 y118 left h25 c" cfg.fontColor3 " backgroundTrans","Total: ")
-	this.dismantledTotal:=ui.gameSettingsGui.addText("x+0 ys+0 left w80 h25 c" cfg.fontColor3 " backgroundTrans",format("{:03d}","000"))
-	
-	this.vaultProgressLabelBg:=ui.gameSettingsGui.addText("x10 y52 w126 h20 background" cfg.baseColor,"")
-	this.vaultProgressLabel:=ui.gameSettingsGui.addText("x18 y54 w110 h21 backgroundTrans c" cfg.fontColor1,"Progress")
-	this.vaultProgressLabel.setFont("s10","move-x")
-	this.vaultProgress := ui.gameSettingsGui.addProgress("x106 y54 w380 h18 c" cfg.trimColor5 " background151515 range1-500")
-	this.vaultDetail:=ui.gameSettingsGui.addPicture("x60 y52 w398 h17 backgroundTrans","./img/lightburst_tl.png")
-	this.completeMsg := ui.gameSettingsGui.addText("hidden x33 y61 w500 h30 backgroundTrans c" cfg.fontColor1 "","")
-	
-	drawOutlineNamed("vaultCleanerButton",ui.gameSettingsGui,10,79,234,65,cfg.outlineColor1,cfg.outlineColor2,2)
-	;drawOutlineNamed("vaultCleanerButton",ui.gameSettingsGui,247,79,243,64,cfg.accentColor2,cfg.accentColor1,4)
-	drawOutlineNamed("vaultStats",ui.gameSettingsGui,9,78,480,66,cfg.accentColor4,cfg.outlineColor2,2)
-	drawOutlineNamed("vaultStats",ui.gameSettingsGui,9,8,480,66,cfg.accentColor4,cfg.outlineColor2,2)
-	
-	this.d2LaunchVaultCleanerButton := ui.gameSettingsGui.addPicture("x9 y76 w70 h70 backgroundTrans","./img/button_vault_up.png")
-	this.d2LaunchVaultCleanerButton.onEvent("click",toggleVaultMode)
-	this.d2LaunchVaultCleanerText:=ui.gameSettingsGui.addText("x60 y91 w180 h50 center backgroundTrans c" cfg.fontColor1,'Vault Mode: Off`nClick to Toggle.')
-	this.d2LaunchVaultCleanerText.setFont("s12 c" cfg.fontColor1 " bold","Arial")
-	
-	isWindowedFullscreen(*) {
-		static tx:=""
-		static ty:=""
-		static tw:=""
-		static th:=""
-		if !winExist(this.gameWin)
-			return
-		winGetPos(&tx,&ty,&tw,&th,this.gameWin)
-		if winGetMinMax(this.gameWin) == 0 && a_screenwidth==tw  {
-			return 1
-		} else {
-			return 0
-		}
-	}
-	toggleVaultMode(*) {
-		static vaultMode:=false
-	
-		(vaultMode:=!vaultMode) 
-			? vaultModeOn()
-			: vaultModeOff()
-			
-	}
-
-	vaultModeOn(*) {
-		;if isWindowedFullscreen() {
-		if !winExist(this.gameWin) {
-			notifyOSD("Game window not found. Vault mode aborted.",2000,ui.gameSettingsGui)
-			vaultMode:=false
-			Return
-		}
-			; winActivate(this.gameWin)
-			this.d2LaunchVaultCleanerButton.value:="./img/button_vault_down.png"
-			this.d2LaunchVaultCleanerButton.redraw()
-			this.statusText.text :="[Del] to begin clean-up."
-			this.d2LaunchVaultCleanerText.text:="Vault Mode: On`nClick to Toggle"
-			this.statBg.opt("background" cfg.bgColor1)
-			this.statBg.value:="./img/lightburst_tl.png"
-			drawOutlineNamed("vaultCleanerButton",ui.gameSettingsGui,13,82,230,58,cfg.accentColor3,cfg.accentColor3,2)
-			this.d2LaunchVaultCleanerButton.value:="./img/button_vault_down.png"
-			; winMove((a_screenwidth/2)-640,(a_screenheight/2)-360,1280,720,this.gameWin)
-			; winActivate(ui.mainGui)
-			vaultCleaner()
-			
-	;}
-	}
-
-
-	vaultModeOff(*) {
-		if !winExist(this.gameWin) {
-			notifyOSD("Vault mode not applicable.`nGame window not found.",2000,ui.gameSettingsGui)
-			Return
-		}
-		winActivate(this.gameWin)
-		this.mainButtonHotkeyText.text:="Click Vault Icon to Toggle VAULT MODE"
-		this.statusText.text:="Cannot START vault cleaning when not in VAULT MODE"
-		; this.d2LaunchVaultCleanerButton.redraw()
-		this.d2LaunchVaultCleanerText.text:="Vault Mode: Off`nClick to Toggle"
-		this.statBg.opt("background" cfg.bgColor2)
-		this.statBg.value:="./img/lightburst_br_light.png"
-		drawOutlineNamed("vaultCleanerButton",ui.gameSettingsGui,13,82,230,58,cfg.outlineColor1,cfg.outlineColor2,2)
-		this.d2LaunchVaultCleanerButton.value:="./img/button_vault_up.png"
-		try 
-			vaultTopGui.destroy()
-		winMove(0,0,a_screenwidth,a_screenHeight,this.gameWin)
-		winRestore(this.gameWin)
-		winActivate(ui.mainGui)
-		
-		
-	}
 
 	ui.gameTabs.useTab("Mouse")
 	cfg.rmbBind:=iniRead(cfg.file,"Game","RButtonBind","RButton")

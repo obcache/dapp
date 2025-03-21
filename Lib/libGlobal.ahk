@@ -53,14 +53,14 @@ cfgLoad(&cfg, &ui) {
 	ui.guiH					:= 220  	;430 for Console Mode
 	cfg.dockbarMon			:= 1
 	ui.incursionNoticeHwnd	:= ""
-	ui.exitMenuGui := gui()
+	ui.exitMenuGui 			:= gui()
 	ui.gameWindowsList 		:= array()
 	cfg.gameWindowsList 	:= array()
-	ui.d2FlyEnabled		:= true
-	ui.d2AlwaysSprintPaused 	:= false
-	ui.d2IsSprinting			:= false
-	ui.d2IsSliding				:= false
-	ui.d2IsReloading			:= false
+	ui.d2FlyEnabled			:= true
+	ui.d2AlwaysSprintPaused := false
+	ui.d2IsSprinting		:= false
+	ui.d2IsSliding			:= false
+	ui.d2IsReloading		:= false
 	ui.d2ToggleWalkEnabled	:= false
 	ui.clockTimerStarted 	:= false
 	ui.clockMode			:= "Clock"
@@ -112,7 +112,7 @@ cfgLoad(&cfg, &ui) {
 	ui.clearClockAlert			:= false
 	ui.themeEditorVisible		:= false
 	cfg.forcedTooltipControls	:= "Win1,Win2,Win3"
-		this2:=object()
+	this2:=object()
 	this.gameWin:="ahk_exe " setting.gameExe
 	this.page:=0
 	this.row:=1
@@ -205,7 +205,7 @@ cfgLoad(&cfg, &ui) {
 	cfg.HeadsetVolume			:= IniRead(cfg.file,"audio","HeadsetVolume",".80")
 	cfg.Mode					:= IniRead(cfg.file,"audio","Mode","1")
 	cfg.Theme					:= IniRead(cfg.file,"Interface","Theme","Modern Class")
-	cfg.ThemeList				:= StrSplit(IniRead(cfg.themeFile,"Interface","ThemeList","Modern Class,Cold Steel,Militarized,Custom"),",")
+	cfg.ThemeList				:= StrSplit(IniRead(cfg.themeFile,"Interface","ThemeList","Light,Dark,Alien,Modern Class,Militarized,Ocean,Neon"),",")
 	cfg.baseColor	:= IniRead(cfg.themeFile,cfg.Theme,"baseColor","414141")
 	cfg.fontColor1			:= IniRead(cfg.themeFile,cfg.Theme,"fontColor1","1FFFF0")
 	cfg.fontColor2			:= IniRead(cfg.themeFile,cfg.Theme,"fontColor2","FBD58E")
@@ -252,7 +252,7 @@ cfgLoad(&cfg, &ui) {
 	cfg.d2GameMouseMiddleButtonKey := iniRead(cfg.file,"Mouse","MouseMiddleButton","LButton")
 	cfg.d2GameMouseBackButtonKey := iniRead(cfg.file,"Mouse","MouseBackButton","LButton")
 	cfg.d2GameMouseForwardButtonKey := iniRead(cfg.file,"Mouse","MouseForwardButton","LButton")
-	cfg.titleBarImage			:= iniRead(cfg.file,"Interface","TitlebarImage","./img/dapp_titlebar.png")
+	cfg.titleBarImage			:= iniRead(cfg.themefile,cfg.theme,"TitlebarImage","./img/dapp_titlebar.png")
 	
 	runWait("./redist/mouseSC_x64.exe /verticalScroll:1",,"hide")
 }
@@ -527,16 +527,15 @@ NotifyOSD(NotifyMsg,Duration := 2000,guiName:=ui.mainGui,Alignment := "Left",YN 
 		ui.notifyGui.Destroy()
 	ui.notifyGui			:= Gui()
 	ui.notifyGui.Title 		:= "Notify"
-	ui.notifyGui.Opt(" -Caption +ToolWindow +Owner" guiName.hwnd)  ; +ToolWindow avoids a taskbar button and an alt-tab menu item.
+	ui.notifyGui.Opt(" -Caption +ToolWindow alwaysOnTop")  ; +ToolWindow avoids a taskbar button and an alt-tab menu item.
 	ui.notifyGui.BackColor := cfg.bgColor1  ; Can be any RGB color (it will be made transparent below).
 	ui.notifyGui.setFont("q5 s16")  ; Set a large font size (32-point).
 	ui.notifyGui.AddText("c" cfg.fontColor1 " " Alignment " BackgroundTrans",NotifyMsg)  ; XX & YY serve to 00auto-size the window.
 	ui.notifyGui.AddText("xs hidden")
+	ui.notifyGui.getPos(&x,&y,&w,&h)
 	WinSetTransparent(0,ui.notifyGui)
-	ui.notifyGui.Show("NoActivate Autosize")  ; NoActivate avoids deactivating the currently active window.
-	ui.notifyGui.GetPos(&x,&y,&w,&h)
 	winGetPos(&GuiX,&GuiY,&GuiW,&GuiH,ui.mainGui.hwnd)
-	ui.notifyGui.Show("x" (GuiX+(GuiW/2)-(w/2)) " y" GuiY+(100-(h/2)) )
+	ui.notifyGui.Show("x" (GuiX+(GuiW)) " y" GuiY )
 	guiVis(ui.notifyGui,true)
 	drawOutlineNotifyGui(1,1,w,h,cfg.outlineColor2,cfg.outlineColor1,1)
 	drawOutlineNotifyGui(2,2,w-2,h-2,cfg.accentColor4,cfg.accentColor4,1)
@@ -558,6 +557,7 @@ NotifyOSD(NotifyMsg,Duration := 2000,guiName:=ui.mainGui,Alignment := "Left",YN 
 		ui.notifyGui.destroy()
 		notifyOSD("Timed out waiting for response.`nPlease try your action again",-1000)
 	}
+	(cfg.alwaysOnTopEnabled) ? ui.mainGui.opt("+alwaysOnTop") : 0
 }
 
 fadeOSD() {
