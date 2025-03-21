@@ -963,88 +963,88 @@ drawGameTabs(tabNum := 1) {
 	((tabNum == 3)
 		? ui.gameTab3SkinOutline := ui.gameTabGui.addText("x214 y0 w86 h32 background" cfg.accentColor1,"" )
 		: ui.gameTab3SkinOutline := ui.gameTabGui.addText("x214 y2 w86 h32 background" cfg.accentColor2,""))
-	ui.gameTab3Skin := ui.gameTabGui.addText(
-		((tabNum == 3) 
-			? "y0 h30" 
-			: "y2 h28")
-				" x214 w84 center background" 
-		((tabNum == 3) 
-			? cfg.bgColor2 
-			: cfg.bgColor1)
-				" c" ((tabNum == 3)
-			? cfg.fontColor2 
-			: cfg.fontColor1)
-				,"")
-	ui.gameTab3Skin.setFont(
-		((tabNum == 3)
-			? "s14" 
-			: "s12")
-			,"Impact")
-	ui.gameTab3Label := ui.gameTabGui.addText(
-		((tabNum == 3) 
-			? "y2 h28" 
-			: "y5 h32")
-		" x214 w84 center backgroundTrans c" 
-		((tabNum == 3)
-		? cfg.fontColor2 
-			: cfg.fontColor1)
-		,"Mouse")
-	ui.gameTab3Label.setFont(
-		((tabNum == 3)
-			? "s14" 
-			: "s12")
-		,"Impact")
-	ui.gameTabWidth += 86
-	((tabNum == 3 || tabNum == 4)
-		? ui.gameTabGui.addText("y0 x298 w2 h34 section background" cfg.accentColor1,"")
-		: ui.gameTabGui.addText("y2 x298 w2 h30 section background" cfg.accentColor1,""))
-	((tabNum == 4)
-		? ui.gameTab4SkinOutline := ui.gameTabGui.addText("x300 y0 w70 h32 background" cfg.accentColor1,"" )
-		: ui.gameTab4SkinOutline := ui.gameTabGui.addText("x300 y2 w70 h32 background" cfg.accentColor2,""))
-	ui.gameTab4Skin := ui.gameTabGui.addText(
-		((tabNum == 4) 
-			? "y0 h30" 
-			: "y2 h28")
-				" x300 w70 center background" 
-		((tabNum == 4) 
-			? cfg.bgColor2 
-			: cfg.bgColor1)
-				" c" ((tabNum == 4)
-			? cfg.fontColor2 
-			: cfg.fontColor1)
-				,"")
-	ui.gameTab4Skin.setFont(
-		((tabNum == 4)
-			? "s14" 
-			: "s12")
-			,"Impact")
-	ui.gameTab4Label := ui.gameTabGui.addText(
-		((tabNum == 4) 
-			? "y2 h28" 
-			: "y5 h32")
-		" x300 w68 center backgroundTrans c" 
-		((tabNum == 4)
-		? cfg.fontColor2 
-			: cfg.fontColor1)
-		,"InfoGFX")
-	ui.gameTab4Label.setFont(
-		((tabNum == 4)
-			? "s14" 
-			: "s12")
-		,"Impact")
-	ui.gameTabWidth += 70
-	((tabNum == 4)
-		? ui.gameTabGui.addText("y0 x370 w2 h34 section background" cfg.accentColor1,"")
-		: ui.gameTabGui.addText("y2 x370 w2 h30 section background" cfg.accentColor2,""))
+	; ui.gameTab3Skin := ui.gameTabGui.addText(
+		; ((tabNum == 3) 
+			; ? "y0 h30" 
+			; : "y2 h28")
+				; " x214 w84 center background" 
+		; ((tabNum == 3) 
+			; ? cfg.bgColor2 
+			; : cfg.bgColor1)
+				; " c" ((tabNum == 3)
+			; ? cfg.fontColor2 
+			; : cfg.fontColor1)
+				; ,"")
+	; ui.gameTab3Skin.setFont(
+		; ((tabNum == 3)
+			; ? "s14" 
+			; : "s12")
+			; ,"Impact")
+	; ui.gameTab3Label := ui.gameTabGui.addText(
+		; ((tabNum == 3) 
+			; ? "y2 h28" 
+			; : "y5 h32")
+		; " x214 w84 center backgroundTrans c" 
+		; ((tabNum == 3)
+		; ? cfg.fontColor2 
+			; : cfg.fontColor1)
+		; ,"Mouse")
+	; ui.gameTab3Label.setFont(
+		; ((tabNum == 3)
+			; ? "s14" 
+			; : "s12")
+		; ,"Impact")
+	; ui.gameTabWidth += 86
+	; ((tabNum == 3 || tabNum == 4)
+		; ? ui.gameTabGui.addText("y0 x298 w2 h34 section background" cfg.accentColor1,"")
+		; : ui.gameTabGui.addText("y2 x298 w2 h30 section background" cfg.accentColor1,""))
+	; ((tabNum == 4)
+		; ? ui.gameTab4SkinOutline := ui.gameTabGui.addText("x300 y0 w70 h32 background" cfg.accentColor1,"" )
+		; : ui.gameTab4SkinOutline := ui.gameTabGui.addText("x300 y2 w70 h32 background" cfg.accentColor2,""))
+	; ui.gameTab4Skin := ui.gameTabGui.addText(
+		; ((tabNum == 4) 
+			; ? "y0 h30" 
+			; : "y2 h28")
+				; " x300 w70 center background" 
+		; ((tabNum == 4) 
+			; ? cfg.bgColor2 
+			; : cfg.bgColor1)
+				; " c" ((tabNum == 4)
+			; ? cfg.fontColor2 
+			; : cfg.fontColor1)
+				; ,"")
+	; ui.gameTab4Skin.setFont(
+		; ((tabNum == 4)
+			; ? "s14" 
+			; : "s12")
+			; ,"Impact")
+	; ui.gameTab4Label := ui.gameTabGui.addText(
+		; ((tabNum == 4) 
+			; ? "y2 h28" 
+			; : "y5 h32")
+		; " x300 w68 center backgroundTrans c" 
+		; ((tabNum == 4)
+		; ? cfg.fontColor2 
+			; : cfg.fontColor1)
+		; ,"InfoGFX")
+	; ui.gameTab4Label.setFont(
+		; ((tabNum == 4)
+			; ? "s14" 
+			; : "s12")
+		; ,"Impact")
+	; ui.gameTabWidth += 70
+	; ((tabNum == 4)
+		; ? ui.gameTabGui.addText("y0 x370 w2 h34 section background" cfg.accentColor1,"")
+		; : ui.gameTabGui.addText("y2 x370 w2 h30 section background" cfg.accentColor2,""))
 
 	
 	winGetPos(&mainGuiX,&mainGuiY,,,ui.mainGui.hwnd)
-		ui.gameTabGui.addText("y2 x372 w" 498-(ui.gameTabWidth+3) " h28 background" cfg.bgColor2)
+		ui.gameTabGui.addText("y2 x216 w" 498-(ui.gameTabWidth+3) " h28 background" cfg.bgColor2)
 	if !(mainGuiX==0 && mainGuiY==0) {
 		ui.gameTabGui.show("w495 h32 noActivate x" mainGuiX+34 " y" mainGuiY+183)
 		
 	}
-	line(ui.gameTabGui,372,30,180,2,cfg.accentColor2)
+	line(ui.gameTabGui,300,30,200,2,cfg.accentColor2)
 
 }
 
