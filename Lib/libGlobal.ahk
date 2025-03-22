@@ -600,7 +600,7 @@ loadScreen(visible := true,NotifyMsg := "dapp Loading",Duration := 10) {
 		transparent := 255
 		while transparent > 10 {
 			winSetTransparent(transparent,ui.notifyGui.hwnd)
-			transparent -= 1
+			transparent -= 10
 			sleep(20)
 		}
 		ui.notifyGui.hide()
