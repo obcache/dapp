@@ -114,6 +114,10 @@ preAutoExec(InstallDir,ConfigFileName) {
 			{
 				DirCreate(InstallDir "\Img")
 			}
+			if !(DirExist(InstallDir "\Img\custom"))
+			{
+				DirCreate(InstallDir "\Img\custom")
+			}
 			if !(DirExist(InstallDir "\Redist"))
 			{
 				DirCreate(InstallDir "\Redist")
