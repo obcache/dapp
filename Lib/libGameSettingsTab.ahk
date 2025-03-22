@@ -92,12 +92,12 @@ d2drawPanel1(*) {
 	
 	ui.d2keybindGameTab1 := guiName.addText("x" labelX " y" labelY+labelH/2 " w" labelW " h" labelH/2+3 " background" outlineColor,"")
 	ui.d2Panel1Tab1Bg := ui.gameSettingsGui.addText("hidden x44 y9 w439 h42 background" cfg.outlineColor2,"")
-	ui.d2Panel1Tab1Bg2 := ui.gameSettingsGui.addText("hidden x45 y10 w437 h40 background" cfg.bgColor2 " c" cfg.fontColor4,"")	
+	ui.d2Panel1Tab1Bg2 := ui.gameSettingsGui.addText("hidden x45 y10 w437 h40 background" cfg.bgColor3 " c" cfg.fontColor4,"")	
 	ui.d2Panel1Tab1Bg3 := ui.gameSettingsGui.addText("hidden x46 y11 w435 h38 background" cfg.accentColor2,"")
 	ui.d2Panel1Tab1Bg4 := ui.gameSettingsGui.addText("hidden x47 y12 w433 h36 background" cfg.bgColor3,"")
 	
 	ui.d2Panel1Tab2Bg := ui.gameSettingsGui.addText("hidden x19 y9 w438 h42 background" cfg.outlineColor2,"")
-	ui.d2Panel1Tab2Bg2 := ui.gameSettingsGui.addText("hidden x20 y10 w436 h40 background" cfg.bgColor2 " c" cfg.fontColor4,"")	
+	ui.d2Panel1Tab2Bg2 := ui.gameSettingsGui.addText("hidden x20 y10 w436 h40 background" cfg.bgColor3 " c" cfg.fontColor4,"")	
 	ui.d2Panel1Tab2Bg3 := ui.gameSettingsGui.addText("hidden x21 y11 w434 h38 background" cfg.accentColor2,"")
 	ui.d2Panel1Tab2Bg4 := ui.gameSettingsGui.addText("hidden x22 y12 w432 h36 background" cfg.bgColor3,"")
 	
@@ -245,7 +245,7 @@ d2drawPanel1(*) {
 	ui.dappHoldToCrouchKeyData.setFont("s12 q5","calibri")
 	ui.dappToggleSprintKeyData.setFont("s12 q5","calibri")
 	ui.dappHoldToCrouchKeyLabel.setFont("s10 q5")
-	ui.dappLoadoutKeyLabel.setFont("s11 q5")
+	ui.dappLoadoutKeyLabel.setFont("s10 q5")
 	ui.dappToggleSprintKeyLabel.setFont("s10 q5")
 	ui.dappSwordFlyKeyData.setFont("s12 q5","calibri")
 	ui.dappSwordFlyKeyLabel.setFont("s10 q5")
@@ -329,16 +329,16 @@ d2drawPanel1(*) {
 	ui.d2GameHoldToCrouchKeyData.ToolTip  	:= "Click to Assign"
 	ui.d2GameHoldToCrouchKeyLabel.ToolTip	:= "Click to Assign"
 
-	ui.d2gameToggleSprintKeyLabel.setFont("s9")
-	ui.d2gameToggleSprintKeyData.setFont("s9")
-	ui.d2GameReloadKeyData.setFont("s9")
-	ui.d2GameReloadKeylabel.setFont("s9")
-	ui.d2GameSuperKeyData.setFont("s9")
-	ui.d2GameSuperKeylabel.setFont("s9")
-	ui.d2GameGrenadeKeyData.setFont("s9")
-	ui.d2GameGrenadeKeylabel.setFont("s9")
-	ui.d2GameHoldToCrouchKeyData.setFont("s9")
-	ui.d2GameHoldToCrouchKeyLabel.setFont("s9")
+	ui.d2gameToggleSprintKeyLabel.setFont("s10")
+	ui.d2gameToggleSprintKeyData.setFont("s12")
+	ui.d2GameReloadKeyData.setFont("s12")
+	ui.d2GameReloadKeylabel.setFont("s10")
+	ui.d2GameSuperKeyData.setFont("s12")
+	ui.d2GameSuperKeylabel.setFont("s10")
+	ui.d2GameGrenadeKeyData.setFont("s12")
+	ui.d2GameGrenadeKeylabel.setFont("s10")
+	ui.d2GameHoldToCrouchKeyData.setFont("s12")
+	ui.d2GameHoldToCrouchKeyLabel.setFont("s10")
 
 	labelX := 280
 	labelY := 44
@@ -674,10 +674,10 @@ d2drawPanel4(*) {
 	ui.gameTabs.useTab("InfoGFX")
 	ui.panel4box1:=ui.gameSettingsGui.addText("x8 y5 w480 h144 background" cfg.bgColor1,"")
 	ui.panel4box2:=ui.gameSettingsGui.addText("x10 y7 w476 h140 c" cfg.bgColor1 " background" cfg.bgColor3)
-	drawOutlineNamed("d2linkPanel",ui.gameSettingsGui,8,5,480,144,cfg.outlineColor2,cfg.outlineColor1,1)
-	drawOutlineNamed("d2AlwaysRunOutline",ui.gameSettingsGui,10,7,476,140,cfg.outlineColor1,cfg.outlineColor2,1)
+	drawOutlineNamed("d2linkPanel",ui.gameSettingsGui,10,5,480,144,cfg.outlineColor2,cfg.outlineColor1,1)
+	drawOutlineNamed("d2AlwaysRunOutline",ui.gameSettingsGui,12,7,476,140,cfg.outlineColor1,cfg.outlineColor2,1)
 	ui.gameSettingsGui.addText("hidden x3 y10 section")
-	ui.d2LaunchGlyphsbuttonBg	:= ui.gameSettingsGui.addText("x+13 y+0 section w" tileSize " h" tileSize " background" cfg.bgColor1)
+	ui.d2LaunchGlyphsbuttonBg	:= ui.gameSettingsGui.addText("x+15 y+0 section w" tileSize " h" tileSize " background" cfg.bgColor1)
 	ui.d2LaunchGlyphsbutton		:= ui.gameSettingsGui.addPicture("x+-" (tileSize)-2 " ys+2 w" tileSize-4 " h" tileSize-2 " backgroundTrans","./img/d2_glyphs_thumb.png")
 	ui.d2LaunchGlyphsButtonDetail:=ui.gameSettingsGui.addPicture("x+-" tileSize+40 " ys+" tilesize/2 " w" tileSize+80 " h" tileSize/2 " backgroundTrans","./img/lightburst_bottom_light.png")
 	ui.d2LaunchRunesButtonBg	:= ui.gameSettingsGui.addText("x+-30 ys+0 w" tileSize " h" tileSize " background" cfg.bgColor1)
@@ -689,9 +689,9 @@ d2drawPanel4(*) {
 	ui.d2LaunchMapsButtonBg		:= ui.gameSettingsGui.addText("x+-30 ys+0 w" tileSize " h" tileSize " background" cfg.bgColor1)
 	ui.d2LaunchMapsButton		:= ui.gameSettingsGui.addPicture("x+-" tileSize " ys+2 w" tileSize " h" tileSize-2 " backgroundTrans","./img/d2_maps_thumb.png")
 	ui.d2LaunchGlyphsButtonDetail:=ui.gameSettingsGui.addPicture("x+-" tileSize+40 " ys+" tilesize/2 " w" tileSize+80 " h" tileSize/2 " backgroundTrans","./img/lightburst_bottom_light.png")
-	drawOutline(ui.gameSettingsGui,23,28,111,110,cfg.outlineColor1,cfg.outlineColor2,2)
-	drawOutline(ui.gameSettingsGui,138,28,111,110,cfg.outlineColor1,cfg.outlineColor2,2)
-	drawOutline(ui.gameSettingsGui,253,28,111,110,cfg.outlineColor1,cfg.outlineColor2,2)
+	drawOutline(ui.gameSettingsGui,25,28,111,110,cfg.outlineColor1,cfg.outlineColor2,2)
+	drawOutline(ui.gameSettingsGui,140,28,111,110,cfg.outlineColor1,cfg.outlineColor2,2)
+	drawOutline(ui.gameSettingsGui,25,28,111,110,cfg.outlineColor1,cfg.outlineColor2,2)
 	drawOutline(ui.gameSettingsGui,368,28,111,110,cfg.outlineColor1,cfg.outlineColor2,2)
 	; ui.d2LaunchWish4ButtonBg 		:= ui.gameSettingsGui.addText("x+15 ys w" tileSize " h" tileSize " background" cfg.accentColor3)
 	; ui.d2LaunchWish4Button 		:= ui.gameSettingsGui.addPicture("x+-44 ys+2 w" tileSize " h" tileSize " backgroundTrans","./img/d2_numbersOfPowerEmblem_thumb.png")
@@ -725,11 +725,11 @@ d2drawPanel3(*) {
 	
 	cfg.button_link_size:=54
 	ui.gameTabs.useTab("Gameplay")
-	ui.panel4box3:=ui.gameSettingsGui.addText("x7 y75 w485 h70 background" cfg.bgColor1,"")
-	ui.panel4box4:=ui.gameSettingsGui.addText("x11 y79 w475 h61 c" cfg.bgColor1 " background" cfg.bgColor2)
-	drawOutlineNamed("d2linkPanel",ui.gameSettingsGui,12,80,474,60,cfg.accentColor2,cfg.accentColor4,1)
-	drawOutlineNamed("d2linkPanel",ui.gameSettingsGui,6,74,486,72,cfg.outlineColor2,cfg.outlineColor1,1)
-	drawOutlineNamed("d2AlwaysRunOutline",ui.gameSettingsGui,7,75,484,70,cfg.outlineColor1,cfg.outlineColor2,1)	
+	; ui.panel4box3:=ui.gameSettingsGui.addText("x7 y75 w485 h70 background" cfg.bgColor1,"")
+	; ui.panel4box4:=ui.gameSettingsGui.addText("x8 y76 w483 h68 c" cfg.bgColor1 " background" cfg.bgColor2)
+	; drawOutlineNamed("d2linkPanel",ui.gameSettingsGui,12,76,474,60,cfg.accentColor2,cfg.accentColor4,1)
+	; drawOutlineNamed("d2linkPanel",ui.gameSettingsGui,6,72,486,72,cfg.outlineColor2,cfg.outlineColor1,1)
+	; drawOutlineNamed("d2AlwaysRunOutline",ui.gameSettingsGui,7,73,484,70,cfg.outlineColor1,cfg.outlineColor2,1)	
 	
 	loop 8 {
 		ui.button_link%a_index% := object()

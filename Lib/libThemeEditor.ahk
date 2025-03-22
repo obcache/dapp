@@ -162,9 +162,9 @@ PostMessage(0x0153, -1, 20, ui.themeDDL)  ; Set height of selection field.
 PostMessage(0x0153, 0, 18, ui.themeDDL)  ; Set height of list items.
 
 changeTitlebar(*) {
-	titleBarImage:=fileSelect(,a_scriptDir "\img\","Select Titlebar Image","*.png;*.jpg")
+	titleBarImage:=fileSelect(,a_scriptDir "\img\custom\","Select Titlebar Image","*.png;*.jpg")
 	splitPath(titleBarImage,&titleBarImageFilename)
-	cfg.titleBarImage:=a_scriptdir "\" titleBarImageFilename
+	cfg.titleBarImage:=".\img\custom\" titleBarImageFilename
 	ui.titlebarPreview.value:=cfg.titleBarImage
 	iniWrite(cfg.titleBarImage,cfg.themeFile,cfg.theme,"TitleBarImage")
 	reload()

@@ -24,7 +24,7 @@ accentColor2=606060
 accentColor4=606060
 fontColor2=C1C1C1
 HideTitlebarText=0
-TitleBarImage=E:\Documents\Resources\AutoHotKey\__dapp\Img\lightburst_br_light.png
+TitleBarImage=.\img\custom\lightburst_br_light.png
 
 [Light]
 trimColor2=AAAAAA
@@ -48,10 +48,10 @@ bgColor0=373737
 accentColor2=B0B0B0
 accentColor4=646464
 fontColor2=CDCDCD
-TitleBarImage=E:\Documents\Resources\AutoHotKey\__dapp\Img\lightBurst_top_light.png
+TitleBarImage=.\img\custom\lightburst_br_light.png
 
 [Autumn]
-TitleBarImage=
+TitleBarImage=.\img\custom\lightBurst_bottom_light.png
 bgColor2=73410F
 bgColor3=AE6A26
 bgColor1=77501A
@@ -88,7 +88,7 @@ trimColor3=01FE80
 trimColor2=CFA645
 trimColor4=FFCC00
 fontColor2=ADBAC9
-TitleBarImage=E:\Documents\Resources\AutoHotKey\__dapp\Img\lightBurst_top.png
+TitleBarImage=.\img\custom\lightBurst_top_light.png
 
 
 [Modern Class]
@@ -111,28 +111,30 @@ accentColor2=408080
 accentColor4=408080
 outlineColor1=408080
 outlineColor2=5AADAD
-TitleBarImage=E:\Documents\Resources\AutoHotKey\__dapp\Img\lightBurst_top_light.png
+TitleBarImage=.\img\custom\lightBurst_bottom_light.png
 trimColor5=FF0180
 
 [Ocean]
-outlineColor1=AAC5C6
-outlineColor2=333333
-accentColor1=365154
-accentColor2=A0A0A0
+outlineColor1=C16101
+outlineColor2=E3C85B
+accentColor1=FFA87D
+accentColor2=1366C
 baseColor=2C3537
-fontColor1=1FFFF
-fontColor3=256D65
-bgColor1=355051
-trimColor1=70D1C8
-bgColor3=355051
-bgColor2=1F6489
+fontColor1=FCC070
+fontColor3=385572
+bgColor1=18334E
+trimColor1=FEC281
+bgColor3=14F9C
+bgColor2=B2137
 trimColor6=292929
 bgColor0=212121
 trimColor3=FEF329
 trimColor2=DF9A5B
 trimColor4=FFCC00
 fontColor2=D5EAFF
-TitleBarImage=E:\Documents\Resources\AutoHotKey\__dapp\Img\lightBurst_top_light.png
+TitleBarImage=.\img\custom\lightBurst_top_light.png
+accentColor3=FFB08A
+accentColor4=FFA346
 
 [Alien]
 trimColor2=B4B4B4
@@ -157,7 +159,7 @@ accentColor2=4A4A4A
 accentColor4=595959
 fontColor2=BFD5D5
 HideTitlebarText=0
-TitleBarImage=E:\Documents\Resources\AutoHotKey\__dapp\Img\lightBurst_top_light.png
+TitleBarImage=.\img\custom\lightBurst_top_light.png
 
 [Neon]
 baseColor=202020
@@ -181,7 +183,7 @@ accentColor4=C40089
 fontColor3=FF0180
 trimColor5=FFFF01
 HideTitlebarText=1
-TitleBarImage=E:\Documents\Resources\AutoHotKey\__dapp\Img\dapp_titleBar2.png
+TitleBarImage=.\img\custom\dapp_titleBar2.png
 fontColor4=FBD58E
 accentColor3=FF0180
 [Custom]
@@ -206,4 +208,4 @@ bgColor0=555555
 trimColor3=1FFFF
 trimColor2=B4B4B4
 trimColor4=FFBF01
-ThemeTitlebarImage=E:\Documents\Resources\AutoHotKey\__dapp\Img\lightBurst_top_light.png
+ThemeTitlebarImage=.\img\custom\lightBurst_top_light.png
