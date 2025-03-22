@@ -150,7 +150,7 @@ d2drawPanel1(*) {
 		,subStr(strUpper(cfg.dappSwordFlyKey),1,8))
 	ui.dappSwordFlyKeyLabel 	:= ui.gameSettingsGui.addText("xs-4 y+-34 w40 h20 center c" cfg.fontColor1 " backgroundTrans","Fly")
 	ui.d2ClassSelectOutline		:= ui.gameSettingsGui.addText("xs+42 y11 w39 h39 background" cfg.accentColor2)
-	ui.d2ClassSelectOutline2	:= ui.gameSettingsGui.addText("xs+43 y11 w38 h38 background" cfg.accentColor3)
+	ui.d2ClassSelectOutline2	:= ui.gameSettingsGui.addText("xs+43 y11 w38 h38 background" cfg.bgColor3)
 	ui.d2ClassSelectBg			:= ui.gameSettingsGui.addText("x440 y10 w42 h40 background" cfg.bgColor2)
 	;ui.d2ClassSelectBg2			:= ui.gameSettingsGui.addText("xs+35 y+-14 w56 h16 background" cfg.accentColor1)
 
