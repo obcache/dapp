@@ -94,12 +94,12 @@ d2drawPanel1(*) {
 	ui.d2Panel1Tab1Bg := ui.gameSettingsGui.addText("hidden x44 y9 w439 h42 background" cfg.outlineColor2,"")
 	ui.d2Panel1Tab1Bg2 := ui.gameSettingsGui.addText("hidden x45 y10 w437 h40 background" cfg.bgColor3 " c" cfg.fontColor4,"")	
 	ui.d2Panel1Tab1Bg3 := ui.gameSettingsGui.addText("hidden x46 y11 w435 h38 background" cfg.accentColor2,"")
-	ui.d2Panel1Tab1Bg4 := ui.gameSettingsGui.addText("hidden x47 y12 w433 h36 background" cfg.bgColor3,"")
+	ui.d2Panel1Tab1Bg4 := ui.gameSettingsGui.addText("hidden x47 y12 w433 h36 background" cfg.trimColor1,"")
 	
 	ui.d2Panel1Tab2Bg := ui.gameSettingsGui.addText("hidden x19 y9 w438 h42 background" cfg.outlineColor2,"")
 	ui.d2Panel1Tab2Bg2 := ui.gameSettingsGui.addText("hidden x20 y10 w436 h40 background" cfg.bgColor3 " c" cfg.fontColor4,"")	
 	ui.d2Panel1Tab2Bg3 := ui.gameSettingsGui.addText("hidden x21 y11 w434 h38 background" cfg.accentColor2,"")
-	ui.d2Panel1Tab2Bg4 := ui.gameSettingsGui.addText("hidden x22 y12 w432 h36 background" cfg.bgColor3,"")
+	ui.d2Panel1Tab2Bg4 := ui.gameSettingsGui.addText("hidden x22 y12 w432 h36 background" cfg.trimColor1,"")
 	
 	;ui.d2Panel1Tab2Bg := ui.gameSettingsGui.addText("x42 y10 w406 h42 background" cfg.bgColor2 " c" cfg.fontColor4,"")	
 	;drawOutlineNamed("gameSettings",ui.gameSettingsGui,43,11,404,42,cfg.accentColor1,cfg.accentColor3,1)
