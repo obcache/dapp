@@ -155,13 +155,13 @@ d2drawPanel1(*) {
 	;ui.d2ClassSelectBg2			:= ui.gameSettingsGui.addText("xs+35 y+-14 w56 h16 background" cfg.accentColor1)
 
 	ui.d2ClassSelectBg3			:= ui.gameSettingsGui.addText("hidden xs+42 y+-14 w40 h14 background" cfg.bgColor2)
-	ui.d2ClassIcon				:= ui.gameSettingsGui.addPicture("x442 y7 w40 h30 center backgroundTrans","")
-	ui.d2ClassIconDown			:= ui.gameSettingsGui.addText("x442 y36 w19 h13 center backgroundTrans c" cfg.fontColor2,"←")
-	ui.d2ClassIconUp			:= ui.gameSettingsGui.addText("x463 y36 w19 h13 center backgroundTrans c" cfg.fontColor2,"→")
-	ui.d2ClassSelectSpacer 		:= ui.gameSettingsGui.addText("hidden x462 y36 w1 h14 background" cfg.trimColor1)
+	ui.d2ClassIcon				:= ui.gameSettingsGui.addPicture("x443 y7 w40 h30 center backgroundTrans","")
+	ui.d2ClassIconDown			:= ui.gameSettingsGui.addText("x443 y36 w19 h13 center backgroundTrans c" cfg.trimColor6,"←")
+	ui.d2ClassIconUp			:= ui.gameSettingsGui.addText("x464 y36 w19 h13 center backgroundTrans c" cfg.trimColor6,"→")
+	ui.d2ClassSelectSpacer 		:= ui.gameSettingsGui.addText("hidden x463 y36 w1 h14 background" cfg.trimColor6)
 	ui.d2ClassSelectBgLine		:= ui.gameSettingsGui.addText("hidden x442 y10 w0 h0 background" cfg.outlineColor2)
 	ui.d2ClassSelectBgLine1		:= ui.gameSettingsGui.addText("hidden x442 y10 w0 h0 background" cfg.accentColor2)
-	ui.d2ClassSelectBgLine2		:= ui.gameSettingsGui.addText("hidden x443 y35 w40 h1 background" cfg.trimColor1)
+	ui.d2ClassSelectBgLine2		:= ui.gameSettingsGui.addText("hidden x443 y35 w40 h1 background" cfg.trimColor6)
 	ui.d2KeyBindHelpMsg			:= ui.gameSettingsGui.addText("x47 y52 w350 h12 backgroundTrans c" cfg.fontColor1,"")
 	ui.d2ClassIcon.toolTip 		:= "Click to Enable/Disable the Fly Macro"
 	ui.d2ClassIconDown.tooltip 	:= "Click to switch between character classes for the Fly Macro"
@@ -195,16 +195,16 @@ d2drawPanel1(*) {
 		switch cfg.d2CharacterClass {
 			case 1: 
 				(ui.d2FlyEnabled)
-					? (ui.d2ClassIcon.value := "./img/d2ClassIconWarlock_on.png",ui.d2ClassSelectBg.opt("background" cfg.trimColor1))
-					: (ui.d2ClassIcon.value := "./img/d2ClassIconWarlock_off.png",ui.d2ClassSelectBg.opt("background" cfg.fontColor3))
+					? (ui.d2ClassIcon.value := "./img/d2ClassIconWarlock_off.png",ui.d2ClassSelectBg.opt("background" cfg.trimColor3))
+					: (ui.d2ClassIcon.value := "./img/d2ClassIconWarlock_on.png",ui.d2ClassSelectBg.opt("background" cfg.trimColor1))
 			case 2:
 				(ui.d2FlyEnabled)
-					? (ui.d2ClassIcon.value := "./img/d2ClassIconHunter_on.png",ui.d2ClassSelectBg.opt("background" cfg.trimColor1))
-					: (ui.d2ClassIcon.value := "./img/d2ClassIconHunter_off.png",ui.d2ClassSelectBg.opt("background" cfg.fontColor3))
+					? (ui.d2ClassIcon.value := "./img/d2ClassIconHunter_off.png",ui.d2ClassSelectBg.opt("background" cfg.trimColor3))
+					: (ui.d2ClassIcon.value := "./img/d2ClassIconHunter_on.png",ui.d2ClassSelectBg.opt("background" cfg.trimColor1))
 			case 3:
 			(ui.d2FlyEnabled)
-					? (ui.d2ClassIcon.value := "./img/d2ClassIconTitan_on.png",ui.d2ClassSelectBg.opt("background" cfg.trimColor1))
-					: (ui.d2ClassIcon.value := "./img/d2ClassIconTitan_off.png",ui.d2ClassSelectBg.opt("background" cfg.fontColor3))
+					? (ui.d2ClassIcon.value := "./img/d2ClassIconTitan_off.png",ui.d2ClassSelectBg.opt("background" cfg.trimColor3))
+					: (ui.d2ClassIcon.value := "./img/d2ClassIconTitan_on.png",ui.d2ClassSelectBg.opt("background" cfg.trimColor1))
 			default:
 		}
 	}
@@ -814,24 +814,24 @@ drawKeybind(x,y,bindName,labelText := bindName,gui := ui.mainGui,w := 84,h := 30
 			case 1:
 				cfg.d2CharacterClass := 2
 				(ui.d2FlyEnabled)
-					? ui.d2ClassIcon.value := "./img/d2ClassIconHunter_on.png"
-					: ui.d2ClassIcon.value := "./img/d2ClassIconHunter_off.png"
+					? ui.d2ClassIcon.value := "./img/d2ClassIconHunter_off.png"
+					: ui.d2ClassIcon.value := "./img/d2ClassIconHunter_on.png"
 			case 2:
 				cfg.d2CharacterClass := 3
 				hotIf(d2ReadyToSwordFly)
 					hotkey("~*" cfg.dappSwordFlyKey,d2SwordFly)
 				hotIf()
 				(ui.d2FlyEnabled)
-					? ui.d2ClassIcon.value := "./img/d2ClassIconTitan_on.png"
-					: ui.d2ClassIcon.value := "./img/d2ClassIconTitan_off.png"
+					? ui.d2ClassIcon.value := "./img/d2ClassIconTitan_off.png"
+					: ui.d2ClassIcon.value := "./img/d2ClassIconTitan_on.png"
 			case 3: 
 				cfg.d2CharacterClass := 1
 				hotIf(d2ReadyToSwordFly)
 					hotkey("~*" cfg.dappSwordFlyKey,d2MorgethWarlock)
 				hotIf()
 				(ui.d2FlyEnabled)
-					? ui.d2ClassIcon.value := "./img/d2ClassIconWarlock_on.png"
-					: ui.d2ClassIcon.value := "./img/d2ClassIconWarlock_off.png"
+					? ui.d2ClassIcon.value := "./img/d2ClassIconWarlock_off.png"
+					: ui.d2ClassIcon.value := "./img/d2ClassIconWarlock_on.png"
 			default:                                          
 		}
 	}
@@ -841,24 +841,24 @@ drawKeybind(x,y,bindName,labelText := bindName,gui := ui.mainGui,w := 84,h := 30
 			case 3:
 				cfg.d2CharacterClass := 2
 				(ui.d2FlyEnabled)
-					? ui.d2ClassIcon.value := "./img/d2ClassIconHunter_on.png"
-					: ui.d2ClassIcon.value := "./img/d2ClassIconHunter_off.png"
+					? ui.d2ClassIcon.value := "./img/d2ClassIconHunter_off.png"
+					: ui.d2ClassIcon.value := "./img/d2ClassIconHunter_on.png"
 			case 1:
 				cfg.d2CharacterClass := 3
 				hotIf(d2ReadyToSwordFly)
 					hotkey("~*" cfg.dappSwordFlyKey,d2SwordFly)
 				hotIf()
 				(ui.d2FlyEnabled)
-					? ui.d2ClassIcon.value := "./img/d2ClassIconTitan_on.png"
-					: ui.d2ClassIcon.value := "./img/d2ClassIconTitan_off.png"
+					? ui.d2ClassIcon.value := "./img/d2ClassIconTitan_off.png"
+					: ui.d2ClassIcon.value := "./img/d2ClassIconTitan_on.png"
 			case 2: 
 				cfg.d2CharacterClass := 1
 				hotIf(d2ReadyToSwordFly)
 					hotkey("~*" cfg.dappSwordFlyKey,d2MorgethWarlock)
 				hotIf()
 				(ui.d2FlyEnabled)
-					? ui.d2ClassIcon.value := "./img/d2ClassIconWarlock_on.png"
-					: ui.d2ClassIcon.value := "./img/d2ClassIconWarlock_off.png"
+					? ui.d2ClassIcon.value := "./img/d2ClassIconWarlock_off.png"
+					: ui.d2ClassIcon.value := "./img/d2ClassIconWarlock_on.png"
 			default:                                          
 		}
 	}		
@@ -894,11 +894,11 @@ drawGameTabs(tabNum := 1) {
 	ui.gameTabGui.backColor := ui.transparentColor
 	ui.gameTabGui.color := ui.transparentColor
 	drawOutlineNamed("gameTabOutline",ui.gameTabGui,0,0,495,29
-		,cfg.accentColor3,cfg.accentColor3,2)
+		,cfg.accentColor1,cfg.accentColor1,2)
 	
 	winSetTransColor(ui.transparentColor,ui.gameTabGui)
 			;drawOutlineNamed("gameTabs",ui.gameTabGui,ui.gameTabWidth-0,0,498-ui.gameTabWidth,32,cfg.accentColor3,cfg.accentColor1,1)
-	ui.gameTabGui.addText("x1 y0 w0 h27 section background" cfg.accentColor3,"")
+	ui.gameTabGui.addText("x1 y0 w0 h27 section background" cfg.accentColor1,"")
 	((tabNum == 1)
 		? ui.gameTab1SkinOutline := ui.gameTabGui.addText("section x0 y0 w94 h32 background" cfg.accentColor1,"" )
 		: ui.gameTab1SkinOutline := ui.gameTabGui.addText("section x0 y2 w94 h30 background" cfg.accentColor2,""))
@@ -911,8 +911,8 @@ drawGameTabs(tabNum := 1) {
 			? cfg.bgColor2
 			: cfg.bgColor1) 
 		" c" ((tabNum == 1) 
-			? cfg.fontColor2
-			: cfg.fontColor1)
+			? cfg.fontColor1
+			: cfg.fontColor2)
 		,"")
 	ui.gameTab1Skin.setFont((tabNum == 1 
 		? "s14" 
@@ -923,8 +923,8 @@ drawGameTabs(tabNum := 1) {
 			: "ys2 h28")
 				" x+-90 w90 center backgroundTrans c" 
 		((tabNum == 1) 
-			? cfg.fontColor2 
-			: cfg.fontColor1)
+			? cfg.fontColor1 
+			: cfg.fontColor2)
 				,"Gameplay")
 	ui.gameTab1Label.setFont((tabNum == 1 
 		? "s14" 
@@ -935,8 +935,8 @@ drawGameTabs(tabNum := 1) {
 		? ui.gameTabGui.addText("y0 x90 w2 h34 background" cfg.accentColor1,"")
 		: ui.gameTabGui.addText("y2 x90 w2 h30 background" cfg.accentColor2,""))
 	((tabNum == 2)
-		? ui.gameTab2SkinOutline := ui.gameTabGui.addText("x92 y0 w122 h32 background" cfg.accentColor1,"" )
-		: ui.gameTab2SkinOutline := ui.gameTabGui.addText("x92 y2 w122 h30 background" cfg.accentColor2,""))
+		? ui.gameTab2SkinOutline := ui.gameTabGui.addText("x92 y0 w128 h36 background" cfg.accentColor1,"" )
+		: ui.gameTab2SkinOutline := ui.gameTabGui.addText("x92 y2 w128 h36 background" cfg.accentColor2,""))
 	ui.gameTab2Skin := ui.gameTabGui.addText(
 		((tabNum == 2) 
 			? "y0 h30" 
@@ -946,8 +946,8 @@ drawGameTabs(tabNum := 1) {
 			? cfg.bgColor2 
 			: cfg.bgColor1)
 				" c" ((tabNum == 2)
-			? cfg.fontColor2 
-			: cfg.fontColor1)
+			? cfg.fontColor1 
+			: cfg.fontColor2)
 				,"")
 	ui.gameTab2Skin.setFont(
 		((tabNum == 2)
@@ -960,8 +960,8 @@ drawGameTabs(tabNum := 1) {
 			: "y5 h32")
 		" x92 w120 center backgroundTrans c" 
 		((tabNum == 2)
-		? cfg.fontColor2 
-			: cfg.fontColor1)
+		? cfg.fontColor1 
+			: cfg.fontColor2)
 		,"Vault Cleaner")
 	ui.gameTab2Label.setFont(
 		((tabNum == 2)
@@ -973,8 +973,8 @@ drawGameTabs(tabNum := 1) {
 		? ui.gameTabGui.addText("y0 x212 w2 h34 background" cfg.accentColor1,"")
 		: ui.gameTabGui.addText("y2 x212 w2 h30 background" cfg.accentColor2,""))
 	((tabNum == 3)
-		? ui.gameTab3SkinOutline := ui.gameTabGui.addText("x214 y0 w86 h32 background" cfg.accentColor1,"" )
-		: ui.gameTab3SkinOutline := ui.gameTabGui.addText("x214 y2 w86 h32 background" cfg.accentColor2,""))
+		? ui.gameTab3SkinOutline := ui.gameTabGui.addText("x214 y0 w86 h32 background" cfg.bgColor2,"" )
+		: ui.gameTab3SkinOutline := ui.gameTabGui.addText("x214 y2 w86 h32 background" cfg.bgColor2,""))
 	; ui.gameTab3Skin := ui.gameTabGui.addText(
 		; ((tabNum == 3) 
 			; ? "y0 h30" 
@@ -1053,10 +1053,11 @@ drawGameTabs(tabNum := 1) {
 	winGetPos(&mainGuiX,&mainGuiY,,,ui.mainGui.hwnd)
 		ui.gameTabGui.addText("y2 x216 w" 498-(ui.gameTabWidth+3) " h28 background" cfg.bgColor2)
 	if !(mainGuiX==0 && mainGuiY==0) {
-		ui.gameTabGui.show("w495 h32 noActivate x" mainGuiX+34 " y" mainGuiY+183)
+		ui.gameTabGui.show("w497 h32 noActivate x" mainGuiX+34 " y" mainGuiY+183)
 		
 	}
-	line(ui.gameTabGui,300,30,200,2,cfg.accentColor2)
+	line(ui.gameTabGui,214,30,500,2,cfg.bgColor2)
+	line(ui.gameTabGui,214,30,500,1,cfg.accentColor2)
 
 }
 
@@ -1750,5 +1751,5 @@ drawPanel5(*) {
 }
 
 ;line(ui.mainGui,529,0,2,30,cfg.accentColor2)
-line(ui.gameTabGui,495,2,2,32,cfg.accentColor2)
+line(ui.gameTabGui,495,2,2,32,cfg.trimColor1)
 line(ui.mainGui,474,30,55,2,cfg.bgColor2)
