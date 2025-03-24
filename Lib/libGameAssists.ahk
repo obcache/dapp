@@ -149,15 +149,31 @@ d2ReadyToReload(*) {
 		return 0	
 }
 
+tmp.gameChatEnabled:=false
+
+hotIf(chatWindowActive)
+hotkey("Enter",d2GameChatToggle)
+hotIf()
+
+chatWindowActive(*) {
+	return tmp.gamechatEnabled
+}
+
+d2GameChatToggle(*) {
+	return (tmp.gameChatEnabled:=!tmp.gameChatEnabled)
+}
+
 d2ReadyToSprint(*) {
 	return (winActive("ahk_exe destiny2.exe")) 
 		? (cfg.d2AlwaysRunEnabled)
 			? (!cfg.dappPaused)
-				? (!getKeyState("LButton")) 
-					? (!getKeyState("RButton")) 
-						? (!getKeyState("["))
-						 	? (!getKeyState(cfg.dappHoldToCrouchKey)) 
-								? 1
+				? (!tmp.gameChatEnabled)
+					? (!getKeyState("LButton")) 
+						? (!getKeyState("RButton")) 
+							? (!getKeyState("["))
+								? (!getKeyState(cfg.dappHoldToCrouchKey)) 
+									? 1
+									: 0
 								: 0
 							: 0
 						: 0
@@ -346,6 +362,8 @@ d2ToggleAlwaysSprint(*) {
 }
 
 d2ToggleAppFunctions(*) {
+	if tmp.gameChatEnabled
+		return
 	(cfg.dappPaused := !cfg.dappPaused)
 		? d2ToggleAppFunctionsOff()
 		: d2ToggleAppFunctionsOn()

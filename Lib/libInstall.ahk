@@ -153,7 +153,7 @@ preAutoExec(InstallDir,ConfigFileName) {
 			fileInstall("./img/d2ClassIconWarlock_off.png",installDir "/img/d2ClassIconWarlock_off.png",1)
 			fileInstall("./img/d2ClassIconHunter_on.png",installDir "/img/d2ClassIconHunter_on.png",1)
 			fileInstall("./img/d2ClassIconHunter_off.png",installDir "/img/d2ClassIconHunter_off.png",1)
-			fileInstall("./img/d2ClassIconTitan_on.png",installDir "/img/d2ClassIconWarlock_on.png",1)
+			fileInstall("./img/d2ClassIconTitan_on.png",installDir "/img/d2ClassIconTitan_on.png",1)
 			fileInstall("./img/d2ClassIconTitan_off.png",installDir "/img/d2ClassIconTitan_off.png",1)
 			FileInstall("./Img/button_plus.png",InstallDir "/Img/button_plus.png",1)
 			FileInstall("./Img/button_power.png",InstallDir "/Img/button_power.png",1)
