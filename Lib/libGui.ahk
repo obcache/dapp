@@ -23,7 +23,8 @@ tabsChanged(*) {
 			, ui.2_SetupButton.opt("background" cfg.bgColor1)
 			, ui.2_SetupButtonBg.opt("background" cfg.accentColor4)
 			, ui.Game_ActiveTabUi.opt("-hidden")
-			, ui.Setup_ActiveTabUi.opt("hidden"))
+			, ui.Setup_ActiveTabUi.opt("hidden")
+			, ui.brVertline.opt("hidden"))
 	: (guiVis(ui.gameSettingsGui,false)
 			, guiVis(ui.gameTabGui,false)
 			, ui.gameTabGui.opt("+toolWindow")
@@ -34,7 +35,8 @@ tabsChanged(*) {
 			, ui.2_SetupButton.opt("y2 h32 background" cfg.bgColor2)
 			, ui.2_SetupButtonBg.opt("background" cfg.accentColor3)
 			, ui.Game_ActiveTabUi.opt("hidden")
-			, ui.Setup_ActiveTabUi.opt("-hidden"))
+			, ui.Setup_ActiveTabUi.opt("-hidden")
+			, ui.brVertLine.opt("-hidden"))
 
 }
 
@@ -69,6 +71,7 @@ tabsInit(*) {
 advProgress(2)
 	ui.TransparentColor 	:= "010203"
 	ui.MainGui 				:= Gui()
+	
 	drawOutlineMainGui(34,29,497,155,cfg.accentColor3,cfg.accentColor3,2)
 	advProgress(2)
 	ui.MainGui.Name 		:= "dapp"
@@ -88,7 +91,7 @@ advProgress(2)
 	ui.MainGui.MarginY := 0
 	ui.MainGui.setFont("q5 s13 c" cfg.fontColor1,"calibri")
 	ui.mainGuiAnchor := ui.mainGui.addText("x0 y0 w0 h0 section hidden")
-	line(ui.mainGui,529,184,2,29,cfg.accentColor3)
+	
 	ui.mainBg := ui.mainGui.addText("x36 y29 w493 h185 background" cfg.bgColor2,"")
 	ui.mainTabBg:=ui.mainGui.addText("x34 y0 w162 h28 background" cfg.accentColor3)
 	ui.1_GameButtonBg := ui.mainGui.addText("x34 y0 w80 h30 background" cfg.accentColor3)
@@ -111,7 +114,8 @@ advProgress(2)
 	ui.1_gameButton.redraw()
 	ui.2_SetupButton := ui.mainGui.addText("y2 x116 w78 h32 center background" cfg.bgColor1,"Setup")
 	ui.2_setupButton.redraw()
-	line(ui.mainGui,34,28,490,2,cfg.accentColor3)
+
+	line(ui.mainGui,34,28,490,2,cfg.accentColor1)
 	; line(ui.mainGui,34,0,490,2,cfg.accentColor3)
 	; line(ui.mainGui,34,0,2,30,cfg.accentColor3)
 	; line(ui.mainGui,112,0,3,30,cfg.accentColor3)
@@ -132,8 +136,9 @@ advProgress(2)
 
 	advProgress(2)
 	
-	ui.mainGuiTabs := ui.MainGui.AddTab3("x34 y2 w494 h213 Buttons -redraw Background" cfg.bgColor2 " -E0x200",["1_Game____","2_Setup____"])
-	ui.MainGuiTabs.useTab("")
+	ui.mainGuiTabs := ui.MainGui.AddTab3("x34 y2 w494 h233 Buttons -redraw Background" cfg.bgColor2 " -E0x200",["1_Game____","2_Setup____"])
+	ui.mainGuiTabs.useTab("")
+	
 	ui.mainGuiTabs.setFont("q5 s10 q5")
 	ui.MainGui.setFont("q5 s10 q5 c" cfg.fontColor1,"calibri")
 	ui.MainGuiTabs.OnEvent("Change",TabsChanged)
@@ -146,7 +151,7 @@ advProgress(2)
 	ui.ButtonHandlebarDebug 	:= ui.MainGui.AddPicture("hidden x2 y185 w30 h27")
 	ui.handleBarImage.ToolTip 	:= "Drag Handlebar to Move.`nDouble-Click to collapse/uncollapse."
 	advProgress(2)
-	
+	ui.brVertLine:=ui.mainGui.addText("hidden x529 y184 w2 h29 background" cfg.accentColor1)
 	ui.rightHandlebarBg 	:= ui.mainGui.addText("hidden x529 y32 w31 h182 background" cfg.accentColor3,"")
 	ui.rightHandlebarImage2 := ui.mainGui.AddPicture("hidden x528 w31 y33 h180 section")
 	ui.ExitButtonBorder 	:= ui.mainGui.AddText("x470 y0 w64 h30 Background" cfg.accentColor3,"")

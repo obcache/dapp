@@ -149,28 +149,14 @@ d2ReadyToReload(*) {
 		return 0	
 }
 
-tmp.gameChatEnabled:=false
-
-hotIf(chatWindowActive)
-hotkey("Enter",d2GameChatToggle)
-hotIf()
-
 chatWindowActive(*) {
 	return tmp.gamechatEnabled
-}
-
-d2GameChatToggle(*) {
-	prevCapslockState := getKeystate("capslock")
-	return (tmp.gameChatEnabled:=!tmp.gameChatEnabled)
-				? setCapslockState(0)
-				: setCapslockState(prevCapslockState)
 }
 
 d2ReadyToSprint(*) {
 	return (winActive("ahk_exe destiny2.exe")) 
 		? (cfg.d2AlwaysRunEnabled)
 			? (!cfg.dappPaused)
-				? (!tmp.gameChatEnabled)
 					? (!getKeyState("LButton")) 
 						? (!getKeyState("RButton")) 
 							? (!getKeyState("["))
@@ -181,7 +167,7 @@ d2ReadyToSprint(*) {
 							: 0
 						: 0
 					: 0
-				: 0
+				
 			: 0
 		: 0
 }
@@ -190,6 +176,7 @@ d2startSprinting(*) {
 	ui.d2IsSprinting := true
 	if (cfg.d2AlwaysRunEnabled) {
 		send("{" strLower(cfg.d2GameToggleSprintKey) "}")
+		setCapsLockState(0)
 	}
 	keyWait("w","L")
 	send("{w up}")
@@ -362,6 +349,7 @@ d2ToggleAlwaysSprint(*) {
 			,((ui.d2IsSprinting)
 				? send("{" cfg.dappToggleSprintKey "}")
 				: 0)))
+	setCapsLockState(0)
 }
 
 d2ToggleAppFunctions(*) {

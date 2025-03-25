@@ -128,7 +128,7 @@ cfgLoad(&cfg, &ui) {
 	this.YOffset:=748
 	this.restartQueued:=false
 	this.elapsedSec:=1
-	cfg.gameModuleList			:= strSplit(iniRead(cfg.file,"Game","GameModuleList"," Gameplay  , Vault Cleaner ,InfoGFX"),",")
+	cfg.gameTabList			:= strSplit(iniRead(cfg.file,"Game","gameTabList"," Gameplay  , Vault Cleaner ,InfoGFX"),",")
 	cfg.gameList				:= StrSplit(IniRead(cfg.file,"Game","GameList","Roblox,Rocket League"),",")
 	cfg.mainTabList				:= strSplit(IniRead(cfg.file,"Interface","MainTabList","1_GAME,2_SETUP"),",")
 	cfg.mainGui					:= IniRead(cfg.file,"System","MainGui","MainGui")
@@ -281,7 +281,7 @@ WriteConfig() {
 	iniWrite(cfg.disabledTabs,cfg.file,"System","DisabledTabs")
 	iniWrite(cfg.confirmExitEnabled,cfg.file,"System","ConfirmExit")
 	IniWrite(ui.monitorResDDL.value,cfg.file,"System","MonitorResolution")
-	IniWrite(arr2str(cfg.gameModuleList),cfg.file,"Game","GameModuleList")
+	IniWrite(arr2str(cfg.gameTabList),cfg.file,"Game","gameTabList")
 	IniWrite(arr2str(cfg.gameList),cfg.file,"Game","GameList")
 	IniWrite(ui.win1enabled,cfg.file,"Game","Win1Enabled")
 	IniWrite(ui.win2enabled,cfg.file,"Game","Win2Enabled")	
@@ -669,7 +669,7 @@ resetKeyStates() {
 		if getKeyState(key := format("vk{:x}",a_index))
 		sendInput("{%key% up}")
 	}	
-	setCapslockState(false)
+	;setCapslockState(false)
 	
 }
 

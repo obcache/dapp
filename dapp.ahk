@@ -1,4 +1,4 @@
-A_FileVersion := "1.5.8.7"
+A_FileVersion := "1.5.8.8"
 a_appName := "dapp"
 if (fileExist("./dapp_currentBuild.dat"))
 a_fileVersion := fileRead("./dapp_currentBuild.dat")
@@ -121,14 +121,14 @@ advProgress(1)
 
 OnExit(ExitFunc)
 
-winSetRegion("33-0 w498 h214",ui.mainGui)
+winSetRegion("33-0 w498 h234",ui.mainGui)
 advProgress(5)
 
 guiVis(ui.mainGui,false)
 guiVis(ui.gameSettingsGui,false)
 guiVis(ui.gameTabGui,false)
 winSetAlwaysOnTop(cfg.alwaysOnTopEnabled,ui.MainGui)
-ui.mainGui.Show("x" cfg.guix " y" cfg.guiy " w567 h215 NoActivate")
+ui.mainGui.Show("x" cfg.guix " y" cfg.guiy " w567 h213 NoActivate")
 ui.gameSettingsGui.show("x" cfg.guiX+34 " y" cfg.guiY+30 " w495 h182 noActivate")
 ui.gameTabGui.show("w497 h32 noActivate x" cfg.guiX+34 " y" cfg.guiY+183)
 
@@ -159,7 +159,7 @@ try {
 ui.mainGuiTabs.choose(cfg.mainTabList[1])
 ;ui.MainGuiTabs.Choose(cfg.mainTabList[cfg.activeMainTab])
 
-ui.gameTabs.choose(cfg.gameModuleList[cfg.activeGameTab])
+ui.gameTabs.choose(cfg.gameTabList[cfg.activeGameTab])
 tabsInit()
 fadeIn()
 

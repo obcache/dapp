@@ -23,14 +23,15 @@ monitorResChanged(*) {
 
 GuiSetupTab(&ui,&cfg) {
 	global
-	ui.MainGuiTabs.UseTab("2_Setup")
+	ui.MainGuiTabs.UseTab("2_Setup____")
+	;line(ui.mainGui,529,184,29,2,cfg.accentColor1,"VERT")
 	
 	drawPanel(ui.mainGui,40,39,218,164,cfg.bgColor1,cfg.outlineColor2,cfg.outlineColor1,1,1,"none",100,"Features","calibri",cfg.fontColor1)
 	drawPanel(ui.mainGui,261,39,214,104,cfg.bgColor1,cfg.outlineColor2,cfg.outlineColor1,1,1,"none",100,"Features","calibri",cfg.fontColor1)
 	drawPanel(ui.mainGui,261,151,214,53,cfg.bgColor1,cfg.outlineColor2,cfg.outlineColor1,1,1,"none",100,"Features","calibri",cfg.fontColor1)
 	drawPanel(ui.mainGui,478,39,42,165,cfg.bgColor1,cfg.outlineColor2,cfg.outlineColor1,1,1,"none",100,"Features","calibri",cfg.fontColor1)
-	line(ui.mainGui,34,0,2,30,cfg.bgColor2)	
-	
+	;line(ui.mainGui,34,0,30,2,cfg.bgColor2)	
+	line(ui.mainGui,529,184,29,2,cfg.accentColor1)
 	ui.MainGui.setFont("q5 s09")
 	;drawOutlineNamed("autoClicker",ui.mainGui,486,45,27,145,cfg.outlineColor2,cfg.outlineColor2,1)
 	ui.AutoClickerSpeedSlider := ui.MainGui.AddSlider("x487 y45 w25 h144 Range1-64 Vertical Left TickInterval8 Invert ToolTipTop",cfg.AutoClickerSpeed)
@@ -40,7 +41,7 @@ GuiSetupTab(&ui,&cfg) {
 
 	
 	ui.MainGui.setFont("q5 s10 c" cfg.fontColor1)
-	drawOutlineMainGui(34,28,497,190,cfg.accentColor3,cfg.accentColor3,2)
+	;drawOutlineMainGui(34,28,497,200,cfg.accentColor3,cfg.accentColor3,2)
 	ui.mainGui.addText("hidden section x48 y26")
 	cfg.toolTipsEnabled			:= iniRead(cfg.file,"Toggles","ToolTipsEnabled",true)
 	ui.toggleToolTips 			:= ui.MainGui.AddPicture("xs y+5 w50 h22 section vToolTips " ((cfg.ToolTipsEnabled) ? ("Background" cfg.trimColor3) : ("Background" cfg.trimColor2)),((cfg.ToolTipsEnabled) ? (cfg.toggleOn) : (cfg.toggleOff)))
@@ -189,7 +190,7 @@ GuiSetupTab(&ui,&cfg) {
 	ui.mainGui.addText("x271 y45 w195 h60 background" cfg.outlineColor2)
 	ui.mainGui.addText("x272 y46 w193 h58 background" cfg.outlineColor1)
 	ui.mainGui.addText("x273 y47 w191 h56 background" cfg.trimColor1)
-	line(ui.mainGui,0,36,2,155,cfg.accentColor3)
+	;line(ui.mainGui,0,36,155,2,cfg.accentColor3)
 
 	ui.checkForUpdatesLabel := ui.mainGui.addtext("x303 y46 w160 h30 section backgroundTrans c" cfg.fontColor3,"Check For Updates")
 	ui.checkForUpdatesLabel.setFont("q5 s12")

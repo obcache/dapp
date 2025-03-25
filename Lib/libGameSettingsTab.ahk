@@ -8,7 +8,6 @@ if (InStr(A_LineFile,A_ScriptFullPath)) { ;run main app
 	Return
 }
 
-;setStoreCapslockMode(0)
 inputHookAllowedKeys := "{All}{LControl}{RControl}{LAlt}{RAlt}{LShift}{RShift}{LWin}{RWin}{AppsKey}{F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Home}{End}{PgUp}{PgDn}{Del}{Ins}{Left}{Right}{Up}{Down}{BS}{CapsLock}{NumLock}{PrintScreen}{Pause}{Tab}{Enter}{ScrollLock}{LButton}{MButton}{RButton}"	
 
 ui.d2FlashingIncursionNotice := false
@@ -18,9 +17,9 @@ ui.d2FlyEnabled := false
 
 GuiGameTab() {
 	global	
-	loop cfg.gameModuleList.length {
-		if fileExist("./lib/lib" cfg.gameModuleList[A_Index])
-			runWait("./lib/lib" cfg.gameModuleList[A_Index])
+	loop cfg.gameTabList.length {
+		if fileExist("./lib/lib" cfg.gameTabList[A_Index])
+			runWait("./lib/lib" cfg.gameTabList[A_Index])
 	}
 	try
 		ui.gameSettingsGui.destroy()
@@ -32,13 +31,13 @@ GuiGameTab() {
 	ui.gameSettingsGui.MarginX := 5
 	ui.gameSettingsGui.Opt("-Caption -Border +AlwaysOnTop owner" ui.mainGui.hwnd)
 	ui.gameSettingsGui.SetFont("s14 c" cfg.fontColor1,"calibri")
-	ui.gameTabs := ui.gameSettingsGui.addTab3("x0 y-5 h194 0x400 bottom c" cfg.fontColor1 " choose" cfg.activeGameTab,["Gameplay","222Vault Cleaner222"])
+	ui.gameTabs := ui.gameSettingsGui.addTab3("x0 y-5 h194 0x400 bottom c" cfg.fontColor1 " choose" cfg.activeGameTab,["Gameplay","Vault Cleaner"])
 
-	ui.gameTabs.choose(cfg.gameModuleList[cfg.activeGameTab])
+	ui.gameTabs.choose(cfg.gameTabList[cfg.activeGameTab])
 	ui.gameTabs.setFont("s16","move-x")
 	ui.gameTabs.onEvent("Change",gameTabChanged)
 	ui.mainGui.GetPos(&winX,&winY,,)
-	winSetRegion("2-0 w600 h250",ui.gameSettingsGui)
+	winSetRegion("2-0 w495 h190",ui.gameSettingsGui)
 	Loop cfg.gameList.length {
 		try {
 			runWait("./lib/lib" cfg.gameList[a_index])
@@ -857,24 +856,11 @@ drawKeybind(x,y,bindName,labelText := bindName,gui := ui.mainGui,w := 84,h := 30
 		}
 	}		
 
-ui.prevGameTab:=cfg.activeGameTab
-gameTabChanged(*) {
-	
+
+gameTabChanged(*) { 
 	cfg.activeGameTab := ui.gametabs.value
-	if ui.gametabs.value>2 && !cfg.debugEnabled {
-		
-		ui.gametabs.choose(cfg.gameModuleList[ui.prevGameTab])
-		
-		drawGameTabs(ui.gameTabs.value)
-		
-		cfg.activeGameTab:=ui.prevGameTab
-		notifyOSD("In Development. Coming Soon")
-	} else {
-		ui.prevGameTab:=cfg.activeGameTab
-		drawGameTabs(ui.gameTabs.value)
-	}
-	ui.prevGameTab:=cfg.activeGameTab
-	guiVis(ui.gameTabGui,true)
+	drawGameTabs(ui.gameTabs.value)
+	;guiVis(ui.gameTabGui,true)
 	
 ;	tabsChanged()
 }
@@ -887,12 +873,12 @@ drawGameTabs(tabNum := 1) {
 	ui.gameTabGui.opt("-caption toolWindow alwaysOnTop +E0x20 owner" ui.gameSettingsGui.hwnd)
 	ui.gameTabGui.backColor := ui.transparentColor
 	ui.gameTabGui.color := ui.transparentColor
-	drawOutlineNamed("gameTabOutline",ui.gameTabGui,0,0,495,29
+	drawOutlineNamed("gameTabOutline",ui.gameTabGui,0,0,496,2
 		,cfg.accentColor1,cfg.accentColor1,2)
 	
 	winSetTransColor(ui.transparentColor,ui.gameTabGui)
 			;drawOutlineNamed("gameTabs",ui.gameTabGui,ui.gameTabWidth-0,0,498-ui.gameTabWidth,32,cfg.accentColor3,cfg.accentColor1,1)
-	ui.gameTabGui.addText("x1 y0 w0 h27 section background" cfg.accentColor1,"")
+			;ui.gameTabGui.addText("x0 y0 w0 h0 section background" cfg.accentColor1,"")
 	((tabNum == 1)
 		? ui.gameTab1SkinOutline := ui.gameTabGui.addText("section x0 y0 w94 h32 background" cfg.accentColor1,"" )
 		: ui.gameTab1SkinOutline := ui.gameTabGui.addText("section x0 y2 w94 h30 background" cfg.accentColor2,""))
@@ -915,7 +901,7 @@ drawGameTabs(tabNum := 1) {
 		((tabNum == 1) 
 			? "ys2 h28" 
 			: "ys2 h28")
-				" x+-90 w90 center backgroundTrans c" 
+				" x+-88 w90 center backgroundTrans c" 
 		((tabNum == 1) 
 			? cfg.fontColor1 
 			: cfg.fontColor2)
@@ -929,13 +915,13 @@ drawGameTabs(tabNum := 1) {
 		? ui.gameTabGui.addText("y0 x90 w2 h34 background" cfg.accentColor1,"")
 		: ui.gameTabGui.addText("y2 x90 w2 h30 background" cfg.accentColor2,""))
 	((tabNum == 2)
-		? ui.gameTab2SkinOutline := ui.gameTabGui.addText("x92 y0 w128 h36 background" cfg.accentColor1,"" )
-		: ui.gameTab2SkinOutline := ui.gameTabGui.addText("x92 y2 w128 h36 background" cfg.accentColor2,""))
+		? ui.gameTab2SkinOutline := ui.gameTabGui.addText("x92 y0 w122 h34 background" cfg.accentColor1,"" )
+		: ui.gameTab2SkinOutline := ui.gameTabGui.addText("x92 y2 w122 h30 background" cfg.accentColor2,""))
 	ui.gameTab2Skin := ui.gameTabGui.addText(
 		((tabNum == 2) 
 			? "y0 h30" 
 			: "y2 h28")
-				" x92 w120 center background" 
+				" x92 w122 center background" 
 		((tabNum == 2) 
 			? cfg.bgColor2 
 			: cfg.bgColor1)
@@ -950,7 +936,7 @@ drawGameTabs(tabNum := 1) {
 			,"Impact")
 	ui.gameTab2Label := ui.gameTabGui.addText(
 		((tabNum == 2) 
-			? "y2 h26" 
+			? "y3 h26" 
 			: "y5 h32")
 		" x92 w120 center backgroundTrans c" 
 		((tabNum == 2)
@@ -962,13 +948,13 @@ drawGameTabs(tabNum := 1) {
 			? "s14" 
 			: "s12")
 		,"Impact")
-	ui.gameTabWidth += 102	
+	ui.gameTabWidth += 124	
 	((tabNum == 2 || tabNum == 3)
-		? ui.gameTabGui.addText("y0 x212 w2 h34 background" cfg.accentColor1,"")
-		: ui.gameTabGui.addText("y2 x212 w2 h30 background" cfg.accentColor2,""))
-	((tabNum == 3)
-		? ui.gameTab3SkinOutline := ui.gameTabGui.addText("x214 y0 w86 h32 background" cfg.bgColor2,"" )
-		: ui.gameTab3SkinOutline := ui.gameTabGui.addText("x214 y2 w86 h32 background" cfg.bgColor2,""))
+		? ui.gameTabGui.addText("y0 x214 w2 h34 background" cfg.accentColor1,"")
+		: ui.gameTabGui.addText("y2 x214 w2 h30 background" cfg.accentColor2,""))
+	; ((tabNum == 3)
+		; ? ui.gameTab3SkinOutline := ui.gameTabGui.addText("x214 y0 w86 h32 background" cfg.bgColor2,"" )
+		; : ui.gameTab3SkinOutline := ui.gameTabGui.addText("x214 y2 w86 h32 background" cfg.bgColor2,""))
 	; ui.gameTab3Skin := ui.gameTabGui.addText(
 		; ((tabNum == 3) 
 			; ? "y0 h30" 
@@ -1041,18 +1027,18 @@ drawGameTabs(tabNum := 1) {
 	; ui.gameTabWidth += 70
 	; ((tabNum == 4)
 		; ? ui.gameTabGui.addText("y0 x370 w2 h34 section background" cfg.accentColor1,"")
-		; : ui.gameTabGui.addText("y2 x370 w2 h30 section background" cfg.accentColor2,""))
+	; : ui.gameTabGui.addText("y2 x370 w2 h30 section background" cfg.accentColor2,""))
 
 	
 	winGetPos(&mainGuiX,&mainGuiY,,,ui.mainGui.hwnd)
-		ui.gameTabGui.addText("y2 x216 w" 498-(ui.gameTabWidth+3) " h28 background" cfg.bgColor2)
+		ui.gameTabGui.addText("y2 x216 w" 496-(ui.gameTabWidth) " h28 background" cfg.bgColor2)
 	if !(mainGuiX==0 && mainGuiY==0) {
-		ui.gameTabGui.show("w497 h32 noActivate x" mainGuiX+34 " y" mainGuiY+183)
+		ui.gameTabGui.show("w498 h32 noActivate x" mainGuiX+34 " y" mainGuiY+183)
 		
 	}
 	;line(ui.gameTabGui,214,30,500,2,cfg.bgColor2)
-	line(ui.gameTabGui,214,30,500,1,cfg.accentColor2)
-	line(ui.gameTabGui,495,0,30,1,cfg.accentColor2,"VERT")
+	line(ui.gameTabGui,216,30,280,1,cfg.accentColor2)
+	line(ui.gameTabGui,495,2,29,1,cfg.accentColor2,"VERT")
 
 }
 

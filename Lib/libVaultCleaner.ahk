@@ -12,7 +12,7 @@ if (InStr(A_LineFile,A_ScriptFullPath))
 ui.vaultCleanerOpen := false
 
 
-ui.gametabs.useTab("222Vault Cleaner222")
+ui.gametabs.useTab("Vault Cleaner")
 	ui.gameSettingsGui.addText("x5 y3 w488 h146 background" cfg.bgColor1)
 	drawOutlineNamed("vaultStats",ui.gameSettingsGui,5,3,488,146,cfg.outlineColor1,cfg.outlineColor2,1)
 	;ui.gameSettingsGui.addText("x11 y8 w118 h60 background" cfg.bgColor3)
@@ -63,6 +63,7 @@ ui.gametabs.useTab("222Vault Cleaner222")
 	this.vaultProgressLabel.setFont("s10","move-x")
 	this.vaultProgress := ui.gameSettingsGui.addProgress("x107 y52 w380 h20 c" cfg.trimColor5 " background151515 range1-500")
 	this.vaultDetail:=ui.gameSettingsGui.addPicture("x10 y52 w398 h20 backgroundTrans","./img/lightburst_tl.png")
+	this.vaultDetail2:=ui.gameSettingsGui.addPicture("x200 y52 w286 h20 backgroundTrans","./img/lightburst_tr_light.png")
 	this.completeMsg := ui.gameSettingsGui.addText("hidden x33 y61 w500 h30 backgroundTrans c" cfg.fontColor1 "","")
 	
 	drawOutlineNamed("vaultCleanerButton",ui.gameSettingsGui,10,79,234,65,cfg.outlineColor1,cfg.outlineColor2,2)
