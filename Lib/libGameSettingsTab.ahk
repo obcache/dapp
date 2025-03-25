@@ -704,7 +704,7 @@ d2drawPanel3(*) {
 	static xPos:=15
 	static yPos:=82
 	
-	cfg.button_link1:=["DIM","URL","https://destinyitemmanager.com","./img/button_DIM.png"]
+	cfg.button_link1:=["DIM","URL","https://app.destinyitemmanager.com","./img/button_DIM.png"]
 	cfg.button_link2:=["Glyphs","Function","toggleGlyphWindow","./img/d2_glyphs_thumb.png"]
 	cfg.button_link3:=["Runes","Function","toggleRuneWindow","./img/d2_runes_thumb.png"]
 	cfg.button_link4:=["WishCodes","Function","toggleCodeWindow","./img/d2_wishCodes_thumb.png"]

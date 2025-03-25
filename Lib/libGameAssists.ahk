@@ -160,7 +160,10 @@ chatWindowActive(*) {
 }
 
 d2GameChatToggle(*) {
+	prevCapslockState := getKeystate("capslock")
 	return (tmp.gameChatEnabled:=!tmp.gameChatEnabled)
+				? setCapslockState(0)
+				: setCapslockState(prevCapslockState)
 }
 
 d2ReadyToSprint(*) {
@@ -372,10 +375,6 @@ d2ToggleAppFunctions(*) {
 d2ToggleAppFunctionsOn() {
 	ui.d2ToggleAppFunctions.Opt("Background" cfg.trimColor3)
 	ui.d2ToggleAppFunctions.value := "./img/toggle_vertical_trans_on.png"
-	try {				
-		ui.dockBarD2AlwaysRun.Opt("Background" cfg.trimColor3)
-		ui.dockBarD2AlwaysRun.value := "./img/toggle_vertical_trans_on.png"
-	}
 }
 
 d2ToggleAppFunctionsOff() {
@@ -383,12 +382,6 @@ d2ToggleAppFunctionsOff() {
 	ui.d2ToggleAppFunctions.opt("background" cfg.trimColor2)
 	ui.d2ToggleAppFunctions.value := "./img/toggle_vertical_trans_off.png"
 	ui.d2ToggleAppFunctions.redraw()
-	try {
-		ui.dockBarD2AlwaysRun.opt("background" cfg.trimColor4)
-		ui.dockBarRunIcon.opt("background" cfg.trimColor3)
-		ui.dockBarRunIcon.redraw()
-		ui.dockBarD2AlwaysRun.value := "./img/toggle_vertical_trans_off.png"
-	}
 }
 
 d2ToggleAutoGameConfig(*) {
