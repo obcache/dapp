@@ -1,4 +1,4 @@
-A_FileVersion := "1.5.8.8"
+A_FileVersion := "1.5.8.9"
 a_appName := "dapp"
 if (fileExist("./dapp_currentBuild.dat"))
 a_fileVersion := fileRead("./dapp_currentBuild.dat")
@@ -101,6 +101,8 @@ advProgress(1)
 #include <libInstall>
 advProgress(3)
 #include <libGuiSetupTab>
+advProgress(2)
+#include <libKeybindUI>
 advProgress(2)
 #include <libGameAssists>
 advProgress(1)

@@ -104,10 +104,10 @@ advProgress(2)
 	ui.titleBar:=ui.mainGui.addPicture("x196 y2 w280 h28 left backgroundTrans",cfg.titleBarImage)
 	ui.titleBar.onEvent("click",wm_lbuttonDown_callback)
 	ui.3_FillOutline:=ui.mainGui.addText("hidden x206 y1 w280 h30 left backgroundTrans","dapp")
-	ui.3_FillOutline.setFont("q5 s17 c" cfg.fontColor3,"Move-X")
+	ui.3_FillOutline.setFont("q5 s17 c" cfg.fontColor1,"Move-X")
 	(iniRead(cfg.themeFile,cfg.theme,"HideTitlebarText",0)) ? 0 : (ui.3_FillOutline.opt("-hidden"),ui.3_FillOutline.redraw())
 	ui.buildNumber:=ui.mainGui.addText("x420 y12 w280 h28 left backgroundTrans","v" a_fileVersion)
-	ui.buildNumber.setFont("q5 s10 c" cfg.fontColor3,"Move-X")
+	ui.buildNumber.setFont("q5 s10 c" cfg.fontColor1,"Move-X")
 
 	
 	ui.1_GameButton := ui.mainGui.addText("x36 y2 w78 h28 center background" cfg.bgColor2,"Game")
