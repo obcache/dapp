@@ -111,11 +111,14 @@ advProgress(2)
 	ui.buildNumber.setFont("q5 s10 c" cfg.fontColor1,"Move-X")
 
 	
-	ui.1_GameButton := ui.mainGui.addText("x36 y2 w78 h28 center background" cfg.bgColor2,"Game")
+	ui.1_GameButton := ui.mainGui.addText("x36 y3 w78 h28 center background" cfg.bgColor2)
+	ui.1_GameButtonLabel := ui.mainGui.addText("x36 y6 w78 h28 center backgroundTrans","Game")
 	ui.1_GameButton.setFont("s14 c" cfg.fontColor1,"move-x")
 	
 	ui.1_gameButton.redraw()
-	ui.2_SetupButton := ui.mainGui.addText("y2 x116 w78 h32 center background" cfg.bgColor1,"Setup")
+
+	ui.2_SetupButton := ui.mainGui.addText("y3 x116 w78 h32 center background" cfg.bgColor1)
+	ui.2_SetupButtonLabel := ui.mainGui.addText("y4 x116 w78 h32 center backgroundTrans","Setup")
 	ui.2_SetupButton.setFont("s14 c" cfg.fontColor1,"move-x")
 	ui.2_setupButton.redraw()
 

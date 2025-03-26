@@ -417,8 +417,8 @@ ui.gameLinkLabel:=ui.gameTabGui.addText("x325 y6 w180 h20 backgroundTrans","Game
 ui.gameLinkLabel.setFont("s14 c" cfg.fontColor1,"move-x")
 ui.gameLink:=ui.gameTabGui.addPicture("x470 y6 w22 h22 backgroundTrans",(winExist("ahk_exe destiny2.exe")) ? "./img/toggle_button_on.png" : "./img/toggle_button_off.png")
 ui.gameHwnd:=0
-setTimer () => setTimer(isGameRunning,1000),-4000
-setTimer(isGameRunning,1000)
+
+setTimer(isGameRunning,2000)
 ; ui.gameRunningName:=ui.gameTabGui.addText("section right x220 y2 w60 h15 backgroundTrans","Destiny2 : ")
 ; ui.gameRunningStatus:=ui.gameTabGui.addText("ys+0 w80 h15 backgroundTrans", (ui.gameHwnd) ? "Active" : "Not Active`nClick to Launch")
 ; (ui.gameHwnd) ? 0 : ui.gameRunningStatus.setFont("underline","Euphemia")
@@ -435,11 +435,27 @@ setTimer(isGameRunning,1000)
 
 isGameRunning(*) {
 	try {
-		return ui.gameHwnd := (winExist("ahk_exe destiny2.exe")) ? ui.gameLink.value:="./img/toggle_button_on.png" : ui.gameLink.value:="./img/toggle_button_off.png"
-	}
+		return ui.gameHwnd := (winExist("ahk_exe destiny2.exe")) ? gameActive() : gameInactive()
+		
+		gameActive(*) {
+			ui.gameLink.value:="./img/toggle_button_on.png"
+			ui.gameLink.toolTip:="Destiny 2 Running at PID " winGet("PID","ahk_exe destiny2.exe")
+			ui.gameLink.onEvent("click",killDestiny)
+		}
+		
+		gameInactive(*) {
+			ui.gameLink.value:="./img/toggle_button_off.png"
+			ui.gameLink.toolTip:="Click button to launch Destiny 2"
+			ui.gameLink.onEvent("click",launchDestiny)
+		}
+	}		  
 	return 0
 }
-	
+
+killDestiny(*) {
+	winKill("ahk_exe destiny2.exe")
+}
+
 MouseRemap(*) {
 	 return (winActive("ahk_exe destiny2.exe"))
 				?  (cfg.mouseRemapEnabled)
