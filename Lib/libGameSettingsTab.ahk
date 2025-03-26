@@ -244,8 +244,8 @@ drawGameTabs(tabNum := 1) {
 			;drawOutlineNamed("gameTabs",ui.gameTabGui,ui.gameTabWidth-0,0,498-ui.gameTabWidth,32,cfg.accentColor3,cfg.accentColor1,1)
 			;ui.gameTabGui.addText("x0 y0 w0 h0 section background" cfg.accentColor1,"")
 	((tabNum == 1)
-		? ui.gameTab1SkinOutline := ui.gameTabGui.addText("section x0 y0 w94 h32 background" cfg.accentColor1,"" )
-		: ui.gameTab1SkinOutline := ui.gameTabGui.addText("section x0 y2 w94 h30 background" cfg.accentColor2,""))
+		? ui.gameTab1SkinOutline := ui.gameTabGui.addText("section x0 y0 w94 h32 background" cfg.accentColor3,"" )
+		: ui.gameTab1SkinOutline := ui.gameTabGui.addText("section x0 y2 w94 h30 background" cfg.accentColor4,""))
 	ui.gameTab1Skin := ui.gameTabGui.addText(
 		((tabNum == 1) 
 			? "y0 h30" 
@@ -276,11 +276,13 @@ drawGameTabs(tabNum := 1) {
 			,"Impact")
 	ui.gameTabWidth += 92
 	((tabNum == 1 || tabNum == 2)
-		? ui.gameTabGui.addText("y0 x90 w2 h34 background" cfg.accentColor1,"")
-		: ui.gameTabGui.addText("y2 x90 w2 h30 background" cfg.accentColor2,""))
+		? ui.gameTabGui.addText("y0 x90 w2 h34 background" cfg.accentColor3,"")
+		: ui.gameTabGui.addText("y2 x90 w2 h30 background" cfg.accentColor4,""))
 	((tabNum == 2)
-		? ui.gameTab2SkinOutline := ui.gameTabGui.addText("x92 y0 w122 h34 background" cfg.accentColor1,"" )
-		: ui.gameTab2SkinOutline := ui.gameTabGui.addText("x92 y2 w122 h30 background" cfg.accentColor2,""))
+		? ui.gameTab2SkinOutline := ui.gameTabGui.addText("x92 y0 w122 h34 background" cfg.accentColor3,"" )
+		: ui.gameTab2SkinOutline := ui.gameTabGui.addText("x92 y2 w122 h30 background" cfg.accentColor4,""))
+	ui.gameTabGui.addPicture("x0 y0 w88 h30 backgroundTrans","./img/lightburst_bl_light.png")
+	
 	ui.gameTab2Skin := ui.gameTabGui.addText(
 		((tabNum == 2) 
 			? "y0 h30" 
@@ -314,8 +316,9 @@ drawGameTabs(tabNum := 1) {
 		,"Impact")
 	ui.gameTabWidth += 124	
 	((tabNum == 2 || tabNum == 3)
-		? ui.gameTabGui.addText("y0 x214 w2 h34 background" cfg.accentColor1,"")
-		: ui.gameTabGui.addText("y2 x214 w2 h30 background" cfg.accentColor2,""))
+		? ui.gameTabGui.addText("y0 x214 w2 h34 background" cfg.accentColor3,"")
+		: ui.gameTabGui.addText("y2 x214 w2 h30 background" cfg.accentColor4,""))
+	ui.gameTabGui.addPicture("x90 y0 w122 h30 backgroundTrans","./img/lightburst_bl_light.png")	
 	; ((tabNum == 3)
 		; ? ui.gameTab3SkinOutline := ui.gameTabGui.addText("x214 y0 w86 h32 background" cfg.bgColor2,"" )
 		; : ui.gameTab3SkinOutline := ui.gameTabGui.addText("x214 y2 w86 h32 background" cfg.bgColor2,""))
@@ -395,17 +398,48 @@ drawGameTabs(tabNum := 1) {
 
 	
 	winGetPos(&mainGuiX,&mainGuiY,,,ui.mainGui.hwnd)
-		ui.gameTabGui.addText("y2 x216 w" 496-(ui.gameTabWidth) " h28 background" cfg.bgColor2)
+		ui.gameTabGui.addText("y2 x216 w" 496-(ui.gameTabWidth) " h28 background" cfg.trimColor1)
+		ui.gameTabGui.addPicture("y2 x216 w" 380-ui.gameTabWidth " h28 backgroundTrans","./img/lightburst_bl_light.png")
 	if !(mainGuiX==0 && mainGuiY==0) {
 		ui.gameTabGui.show("w498 h32 noActivate x" mainGuiX+34 " y" mainGuiY+183)
 		
 	}
 	;line(ui.gameTabGui,214,30,500,2,cfg.bgColor2)
-	line(ui.gameTabGui,216,30,280,1,cfg.accentColor2)
-	line(ui.gameTabGui,495,2,29,1,cfg.accentColor2,"VERT")
+	line(ui.gameTabGui,216,30,280,1,cfg.accentColor4)
+	line(ui.gameTabGui,495,2,29,1,cfg.accentColor4,"VERT")
 
 }
 
+
+;ui.gameRunningHeaderLabel:=ui.gameTabGui.addText("hidden section x300 y5 w200 h15 backgroundTrans","Attached Game Window")
+ui.gameTabGui.setFont("s7 c" cfg.fontColor2,"small font")
+ui.gameLinkLabel:=ui.gameTabGui.addText("x325 y6 w180 h20 backgroundTrans","Game Status")
+ui.gameLinkLabel.setFont("s14 c" cfg.fontColor1,"move-x")
+ui.gameLink:=ui.gameTabGui.addPicture("x470 y6 w22 h22 backgroundTrans",(winExist("ahk_exe destiny2.exe")) ? "./img/toggle_button_on.png" : "./img/toggle_button_off.png")
+ui.gameHwnd:=0
+setTimer () => setTimer(isGameRunning,1000),-4000
+setTimer(isGameRunning,1000)
+; ui.gameRunningName:=ui.gameTabGui.addText("section right x220 y2 w60 h15 backgroundTrans","Destiny2 : ")
+; ui.gameRunningStatus:=ui.gameTabGui.addText("ys+0 w80 h15 backgroundTrans", (ui.gameHwnd) ? "Active" : "Not Active`nClick to Launch")
+; (ui.gameHwnd) ? 0 : ui.gameRunningStatus.setFont("underline","Euphemia")
+; ui.gameRunningStatus.onEvent("click",launchDestiny)
+; launchDestiny(*) {
+	; run("steam steam://1085660",,"Min",&destinyPID)
+	; ui.gameRunningStatus:="Launching Destiny 2"
+	; ui.gameRunningStatus.setFont("norm")
+; }
+
+
+; ui.gameRunningExe:=ui.gameTabGui.addText("section right xs+0  y+-3 w60 h15 backgroundTrans","destiny2.exe : ")
+; ui.gameRunningHwnd:=ui.gameTabGui.addText("ys+0 w80 h15 backgroundTrans",ui.gameHwnd)
+
+isGameRunning(*) {
+	try {
+		return ui.gameHwnd := (winExist("ahk_exe destiny2.exe")) ? ui.gameLink.value:="./img/toggle_button_on.png" : ui.gameLink.value:="./img/toggle_button_off.png"
+	}
+	return 0
+}
+	
 MouseRemap(*) {
 	 return (winActive("ahk_exe destiny2.exe"))
 				?  (cfg.mouseRemapEnabled)
@@ -478,7 +512,7 @@ toggleCodeWindow(lparam,*) {
 	static codeWindowVisible := false
 		(codeWindowVisible := !codeWindowVisible)
 			? showCodeWindow()
-			: hideCodeWindow() 
+			: hideCodeWindow()  
 }
 	
 showCodeWindow(*) {

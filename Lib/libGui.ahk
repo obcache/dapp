@@ -41,6 +41,7 @@ tabsChanged(*) {
 }
 
 tabsInit(*) {
+		ui.mainGui.setFont("s12 q5 c" cfg.fontColor1,"move-x")
 	ui.activeTab := ui.mainGuiTabs.Text
 	ui.activeMainTab := ui.mainGuiTabs.value
 	(ui.activeTab=="1_Game____")
@@ -89,7 +90,7 @@ advProgress(2)
 	advProgress(2)
 	ui.MainGui.MarginX := 0
 	ui.MainGui.MarginY := 0
-	ui.MainGui.setFont("q5 s13 c" cfg.fontColor1,"calibri")
+	ui.mainGui.setFont("s12 q5 c" cfg.fontColor1,"move-x")
 	ui.mainGuiAnchor := ui.mainGui.addText("x0 y0 w0 h0 section hidden")
 	
 	ui.mainBg := ui.mainGui.addText("x36 y29 w493 h185 background" cfg.bgColor2,"")
@@ -111,8 +112,11 @@ advProgress(2)
 
 	
 	ui.1_GameButton := ui.mainGui.addText("x36 y2 w78 h28 center background" cfg.bgColor2,"Game")
+	ui.1_GameButton.setFont("s14 c" cfg.fontColor1,"move-x")
+	
 	ui.1_gameButton.redraw()
 	ui.2_SetupButton := ui.mainGui.addText("y2 x116 w78 h32 center background" cfg.bgColor1,"Setup")
+	ui.2_SetupButton.setFont("s14 c" cfg.fontColor1,"move-x")
 	ui.2_setupButton.redraw()
 
 	line(ui.mainGui,34,28,490,2,cfg.accentColor1)
@@ -135,6 +139,7 @@ advProgress(2)
 	advProgress(2)
 
 	advProgress(2)
+
 	
 	ui.mainGuiTabs := ui.MainGui.AddTab3("x34 y2 w494 h233 Buttons -redraw Background" cfg.bgColor2 " -E0x200",["1_Game____","2_Setup____"])
 	ui.mainGuiTabs.useTab("")
@@ -558,7 +563,7 @@ showGui(*) {
 		; ui.MainGui.move(,,,GuiH)
 		; debugLog("Hiding Log")
 	; }
-; }
+		; }
 
 
 

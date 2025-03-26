@@ -353,8 +353,6 @@ d2ToggleAlwaysSprint(*) {
 }
 
 d2ToggleAppFunctions(*) {
-	if tmp.gameChatEnabled
-		return
 	(cfg.dappPaused := !cfg.dappPaused)
 		? d2ToggleAppFunctionsOff()
 		: d2ToggleAppFunctionsOn()
