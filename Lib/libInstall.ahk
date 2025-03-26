@@ -147,6 +147,9 @@ preAutoExec(InstallDir,ConfigFileName) {
 			FileInstall("./Img/toggle_on.png",InstallDir "/Img/toggle_on.png",1)
 			fileInstall("./img/toggle_vertical_trans_on.png",installDir "/img/toggle_vertical_trans_on.png",1)
 			fileInstall("./img/toggle_vertical_trans_off.png",installDir "/img/toggle_vertical_trans_off.png",1)
+			fileInstall("./img/toggle_button_on.png",installDir "/img/toggle_button_on.png",1)
+			fileInstall("./img/toggle_button_off.png",installDir "/img/toggle_button_off.png",1)
+
 			FileInstall("./Img/button_update.png",InstallDir "/img/button_update.png",1)
 			FileInstall("./Img/button_exit_gaming.png",InstallDir "/img/button_exit_gaming.png",1)
 			fileInstall("./img/d2ClassIconWarlock_on.png",installDir "/img/d2ClassIconWarlock_on.png",1)
