@@ -291,7 +291,7 @@ drawGameTabs(tabNum := 1) {
 	((tabNum == 2)
 		? ui.gameTab2SkinOutline := ui.gameTabGui.addText("x92 y0 w122 h34 background" cfg.accentColor1,"" )
 		: ui.gameTab2SkinOutline := ui.gameTabGui.addText("x92 y2 w122 h30 background" cfg.accentColor2,""))
-	ui.gameTabGui.addPicture("x0 y0 w88 h30 backgroundTrans","./img/lightburst_bl_light.png")
+	ui.gameTabGui.addPicture("x0 y0 w88 h30 backgroundTrans","./img/lightburst_br_light.png")
 	
 	ui.gameTab2Skin := ui.gameTabGui.addText(
 		((tabNum == 2) 
@@ -410,7 +410,7 @@ drawGameTabs(tabNum := 1) {
 	winGetPos(&mainGuiX,&mainGuiY,,,ui.mainGui.hwnd)
 		ui.gameTabSpacer:=ui.gameTabGui.addText("y2 x216 w" 496-(ui.gameTabWidth) " h27 background" cfg.trimColor1)
 		ui.gameTabSpacer.onEvent("click",WM_LBUTTONDOWN_callback)
-		ui.gameTabSpacerDetail:=ui.gameTabGui.addPicture("y2 x216 w" 380-ui.gameTabWidth " h27 backgroundTrans","./img/lightburst_top_light.png")
+		ui.gameTabSpacerDetail:=ui.gameTabGui.addPicture("y2 x216 w" 480-ui.gameTabWidth " h27 backgroundTrans","./img/lightburst_top_light.png")
 		ui.gameTabSpacerDetail.onEvent("click",WM_LBUTTONDOWN_callback)
 	if !(mainGuiX==0 && mainGuiY==0) {
 		ui.gameTabGui.show("w498 h32 noActivate x" mainGuiX+34 " y" mainGuiY+183)
