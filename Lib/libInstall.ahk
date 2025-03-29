@@ -240,6 +240,7 @@ preAutoExec(InstallDir,ConfigFileName) {
 			fileInstall("./img/lightburst_bottom_light.png",installDir "/img/custom/lightburst_bottom_light.png",1)
 			fileInstall("./img/lightburst_top_light.png",installDir "/img/custom/lightburst_top_light.png",1)			
 			fileInstall("./img/dapp_titlebar.png",installDir "/img/dapp_titlebar.png",1)
+			fileInstall("./img/button_down_layer.png",installDir "/img/button_down_layer.png",1)
 			fileInstall("./img/dapp_titlebar2.png",installDir "/img/dapp_titlebar2.png",1)
 			fileInstall("./img/dapp_lightburst.png",installDir "/img/dapp_lightburst.png",1)
 			fileInstall("./img/lightburst_bottom.png",installDir "/img/lightburst_bottom.png",1)
