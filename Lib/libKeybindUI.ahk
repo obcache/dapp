@@ -315,10 +315,10 @@ drawKeybindBar(*) {
 	
 	
 	ui.d2keybindGameTab1 	:= guiName.addText("x" labelX " y" labelY+labelH/2 " w" labelW " h" labelH/2+3 " background" outlineColor,"")
-	ui.d2Panel1Tab1Bg 		:= ui.gameSettingsGui.addText("hidden x44 y9 w439 h42 background" cfg.outlineColor2,"")
-	ui.d2Panel1Tab1Bg2 		:= ui.gameSettingsGui.addText("hidden x45 y10 w437 h40 background" cfg.bgColor3 " c" cfg.fontColor4,"")	
-	ui.d2Panel1Tab1Bg3 		:= ui.gameSettingsGui.addText("hidden x46 y11 w435 h38 background" cfg.accentColor2,"")
-	ui.d2Panel1Tab1Bg4 		:= ui.gameSettingsGui.addText("hidden x47 y12 w433 h36 background" cfg.trimColor1,"")
+	ui.d2Panel1Tab1Bg 		:= ui.gameSettingsGui.addText("hidden x44 y9 w437 h42 background" cfg.outlineColor2,"")
+	ui.d2Panel1Tab1Bg2 		:= ui.gameSettingsGui.addText("hidden x45 y10 w435 h40 background" cfg.bgColor3 " c" cfg.fontColor4,"")	
+	ui.d2Panel1Tab1Bg3 		:= ui.gameSettingsGui.addText("hidden x46 y11 w433 h38 background" cfg.accentColor2,"")
+	ui.d2Panel1Tab1Bg4 		:= ui.gameSettingsGui.addText("hidden x47 y12 w431 h36 background" cfg.trimColor1,"")
 	
 	ui.d2Panel1Tab2Bg 		:= ui.gameSettingsGui.addText("hidden x19 y9 w438 h42 background" cfg.outlineColor2,"")
 	ui.d2Panel1Tab2Bg2 		:= ui.gameSettingsGui.addText("hidden x20 y10 w436 h40 background" cfg.bgColor3 " c" cfg.fontColor4,"")	
@@ -369,34 +369,34 @@ drawKeybindBar(*) {
 		"  h20 center c" cfg.fontColor1 " backgroundTrans","Loadout")
 	
 	ui.currKey 					:= cfg.dappSwordFlyKey
-	ui.dappSwordFlyKey			:= ui.gameSettingsGui.addPicture("x+5 ys w36 h30 section backgroundTrans","./img/keyboard_key_up.png")
-	ui.dappSwordFlyKeyData 	:= ui.gameSettingsGui.addText("xs+0 y+-24 w36 h21 center c" cfg.trimColor4 " backgroundTrans"
+	ui.dappSwordFlyKey			:= ui.gameSettingsGui.addPicture("x+5 ys w34 h30 section backgroundTrans","./img/keyboard_key_up.png")
+	ui.dappSwordFlyKeyData 	:= ui.gameSettingsGui.addText("xs+0 y+-24 w34 h21 center c" cfg.trimColor4 " backgroundTrans"
 		,subStr(strUpper(cfg.dappSwordFlyKey),1,8))
-	ui.dappSwordFlyKeyLabel 	:= ui.gameSettingsGui.addText("xs-4 y+-34 w40 h20 center c" cfg.fontColor1 " backgroundTrans","Fly")
-	ui.d2ClassSelectOutline		:= ui.gameSettingsGui.addText("xs+42 y11 w39 h39 background" cfg.accentColor2)
-	ui.d2ClassSelectOutline2	:= ui.gameSettingsGui.addText("xs+43 y11 w38 h38 background" cfg.bgColor3)
-	ui.d2ClassSelectBg			:= ui.gameSettingsGui.addText("x442 y10 w42 h40 background" cfg.bgColor2)
+	ui.dappSwordFlyKeyLabel 	:= ui.gameSettingsGui.addText("xs-4 y+-34 w38 h20 center c" cfg.fontColor1 " backgroundTrans","Fly")
+	ui.d2ClassSelectOutline		:= ui.gameSettingsGui.addText("xs+42 y11 w37 h39 background" cfg.accentColor2)
+	ui.d2ClassSelectOutline2	:= ui.gameSettingsGui.addText("xs+43 y11 w36 h38 background" cfg.bgColor3)
+	ui.d2ClassSelectBg			:= ui.gameSettingsGui.addText("x441 y10 w40 h40 background" cfg.bgColor2)
 	;ui.d2ClassSelectBg2			:= ui.gameSettingsGui.addText("xs+35 y+-14 w56 h16 background" cfg.accentColor1)
 
-	ui.d2ClassSelectBg3			:= ui.gameSettingsGui.addText("hidden xs+42 y+-14 w40 h14 background" cfg.bgColor2)
-	ui.d2ClassIcon				:= ui.gameSettingsGui.addPicture("x443 y7 w40 h30 center backgroundTrans","")
-	ui.d2ClassIconDown			:= ui.gameSettingsGui.addText("x443 y36 w19 h13 center backgroundTrans c" cfg.trimColor6,"←")
-	ui.d2ClassIconUp			:= ui.gameSettingsGui.addText("x464 y36 w19 h13 center backgroundTrans c" cfg.trimColor6,"→")
-	ui.d2ClassSelectSpacer 		:= ui.gameSettingsGui.addText("hidden x463 y36 w1 h14 background" cfg.trimColor6)
+	ui.d2ClassSelectBg3			:= ui.gameSettingsGui.addText("hidden xs+41 y+-14 w38 h14 background" cfg.bgColor2)
+	ui.d2ClassIcon				:= ui.gameSettingsGui.addPicture("x441 y7 w40 h30 center backgroundTrans","")
+	ui.d2ClassIconDown			:= ui.gameSettingsGui.addText("x441 y36 w19 h13 center backgroundTrans c" cfg.trimColor6,"←")
+	ui.d2ClassIconUp			:= ui.gameSettingsGui.addText("x462 y36 w19 h13 center backgroundTrans c" cfg.trimColor6,"→")
+	ui.d2ClassSelectSpacer 		:= ui.gameSettingsGui.addText("hidden x461 y36 w1 h14 background" cfg.trimColor6)
 	ui.d2ClassSelectBgLine		:= ui.gameSettingsGui.addText("hidden x442 y10 w0 h0 background" cfg.outlineColor2)
 	ui.d2ClassSelectBgLine1		:= ui.gameSettingsGui.addText("hidden x442 y10 w0 h0 background" cfg.accentColor2)
-	ui.d2ClassSelectBgLine2		:= ui.gameSettingsGui.addText("hidden x443 y35 w40 h1 background" cfg.trimColor6)
+	ui.d2ClassSelectBgLine2		:= ui.gameSettingsGui.addText("hidden x442 y35 w38 h1 background" cfg.trimColor6)
 	ui.d2KeyBindHelpMsg			:= ui.gameSettingsGui.addText("x47 y52 w350 h12 backgroundTrans c" cfg.fontColor1,"")
 	ui.d2ClassIcon.toolTip 		:= "Click to Enable/Disable the Fly Macro"
 	ui.d2ClassIconDown.tooltip 	:= "Click to switch between character classes for the Fly Macro"
 	ui.d2ClassIconUp.tooltip 	:= "Click to switch between character classes for the Fly Macro"
 	
-	ui.keybindSpacer7			:= ui.gameSettingsGui.addText("x442 y10 w1 h40 background" cfg.outlineColor2)		
-	ui.keybindSpacer8			:= ui.gameSettingsGui.addText("x443 y10 w1 h40 background" cfg.outlineColor1)	
-	ui.keybindSpacer5			:= ui.gameSettingsGui.addText("x394 y10 w1 h40 background" cfg.outlineColor2)		
-	ui.keybindSpacer6			:= ui.gameSettingsGui.addText("x395 y10 w1 h40 background" cfg.outlineColor1)	
-	ui.keybindSpacer3			:= ui.gameSettingsGui.addText("x483	y10 w1 h40 background" cfg.outlineColor2)		
-	ui.keybindSpacer4			:= ui.gameSettingsGui.addText("x484 y10 w1 h40 background" cfg.outlineColor1)	
+	ui.keybindSpacer7			:= ui.gameSettingsGui.addText("x440 y10 w1 h40 background" cfg.outlineColor2)		
+	ui.keybindSpacer8			:= ui.gameSettingsGui.addText("x441 y10 w1 h40 background" cfg.outlineColor1)	
+	ui.keybindSpacer5			:= ui.gameSettingsGui.addText("x395 y10 w1 h40 background" cfg.outlineColor2)		
+	ui.keybindSpacer6			:= ui.gameSettingsGui.addText("x396 y10 w1 h40 background" cfg.outlineColor1)	
+	ui.keybindSpacer3			:= ui.gameSettingsGui.addText("x480	y10 w1 h40 background" cfg.outlineColor2)		
+	ui.keybindSpacer4			:= ui.gameSettingsGui.addText("x481 y10 w1 h40 background" cfg.outlineColor1)	
 
 	ui.d2ClassIconDown.setFont("s9")
 	ui.d2ClassIconDown.onEvent("click",d2ClassIconDownChanged)

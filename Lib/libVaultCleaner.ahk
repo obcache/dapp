@@ -43,7 +43,7 @@ ui.gametabs.useTab("Vault Cleaner")
 	this.mainButtonText.onEvent("click",cleanVaultStart)
 	ui.gameSettingsGui.setFont("s12 c" cfg.fontColor2)
 	this.statusTextBg:=ui.gameSettingsGui.addText("x10 y30 w478 h22 background" cfg.trimColor1,"")
-	this.statusText:=ui.gameSettingsGui.addText("x20 y32 w470 h22 backgroundTrans","Toggle VAULT MODE to enable START button")
+	this.statusText:=ui.gameSettingsGui.addText("x20 y31 w470 h22 backgroundTrans","Toggle VAULT MODE to enable START button")
 	this.statusText.setFont("s12 c" cfg.fontColor1,"Calibri")
 	this.statusTextDetail:=ui.gameSettingsGui.addPicture("x20 y30 w468 h22 backgroundTrans","./img/lightburst_tr_light.png")
 	this.statusTextDetail2:=ui.gameSettingsGui.addPicture("x20 y30 w468 h22 backgroundTrans","./img/lightburst_br_light.png")
@@ -408,7 +408,7 @@ dismantle(thisCol,thisRow) {
 	this.isExotic:=false
 	this.isLocked:=false
 	loop 30 {
-		this.tileColor:=pixelGetColor((thisCol<6) ? x-(setting.tileSize/2)+1 : x+(setting.tileSize/2)-3,y)	
+		this.tileColor:=pixelGetColor((thisCol<6) ? x-(setting.tileSize/2)+1 : x+(setting.tileSize/2)-4,y)	
 		; (thisCol<6)
 			; ? logTxt:="Check Locked," formatTime("T12","yyMMddhhmmss") "," thisRow ":" thisCol "," x ":" y "," x-(setting.tileSize/2) ":" y "," this.tileColor
 			; : logTxt:="Check Locked," formatTime("T12","yyMMddhhmmss") "," thisRow ":" thisCol "," x ":" y "," x+(setting.tileSize/2) ":" y "," this.tileColor 
@@ -419,10 +419,11 @@ dismantle(thisCol,thisRow) {
 			this.isLocked:=true  
 			break
 		}
+		sleep(20)
 	}
 	
 	if !this.isLocked {
-		sleep(300)
+		sleep(500)
 		send("{f down}")
 		while pixelGetColor((thisCol<6) ? x-(setting.tileSize/2)+1 : x+(setting.tileSize/2)-3,y) == this.tileColor && isIdle()   {
 			sleep(100)

@@ -24,7 +24,6 @@ monitorResChanged(*) {
 GuiSetupTab(&ui,&cfg) {
 	global
 	ui.MainGuiTabs.UseTab("2_Setup____")
-	;line(ui.mainGui,529,184,29,2,cfg.accentColor1,"VERT")
 	
 	drawPanel(ui.mainGui,40,39,218,164,cfg.bgColor1,cfg.outlineColor2,cfg.outlineColor1,1,1,"none",100,"Features","calibri",cfg.fontColor1)
 	drawPanel(ui.mainGui,261,39,214,104,cfg.bgColor1,cfg.outlineColor2,cfg.outlineColor1,1,1,"none",100,"Features","calibri",cfg.fontColor1)
@@ -41,7 +40,7 @@ GuiSetupTab(&ui,&cfg) {
 
 	
 	ui.MainGui.setFont("q5 s10 c" cfg.fontColor1)
-	;drawOutlineMainGui(34,28,497,200,cfg.accentColor3,cfg.accentColor3,2)
+	drawOutlineMainGui(34,28,497,200,cfg.accentColor3,cfg.accentColor3,2)
 	ui.mainGui.addText("hidden section x48 y26")
 	cfg.toolTipsEnabled			:= iniRead(cfg.file,"Toggles","ToolTipsEnabled",true)
 	ui.toggleToolTips 			:= ui.MainGui.AddPicture("xs y+5 w50 h22 section vToolTips " ((cfg.ToolTipsEnabled) ? ("Background" cfg.trimColor3) : ("Background" cfg.trimColor2)),((cfg.ToolTipsEnabled) ? (cfg.toggleOn) : (cfg.toggleOff)))
@@ -186,22 +185,22 @@ GuiSetupTab(&ui,&cfg) {
 	drawOutlineNamed("toggleBlock",ui.mainGui,48,44,52,155,cfg.accentColor2,cfg.accentColor2,1)
 	drawOutlineNamed("toggleBlock",ui.mainGui,48,44,52,155,cfg.outlineColor2,cfg.outlineColor2,1)
 	
-	ui.mainGui.addText("x270 y44 w197 h62 background" cfg.trimColor1)
-	ui.mainGui.addText("x271 y45 w195 h60 background" cfg.outlineColor2)
-	ui.mainGui.addText("x272 y46 w193 h58 background" cfg.outlineColor1)
-	ui.mainGui.addText("x273 y47 w191 h56 background" cfg.trimColor1)
+	ui.mainGui.addText("x270 y45 w198 h62 background" cfg.trimColor1)
+	ui.mainGui.addText("x271 y46 w196 h60 background" cfg.outlineColor2)
+	ui.mainGui.addText("x272 y47 w194 h58 background" cfg.outlineColor1)
+	ui.mainGui.addText("x273 y48 w192 h56 background" cfg.trimColor1)
 	;line(ui.mainGui,0,36,155,2,cfg.accentColor3)
 
-	ui.checkForUpdatesLabel := ui.mainGui.addtext("x303 y46 w160 h30 section backgroundTrans c" cfg.fontColor3,"Check For Updates")
-	ui.checkForUpdatesLabel.setFont("q5 s12")
-	ui.checkForUpdatesButton := ui.mainGui.addPicture("xs-15 y+-9 w30 h30 section background" cfg.trimColor3,"./img/button_update.png")
+	ui.checkForUpdatesLabel := ui.mainGui.addtext("x280 y46 w200 h30 section backgroundTrans c" cfg.fontColor3,"Check For Updates")
+	ui.checkForUpdatesLabel.setFont("q5 s12","move-x")
+	ui.checkForUpdatesButton := ui.mainGui.addPicture("xs+10 y+-7 w30 h30 section background" cfg.trimColor3,"./img/button_update.png")
 	ui.checkForUpdatesButton.onEvent("Click",checkForUpdates)
 	ui.checkForUpdatesButton.Tooltip := "Checks to see if a more recent version is available"	
-	ui.installedVersionText := ui.mainGui.addText("ys-1 x+7 section w140 h19 backgroundTrans c" cfg.fontColor3 ,"Installed:`t#.#.#.#")
+	ui.installedVersionText := ui.mainGui.addText("ys-1 x+17 section w140 h19 backgroundTrans c" cfg.fontColor3 ,"Installed:`t#.#.#.#")
 	ui.latestVersionText := ui.mainGui.addText("xs y+-4 w140 backgroundTrans c" cfg.fontColor3,"Available:`t#.#.#.#")
 	ui.monitorResList := ["1920x1080","1920x1200","2560x1440","3440x1440","Custom"]
 
-	ui.monitorResDDL := ui.mainGui.AddDDL("xs-55 y+18 w90 r4 choose" cfg.monitorRes " c" cfg.fontColor4 " background" cfg.baseColor,ui.monitorResList)
+	ui.monitorResDDL := ui.mainGui.AddDDL("xs-66 y+15 w90 r4 choose" cfg.monitorRes " c" cfg.fontColor4 " background" cfg.baseColor,ui.monitorResList)
 	ui.monitorResDDL.setFont("c" cfg.fontColor4)
 	ui.monitorResDDL.onEvent("change",monitorResChanged)
 	ui.monitorResLabel := ui.mainGui.AddText("x+4 y+-25 w65 c" cfg.fontColor1 " backgroundTrans","Screen")	
@@ -210,11 +209,11 @@ GuiSetupTab(&ui,&cfg) {
 	ui.monitorResLabel2.setFont("q5 s9")
 	ui.monitorAutoLabel := ui.mainGui.addText("x+-28 y+-12 w25 h12 section c" cfg.fontColor1 " backgroundTrans","Auto")
 	ui.monitorAutoLabel.setFont("q5 s8")
-	ui.monitorAuto := ui.mainGui.addCheckbox("x+-18 y+-27 w15 h15",cfg.displaySizeAuto)
+	ui.monitorAuto := ui.mainGui.addCheckbox("x+-18 y+-26 w15 h15",cfg.displaySizeAuto)
 	ui.monitorAuto.onEvent("Click",toggleAutoDisplaySize)
 
 
-	ui.macroSpeed := ui.mainGui.addText("x+8 y+-15 w35 h16 center border section")
+	ui.macroSpeed := ui.mainGui.addText("x+7 y+-15 w35 h16 center border section")
 	ui.macroSpeed := ui.mainGui.addUpDown("vMacroSpeed range1-10",cfg.dappLoadoutMultiplier)
 	ui.macroSpeedLabel := ui.mainGui.addText("x+-31 ys+16 w30 backgroundTrans","Delay")
 	ui.macroSpeedLabel.setFont("q5 s8")

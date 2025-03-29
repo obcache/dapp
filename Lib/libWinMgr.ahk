@@ -68,14 +68,17 @@ WM_LBUTTONDOWN(wParam, lParam, msg, Hwnd) {
 wm_mouseMove(wParam, lParam, msg, hwnd) {
 	static prevHwnd := 0
 	try {
-		(hwnd == prevHwnd) 
-		? (prevHwnd := hwnd,bail()) 
-		: (cfg.tooltipsEnabled && (guiCtrlFromHwnd(hwnd).hasProp("ToolTip") || guiCtrlFromHwnd(hwnd).hasProp("ToolTipData")))
-			? toolTipDelayStart(hwnd)
-			: (prevHwnd := Hwnd)
-	}
+		if hwnd!=prevHwnd {
+			prevHwnd:=hwnd
+			if cfg.tooltipsEnabled && guiCtrlFromHwnd(hwnd).hasProp("ToolTip") { 
+					toolTipDelayStart(hwnd)
+			}
+			
+		} else 
+			prevHwnd:=hwnd
 
-			(ui.incursionNoticeHwnd == hwnd)
+	}
+	(ui.incursionNoticeHwnd == hwnd)
 				? (setTimer(d2FlashIncursionNoticeA,0)
 					,setTimer(d2FlashIncursionNoticeB,0)
 					,ui.incursionGuiBg.opt("background" cfg.fontColor3))
