@@ -67,22 +67,22 @@ drawLinkBar(*) {
 	static xPos:=15
 	static yPos:=82
 	
-	cfg.button_link1:=["DIM","URL","https://app.destinyitemmanager.com","./img/button_DIM.png"]
-	cfg.button_link2:=["Glyphs","Function","toggleGlyphWindow","./img/d2_glyphs_thumb.png"]
-	cfg.button_link3:=["Runes","Function","toggleRuneWindow","./img/d2_runes_thumb.png"]
-	cfg.button_link4:=["WishCodes","Function","toggleCodeWindow","./img/d2_wishCodes_thumb.png"]
-	cfg.button_link5:=["Vault","Function","toggleVaultMode","./img/d2_maps_thumb.png"]
-	cfg.button_link6:=["Glyphs","Function","toggleGlyphWindow","./img/d2_button_unbound.png"]
-	cfg.button_link7:=["Runes","Function","toggleGlyphWindow","./img/d2_button_unbound.png"]
-	cfg.button_link8:=["Vault","Function","toggleVaultMode","./img/d2_button_unbound.png"]
-	ui.button_link1:=""
-	ui.button_link2:=""
-	ui.button_link3:=""
-	ui.button_link4:=""
-	ui.button_link5:=""
-	ui.button_link6:=""
-	ui.button_link7:=""
-	ui.button_link8:=""
+	cfg.button_link_1:=["DIM","URL","https://app.destinyitemmanager.com","./img/button_DIM.png"]
+	cfg.button_link_2:=["Glyphs","Function","toggleGlyphWindow","./img/d2_glyphs_thumb.png"]
+	cfg.button_link_3:=["Runes","Function","toggleRuneWindow","./img/d2_runes_thumb.png"]
+	cfg.button_link_4:=["WishCodes","Function","toggleCodeWindow","./img/d2_wishCodes_thumb.png"]
+	cfg.button_link_5:=["Vault","Function","toggleVaultMode","./img/d2_maps_thumb.png"]
+	cfg.button_link_6:=["Glyphs","Function","toggleGlyphWindow","./img/d2_button_unbound.png"]
+	cfg.button_link_7:=["Runes","Function","toggleGlyphWindow","./img/d2_button_unbound.png"]
+	cfg.button_link_8:=["Vault","Function","toggleVaultMode","./img/d2_button_unbound.png"]
+	ui.button_link_1:=""
+	ui.button_link_2:=""
+	ui.button_link_3:=""
+	ui.button_link_4:=""
+	ui.button_link_5:=""
+	ui.button_link_6:=""
+	ui.button_link_7:=""
+	ui.button_link_8:=""
 	
 	cfg.button_link_size:=54
 	ui.gameTabs.useTab("Gameplay")
@@ -94,41 +94,50 @@ drawLinkBar(*) {
 	ui.gameSettingsGui.addText("x6 y76 w484 h72 background" cfg.outlineColor2)
 	ui.gameSettingsGui.addText("x7 y77 w482 h70 background" cfg.bgColor1)
 	loop 8 {
-		ui.button_link%a_index% := object()
-		ui.button_link%a_index%.name:=cfg.button_link%a_index%[1]
-		ui.button_link%a_index%.type:=cfg.button_link%a_index%[2]
-		ui.button_link%a_index%.action:=cfg.button_link%a_index%[3]
-		ui.button_link%a_index%.thumb:=cfg.button_link%a_index%[4]
-		ui.button_link%a_index%.bg:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos+1 " w" cfg.button_link_size-2 " h" cfg.button_link_size-2 " vbutton_link" a_index " background" cfg.bgColor3,ui.button_link%a_index%.thumb)
-		ui.button_link%a_index%.fx:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos+1 " w" cfg.button_link_size-2 " h" cfg.button_link_size-2 " backgroundTrans","./img/lightburst_br_light.png")
+		ui.button_link_%a_index% := object()
+		ui.button_link_%a_index%.name:=cfg.button_link_%a_index%[1]
+		ui.button_link_%a_index%.type:=cfg.button_link_%a_index%[2]
+		ui.button_link_%a_index%.action:=cfg.button_link_%a_index%[3]
+		ui.button_link_%a_index%.thumb:=cfg.button_link_%a_index%[4]
+		ui.button_link_%a_index%.bg:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos+1 " w" cfg.button_link_size-2 " h" cfg.button_link_size-2 " vbutton_link_" a_index " background" cfg.bgColor3,ui.button_link_%a_index%.thumb)
+		ui.button_link_%a_index%.fx:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos+1 " w" cfg.button_link_size-2 " h" cfg.button_link_size-2 " backgroundTrans","./img/lightburst_br_light.png")
+		ui.button_link_%a_index%.down:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos+1 " w" cfg.button_link_size-2 " h" cfg.button_link_size-2 " hidden backgroundTrans","./img/button_down_layer.png")
 		drawOutline(ui.gameSettingsGui,xPos,yPos,cfg.button_link_size,cfg.button_link_size,cfg.accentColor2,cfg.accentColor1,1)
 		drawOutline(ui.gameSettingsGui,xPos+1,yPos+1,cfg.button_link_size-2,cfg.button_link_size-2,cfg.accentColor4,cfg.accentColor2,1)
 
-		this_action:=cfg.button_link%a_index%[3]
-		if cfg.button_link%a_index%[2]=="URL" {
-			ui.button_link%a_index%.bg.onEvent("click",openUrl)
-			ui.button_link%a_index%.fx.onEvent("click",openUrl)
+		this_action:=cfg.button_link_%a_index%[3]
+		if cfg.button_link_%a_index%[2]=="URL" {
+			ui.button_link_%a_index%.bg.onEvent("click",openUrl)
+			ui.button_link_%a_index%.fx.onEvent("click",openUrl)
 		} else {
-			ui.button_link%a_index%.bg.onEvent("click",%this_action%)
-			ui.button_link%a_index%.fx.onEvent("click",%this_action%)
+			ui.button_link_%a_index%.bg.onEvent("click",%this_action%)
+			ui.button_link_%a_index%.fx.onEvent("click",%this_action%)
 		}
 		xPos+=cfg.button_link_size+5
 
 	}
 	openUrl(this_Url,*) {
+		ui.button_link_%strSplit(this_Url.name,"_")[3]%.down.opt("-hidden")
+		setTimer () => ui.button_link_%strSplit(this_Url.name,"_")[3]%.down.opt("hidden"),-1000
+		
 		run("chrome.exe " cfg.%this_Url.name%[3])
 	}
 	
 	static xPos:=15
 	static yPos:=82
 	loop 8 {
-		ui.button_link%a_index%.edit:=ui.gameSettingsGui.addPicture("x" xPos-6 " y" yPos+cfg.button_link_size-12 " w18 h19 vbutton_link_edit" a_index,"./img/button_edit.png")
-		ui.button_link%a_index%.edit.onEvent("click",editLinkBox)
+		ui.button_link_%a_index%.edit:=ui.gameSettingsGui.addPicture("x" xPos-6 " y" yPos+cfg.button_link_size-12 " w18 h19 vbutton_link_edit" a_index,"./img/button_edit.png")
+		ui.button_link_%a_index%.edit.onEvent("click",editLinkBox)
 		xPos+=cfg.button_link_size+5
 	}
 
 	editLinkBox(lParam, ID, *) {
 		msgBox(lParam.name)
+		ui.editLinkGui:=gui()
+		ui.editLinkGui.opt("-caption -border toolWindow alwaysOnTop")
+		ui.editLinkGui.backColor:=ui.Transparent
+		ui.editLinkGui.color:=cfg.fontColor3
+		ui.thumbPreview:=editLinkGui.addPicture("x5 y5 w50 h50 backgroundTrans")
 	}
 	;ui.gameSettingsGui.addText("hidden x219 y21 section")
 	; ui.d2LaunchDIMbuttonBg				:= ui.gameSettingsGui.addText("x85 y85 w50 h50 background" cfg.trimColor2)
@@ -1017,47 +1026,90 @@ closeInfographic(*) {
 		ui.infoGuiBg.destroy()
 }
 
-toggleGlyphWindow(*) {
+toggleGlyphWindow(this_button,*) {
+	closeThis()
 	static glyphWindowVisible := false
 	(glyphWindowVisible := !glyphWindowVisible)
-		? showGlyphWindow()		
-		: hideGlyphWindow()
+		? (ui.button_link_%strSplit(this_button.name,"_")[3]%.down.opt("-hidden"),showGlyphWindow())		
+		: (ui.button_link_%strSplit(this_button.name,"_")[3]%.down.opt("hidden"),-1000,hideGlyphWindow())
 }
 
 showGlyphWindow(*) {
-	ui.glyphGui:=gui()
-	ui.glyphGui.opt("-caption -border alwaysOnTop")
-	ui.glyphGui.backColor:="010203"
-	winSetTransColor("010203",ui.glyphGui)
-	ui.glyphGuiContent:=ui.glyphGui.addPicture("","./img/d2_glyphs.png")
-	ui.glyphGui.show()
-	ui.glyphGuiContent.onEvent("click",toggleGlyphWindow)
+displayInfoGfx("./img/d2_glyphs.png")
 }
 
 hideGlyphWindow(*) {
-	ui.glyphGui.hide()
+	closeThis()
 }
 
-toggleRuneWindow(*) {
+toggleRuneWindow(this_button,*) {
+	closeThis()
 	static runeWindowVisible := false
 	(runeWindowVisible := !runeWindowVisible)
-		? showruneWindow()		
-		: hideruneWindow()
+		? (ui.button_link_%strSplit(this_button.name,"_")[3]%.down.opt("-hidden"),showRuneWindow())		
+		: (ui.button_link_%strSplit(this_button.name,"_")[3]%.down.opt("hidden"),-1000,hideRuneWindow())
 }
 
+displayInfoGfx(imageFilename) {
+	static infoGfxSide:="right"
+	static infoGfxPosX:=""
+	static infoGfxPosH:=""
+	
+	monitorGetWorkArea(monitorGetPrimary(),&lPrimary,&tPrimary,&rPrimary,&bPrimary)
+	loop monitorGetCount() {
+		monitorGetWorkArea(a_index,&l,&t,&r,&b)
+		if l >= rPrimary {
+			infoGfxPosX:=l+((r-l)/2)
+			infoGfxPosH:=b-t
+		}
+	}
+	
+	if !infoGfxPosX {
+		infoGfxSide:="Left"
+		loop monitorGetCount() {
+			monitorGetWorkArea(a_index,&l,&t,&r,&b)
+			if r <= lPrimary {
+			infoGfxPosX:=r+((r-l)/2)
+			infoGfxPosH:=b-t
+			}
+		
+		}
+	}
+	
+	ui.infoGfxGui:=gui()
+	ui.infoGfxGui.opt("-caption toolWindow owner" ui.mainGui.hwnd)
+	ui.infoGfxGui.backColor:="010203"
+	winSetTransColor("010203",ui.infoGfxGui)
+	ui.infoGfxImage:=ui.infoGfxGui.addPicture("h" infoGfxPosH " w-1 backgroundTrans",imageFilename)
+	ui.infoGfxImage.onEvent("click",closeThis)
+	ui.infoGfxImage.getPos(,,,&imgW)
+	if infoGfxSide=="Left" {
+		infoGfxPosX+=(imgW/4)
+	} else {
+		infoGfxPosX-=(imgW/2)
+	}
+	winSetTransColor("010203",ui.infoGfxGui)
+	ui.infoGfxGui.show("x" infoGfxPosX " y" t)
+}
+
+	closeThis(*) {
+		Try	
+			ui.infoGfxGui.hide()
+		Try
+			ui.infoGfxGui.destroy()
+		loop 8 {
+			ui.button_link_%a_index%.down.opt("hidden")
+		}	
+		runeWindowVisible:=false
+		glyphWindowVisible:=false
+	}
+	
 showRuneWindow(*) {
-	ui.runeGui:=gui()
-	ui.runeGui.opt("-caption -border alwaysOnTop")
-	ui.runeGui.backColor:="010203"
-	winSetTransColor("010203",ui.runeGui)
-	ui.runeGuiContent:=ui.runeGui.addPicture("","./img/d2_runes.png")
-	ui.runeGui.show()
-	ui.runeGuiContent.onEvent("click",toggleRuneWindow)
+	displayInfoGfx("./img/d2_runes.png")
 }
 
 hideRuneWindow(*) {
-	ui.runeGui.hide()
-	;ui.infoGui.hide(), ui.infoGuiBg.hide(),ui.d2Launchd2FoundryButton.value := "./img/button_glyph.png"
+	closeThis()
 }
 
 d2DoubleClickedGlyph(lparam,wparam*) {

@@ -75,10 +75,10 @@ d2LaunchDestinyTrackerButtonClicked(*) {
 }
 
 d2Launchd2FoundryButtonClicked(*) {
-		if winActive("ahk_exe destiny2.exe")
-	; run("chrome.exe https://www.d2foundry.gg")
-		 toggleGlyphWindow()
-}	
+	if winActive("ahk_exe destiny2.exe")
+		run("chrome.exe https://www.d2foundry.gg")
+	; toggleGlyphWindow()
+}
 
 d2LaunchBrayTechButtonClicked(lparam,wparam*) {
 			toggleCodeWindow(lparam)

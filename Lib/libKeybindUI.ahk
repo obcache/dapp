@@ -290,7 +290,7 @@ drawKeybindBar(*) {
 	ui.gameTabs.useTab("Gameplay") 
 
 	ui.d2TopPanelBg := ui.gameSettingsGui.addText("x7 y4 w481 h66 background" cfg.bgColor1,"")
-	drawOutlineNamed("d2AlwaysRunOutline",ui.gameSettingsGui,6,3,484,69,cfg.accentColor4,cfg.accentColor3,1)
+	drawOutlineNamed("d2AlwaysRunOutline",ui.gameSettingsGui,6,3,484,69,cfg.outlineColor2,cfg.outlineColor2,1)
 	
 	guiName := ui.gameSettingsGui
 	ui.d2KeybindWidth := 60
@@ -300,7 +300,7 @@ drawKeybindBar(*) {
 	labelH := 20
 	backColor := cfg.bgColor2
 	fontColor := cfg.fontColor2
-	outlineColor := cfg.accentColor2
+	outlineColor := cfg.outlineColor2
 	labelText := "Keybinds"
 	ui.d2keybindAppTab1 := guiName.addText("x" labelX " y" labelY+labelH/2 " w" labelW " h" labelH/2+3 " background" outlineColor,"")
 		     
@@ -310,19 +310,19 @@ drawKeybindBar(*) {
 	labelH := 20
 	backColor := cfg.bgColor2
 	fontColor := cfg.fontColor4
-	outlineColor := cfg.accentColor3
+	outlineColor := cfg.outlineColor2
 	labelText := "Game Settings"	
 	
 	
 	ui.d2keybindGameTab1 	:= guiName.addText("x" labelX " y" labelY+labelH/2 " w" labelW " h" labelH/2+3 " background" outlineColor,"")
 	ui.d2Panel1Tab1Bg 		:= ui.gameSettingsGui.addText("hidden x44 y9 w437 h42 background" cfg.outlineColor2,"")
 	ui.d2Panel1Tab1Bg2 		:= ui.gameSettingsGui.addText("hidden x45 y10 w435 h40 background" cfg.bgColor3 " c" cfg.fontColor4,"")	
-	ui.d2Panel1Tab1Bg3 		:= ui.gameSettingsGui.addText("hidden x46 y11 w433 h38 background" cfg.accentColor2,"")
+	ui.d2Panel1Tab1Bg3 		:= ui.gameSettingsGui.addText("hidden x46 y11 w433 h38 background" cfg.accentColor1,"")
 	ui.d2Panel1Tab1Bg4 		:= ui.gameSettingsGui.addText("hidden x47 y12 w431 h36 background" cfg.trimColor1,"")
 	
 	ui.d2Panel1Tab2Bg 		:= ui.gameSettingsGui.addText("hidden x19 y9 w438 h42 background" cfg.outlineColor2,"")
 	ui.d2Panel1Tab2Bg2 		:= ui.gameSettingsGui.addText("hidden x20 y10 w436 h40 background" cfg.bgColor3 " c" cfg.fontColor4,"")	
-	ui.d2Panel1Tab2Bg3 		:= ui.gameSettingsGui.addText("hidden x21 y11 w434 h38 background" cfg.accentColor2,"")
+	ui.d2Panel1Tab2Bg3 		:= ui.gameSettingsGui.addText("hidden x21 y11 w434 h38 background" cfg.accentColor1,"")
 	ui.d2Panel1Tab2Bg4 		:= ui.gameSettingsGui.addText("hidden x22 y12 w432 h36 background" cfg.trimColor1,"")
 	
 	;ui.d2Panel1Tab2Bg := ui.gameSettingsGui.addText("x42 y10 w406 h42 background" cfg.bgColor2 " c" cfg.fontColor4,"")	

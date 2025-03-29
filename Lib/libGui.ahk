@@ -42,7 +42,8 @@ tabsChanged(*) {
 			, ui.1_GameButtonBg.redraw()
 			, ui.1_GameButton.opt("x36 y+1 w78 h18 background" cfg.bgColor1)
 			, ui.1_GameButton.redraw()
-						, ui.1_GameButtonLabel.setFont("s12 c" cfg.fontColor2)
+			, ui.1_GameButtonLabel.opt("y0")
+			, ui.1_GameButtonLabel.setFont("s12 c" cfg.fontColor2)
 			, ui.2_SetupButtonBg.opt("y+-1 background" cfg.accentColor1)
 			, ui.2_SetupButtonBg.redraw()
 	
@@ -111,31 +112,34 @@ advProgress(2)
 	ui.mainBg := ui.mainGui.addText("x36 y29 w493 h185 background" cfg.bgColor2,"")
 	ui.mainTabBg:=ui.mainGui.addText("x34 y1 w162 h28 background" cfg.accentColor3)
 	ui.1_GameButtonBg := ui.mainGui.addText("x34 y0 w81 h30 background" cfg.accentColor3)
-	ui.2_SetupButtonBg := ui.mainGui.addText("x116 y0 w80 h29 background" cfg.accentColor2)
+	ui.2_SetupButtonBg := ui.mainGui.addText("x116 y0 w80 h30 background" cfg.accentColor2)
 	
 	advProgress(2)
 	
 	advProgress(2)
 	ui.3_FillBg:=ui.mainGui.addText("y2 x196 w280 h28 background" cfg.trimColor1)
+	ui.3_FillOutline:=ui.mainGui.addText("hidden x206 y1 w280 h30 left backgroundTrans","dapp")
+	ui.3_FillOutline.setFont("q5 s17 c" cfg.fontColor1,"Move-X")
+	ui.3_TitleTextDetail:=ui.mainGui.addText("x218 y9 w2 h20 background" cfg.trimColor1)
+	ui.3_TitleTextDetail2:=ui.mainGui.addText("x241 y9 w2 h20 background" cfg.trimColor1)
+	ui.3_TitleTextDetail3:=ui.mainGui.addText("x257 y9 w2 h20 background" cfg.trimColor1)
+	(iniRead(cfg.themeFile,cfg.theme,"HideTitlebarText",0)) ? 0 : (ui.3_FillOutline.opt("-hidden"),ui.3_FillOutline.redraw())
 	ui.titleBar:=ui.mainGui.addPicture("x196 y2 w280 h28 left backgroundTrans",cfg.titleBarImage)
 	ui.titleBar.onEvent("click",wm_lbuttonDown_callback)
-	ui.3_FillOutline:=ui.mainGui.addText("hidden x206 y2 w280 h30 left backgroundTrans","dapp")
-	ui.3_FillOutline.setFont("q5 s17 c" cfg.fontColor1,"Move-X")
-	(iniRead(cfg.themeFile,cfg.theme,"HideTitlebarText",0)) ? 0 : (ui.3_FillOutline.opt("-hidden"),ui.3_FillOutline.redraw())
 	ui.buildNumber:=ui.mainGui.addText("x420 y12 w280 h28 left backgroundTrans","v" a_fileVersion)
 	ui.buildNumber.setFont("q5 s10 c" cfg.fontColor1,"Move-X")
 
 	
 	ui.1_GameButton := ui.mainGui.addText("x36 y3 w78 h28 center background" cfg.bgColor2)
 
-	ui.1_GameButtonLabel := ui.mainGui.addText("x36 y6 w78 h28 center backgroundTrans","Game")
+	ui.1_GameButtonLabel := ui.mainGui.addText("x36 y4 w78 h28 center backgroundTrans","Game")
 	ui.1_GameButton.setFont("s14 c" cfg.fontColor1,"move-x")
 	
 	ui.1_gameButton.redraw()
 
-	ui.2_SetupButton := ui.mainGui.addText("y3 x116 w78 h32 center background" cfg.bgColor1)
+	ui.2_SetupButton := ui.mainGui.addText("y3 x117 w77 h30 center background" cfg.bgColor1)
 	ui.2_setupButton.redraw()
-	ui.2_SetupButtonLabel := ui.mainGui.addText("y5 x116 w78 h32 center backgroundTrans","Setup")
+	ui.2_SetupButtonLabel := ui.mainGui.addText("y4 x116 w78 h30 center backgroundTrans","Setup")
 	ui.2_SetupButtonLabel.setFont("s12 c" cfg.fontColor2,"impact")
 
 	ui.mainTabsDetail:=ui.mainGui.addPicture("x36 y2 w192 h26 backgroundTrans","./img/lightburst_top_light.png")
@@ -206,7 +210,7 @@ advProgress(2)
 	ui.DownButton.ToolTip 	:= "Minimizes dapp App"
 	ui.ExitButton.ToolTip 	:= "Terminates dapp App"
 	ui.Game_ActiveTabUi:=ui.mainGui.addText("x36 y28 w78 h2 background" cfg.bgColor2)
-	ui.Setup_ActiveTabUi:=ui.mainGui.addText("x116 y28 w78 h2 background" cfg.bgColor2)
+	ui.Setup_ActiveTabUi:=ui.mainGui.addText("x117 y28 w77 h2 background" cfg.bgColor2)
 
 	; advProgress(2)
 	
