@@ -291,7 +291,7 @@ drawGameTabs(tabNum := 1) {
 	((tabNum == 2)
 		? ui.gameTab2SkinOutline := ui.gameTabGui.addText("x92 y0 w122 h34 background" cfg.accentColor1,"" )
 		: ui.gameTab2SkinOutline := ui.gameTabGui.addText("x92 y2 w122 h30 background" cfg.accentColor2,""))
-	ui.gameTabGui.addPicture("x0 y0 w88 h30 backgroundTrans","./img/lightburst_br_light.png")
+
 	
 	ui.gameTab2Skin := ui.gameTabGui.addText(
 		((tabNum == 2) 
@@ -328,7 +328,6 @@ drawGameTabs(tabNum := 1) {
 	((tabNum == 2 || tabNum == 3)
 		? ui.gameTabGui.addText("y0 x214 w2 h34 background" cfg.accentColor1,"")
 		: ui.gameTabGui.addText("y2 x214 w2 h30 background" cfg.accentColor2,""))
-	ui.gameTabGui.addPicture("x90 y0 w122 h30 backgroundTrans","./img/lightburst_bl_light.png")	
 	; ((tabNum == 3)
 		; ? ui.gameTab3SkinOutline := ui.gameTabGui.addText("x214 y0 w86 h32 background" cfg.bgColor2,"" )
 		; : ui.gameTab3SkinOutline := ui.gameTabGui.addText("x214 y2 w86 h32 background" cfg.bgColor2,""))
@@ -417,11 +416,14 @@ drawGameTabs(tabNum := 1) {
 		
 	}
 	;line(ui.gameTabGui,214,30,500,2,cfg.bgColor2)
-	line(ui.gameTabGui,216,28,280,1,cfg.accentColor4)
+	line(ui.gameTabGui,216,298,280,1,cfg.accentColor2)
 	line(ui.gameTabGui,495,2,28,1,cfg.accentColor4,"VERT")
-	drawOutlineNamed("helpOutline",ui.gameTabGui,463,0,34,32,cfg.accentColor1,cfg.accentColor1,3)
+	drawOutlineNamed("helpOutline",ui.gameTabGui,463,0,34,31,cfg.accentColor2,cfg.accentColor2,3)
 	ui.gameTabGui.addText("x464 y2 w31 h29 background" cfg.bgColor1)
 	ui.helpIcon := ui.gameTabGui.addPicture("x470 y3 w-1 h26 backgroundTrans","./img/icon_help.png")
+	ui.gameTabGui.addPicture("x-81 y5 w310 h25 backgroundTrans","./img/lightburst_bottom_light.png")
+	;ui.gameTabGui.addPicture("x90 y0 w212 h30 backgroundTrans","./img/lightburst_bl_light.png")	
+
 }
 
 

@@ -195,7 +195,7 @@ accentColor3=FF0180
 [Custom]
 accentColor4=555555
 accentColor3=FFFFFF
-accentColor2=6A6A6A
+accentColor2=8C8C8C
 accentColor1=FFFFFF
 outlineColor2=9CCDCD
 outlineColor1=888888
@@ -214,9 +214,9 @@ bgColor0=808080
 trimColor3=C2E94E
 trimColor2=808080
 trimColor4=CFCFCF
-ThemeTitlebarImage=.\img\custom\lightBurst_tr_light.png
+ThemeTitlebarImage=.\img\custom\lightBurst_bottom_light.png
 [Emerald Forest]
-TitleBarImage=.\img\custom\lightBurst_tr_light.png
+TitleBarImage=.\img\custom\lightBurst_bottom_light.png
 bgColor1=33423C
 trimColor1=804001
 trimColor3=C2E94E
@@ -234,5 +234,5 @@ accentColor4=555555
 fontColor4=FAC056
 fontColor2=BACDCD
 fontColor1=96C8CD
-accentColor2=6A6A6A
+accentColor2=8C8C8C
 accentColor3=FFFFFF

@@ -8,8 +8,8 @@ if (InStr(A_LineFile,A_ScriptFullPath))
 	ExitApp
 	Return
 }
-ui.1_GameButtonDetail:=ui.mainGui.addPicture("x36 y3 w78 h28 backgroundTrans","./img/lightburst_tr_light.png")
-ui.2_SetupButtonDetail := ui.mainGui.addPicture("x116 y3 w78 h32 backgroundTrans","./img/lightburst_tl_light.png")
+; ui.1_GameButtonDetail:=ui.mainGui.addPicture("x36 y3 w78 h28 backgroundTrans","./img/lightburst_tr_light.png")
+; ui.2_SetupButtonDetail := ui.mainGui.addPicture("x116 y3 w78 h32 backgroundTrans","./img/lightburst_tl_light.png")
 tabsChanged(*) {
 	ui.activeTab := ui.mainGuiTabs.Text
 	ui.activeMainTab := ui.mainGuiTabs.value
@@ -142,7 +142,7 @@ advProgress(2)
 	ui.2_SetupButtonLabel := ui.mainGui.addText("y4 x116 w78 h30 center backgroundTrans","Setup")
 	ui.2_SetupButtonLabel.setFont("s12 c" cfg.fontColor2,"impact")
 
-	ui.mainTabsDetail:=ui.mainGui.addPicture("x36 y2 w192 h26 backgroundTrans","./img/lightburst_top_light.png")
+	ui.mainTabsDetail:=ui.mainGui.addPicture("x-100 y2 w362 h25 backgroundTrans","./img/lightburst_top_light.png")
 
 	line(ui.mainGui,34,28,490,2,cfg.accentColor1)
 	; line(ui.mainGui,34,0,490,2,cfg.accentColor3)

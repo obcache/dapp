@@ -246,8 +246,8 @@ GuiSetupTab(&ui,&cfg) {
 		}
 	}
 	ui.themeEditorButton := ui.mainGui.addPicture("x275 y161 w35 h35 section backgroundTrans","./img/color_swatches.png")
-	ui.themeEditorLabel := ui.mainGui.addText("x+8 ys+4 w150 h33 section background" cfg.bgColor1,"Theme Editor")
-	ui.themeEditorLabel.setFont("q5 s14")
+	ui.themeEditorLabel := ui.mainGui.addText("x+5 ys+4 w150 h33 section backgroundTrans","Theme Editor")
+	ui.themeEditorLabel.setFont("q5 s14","move-x")
 	ui.themeEditorButton.onEvent("click",showThemeEditor)
 	
   	AutoClickerSpeedChanged(*) {

@@ -73,7 +73,7 @@ ui.ThemeDDL.ToolTip := "Select Theme Preset"
 ui.buttonDelTheme := ui.themeEditorGui.AddPicture("ys+0 x+0 w25 h26 Background" cfg.trimColor2,"./Img/button_minus_ready.png")	
 ui.buttonDelTheme.OnEvent("Click",removeTheme)
 ;drawOutlineNamed("ThemeOutline",ui.themeEditorGui,10,29,302,27,cfg.outlineColor1,cfg.outlineColor1,3)
-drawOutlineNamed("ThemeOutlineShadow",ui.themeEditorGui,5,30,390,30,cfg.outlineColor2,cfg.outlineColor2,2)
+drawOutlineNamed("ThemeOutlineShadow",ui.themeEditorGui,5,30,388,30,cfg.outlineColor2,cfg.outlineColor2,2)
 
 ;drawOutlineNamed("ThemeOutline",ui.themeEditorGui,85,32,61,26,cfg.outlineColor1,cfg.outlineColor1,1)
 ui.themeEditorCancelButton := ui.themeEditorGui.addText("x370 y3 w26 h26 backgroundTrans c" cfg.fontColor1,"r")

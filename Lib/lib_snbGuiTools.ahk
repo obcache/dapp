@@ -27,6 +27,7 @@ drawPanel(targetGui,panelX,panelY,panelW,panelH,panelColor,outlineColor,outlineC
 	ui.panelOutline2%panelId% := targetGui.addText("x" panelX+outlineOffset " y" panelY+outlineOffset " w" panelW-outlineOffset*2 " h" panelH-outlineOffset*2 " background" outlineColor2)		
 	ui.panelOutline1%panelId% := targetGui.addText("x" panelX+outlineOffset " y" panelY+outlineOffset " w" panelW-outlineWidth-outlineOffset*2 " h" panelH-outlineWidth-outlineOffset*2 " background" outlineColor)	
 	ui.panel%panelId% := targetGui.addText("x" panelX+outlineWidth+outlineOffset " y" panelY+outlineWidth+outlineOffset " w" panelW-outlineWidth*2-outlineOffset*2 " h" panelH-outlineWidth*2-outlineOffset*2 " background" panelColor)	
+	ui.%panelId%cosmetic:= targetGui.addPicture("x" panelX+1 " y" panelY+0 " w" panelW-2 " h" panelH " backgroundTrans","./img/lightburst_br_light.png")
 	if (labelPos != "none") {
 		labelX := panelX+panelW*labelPos
 		labelY := panelY
@@ -36,6 +37,6 @@ drawPanel(targetGui,panelX,panelY,panelW,panelH,panelColor,outlineColor,outlineC
 		ui.labelTop%panelId%.setFont("q5 s10")
 		ui.labelBottom%panelId% := targetGui.addText("x" labelX+1 " y" labelY+2 " w" labelW-2 " h" labelH " backgroundTrans center c" labelFontColor, labelText) 
 		ui.labelBottom%panelId%.setFont("q5 s10")		
-		}
+	}
 	return panelId
 }
