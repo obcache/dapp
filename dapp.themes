@@ -1,5 +1,5 @@
 [Interface]
-ThemeList=Light,Dark,Alien,Militarized,Autumn,Neon,Modern Class,Ocean
+ThemeList=Light,Dark,Alien,Militarized,Autumn,Neon,Modern Class,Ocean,Emerald Forest
 
 [Dark]
 trimColor2=AAAAAA
@@ -71,28 +71,29 @@ trimColor3=FE9833
 fontColor2=845704
 
 [Militarized]
-outlineColor1=D1D1D1
-outlineColor2=53A8A8
-accentColor1=FFFFFF
-accentColor2=4F4F4F
+outlineColor1=68C64
+outlineColor2=CA9A59
+accentColor1=18080
+accentColor2=326363
 baseColor=8A8A8A
-fontColor1=EFF8F8
+fontColor1=1FAFA
 fontColor3=D5C9AE
-bgColor1=C1818
-trimColor1=984C01
+bgColor1=13241E
+trimColor1=855814
 bgColor3=355051
 bgColor2=113532
 trimColor6=A4A4A4
 bgColor0=212121
-trimColor3=BEDEDE
-trimColor2=428484
+trimColor3=1D796
+trimColor2=808080
 trimColor4=FFCC00
 fontColor2=84D0B1
 TitleBarImage=.\img\custom\lightBurst_bottom_light.png
-trimColor5=454545
+trimColor5=56422C
 HideTitlebarText=0
 accentColor4=404040
-accentColor3=E8E8E8
+accentColor3=18080
+fontColor4=1A685
 
 
 [Modern Class]
@@ -192,25 +193,45 @@ TitleBarImage=.\img\custom\dapp_titleBar2.png
 fontColor4=FBD58E
 accentColor3=FF0180
 [Custom]
-accentColor4=404040
-accentColor3=E8E8E8
-accentColor2=4F4F4F
+accentColor4=555555
+accentColor3=FFFFFF
+accentColor2=6A6A6A
 accentColor1=FFFFFF
-outlineColor2=53A8A8
-outlineColor1=D1D1D1
-baseColor=8A8A8A
-fontColor1=EFF8F8
-fontColor2=84D0B1
-fontColor3=D5C9AE
-fontColor4=FBD58E
-bgColor1=C1818
-trimColor1=984C01
-bgColor2=113532
-bgColor3=355051
-trimColor6=A4A4A4
-trimColor5=454545
-bgColor0=212121
-trimColor3=BEDEDE
-trimColor2=428484
-trimColor4=FFCC00
-ThemeTitlebarImage=.\img\custom\lightBurst_bottom_light.png
+outlineColor2=9CCDCD
+outlineColor1=888888
+baseColor=444444
+fontColor1=96C8CD
+fontColor2=BACDCD
+fontColor3=FFC891
+fontColor4=FAC056
+bgColor1=33423C
+trimColor1=804001
+bgColor2=436161
+bgColor3=52615A
+trimColor6=C5CBC7
+trimColor5=224444
+bgColor0=808080
+trimColor3=C2E94E
+trimColor2=808080
+trimColor4=CFCFCF
+ThemeTitlebarImage=.\img\custom\lightBurst_tr_light.png
+[Emerald Forest]
+TitleBarImage=.\img\custom\lightBurst_tr_light.png
+bgColor1=33423C
+trimColor1=804001
+trimColor3=C2E94E
+trimColor2=808080
+trimColor4=CFCFCF
+outlineColor2=9CCDCD
+bgColor3=52615A
+bgColor2=436161
+fontColor3=FFC891
+baseColor=444444
+bgColor0=808080
+trimColor5=224444
+trimColor6=C5CBC7
+accentColor4=555555
+fontColor4=FAC056
+fontColor2=BACDCD
+fontColor1=96C8CD
+accentColor2=6A6A6A
