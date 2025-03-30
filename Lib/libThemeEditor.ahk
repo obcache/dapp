@@ -22,17 +22,24 @@ ui.themeEditorGui := gui()
 ui.themeEditorGui.opt("-caption alwaysOnTop toolWindow owner" ui.mainGui.hwnd)
 ui.themeEditorGui.backColor := cfg.bgColor2
 ui.themeEditorGui.color := cfg.baseColor
-ui.themeEditorTitlebar := ui.themeEditorGui.addText("x0 y0 w398 h30 background" cfg.bgColor1 " c" cfg.fontColor1,"")
+ui.themeEditorTitlebar := ui.themeEditorGui.addText("x0 y0 w372 h30 background" cfg.bgColor1 " c" cfg.fontColor1,"")
 ui.themeEditorTitlebarText := ui.themeEditorGui.addText("x10 y6 w180 h30 backgroundTrans c" cfg.fontColor1,"Theme Editor" )
 ui.themeEditorTitlebarText.setFont("q5 s15","move-x")
 ui.themeEditorTitlebar.onEvent("click",wm_lButtonDown_callback)
+
+;drawOutlineNamed("ThemeOutline",ui.themeEditorGui,85,32,61,26,cfg.outlineColor1,cfg.outlineColor1,1)
+ui.themeEditorCancelButtonBg := ui.themeEditorGui.addText("x370 y3 w26 h27 background" cfg.bgColor1)
+ui.themeEditorCancelButton := ui.themeEditorGui.addText("x367 y1 w26 h26 backgroundTrans c" cfg.fontColor1,"r")
+ui.themeEditorCancelButton.setFont("s22","Webdings")
+ui.themeEditorCancelButton.onEvent("click", closeThemeEditor)
+ui.themeEditorCancelButtonBg.onEvent("click", closeThemeEditor)
 
 
 guiVis(ui.themeEditorGui,false)
 ui.themeEditorGui.show("w400 h250 noActivate")
 drawOutlineNamed("themeOutline",ui.themeEditorGui,0,0,398,250,cfg.outlineColor2,cfg.outlineColor2,3)
 ;drawOutlineNamed("themeOutline",ui.themeEditorGui,1,0,324,24,cfg.outlineColor2,cfg.outlineColor1,2)
-ui.ColorSelectorLabel2 := ui.themeEditorGui.AddText("x6 y33 h26 center section w100 BackgroundTrans c"
+ui.ColorSelectorLabel2 := ui.themeEditorGui.AddText("x6 y33 h21 center section w100 BackgroundTrans c"
 	((cfg.ColorPickerEnabled) 
 		? cfg.fontColor3 " background" cfg.trimColor1 
 		: cfg.fontColor3 " background" cfg.trimColor1) 
@@ -44,41 +51,38 @@ ui.ColorSelectorLabel2.setFont("q5 s14","calibri bold")
 ;drawOutlineNamed("ThemeOutlineShadow",ui.themeEditorGui,10,32,60,28,cfg.outlineColor2,cfg.outlineColor2,2)
 
 
-ui.toggleColorSelector := ui.themeEditorGui.AddPicture("y33 x105 section w60 h26 background" cfg.baseColor, (cfg.ColorPickerEnabled) ? ("./Img/toggle_on.png") : ("./Img/toggle_off.png"))
-ui.toggleColorSelector.OnEvent("Click", ToggleColorSelector)
-ui.toggleColorSelector.ToolTip := "Select color picking method for theming features"
+
 
 ToggleColorSelector(*) {
 	ui.toggleColorSelector.Value := 
 		(cfg.ColorPickerEnabled := !cfg.ColorPickerEnabled) 
-			? (ui.ColorSelectorLabel2.Opt("c" cfg.fontColor3 " background" cfg.trimColor3)
+			? (ui.ColorSelectorLabel2.Opt("c" cfg.fontColor3 " background" cfg.trimColor1)
 				,ui.ColorSelectorLabel2.Text := " Color App "
-				,"./Img/toggle_on.png")
-			: (ui.ColorSelectorLabel2.Opt("c" cfg.fontColor3 " background" cfg.trimColor2)
+				,"./Img/toggle_left.png")
+			: (ui.ColorSelectorLabel2.Opt("c" cfg.fontColor4 " background" cfg.trimColor4)
 				,ui.ColorSelectorLabel2.Text := " Swatches "
-				,"./Img/toggle_off.png") 
+				,"./Img/toggle_right.png") 
 	ui.toggleColorSelector.Redraw()
 }
-
-ui.buttonNewTheme := ui.themeEditorGui.AddPicture("x+5 ys+0  section w25 h26 Background" cfg.trimColor1,"./Img/button_plus_ready.png")
+ui.toggleColorSelector := ui.themeEditorGui.AddPicture("y30 x107 section w60 h27 backgroundTrans", (cfg.ColorPickerEnabled) ? ("./Img/toggle_left.png") : ("./Img/toggle_right.png"))
+ui.toggleColorSelector.OnEvent("Click", ToggleColorSelector)
+ui.toggleColorSelector.ToolTip := "Select color picking method for theming features"
+ui.buttonNewTheme := ui.themeEditorGui.AddPicture("x+4 ys+1 section w25 h23 Background" cfg.trimColor1,"./Img/button_plus_ready.png")
 ui.buttonNewTheme.OnEvent("Click",addTheme)
 
 ui.themeEditorGui.setFont("s11","move-x")
-ui.ThemeDDL := ui.themeEditorGui.AddDDL("ys+0 x+0 w175 section center c" cfg.fontColor1 " Background" cfg.trimColor6,cfg.ThemeList)
+ui.ThemeDDL := ui.themeEditorGui.AddDDL("ys+0 x+0 w176 section center c" cfg.fontColor1 " Background" cfg.trimColor6,cfg.ThemeList)
 ui.themeDDL.setFont("s13","arial")
 ui.ThemeDDL.OnEvent("Change",ThemeChanged)
 ui.ThemeDDL.OnEvent("Focus",RepaintThemeDDL)
 ui.ThemeDDL.OnEvent("LoseFocus",RepaintThemeDDL)
 ui.ThemeDDL.ToolTip := "Select Theme Preset"
-ui.buttonDelTheme := ui.themeEditorGui.AddPicture("ys+0 x+0 w25 h26 Background" cfg.trimColor2,"./Img/button_minus_ready.png")	
+ui.buttonDelTheme := ui.themeEditorGui.AddPicture("ys+0 x+-3 w24 h24 Background" cfg.trimColor2,"./Img/button_minus_ready.png")	
 ui.buttonDelTheme.OnEvent("Click",removeTheme)
 ;drawOutlineNamed("ThemeOutline",ui.themeEditorGui,10,29,302,27,cfg.outlineColor1,cfg.outlineColor1,3)
-drawOutlineNamed("ThemeOutlineShadow",ui.themeEditorGui,5,30,388,30,cfg.outlineColor2,cfg.outlineColor2,2)
+drawOutlineNamed("ThemeOutlineShadow",ui.themeEditorGui,5,30,388,27,cfg.outlineColor2,cfg.outlineColor2,2)
 
-;drawOutlineNamed("ThemeOutline",ui.themeEditorGui,85,32,61,26,cfg.outlineColor1,cfg.outlineColor1,1)
-ui.themeEditorCancelButton := ui.themeEditorGui.addText("x370 y3 w26 h26 backgroundTrans c" cfg.fontColor1,"r")
-ui.themeEditorCancelButton.setFont("s22","Webdings")
-ui.themeEditorCancelButton.onEvent("click", closeThemeEditor)
+
 
 closeThemeEditor(*) {
 	try {

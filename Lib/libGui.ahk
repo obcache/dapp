@@ -172,7 +172,7 @@ advProgress(2)
 	ui.mainGuiTabs.setFont("q5 s10 q5")
 	ui.MainGui.setFont("q5 s10 q5 c" cfg.fontColor1,"calibri")
 	ui.MainGuiTabs.OnEvent("Change",TabsChanged)
-	line(ui.mainGui,196,1,300,1,cfg.accentColor1)
+	line(ui.mainGui,196,1,300,1,cfg.accentColor2)
 	advProgress(2)
 	ui.activeTab 				:= ui.mainGuiTabs.Text
 	ui.previousTab 				:= ui.activeTab

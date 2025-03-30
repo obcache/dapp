@@ -380,12 +380,12 @@ drawKeybindBar(*) {
 
 	ui.d2ClassSelectBg3			:= ui.gameSettingsGui.addText("hidden xs+41 y+-14 w38 h14 background" cfg.bgColor2)
 	ui.d2ClassIcon				:= ui.gameSettingsGui.addPicture("x441 y7 w40 h30 center backgroundTrans","")
-	ui.d2ClassIconDown			:= ui.gameSettingsGui.addText("x441 y36 w19 h13 center backgroundTrans c" cfg.trimColor6,"←")
-	ui.d2ClassIconUp			:= ui.gameSettingsGui.addText("x462 y36 w19 h13 center backgroundTrans c" cfg.trimColor6,"→")
-	ui.d2ClassSelectSpacer 		:= ui.gameSettingsGui.addText("hidden x461 y36 w1 h14 background" cfg.trimColor6)
+	ui.d2ClassIconDown			:= ui.gameSettingsGui.addText("x441 y36 w19 h13 center backgroundTrans c" cfg.trimColor3,"←")
+	ui.d2ClassIconUp			:= ui.gameSettingsGui.addText("x462 y36 w19 h13 center backgroundTrans c" cfg.trimColor3,"→")
+	ui.d2ClassSelectSpacer 		:= ui.gameSettingsGui.addText("hidden x461 y36 w1 h14 background" cfg.trimColor3)
 	ui.d2ClassSelectBgLine		:= ui.gameSettingsGui.addText("hidden x442 y10 w0 h0 background" cfg.outlineColor2)
 	ui.d2ClassSelectBgLine1		:= ui.gameSettingsGui.addText("hidden x442 y10 w0 h0 background" cfg.accentColor2)
-	ui.d2ClassSelectBgLine2		:= ui.gameSettingsGui.addText("hidden x442 y35 w38 h1 background" cfg.trimColor6)
+	ui.d2ClassSelectBgLine2		:= ui.gameSettingsGui.addText("hidden x442 y35 w38 h1 background" cfg.trimColor3)
 	ui.d2KeyBindHelpMsg			:= ui.gameSettingsGui.addText("x47 y52 w350 h12 backgroundTrans c" cfg.fontColor1,"")
 	ui.d2ClassIcon.toolTip 		:= "Click to Enable/Disable the Fly Macro"
 	ui.d2ClassIconDown.tooltip 	:= "Click to switch between character classes for the Fly Macro"
