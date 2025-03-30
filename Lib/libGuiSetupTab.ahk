@@ -26,8 +26,8 @@ GuiSetupTab(&ui,&cfg) {
 	ui.MainGuiTabs.UseTab("2_Setup____")
 	
 	drawPanel(ui.mainGui,40,39,218,164,cfg.bgColor1,cfg.outlineColor2,cfg.outlineColor1,1,1,"none",100,"Features","calibri",cfg.fontColor1)
-	drawPanel(ui.mainGui,261,39,214,104,cfg.bgColor1,cfg.outlineColor2,cfg.outlineColor1,1,1,"none",100,"Features","calibri",cfg.fontColor1)
-	drawPanel(ui.mainGui,261,151,214,53,cfg.bgColor1,cfg.outlineColor2,cfg.outlineColor1,1,1,"none",100,"Features","calibri",cfg.fontColor1)
+	drawPanel(ui.mainGui,261,39,214,108,cfg.bgColor1,cfg.outlineColor2,cfg.outlineColor1,1,1,"none",100,"Features","calibri",cfg.fontColor1)
+	drawPanel(ui.mainGui,261,150,214,53,cfg.bgColor1,cfg.outlineColor2,cfg.outlineColor1,1,1,"none",100,"Features","calibri",cfg.fontColor1)
 	drawPanel(ui.mainGui,478,39,42,165,cfg.bgColor1,cfg.outlineColor2,cfg.outlineColor1,1,1,"none",100,"Features","calibri",cfg.fontColor1)
 	;line(ui.mainGui,34,0,30,2,cfg.bgColor2)	
 	line(ui.mainGui,529,184,29,2,cfg.accentColor1)
@@ -200,7 +200,7 @@ GuiSetupTab(&ui,&cfg) {
 	ui.latestVersionText := ui.mainGui.addText("xs y+-4 w140 backgroundTrans c" cfg.fontColor3,"Available:`t#.#.#.#")
 	ui.monitorResList := ["1920x1080","1920x1200","2560x1440","3440x1440","Custom"]
 
-	ui.monitorResDDL := ui.mainGui.AddDDL("xs-66 y+15 w90 r4 choose" cfg.monitorRes " c" cfg.fontColor4 " background" cfg.baseColor,ui.monitorResList)
+	ui.monitorResDDL := ui.mainGui.AddDDL("xs-66 y+16 w90 r4 choose" cfg.monitorRes " c" cfg.fontColor4 " background" cfg.baseColor,ui.monitorResList)
 	ui.monitorResDDL.setFont("c" cfg.fontColor4)
 	ui.monitorResDDL.onEvent("change",monitorResChanged)
 	ui.monitorResLabel := ui.mainGui.AddText("x+4 y+-25 w65 c" cfg.fontColor1 " backgroundTrans","Screen")	

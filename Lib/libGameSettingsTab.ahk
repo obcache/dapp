@@ -417,7 +417,7 @@ drawGameTabs(tabNum := 1) {
 		
 	}
 	;line(ui.gameTabGui,214,30,500,2,cfg.bgColor2)
-	line(ui.gameTabGui,216,30,280,1,cfg.accentColor4)
+	line(ui.gameTabGui,216,28,280,1,cfg.accentColor4)
 	line(ui.gameTabGui,495,2,28,1,cfg.accentColor4,"VERT")
 	drawOutlineNamed("helpOutline",ui.gameTabGui,463,0,34,32,cfg.accentColor1,cfg.accentColor1,3)
 	ui.gameTabGui.addText("x464 y2 w31 h29 background" cfg.bgColor1)
