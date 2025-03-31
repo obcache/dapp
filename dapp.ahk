@@ -1,4 +1,4 @@
-A_FileVersion := "1.6.0.6"
+A_FileVersion := "1.6.0.7"
 a_appName := "dapp"
 if (fileExist("./dapp_currentBuild.dat"))
 a_fileVersion := fileRead("./dapp_currentBuild.dat")
