@@ -337,14 +337,14 @@ d2LoadoutModifier(hotKeyName,isController := false) {
 	
 d2ToggleAlwaysSprint(*) {
 	(cfg.d2AlwaysRunEnabled := !cfg.d2AlwaysRunEnabled)
-		? (ui.dappToggleSprintKeyData.opt("c" cfg.trimColor4)
-			,ui.dappToggleSprintKeyData.redraw()
-			,ui.d2GameToggleSprintKeyData.opt("c" cfg.trimColor4)
-			,ui.d2GameToggleSprintKeyData.redraw())
-		: (ui.d2IsSprinting := false
-			(ui.dappToggleSprintKeyData.opt("c" cfg.trimColor3)
+		? (ui.dappToggleSprintKeyData.opt("c" cfg.trimColor3)
 			,ui.dappToggleSprintKeyData.redraw()
 			,ui.d2GameToggleSprintKeyData.opt("c" cfg.trimColor3)
+			,ui.d2GameToggleSprintKeyData.redraw())
+		: (ui.d2IsSprinting := false
+			(ui.dappToggleSprintKeyData.opt("c" cfg.trimColor4)
+			,ui.dappToggleSprintKeyData.redraw()
+			,ui.d2GameToggleSprintKeyData.opt("c" cfg.trimColor4)
 			,ui.d2GameToggleSprintKeyData.redraw()
 			,((ui.d2IsSprinting)
 				? send("{" cfg.dappToggleSprintKey "}")

@@ -139,27 +139,6 @@ drawLinkBar(*) {
 		ui.editLinkGui.color:=cfg.fontColor3
 		ui.thumbPreview:=editLinkGui.addPicture("x5 y5 w50 h50 backgroundTrans")
 	}
-	;ui.gameSettingsGui.addText("hidden x219 y21 section")
-	; ui.d2LaunchDIMbuttonBg				:= ui.gameSettingsGui.addText("x85 y85 w50 h50 background" cfg.trimColor2)
-	; ui.d2LaunchDIMbutton				:= ui.gameSettingsGui.addPicture("x81 y81 w56 h56 backgroundTrans","./img/button_DIM.png")
-	; drawOutline(ui.gameSettingsGui,85,85,50,50,cfg.accentColor3,cfg.accentColor1,1)
-	; ui.d2Launchd2FoundryButtonBg 			:= ui.gameSettingsGui.addText("x140 y85 w50  h50 background" cfg.trimColor2)
-	; ui.d2Launchd2FoundryButton 			:= ui.gameSettingsGui.addPicture("x136 y81 w56 h56 backgroundTrans",".\Img\button_glyph.png")
-	; drawOutline(ui.gameSettingsGui,140,85,50,50,cfg.accentColor3,cfg.accentColor1,1)
-	; ui.d2LaunchBrayTechButtonBg 			:= ui.gameSettingsGui.addText("x195 y85 w50  h50 vBrayTechButtonBg background" cfg.trimColor2)
-	; ui.d2LaunchBrayTechButton 			:= ui.gameSettingsGui.addPicture("x191 y81 w56  h56 vBrayTechButton backgroundTrans","./img/button_braytech.png")
-	; drawOutline(ui.gameSettingsGui,195,85,50,50,cfg.accentColor3,cfg.accentColor1,1)
-	; ui.d2LaunchVaultCleanerButtonBg			:= ui.gameSettingsGui.addText("x250 y85 w50  h50 background" cfg.trimColor2)
-	; ui.d2LaunchVaultCleanerButton			:= ui.gameSettingsGui.addPicture("x246 y81 w56 h56 backgroundTrans","./img/button_vault_up.png")
-	; drawOutline(ui.gameSettingsGui,250,85,50,50,cfg.accentColor3,cfg.accentColor1,1)
-	; ui.d2LaunchLightGGButtonBg 		:= ui.gameSettingsGui.addText("x305 y85 w50  h50 background" cfg.trimColor2)
-	; ui.d2LaunchLightGGButton 		:= ui.gameSettingsGui.addPicture("x301 y81 w56  h56 backgroundTrans","./img/button_LightGG.png")
-	; drawOutline(ui.gameSettingsGui,305,85,50,50,cfg.accentColor3,cfg.accentColor1,1)
-	; ui.d2LaunchD2CheckListButtonBg 		:= ui.gameSettingsGui.addText("x360 y85 w50  h50 background" cfg.trimColor2)
-	; ui.d2LaunchD2CheckListButton 		:= ui.gameSettingsGui.addPicture("x356 y81 w56  h56 backgroundTrans","./img/button_d2CheckList.png")
-	; drawOutline(ui.gameSettingsGui,360,85,50,50,cfg.accentColor3,cfg.accentColor1,1)
-	; ui.d2LaunchDestinyTrackerButtonBg 	:= ui.gameSettingsGui.addText("hidden x+5 ys w46  h46 background" cfg.trimColor2)
-	; ui.d2LaunchDestinyTrackerButton 	:= ui.gameSettingsGui.addPicture("hidden x+-50 ys-3 w53  h53 backgroundTrans","./img/button_DestinyTracker.png")
 }
 	
 	
@@ -249,7 +228,7 @@ drawGameTabs(tabNum := 1) {
 	ui.gameTabGui.color := ui.transparentColor
 	drawOutlineNamed("gameTabOutline",ui.gameTabGui,0,0,498,2
 		,cfg.accentColor1,cfg.accentColor1,2)
-	
+
 	winSetTransColor(ui.transparentColor,ui.gameTabGui)
 			;drawOutlineNamed("gameTabs",ui.gameTabGui,ui.gameTabWidth-0,0,498-ui.gameTabWidth,32,cfg.accentColor3,cfg.accentColor1,1)
 			;ui.gameTabGui.addText("x0 y0 w0 h0 section background" cfg.accentColor1,"")
@@ -425,7 +404,8 @@ drawGameTabs(tabNum := 1) {
 	
 	ui.gameTabGui.addPicture("x-81 y5 w310 h25 backgroundTrans","./img/lightburst_bottom_light.png")
 	;ui.gameTabGui.addPicture("x90 y0 w212 h30 backgroundTrans","./img/lightburst_bl_light.png")	
-
+	ui.buildNumber:=ui.gameTabGui.addText("x415 y15 w280 h28 left backgroundTrans","v" a_fileVersion)
+	ui.buildNumber.setFont("q5 s10 c" cfg.fontColor1,"Move-X")
 }
 
 

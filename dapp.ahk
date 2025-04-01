@@ -1,4 +1,4 @@
-A_FileVersion := "1.6.0.9"
+A_FileVersion := "1.6.1.0"
 a_appName := "dapp"
 if (fileExist("./dapp_currentBuild.dat"))
 a_fileVersion := fileRead("./dapp_currentBuild.dat")
@@ -123,7 +123,7 @@ advProgress(1)
 
 OnExit(ExitFunc)
 
-winSetRegion("33-0 w498 h234",ui.mainGui)
+winSetRegion("34-0 w497 h234",ui.mainGui)
 advProgress(5)
 
 guiVis(ui.mainGui,false)

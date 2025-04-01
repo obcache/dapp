@@ -535,7 +535,7 @@ NotifyOSD(NotifyMsg,Duration := 2000,guiName:=ui.mainGui,Alignment := "Left",YN 
 	ui.notifyGui.getPos(&x,&y,&w,&h)
 	WinSetTransparent(0,ui.notifyGui)
 	winGetPos(&GuiX,&GuiY,&GuiW,&GuiH,ui.mainGui.hwnd)
-	ui.notifyGui.Show("x" (GuiX+(GuiW)) " y" GuiY )
+	ui.notifyGui.Show("x" (GuiX+(GuiW/2))/2 " y" GuiY )
 	guiVis(ui.notifyGui,true)
 	drawOutlineNotifyGui(1,1,w,h,cfg.outlineColor2,cfg.outlineColor1,1)
 	drawOutlineNotifyGui(2,2,w-2,h-2,cfg.accentColor4,cfg.accentColor4,1)
