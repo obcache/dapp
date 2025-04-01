@@ -404,7 +404,7 @@ drawGameTabs(tabNum := 1) {
 	
 	ui.gameTabGui.addPicture("x-81 y5 w310 h25 backgroundTrans","./img/lightburst_bottom_light.png")
 	;ui.gameTabGui.addPicture("x90 y0 w212 h30 backgroundTrans","./img/lightburst_bl_light.png")	
-	ui.buildNumber:=ui.gameTabGui.addText("x415 y15 w280 h28 left backgroundTrans","v" a_fileVersion)
+	ui.buildNumber:=ui.gameTabGui.addText("x298 y15 w160 h28 right backgroundTrans","v" a_fileVersion)
 	ui.buildNumber.setFont("q5 s10 c" cfg.fontColor1,"Move-X")
 }
 

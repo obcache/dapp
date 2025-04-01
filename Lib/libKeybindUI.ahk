@@ -375,17 +375,17 @@ drawKeybindBar(*) {
 	ui.dappSwordFlyKeyLabel 	:= ui.gameSettingsGui.addText("xs-4 y+-34 w38 h20 center c" cfg.fontColor1 " backgroundTrans","Fly")
 	ui.d2ClassSelectOutline		:= ui.gameSettingsGui.addText("xs+42 y11 w37 h39 background" cfg.accentColor2)
 	ui.d2ClassSelectOutline2	:= ui.gameSettingsGui.addText("xs+43 y11 w36 h38 background" cfg.bgColor3)
-	ui.d2ClassSelectBg			:= ui.gameSettingsGui.addText("x441 y10 w40 h40 background" cfg.bgColor2)
+	ui.d2ClassSelectBg			:= ui.gameSettingsGui.addText("x441 y10 w40 h40 background" cfg.accentColor4)
 	;ui.d2ClassSelectBg2			:= ui.gameSettingsGui.addText("xs+35 y+-14 w56 h16 background" cfg.accentColor1)
 
-	ui.d2ClassSelectBg3			:= ui.gameSettingsGui.addText("hidden xs+41 y+-14 w38 h14 background" cfg.bgColor2)
+	ui.d2ClassSelectBg3			:= ui.gameSettingsGui.addText("hidden xs+41 y+-14 w38 h14 background" cfg.bgColor3)
 	ui.d2ClassIcon				:= ui.gameSettingsGui.addPicture("x441 y7 w40 h30 center backgroundTrans","")
-	ui.d2ClassIconDown			:= ui.gameSettingsGui.addText("x441 y36 w19 h13 center backgroundTrans c" cfg.trimColor3,"←")
-	ui.d2ClassIconUp			:= ui.gameSettingsGui.addText("x462 y36 w19 h13 center backgroundTrans c" cfg.trimColor3,"→")
-	ui.d2ClassSelectSpacer 		:= ui.gameSettingsGui.addText("hidden x461 y36 w1 h14 background" cfg.trimColor3)
-	ui.d2ClassSelectBgLine		:= ui.gameSettingsGui.addText("hidden x442 y10 w0 h0 background" cfg.outlineColor2)
-	ui.d2ClassSelectBgLine1		:= ui.gameSettingsGui.addText("hidden x442 y10 w0 h0 background" cfg.accentColor2)
-	ui.d2ClassSelectBgLine2		:= ui.gameSettingsGui.addText("hidden x442 y35 w38 h1 background" cfg.trimColor3)
+	ui.d2ClassIconDown			:= ui.gameSettingsGui.addText("x441 y36 w19 h13 center backgroundTrans c" cfg.accentColor1,"←")
+	ui.d2ClassIconUp			:= ui.gameSettingsGui.addText("x462 y36 w19 h13 center backgroundTrans c" cfg.accentColor1,"→")
+	ui.d2ClassSelectSpacer 		:= ui.gameSettingsGui.addText("hidden x461 y36 w1 h14 background" cfg.accentColor1)
+	ui.d2ClassSelectBgLine		:= ui.gameSettingsGui.addText("hidden x442 y10 w0 h0 background" cfg.accentColor1)
+	ui.d2ClassSelectBgLine1		:= ui.gameSettingsGui.addText("hidden x442 y10 w0 h0 background" cfg.accentColor1)
+	ui.d2ClassSelectBgLine2		:= ui.gameSettingsGui.addText("hidden x442 y35 w38 h1 background" cfg.accentColor1)
 	ui.d2KeyBindHelpMsg			:= ui.gameSettingsGui.addText("x47 y52 w350 h12 backgroundTrans c" cfg.fontColor1,"")
 	ui.d2ClassIcon.toolTip 		:= "Click to Enable/Disable the Fly Macro"
 	ui.d2ClassIconDown.tooltip 	:= "Click to switch between character classes for the Fly Macro"
@@ -413,16 +413,16 @@ drawKeybindBar(*) {
 		switch cfg.d2CharacterClass {
 			case 1: 
 				(ui.d2FlyEnabled)
-					? (ui.d2ClassIcon.value := "./img/d2ClassIconWarlock_off.png",ui.d2ClassSelectBg.opt("background" cfg.trimColor3))
-					: (ui.d2ClassIcon.value := "./img/d2ClassIconWarlock_on.png",ui.d2ClassSelectBg.opt("background" cfg.trimColor1))
+					? (ui.d2ClassIcon.value := "./img/d2ClassIconWarlock_on.png",ui.d2ClassSelectBg.opt("background" cfg.trimColor4))
+					: (ui.d2ClassIcon.value := "./img/d2ClassIconWarlock_off.png",ui.d2ClassSelectBg.opt("background" cfg.trimColor5))
 			case 2:
 				(ui.d2FlyEnabled)
-					? (ui.d2ClassIcon.value := "./img/d2ClassIconHunter_off.png",ui.d2ClassSelectBg.opt("background" cfg.trimColor3))
-					: (ui.d2ClassIcon.value := "./img/d2ClassIconHunter_on.png",ui.d2ClassSelectBg.opt("background" cfg.trimColor1))
+					? (ui.d2ClassIcon.value := "./img/d2ClassIconHunter_on.png",ui.d2ClassSelectBg.opt("background" cfg.trimColor4))
+					: (ui.d2ClassIcon.value := "./img/d2ClassIconHunter_off.png",ui.d2ClassSelectBg.opt("background" cfg.trimColor5))
 			case 3:
 			(ui.d2FlyEnabled)
-					? (ui.d2ClassIcon.value := "./img/d2ClassIconTitan_off.png",ui.d2ClassSelectBg.opt("background" cfg.trimColor3))
-					: (ui.d2ClassIcon.value := "./img/d2ClassIconTitan_on.png",ui.d2ClassSelectBg.opt("background" cfg.trimColor1))
+					? (ui.d2ClassIcon.value := "./img/d2ClassIconTitan_on.png",ui.d2ClassSelectBg.opt("background" cfg.trimColor4))
+					: (ui.d2ClassIcon.value := "./img/d2ClassIconTitan_off.png",ui.d2ClassSelectBg.opt("background" cfg.trimColor5))
 			default:
 		}
 	}

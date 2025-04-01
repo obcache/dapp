@@ -141,7 +141,8 @@ fontColor2=D5EAFF
 TitleBarImage=.\img\custom\lightBurst_top_light.png
 accentColor3=FFB08A
 accentColor4=FFA346
-fontColor4=845704
+fontColor4=FBD184
+trimColor5=744F01
 
 [Alien]
 trimColor2=B4B4B4
@@ -204,13 +205,13 @@ baseColor=2C3537
 fontColor1=FCC070
 fontColor2=D5EAFF
 fontColor3=385572
-fontColor4=845704
+fontColor4=FBD184
 bgColor1=112539
 trimColor1=B141E
 bgColor2=AF7723
 bgColor3=144581
 trimColor6=292929
-trimColor5=292929
+trimColor5=744F01
 bgColor0=212121
 trimColor3=FEF329
 trimColor2=DF9A5B
