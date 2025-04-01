@@ -99,7 +99,7 @@ drawLinkBar(*) {
 		ui.button_link_%a_index%.type:=cfg.button_link_%a_index%[2]
 		ui.button_link_%a_index%.action:=cfg.button_link_%a_index%[3]
 		ui.button_link_%a_index%.thumb:=cfg.button_link_%a_index%[4]
-		ui.button_link_%a_index%.bg:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos+1 " w" cfg.button_link_size-2 " h" cfg.button_link_size-2 " vbutton_link_" a_index " background" cfg.bgColor3,ui.button_link_%a_index%.thumb)
+		ui.button_link_%a_index%.bg:=ui.gameSettingsGui.addPicture("x" xPos+2 " y" yPos+1 " w" cfg.button_link_size-2 " h" cfg.button_link_size-2 " vbutton_link_" a_index " background" cfg.bgColor3,ui.button_link_%a_index%.thumb)
 		ui.button_link_%a_index%.fx:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos+1 " w" cfg.button_link_size-2 " h" cfg.button_link_size-2 " backgroundTrans","./img/lightburst_br_light.png")
 		ui.button_link_%a_index%.down:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos+1 " w" cfg.button_link_size-2 " h" cfg.button_link_size-2 " hidden backgroundTrans","./img/button_down_layer.png")
 		drawOutline(ui.gameSettingsGui,xPos,yPos,cfg.button_link_size,cfg.button_link_size,cfg.accentColor2,cfg.accentColor1,1)
@@ -421,7 +421,7 @@ drawGameTabs(tabNum := 1) {
 	drawOutlineNamed("helpOutline",ui.gameTabGui,463,0,34,31,cfg.accentColor1,cfg.accentColor1,3)
 	ui.gameTabGui.addText("x464 y2 w31 h28 background" cfg.bgColor1)
 	ui.helpIcon := ui.gameTabGui.addPicture("x470 y3 w-1 h26 backgroundTrans","./img/icon_help.png")
-	ui.gameTabGui.addPicture("x470 y3 w-1 h26 backgroundTrans","./img/lightburst_br_light.png")
+	ui.gameTabGui.addPicture("x430 y0 w65 h30 backgroundTrans","./img/lightburst_br_light.png")
 	
 	ui.gameTabGui.addPicture("x-81 y5 w310 h25 backgroundTrans","./img/lightburst_bottom_light.png")
 	;ui.gameTabGui.addPicture("x90 y0 w212 h30 backgroundTrans","./img/lightburst_bl_light.png")	
