@@ -185,7 +185,7 @@ advProgress(2)
 	ui.rightHandlebarBg 	:= ui.mainGui.addText("hidden x529 y32 w31 h182 background" cfg.accentColor3,"")
 	ui.rightHandlebarImage2 := ui.mainGui.AddPicture("hidden x528 w31 y33 h180 section")
 	ui.ExitButtonBorder 	:= ui.mainGui.AddText("x470 y0 w64 h30 Background" cfg.accentColor3,"")
-	ui.ExitButtonDetail 	:= ui.mainGui.AddPicture("x470 y0 w64 h30 BackgroundTrans","./img/lightburst_tr_light.png")
+
 	ui.ExitButtonbg 		:= ui.mainGui.AddText("x501 y1 w28 h27 center Background" cfg.bgColor1)
 	ui.ExitButton 			:= ui.mainGui.AddText("x501 y2 w28 h28 center BackgroundTrans","r")
 	ui.exitButton.setFont("s18 c" cfg.fontColor1,"Webdings")
@@ -197,7 +197,7 @@ advProgress(2)
 
 	ui.DownButton.OnEvent("Click",guiHide)
 	ui.downButtonbg.onEvent("click",guiHide)
-	
+	ui.ExitButtonDetail 	:= ui.mainGui.AddPicture("x450 y0 w94 h30 BackgroundTrans","./img/lightburst_tr_light.png")	
 	guiHide(*) {
 		ui.mainGui.hide()
 		ui.gameSettingsGui.hide()
