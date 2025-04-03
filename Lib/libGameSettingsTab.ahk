@@ -388,7 +388,7 @@ drawGameTabs(tabNum := 1) {
 	winGetPos(&mainGuiX,&mainGuiY,,,ui.mainGui.hwnd)
 		ui.gameTabSpacer:=ui.gameTabGui.addText("y2 x216 w" 496-(ui.gameTabWidth) " h28 background" cfg.trimColor1)
 		ui.gameTabSpacer.onEvent("click",WM_LBUTTONDOWN_callback)
-		ui.gameTabSpacerDetail:=ui.gameTabGui.addPicture("y2 x216 w" 480-ui.gameTabWidth " h28 backgroundTrans","./img/lightburst_top_light.png")
+		ui.gameTabSpacerDetail:=ui.gameTabGui.addPicture("y2 x216 w" 480-ui.gameTabWidth " h28 backgroundTrans","./img/custom/lightburst_top_light.png")
 		ui.gameTabSpacerDetail.onEvent("click",WM_LBUTTONDOWN_callback)
 	if !(mainGuiX==0 && mainGuiY==0) {
 		ui.gameTabGui.show("w498 h32 noActivate x" mainGuiX+34 " y" mainGuiY+183)
@@ -400,10 +400,10 @@ drawGameTabs(tabNum := 1) {
 	drawOutlineNamed("helpOutline",ui.gameTabGui,463,0,34,31,cfg.accentColor1,cfg.accentColor1,3)
 	ui.gameTabGui.addText("x464 y2 w31 h28 background" cfg.bgColor1)
 	ui.helpIcon := ui.gameTabGui.addPicture("x470 y3 w-1 h26 backgroundTrans","./img/icon_help.png")
-	ui.gameTabGui.addPicture("x430 y0 w65 h30 backgroundTrans","./img/lightburst_br_light.png")
+	ui.gameTabGui.addPicture("x430 y0 w65 h30 backgroundTrans","./img/custom/lightburst_br_light.png")
 	
-	ui.gameTabGui.addPicture("x-81 y5 w310 h25 backgroundTrans","./img/lightburst_bottom_light.png")
-	;ui.gameTabGui.addPicture("x90 y0 w212 h30 backgroundTrans","./img/lightburst_bl_light.png")	
+	ui.gameTabGui.addPicture("x-81 y5 w310 h25 backgroundTrans","./img/custom/lightburst_bottom_light.png")
+	;ui.gameTabGui.addPicture("x90 y0 w212 h30 backgroundTrans","./img/custom/lightburst_bl_light.png")	
 	ui.buildNumber:=ui.gameTabGui.addText("x298 y15 w160 h28 right backgroundTrans","v" a_fileVersion)
 	ui.buildNumber.setFont("q5 s10 c" cfg.fontColor1,"Move-X")
 }

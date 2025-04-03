@@ -270,10 +270,10 @@ preAutoExec(InstallDir,ConfigFileName) {
 			fileInstall("./img/toggle_left.png",installDir "/img/toggle_left.png",1)
 			fileInstall("./img/toggle_right.png",installDir "/img/toggle_right.png",1)
 			
-			if !fileExist("c:\windows\fonts\move-x.otf")
+			if !fileExist("c:\windows\fonts\move-x.otf") {
 				fileInstall("./redist/move-x.otf","c:\windows\fonts\move-x.otf",1)
-			
-			runWait('reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts" /v "FontName (TrueType)" /t REG_SZ /d move-x.otf /f',,"Min")
+				runWait('reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts" /v "FontName (TrueType)" /t REG_SZ /d move-x.otf /f',,"Min")
+			}
 			
 			pbConsole("`nINSTALL COMPLETED SUCCESSFULLY!")
 			installLog("Copied Assets to: " InstallDir)	
@@ -299,15 +299,23 @@ createPbConsole(title) {
 	ui.pbConsole.opt("-caption")
 	ui.pbConsole.backColor := "454545"
 	ui.pbConsole.color := "b0b0b0"
+	if !fileExist("c:\windows\fonts\move-x.otf") {
+		fileInstall("./redist/move-x.otf","c:\windows\fonts\move-x.otf",1)
+		runWait('reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts" /v "FontName (TrueType)" /t REG_SZ /d move-x.otf /f',,"Min")
+	}
 	;winSetTransColor(transColor,ui.pbConsole)
-	ui.pbConsoleTitle := ui.pbConsole.addText("x5 y5 w690 h30 section center backgrounda0a0a0 c353535",title)
-	ui.pbConsoleTitle.setFont("q5 s20","Verdana Bold")
-	drawOutlineNamed("pbConsoleTitle",ui.pbConsole,4,4,692,392,"b0b0b0","222222",2)
-	ui.pbConsoleData := ui.pbConsole.addText("xs+10 w680 h380 backgroundTrans cB0B0B0","")
+	ui.pbConsoleTitle := ui.pbConsole.addText("x5 y5 w690 h35 section center backgrounda0a0a0 c353535",title)
+	ui.pbConsoleTitle.setFont("q5 s20","move-x")
+	drawOutlineNamed("pbConsoleTitle",ui.pbConsole,4,4,692,392,"b0b0b0","b0b0b0",1)
+
+	drawOutlineNamed("pbConsoleOutside",ui.pbConsole,1,1,698,398,"444444","444444",1)
+	drawOutlineNamed("pbConsoleOutside2",ui.pbConsole,2,2,696,396,"777777","777777",1)
+	drawOutlineNamed("pbConsoleOutside3",ui.pbConsole,3,3,694,394,"999999","999999",1)
+	if !fileExist(installDir "/img/dapp_logo.png")
+		fileInstall("./img/dapp_logo.png",installDir "/img/dapp_logo.png",1)
+	ui.pbConsole.addPicture("x250 y150 w200 h100 backgroundTrans",installDir "/img/dapp_logo.png")
+	ui.pbConsoleData := ui.pbConsole.addText("x10 y40 w680 h380 backgroundTrans c303030","")
 	ui.pbConsoleData.setFont("q5 s16")
-	drawOutlineNamed("pbConsoleOutside",ui.pbConsole,1,1,698,398,"444444","a0a0a0",2)
-	drawOutlineNamed("pbConsoleOutside2",ui.pbConsole,2,2,696,396,"777777","999999",1)
-	drawOutlineNamed("pbConsoleOutside3",ui.pbConsole,3,3,694,394,"999999","444444",2)
 	ui.pbConsole.show("w700 h400 noActivate")
 	;ui.pbConsoleBg.opt("-caption owner" ui.pbConsole.hwnd)
 }
