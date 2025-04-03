@@ -122,7 +122,7 @@ accentColor3=1FFFF
 
 [Ocean]
 outlineColor1=5F543D
-outlineColor2=5A7BA3
+outlineColor2=496485
 accentColor1=DBC7A2
 accentColor2=1C3451
 baseColor=2C3537
@@ -140,7 +140,7 @@ trimColor4=C7D1E2
 fontColor2=D5EAFF
 TitleBarImage=.\img\custom\lightBurst_top_light.png
 accentColor3=14182
-accentColor4=151E26
+accentColor4=6A8DAA
 fontColor4=FBD184
 trimColor5=744F01
 
@@ -195,11 +195,11 @@ TitleBarImage=.\img\custom\lightBurst_bottom_light.png
 fontColor4=FBD58E
 accentColor3=FF0180
 [Custom]
-accentColor4=151E26
+accentColor4=6A8DAA
 accentColor3=14182
 accentColor2=1C3451
 accentColor1=DBC7A2
-outlineColor2=5A7BA3
+outlineColor2=496485
 outlineColor1=5F543D
 baseColor=2C3537
 fontColor1=FDE7CE

@@ -77,7 +77,7 @@ ui.gametabs.useTab("Vault Cleaner")
 	this.vaultProgressLabelBg:=ui.gameSettingsGui.addText("x10 y52 w126 h20 background" cfg.baseColor,"")
 	this.vaultProgressLabel:=ui.gameSettingsGui.addText("x18 y55 w110 h20 backgroundTrans c" cfg.fontColor1,"Progress")
 	this.vaultProgressLabel.setFont("s10 c" cfg.fontColor3,"move-x")
-	this.vaultProgress := ui.gameSettingsGui.addProgress("x107 y52 w380 h20 c" cfg.trimColor5 " background151515 range1-500")
+	this.vaultProgress := ui.gameSettingsGui.addProgress("x106 y52 w380 h20 c" cfg.trimColor5 " background151515 range1-500")
 	this.vaultDetail:=ui.gameSettingsGui.addPicture("x10 y52 w398 h20 backgroundTrans","./img/lightburst_tl.png")
 	this.vaultDetail2:=ui.gameSettingsGui.addPicture("x200 y52 w288 h20 backgroundTrans","./img/lightburst_br_light.png")
 	this.completeMsg := ui.gameSettingsGui.addText("hidden x33 y61 w500 h30 backgroundTrans c" cfg.fontColor1 "","")
@@ -222,25 +222,25 @@ libVaultInit(*) {
 		
 		;msgBox(winGetMinMax("ahk_exe destiny2.exe"))
 		pbNotify('If Destiny 2 is not already set to "Windowed Fullscreen",`n please do it now and then click "Proceed"',30,"YN","fullscreenProcess","fullscreenCancel")
-		try 
-			vaultTopGui.destroy()
-		vaultTopGui := gui()
-		vaultTopGui.backColor:=setting.transColor
-		vaultTopGui.setFont("q5 s10 c000000","calibri")
-		vaultTopGui.opt("-border")	
-		vaultTopGui.backColor:=setting.transColor
-		vaultTopGui.setFont("q5 s10 c000000","calibri")
+		; try 
+			; vaultTopGui.destroy()
+		; vaultTopGui := gui()
+		; vaultTopGui.backColor:=setting.transColor
+		; vaultTopGui.setFont("q5 s10 c000000","calibri")
+		; vaultTopGui.opt("-border")	
+		; vaultTopGui.backColor:=setting.transColor
+		; vaultTopGui.setFont("q5 s10 c000000","calibri")
 
-		titleBarBg:=vaultTopGui.addText("x0 y0 w1250 h34 vTitleBarBg background777777")
-		titleBarBg.onEvent("click",vault_LBUTTONDOWN_callback)
-		titleBarText:=vaultTopGui.addText("x10 y-2 w500 h32 backgroundTrans c992121","Vault Mode Enabled. Ready to dismantle unlocked items.")
-		titleBarText.setFont("q5 s20 bold cffffff","calibri")
-		closeButton:=vaultTopGui.addText("x" setting.gameW-36 " y0 w30 h32 cffffff background777777","T")
-		closeButton.setFont("q5 s24","WingDings 2")
-		closeButton.onEvent("click",closeProgram)
-		closeProgram(*) {
-			exitApp
-		}
+		; titleBarBg:=vaultTopGui.addText("x0 y0 w1250 h34 vTitleBarBg background777777")
+		; titleBarBg.onEvent("click",vault_LBUTTONDOWN_callback)
+		; titleBarText:=vaultTopGui.addText("x10 y-2 w500 h32 backgroundTrans c992121","Vault Mode Enabled. Ready to dismantle unlocked items.")
+		; titleBarText.setFont("q5 s20 bold cffffff","calibri")
+		; closeButton:=vaultTopGui.addText("x" setting.gameW-36 " y0 w30 h32 cffffff background777777","T")
+		; closeButton.setFont("q5 s24","WingDings 2")
+		; closeButton.onEvent("click",closeProgram)
+		; closeProgram(*) {
+			; exitApp
+		; }
 
 
 		toggleButton(*) {
@@ -259,23 +259,23 @@ libVaultInit(*) {
 		if this.gameWin {
 			DetectHiddenWindows(1)
 			GameWindowMode:=winGetMinMax(this.gameWin)
-			switch GameWindowMode {
-				case 1:
-					send("{alt}{enter}")
-				case -1: 
-					winActivate(this.gameWin)
+			; switch GameWindowMode {
+				; case 1:
+					; send("{alt}{enter}")
+				; case -1: 
+					; winActivate(this.gameWin)
 				
-			}
+			; }
 			winGetPos(&gameWinX,&gameWinY,&gameWinW,&gameWinH,this.gameWin)
 			this.origGameWinX:=gameWinX
 			this.origGameWinY:=gameWinY
 			this.origGameWinW:=gameWinW
 			this.origGameWinH:=gameWinH
-			vaultTopGui.show("x" (a_screenwidth/2)-640 " y" (a_screenHeight/2)-360 " w" setting.gameW-6 " h30")
+			;vaultTopGui.show("x" (a_screenwidth/2)-640 " y" (a_screenHeight/2)-360 " w" setting.gameW-6 " h30")
 			winMove((a_screenwidth/2)-640,(a_screenHeight/2)-360,1280,720,this.gameWin)
-			winSetStyle("-0xC00000",this.GameWin)
+			;winSetStyle("-0xC00000",this.GameWin)
 			winActivate(this.gameWin)
-			winWait(this.gameWin)
+			;winWait(this.gameWin)
 			;sleep(2000)
 
 			send("{F1}")
@@ -286,7 +286,7 @@ libVaultInit(*) {
 			sleep(600)
 			;this.mainButtonHotkey.setFont("q5 c00FFFFE")
 			this.statusText.text:="Dismantles ALL unlocked items (DIM Search 'is:unlocked' to review)"
-			this.mainButton.opt("background" cfg.trimColor4)
+			this.mainButton.opt("background" cfg.accentColor4)
 			this.mainButtonText.setFont("c" cfg.fontColor2)
 			this.mainButton.redraw()
 			;this.vaultProgressLabelBg.opt("backgroundD0D0F0")
@@ -302,7 +302,7 @@ vault_LBUTTONDOWN_callback(thisControl,info) {
 	;WM_LBUTTONDOWN(0,0,0,thisControl)	
 }
 stopCleaning(*) {
-	this.isRunning:=false
+	this.restartQueued:=false
 	this.mainButtonText.text:="Start"
 	this.statusText.text:="[Del] to start cleaning"
 	this.mainButton.opt("background" cfg.trimColor4 "c" cfg.fontColor4)
@@ -312,10 +312,12 @@ stopCleaning(*) {
 }	
 
 cleanVaultStart(*) {
+	this.restartQueued:=true
+
 	(winExist(this.gameWin)) 
 		? winActivate(this.gameWin)
 		: notifyOSD("No Destiny Window Found")
-	this.isRunning:=true
+	
 	winActivate(this.gameWin)
 	
 
@@ -335,7 +337,7 @@ cleanVaultStart(*) {
 	pageUpColor:=""
 
 	loop {
-	(this.restartQueued) ? stopCleaning() : 0
+	;(this.restartQueued) ? stopCleaning() : 0
 		if subStr(pixelGetColor(970,170),3,1)<="3" {
 			mouseMove(955,170)
 			this.page+=1
@@ -366,12 +368,14 @@ cleanVaultStart(*) {
 		loop setting.rowCount {
 			this.row:=setting.rowCount-a_index
 			loop setting.columnCount {
-				(this.restartQueued) ? stopCleaning() : 0
+				;(this.restartQueued) ? stopCleaning() : 0
 				this.vaultProgress.value+=1  
 				this.col:=setting.columnCount-a_index
 				this.itemNum+=1
 				dismantle(this.col,this.row)				
 			}
+			
+			;(this.restartQueued) ? exit : 0
 		}
 			mouseMove(905,170)
 			sleep(500)
@@ -382,12 +386,14 @@ cleanVaultStart(*) {
 			this.page-=1
 			this.pageCount.text:=format("{:03d}",this.page)
 			sleep(600)
-		this.statusText.text:="Operation Complete"
-		this.isRunning:=false
+
 	}
+	this.statusText.text:="Operation Complete"
+	stopCleaning()
 }
 
 dismantle(thisCol,thisRow) {
+	(this.restartQueued) ? (this.restartQueued:=false,exit) : 0
 	x:=tile(thisCol,thisRow).x
 	y:=tile(thisCol,thisRow).y
 	
@@ -402,13 +408,15 @@ dismantle(thisCol,thisRow) {
 		exit
 	}
 	
+	this.isExotic:=false
+	this.isLocked:=false
+	;(this.restartQueued) ? exit : 0
 	mouseMove(x,y)
 	sleep(200)
 	send("{f}")
-	this.isExotic:=false
-	this.isLocked:=false
+
 	loop 30 {
-		this.tileColor:=pixelGetColor((thisCol<6) ? x-(setting.tileSize/2)+1 : x+(setting.tileSize/2)-4,y)	
+		this.tileColor:=pixelGetColor((thisCol<6) ? x-(setting.tileSize/2)+1 : x+(setting.tileSize/2)-(6-(thisCol-5)),y)
 		; (thisCol<6)
 			; ? logTxt:="Check Locked," formatTime("T12","yyMMddhhmmss") "," thisRow ":" thisCol "," x ":" y "," x-(setting.tileSize/2) ":" y "," this.tileColor
 			; : logTxt:="Check Locked," formatTime("T12","yyMMddhhmmss") "," thisRow ":" thisCol "," x ":" y "," x+(setting.tileSize/2) ":" y "," this.tileColor 
@@ -419,16 +427,21 @@ dismantle(thisCol,thisRow) {
 			this.isLocked:=true  
 			break
 		}
-		sleep(20)
+		sleep(10)
 	}
 	
 	if !this.isLocked {
-		sleep(500)
+		sleep(100)
+		sendEvent("{f}")
+		sleep(100)
+		sendPlay("{f}")
 		send("{f down}")
-		while pixelGetColor((thisCol<6) ? x-(setting.tileSize/2)+1 : x+(setting.tileSize/2)-3,y) == this.tileColor && isIdle()   {
+		while pixelGetColor((thisCol<6) ? x-(setting.tileSize/2)+1 : x+(setting.tileSize/2)-(6-(thisCol-5)),y) == this.tileColor && isIdle()   {
 			sleep(100)
 			if a_index > 30 
 				this.isExotic:=true
+			if a_index > 80
+				break
 		}
 		if this.isExotic
 			this.dismantledExotics.text+=1
@@ -480,7 +493,7 @@ queueStop(*) {
 }
 
 vaultCleanerRunning(*) {
-	return this.isRunning
+	return this.restartQueued
 }
 isVault(*) {
 	this.hwnd:=0
@@ -514,4 +527,5 @@ vault_exitFunc(*) {
 	this.restartQueued:=false
 
 }
+
 hotIf()
