@@ -329,11 +329,11 @@ drawKeybindBar(*) {
 	;drawOutlineNamed("gameSettings",ui.gameSettingsGui,43,11,404,42,cfg.accentColor1,cfg.accentColor3,1)
 	ui.currKey 				:= cfg.dappPauseKey
 	ui.dappPauseKey			:= ui.gameSettingsGui.addPicture("x50 y17 w" (ui.d2KeybindWidth + max(0,(strLen(ui.currKey)-6))*10) " h30 section backgroundTrans","./img/keyboard_key_up.png")
-	ui.dappPauseKeyData 	:= ui.gameSettingsGui.addText("xs+0 y+-24 w" (ui.d2KeybindWidth + max(0,(strLen(ui.currKey)-6))*10) " h21 center c" cfg.trimColor4 " backgroundTrans",subStr(strUpper(cfg.dappPauseKey),1,8))
-	ui.dappPauseKeyLabel	:= ui.gameSettingsGui.addText("xs+1 y+-34 w" (ui.d2KeybindWidth + max(0,(strLen(ui.currKey)-6))*10) " h20 center c" cfg.fontColor1 " backgroundTrans","Pause")
+	ui.dappPauseKeyData 	:= ui.gameSettingsGui.addText("xs-1 y+-24 w" (ui.d2KeybindWidth + max(0,(strLen(ui.currKey)-6))*10) " h21 center c" cfg.trimColor4 " backgroundTrans",subStr(strUpper(cfg.dappPauseKey),1,8))
+	ui.dappPauseKeyLabel	:= ui.gameSettingsGui.addText("xs-1 y+-34 w" (ui.d2KeybindWidth + max(0,(strLen(ui.currKey)-6))*10) " h20 center c" cfg.fontColor1 " backgroundTrans","Pause")
 	
 	ui.keybindSpacer		:= ui.gameSettingsGui.addText("x113 y10 w1 h40 background" cfg.outlineColor2)		
-	ui.keybindSpacer2		:= ui.gameSettingsGui.addText("x114 y10 w1 h40 background" cfg.outlineColor1)
+	ui.keybindSpacer2		:= ui.gameSettingsGui.addText("x114 y10 w1 h40 background" cfg.accentColor4)
 	;ui.gameSettingsGui.setFont("s11","Arial")
 	
 	ui.currKey 				:= cfg.dappToggleSprintKey
@@ -347,7 +347,7 @@ drawKeybindBar(*) {
 	ui.currKey := cfg.dappHoldToCrouchKey
 	ui.dappHoldToCrouchKey		:= ui.gameSettingsGui.AddPicture("x+5 ys w" (ui.d2KeybindWidth + max(0,(strLen(ui.currKey)-6))*10) 
 		" h30 section backgroundTrans","./img/keyboard_key_up.png")
-	ui.dappHoldToCrouchKeyData 	:= ui.gameSettingsGui.addText("xs-3 y+-24 w" (ui.d2KeybindWidth + max(0,(strLen(ui.currKey)-6))*10) 
+	ui.dappHoldToCrouchKeyData 	:= ui.gameSettingsGui.addText("xs-1 y+-24 w" (ui.d2KeybindWidth + max(0,(strLen(ui.currKey)-6))*10) 
 		" h21 center c" cfg.trimColor4 " backgroundTrans",subStr(strUpper(cfg.dappHoldToCrouchKey),1,8))
 	ui.dappHoldToCrouchKeyLabel	:= ui.gameSettingsGui.addText("xs-1 y+-34 w" (ui.d2KeybindWidth + max(0,(strLen(ui.currKey)-6))*10) 
 		" h20 center c" cfg.fontColor1 " backgroundTrans","Crouch")
@@ -355,7 +355,7 @@ drawKeybindBar(*) {
 	ui.currKey := cfg.dappReloadKey
 	ui.dappReloadKey			:= ui.gameSettingsGui.addPicture("x+5 ys w" (ui.d2KeybindWidth + max(0,(strLen(ui.currKey)-6))*10) 
 		" h30 section backgroundTrans","./img/keyboard_key_up.png")
-	ui.dappReloadKeyData 		:= ui.gameSettingsGui.addText("xs-3 y+-24 w" (ui.d2KeybindWidth + max(0,(strLen(ui.currKey)-6))*10) 
+	ui.dappReloadKeyData 		:= ui.gameSettingsGui.addText("xs-1 y+-24 w" (ui.d2KeybindWidth + max(0,(strLen(ui.currKey)-6))*10) 
 		" h21 center c" cfg.trimColor4 " backgroundTrans",subStr(strUpper(cfg.dappReloadKey),1,8))
 	ui.dappReloadKeyLabel		:= ui.gameSettingsGui.addText("xs-1 y+-34 w" (ui.d2KeybindWidth + max(0,(strLen(ui.currKey)-6))*10) 
 	" h20 center c" cfg.fontColor1 " backgroundTrans","Reload")
@@ -372,7 +372,7 @@ drawKeybindBar(*) {
 	ui.dappSwordFlyKey			:= ui.gameSettingsGui.addPicture("x+5 ys w34 h30 section backgroundTrans","./img/keyboard_key_up.png")
 	ui.dappSwordFlyKeyData 	:= ui.gameSettingsGui.addText("xs+0 y+-24 w34 h21 center c" cfg.trimColor4 " backgroundTrans"
 		,subStr(strUpper(cfg.dappSwordFlyKey),1,8))
-	ui.dappSwordFlyKeyLabel 	:= ui.gameSettingsGui.addText("xs-4 y+-34 w38 h20 center c" cfg.fontColor1 " backgroundTrans","Fly")
+	ui.dappSwordFlyKeyLabel 	:= ui.gameSettingsGui.addText("xs-2 y+-34 w40 h20 center c" cfg.fontColor1 " backgroundTrans","Fly")
 	ui.d2ClassSelectOutline		:= ui.gameSettingsGui.addText("xs+42 y11 w37 h39 background" cfg.accentColor2)
 	ui.d2ClassSelectOutline2	:= ui.gameSettingsGui.addText("xs+43 y11 w36 h38 background" cfg.bgColor3)
 	ui.d2ClassSelectBg			:= ui.gameSettingsGui.addText("x441 y10 w40 h40 background" cfg.accentColor4)
@@ -392,11 +392,11 @@ drawKeybindBar(*) {
 	ui.d2ClassIconUp.tooltip 	:= "Click to switch between character classes for the Fly Macro"
 	
 	ui.keybindSpacer7			:= ui.gameSettingsGui.addText("x440 y10 w1 h40 background" cfg.outlineColor2)		
-	ui.keybindSpacer8			:= ui.gameSettingsGui.addText("x441 y10 w1 h40 background" cfg.outlineColor1)	
+	ui.keybindSpacer8			:= ui.gameSettingsGui.addText("x441 y10 w1 h40 background" cfg.accentColor4)	
 	ui.keybindSpacer5			:= ui.gameSettingsGui.addText("x395 y10 w1 h40 background" cfg.outlineColor2)		
-	ui.keybindSpacer6			:= ui.gameSettingsGui.addText("x396 y10 w1 h40 background" cfg.outlineColor1)	
+	ui.keybindSpacer6			:= ui.gameSettingsGui.addText("x396 y10 w1 h40 background" cfg.accentColor4)	
 	ui.keybindSpacer3			:= ui.gameSettingsGui.addText("x480	y10 w1 h40 background" cfg.outlineColor2)		
-	ui.keybindSpacer4			:= ui.gameSettingsGui.addText("x481 y10 w1 h40 background" cfg.outlineColor1)	
+	ui.keybindSpacer4			:= ui.gameSettingsGui.addText("x481 y10 w1 h40 background" cfg.accentColor4)	
 
 	ui.d2ClassIconDown.setFont("s9")
 	ui.d2ClassIconDown.onEvent("click",d2ClassIconDownChanged)

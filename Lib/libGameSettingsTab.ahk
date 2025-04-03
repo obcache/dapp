@@ -100,7 +100,7 @@ drawLinkBar(*) {
 		ui.button_link_%a_index%.action:=cfg.button_link_%a_index%[3]
 		ui.button_link_%a_index%.thumb:=cfg.button_link_%a_index%[4]
 		ui.button_link_%a_index%.bg:=ui.gameSettingsGui.addPicture("x" xPos+2 " y" yPos+1 " w" cfg.button_link_size-2 " h" cfg.button_link_size-2 " vbutton_link_" a_index " background" cfg.bgColor3,ui.button_link_%a_index%.thumb)
-		ui.button_link_%a_index%.fx:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos+1 " w" cfg.button_link_size-2 " h" cfg.button_link_size-2 " backgroundTrans","./img/lightburst_br_light.png")
+		ui.button_link_%a_index%.fx:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos+1 " w" cfg.button_link_size-2 " h" cfg.button_link_size-2 " backgroundTrans","./img/custom/lightburst_tile.png")
 		ui.button_link_%a_index%.down:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos+1 " w" cfg.button_link_size-2 " h" cfg.button_link_size-2 " hidden backgroundTrans","./img/button_down_layer.png")
 		drawOutline(ui.gameSettingsGui,xPos,yPos,cfg.button_link_size,cfg.button_link_size,cfg.accentColor2,cfg.accentColor1,1)
 		drawOutline(ui.gameSettingsGui,xPos+1,yPos+1,cfg.button_link_size-2,cfg.button_link_size-2,cfg.accentColor4,cfg.accentColor2,1)

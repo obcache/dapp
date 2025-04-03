@@ -27,7 +27,7 @@ drawPanel(targetGui,panelX,panelY,panelW,panelH,panelColor,outlineColor,outlineC
 	ui.panelOutline2%panelId% := targetGui.addText("x" panelX+outlineOffset " y" panelY+outlineOffset " w" panelW-outlineOffset*2 " h" panelH-outlineOffset*2 " background" outlineColor2)		
 	ui.panelOutline1%panelId% := targetGui.addText("x" panelX+outlineOffset " y" panelY+outlineOffset " w" panelW-outlineWidth-outlineOffset*2 " h" panelH-outlineWidth-outlineOffset*2 " background" outlineColor)	
 	ui.panel%panelId% := targetGui.addText("x" panelX+outlineWidth+outlineOffset " y" panelY+outlineWidth+outlineOffset " w" panelW-outlineWidth*2-outlineOffset*2 " h" panelH-outlineWidth*2-outlineOffset*2 " background" panelColor)	
-	ui.%panelId%cosmetic:= targetGui.addPicture("x" panelX+1 " y" panelY+0 " w" panelW-2 " h" panelH " backgroundTrans","./img/lightburst_br_light.png")
+	ui.%panelId%cosmetic:= targetGui.addPicture("x" panelX+1 " y" panelY+0 " w" panelW-2 " h" panelH " backgroundTrans","./img/custom/lightburst_tile.png")
 	if (labelPos != "none") {
 		labelX := panelX+panelW*labelPos
 		labelY := panelY

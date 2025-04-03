@@ -118,8 +118,10 @@ advProgress(2)
 	
 	advProgress(2)
 	ui.3_FillBg:=ui.mainGui.addText("y2 x196 w280 h28 background" cfg.trimColor1)
+
 	ui.3_FillOutline:=ui.mainGui.addText("hidden x206 y1 w260 h30 center backgroundTrans","dapp")
 	ui.3_FillOutline.setFont("q5 s17 c" cfg.fontColor4,"Move-X")
+
 	ui.3_TitleTextDetail:=ui.mainGui.addText("x316 y9 w2 h20 background" cfg.trimColor1)
 	ui.3_TitleTextDetail2:=ui.mainGui.addText("x339 y9 w2 h20 background" cfg.trimColor1)
 	ui.3_TitleTextDetail3:=ui.mainGui.addText("x355 y9 w2 h20 background" cfg.trimColor1)

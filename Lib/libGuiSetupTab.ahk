@@ -25,10 +25,10 @@ GuiSetupTab(&ui,&cfg) {
 	global
 	ui.MainGuiTabs.UseTab("2_Setup____")
 	
-	drawPanel(ui.mainGui,40,39,218,164,cfg.bgColor1,cfg.outlineColor2,cfg.outlineColor1,1,1,"none",100,"Features","calibri",cfg.fontColor1)
-	drawPanel(ui.mainGui,261,39,214,108,cfg.bgColor1,cfg.outlineColor2,cfg.outlineColor1,1,1,"none",100,"Features","calibri",cfg.fontColor1)
-	drawPanel(ui.mainGui,261,150,214,53,cfg.bgColor1,cfg.outlineColor2,cfg.outlineColor1,1,1,"none",100,"Features","calibri",cfg.fontColor1)
-	drawPanel(ui.mainGui,478,39,42,165,cfg.bgColor1,cfg.outlineColor2,cfg.outlineColor1,1,1,"none",100,"Features","calibri",cfg.fontColor1)
+	drawPanel(ui.mainGui,40,37,218,168,cfg.bgColor1,cfg.outlineColor2,cfg.outlineColor1,1,1,"none",100,"Features","calibri",cfg.fontColor1)
+	drawPanel(ui.mainGui,261,37,214,112,cfg.bgColor1,cfg.outlineColor2,cfg.outlineColor1,1,1,"none",100,"Features","calibri",cfg.fontColor1)
+	drawPanel(ui.mainGui,261,152,214,53,cfg.bgColor1,cfg.outlineColor2,cfg.outlineColor1,1,1,"none",100,"Features","calibri",cfg.fontColor1)
+	drawPanel(ui.mainGui,478,37,42,168,cfg.bgColor1,cfg.outlineColor2,cfg.outlineColor1,1,1,"none",100,"Features","calibri",cfg.fontColor1)
 	;line(ui.mainGui,34,0,30,2,cfg.bgColor2)	
 	line(ui.mainGui,529,184,29,2,cfg.accentColor1)
 	ui.MainGui.setFont("q5 s09")
@@ -43,7 +43,7 @@ GuiSetupTab(&ui,&cfg) {
 	drawOutlineMainGui(34,28,497,200,cfg.accentColor3,cfg.accentColor3,2)
 	ui.mainGui.addText("hidden section x48 y26")
 	cfg.toolTipsEnabled			:= iniRead(cfg.file,"Toggles","ToolTipsEnabled",true)
-	ui.toggleToolTips 			:= ui.MainGui.AddPicture("xs y+5 w50 h22 section vToolTips " ((cfg.ToolTipsEnabled) ? ("Background" cfg.trimColor3) : ("Background" cfg.trimColor2)),((cfg.ToolTipsEnabled) ? (cfg.toggleOn) : (cfg.toggleOff)))
+	ui.toggleToolTips 			:= ui.MainGui.AddPicture("xs y+3 w50 h22 section vToolTips " ((cfg.ToolTipsEnabled) ? ("Background" cfg.trimColor3) : ("Background" cfg.trimColor2)),((cfg.ToolTipsEnabled) ? (cfg.toggleOn) : (cfg.toggleOff)))
 	ui.labelToolTips 			:= ui.MainGui.AddText("x+5 ys+2 BackgroundTrans","  ToolTips")
 	ui.toggleToolTips.ToolTip 	:= "Toggles ToolTips"
 	ui.toggleToolTips.OnEvent("Click", toggleChanged)
@@ -181,9 +181,9 @@ GuiSetupTab(&ui,&cfg) {
 	ui.toggleDebug.ToolTip := "Keeps this app on top of all other windows."
 	ui.labelDebug:= ui.MainGui.AddText("x+5 ys+2 backgroundTrans","  Debug")
 
-	drawOutlineNamed("toggleBlock",ui.mainGui,48,44,52,155,cfg.accentColor1,cfg.accentColor1,1)
-	drawOutlineNamed("toggleBlock",ui.mainGui,48,44,52,155,cfg.accentColor2,cfg.accentColor2,1)
-	drawOutlineNamed("toggleBlock",ui.mainGui,48,44,52,155,cfg.outlineColor2,cfg.outlineColor2,1)
+	drawOutlineNamed("toggleBlock",ui.mainGui,48,43,51,157,cfg.accentColor4,cfg.accentColor4,1)
+	;drawOutlineNamed("toggleBlock",ui.mainGui,47,43,50,157,cfg.accentColor2,cfg.accentColor2,1)
+	;drawOutlineNamed("toggleBlock",ui.mainGui,48,42,50,157,cfg.outlineColor2,cfg.outlineColor2,1)
 	
 	ui.mainGui.addText("x270 y45 w198 h62 background" cfg.trimColor1)
 	ui.mainGui.addText("x271 y46 w196 h60 background" cfg.outlineColor2)
@@ -220,7 +220,7 @@ GuiSetupTab(&ui,&cfg) {
 	ui.macroSpeed.onEvent("change",macroSpeedChanged)
 	ui.installedVersionText.setFont("q5 s10")
 	ui.latestVersionText.setFont("q5 s10")
-
+	
 	macroSpeedChanged(*) {
 		cfg.dappLoadoutMultiplier := ui.macroSpeed.value
 	}
@@ -249,11 +249,11 @@ GuiSetupTab(&ui,&cfg) {
 	ui.themeEditorLabel := ui.mainGui.addText("x+5 ys+4 w150 h33 section backgroundTrans","Theme Editor")
 	ui.themeEditorLabel.setFont("q5 s14","move-x")
 	ui.themeEditorButton.onEvent("click",showThemeEditor)
-	
-  	AutoClickerSpeedChanged(*) {
-	cfg.AutoClickerSpeed := (ui.AutoClickerSpeedSlider.Value/0.128)
 
-}
+  	AutoClickerSpeedChanged(*) {
+		cfg.AutoClickerSpeed := (ui.AutoClickerSpeedSlider.Value/0.128)
+	
+	}
 
 ui.defaultThemes := "
 (
