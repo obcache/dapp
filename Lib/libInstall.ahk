@@ -311,9 +311,7 @@ createPbConsole(title) {
 	drawOutlineNamed("pbConsoleOutside",ui.pbConsole,1,1,698,398,"444444","444444",1)
 	drawOutlineNamed("pbConsoleOutside2",ui.pbConsole,2,2,696,396,"777777","777777",1)
 	drawOutlineNamed("pbConsoleOutside3",ui.pbConsole,3,3,694,394,"999999","999999",1)
-	if !fileExist(installDir "/img/dapp_logo.png")
-		fileInstall("./img/dapp_logo.png",installDir "/img/dapp_logo.png",1)
-	ui.pbConsole.addPicture("x250 y150 w200 h100 backgroundTrans",installDir "/img/dapp_logo.png")
+
 	ui.pbConsoleData := ui.pbConsole.addText("x10 y40 w680 h380 backgroundTrans c303030","")
 	ui.pbConsoleData.setFont("q5 s16")
 	ui.pbConsole.show("w700 h400 noActivate")
