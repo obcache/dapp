@@ -325,7 +325,7 @@ WriteConfig() {
 		IniWrite(cfg.fontColor4,cfg.themeFile,"Custom","fontColor4")
 		IniWrite(cfg.bgColor1,cfg.themeFile,"Custom","bgColor1")
 		IniWrite(cfg.trimColor1,cfg.themeFile,"Custom","trimColor1")
-		IniWrite(cfg.bgColor2,cfg.themeFile,"Custom","bgColor2")
+		IniWrite(cfg.bgColor0,cfg.themeFile,"Custom","bgColor0")
 		IniWrite(cfg.bgColor3,cfg.themeFile,"Custom","bgColor3")
 		IniWrite(cfg.trimColor6,cfg.themeFile,"Custom","trimColor6")
 		IniWrite(cfg.trimColor5,cfg.themeFile,"Custom","trimColor5")

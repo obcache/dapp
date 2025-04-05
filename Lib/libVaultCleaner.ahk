@@ -13,11 +13,11 @@ ui.vaultCleanerOpen := false
 
 
 ui.gametabs.useTab("Vault Cleaner")
-	ui.gameSettingsGui.addText("x5 y3 w488 h146 background" cfg.bgColor1)
+	ui.gameSettingsGui.addText("x5 y3 w488 h146 background" cfg.bgColor0)
 	drawOutlineNamed("vaultStats",ui.gameSettingsGui,5,3,488,146,cfg.outlineColor1,cfg.outlineColor2,1)
 	;ui.gameSettingsGui.addText("x11 y8 w118 h60 background" cfg.bgColor3)
-	buttonBg:=ui.gameSettingsGui.addText("x9 y8 w66 h22 background" cfg.bgColor1)
-	textBg:=ui.gameSettingsGui.addText("x75 y8 w412 h22 background" cfg.baseColor)
+	buttonBg:=ui.gameSettingsGui.addText("x9 y8 w66 h22 background" cfg.bgColor0)
+	textBg:=ui.gameSettingsGui.addText("x75 y8 w412 h22 background" cfg.bgColor0)
 	ui.gameSettingsGui.addPicture("x10 y30 w476 h22 backgroundTrans","./img/custom/lightburst_top_light.png")
 	;ui.gameSettingsGui.addPicture("x10 y30 w476 h22 backgroundTrans","./img/custom/lightburst_top_light.png")
 	;drawOutline(ui.gameSettingsGui,10,9,478,64,cfg.accentColor1,cfg.accentColor1,2)
@@ -52,7 +52,7 @@ ui.gametabs.useTab("Vault Cleaner")
 
 
 
-	this.statBg:=ui.gameSettingsGui.addPicture("x10 y78 w235 h64 background" cfg.bgColor2,"./img/custom/lightburst_tr_light.png")
+	this.statBg:=ui.gameSettingsGui.addPicture("x10 y78 w235 h64 background" cfg.bgColor0,"./img/custom/lightburst_tr_light.png")
 	this.statBg.onEvent("click",toggleVaultMode)
 	this.statBg2:=ui.gameSettingsGui.addPicture("hidden x260 y84 w220 h64 background" cfg.trimColor1)
 	;ui.gameSettingsGui.addText("x245 y78 w244 h66 background" cfg.trimColor1 " c" cfg.fontColor3)
@@ -158,7 +158,7 @@ ui.gametabs.useTab("Vault Cleaner")
 		this.statusText.text:="Cannot START vault cleaning when not in VAULT MODE"
 		; this.d2LaunchVaultCleanerButton.redraw()
 		this.d2LaunchVaultCleanerText.text:="Vault Mode: Off`nClick to Toggle"
-		this.statBg.opt("background" cfg.bgColor2)
+		this.statBg.opt("background" cfg.bgColor0)
 		this.statBg.value:="./img/custom/lightburst_br_light.png"
 		drawOutlineNamed("vaultCleanerButton",ui.gameSettingsGui,13,82,230,58,cfg.outlineColor1,cfg.outlineColor2,2)
 		this.d2LaunchVaultCleanerButton.value:="./img/button_vault_up.png"

@@ -27,8 +27,8 @@ GuiGameTab() {
 		
 	ui.gameSettingsGui := Gui()
 	ui.gameSettingsGui.Name := "dapp"
-	ui.gameSettingsGui.BackColor := cfg.bgColor2
-	ui.gameSettingsGui.Color := cfg.bgColor2
+	ui.gameSettingsGui.BackColor := cfg.bgColor0
+	ui.gameSettingsGui.Color := cfg.bgColor0
 	ui.gameSettingsGui.MarginX := 5
 	ui.gameSettingsGui.Opt("-Caption -Border +AlwaysOnTop owner" ui.mainGui.hwnd)
 	ui.gameSettingsGui.SetFont("s14 c" cfg.fontColor1,"calibri")
@@ -87,12 +87,15 @@ drawLinkBar(*) {
 	cfg.button_link_size:=54
 	ui.gameTabs.useTab("Gameplay")
 	; ui.panel4box3:=ui.gameSettingsGui.addText("x7 y75 w485 h70 background" cfg.bgColor1,"")
-	; ui.panel4box4:=ui.gameSettingsGui.addText("x8 y76 w483 h68 c" cfg.bgColor1 " background" cfg.bgColor2)
+	; ui.panel4box4:=ui.gameSettingsGui.addText("x8 y76 w483 h68 c" cfg.bgColor1 " background" cfg.bgColor0)
 	; drawOutlineNamed("d2linkPanel",ui.gameSettingsGui,12,76,474,60,cfg.accentColor2,cfg.accentColor4,1)
 	; drawOutlineNamed("d2linkPanel",ui.gameSettingsGui,6,72,486,72,cfg.outlineColor2,cfg.outlineColor1,1)
 	; drawOutlineNamed("d2AlwaysRunOutline",ui.gameSettingsGui,7,73,484,70,cfg.outlineColor1,cfg.outlineColor2,1)	
-	ui.gameSettingsGui.addText("x6 y76 w484 h72 background" cfg.outlineColor2)
-	ui.gameSettingsGui.addText("x7 y77 w482 h70 background" cfg.bgColor1)
+	ui.bottomPanelOutline:=ui.gameSettingsGui.addText("x6 y76 w484 h72 background" cfg.outlineColor2)
+	ui.bottomPanelBg:=ui.gameSettingsGui.addText("x7 y77 w482 h70 background" cfg.bgColor1)
+	;ui.TopPanelDetail:=ui.gameSettingsGui.addPicture("x7 y77 w482 h70 backgroundTrans","./img/custom/lightburst_diag.png")
+	ui.bottomPanelDetail2:=ui.gameSettingsGui.addPicture("x7 y77 w482 h70 backgroundTrans","./img/custom/lightburst_tile.png")
+	
 	loop 8 {
 		ui.button_link_%a_index% := object()
 		ui.button_link_%a_index%.name:=cfg.button_link_%a_index%[1]
@@ -102,8 +105,8 @@ drawLinkBar(*) {
 		ui.button_link_%a_index%.bg:=ui.gameSettingsGui.addPicture("x" xPos+2 " y" yPos+1 " w" cfg.button_link_size-2 " h" cfg.button_link_size-2 " vbutton_link_" a_index " background" cfg.bgColor3,ui.button_link_%a_index%.thumb)
 		ui.button_link_%a_index%.fx:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos+1 " w" cfg.button_link_size-2 " h" cfg.button_link_size-2 " backgroundTrans","./img/custom/lightburst_tile.png")
 		ui.button_link_%a_index%.down:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos+1 " w" cfg.button_link_size-2 " h" cfg.button_link_size-2 " hidden backgroundTrans","./img/button_down_layer.png")
-		drawOutline(ui.gameSettingsGui,xPos,yPos,cfg.button_link_size,cfg.button_link_size,cfg.accentColor2,cfg.accentColor1,1)
-		drawOutline(ui.gameSettingsGui,xPos+1,yPos+1,cfg.button_link_size-2,cfg.button_link_size-2,cfg.accentColor4,cfg.accentColor2,1)
+		drawOutline(ui.gameSettingsGui,xPos,yPos,cfg.button_link_size,cfg.button_link_size,cfg.accentColor1,cfg.accentColor1,1)
+		drawOutline(ui.gameSettingsGui,xPos+1,yPos+1,cfg.button_link_size-2,cfg.button_link_size-2,cfg.outlineColor2,cfg.outlineColor1,1)
 
 		this_action:=cfg.button_link_%a_index%[3]
 		if cfg.button_link_%a_index%[2]=="URL" {
@@ -241,7 +244,7 @@ drawGameTabs(tabNum := 1) {
 			: "y2 h28")
 				" x2 w88  background" 
 		((tabNum == 1) 
-			? cfg.bgColor2
+			? cfg.bgColor0
 			: cfg.bgColor1) 
 		" c" ((tabNum == 1) 
 			? cfg.fontColor1
@@ -278,7 +281,7 @@ drawGameTabs(tabNum := 1) {
 			: "y2 h28")
 				" x92 w122 center background" 
 		((tabNum == 2) 
-			? cfg.bgColor2 
+			? cfg.bgColor0 
 			: cfg.bgColor1)
 				" c" ((tabNum == 2)
 			? cfg.fontColor1 
@@ -308,15 +311,15 @@ drawGameTabs(tabNum := 1) {
 		? ui.gameTabGui.addText("y0 x214 w2 h34 background" cfg.accentColor1,"")
 		: ui.gameTabGui.addText("y2 x214 w2 h30 background" cfg.accentColor2,""))
 	; ((tabNum == 3)
-		; ? ui.gameTab3SkinOutline := ui.gameTabGui.addText("x214 y0 w86 h32 background" cfg.bgColor2,"" )
-		; : ui.gameTab3SkinOutline := ui.gameTabGui.addText("x214 y2 w86 h32 background" cfg.bgColor2,""))
+		; ? ui.gameTab3SkinOutline := ui.gameTabGui.addText("x214 y0 w86 h32 background" cfg.bgColor0,"" )
+		; : ui.gameTab3SkinOutline := ui.gameTabGui.addText("x214 y2 w86 h32 background" cfg.bgColor0,""))
 	; ui.gameTab3Skin := ui.gameTabGui.addText(
 		; ((tabNum == 3) 
 			; ? "y0 h30" 
 			; : "y2 h28")
 				; " x214 w84 center background" 
 		; ((tabNum == 3) 
-			; ? cfg.bgColor2 
+			; ? cfg.bgColor0 
 			; : cfg.bgColor1)
 				; " c" ((tabNum == 3)
 			; ? cfg.fontColor2 
@@ -354,7 +357,7 @@ drawGameTabs(tabNum := 1) {
 			; : "y2 h28")
 				; " x300 w70 center background" 
 		; ((tabNum == 4) 
-			; ? cfg.bgColor2 
+			; ? cfg.bgColor0 
 			; : cfg.bgColor1)
 				; " c" ((tabNum == 4)
 			; ? cfg.fontColor2 
@@ -1180,13 +1183,13 @@ drawPanel5(*) {
 		ui.%this.name%Text.text := subStr(strUpper(cfg.d2Game%this.name%Key),1,8)
 	}
 	
-	ui.MouseLeftButtonText:=ui.gameSettingsGui.addText("section xs-13 w95 center background" cfg.bgColor2 " c" cfg.fontColor2,cfg.d2GameMouseLeftButtonKey)
-	ui.MouseRightButtonText:=ui.gameSettingsGui.addText("x+5 ys w95 center background" cfg.bgColor2 " c" cfg.fontColor2,cfg.d2GameMouseRightButtonKey)
-	ui.MouseMiddleButtonText:=ui.gameSettingsGui.addText("x+5 ys w95 center background" cfg.bgColor2 " c" cfg.fontColor2,cfg.d2GameMouseMiddleButtonKey)
-	ui.MouseBackButtonText:=ui.gameSettingsGui.addText("x+5 ys w95 center background" cfg.bgColor2 " c" cfg.fontColor2,cfg.d2GameMouseBackButtonKey)
-	ui.MouseForwardButtonText:=ui.gameSettingsGui.addText("x+5 ys w95 center background" cfg.bgColor2 " c" cfg.fontColor2,cfg.d2GameMouseForwardButtonKey)
+	ui.MouseLeftButtonText:=ui.gameSettingsGui.addText("section xs-13 w95 center background" cfg.bgColor0 " c" cfg.fontColor2,cfg.d2GameMouseLeftButtonKey)
+	ui.MouseRightButtonText:=ui.gameSettingsGui.addText("x+5 ys w95 center background" cfg.bgColor0 " c" cfg.fontColor2,cfg.d2GameMouseRightButtonKey)
+	ui.MouseMiddleButtonText:=ui.gameSettingsGui.addText("x+5 ys w95 center background" cfg.bgColor0 " c" cfg.fontColor2,cfg.d2GameMouseMiddleButtonKey)
+	ui.MouseBackButtonText:=ui.gameSettingsGui.addText("x+5 ys w95 center background" cfg.bgColor0 " c" cfg.fontColor2,cfg.d2GameMouseBackButtonKey)
+	ui.MouseForwardButtonText:=ui.gameSettingsGui.addText("x+5 ys w95 center background" cfg.bgColor0 " c" cfg.fontColor2,cfg.d2GameMouseForwardButtonKey)
 }
 
 ;line(ui.mainGui,529,0,2,30,cfg.accentColor2)
 ;line(ui.gameTabGui,495,2,2,32,cfg.trimColor1)
-line(ui.mainGui,474,30,55,2,cfg.bgColor2)
+line(ui.mainGui,474,30,55,2,cfg.bgColor0)

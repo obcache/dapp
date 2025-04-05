@@ -20,7 +20,7 @@ showThemeEditor(*) {
 
 ui.themeEditorGui := gui()
 ui.themeEditorGui.opt("-caption alwaysOnTop toolWindow owner" ui.mainGui.hwnd)
-ui.themeEditorGui.backColor := cfg.bgColor2
+ui.themeEditorGui.backColor := cfg.bgColor0
 ui.themeEditorGui.color := cfg.baseColor
 ui.themeEditorTitlebar := ui.themeEditorGui.addText("x0 y0 w372 h30 background" cfg.bgColor1 " c" cfg.fontColor1,"")
 ui.themeEditorTitlebarText := ui.themeEditorGui.addText("x10 y6 w180 h30 backgroundTrans c" cfg.fontColor1,"Theme Editor" )
@@ -43,7 +43,7 @@ ui.ColorSelectorLabel2 := ui.themeEditorGui.AddText("x6 y33 h21 center section w
 	((cfg.ColorPickerEnabled) 
 		? cfg.fontColor3 " background" cfg.trimColor1 
 		: cfg.fontColor3 " background" cfg.trimColor1) 
-	,((cfg.ColorPickerEnabled) 
+		,((cfg.ColorPickerEnabled) 
 		? (" Color App") 
 		: (" Swatches ")))
 ;drawOutlineNamed("themeEditorCancelButtonOutline",ui.themeEditorGui,300,2,24,24,cfg.outlineColor2,cfg.outlineColor1,2)
@@ -293,7 +293,7 @@ addTheme(*) {
 		IniWrite(cfg.fontColor4,cfg.themeFile,ui.newThemeEdit.Value,"fontColor4")
 		IniWrite(cfg.bgColor1,cfg.themeFile,ui.newThemeEdit.Value,"bgColor1")
 		IniWrite(cfg.trimColor1,cfg.themeFile,ui.newThemeEdit.Value,"trimColor1")
-		IniWrite(cfg.bgColor2,cfg.themeFile,ui.newThemeEdit.Value,"bgColor2")
+		IniWrite(cfg.bgColor0,cfg.themeFile,ui.newThemeEdit.Value,"bgColor2")
 		IniWrite(cfg.bgColor3,cfg.themeFile,ui.newThemeEdit.Value,"bgColor3")
 		IniWrite(cfg.trimColor6,cfg.themeFile,ui.newThemeEdit.Value,"trimColor6")
 		IniWrite(cfg.trimColor5,cfg.themeFile,ui.newThemeEdit.Value,"trimColor5")

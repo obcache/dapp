@@ -16,7 +16,7 @@ GuiGameTab(&ui,&cfg)
 
 	; ui.MainGuiTabs.UseTab("Setup")
 	; ui.MainGui.setFont("q5 s09")
-	; ui.GameTabs := ui.MainGui.AddTab3("x35 y1 w495 h213 Buttons -Redraw Background" cfg.bgColor2 " -E0x200", cfg.gameList)
+	; ui.GameTabs := ui.MainGui.AddTab3("x35 y1 w495 h213 Buttons -Redraw Background" cfg.bgColor0 " -E0x200", cfg.gameList)
 	; ui.MainGui.setFont("q5 s10")
 	; ui.MainGui.setFont("q5 s10")
 	; ui.holdToCrouch := ui.MainGui.AddPicture("x85 y50 w60 h25 section vHoldToCrouch " ((cfg.holdToCrouch) ? ("Background" cfg.trimColor3) : ("Background" cfg.trimColor2)),((cfg.holdToCrouch) ? (cfg.toggleOn) : (cfg.toggleOff)))

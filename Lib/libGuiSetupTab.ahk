@@ -29,7 +29,7 @@ GuiSetupTab(&ui,&cfg) {
 	drawPanel(ui.mainGui,261,37,214,112,cfg.bgColor1,cfg.outlineColor2,cfg.outlineColor1,1,1,"none",100,"Features","calibri",cfg.fontColor1)
 	drawPanel(ui.mainGui,261,152,214,53,cfg.bgColor1,cfg.outlineColor2,cfg.outlineColor1,1,1,"none",100,"Features","calibri",cfg.fontColor1)
 	drawPanel(ui.mainGui,478,37,42,168,cfg.bgColor1,cfg.outlineColor2,cfg.outlineColor1,1,1,"none",100,"Features","calibri",cfg.fontColor1)
-	;line(ui.mainGui,34,0,30,2,cfg.bgColor2)	
+	;line(ui.mainGui,34,0,30,2,cfg.bgColor0)	
 	line(ui.mainGui,529,184,29,2,cfg.accentColor1)
 	ui.MainGui.setFont("q5 s09")
 	;drawOutlineNamed("autoClicker",ui.mainGui,486,45,27,145,cfg.outlineColor2,cfg.outlineColor2,1)
@@ -181,7 +181,7 @@ GuiSetupTab(&ui,&cfg) {
 	ui.toggleDebug.ToolTip := "Keeps this app on top of all other windows."
 	ui.labelDebug:= ui.MainGui.AddText("x+5 ys+2 backgroundTrans","  Debug")
 
-	drawOutlineNamed("toggleBlock",ui.mainGui,48,43,51,157,cfg.accentColor4,cfg.accentColor4,1)
+	;drawOutlineNamed("toggleBlock",ui.mainGui,48,43,51,157,cfg.accentColor4,cfg.accentColor4,1)
 	;drawOutlineNamed("toggleBlock",ui.mainGui,47,43,50,157,cfg.accentColor2,cfg.accentColor2,1)
 	;drawOutlineNamed("toggleBlock",ui.mainGui,48,42,50,157,cfg.outlineColor2,cfg.outlineColor2,1)
 	
@@ -268,7 +268,7 @@ baseColor=4A5A60
 fontColor1=1FFFF
 fontColor2=FCC84B
 bgColor1=355051
-bgColor2=674704
+bgColor0=674704
 trimColor1=355051
 bgColor3=1D5852
 trimColor6=292929
@@ -285,7 +285,7 @@ baseColor=414141
 fontColor1=1FFFF
 fontColor2=FAE7AD
 bgColor1=204040
-bgColor2=984C01
+bgColor0=984C01
 trimColor1=70D1C8
 bgColor3=654901
 trimColor6=292929
@@ -302,7 +302,7 @@ baseColor=606060
 fontColor1=98CBFE
 fontColor2=FE8001
 bgColor1=202020
-bgColor2=984C01
+bgColor0=984C01
 trimColor1=355051
 bgColor3=70D1C8
 trimColor6=292929
@@ -319,7 +319,7 @@ baseColor=2C3537
 fontColor1=1FFFF
 fontColor2=256D65
 bgColor1=355051
-bgColor2=70D1C8
+bgColor0=70D1C8
 trimColor1=355051
 bgColor3=70D1C8
 trimColor6=292929
@@ -336,7 +336,7 @@ accentColor4=19F9F
 fontColor1=E9F977
 fontColor2=303030
 bgColor1=6D8B87
-bgColor2=73714D
+bgColor0=73714D
 trimColor1=6D8B87
 bgColor3=73714D
 trimColor6=CEAFD1
@@ -353,7 +353,7 @@ accentColor4=FFFFFF
 fontColor1=1FFFF0
 fontColor2=FBD58E
 bgColor1=204040
-bgColor2=804001
+bgColor0=804001
 trimColor1=204040
 bgColor3=804001
 trimColor6=292929
