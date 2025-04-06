@@ -258,6 +258,7 @@ preAutoExec(InstallDir,ConfigFileName) {
 			fileInstall("./img/custom/lightburst_tile.png",installDir "/img/custom/lightburst_tile.png",1)
 			fileInstall("./img/custom/lightburst_tile_flipped.png",installDir "/img/custom/lightburst_tile_flipped.png",1)
 			fileInstall("./img/custom/lightburst_diag.png",installDir "/img/custom/lightburst_diag.png",1)
+			fileInstall("./img/custom/lightburst_top_bar.png",installDir "/img/custom/lightburst_top_bar.png",1)
 			fileInstall("./img/icon_help.png",installDir "/img/icon_help.png",1)
 			fileInstall("./img/d2_maps_thumb.png",installDir "/img/d2_maps_thumb.png",1)
 			fileInstall("./img/d2_NumbersOfPowerEmblem_thumb.png",installDir "/img/d2_NumbersOfPowerEmblem_thumb.png",1)

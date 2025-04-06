@@ -1,5 +1,5 @@
 [Interface]
-ThemeList=Autumn,Caribbean,Alien,De Luxe,Dignity,Emerald Forest,Jade Scarab,Neon,Partly Cloudy,Slate
+ThemeList=Alien,Autumn,Caribbean,De Luxe,Dignity,Emerald Forest,Jade Scarab,Marine,Neon,Partly Cloudy,Slate
 [Alien]
 trimColor2=AAAAAA
 fontColor1=7BD12E
@@ -24,6 +24,30 @@ accentColor4=606060
 fontColor2=797979
 HideTitlebarText=0
 TitleBarImage=.\img\custom\lightburst_br_light.png
+
+[De Luxe]
+outlineColor1=BF9B64
+outlineColor2=F1011
+accentColor1=A5735A
+accentColor2=1C3451
+baseColor=10101
+fontColor1=FFF4E8
+fontColor3=4E78A3
+bgColor1=2F4151
+trimColor1=11131C
+bgColor3=676354
+bgColor2=41576D
+trimColor6=292929
+bgColor0=665A42
+trimColor3=F7BB31
+trimColor2=797979
+trimColor4=E7C818
+fontColor2=D5EAFF
+TitleBarImage=.\img\custom\lightBurst_bottom_light.png
+accentColor3=14182
+accentColor4=445B73
+fontColor4=FBD184
+trimColor5=744F01
 
 [Slate]
 trimColor2=AAAAAA
@@ -119,20 +143,20 @@ TitleBarImage=.\img\custom\lightBurst_bottom_light.png
 trimColor5=17171
 accentColor3=1FFFF
 
-[De Luxe]
-outlineColor1=BF9B64
-outlineColor2=F1011
-accentColor1=A5735A
-accentColor2=1C3451
+[Marine]
+outlineColor1=43366
+outlineColor2=9AD8FC
+accentColor1=1F6CE0
+accentColor2=5688C5
 baseColor=10101
-fontColor1=FFF4E8
+fontColor1=E4E4E4
 fontColor3=4E78A3
 bgColor1=2F4151
 trimColor1=11131C
-bgColor3=564A3F
+bgColor3=41839
 bgColor2=41576D
 trimColor6=292929
-bgColor0=665A42
+bgColor0=9E9E01
 trimColor3=F7BB31
 trimColor2=797979
 trimColor4=E7C818
@@ -208,7 +232,7 @@ fontColor4=FBD184
 bgColor1=2F4151
 trimColor1=11131C
 bgColor2=41576D
-bgColor3=564A3F
+bgColor3=676354
 trimColor6=292929
 trimColor5=744F01
 bgColor0=665A42
