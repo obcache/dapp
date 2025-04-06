@@ -150,7 +150,7 @@ ui.d2KeyBindHelpMsg.text := "     Assign keys you'd like to use for each functio
 		ui.d2keybindAppTabDetail.value:="./img/custom/lightburst_tile_flipped.png"
 		ui.d2keybindAppTab3.setFont("s10 c" cfg.fontColor1,"bold")
 		ui.d2keybindAppTab1.move(labelx+0,labelY+6,65,17)
-		ui.d2keybindAppTab2.move(labelx+1,labelY+6,63,16)
+		ui.d2keybindAppTab2.move(labelx+0,labelY+6,63,16)
 		ui.d2keybindAppTab3.move(282,labelY+7,,16)
 		d2changeKeybindPanelTab(2)
 	}
