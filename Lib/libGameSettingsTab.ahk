@@ -67,14 +67,14 @@ drawLinkBar(*) {
 	static xPos:=15
 	static yPos:=82
 	
-	cfg.button_link_1:=["DIM","URL","https://app.destinyitemmanager.com","./img/button_DIM.png"]
-	cfg.button_link_2:=["Glyphs","Function","toggleGlyphWindow","./img/d2_glyphs_thumb.png"]
-	cfg.button_link_3:=["Runes","Function","toggleRuneWindow","./img/d2_runes_thumb.png"]
-	cfg.button_link_4:=["WishCodes","Function","toggleCodeWindow","./img/d2_wishCodes_thumb.png"]
-	cfg.button_link_5:=["Vault","Function","toggleVaultMode","./img/d2_maps_thumb.png"]
-	cfg.button_link_6:=["Glyphs","Function","toggleGlyphWindow","./img/d2_button_unbound.png"]
-	cfg.button_link_7:=["Runes","Function","toggleGlyphWindow","./img/d2_button_unbound.png"]
-	cfg.button_link_8:=["Vault","Function","toggleVaultMode","./img/d2_button_unbound.png"]
+	cfg.button_link_1:=["DIM","URL","https://app.destinyitemmanager.com","./img/button_DIM.png","Launches DIM in browser"]
+	cfg.button_link_2:=["Glyphs","Function","toggleGlyphWindow","./img/d2_glyphs_thumb.png","Shows Glyph callout infographic"]
+	cfg.button_link_3:=["Runes","Function","toggleRuneWindow","./img/d2_runes_thumb.png","Shows Rune callout infographic"]
+	cfg.button_link_4:=["WishCodes","Function","toggleCodeWindow","./img/d2_wishCodes_thumb.png","Shows codes for Wall of Wishes"]
+	cfg.button_link_5:=["Vault","Function","toggleVaultMode","./img/d2_maps_thumb.png","Shows collection of maps"]
+	cfg.button_link_6:=["Unassigned","Function","editLinkBox","./img/d2_button_unbound.png","Unbound, click to assign"]
+	cfg.button_link_7:=["UNassigned","Function","editLinkBox","./img/d2_button_unbound.png","Unbound, click to assign"]
+	cfg.button_link_8:=["Unassigned","Function","editLinkBox","./img/d2_button_unbound.png","Unbound, Click to assign"]
 	ui.button_link_1:=""
 	ui.button_link_2:=""
 	ui.button_link_3:=""
@@ -129,8 +129,9 @@ drawLinkBar(*) {
 	static xPos:=15
 	static yPos:=82
 	loop 8 {
-		ui.button_link_%a_index%.edit:=ui.gameSettingsGui.addPicture("x" xPos-6 " y" yPos+cfg.button_link_size-12 " w18 h19 vbutton_link_edit" a_index,"./img/button_edit.png")
-		ui.button_link_%a_index%.edit.onEvent("click",editLinkBox)
+		(ui.button_link_%a_index%.thumb=="./img/d2_button_unbound.png")
+		? (ui.button_link_%a_index%.edit:=ui.gameSettingsGui.addPicture("x" xPos-6 " y" yPos+cfg.button_link_size-12 " w18 h19 vbutton_link_edit" a_index,"./img/button_edit.png")
+		, ui.button_link_%a_index%.edit.onEvent("click",editLinkBox)) : 0
 		xPos+=cfg.button_link_size+5
 	}
 

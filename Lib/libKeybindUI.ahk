@@ -139,13 +139,15 @@ ui.d2KeyBindHelpMsg.text := "     Assign keys you'd like to use for each functio
 		labelH := 30
 		ui.d2keybindGameTab1.opt("background" cfg.accentColor2)
 		ui.d2keybindGameTab2.opt("background" cfg.bgColor1) 
-		ui.d2keybindGameTab3.setFont("s10 c" cfg.fontColor2,"thin")
+		ui.d2keybindGameTabDetail.value:="./img/custom/lightburst_tile_flipped.png"
+		ui.d2keybindGameTab3.setFont("s9 c" cfg.fontColor2,"thin")
 		ui.d2keybindGameTab1.move(345,labelY+7,91,15)
 		ui.d2keybindGameTab2.move(345,labelY+7,90,14)
-		ui.d2keybindGameTab3.move(343,labelY+6,,16)
+		ui.d2keybindGameTab3.move(343,labelY+8,,16)
 
 		ui.d2keybindAppTab1.opt("background" cfg.outlineColor1)
 		ui.d2keybindAppTab2.opt("background" cfg.bgColor0)
+		ui.d2keybindAppTabDetail.value:="./img/custom/lightburst_tile_flipped.png"
 		ui.d2keybindAppTab3.setFont("s10 c" cfg.fontColor1,"bold")
 		ui.d2keybindAppTab1.move(labelx+0,labelY+6,65,17)
 		ui.d2keybindAppTab2.move(labelx+1,labelY+6,63,16)
@@ -162,14 +164,16 @@ ui.d2KeyBindHelpMsg.text := "     Configure these to mirror your in-game binding
 		labelH := 30
 		ui.d2keybindAppTab1.opt("background" cfg.accentColor2)
 		ui.d2keybindAppTab2.opt("background" cfg.bgColor1) 
-		ui.d2keybindAppTab3.setFont("s10 c" cfg.fontColor2,"thin")
+		ui.d2keybindAppTabDetail.value:="./img/custom/lightburst_tile_flipped.png"
+		ui.d2keybindAppTab3.setFont("s9 c" cfg.fontColor2,"thin")
 		ui.d2keybindAppTab1.move(labelx+2,labelY+7,64,15)
 		ui.d2keybindAppTab2.move(labelx+3,labelY+7,62,14)
-		ui.d2keybindAppTab3.move(282,labelY+6,,16)
+		ui.d2keybindAppTab3.move(282,labelY+8,,16)
 		ui.d2keybindAppTabDetail.opt("y" labelY+10)
 
 		ui.d2keybindGameTab1.opt("background" cfg.outlineColor1)
 		ui.d2keybindGameTab2.opt("background" cfg.bgColor0)
+		ui.d2keybindGameTabDetail.value:="./img/custom/lightburst_tile_flipped.png"
 		ui.d2keybindGameTab3.setFont("s10 c" cfg.fontColor1,"bold")
 		ui.d2keybindGameTab1.move(345,labelY+6,91,17)
 		ui.d2keybindGameTab2.move(346,labelY+6,89,16)
@@ -258,7 +262,7 @@ d2changeKeybindPanelTab(panelNum := 2) {
 			,ui.d2ClassSelectBg3
 			,ui.d2ToggleAppFunctionsOutline
 			,ui.d2Panel1Tab1Detail
-			
+			,ui.d2ClassSelectDetail
 			]
 
 	ui.d2Panel2Objects := [
@@ -366,8 +370,8 @@ drawKeybindBar(*) {
 	ui.dappPauseKeyData 	:= ui.gameSettingsGui.addText("xs-1 y+-24 w" (ui.d2KeybindWidth + max(0,(strLen(ui.currKey)-6))*10) " h21 center c" cfg.trimColor4 " backgroundTrans",subStr(strUpper(cfg.dappPauseKey),1,8))
 	ui.dappPauseKeyLabel	:= ui.gameSettingsGui.addText("xs-1 y+-34 w" (ui.d2KeybindWidth + max(0,(strLen(ui.currKey)-6))*10) " h20 center c" cfg.fontColor1 " backgroundTrans","Pause")
 	
-	ui.keybindSpacer		:= ui.gameSettingsGui.addText("x113 y10 w1 h40 background" cfg.outlineColor2)		
-	ui.keybindSpacer2		:= ui.gameSettingsGui.addText("x114 y10 w1 h40 background" cfg.accentColor4)
+	ui.keybindSpacer		:= ui.gameSettingsGui.addText("x113 y10 w1 h40 background" cfg.outlineColor1)		
+	ui.keybindSpacer2		:= ui.gameSettingsGui.addText("x114 y10 w1 h40 background" cfg.bgColor3)
 	;ui.gameSettingsGui.setFont("s11","Arial")
 	
 	ui.currKey 				:= cfg.dappToggleSprintKey
@@ -411,7 +415,7 @@ drawKeybindBar(*) {
 	ui.d2ClassSelectOutline		:= ui.gameSettingsGui.addText("xs+42 y11 w37 h39 background" cfg.accentColor2)
 	ui.d2ClassSelectOutline2	:= ui.gameSettingsGui.addText("xs+43 y11 w36 h38 background" cfg.bgColor3)
 	ui.d2ClassSelectBg			:= ui.gameSettingsGui.addText("x441 y10 w40 h40 background" cfg.accentColor4)
-	;ui.d2ClassSelectBg2			:= ui.gameSettingsGui.addText("xs+35 y+-14 w56 h16 background" cfg.accentColor1)
+	ui.d2ClassSelectDetail 		:= ui.gameSettingsGui.addPicture("x441 y10 w40 h40 backgroundTrans","./img/custom/lightburst_tile.png")
 
 	ui.d2ClassSelectBg3			:= ui.gameSettingsGui.addText("hidden xs+41 y+-14 w38 h14 background" cfg.bgColor2)
 	ui.d2ClassIcon				:= ui.gameSettingsGui.addPicture("x441 y7 w40 h30 center backgroundTrans","")
@@ -427,11 +431,11 @@ drawKeybindBar(*) {
 	ui.d2ClassIconUp.tooltip 	:= "Click to switch between character classes for the Fly Macro"
 	
 	ui.keybindSpacer7			:= ui.gameSettingsGui.addText("x440 y10 w1 h40 background" cfg.outlineColor1)		
-	ui.keybindSpacer8			:= ui.gameSettingsGui.addText("x441 y10 w1 h40 background" cfg.accentColor4)	
-	ui.keybindSpacer5			:= ui.gameSettingsGui.addText("x395 y10 w1 h40 background" cfg.outlineColor2)		
-	ui.keybindSpacer6			:= ui.gameSettingsGui.addText("x396 y10 w1 h40 background" cfg.accentColor4)	
+	ui.keybindSpacer8			:= ui.gameSettingsGui.addText("x441 y10 w1 h40 background" cfg.bgColor3)	
+	ui.keybindSpacer5			:= ui.gameSettingsGui.addText("x395 y10 w1 h40 background" cfg.outlineColor1)		
+	ui.keybindSpacer6			:= ui.gameSettingsGui.addText("x396 y10 w1 h40 background" cfg.bgColor3)	
 	ui.keybindSpacer3			:= ui.gameSettingsGui.addText("x480	y10 w1 h40 background" cfg.outlineColor1)		
-	ui.keybindSpacer4			:= ui.gameSettingsGui.addText("x481 y10 w1 h40 background" cfg.accentColor4)	
+	ui.keybindSpacer4			:= ui.gameSettingsGui.addText("x481 y10 w1 h40 backgroundTrans")	
 
 	ui.d2ClassIconDown.setFont("s9")
 	ui.d2ClassIconDown.onEvent("click",d2ClassIconDownChanged)
@@ -608,7 +612,7 @@ drawKeybindBar(*) {
 	labelText := "Keybinds"
 	
 	ui.d2keybindAppTab2 := guiName.addText("x" labelX+1 " y" labelY+6 " w" labelW-3 " h" labelH-1 " background" backColor " center c" fontColor) 
-	ui.d2keybindAppTabDetail := guiName.addPicture("x" labelX+1 " y" labelY+10 " w" labelW-3 " h" labelH-10 " backgroundTrans","./img/custom/lightburst_tile_flipped.png") 
+	ui.d2keybindAppTabDetail := guiName.addPicture("x" labelX+1 " y" labelY+10 " w" labelW-3 " h" labelH-9 " backgroundTrans","./img/custom/lightburst_tile.png") 
 
 	ui.d2keybindAppTab3 := guiName.addText("x" labelX+1 " y" labelY-6 " w" labelW-3 " h" labelH " backgroundTrans center c" fontColor, labelText) 
 	ui.d2keybindAppTab3.setFont("s10","thin")
@@ -622,7 +626,7 @@ drawKeybindBar(*) {
 	outlineColor := cfg.accentColor1
 	labelText := "Game Settings"
 	ui.d2keybindGameTab2 := guiName.addText("x" labelX+1 " y" labelY+4 " w" labelW-2 " h" labelH+4 " background" backColor " center c" fontColor) 
-	ui.d2keybindGameTabDetail := guiName.addPicture("x" labelX+0 " y" labelY+10 " w" labelW-7 " h" labelH-10 " backgroundTrans","./img/custom/lightburst_tile_flipped.png") 
+	ui.d2keybindGameTabDetail := guiName.addPicture("x" labelX+0 " y" labelY+10 " w" labelW-7 " h" labelH-9 " backgroundTrans","./img/custom/lightburst_tile.png") 
 	ui.d2keybindGameTab3 := guiName.addText("x" labelX-1 " y" labelY-6 " w" labelW-2 " backgroundTrans center c" fontColor, labelText) 
 	ui.d2keybindGameTab3.setFont("s10","bold")
 
