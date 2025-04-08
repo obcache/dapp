@@ -122,7 +122,6 @@ drawLinkBar(*) {
 	openUrl(this_Url,*) {
 		ui.button_link_%strSplit(this_Url.name,"_")[3]%.down.opt("-hidden")
 		setTimer () => ui.button_link_%strSplit(this_Url.name,"_")[3]%.down.opt("hidden"),-1000
-		
 		run("chrome.exe " cfg.%this_Url.name%[3])
 	}
 	
@@ -227,13 +226,14 @@ refreshGameTabs(tabNum := 1) {
 
 ui.gameTabWidth := 0
 	((tabNum == 1)
-		? ui.gameTab1SkinOutline := ui.gameTabGui.addText("section x0 y0 w94 h32 background" cfg.accentColor1,"" )
-		: ui.gameTab1SkinOutline := ui.gameTabGui.addText("section x0 y2 w94 h30 background" cfg.accentColor2,""))
+		? ui.gameTab1SkinOutline := ui.gameTabGui.addText("section x0 y0 w110 h32 background" cfg.accentColor1,"" )
+		: ui.gameTab1SkinOutline := ui.gameTabGui.addText("section x0 y2 w110 h30 background" cfg.accentColor2,""))
+	
 	ui.gameTab1Skin := ui.gameTabGui.addText(
 		((tabNum == 1) 
 			? "y0 h30" 
 			: "y2 h28")
-				" x2 w88  background" 
+				" x2 w108  background" 
 		((tabNum == 1) 
 			? cfg.bgColor0
 			: cfg.bgColor1) 
@@ -248,7 +248,7 @@ ui.gameTabWidth := 0
 		((tabNum == 1) 
 			? "ys2 h28" 
 			: "ys2 h28")
-				" x+-88 w90 center backgroundTrans c" 
+				" x2 w108 center backgroundTrans c" 
 		((tabNum == 1) 
 			? cfg.fontColor1 
 			: cfg.fontColor2)
@@ -257,20 +257,20 @@ ui.gameTabWidth := 0
 		? "s14" 
 		: "s12")
 			,"Impact")
-	ui.gameTabWidth += 92
+	ui.gameTabWidth += 110
 	((tabNum == 1 || tabNum == 2)
-		? ui.gameTab1Divider:=ui.gameTabGui.addText("y0 x90 w2 h34 background" cfg.accentColor1,"")
-		: ui.gameTab1Divider:=ui.gameTabGui.addText("y2 x90 w2 h30 background" cfg.accentColor2,""))
+		? ui.gameTab1Divider:=ui.gameTabGui.addText("y0 x108 w2 h34 background" cfg.accentColor1,"")
+		: ui.gameTab1Divider:=ui.gameTabGui.addText("y2 x108 w2 h30 background" cfg.accentColor2,""))
 	((tabNum == 2)
-		? ui.gameTab2SkinOutline := ui.gameTabGui.addText("x92 y0 w122 h34 background" cfg.accentColor1,"" )
-		: ui.gameTab2SkinOutline := ui.gameTabGui.addText("x92 y4 w122 h30 background" cfg.accentColor2,""))
+		? ui.gameTab2SkinOutline := ui.gameTabGui.addText("x110 y0 w130 h34 background" cfg.accentColor1,"" )
+		: ui.gameTab2SkinOutline := ui.gameTabGui.addText("x110 y2 w130 h30 background" cfg.accentColor2,""))
 
 	
 	ui.gameTab2Skin := ui.gameTabGui.addText(
 		((tabNum == 2) 
 			? "y0 h30" 
 			: "y2 h28")
-				" x92 w122 center background" 
+				" x110 w130 center background" 
 		((tabNum == 2) 
 			? cfg.bgColor0 
 			: cfg.bgColor1)
@@ -287,7 +287,7 @@ ui.gameTabWidth := 0
 		((tabNum == 2) 
 			? "y3 h26" 
 			: "y5 h32")
-		" x92 w120 center backgroundTrans c" 
+		" x110 w130 center backgroundTrans c" 
 		((tabNum == 2)
 		? cfg.fontColor1 
 			: cfg.fontColor2)
@@ -297,12 +297,13 @@ ui.gameTabWidth := 0
 			? "s14" 
 			: "s12")
 		,"Impact")
-	ui.gameTabWidth += 124	
+	ui.gameTabWidth += 130	
 	((tabNum == 2 || tabNum == 3)
-		? ui.gameTab2Divider:=ui.gameTabGui.addText("y0 x214 w2 h34 background" cfg.accentColor1,"")
-		: ui.gameTab2Divider:=ui.gameTabGui.addText("y2 x214 w2 h30 background" cfg.accentColor2,""))
+		? ui.gameTab2Divider:=ui.gameTabGui.addText("y0 x238 w2 h34 background" cfg.accentColor1,"")
+		: ui.gameTab2Divider:=ui.gameTabGui.addText("y2 x238 w2 h30 background" cfg.accentColor2,""))
 
-		
+	ui.gameTabDetail:=ui.gameTabGui.addPicture("x0 y0 w240 h32 backgroundTrans","./img/custom/lightburst_bottom_bar.png")
+	
 	ui.gameTab1SkinOutline.redraw()
 	ui.gameTab1Skin.redraw()
 	ui.gameTab1Label.redraw()
@@ -311,7 +312,7 @@ ui.gameTabWidth := 0
 	ui.gameTab2Skin.redraw()
 	ui.gameTab2Label.redraw()
 	ui.gameTab2Divider.redraw()
-
+	ui.gameTabDetail.redraw()
 
 
 }
@@ -331,14 +332,16 @@ drawGameTabs(tabNum := 1) {
 	winSetTransColor(ui.transparentColor,ui.gameTabGui)
 			;drawOutlineNamed("gameTabs",ui.gameTabGui,ui.gameTabWidth-0,0,498-ui.gameTabWidth,32,cfg.accentColor3,cfg.accentColor1,1)
 			;ui.gameTabGui.addText("x0 y0 w0 h0 section background" cfg.accentColor1,"")
+			
 	((tabNum == 1)
-		? ui.gameTab1SkinOutline := ui.gameTabGui.addText("section x0 y0 w94 h32 background" cfg.accentColor1,"" )
-		: ui.gameTab1SkinOutline := ui.gameTabGui.addText("section x0 y2 w94 h30 background" cfg.accentColor2,""))
+		? ui.gameTab1SkinOutline := ui.gameTabGui.addText("x0 y0 w110 h32 background" cfg.accentColor1,"" )
+		: ui.gameTab1SkinOutline := ui.gameTabGui.addText("x0 y2 w110 h30 background" cfg.accentColor2,""))
+
 	ui.gameTab1Skin := ui.gameTabGui.addText(
 		((tabNum == 1) 
 			? "y0 h30" 
 			: "y2 h28")
-				" x2 w88  background" 
+				" x2 w108  background" 
 		((tabNum == 1) 
 			? cfg.bgColor0
 			: cfg.bgColor1) 
@@ -351,9 +354,9 @@ drawGameTabs(tabNum := 1) {
 		: "s12"),"Impact")
 	ui.gameTab1Label := ui.gameTabGui.addText(
 		((tabNum == 1) 
-			? "ys2 h28" 
-			: "ys2 h28")
-				" x+-88 w90 center backgroundTrans c" 
+			? "y2 h28" 
+			: "y4 h28")
+				" x2 w106 center backgroundTrans c" 
 		((tabNum == 1) 
 			? cfg.fontColor1 
 			: cfg.fontColor2)
@@ -362,20 +365,19 @@ drawGameTabs(tabNum := 1) {
 		? "s14" 
 		: "s12")
 			,"Impact")
-	ui.gameTabWidth += 92
+	ui.gameTabWidth += 110
 	((tabNum == 1 || tabNum == 2)
-		? ui.gameTab1Divider:=ui.gameTabGui.addText("y0 x90 w2 h34 background" cfg.accentColor1,"")
-		: ui.gameTab1Divider:=ui.gameTabGui.addText("y2 x90 w2 h30 background" cfg.accentColor2,""))
+		? ui.gameTab1Divider:=ui.gameTabGui.addText("y0 x108 w2 h34 background" cfg.accentColor1,"")
+		: ui.gameTab1Divider:=ui.gameTabGui.addText("y2 x108 w2 h30 background" cfg.accentColor2,""))
 	((tabNum == 2)
-		? ui.gameTab2SkinOutline := ui.gameTabGui.addText("x92 y0 w122 h34 background" cfg.accentColor1,"" )
-		: ui.gameTab2SkinOutline := ui.gameTabGui.addText("x92 y2 w122 h30 background" cfg.accentColor2,""))
-
+		? ui.gameTab2SkinOutline := ui.gameTabGui.addText("x110 y0 w130 h34 background" cfg.accentColor1,"" )
+		: ui.gameTab2SkinOutline := ui.gameTabGui.addText("x110 y2 w130 h30 background" cfg.accentColor2,""))
 	
 	ui.gameTab2Skin := ui.gameTabGui.addText(
 		((tabNum == 2) 
 			? "y0 h30" 
 			: "y2 h28")
-				" x92 w122 center background" 
+				" x110 w128 center background" 
 		((tabNum == 2) 
 			? cfg.bgColor0 
 			: cfg.bgColor1)
@@ -392,20 +394,20 @@ drawGameTabs(tabNum := 1) {
 		((tabNum == 2) 
 			? "y3 h26" 
 			: "y5 h32")
-		" x92 w120 center backgroundTrans c" 
+		" x110 w130 center backgroundTrans c" 
 		((tabNum == 2)
 		? cfg.fontColor1 
 			: cfg.fontColor2)
 		,"Vault Cleaner")
 	ui.gameTab2Label.setFont(
 		((tabNum == 2)
-			? "s14" 
+			? "s14"
 			: "s12")
 		,"Impact")
-	ui.gameTabWidth += 124	
+	ui.gameTabWidth += 130	
 	((tabNum == 2 || tabNum == 3)
-		? ui.gameTab2Divider:=ui.gameTabGui.addText("y0 x214 w2 h34 background" cfg.accentColor1,"")
-		: ui.gameTab2Divider:=ui.gameTabGui.addText("y2 x214 w2 h30 background" cfg.accentColor2,""))
+		? ui.gameTab2Divider:=ui.gameTabGui.addText("y0 x238 w2 h34 background" cfg.accentColor1,"")
+		: ui.gameTab2Divider:=ui.gameTabGui.addText("y2 x238 w2 h30 background" cfg.accentColor2,""))
 	; ((tabNum == 3)
 		; ? ui.gameTab3SkinOutline := ui.gameTabGui.addText("x214 y0 w86 h32 background" cfg.bgColor0,"" )
 		; : ui.gameTab3SkinOutline := ui.gameTabGui.addText("x214 y2 w86 h32 background" cfg.bgColor0,""))
@@ -485,23 +487,23 @@ drawGameTabs(tabNum := 1) {
 
 	
 	winGetPos(&mainGuiX,&mainGuiY,,,ui.mainGui.hwnd)
-		ui.gameTabSpacer:=ui.gameTabGui.addText("y2 x216 w" 496-(ui.gameTabWidth) " h28 background" cfg.trimColor1)
+		ui.gameTabSpacer:=ui.gameTabGui.addText("y2 x240 w" 490-(ui.gameTabWidth) " h28 background" cfg.trimColor1)
 		ui.gameTabSpacer.onEvent("click",WM_LBUTTONDOWN_callback)
-		ui.gameTabSpacerDetail:=ui.gameTabGui.addPicture("y2 x216 w" 480-ui.gameTabWidth " h28 backgroundTrans","./img/custom/lightburst_top_light.png")
+		ui.gameTabSpacerDetail:=ui.gameTabGui.addPicture("y2 x240 w" 490-ui.gameTabWidth " h28 backgroundTrans","./img/custom/lightburst_top_light.png")
 		ui.gameTabSpacerDetail.onEvent("click",WM_LBUTTONDOWN_callback)
 	if !(mainGuiX==0 && mainGuiY==0) {
 		ui.gameTabGui.show("w498 h32 noActivate x" mainGuiX+34 " y" mainGuiY+183)
 		
 	}
-	line(ui.gameTabGui,216,30,500,1,cfg.accentColor2)
+	line(ui.gameTabGui,240,30,500,1,cfg.accentColor2)
 	;line(ui.gameTabGui,216,299,280,1,cfg.accentColor2)
 	line(ui.gameTabGui,495,2,28,1,cfg.accentColor4,"VERT")
 	drawOutlineNamed("helpOutline",ui.gameTabGui,463,0,34,31,cfg.accentColor1,cfg.accentColor1,3)
 	ui.gameTabGui.addText("x464 y2 w31 h28 background" cfg.bgColor1)
 	ui.helpIcon := ui.gameTabGui.addPicture("x470 y3 w-1 h26 backgroundTrans","./img/icon_help.png")
-	ui.gameTabGui.addPicture("x430 y0 w65 h30 backgroundTrans","./img/custom/lightburst_br_light.png")
+	;ui.gameTabGui.addPicture("x430 y0 w65 h30 backgroundTrans","./img/custom/lightburst_br_light.png")
 	
-	ui.gameTabGui.addPicture("x-81 y5 w310 h25 backgroundTrans","./img/custom/lightburst_bottom_light.png")
+	ui.gameTabDetail:=ui.gameTabGui.addPicture("x0 y0 w240 h32 backgroundTrans","./img/custom/lightburst_bottom_bar.png")
 	;ui.gameTabGui.addPicture("x90 y0 w212 h30 backgroundTrans","./img/custom/lightburst_bl_light.png")	
 	ui.buildNumber:=ui.gameTabGui.addText("x298 y15 w160 h28 right backgroundTrans","v" a_fileVersion)
 	ui.buildNumber.setFont("q5 s10 c" cfg.fontColor1,"Move-X")
@@ -565,7 +567,7 @@ MouseRemap(*) {
 ; #hotIf MouseRemap()
 	;forward&back mappings
  ; LCtrl & LButton::z
- ; XButton1 & LButton::z
+; XButton1 & LButton::z
  
  ; LCtrl & RButton::y
  ; XButton1 & RButton::y
