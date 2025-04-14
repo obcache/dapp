@@ -991,7 +991,7 @@ d2GameHoldToCrouchKeyClicked(*) {
 		d2RedrawUI()
 	}
 	
-	d2GameSuperKeyClicked(*) {
+d2GameSuperKeyClicked(*) {
 		DialogBox('Assign key for: `n"Super"',"Center")
 		Sleep(100)
 		d2GameSuperKeyInput := InputHook("L1 T6", inputHookAllowedKeys,"+V")
