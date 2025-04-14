@@ -36,7 +36,9 @@ ui.themeEditorCancelButtonBg.onEvent("click", closeThemeEditor)
 
 
 guiVis(ui.themeEditorGui,false)
-ui.themeEditorGui.show("w400 h250 noActivate")
+winGetPos(&mainX,&mainY,&mainW,&mainH,ui.gameSettingsGui.hwnd)
+
+ui.themeEditorGui.show("x" cfg.guiX+80 " y" cfg.guiY-15 " w400 h250 noActivate")
 drawOutlineNamed("themeOutline",ui.themeEditorGui,0,0,398,250,cfg.outlineColor2,cfg.outlineColor2,3)
 ;drawOutlineNamed("themeOutline",ui.themeEditorGui,1,0,324,24,cfg.outlineColor2,cfg.outlineColor1,2)
 ui.ColorSelectorLabel2 := ui.themeEditorGui.AddText("x6 y33 h21 center section w100 BackgroundTrans c"

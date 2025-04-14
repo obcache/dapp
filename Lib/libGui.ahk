@@ -156,21 +156,21 @@ advProgress(2)
 	ui.mainBg := ui.mainGui.addText("x34 y30 w493 h185 background" cfg.bgColor0,"")
 
 	ui.1_GameButtonBg := ui.mainGui.addText("x34 y0 w81 h28 background" cfg.accentColor1)
-	ui.2_SetupButtonBg := ui.mainGui.addText("x117 y1 w80 h28 background" cfg.accentColor2)
+	ui.2_SetupButtonBg := ui.mainGui.addText("x117 y0 w79 h28 background" cfg.accentColor2)
 	
 	advProgress(2)
 	
 	advProgress(2)
-	ui.3_FillBg:=ui.mainGui.addText("y2 x196 w280 h28 background" cfg.trimColor1)
+	ui.3_FillBg:=ui.mainGui.addText("y2 x196 w280 h27 background" cfg.trimColor1)
 
-	ui.3_FillOutline:=ui.mainGui.addText("hidden x206 y1 w260 h29 center backgroundTrans","dapp")
+	ui.3_FillOutline:=ui.mainGui.addText("hidden x206 y0 w260 h29 center backgroundTrans","dapp")
 	ui.3_FillOutline.setFont("q5 s17 c" cfg.fontColor4,"Move-X")
 
 	ui.3_TitleTextDetail:=ui.mainGui.addText("x316 y9 w2 h20 background" cfg.trimColor1)
 	ui.3_TitleTextDetail2:=ui.mainGui.addText("x339 y9 w2 h20 background" cfg.trimColor1)
 	ui.3_TitleTextDetail3:=ui.mainGui.addText("x355 y9 w2 h20 background" cfg.trimColor1)
 	(iniRead(cfg.themeFile,cfg.theme,"HideTitlebarText",0)) ? 0 : (ui.3_FillOutline.opt("-hidden"),ui.3_FillOutline.redraw())
-	ui.titleBar:=ui.mainGui.addPicture("x196 y2 w280 h28 left backgroundTrans",cfg.titleBarImage)
+	ui.titleBar:=ui.mainGui.addPicture("x196 y2 w280 h27 left backgroundTrans",cfg.titleBarImage)
 	ui.titleBar.onEvent("click",wm_lbuttonDown_callback)
 
 
@@ -182,12 +182,12 @@ advProgress(2)
 	
 	ui.1_gameButton.redraw()
 
-	ui.2_SetupButton := ui.mainGui.addText("y2 x117 w78 h28 center background" cfg.bgColor1)
+	ui.2_SetupButton := ui.mainGui.addText("y2 x117 w77 h28 center background" cfg.bgColor1)
 	ui.2_setupButton.redraw()
 	ui.2_SetupButtonLabel := ui.mainGui.addText("y4 x117 w78 h26 center backgroundTrans","Setup")
 	ui.2_SetupButtonLabel.setFont("s12 c" cfg.fontColor2,"impact")
 
-	ui.mainTabsDetail:=ui.mainGui.addPicture("x0 y0 w196 h25 backgroundTrans","./img/custom/lightburst_top_bar.png")
+	ui.mainTabsDetail:=ui.mainGui.addPicture("x0 y2 w196 h25 backgroundTrans","./img/custom/lightburst_top_bar.png")
 
 	line(ui.mainGui,115,28,375,2,cfg.accentColor1)
 	line(ui.mainGui,115,0,30,2,cfg.accentColor1,"vert")
@@ -206,7 +206,7 @@ advProgress(2)
 	ui.mainGuiTabs.setFont("q5 s10 q5")
 	ui.MainGui.setFont("q5 s10 q5 c" cfg.fontColor1,"calibri")
 	ui.MainGuiTabs.OnEvent("Change",TabsChanged)
-	line(ui.mainGui,196,1,300,1,cfg.accentColor2)
+	line(ui.mainGui,196,1,300,1,cfg.accentColor1)
 	advProgress(2)
 	ui.activeTab 				:= ui.mainGuiTabs.Text
 	ui.previousTab 				:= ui.activeTab
@@ -266,7 +266,7 @@ advProgress(2)
 	advProgress(2)
 
 	ui.MainGuiTabs.UseTab("")
-ui.Setup_ActiveTabUi:=ui.mainGui.addText("hidden x117 y30 w78 h2 background" cfg.bgColor0)
+ui.Setup_ActiveTabUi:=ui.mainGui.addText("hidden x117 y30 w76 h2 background" cfg.bgColor0)
 ui.Game_ActiveTabUi:=ui.mainGui.addText("hidden x36 y30 w79 h2 background" cfg.bgColor0)
 advProgress(2)
 line(ui.mainGui,34,211,495,2,cfg.accentColor1)

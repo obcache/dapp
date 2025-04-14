@@ -39,13 +39,6 @@ GuiGameTab() {
 	ui.gameTabs.onEvent("Change",gameTabChanged)
 	ui.mainGui.GetPos(&winX,&winY,,)
 	winSetRegion("2-0 w495 h190",ui.gameSettingsGui)
-	Loop cfg.gameList.length {
-		try {
-			runWait("./lib/lib" cfg.gameList[a_index])
-			ui.gameTabs.value([cfg.gameList[a_index]])
-			ui.gameTabs.useTab(cfg.gameList[a_index])
-		}
-	}
 	
 	ui.d2Sliding := false
 	ui.d2HoldingRun := false         
@@ -68,11 +61,12 @@ drawLinkBar(*) {
 	static yPos:=82
 	
 	cfg.button_link_1:=["DIM","URL","https://app.destinyitemmanager.com","./img/button_DIM.png","Launches DIM in browser"]
-	cfg.button_link_2:=["Glyphs","Function","toggleGlyphWindow","./img/d2_glyphs_thumb.png","Shows Glyph callout infographic"]
-	cfg.button_link_3:=["Runes","Function","toggleRuneWindow","./img/d2_runes_thumb.png","Shows Rune callout infographic"]
-	cfg.button_link_4:=["WishCodes","Function","toggleCodeWindow","./img/d2_wishCodes_thumb.png","Shows codes for Wall of Wishes"]
-	cfg.button_link_5:=["Vault","Function","toggleVaultMode","./img/d2_maps_thumb.png","Shows collection of maps"]
-	cfg.button_link_6:=["Unassigned","Function","editLinkBox","./img/d2_button_unbound.png","Unbound, click to assign"]
+	cfg.button_link_2:=["Join","Function","joinFireteam","./img/ft_icon.png","Unbound, click to assign"]
+	cfg.button_link_3:=["Glyphs","Function","toggleGlyphWindow","./img/d2_glyphs_thumb.png","Shows Glyph callout infographic"]
+	cfg.button_link_4:=["Runes","Function","toggleRuneWindow","./img/d2_runes_thumb.png","Shows Rune callout infographic"]
+	cfg.button_link_5:=["WishCodes","Function","toggleCodeWindow","./img/d2_wishCodes_thumb.png","Shows codes for Wall of Wishes"]
+	cfg.button_link_6:=["Vault","Function","toggleVaultMode","./img/d2_maps_thumb.png","Shows collection of maps"]
+
 	cfg.button_link_7:=["UNassigned","Function","editLinkBox","./img/d2_button_unbound.png","Unbound, click to assign"]
 	cfg.button_link_8:=["Unassigned","Function","editLinkBox","./img/d2_button_unbound.png","Unbound, Click to assign"]
 	ui.button_link_1:=""
@@ -91,7 +85,7 @@ drawLinkBar(*) {
 	; drawOutlineNamed("d2linkPanel",ui.gameSettingsGui,12,76,474,60,cfg.accentColor2,cfg.accentColor4,1)
 	; drawOutlineNamed("d2linkPanel",ui.gameSettingsGui,6,72,486,72,cfg.outlineColor2,cfg.outlineColor1,1)
 	; drawOutlineNamed("d2AlwaysRunOutline",ui.gameSettingsGui,7,73,484,70,cfg.outlineColor1,cfg.outlineColor2,1)	
-	ui.bottomPanelOutline:=ui.gameSettingsGui.addText("x6 y76 w484 h72 background" cfg.outlineColor2)
+	ui.bottomPanelOutline:=ui.gameSettingsGui.addText("x6 y76 w484 h72 background" cfg.outlineColor1)
 	ui.bottomPanelBg:=ui.gameSettingsGui.addText("x7 y77 w482 h70 background" cfg.bgColor1)
 	;ui.TopPanelDetail:=ui.gameSettingsGui.addPicture("x7 y77 w482 h70 backgroundTrans","./img/custom/lightburst_diag.png")
 	ui.bottomPanelDetail2:=ui.gameSettingsGui.addPicture("x7 y77 w482 h70 backgroundTrans","./img/custom/lightburst_tile.png")
@@ -102,11 +96,11 @@ drawLinkBar(*) {
 		ui.button_link_%a_index%.type:=cfg.button_link_%a_index%[2]
 		ui.button_link_%a_index%.action:=cfg.button_link_%a_index%[3]
 		ui.button_link_%a_index%.thumb:=cfg.button_link_%a_index%[4]
-		ui.button_link_%a_index%.bg:=ui.gameSettingsGui.addPicture("x" xPos+2 " y" yPos+1 " w" cfg.button_link_size-2 " h" cfg.button_link_size-2 " vbutton_link_" a_index " background" cfg.bgColor3,ui.button_link_%a_index%.thumb)
-		ui.button_link_%a_index%.fx:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos+1 " w" cfg.button_link_size-2 " h" cfg.button_link_size-2 " backgroundTrans","./img/custom/lightburst_tile.png")
-		ui.button_link_%a_index%.down:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos+1 " w" cfg.button_link_size-2 " h" cfg.button_link_size-2 " hidden backgroundTrans","./img/button_down_layer.png")
+		ui.button_link_%a_index%.bg:=ui.gameSettingsGui.addPicture("x" xPos+2 " y" yPos+1 " w" cfg.button_link_size-1 " h" cfg.button_link_size-1 " vbutton_link_" a_index " background" cfg.bgColor3,ui.button_link_%a_index%.thumb)
+		ui.button_link_%a_index%.fx:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos+1 " w" cfg.button_link_size-1 " h" cfg.button_link_size-1 " backgroundTrans","./img/custom/lightburst_tile.png")
+		ui.button_link_%a_index%.down:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos+1 " w" cfg.button_link_size-1 " h" cfg.button_link_size-1 " hidden backgroundTrans","./img/button_down_layer.png")
 		drawOutline(ui.gameSettingsGui,xPos,yPos,cfg.button_link_size,cfg.button_link_size,cfg.accentColor1,cfg.accentColor1,1)
-		drawOutline(ui.gameSettingsGui,xPos+1,yPos+1,cfg.button_link_size-2,cfg.button_link_size-2,cfg.outlineColor2,cfg.outlineColor1,1)
+		drawOutline(ui.gameSettingsGui,xPos+1,yPos+1,cfg.button_link_size-1,cfg.button_link_size-1,cfg.outlineColor2,cfg.outlineColor1,1)
 
 		this_action:=cfg.button_link_%a_index%[3]
 		if cfg.button_link_%a_index%[2]=="URL" {
@@ -302,7 +296,7 @@ ui.gameTabWidth := 0
 		? ui.gameTab2Divider:=ui.gameTabGui.addText("y0 x238 w2 h34 background" cfg.accentColor1,"")
 		: ui.gameTab2Divider:=ui.gameTabGui.addText("y2 x238 w2 h30 background" cfg.accentColor2,""))
 
-	ui.gameTabDetail:=ui.gameTabGui.addPicture("x0 y0 w240 h32 backgroundTrans","./img/custom/lightburst_bottom_bar.png")
+	ui.gameTabDetail:=ui.gameTabGui.addPicture("x0 y0 w240 h29 backgroundTrans","./img/custom/lightburst_bottom_bar.png")
 	
 	ui.gameTab1SkinOutline.redraw()
 	ui.gameTab1Skin.redraw()
@@ -406,7 +400,7 @@ drawGameTabs(tabNum := 1) {
 		,"Impact")
 	ui.gameTabWidth += 130	
 	((tabNum == 2 || tabNum == 3)
-		? ui.gameTab2Divider:=ui.gameTabGui.addText("y0 x238 w2 h34 background" cfg.accentColor1,"")
+		? ui.gameTab2Divider:=ui.gameTabGui.addText("y2 x238 w2 h34 background" cfg.accentColor1,"")
 		: ui.gameTab2Divider:=ui.gameTabGui.addText("y2 x238 w2 h30 background" cfg.accentColor2,""))
 	; ((tabNum == 3)
 		; ? ui.gameTab3SkinOutline := ui.gameTabGui.addText("x214 y0 w86 h32 background" cfg.bgColor0,"" )
@@ -487,25 +481,25 @@ drawGameTabs(tabNum := 1) {
 
 	
 	winGetPos(&mainGuiX,&mainGuiY,,,ui.mainGui.hwnd)
-		ui.gameTabSpacer:=ui.gameTabGui.addText("y2 x240 w" 490-(ui.gameTabWidth) " h28 background" cfg.trimColor1)
+		ui.gameTabSpacer:=ui.gameTabGui.addText("y2 x240 w" 490-(ui.gameTabWidth) " h29 background" cfg.trimColor1)
 		ui.gameTabSpacer.onEvent("click",WM_LBUTTONDOWN_callback)
-		ui.gameTabSpacerDetail:=ui.gameTabGui.addPicture("y2 x240 w" 490-ui.gameTabWidth " h28 backgroundTrans","./img/custom/lightburst_top_light.png")
+		ui.gameTabSpacerDetail:=ui.gameTabGui.addPicture("y2 x241 w" 490-ui.gameTabWidth " h28 backgroundTrans",cfg.titlebarImage)
 		ui.gameTabSpacerDetail.onEvent("click",WM_LBUTTONDOWN_callback)
 	if !(mainGuiX==0 && mainGuiY==0) {
 		ui.gameTabGui.show("w498 h32 noActivate x" mainGuiX+34 " y" mainGuiY+183)
 		
 	}
-	line(ui.gameTabGui,240,30,500,1,cfg.accentColor2)
+	line(ui.gameTabGui,241,28,500,1,cfg.accentColor3)
 	;line(ui.gameTabGui,216,299,280,1,cfg.accentColor2)
-	line(ui.gameTabGui,495,2,28,1,cfg.accentColor4,"VERT")
+	line(ui.gameTabGui,495,2,28,1,cfg.accentColor3,"VERT")
 	drawOutlineNamed("helpOutline",ui.gameTabGui,463,0,34,31,cfg.accentColor1,cfg.accentColor1,3)
 	ui.gameTabGui.addText("x464 y2 w31 h28 background" cfg.bgColor1)
 	ui.helpIcon := ui.gameTabGui.addPicture("x470 y3 w-1 h26 backgroundTrans","./img/icon_help.png")
 	;ui.gameTabGui.addPicture("x430 y0 w65 h30 backgroundTrans","./img/custom/lightburst_br_light.png")
 	
-	ui.gameTabDetail:=ui.gameTabGui.addPicture("x0 y0 w240 h32 backgroundTrans","./img/custom/lightburst_bottom_bar.png")
+	ui.gameTabDetail:=ui.gameTabGui.addPicture("x0 y0 w240 h30 backgroundTrans",cfg.titlebarImage)
 	;ui.gameTabGui.addPicture("x90 y0 w212 h30 backgroundTrans","./img/custom/lightburst_bl_light.png")	
-	ui.buildNumber:=ui.gameTabGui.addText("x298 y15 w160 h28 right backgroundTrans","v" a_fileVersion)
+	ui.buildNumber:=ui.gameTabGui.addText("x298 y15 w160 h29 right backgroundTrans","v" a_fileVersion)
 	ui.buildNumber.setFont("q5 s10 c" cfg.fontColor1,"Move-X")
 }
 
@@ -1111,6 +1105,179 @@ closeInfographic(*) {
 		ui.infoGui.destroy()
 	try	
 		ui.infoGuiBg.destroy()
+}
+
+joinFireteam(*) {
+	ui.friendsList:=strSplit(iniRead(cfg.file,"Game","FriendsList",""),",")
+	try 
+		joinGui.destroy()
+	joinGui:=gui()
+	joinGui.opt("-caption -border alwaysOnTop owner" ui.gameSettingsGui.hwnd)
+	joinGui.backColor:="010203"
+	joinGui.color:="010203"
+	winSetTransColor("010203",joinGui)
+	joinGuiOutline:=joinGui.addText("x0 y0 w312 h" (ui.friendsList.length*30)+30 " background" cfg.accentColor2)
+	joinGuiBackground:=joinGui.addText("x2 y2 w308 h" (ui.friendsList.length*30)+30 " background" cfg.bgColor0)
+	joinGuiTitlebar:=joinGui.addText("x2 y2 w308 h" 24 " background" cfg.trimColor1)
+	joinGuiTitlebar.onEvent("click",WM_LBUTTONDOWN_callback)
+	joinGuiAddTextOutline:=("x40 y5 w250 h10 background" cfg.accentColor1)
+	joinGuiAddFriendOutline:=joinGui.addText("x4 y4 w18 h18 background" cfg.outlineColor1)
+	joinGuiAddFriend:=joinGui.addPicture("x5 y5 w16 h16 background" cfg.trimColor3,"./img/button_plus.png")
+	joinGuiAddText:=joinGui.addText("x35 y4 w246 h20 backgroundTrans","Add Friend")		
+	joinGuiAddText.setFont("s14 c" cfg.fontColor4,"move-x")
+	joinGuiAddFriend.onEvent("click",addFriend)
+
+	
+	drawFriendsList()
+	winGetPos(&gsX,&gsY,&gsW,&gsH,ui.gameSettingsGui)
+	joinGui.hide()
+	winGetPos(&friendsX,&friendsY,&friendsW,&friendsH,joinGui)
+	
+	joinGui.show("x" (gsX+(gsW/2))-(friendsW/2) " y" (gsY+(gsH/2))-(friendsH/2) " w314 h" (ui.friendsList.length*30)+40)
+	hotkey("ESC",closeJoinGui)
+	hotKey("ESC","On")
+	drawFriendsList(*) {
+		static controlId:=0
+		controlId+=1
+		ui.joinGuiAnchor:=joinGui.addText("x5 y20 backgroundTrans section")
+		for friend in ui.friendsList {
+			
+			ui.joinGui%a_index%:=""
+			ui.joinGui%a_index%MoveDown:=""
+			ui.joinGui%a_index%MoveUp:=""
+
+			try
+				JoinGui%a_index%:=""
+			try
+				Up%a_index%:=""
+			try
+				Down%a_index%:=""
+			try
+				Delete%a_index%:=""
+			try
+				ui.joinGui%a_index%.opt("vTmp")
+			ui.joinGui%a_index%:=joinGui.addText("v" controlId "-" a_index  " section x5 y" (a_index*30) " w223 h26 background" cfg.bgColor1,friend)
+			ui.joinGui%a_index%.setFont("s14 c" cfg.fontColor1,"courier sys")
+			ui.joinGui%a_index%.onEvent("click",joinFriend)
+			
+			; try
+				; ui.joinGui%a_index%MoveUp.opt("vTmp")
+			ui.joinGui%a_index%MoveUp:=joinGui.addPicture("vUp" controlId "-" a_index  " disabled x225 y" (a_index*30) " w26 h26 background" cfg.trimColor%(a_index>1) ? 3 : 2%,"./img/button_up_arrow.png")
+			ui.joinGui%a_index%MoveUp.onEvent("click",moveUp)
+
+			; try
+				; ui.joinGui%a_index%MoveDown.opt("vTmp")
+			ui.joinGui%a_index%MoveDown:=joinGui.addPicture("vDown" controlId "-" a_index  " disabled x253 y" (a_index*30) " w26 h26 background" cfg.trimColor%(a_index<ui.friendsList.length) ? 3 : 2%,"./img/button_down_arrow.png")
+			ui.joinGui%a_index%MoveDown.onEvent("click",moveDown)
+
+			
+			; try
+				; ui.joinGui%a_index%Delete.opt("vTmp")
+			ui.joinGui%a_index%delete:=joinGui.addPicture("vDelete" controlId "-" a_index  " x281 ys+0 w26 h26 background" cfg.trimColor4,"./img/button_x.png")
+			ui.joinGui%a_index%delete.onEvent("click",removeFriend)
+
+			joinFriend(friend_idx,*) {
+				send("{enter}")
+				send('/join " ui.friendsList[friend_idx] "`n"')
+				send("{enter}")
+			}
+			
+			winGetPos(,,&joinW,&joinH,joinGui)
+			joinGuiOutline.opt("h" joinH+50)
+			joinGuiOutline.redraw()
+			joinGuiBackground.opt("h" joinH+46)
+			joinGuiBackground.redraw()
+		}
+		moveUp(this_ctrl,*) {
+			friend_idx:=strSplit(this_ctrl.name,"-")[2]
+			for friend in ui.friendsList {
+				if a_index == friend_idx {
+					tmpFriendUp:= ui.friendsList[a_index-1]
+					ui.friendsList[a_index-1]:= ui.friendsList[a_index]
+					ui.friendsList[a_index]:=tmpFriendUp
+				}
+			}
+			drawFriendsList()
+		}
+		moveDown(this_ctrl,*) {
+			friend_idx:=strSplit(this_ctrl.name,"-")[2]
+			for friend in ui.friendsList {
+				if a_index == friend_idx {
+					tmpFriendUp:= ui.friendsList[a_index+1]
+					ui.friendsList[a_index+1]:= ui.friendsList[a_index]
+					ui.friendsList[a_index]:=tmpFriendUp
+				}
+				
+			}
+			drawFriendsList()
+		}
+	}
+
+	addFriend(*) {
+		addFriendGui:=gui()
+		addFriendGui.opt("-caption toolWindow alwaysOnTop owner" joinGui.hwnd)
+		addFriendGui.backColor:="010203"
+		addFriend.color:="010203"
+		winSetTransColor("010203",addFriendGui)
+		addFriendGuiSubmit:=addFriendGui.addButton("hidden w0 h0 default")
+		addFriendGuiSubmit.onEvent("click",saveFriend)
+		addFriendGuiOutline:=addFriendGui.addText("x0 y0 w255 h46 background" cfg.accentColor1)
+		addFriendGuiBg:=addFriendGui.addText("x2 y2 w251 h42 background" cfg.bgColor0)
+		addFriendGuiText:=addFriendGui.addText("x5 w245 y1 h20 backgroundTrans","FRIEND'S BUNGIE ID")
+		addFriendGuiText.setFont("s14 c" cfg.fontColor1,"move-x")
+		addFriendGui.setFont("s10 c" cfg.fontColor1,"calibri")
+		addFriendGuiInput:=addFriendGui.addEdit("r1 x5 y22 w205 background" cfg.bgColor1 " -wantReturn")
+		
+		addFriendGuiSaveButton:=addFriendGui.addPicture("x212 y3 w40 h40 backgroundTrans","./img/button_save.png")
+		addFriendGuiSaveButton.opt("v" addFriendGuiInput.text)
+		addFriendGuiSaveButton.onEvent("click",saveFriend)
+		addFriendGui.show()
+			
+		hotkey("ESC",addFriendClose)
+		hotkey("ESC","On")
+		saveFriend(*) {
+			ui.friendsList.push(addFriendGuiInput.text)
+			friendsListStr:=""
+			for friend in ui.friendsList {
+				friendsListStr.=friend ","
+			}
+			iniWrite(rtrim(friendsListStr,","),cfg.file,"Game","FriendsList")
+			addFriendGui.destroy()
+			drawFriendsList()
+			joinFireteam()
+
+			hotkey("ESC",closeJoinGui)
+			exit
+		}
+		addFriendClose(*) {
+			addFriendGui.destroy()
+			hotkey("ESC",closeJoinGui)
+			exit
+		}
+	}	
+
+	removeFriend(this_ctrl,*) {
+		friend_idx:=strSplit(this_ctrl.name,"-")[2]
+		ui.joinGui%friend%:=""
+		for friend in friendsList {
+			
+			if ui.friendsList[friend_idx] = friendsList[a_index]
+				friendsList.removeAt[a_index]
+		}
+		friendsListStr:=""
+		for friend in ui.friendsList {
+			friendsListStr.=friend ","
+		}
+		iniWrite(cfg.file,"Game","FriendsList",rtrim(friendsListStr,","))
+		drawFriendsList()
+		joinFireteam()
+	}
+	
+	closeJoinGui(*) {
+		hotkey("ESC","Off")
+		joinGui.destroy()
+		exit
+	}
 }
 
 toggleGlyphWindow(this_button,*) {
