@@ -276,6 +276,7 @@ preAutoExec(InstallDir,ConfigFileName) {
 			fileInstall("./img/button_quit.png",installDir "/img/button_quit.png",1)
 			fileInstall("./img/button_up_arrow.png",installDir "/img/button_up_arrow.png",1)
 			fileInstall("./img/button_down_arrow.png",installDir "/img/button_down_arrow.png",1)
+			fileInstall("./img/ft_icon.png",installDir "/img/ft_icon.png",1)
 			
 			if !fileExist("c:\windows\fonts\move-x.otf") {
 				fileInstall("./redist/move-x.otf","c:\windows\fonts\move-x.otf",1)

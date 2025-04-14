@@ -489,13 +489,13 @@ drawGameTabs(tabNum := 1) {
 		ui.gameTabGui.show("w498 h32 noActivate x" mainGuiX+34 " y" mainGuiY+183)
 		
 	}
-	line(ui.gameTabGui,241,28,500,1,cfg.accentColor3)
+	line(ui.gameTabGui,241,30,500,1,cfg.accentColor1)
 	;line(ui.gameTabGui,216,299,280,1,cfg.accentColor2)
 	line(ui.gameTabGui,495,2,28,1,cfg.accentColor3,"VERT")
-	drawOutlineNamed("helpOutline",ui.gameTabGui,463,0,34,31,cfg.accentColor1,cfg.accentColor1,3)
-	ui.gameTabGui.addText("x464 y2 w31 h28 background" cfg.bgColor1)
+	drawOutlineNamed("helpOutline",ui.gameTabGui,463,0,34,32,cfg.accentColor1,cfg.accentColor1,3)
+	ui.gameTabGui.addText("x464 y2 w31 h29 background" cfg.bgColor1)
 	ui.helpIcon := ui.gameTabGui.addPicture("x470 y3 w-1 h26 backgroundTrans","./img/icon_help.png")
-	;ui.gameTabGui.addPicture("x430 y0 w65 h30 backgroundTrans","./img/custom/lightburst_br_light.png")
+	ui.gameTabGui.addPicture("x464 y2 w31 h29 backgroundTrans","./img/custom/lightburst_bottom_bar.png")
 	
 	ui.gameTabDetail:=ui.gameTabGui.addPicture("x0 y0 w240 h30 backgroundTrans",cfg.titlebarImage)
 	;ui.gameTabGui.addPicture("x90 y0 w212 h30 backgroundTrans","./img/custom/lightburst_bl_light.png")	
@@ -1162,12 +1162,12 @@ joinFireteam(*) {
 			
 			; try
 				; ui.joinGui%a_index%MoveUp.opt("vTmp")
-			ui.joinGui%a_index%MoveUp:=joinGui.addPicture("vUp" controlId "-" a_index  " disabled x225 y" (a_index*30) " w26 h26 background" cfg.trimColor%(a_index>1) ? 3 : 2%,"./img/button_up_arrow.png")
+			ui.joinGui%a_index%MoveUp:=joinGui.addPicture("vUp" controlId "-" a_index  " x225 y" (a_index*30) " w26 h26 background" cfg.trimColor%(a_index>1) ? 3 : 2%,"./img/button_up_arrow.png")
 			ui.joinGui%a_index%MoveUp.onEvent("click",moveUp)
 
 			; try
 				; ui.joinGui%a_index%MoveDown.opt("vTmp")
-			ui.joinGui%a_index%MoveDown:=joinGui.addPicture("vDown" controlId "-" a_index  " disabled x253 y" (a_index*30) " w26 h26 background" cfg.trimColor%(a_index<ui.friendsList.length) ? 3 : 2%,"./img/button_down_arrow.png")
+			ui.joinGui%a_index%MoveDown:=joinGui.addPicture("vDown" controlId "-" a_index  " x253 y" (a_index*30) " w26 h26 background" cfg.trimColor%(a_index<ui.friendsList.length) ? 3 : 2%,"./img/button_down_arrow.png")
 			ui.joinGui%a_index%MoveDown.onEvent("click",moveDown)
 
 			
@@ -1182,13 +1182,8 @@ joinFireteam(*) {
 				send("{enter}")
 			}
 			
-			winGetPos(,,&joinW,&joinH,joinGui)
-			joinGuiOutline.opt("h" joinH+50)
-			joinGuiOutline.redraw()
-			joinGuiBackground.opt("h" joinH+46)
-			joinGuiBackground.redraw()
-		}
 		moveUp(this_ctrl,*) {
+	
 			friend_idx:=strSplit(this_ctrl.name,"-")[2]
 			for friend in ui.friendsList {
 				if a_index == friend_idx {
@@ -1200,6 +1195,7 @@ joinFireteam(*) {
 			drawFriendsList()
 		}
 		moveDown(this_ctrl,*) {
+		
 			friend_idx:=strSplit(this_ctrl.name,"-")[2]
 			for friend in ui.friendsList {
 				if a_index == friend_idx {
@@ -1211,6 +1207,15 @@ joinFireteam(*) {
 			}
 			drawFriendsList()
 		}
+
+			winGetPos(,,&joinW,&joinH,joinGui)
+			joinGuiOutline.opt("h" joinH+50)
+			joinGuiOutline.redraw()
+			joinGuiBackground.opt("h" joinH+46)
+			joinGuiBackground.redraw()
+		
+
+	}
 	}
 
 	addFriend(*) {
