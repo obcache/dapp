@@ -31,13 +31,30 @@ hideGui(*) {
 	guiVis(ui.gameSettingsGui,false)
 	guiVis(ui.gameTabGui,false)
 }
+resetDefaults(*) {
+	iniWrite(true,cfg.file,"Game","ResetFlag")
+	reload()
+}
+
+checkResetFlag(*) {
+	if iniRead(cfg.file,"Game","resetFlag",false) {
+		iniWrite(false,cfg.file,"Game","ResetFlag")
+		if !dirExist(installDir "/backups")
+			dirCreate(installDir "/backups")
+		if fileExist(cfg.file)
+			fileMove(cfg.file,cfg.file "-" formatTime("T12","yyyyMMddhhmmss"))
+		reload
+	}
+}
 
 initTrayMenu(*) {
 	A_TrayMenu.Delete
 	A_TrayMenu.Add
 	A_TrayMenu.Add("Show Window", restoreWin)
 	A_TrayMenu.Add("Hide Window", HideGui)
+	A_TrayMenu.Add()
 	A_TrayMenu.Add("Reset Window Position", ResetWindowPosition)
+	A_TrayMenu.Add("Restore Defaults", resetDefaults)
 	A_TrayMenu.Add()
 	A_TrayMenu.Add("Exit App"
 	, KillMe)
@@ -48,6 +65,7 @@ initTrayMenu(*) {
 
 cfgLoad(&cfg, &ui) {
 	global
+	checkResetFlag()
 	cfg.dbFileName := A_ScriptDir . "\dapp.DB"
 	data.queryResult		:= array()
 	ui.guiH					:= 220  	;430 for Console Mode
@@ -230,23 +248,23 @@ cfgLoad(&cfg, &ui) {
 	cfg.titlebarImage		:= iniRead(cfg.themeFile,cfg.Theme,"ThemeTitlebarImage","./img/dapp_titlebar.png")
 	cfg.holdToCrouchEnabled 	:= IniRead(cfg.file,"game","HoldToCrouch",true)
 	cfg.cs2HoldToScopeEnabled	:= IniRead(cfg.file,"game","cs2HoldToScopeEnabled",true)
-	cfg.dappPauseKey			:= iniRead(cfg.file,"Game","dappPauseKey","<UNSET>")
+	cfg.dappPauseKey			:= iniRead(cfg.file,"Game","dappPauseKey","Pause")
 	cfg.dappPaused				:= iniRead(cfg.file,"Game","dappPaused",false)
 	cfg.d2AlwaysRunEnabled		:= iniRead(cfg.file,"Game","d2AlwaysRunEnabled",false)
-	cfg.dappSwordFlyKey		:= iniRead(cfg.file,"Game","dappSwordFlyKey","<UNSET>")
-	cfg.dappLoadoutKey			:= IniRead(cfg.file,"Game","dappLoadoutKey","<UNSET>")
+	cfg.dappSwordFlyKey		:= iniRead(cfg.file,"Game","dappSwordFlyKey","t")
+	cfg.dappLoadoutKey			:= IniRead(cfg.file,"Game","dappLoadoutKey","[")
 	cfg.dappLoadoutMultiplier	:= iniRead(cfg.file,"Game","dappLoadoutMultiplier",1)
-	cfg.dappToggleSprintKey	:= IniRead(cfg.file,"Game","dappToggleSprintKey","<UNSET>")
-	cfg.dappReloadKey			:= IniRead(cfg.file,"Game","dappReloadKey","<UNSET>")
-	cfg.dappHoldToCrouchKey	:= IniRead(cfg.file,"Game","dappHoldToCrouchKey","<UNSET>")
-	cfg.d2GameHoldToCrouchKey	:= iniRead(cfg.file,"Game","d2GameHoldToCrouchKey","LControl")
-	cfg.d2GameToggleSprintKey	:= IniRead(cfg.file,"Game","d2GameToggleSprintKey","<UNSET>")
-	cfg.d2GameReloadKey			:= IniRead(cfg.file,"Game","d2GameReloadKey","<UNSET>")
-	cfg.d2GameGrenadeKey		:= IniRead(cfg.file,"Game","d2GameGrenadeKey","<UNSET>")
-	cfg.d2GameSuperKey			:= IniRead(cfg.file,"Game","d2GameSuperKey","<UNSET>")
+	cfg.dappToggleSprintKey	:= IniRead(cfg.file,"Game","dappToggleSprintKey","capslock")
+	cfg.dappReloadKey			:= IniRead(cfg.file,"Game","dappReloadKey","r")
+	cfg.dappHoldToCrouchKey	:= IniRead(cfg.file,"Game","dappHoldToCrouchKey","lshift")
+	cfg.d2GameHoldToCrouchKey	:= iniRead(cfg.file,"Game","d2GameHoldToCrouchKey","lcontrol")
+	cfg.d2GameToggleSprintKey	:= IniRead(cfg.file,"Game","d2GameToggleSprintKey","capslock")
+	cfg.d2GameReloadKey			:= IniRead(cfg.file,"Game","d2GameReloadKey","r")
+	cfg.d2GameGrenadeKey		:= IniRead(cfg.file,"Game","d2GameGrenadeKey","[")
+	cfg.d2GameSuperKey			:= IniRead(cfg.file,"Game","d2GameSuperKey","\")
 	cfg.d2CharacterClass		:= iniRead(cfg.file,"Game","d2CharacterClass","1")
 	cfg.d2AutoGameConfigEnabled := iniRead(cfg.file,"Game","d2AutoGameConfigEnabled",true)
-	cfg.SLBHopKey				:= iniRead(cfg.file,"Game","ShatterLineBunnyHopKey","<UNSET>")
+	cfg.SLBHopKey				:= iniRead(cfg.file,"Game","ShatterLineBunnyHopKey","???")
 	cfg.d2GameMouseLeftButtonKey := iniRead(cfg.file,"Mouse","MouseLeftButton","LButton")
 	cfg.d2GameMouseRightButtonKey := iniRead(cfg.file,"Mouse","MouseRightButton","LButton")
 	cfg.d2GameMouseMiddleButtonKey := iniRead(cfg.file,"Mouse","MouseMiddleButton","LButton")

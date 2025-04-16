@@ -34,7 +34,7 @@ GuiGameTab() {
 	ui.gameSettingsGui.SetFont("s14 c" cfg.fontColor1,"calibri")
 	ui.gameTabs := ui.gameSettingsGui.addTab3("x0 y-5 h194 0x400 bottom c" cfg.bgColor1 " choose" cfg.activeGameTab,["Gameplay","Vault Cleaner"])
 
-	ui.gameTabs.choose(cfg.gameTabList[cfg.activeGameTab])
+	ui.gameTabs.value:=cfg.activeGameTab
 	ui.gameTabs.setFont("s16","move-x")
 	ui.gameTabs.onEvent("Change",gameTabChanged)
 	ui.mainGui.GetPos(&winX,&winY,,)
@@ -85,10 +85,10 @@ drawLinkBar(*) {
 	; drawOutlineNamed("d2linkPanel",ui.gameSettingsGui,12,76,474,60,cfg.accentColor2,cfg.accentColor4,1)
 	; drawOutlineNamed("d2linkPanel",ui.gameSettingsGui,6,72,486,72,cfg.outlineColor2,cfg.outlineColor1,1)
 	; drawOutlineNamed("d2AlwaysRunOutline",ui.gameSettingsGui,7,73,484,70,cfg.outlineColor1,cfg.outlineColor2,1)	
-	ui.bottomPanelOutline:=ui.gameSettingsGui.addText("x6 y76 w484 h72 background" cfg.outlineColor1)
-	ui.bottomPanelBg:=ui.gameSettingsGui.addText("x7 y77 w482 h70 background" cfg.bgColor1)
+	ui.bottomPanelOutline:=ui.gameSettingsGui.addText("x6 y78 w484 h66 background" cfg.outlineColor1)
+	ui.bottomPanelBg:=ui.gameSettingsGui.addText("x7 y79 w482 h64 background" cfg.bgColor1)
 	;ui.TopPanelDetail:=ui.gameSettingsGui.addPicture("x7 y77 w482 h70 backgroundTrans","./img/custom/lightburst_diag.png")
-	ui.bottomPanelDetail2:=ui.gameSettingsGui.addPicture("x7 y77 w482 h70 backgroundTrans","./img/custom/lightburst_tile.png")
+	ui.bottomPanelDetail2:=ui.gameSettingsGui.addPicture("x7 y79 w482 h64 backgroundTrans","./img/custom/lightburst_tile.png")
 
 	
 	loop 8 {
@@ -97,11 +97,11 @@ drawLinkBar(*) {
 		ui.button_link_%a_index%.type:=cfg.button_link_%a_index%[2]
 		ui.button_link_%a_index%.action:=cfg.button_link_%a_index%[3]
 		ui.button_link_%a_index%.thumb:=cfg.button_link_%a_index%[4]
-		ui.button_link_%a_index%.bg:=ui.gameSettingsGui.addPicture("x" xPos+2 " y" yPos+1 " w" cfg.button_link_size-1 " h" cfg.button_link_size-1 " vbutton_link_" a_index " background" cfg.bgColor3,ui.button_link_%a_index%.thumb)
+		ui.button_link_%a_index%.bg:=ui.gameSettingsGui.addPicture("x" xPos+2 " y" yPos+1 " w" cfg.button_link_size-1 " h-1 vbutton_link_" a_index " background" cfg.bgColor3,ui.button_link_%a_index%.thumb)
 		ui.button_link_%a_index%.fx:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos+1 " w" cfg.button_link_size-1 " h" cfg.button_link_size-1 " backgroundTrans","./img/custom/lightburst_tile.png")
 		ui.button_link_%a_index%.down:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos+1 " w" cfg.button_link_size-1 " h" cfg.button_link_size-1 " hidden backgroundTrans","./img/button_down_layer.png")
-		drawOutline(ui.gameSettingsGui,xPos,yPos,cfg.button_link_size,cfg.button_link_size,cfg.accentColor1,cfg.accentColor1,1)
-		drawOutline(ui.gameSettingsGui,xPos+1,yPos+1,cfg.button_link_size-1,cfg.button_link_size-1,cfg.outlineColor2,cfg.outlineColor1,1)
+		drawOutline(ui.gameSettingsGui,xPos,yPos,cfg.button_link_size-1,cfg.button_link_size-1,cfg.outlineColor2,cfg.outlineColor1,1)
+		;drawOutline(ui.gameSettingsGui,xPos+1,yPos+1,cfg.button_link_size-1,cfg.button_link_size-1,cfg.accentColor3,cfg.accentColor4,1)
 
 		this_action:=cfg.button_link_%a_index%[3]
 		if cfg.button_link_%a_index%[2]=="URL" {

@@ -64,6 +64,9 @@ preAutoExec(InstallDir,ConfigFileName) {
 					{
 						sleep(1000)
 						pbConsole("`nReplacing existing configuration files with updated and clean files")
+						if !dirExist(installDir "/backups")
+							dirCreate(installDir "/backups")
+						fileMove(installDir "/dapp.ini",installDir "/backups/dapp_ini-" formatTime("T12","yyMMddhhmmss") ".bak",1)
 						FileInstall("./dapp.ini",InstallDir "/dapp.ini",1)
 						FileInstall("./dapp.themes",InstallDir "/dapp.themes",1)
 						FileInstall("./AfkData.csv",InstallDir "/AfkData.csv",1)

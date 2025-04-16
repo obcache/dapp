@@ -9,20 +9,25 @@ if (InStr(A_LineFile,A_ScriptFullPath)) { ;run main app
 }
 
 hotIfWinActive("ahk_exe destiny2.exe")
-	hotKey("*" cfg.dappToggleSprintKey,d2ToggleAlwaysSprint)
-	hotKey("*" cfg.dappPauseKey,d2ToggleAppFunctions)
+	if cfg.dappToggleSprintKey != "???"
+		hotKey("*" cfg.dappToggleSprintKey,d2ToggleAlwaysSprint)
+	if cfg.dappPauseKey != "???"
+		hotKey("*" cfg.dappPauseKey,d2ToggleAppFunctions)
 hotIf()
 
 hotIf(d2RemapCrouchEnabled)
-	hotkey("~*$" cfg.dappHoldToCrouchKey,d2HoldToCrouch)
+	if cfg.dappHoldTOCrouchKey != "???"
+		hotkey("~*$" cfg.dappHoldToCrouchKey,d2HoldToCrouch)
 hotIf()
 
 hotIf(d2ReadyToReload)
-	hotKey("~*" cfg.dappReloadKey,d2reload)
+	if cfg.dappReloadKey != "???"
+		hotKey("~*" cfg.dappReloadKey,d2reload)
 hotIf()
 
 hotIf(d2ReadyToSprint)
-	hotKey("~*w",d2StartSprinting)
+	if cfg.dappToggleSprintKey != "???"
+		hotKey("~*w",d2StartSprinting)
 hotIf()
 
 
@@ -222,12 +227,15 @@ d2CreateLoadoutKeys(*) {
 
 	hotIf(dappEnabled)
 	hotkey("Joy12",d2controllerLoadoutChange)
-	hotkey(cfg.dappLoadoutKey,d2LoadoutModifier)
+	if cfg.dappLoadoutKey != "???"
+		hotkey(cfg.dappLoadoutKey,d2LoadoutModifier)
 	loop cfg.d2LoadoutCoords.length {
 		if a_index == 10 {
-				hotkey(cfg.dappLoadoutKey " & 0",d2LoadoutModifier)
+				if cfg.dappLoadoutKey != "???"
+					hotkey(cfg.dappLoadoutKey " & 0",d2LoadoutModifier)
 		} else {
-					hotKey(cfg.dappLoadoutKey " & " substr(a_index,-1),d2LoadoutModifier)
+					if cfg.dappLoadoutKey != "???"
+						hotKey(cfg.dappLoadoutKey " & " substr(a_index,-1),d2LoadoutModifier)
 				}
 			}
 	hotIf()

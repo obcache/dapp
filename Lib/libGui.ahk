@@ -170,6 +170,9 @@ advProgress(2)
 	ui.3_TitleTextDetail2:=ui.mainGui.addText("x339 y9 w2 h20 background" cfg.trimColor1)
 	ui.3_TitleTextDetail3:=ui.mainGui.addText("x355 y9 w2 h20 background" cfg.trimColor1)
 	(iniRead(cfg.themeFile,cfg.theme,"HideTitlebarText",0)) ? 0 : (ui.3_FillOutline.opt("-hidden"),ui.3_FillOutline.redraw())
+	
+	if !fileExist(cfg.titleBarImage)
+		cfg.titleBarImage:="./img/custom/lightburst_bottom_light.png"
 	ui.titleBar:=ui.mainGui.addPicture("x196 y2 w280 h27 left backgroundTrans",cfg.titleBarImage)
 	ui.titleBar.onEvent("click",wm_lbuttonDown_callback)
 

@@ -1,4 +1,4 @@
-A_FileVersion := "1.6.4.6"
+A_FileVersion := "1.6.4.7"
 a_appName := "dapp"
 if (fileExist("./dapp_currentBuild.dat"))
 a_fileVersion := fileRead("./dapp_currentBuild.dat")
@@ -161,7 +161,7 @@ try {
 ui.mainGuiTabs.choose(cfg.mainTabList[1])
 ;ui.MainGuiTabs.Choose(cfg.mainTabList[cfg.activeMainTab])
 
-ui.gameTabs.choose(cfg.gameTabList[cfg.activeGameTab])
+ui.gameTabs.value:=cfg.activeGameTab
 tabsInit()
 fadeIn()
 
