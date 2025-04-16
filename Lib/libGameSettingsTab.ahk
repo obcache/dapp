@@ -85,10 +85,10 @@ drawLinkBar(*) {
 	; drawOutlineNamed("d2linkPanel",ui.gameSettingsGui,12,76,474,60,cfg.accentColor2,cfg.accentColor4,1)
 	; drawOutlineNamed("d2linkPanel",ui.gameSettingsGui,6,72,486,72,cfg.outlineColor2,cfg.outlineColor1,1)
 	; drawOutlineNamed("d2AlwaysRunOutline",ui.gameSettingsGui,7,73,484,70,cfg.outlineColor1,cfg.outlineColor2,1)	
-	ui.bottomPanelOutline:=ui.gameSettingsGui.addText("x6 y78 w484 h66 background" cfg.outlineColor1)
-	ui.bottomPanelBg:=ui.gameSettingsGui.addText("x7 y79 w482 h64 background" cfg.bgColor1)
+	ui.bottomPanelOutline:=ui.gameSettingsGui.addText("x8 y76 w480 h70 background" cfg.outlineColor1)
+	ui.bottomPanelBg:=ui.gameSettingsGui.addText("x9 y77 w478 h68 background" cfg.bgColor1)
 	;ui.TopPanelDetail:=ui.gameSettingsGui.addPicture("x7 y77 w482 h70 backgroundTrans","./img/custom/lightburst_diag.png")
-	ui.bottomPanelDetail2:=ui.gameSettingsGui.addPicture("x7 y79 w482 h64 backgroundTrans","./img/custom/lightburst_tile.png")
+	ui.bottomPanelDetail2:=ui.gameSettingsGui.addPicture("x9 y77 w478 h68 backgroundTrans","./img/custom/lightburst_tile.png")
 
 	
 	loop 8 {
@@ -100,7 +100,7 @@ drawLinkBar(*) {
 		ui.button_link_%a_index%.bg:=ui.gameSettingsGui.addPicture("x" xPos+2 " y" yPos+1 " w" cfg.button_link_size-1 " h-1 vbutton_link_" a_index " background" cfg.bgColor3,ui.button_link_%a_index%.thumb)
 		ui.button_link_%a_index%.fx:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos+1 " w" cfg.button_link_size-1 " h" cfg.button_link_size-1 " backgroundTrans","./img/custom/lightburst_tile.png")
 		ui.button_link_%a_index%.down:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos+1 " w" cfg.button_link_size-1 " h" cfg.button_link_size-1 " hidden backgroundTrans","./img/button_down_layer.png")
-		drawOutline(ui.gameSettingsGui,xPos,yPos,cfg.button_link_size-1,cfg.button_link_size-1,cfg.outlineColor2,cfg.outlineColor1,1)
+		drawOutline(ui.gameSettingsGui,xPos,yPos,cfg.button_link_size+1,cfg.button_link_size+1,cfg.accentColor1,cfg.accentColor2,1)
 		;drawOutline(ui.gameSettingsGui,xPos+1,yPos+1,cfg.button_link_size-1,cfg.button_link_size-1,cfg.accentColor3,cfg.accentColor4,1)
 
 		this_action:=cfg.button_link_%a_index%[3]
@@ -124,18 +124,42 @@ drawLinkBar(*) {
 	static yPos:=82
 	loop 8 {
 		(ui.button_link_%a_index%.thumb=="./img/d2_button_unbound.png")
-		? (ui.button_link_%a_index%.edit:=ui.gameSettingsGui.addPicture("x" xPos-6 " y" yPos+cfg.button_link_size-12 " w18 h19 vbutton_link_edit" a_index,"./img/button_edit.png")
+		? (ui.button_link_%a_index%.edit:=ui.gameSettingsGui.addPicture("x" xPos-1 " y" yPos+cfg.button_link_size-16 " backgroundTrans w18 h19 vbutton_link_edit" a_index,"./img/button_edit.png")
 		, ui.button_link_%a_index%.edit.onEvent("click",editLinkBox)) : 0
 		xPos+=cfg.button_link_size+5
 	}
 
 	editLinkBox(lParam, ID, *) {
-		msgBox(lParam.name)
+	;	msgBox(lParam.name)
+		ui.linkName:=ui.%lParam.name%.Name
+		ui.linkType:=ui.%lParam.name%.type
+		ui.linkAction:=ui.%lParam.name%.action
+		ui.linkThumb:=ui.%lParam.name%.thumb
+		
 		ui.editLinkGui:=gui()
 		ui.editLinkGui.opt("-caption -border toolWindow alwaysOnTop")
-		ui.editLinkGui.backColor:=ui.Transparent
+		ui.editLinkGui.backColor:="010203"
+		winSetTransColor("010203",ui.editLinkGui)
 		ui.editLinkGui.color:=cfg.fontColor3
-		ui.thumbPreview:=editLinkGui.addPicture("x5 y5 w50 h50 backgroundTrans")
+		ui.editLinkBg:=ui.editLinkGui.addText("x0 y0 w300 h80 background" cfg.bgColor0)
+		ui.editLinkTitlebar:=ui.editLinkGui.addText("x0 y0 w80 h20 background" cfg.bgColor1)
+		ui.editLinkTitlebar.onEvent("click",WM_LBUTTONDOWN_callback)
+
+		ui.thumbPreview:=ui.editLinkGui.addPicture("center x10 y20 w60 h60 backgroundTrans",ui.%lParam.name%.thumb)
+		
+		ui.linkNameLabel:=ui.editLinkGui.addText("x85 y2 w40 backgroundTrans c" cfg.fontColor1,"Name: ")
+		ui.linkNameValue:=ui.editLinkGui.addEdit("x125 y2 w170 background" cfg.bgColor1 " c" cfg.trimColor1,ui.%lParam.name%.name)
+		ui.linkTypeLabel:=ui.editLinkGui.addText("x85 y20 w40 backgroundTrans c" cfg.fontColor1,"Type: ")
+		ui.linkTypeValue:=ui.editLinkGui.addEdit("x125 y20 w170 background" cfg.bgColor1 " c" cfg.trimColor1,ui.%lParam.name%.type)
+		ui.linkActionLabel:=ui.editLinkGui.addText("x85 y40 w40 backgroundTrans c" cfg.fontColor1,"Action: ")
+		ui.linkActionValue:=ui.editLinkGui.addEdit("x125 y40 w170 background" cfg.bgColor1 " c" cfg.trimColor1,ui.%lParam.name%.action)
+		ui.linkThumbLabel:=ui.editLinkGui.addText("x85 y60 w40 backgroundTrans c" cfg.fontColor1,"Thumb: ")
+		ui.linkThumbValue:=ui.editLinkGui.addEdit("x125 y60 w170 background" cfg.bgColor1 " c" cfg.trimColor1,ui.%lParam.name%.thumb)
+		drawOutline(ui.editLinkGui,0,0,80,20,cfg.accentColor1,cfg.accentColor1,1)
+		;drawOutline(ui.editLinkGui,0,20,80,60,cfg.accentColor1,cfg.accentColor1,1)
+		drawOutline(ui.editLinkGui,80,0,300,80,cfg.accentColor1,cfg.accentColor1,1)
+		winGetPos(&elX,&elY,&elW,&elH,ui.gameSettingsGui)
+		ui.editLinkGui.show("x" elX " y" elY+elH+10 " w" 300 " h" 80)
 	}
 }
 	
@@ -314,7 +338,7 @@ ui.gameTabWidth := 0
 drawGameTabs(tabNum := 1) {
 	ui.gameTabWidth := 0
 	; try	 
-		; ui.gameTabGui.destroy()
+	; ui.gameTabGui.destroy()
 	ui.gameTabGui := gui()
 	ui.gameTabGui.opt("-caption toolWindow alwaysOnTop +E0x20 owner" ui.gameSettingsGui.hwnd)
 	ui.gameTabGui.backColor := ui.transparentColor
@@ -1296,16 +1320,24 @@ displayInfoGfx(imageFilename) {
 	ui.infoGfxGui.opt("-caption toolWindow owner" ui.mainGui.hwnd)
 	ui.infoGfxGui.backColor:="010203"
 	winSetTransColor("010203",ui.infoGfxGui)
-	ui.infoGfxImage:=ui.infoGfxGui.addPicture("h" infoGfxPosH " w-1 backgroundTrans",imageFilename)
-	ui.infoGfxImage.onEvent("click",closeThis)
-	ui.infoGfxImage.getPos(,,,&imgW)
+
+
+
+	ui.infoGfxImage:=ui.infoGfxGui.addPicture("h0 w-1 backgroundTrans",imageFilename)
+	ui.infoGfxImage.onEvent("DoubleClick",closeThis)
+	ui.infoGfxImage.onEvent("click",WM_LBUTTONDOWN_callback)
+	ui.infoGfxImage.getPos(,,&imgW)
+	if monitorGetCount() > 1 {
 	if infoGfxSide=="Left" {
-		infoGfxPosX+=(imgW/4)
+		ui.infoGfxGui.show("x" l-imgW-20 " y" t)
 	} else {
-		infoGfxPosX-=(imgW/2)
+		ui.infoGfxGui.show("x" r+20 " y" t)
+	}	
+	} else {
+		ui.infoGfxGui.show("x" l " y" t)
 	}
 	winSetTransColor("010203",ui.infoGfxGui)
-	ui.infoGfxGui.show("x" infoGfxPosX " y" t)
+	
 }
 
 	closeThis(*) {
