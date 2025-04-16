@@ -318,7 +318,7 @@ createPbConsole(title) {
 		runWait('reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts" /v "FontName (TrueType)" /t REG_SZ /d move-x.otf /f',,"Min")
 	}
 	;winSetTransColor(transColor,ui.pbConsole)
-	ui.pbConsoleTitle := ui.pbConsole.addText("x5 y5 w690 h35 section center backgrounda0a0a0 c353535",title)
+	ui.pbConsoleTitle := ui.pbConsole.addText("x5 y5 w690 h35 section center backgrounda0a0a0 c202020",title)
 	ui.pbConsoleTitle.setFont("q5 s20","move-x")
 	drawOutlineNamed("pbConsoleTitle",ui.pbConsole,4,4,692,392,"b0b0b0","b0b0b0",1)
 
