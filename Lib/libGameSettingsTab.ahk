@@ -61,13 +61,13 @@ drawLinkBar(*) {
 	static yPos:=82
 	
 	cfg.button_link_1:=["DIM","URL","https://app.destinyitemmanager.com","./img/button_DIM.png","Launches DIM in browser"]
-	cfg.button_link_2:=["Join","Function","joinFireteam","./img/ft_icon.png","Unbound, click to assign"]
+	cfg.button_link_2:=["Join","Function","toggleFireteam","./img/ft_icon.png","Unbound, click to assign"]
 	cfg.button_link_3:=["Glyphs","Function","toggleGlyphWindow","./img/d2_glyphs_thumb.png","Shows Glyph callout infographic"]
 	cfg.button_link_4:=["Runes","Function","toggleRuneWindow","./img/d2_runes_thumb.png","Shows Rune callout infographic"]
 	cfg.button_link_5:=["WishCodes","Function","toggleCodeWindow","./img/d2_wishCodes_thumb.png","Shows codes for Wall of Wishes"]
 	cfg.button_link_6:=["Vault","Function","toggleVaultMode","./img/d2_maps_thumb.png","Shows collection of maps"]
 
-	cfg.button_link_7:=["UNassigned","Function","editLinkBox","./img/d2_button_unbound.png","Unbound, click to assign"]
+	cfg.button_link_7:=["Unassigned","Function","editLinkBox","./img/d2_button_unbound.png","Unbound, click to assign"]
 	cfg.button_link_8:=["Unassigned","Function","editLinkBox","./img/d2_button_unbound.png","Unbound, Click to assign"]
 	ui.button_link_1:=""
 	ui.button_link_2:=""
@@ -89,6 +89,7 @@ drawLinkBar(*) {
 	ui.bottomPanelBg:=ui.gameSettingsGui.addText("x7 y77 w482 h70 background" cfg.bgColor1)
 	;ui.TopPanelDetail:=ui.gameSettingsGui.addPicture("x7 y77 w482 h70 backgroundTrans","./img/custom/lightburst_diag.png")
 	ui.bottomPanelDetail2:=ui.gameSettingsGui.addPicture("x7 y77 w482 h70 backgroundTrans","./img/custom/lightburst_tile.png")
+
 	
 	loop 8 {
 		ui.button_link_%a_index% := object()
@@ -296,8 +297,6 @@ ui.gameTabWidth := 0
 		? ui.gameTab2Divider:=ui.gameTabGui.addText("y0 x238 w2 h34 background" cfg.accentColor1,"")
 		: ui.gameTab2Divider:=ui.gameTabGui.addText("y2 x238 w2 h30 background" cfg.accentColor2,""))
 
-	ui.gameTabDetail:=ui.gameTabGui.addPicture("x0 y0 w240 h29 backgroundTrans","./img/custom/lightburst_bottom_bar.png")
-	
 	ui.gameTab1SkinOutline.redraw()
 	ui.gameTab1Skin.redraw()
 	ui.gameTab1Label.redraw()
@@ -402,88 +401,12 @@ drawGameTabs(tabNum := 1) {
 	((tabNum == 2 || tabNum == 3)
 		? ui.gameTab2Divider:=ui.gameTabGui.addText("y2 x238 w2 h34 background" cfg.accentColor1,"")
 		: ui.gameTab2Divider:=ui.gameTabGui.addText("y2 x238 w2 h30 background" cfg.accentColor2,""))
-	; ((tabNum == 3)
-		; ? ui.gameTab3SkinOutline := ui.gameTabGui.addText("x214 y0 w86 h32 background" cfg.bgColor0,"" )
-		; : ui.gameTab3SkinOutline := ui.gameTabGui.addText("x214 y2 w86 h32 background" cfg.bgColor0,""))
-	; ui.gameTab3Skin := ui.gameTabGui.addText(
-		; ((tabNum == 3) 
-			; ? "y0 h30" 
-			; : "y2 h28")
-				; " x214 w84 center background" 
-		; ((tabNum == 3) 
-			; ? cfg.bgColor0 
-			; : cfg.bgColor1)
-				; " c" ((tabNum == 3)
-			; ? cfg.fontColor2 
-			; : cfg.fontColor1)
-				; ,"")
-	; ui.gameTab3Skin.setFont(
-		; ((tabNum == 3)
-			; ? "s14" 
-			; : "s12")
-			; ,"Impact")
-	; ui.gameTab3Label := ui.gameTabGui.addText(
-		; ((tabNum == 3) 
-			; ? "y2 h28" 
-			; : "y5 h32")
-		; " x214 w84 center backgroundTrans c" 
-		; ((tabNum == 3)
-		; ? cfg.fontColor2 
-			; : cfg.fontColor1)
-		; ,"Mouse")
-	; ui.gameTab3Label.setFont(
-		; ((tabNum == 3)
-			; ? "s14" 
-			; : "s12")
-		; ,"Impact")
-	; ui.gameTabWidth += 86
-	; ((tabNum == 3 || tabNum == 4)
-		; ? ui.gameTabGui.addText("y0 x298 w2 h34 section background" cfg.accentColor1,"")
-		; : ui.gameTabGui.addText("y2 x298 w2 h30 section background" cfg.accentColor1,""))
-	; ((tabNum == 4)
-		; ? ui.gameTab4SkinOutline := ui.gameTabGui.addText("x300 y0 w70 h32 background" cfg.accentColor1,"" )
-		; : ui.gameTab4SkinOutline := ui.gameTabGui.addText("x300 y2 w70 h32 background" cfg.accentColor2,""))
-	; ui.gameTab4Skin := ui.gameTabGui.addText(
-		; ((tabNum == 4) 
-			; ? "y0 h30" 
-			; : "y2 h28")
-				; " x300 w70 center background" 
-		; ((tabNum == 4) 
-			; ? cfg.bgColor0 
-			; : cfg.bgColor1)
-				; " c" ((tabNum == 4)
-			; ? cfg.fontColor2 
-			; : cfg.fontColor1)
-				; ,"")
-	; ui.gameTab4Skin.setFont(
-		; ((tabNum == 4)
-			; ? "s14" 
-			; : "s12")
-			; ,"Impact")
-	; ui.gameTab4Label := ui.gameTabGui.addText(
-		; ((tabNum == 4) 
-			; ? "y2 h28" 
-			; : "y5 h32")
-		; " x300 w68 center backgroundTrans c" 
-		; ((tabNum == 4)
-		; ? cfg.fontColor2 
-			; : cfg.fontColor1)
-		; ,"InfoGFX")
-	; ui.gameTab4Label.setFont(
-		; ((tabNum == 4)
-			; ? "s14" 
-			; : "s12")
-		; ,"Impact")
-	; ui.gameTabWidth += 70
-	; ((tabNum == 4)
-		; ? ui.gameTabGui.addText("y0 x370 w2 h34 section background" cfg.accentColor1,"")
-	; : ui.gameTabGui.addText("y2 x370 w2 h30 section background" cfg.accentColor2,""))
-
+	
 	
 	winGetPos(&mainGuiX,&mainGuiY,,,ui.mainGui.hwnd)
 		ui.gameTabSpacer:=ui.gameTabGui.addText("y2 x240 w" 490-(ui.gameTabWidth) " h29 background" cfg.trimColor1)
 		ui.gameTabSpacer.onEvent("click",WM_LBUTTONDOWN_callback)
-		ui.gameTabSpacerDetail:=ui.gameTabGui.addPicture("y2 x241 w" 490-ui.gameTabWidth " h28 backgroundTrans",cfg.titlebarImage)
+		ui.gameTabSpacerDetail:=ui.gameTabGui.addPicture("y2 x241 w" 490-ui.gameTabWidth " h28 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 		ui.gameTabSpacerDetail.onEvent("click",WM_LBUTTONDOWN_callback)
 	if !(mainGuiX==0 && mainGuiY==0) {
 		ui.gameTabGui.show("w498 h32 noActivate x" mainGuiX+34 " y" mainGuiY+183)
@@ -495,12 +418,13 @@ drawGameTabs(tabNum := 1) {
 	drawOutlineNamed("helpOutline",ui.gameTabGui,463,0,34,32,cfg.accentColor1,cfg.accentColor1,3)
 	ui.gameTabGui.addText("x464 y2 w31 h29 background" cfg.bgColor1)
 	ui.helpIcon := ui.gameTabGui.addPicture("x470 y3 w-1 h26 backgroundTrans","./img/icon_help.png")
-	ui.gameTabGui.addPicture("x464 y2 w31 h29 backgroundTrans","./img/custom/lightburst_bottom_bar.png")
+	ui.gameTabGui.addPicture("x464 y0 w31 h31 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+	;ui.gameTabDetail:=ui.gameTabGui.addPicture("x0 y0 w240 h30 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 	
-	ui.gameTabDetail:=ui.gameTabGui.addPicture("x0 y0 w240 h30 backgroundTrans",cfg.titlebarImage)
+	ui.gameTabDetail:=ui.gameTabGui.addPicture("x0 y0 w240 h31 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 	;ui.gameTabGui.addPicture("x90 y0 w212 h30 backgroundTrans","./img/custom/lightburst_bl_light.png")	
 	ui.buildNumber:=ui.gameTabGui.addText("x298 y15 w160 h29 right backgroundTrans","v" a_fileVersion)
-	ui.buildNumber.setFont("q5 s10 c" cfg.fontColor1,"Move-X")
+	ui.buildNumber.setFont("q5 s10 c" cfg.fontColor4,"Move-X")
 }
 
 
@@ -1107,25 +1031,32 @@ closeInfographic(*) {
 		ui.infoGuiBg.destroy()
 }
 
+toggleFireteam(*) {
+	static fireteamVisible:=false
+	fireteamVisible:=!fireteamVisible ? joinFireteam() : closeJoinGui()
+}
+
 joinFireteam(*) {
+		ui.button_link_2.down.opt("-hidden")
+	
 	ui.friendsList:=strSplit(iniRead(cfg.file,"Game","FriendsList",""),",")
 	try 
 		joinGui.destroy()
 	joinGui:=gui()
 	joinGui.opt("-caption -border alwaysOnTop owner" ui.gameSettingsGui.hwnd)
-	joinGui.backColor:="010203"
+	joinGui.backColor:=cfg.bgColor0
 	joinGui.color:="010203"
 	winSetTransColor("010203",joinGui)
-	joinGuiOutline:=joinGui.addText("x0 y0 w312 h" (ui.friendsList.length*30)+30 " background" cfg.accentColor2)
-	joinGuiBackground:=joinGui.addText("x2 y2 w308 h" (ui.friendsList.length*30)+30 " background" cfg.bgColor0)
-	joinGuiTitlebar:=joinGui.addText("x2 y2 w308 h" 24 " background" cfg.trimColor1)
+	joinGuiOutline:=joinGui.addText("x0 y0 w314 h" (ui.friendsList.length*30)+30 " background" cfg.accentColor1)
+	joinGuiBackground:=joinGui.addText("x2 y2 w310 h" (ui.friendsList.length*30)+30 " background" cfg.bgColor0)
+	joinGuiTitlebar:=joinGui.addText("x2 y2 w310 h" 24 " background" cfg.trimColor1)
 	joinGuiTitlebar.onEvent("click",WM_LBUTTONDOWN_callback)
 	joinGuiAddTextOutline:=("x40 y5 w250 h10 background" cfg.accentColor1)
-	joinGuiAddFriendOutline:=joinGui.addText("x4 y4 w18 h18 background" cfg.outlineColor1)
+	joinGuiAddFriendOutline:=joinGui.addText("x4 y4 w18 h18 background" cfg.accentColor1)
 	joinGuiAddFriend:=joinGui.addPicture("x5 y5 w16 h16 background" cfg.trimColor3,"./img/button_plus.png")
-	joinGuiAddText:=joinGui.addText("x35 y4 w246 h20 backgroundTrans","Add Friend")		
+	joinGuiAddText:=joinGui.addText("x35 y4 w246 h20 backgroundTrans","Click to Join a Friend")		
 	joinGuiAddText.setFont("s14 c" cfg.fontColor4,"move-x")
-	joinGuiAddFriend.onEvent("click",addFriend)
+	joinGuiAddText.onEvent("click",addFriend)
 
 	
 	drawFriendsList()
@@ -1133,7 +1064,9 @@ joinFireteam(*) {
 	joinGui.hide()
 	winGetPos(&friendsX,&friendsY,&friendsW,&friendsH,joinGui)
 	
-	joinGui.show("x" (gsX+(gsW/2))-(friendsW/2) " y" (gsY+(gsH/2))-(friendsH/2) " w314 h" (ui.friendsList.length*30)+40)
+	joinGui.show("x" (gsX+(gsW/2))-(friendsW/2) " y" (gsY+(gsH/2))-(friendsH/2) " w314 h" (ui.friendsList.length*30)+60)
+	
+	;addFriend()
 	hotkey("ESC",closeJoinGui)
 	hotKey("ESC","On")
 	drawFriendsList(*) {
@@ -1154,36 +1087,49 @@ joinFireteam(*) {
 				Down%a_index%:=""
 			try
 				Delete%a_index%:=""
-			try
-				ui.joinGui%a_index%.opt("vTmp")
+			; try
+				; ui.joinGui%a_index%.opt("vTmp")
 			ui.joinGui%a_index%:=joinGui.addText("v" controlId "-" a_index  " section x5 y" (a_index*30) " w223 h26 background" cfg.bgColor1,friend)
-			ui.joinGui%a_index%.setFont("s14 c" cfg.fontColor1,"courier sys")
+			ui.joinGui%a_index%.setFont("s13 c" cfg.fontColor1,"courier sys")
 			ui.joinGui%a_index%.onEvent("click",joinFriend)
 			
 			; try
 				; ui.joinGui%a_index%MoveUp.opt("vTmp")
-			ui.joinGui%a_index%MoveUp:=joinGui.addPicture("vUp" controlId "-" a_index  " x225 y" (a_index*30) " w26 h26 background" cfg.trimColor%(a_index>1) ? 3 : 2%,"./img/button_up_arrow.png")
-			ui.joinGui%a_index%MoveUp.onEvent("click",moveUp)
+			ui.joinGui%a_index%MoveUp:=joinGui.addPicture("vUp" controlId "-" a_index  " x227 y" (a_index*30) " w26 h26 background" cfg.trimColor%(a_index>1) ? 3 : 2%,"./img/button_up_arrow.png")
+			ui.joinGui%a_index%MoveUp.onEvent("click",(a_index>1) ? moveUp : doNothing)
 
 			; try
 				; ui.joinGui%a_index%MoveDown.opt("vTmp")
-			ui.joinGui%a_index%MoveDown:=joinGui.addPicture("vDown" controlId "-" a_index  " x253 y" (a_index*30) " w26 h26 background" cfg.trimColor%(a_index<ui.friendsList.length) ? 3 : 2%,"./img/button_down_arrow.png")
+			ui.joinGui%a_index%MoveDown:=joinGui.addPicture("vDown" controlId "-" a_index  " x255 y" (a_index*30) " w26 h26 background" cfg.trimColor%(a_index<ui.friendsList.length) ? 3 : 2%,"./img/button_down_arrow.png")
 			ui.joinGui%a_index%MoveDown.onEvent("click",moveDown)
+			ui.joinGui%a_index%MoveUp.onEvent("click",(a_index<ui.friendsList.length) ? moveDown : doNothing)
 
 			
 			; try
 				; ui.joinGui%a_index%Delete.opt("vTmp")
-			ui.joinGui%a_index%delete:=joinGui.addPicture("vDelete" controlId "-" a_index  " x281 ys+0 w26 h26 background" cfg.trimColor4,"./img/button_x.png")
+			ui.joinGui%a_index%delete:=joinGui.addPicture("vDelete" controlId "-" a_index  " x283 ys+0 w26 h26 background" cfg.trimColor4,"./img/button_x.png")
 			ui.joinGui%a_index%delete.onEvent("click",removeFriend)
 
-			joinFriend(friend_idx,*) {
-				send("{enter}")
-				send('/join " ui.friendsList[friend_idx] "`n"')
-				send("{enter}")
-			}
+			ui.joinGui%a_index%Detail:=joinGui.addPicture("x5 y" a_index*30 " w305 h26 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+		}
+		
+		joinFriend(friend_idx,*) {
+			send("{enter}")
+			send('/join " ui.friendsList[friend_idx] "`n"')
+			send("{enter}")
+		}
+		
+		ui.joinGuiAddOutline:=joinGui.addText("section center x5 y" (ui.friendsList.length*30)+30 " w304 h26 background" cfg.outlineColor1)
+		ui.joinGuiAdd:=joinGui.addText("v" controlId "-" a_index  " section center x7 y" (ui.friendsList.length*30)+32 " w300 h20 background" cfg.trimColor1,"Add New Friend")
+		ui.joinGuiAdd.setFont("s14 bold c" cfg.fontColor1,"move-x")
+		ui.joinGuiAdd.onEvent("click",addFriend)
+		ui.joinGuiAddDetail:=joinGui.addPicture("section x5 y" (ui.friendsList.length*30)+30 " w304 h26 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+
+		doNothing(*) {
+			return 0
+		}
 			
-		moveUp(this_ctrl,*) {
-	
+		moveUp(this_ctrl,*) {	
 			friend_idx:=strSplit(this_ctrl.name,"-")[2]
 			for friend in ui.friendsList {
 				if a_index == friend_idx {
@@ -1209,14 +1155,14 @@ joinFireteam(*) {
 		}
 
 			winGetPos(,,&joinW,&joinH,joinGui)
-			joinGuiOutline.opt("h" joinH+50)
+			joinGuiOutline.opt("h" joinH+30)
 			joinGuiOutline.redraw()
-			joinGuiBackground.opt("h" joinH+46)
+			joinGuiBackground.opt("h" joinH+30)
 			joinGuiBackground.redraw()
 		
 
 	}
-	}
+	
 
 	addFriend(*) {
 		addFriendGui:=gui()
@@ -1226,17 +1172,18 @@ joinFireteam(*) {
 		winSetTransColor("010203",addFriendGui)
 		addFriendGuiSubmit:=addFriendGui.addButton("hidden w0 h0 default")
 		addFriendGuiSubmit.onEvent("click",saveFriend)
-		addFriendGuiOutline:=addFriendGui.addText("x0 y0 w255 h46 background" cfg.accentColor1)
-		addFriendGuiBg:=addFriendGui.addText("x2 y2 w251 h42 background" cfg.bgColor0)
+		addFriendGuiOutline:=addFriendGui.addText("x0 y0 w320 h46 background" cfg.accentColor2)
+		addFriendGuiBg:=addFriendGui.addText("x2 y2 w310 h42 background" cfg.bgColor1)
 		addFriendGuiText:=addFriendGui.addText("x5 w245 y1 h20 backgroundTrans","FRIEND'S BUNGIE ID")
-		addFriendGuiText.setFont("s14 c" cfg.fontColor1,"move-x")
+		addFriendGuiText.setFont("s14 c" cfg.fontColor2,"move-x")
 		addFriendGui.setFont("s10 c" cfg.fontColor1,"calibri")
-		addFriendGuiInput:=addFriendGui.addEdit("r1 x5 y22 w205 background" cfg.bgColor1 " -wantReturn")
+		addFriendGuiInput:=addFriendGui.addEdit("r1 x5 y20 w260 background" cfg.bgColor0 " -wantReturn")
 		
-		addFriendGuiSaveButton:=addFriendGui.addPicture("x212 y3 w40 h40 backgroundTrans","./img/button_save.png")
+		addFriendGuiSaveButton:=addFriendGui.addPicture("x270 y4 w40 h38 backgroundTrans","./img/button_save.png")
 		addFriendGuiSaveButton.opt("v" addFriendGuiInput.text)
 		addFriendGuiSaveButton.onEvent("click",saveFriend)
-		addFriendGui.show()
+		winGetPos(&joinX,&joinY,&joinW,&joinH,joinGui)
+		addFriendGui.show("x" joinX " y" joinY+joinH-30 " w314 h54")
 			
 		hotkey("ESC",addFriendClose)
 		hotkey("ESC","On")
@@ -1249,7 +1196,7 @@ joinFireteam(*) {
 			iniWrite(rtrim(friendsListStr,","),cfg.file,"Game","FriendsList")
 			addFriendGui.destroy()
 			drawFriendsList()
-			joinFireteam()
+			;joinFireteam()
 
 			hotkey("ESC",closeJoinGui)
 			exit
@@ -1263,27 +1210,37 @@ joinFireteam(*) {
 
 	removeFriend(this_ctrl,*) {
 		friend_idx:=strSplit(this_ctrl.name,"-")[2]
-		ui.joinGui%friend%:=""
-		for friend in friendsList {
-			
-			if ui.friendsList[friend_idx] = friendsList[a_index]
-				friendsList.removeAt[a_index]
-		}
+		ui.friendsList.removeAt(strSplit(this_ctrl.name,"-")[2])
 		friendsListStr:=""
 		for friend in ui.friendsList {
 			friendsListStr.=friend ","
 		}
-		iniWrite(cfg.file,"Game","FriendsList",rtrim(friendsListStr,","))
+		iniWrite(rtrim(friendsListStr,","),cfg.file,"Game","FriendsList")
 		drawFriendsList()
-		joinFireteam()
-	}
-	
-	closeJoinGui(*) {
-		hotkey("ESC","Off")
-		joinGui.destroy()
-		exit
+		;joinFireteam()
+		
+		ui.joinGui%friend_idx%:=""
+		ui.joinGui%friend_idx%moveUp:=""
+		ui.joinGui%friend_idx%MoveDown:=""
+		ui.joinGui%friend_idx%Delete:=""
+		ui.joinGuiAddOutline.move(,(ui.friendsList.length*30)+30)
+		ui.joinGuiAdd.move(,(ui.friendsList.length*30)+32)
+		ui.joinGuiAddDetail.move(,(ui.friendsList.length*30)+32)
+		joinGui.show("h" (ui.friendsList.length*30)+40)
 	}
 }
+
+closeJoinGui(*) {
+	hotkey("ESC","Off")
+	try
+		joinGui.destroy()
+	try
+		addFriendGui.destroy()
+		
+	ui.button_link_2.down.opt("hidden")
+	exit
+}
+
 
 toggleGlyphWindow(this_button,*) {
 	closeThis()

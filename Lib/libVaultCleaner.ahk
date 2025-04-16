@@ -22,24 +22,22 @@ ui.gametabs.useTab("Vault Cleaner")
 	;ui.gameSettingsGui.addPicture("x10 y30 w476 h22 backgroundTrans","./img/custom/lightburst_top_light.png")
 	;drawOutline(ui.gameSettingsGui,10,9,478,64,cfg.accentColor1,cfg.accentColor1,2)
 	ui.gameSettingsGui.setFont("s10 c" cfg.fontColor1)
-	this.mainButton:=ui.gameSettingsGui.addPicture("section center x10 y10 w75 h20 background" cfg.bgColor1 " c" cfg.fontColor3,"./img/custom/lightburst_top_bar.png")
-	;this.mainButtonTextBg:=ui.gameSettingsGui.addPicture("x85 y10 w200 h20 backgroundTrans","./img/custom/lightburst_bottom_bar.png")
-	this.mainButtonTextBg1:=ui.gameSettingsGui.addPicture("x85 y10 w405 h20 backgroundTrans","./img/custom/lightburst_bottom_bar.png")
-	; this.mainButtonTextBg2:=ui.gameSettingsGui.addPicture("x85 y10 w403 h20 backgroundTrans","./img/custom/lightburst_br_light.png")
-	; this.mainButtonTextBg3:=ui.gameSettingsGui.addPicture("x85 y10 w403 h20 backgroundTrans","./img/custom/lightburst_tl_light.png")
-	; this.mainButtonTextBg4:=ui.gameSettingsGui.addPicture("x85 y10 w403 h20 backgroundTrans","./img/custom/lightburst_bl_light.png")
-	;this.mainButtonBg:=ui.gameSettingsGui.addPicture("x10 y10 w85 h20 backgroundTrans","./img/custom/lightburst_br_light.png")
+	this.mainButton:=ui.gameSettingsGui.addPicture("section center x10 y10 w75 h20 background" cfg.bgColor1 " c" cfg.fontColor3,"./img/custom/lightburst_top_bar_light.png")
+	this.mainButtonTextBg1:=ui.gameSettingsGui.addPicture("x10 y10 w480 h20 backgroundTrans","./img/custom/lightburst_top_bar_light.png")	;this.mainButtonTextBg:=ui.gameSettingsGui.addPicture("x85 y10 w200 h20 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+	this.mainButtonTextBg1:=ui.gameSettingsGui.addPicture("x10 y10 w480 h20 backgroundTrans","./img/custom/lightburst_top_bar_light.png")
+	this.mainButtonBg:=ui.gameSettingsGui.addPicture("x10 y10 w85 h20 backgroundTrans","./img/custom/lightburst_br_light.png")
 	this.mainButtonText:=ui.gameSettingsGui.addText("section center x10 y9 w74 h20 backgroundTrans","Start")
 	this.mainButtonText.setFont("s12 q5 c" cfg.fontColor3,"Bahnschrift")
+	
 	this.mainButtonHotkey:=ui.gameSettingsGui.addPicture("hidden left x36 y10 background" cfg.trimColor1 " c" cfg.fontColor4 " h20 w72")
-	this.mainButtonHotkeyDetail1:=ui.gameSettingsGui.addPicture("left x10 y10 backgroundTrans h20 w243","./img/custom/lightburst_bottom_bar.png")
+	this.mainButtonHotkeyDetail1:=ui.gameSettingsGui.addPicture("left x10 y10 backgroundTrans h20 w480","./img/custom/lightburst_bottom_bar_dark.png")
 	; this.mainButtonHotkeyDetail2:=ui.gameSettingsGui.addPicture("left x10 y10 backgroundTrans h20 w243","./img/custom/lightburst_tl_light.png")
-	;this.mainButtonHotkeyDetail1:=ui.gameSettingsGui.addPicture("left x245 y10 backgroundTrans h20 w243","./img/custom/lightburst_bottom_bar.png")
+	;this.mainButtonHotkeyDetail1:=ui.gameSettingsGui.addPicture("left x245 y10 backgroundTrans h20 w243","./img/custom/lightburst_bottom_bar_dark.png")
 	; this.mainButtonHotkeyDetail2:=ui.gameSettingsGui.addPicture("left x245 y10 backgroundTrans h20 w243","./img/custom/lightburst_tr_light.png")
 
 	this.mainButtonHotkeyText:=ui.gameSettingsGui.addText("left x91 y9 backgroundTrans c" cfg.fontColor4 " h20 w280","Press [Del] to START")
-	this.mainButtonHotkeyTextDetail:=ui.gameSettingsGui.addPicture("left x200 y18 backgroundTrans h14 w300","./img/custom/lightburst_bottom_light.png")
-	this.mainButtonHotkeyTextDetail:=ui.gameSettingsGui.addPicture("left x200 y18 backgroundTrans h14 w300","./img/custom/lightburst_bottom_light.png")
+	;this.mainButtonHotkeyTextDetail:=ui.gameSettingsGui.addPicture("left x200 y18 backgroundTrans h14 w300","./img/custom/lightburst_bottom_light.png")
+	;this.mainButtonHotkeyTextDetail:=ui.gameSettingsGui.addPicture("left x200 y18 backgroundTrans h14 w300","./img/custom/lightburst_bottom_light.png")
 	this.mainButtonHotkeyText.setFont("s12 q5 c" cfg.fontColor3,"Bahnschrift")
 	this.mainButton.onEvent("click",cleanVaultStart)
 	this.mainButtonText.onEvent("click",cleanVaultStart)
@@ -55,12 +53,13 @@ this.statusText.setFont("s12 c" cfg.fontColor1,"Calibri")
 
 
 	this.statBg:=ui.gameSettingsGui.addText("x10 y78 w239 h64 background" cfg.bgColor0)
-	this.statBgDetail:=ui.gameSettingsGui.addPicture("x10 y78 w400 h64 backgroundTrans","./img/custom/lightburst_top_light.png")
+
 	this.statBg.onEvent("click",toggleVaultMode)
 	this.statBg2:=ui.gameSettingsGui.addPicture("hidden x240 y84 w200 h66 background" cfg.trimColor1)
 	ui.gameSettingsGui.addText("x245 y78 w245 h66 background" cfg.trimColor1 " c" cfg.fontColor3)
 	ui.gameSettingsGui.addText("x10 y78 w242 h66 background" cfg.trimColor1,"")
-	ui.gameSettingsGui.addPicture("x120 y81 w242 h60 backgroundTrans","./img/custom/lightburst_top_light.png")
+	ui.gameSettingsGui.addPicture("x10 y80 w480 h62 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+	ui.gameSettingsGui.addPicture("x10 y80 w480 h62 backgroundTrans","./img/custom/lightburst_top_bar_light.png")
 	drawOutlineNamed("vaultStats2",ui.gameSettingsGui,242,78,249,66,cfg.accentColor1,cfg.accentColor1,1)
 	ui.gameSettingsGui.setFont("s12")
 	this.pageLabel:=ui.gameSettingsGui.addText("right section x370 y82 w80 h25 backgroundTrans c" cfg.fontColor1 "","Page: ")
@@ -78,25 +77,28 @@ this.statusText.setFont("s12 c" cfg.fontColor1,"Calibri")
 	this.dismantledTotalLabel:=ui.gameSettingsGui.addText("section x255 y118 left h25 c" cfg.fontColor1 " backgroundTrans","Total: ")
 	this.dismantledTotal:=ui.gameSettingsGui.addText("x+0 ys+0 left w80 h25 c" cfg.fontColor1 " backgroundTrans",format("{:03d}","000"))
 	
-	this.vaultProgressLabelBg:=ui.gameSettingsGui.addText("x10 y52 w126 h20 background" cfg.bgColor3,"")
-	this.vaultProgressLabel:=ui.gameSettingsGui.addText("x18 y55 w110 h20 backgroundTrans c" cfg.fontColor1,"Progress")
-	this.vaultProgressLabel.setFont("s10 c" cfg.fontColor3,"move-x")
-	this.vaultProgress := ui.gameSettingsGui.addProgress("x106 y52 w382 h20 c" cfg.trimColor5 " background151515 range1-500")
+	this.vaultProgressLabelBg:=ui.gameSettingsGui.addText("x10 y52 w96 h20 background" cfg.bgColor1,"")
+
+	this.vaultProgress := ui.gameSettingsGui.addProgress("x106 y52 w384 h20 c" cfg.trimColor5 " background" cfg.bgColor0 " range1-500")
 	this.vaultDetail:=ui.gameSettingsGui.addPicture("x10 y52 w398 h20 backgroundTrans","./img/custom/lightburst_tl.png")
-this.vaultDetail2:=ui.gameSettingsGui.addPicture("x200 y52 w292 h20 backgroundTrans","./img/custom/lightburst_br_light.png")
+	this.vaultDetail2:=ui.gameSettingsGui.addPicture("x200 y52 w292 h20 backgroundTrans","./img/custom/lightburst_br_light.png")
 	this.completeMsg := ui.gameSettingsGui.addText("hidden x33 y61 w500 h30 backgroundTrans c" cfg.fontColor1 "","")
 	
-
-	
+	this.statBgDetail:=ui.gameSettingsGui.addPicture("x10 y52 w480 h20 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+	this.statBgDetail2:=ui.gameSettingsGui.addPicture("x10 y52 w480 h20 backgroundTrans","./img/custom/lightburst_top_bar_light.png")
 	;drawOutlineNamed("vaultCleanerButton",ui.gameSettingsGui,10,79,234,65,cfg.outlineColor1,cfg.outlineColor1,1)
 	;drawOutlineNamed("vaultCleanerButton",ui.gameSettingsGui,247,79,243,64,cfg.accentColor2,cfg.accentColor1,4)
 	drawOutlineNamed("vaultStats",ui.gameSettingsGui,9,78,482,66,cfg.outlineColor1,cfg.outlineColor1,1)
 	drawOutlineNamed("vaultStats",ui.gameSettingsGui,9,9,482,64,cfg.outlineColor1,cfg.outlineColor1,1)
 	
+	;this.vaultProgressLabelBg2:=ui.gameSettingsGui.addPicture("x10 y52 w96 h20 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
 	this.d2LaunchVaultCleanerButton := ui.gameSettingsGui.addPicture("x9 y76 w70 h70 backgroundTrans","./img/button_vault_up.png")
 	this.d2LaunchVaultCleanerButton.onEvent("click",toggleVaultMode)
 	this.d2LaunchVaultCleanerText:=ui.gameSettingsGui.addText("x60 y91 w180 h50 center backgroundTrans c" cfg.fontColor1,'Vault Mode: Off`nClick to Toggle.')
 	this.d2LaunchVaultCleanerText.setFont("s12 c" cfg.fontColor1 " bold","Arial")
+	this.vaultProgressLabel:=ui.gameSettingsGui.addText("x18 y54 w110 h20 backgroundTrans c" cfg.fontColor1,"Progress")
+	this.vaultProgressLabel.setFont("s10 c" cfg.fontColor3,"move-x")
+	
 	
 	isWindowedFullscreen(*) {
 		static tx:=""
@@ -146,7 +148,11 @@ this.vaultDetail2:=ui.gameSettingsGui.addPicture("x200 y52 w292 h20 backgroundTr
 			this.vaultProgressLabel.setFont("c" cfg.fontColor1)
 			this.vaultProgressLabelBg.redraw()
 			this.mainButtonHotkeyText.setFont("c" cfg.fontColor1)
+			this.mainButtonText.setFont("s12 q5 c" cfg.fontColor1)
+			this.vaultProgressLabel.setFont("s10 c" cfg.fontColor1,"move-x")
+	
 			textBg.opt("background" cfg.bgColor1)
+			
 			textBg.redraw()
 	;}
 	}
@@ -172,6 +178,8 @@ this.vaultDetail2:=ui.gameSettingsGui.addPicture("x200 y52 w292 h20 backgroundTr
 		winRestore(this.gameWin)
 		winActivate(ui.mainGui)
 
+		this.mainButtonText.setFont("s12 q5 c" cfg.fontColor3)
+		this.vaultProgressLabel.setFont("s10 c" cfg.fontColor3,"move-x")
 
 		buttonBg.opt("background" cfg.bgColor1)
 		this.vaultProgressLabelBg.opt("background" cfg.baseColor)

@@ -622,13 +622,22 @@ killMe(*) {
 }
 
 resetWindowPosition(*) {
-	try {
-		guiVis(ui.dockBarGui,false)
-		guiVis(ui.mainGui,true)
-		tabsChanged()
-		ui.MainGui.Move(PrimaryWorkAreaLeft+200,PrimaryWorkAreaTop+200,,)
+	ui.MainGui.Move(200,200,,)
+	cfg.GuiX := 200
+	cfg.GuiY := 200
+	iniWrite(cfg.GuiX,cfg.file,"interface","GuiX")
+	iniWrite(cfg.GuiY,cfg.file,"interface","GuiY")
+	ui.mainGui.show()
+	guiVis(ui.mainGui,true)
+	if cfg.activeMainTab==1 {
+		ui.gameSettingsGui.show()
+		guiVis(ui.gameSettingsGui,true)
+		ui.gameTabGui.show()
+		guiVis(ui.gameTabGui,true)
 	}
+	tabsChanged()
 }
+
 
 exitFunc(ExitReason,ExitCode) {
 	ui.MainGui.Opt("-AlwaysOnTop")

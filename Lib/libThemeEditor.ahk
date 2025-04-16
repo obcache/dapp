@@ -200,14 +200,17 @@ ThemeChanged(*) {
 	Reload()
 }
 
-ChooseColor(ColorType,prev_color)
-{
+ChooseColor(ColorType,prev_color) {
 	if (cfg.ColorPickerEnabled)
 	{
 		DialogBox("Click the color you'd like to use for " ColorType "`non the Color Chart","Selecting Color for " ColorType)
-		ChosenColor := Format("{:X}", RunWait('./lib/ColorChooser.exe 0x' cfg.%ColorType% ' ' cfg.GuiX ' ' cfg.GuiY))
+		
 	
-		DialogBoxClose()
+		
+
+			ChosenColor := Format("{:X}", RunWait('./lib/ColorChooser.exe 0x' cfg.%ColorType% ' ' cfg.GuiX ' ' cfg.GuiY))
+			DialogBoxClose()
+		
 		if (ChosenColor == 0) || (ChosenColor == "")
 		{
 			NotifyOSD("No Color Chosen",3000)
@@ -224,10 +227,10 @@ ChooseColor(ColorType,prev_color)
 		ui.colorGui := Gui()
 		ui.colorGui.Opt("+AlwaysOnTop -Caption toolWindow +Owner" ui.themeEditorGui.Hwnd)
 		ui.ColorPicker := ui.colorGui.AddPicture("w515 h1000","./Img/color_swatches.png")
-		ui.colorGui.Show("x" DialogX " y" DialogY+DialogH " NoActivate")
-		Sleep(1000)
-		ClickReceived := KeyWait("LButton","D T15")
-		
+		ui.colorGui.Show("x" DialogX " y" DialogY+DialogH)
+		winSetAlwaysOnTop(1,"ahk_exe ColorChooser.exe")
+		ClickReceived := KeyWait("LButton","D T30")
+		msgBox(clickReceived)
 		if (ClickReceived)
 		{
 			MouseGetPos(&MouseX,&MouseY)
@@ -250,12 +253,10 @@ ChooseColor(ColorType,prev_color)
 			DialogBox("No Color Chosen. `nReturning to App.")
 			SetTimer(DialogBoxClose,-3000)
 		}
-		
 		ui.colorGui.Destroy()
+		
 	}
 }
-
-
 
 addTheme(*) {
 	Global
