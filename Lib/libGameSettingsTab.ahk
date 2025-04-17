@@ -45,6 +45,15 @@ GuiGameTab() {
 	ui.d2cleanupNeeded := false
 	ui.gameSettingsGui.setFont("s12 bold","calibri")
 
+	ui.d2TopPanelOutline:=ui.gameSettingsGui.addText("x8 y5 w480 h66 background" cfg.outlineColor1)
+	ui.d2TopPanelBg:=ui.gameSettingsGui.addText("x9 y6 w478 h65 background" cfg.bgColor1)
+	ui.d2TopPanelDetail1:=ui.gameSettingsGui.addPicture("x9 y6 w478 h15 backgroundTrans","./img/custom/lightburst_top_bar_light.png")
+	ui.d2TopPanelDetail2:=ui.gameSettingsGui.addPicture("x9 y56 w478 h15 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+	ui.bottomPanelOutline:=ui.gameSettingsGui.addText("x8 y76 w480 h70 background" cfg.outlineColor1)
+	ui.bottomPanelBg:=ui.gameSettingsGui.addText("x9 y77 w478 h68 background" cfg.bgColor1)
+	ui.bottomPanelDetail2:=ui.gameSettingsGui.addPicture("x9 y77 w478 h18 backgroundTrans","./img/custom/lightburst_top_bar_light.png")
+	ui.bottomPanelDetail2:=ui.gameSettingsGui.addPicture("x9 y127 w478 h18 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+
 	drawKeybindBar()
 	drawLinkBar()
 	;d2drawPanel4()
@@ -55,181 +64,6 @@ GuiGameTab() {
 	
 	drawGameTabs(cfg.activeGameTab)
 }	 
-
-drawLinkBar(*) {
-	static xPos:=15
-	static yPos:=82
-	
-	cfg.button_link_1:=["DIM","URL","https://app.destinyitemmanager.com","./img/button_DIM.png","Launches DIM in browser"]
-	cfg.button_link_2:=["Join","Function","toggleFireteam","./img/ft_icon.png","Unbound, click to assign"]
-	cfg.button_link_3:=["Glyphs","Function","toggleGlyphWindow","./img/d2_glyphs_thumb.png","Shows Glyph callout infographic"]
-	cfg.button_link_4:=["Runes","Function","toggleRuneWindow","./img/d2_runes_thumb.png","Shows Rune callout infographic"]
-	cfg.button_link_5:=["WishCodes","Function","toggleCodeWindow","./img/d2_wishCodes_thumb.png","Shows codes for Wall of Wishes"]
-	cfg.button_link_6:=["Vault","Function","toggleVaultMode","./img/d2_maps_thumb.png","Shows collection of maps"]
-
-	cfg.button_link_7:=["Unassigned","Function","editLinkBox","./img/d2_button_unbound.png","Unbound, click to assign"]
-	cfg.button_link_8:=["Unassigned","Function","editLinkBox","./img/d2_button_unbound.png","Unbound, Click to assign"]
-	ui.button_link_1:=""
-	ui.button_link_2:=""
-	ui.button_link_3:=""
-	ui.button_link_4:=""
-	ui.button_link_5:=""
-	ui.button_link_6:=""
-	ui.button_link_7:=""
-	ui.button_link_8:=""
-	
-	cfg.button_link_size:=54
-	ui.gameTabs.useTab("Gameplay")
-	; ui.panel4box3:=ui.gameSettingsGui.addText("x7 y75 w485 h70 background" cfg.bgColor1,"")
-	; ui.panel4box4:=ui.gameSettingsGui.addText("x8 y76 w483 h68 c" cfg.bgColor1 " background" cfg.bgColor0)
-	; drawOutlineNamed("d2linkPanel",ui.gameSettingsGui,12,76,474,60,cfg.accentColor2,cfg.accentColor4,1)
-	; drawOutlineNamed("d2linkPanel",ui.gameSettingsGui,6,72,486,72,cfg.outlineColor2,cfg.outlineColor1,1)
-	; drawOutlineNamed("d2AlwaysRunOutline",ui.gameSettingsGui,7,73,484,70,cfg.outlineColor1,cfg.outlineColor2,1)	
-	ui.bottomPanelOutline:=ui.gameSettingsGui.addText("x8 y76 w480 h70 background" cfg.outlineColor1)
-	ui.bottomPanelBg:=ui.gameSettingsGui.addText("x9 y77 w478 h68 background" cfg.bgColor1)
-	;ui.TopPanelDetail:=ui.gameSettingsGui.addPicture("x7 y77 w482 h70 backgroundTrans","./img/custom/lightburst_diag.png")
-	ui.bottomPanelDetail2:=ui.gameSettingsGui.addPicture("x9 y77 w478 h68 backgroundTrans","./img/custom/lightburst_tile.png")
-
-	
-	loop 8 {
-		ui.button_link_%a_index% := object()
-		ui.button_link_%a_index%.name:=cfg.button_link_%a_index%[1]
-		ui.button_link_%a_index%.type:=cfg.button_link_%a_index%[2]
-		ui.button_link_%a_index%.action:=cfg.button_link_%a_index%[3]
-		ui.button_link_%a_index%.thumb:=cfg.button_link_%a_index%[4]
-		ui.button_link_%a_index%.bg:=ui.gameSettingsGui.addPicture("x" xPos+2 " y" yPos+1 " w" cfg.button_link_size-1 " h-1 vbutton_link_" a_index " background" cfg.bgColor3,ui.button_link_%a_index%.thumb)
-		ui.button_link_%a_index%.fx:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos+1 " w" cfg.button_link_size-1 " h" cfg.button_link_size-1 " backgroundTrans","./img/custom/lightburst_tile.png")
-		ui.button_link_%a_index%.down:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos+1 " w" cfg.button_link_size-1 " h" cfg.button_link_size-1 " hidden backgroundTrans","./img/button_down_layer.png")
-		drawOutline(ui.gameSettingsGui,xPos,yPos,cfg.button_link_size+1,cfg.button_link_size+1,cfg.accentColor1,cfg.accentColor2,1)
-		;drawOutline(ui.gameSettingsGui,xPos+1,yPos+1,cfg.button_link_size-1,cfg.button_link_size-1,cfg.accentColor3,cfg.accentColor4,1)
-
-		this_action:=cfg.button_link_%a_index%[3]
-		if cfg.button_link_%a_index%[2]=="URL" {
-			ui.button_link_%a_index%.bg.onEvent("click",openUrl)
-			ui.button_link_%a_index%.fx.onEvent("click",openUrl)
-		} else {
-			ui.button_link_%a_index%.bg.onEvent("click",%this_action%)
-			ui.button_link_%a_index%.fx.onEvent("click",%this_action%)
-		}
-		xPos+=cfg.button_link_size+5
-
-	}
-	openUrl(this_Url,*) {
-		ui.button_link_%strSplit(this_Url.name,"_")[3]%.down.opt("-hidden")
-		setTimer () => ui.button_link_%strSplit(this_Url.name,"_")[3]%.down.opt("hidden"),-1000
-		run("chrome.exe " cfg.%this_Url.name%[3])
-	}
-	
-	static xPos:=15
-	static yPos:=82
-	loop 8 {
-		(ui.button_link_%a_index%.thumb=="./img/d2_button_unbound.png")
-		? (ui.button_link_%a_index%.edit:=ui.gameSettingsGui.addPicture("x" xPos-1 " y" yPos+cfg.button_link_size-16 " backgroundTrans w18 h19 vbutton_link_edit" a_index,"./img/button_edit.png")
-		, ui.button_link_%a_index%.edit.onEvent("click",editLinkBox)) : 0
-		xPos+=cfg.button_link_size+5
-	}
-
-	editLinkBox(lParam, ID, *) {
-	;	msgBox(lParam.name)
-		ui.linkName:=ui.%lParam.name%.Name
-		ui.linkType:=ui.%lParam.name%.type
-		ui.linkAction:=ui.%lParam.name%.action
-		ui.linkThumb:=ui.%lParam.name%.thumb
-		
-		ui.editLinkGui:=gui()
-		ui.editLinkGui.opt("-caption -border toolWindow alwaysOnTop")
-		ui.editLinkGui.backColor:="010203"
-		winSetTransColor("010203",ui.editLinkGui)
-		ui.editLinkGui.color:=cfg.fontColor3
-		ui.editLinkBg:=ui.editLinkGui.addText("x0 y0 w300 h80 background" cfg.bgColor0)
-		ui.editLinkTitlebar:=ui.editLinkGui.addText("x0 y0 w80 h20 background" cfg.bgColor1)
-		ui.editLinkTitlebar.onEvent("click",WM_LBUTTONDOWN_callback)
-
-		ui.thumbPreview:=ui.editLinkGui.addPicture("center x10 y20 w60 h60 backgroundTrans",ui.%lParam.name%.thumb)
-		
-		ui.linkNameLabel:=ui.editLinkGui.addText("x85 y2 w40 backgroundTrans c" cfg.fontColor1,"Name: ")
-		ui.linkNameValue:=ui.editLinkGui.addEdit("x125 y2 w170 background" cfg.bgColor1 " c" cfg.trimColor1,ui.%lParam.name%.name)
-		ui.linkTypeLabel:=ui.editLinkGui.addText("x85 y20 w40 backgroundTrans c" cfg.fontColor1,"Type: ")
-		ui.linkTypeValue:=ui.editLinkGui.addEdit("x125 y20 w170 background" cfg.bgColor1 " c" cfg.trimColor1,ui.%lParam.name%.type)
-		ui.linkActionLabel:=ui.editLinkGui.addText("x85 y40 w40 backgroundTrans c" cfg.fontColor1,"Action: ")
-		ui.linkActionValue:=ui.editLinkGui.addEdit("x125 y40 w170 background" cfg.bgColor1 " c" cfg.trimColor1,ui.%lParam.name%.action)
-		ui.linkThumbLabel:=ui.editLinkGui.addText("x85 y60 w40 backgroundTrans c" cfg.fontColor1,"Thumb: ")
-		ui.linkThumbValue:=ui.editLinkGui.addEdit("x125 y60 w170 background" cfg.bgColor1 " c" cfg.trimColor1,ui.%lParam.name%.thumb)
-		drawOutline(ui.editLinkGui,0,0,80,20,cfg.accentColor1,cfg.accentColor1,1)
-		;drawOutline(ui.editLinkGui,0,20,80,60,cfg.accentColor1,cfg.accentColor1,1)
-		drawOutline(ui.editLinkGui,80,0,300,80,cfg.accentColor1,cfg.accentColor1,1)
-		winGetPos(&elX,&elY,&elW,&elH,ui.gameSettingsGui)
-		ui.editLinkGui.show("x" elX " y" elY+elH+10 " w" 300 " h" 80)
-	}
-}
-	
-	
-
-
-
-d2KeybindTabChange(this_button,*) {
-}
-	
-drawKeybind(x,y,bindName,labelText := bindName,gui := ui.mainGui,w := 84,h := 30,buttonImage := "./img/keyboard_key_up.png",textJustify := "center",fontColorReady := cfg.trimColor4,fontColorOn := cfg.trimColor3) {
-	global
-	%bindName%Key := gui.addPicture("x" x " y" y " w" w " h" h " section backgroundTrans",buttonImage)
-	%bindName%KeyData := gui.addText("xs-3 y+-24 w" w " h" h-9 " textJustify c" fontColorOn " backgroundTrans",subStr(strUpper(cfg.d2%bindName%Key),1,8))
-	%bindName%KeyLabel := gui.addText("xs-1 y+-34 w" w " h" h-10 " textJustify c" fontColorReady " backgroundTrans",labelText)
-}
-		
-	d2ClassIconUpChanged(*) {
-		switch cfg.d2CharacterClass {
-			case 1:
-				cfg.d2CharacterClass := 2
-				(ui.d2FlyEnabled)
-					? ui.d2ClassIcon.value := "./img/d2ClassIconHunter_off.png"
-					: ui.d2ClassIcon.value := "./img/d2ClassIconHunter_on.png"
-			case 2:
-				cfg.d2CharacterClass := 3
-				hotIf(d2ReadyToSwordFly)
-					hotkey("~*" cfg.dappSwordFlyKey,d2SwordFly)
-				hotIf()
-				(ui.d2FlyEnabled)
-					? ui.d2ClassIcon.value := "./img/d2ClassIconTitan_off.png"
-					: ui.d2ClassIcon.value := "./img/d2ClassIconTitan_on.png"
-			case 3: 
-				cfg.d2CharacterClass := 1
-				hotIf(d2ReadyToSwordFly)
-					hotkey("~*" cfg.dappSwordFlyKey,d2MorgethWarlock)
-				hotIf()
-				(ui.d2FlyEnabled)
-					? ui.d2ClassIcon.value := "./img/d2ClassIconWarlock_off.png"
-					: ui.d2ClassIcon.value := "./img/d2ClassIconWarlock_on.png"
-			default:                                          
-		}
-	}
-	
-	d2ClassIconDownChanged(*) {
-		switch cfg.d2CharacterClass {
-			case 3:
-				cfg.d2CharacterClass := 2
-				(ui.d2FlyEnabled)
-					? ui.d2ClassIcon.value := "./img/d2ClassIconHunter_off.png"
-					: ui.d2ClassIcon.value := "./img/d2ClassIconHunter_on.png"
-			case 1:
-				cfg.d2CharacterClass := 3
-				hotIf(d2ReadyToSwordFly)
-					hotkey("~*" cfg.dappSwordFlyKey,d2SwordFly)
-				hotIf()
-				(ui.d2FlyEnabled)
-					? ui.d2ClassIcon.value := "./img/d2ClassIconTitan_off.png"
-					: ui.d2ClassIcon.value := "./img/d2ClassIconTitan_on.png"
-			case 2: 
-				cfg.d2CharacterClass := 1
-				hotIf(d2ReadyToSwordFly)
-					hotkey("~*" cfg.dappSwordFlyKey,d2MorgethWarlock)
-				hotIf()
-				(ui.d2FlyEnabled)
-					? ui.d2ClassIcon.value := "./img/d2ClassIconWarlock_off.png"
-					: ui.d2ClassIcon.value := "./img/d2ClassIconWarlock_on.png"
-			default:                                          
-		}
-	}		
 
 drawGameTabs(ui.gameTabs.value)
 gameTabChanged(*) { 
@@ -565,7 +399,7 @@ MButtonDown(*) {
 	send("{" cfg.d2GameMouseMiddleButtonKey " up")
 }
 
-ui.d2Log									:= ui.gameSettingsGui.addText("x405 y10 w68 h80 hidden background" cfg.trimColor1 " c" cfg.fontColor3," Destiny 2`n Log Started`n Waiting for Input")
+ui.d2Log:= ui.gameSettingsGui.addText("x405 y10 w68 h80 hidden background" cfg.trimColor1 " c" cfg.fontColor3," Destiny 2`n Log Started`n Waiting for Input")
 ui.d2Log.setFont("s7","ariel")
 
 
