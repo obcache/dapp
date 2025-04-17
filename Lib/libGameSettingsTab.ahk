@@ -321,6 +321,11 @@ ui.gameTabWidth := 0
 		? ui.gameTab2Divider:=ui.gameTabGui.addText("y0 x238 w2 h34 background" cfg.accentColor1,"")
 		: ui.gameTab2Divider:=ui.gameTabGui.addText("y2 x238 w2 h30 background" cfg.accentColor2,""))
 
+	ui.gameTabGui.addPicture("x464 y0 w31 h31 backgroundTrans","./img/custom/lightburst_bottom_bar_light.png")
+	;ui.gameTabDetail:=ui.gameTabGui.addPicture("x0 y0 w240 h30 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+	
+	ui.gameTabDetail:=ui.gameTabGui.addPicture("x0 y0 w240 h31 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+	
 	ui.gameTab1SkinOutline.redraw()
 	ui.gameTab1Skin.redraw()
 	ui.gameTab1Label.redraw()
@@ -330,7 +335,7 @@ ui.gameTabWidth := 0
 	ui.gameTab2Label.redraw()
 	ui.gameTab2Divider.redraw()
 	ui.gameTabDetail.redraw()
-
+	
 
 }
 
@@ -347,9 +352,7 @@ drawGameTabs(tabNum := 1) {
 		,cfg.accentColor1,cfg.accentColor1,2)
 
 	winSetTransColor(ui.transparentColor,ui.gameTabGui)
-			;drawOutlineNamed("gameTabs",ui.gameTabGui,ui.gameTabWidth-0,0,498-ui.gameTabWidth,32,cfg.accentColor3,cfg.accentColor1,1)
-			;ui.gameTabGui.addText("x0 y0 w0 h0 section background" cfg.accentColor1,"")
-			
+
 	((tabNum == 1)
 		? ui.gameTab1SkinOutline := ui.gameTabGui.addText("x0 y0 w110 h32 background" cfg.accentColor1,"" )
 		: ui.gameTab1SkinOutline := ui.gameTabGui.addText("x0 y2 w110 h30 background" cfg.accentColor2,""))
@@ -436,18 +439,18 @@ drawGameTabs(tabNum := 1) {
 		ui.gameTabGui.show("w498 h32 noActivate x" mainGuiX+34 " y" mainGuiY+183)
 		
 	}
-	line(ui.gameTabGui,241,30,500,1,cfg.accentColor1)
+	line(ui.gameTabGui,241,30,500,1,cfg.accentColor3)
 	;line(ui.gameTabGui,216,299,280,1,cfg.accentColor2)
-	line(ui.gameTabGui,495,2,28,1,cfg.accentColor3,"VERT")
+	line(ui.gameTabGui,495,2,28,1,cfg.accentColor1,"VERT")
 	drawOutlineNamed("helpOutline",ui.gameTabGui,463,0,34,32,cfg.accentColor1,cfg.accentColor1,3)
 	ui.gameTabGui.addText("x464 y2 w31 h29 background" cfg.bgColor1)
 	ui.helpIcon := ui.gameTabGui.addPicture("x470 y3 w-1 h26 backgroundTrans","./img/icon_help.png")
-	ui.gameTabGui.addPicture("x464 y0 w31 h31 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+	ui.gameTabGui.addPicture("x464 y0 w31 h31 backgroundTrans","./img/custom/lightburst_bottom_bar_light.png")
 	;ui.gameTabDetail:=ui.gameTabGui.addPicture("x0 y0 w240 h30 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 	
 	ui.gameTabDetail:=ui.gameTabGui.addPicture("x0 y0 w240 h31 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 	;ui.gameTabGui.addPicture("x90 y0 w212 h30 backgroundTrans","./img/custom/lightburst_bl_light.png")	
-	ui.buildNumber:=ui.gameTabGui.addText("x298 y15 w160 h29 right backgroundTrans","v" a_fileVersion)
+	ui.buildNumber:=ui.gameTabGui.addText("x298 y12 w160 h29 right backgroundTrans","v" a_fileVersion)
 	ui.buildNumber.setFont("q5 s10 c" cfg.fontColor4,"Move-X")
 }
 

@@ -283,6 +283,7 @@ preAutoExec(InstallDir,ConfigFileName) {
 			fileInstall("./img/button_up_arrow.png",installDir "/img/button_up_arrow.png",1)
 			fileInstall("./img/button_down_arrow.png",installDir "/img/button_down_arrow.png",1)
 			fileInstall("./img/ft_icon.png",installDir "/img/ft_icon.png",1)
+			fileInstall("./img/custom/lightburst_blank.png",installDir "/img/custom/lightburst_blank.png",1)
 			
 			if !fileExist("c:\windows\fonts\move-x.otf") {
 				fileInstall("./redist/move-x.otf","c:\windows\fonts\move-x.otf",1)
@@ -318,7 +319,7 @@ createPbConsole(title) {
 		runWait('reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts" /v "FontName (TrueType)" /t REG_SZ /d move-x.otf /f',,"Min")
 	}
 	;winSetTransColor(transColor,ui.pbConsole)
-	ui.pbConsoleTitle := ui.pbConsole.addText("x5 y5 w690 h35 section center backgrounda0a0a0 c202020",title)
+	ui.pbConsoleTitle := ui.pbConsole.addText("x5 y5 w690 h35 section center backgroundc0c0c0 c202020",title)
 	ui.pbConsoleTitle.setFont("q5 s20","move-x")
 	drawOutlineNamed("pbConsoleTitle",ui.pbConsole,4,4,692,392,"b0b0b0","b0b0b0",1)
 
@@ -466,44 +467,47 @@ autoUpdate() {
 }	
 
 CheckForUpdates(msg,*) {
-	;winSetAlwaysOnTop(0,ui.mainGui.hwnd)
-	ui.installedVersion := fileRead("./dapp_currentBuild.dat")
-	ui.installedVersionText.text := "Installed:`t" substr(ui.installedVersion,1,1) "." substr(ui.installedVersion,2,1) "." substr(ui.installedVersion,3,1) "." substr(ui.installedVersion,4,1)
+	if fileExist("./dapp_currentBuild.dat") {
+		ui.installedVersion := fileRead("./dapp_currentBuild.dat")
+		ui.installedVersionText.text := "Installed:`t" substr(ui.installedVersion,1,1) "." substr(ui.installedVersion,2,1) "." substr(ui.installedVersion,3,1) "." substr(ui.installedVersion,4,1)
+	} else {
+		ui.installedVersionText.text:="0000"
+	}
 	ui.installedVersionText.redraw()
+	
 	try {
 		whr := ComObject("WinHttp.WinHttpRequest.5.1")
 		whr.Open("GET", "https://raw.githubusercontent.com/obcache/dapp/main/dapp_currentBuild.dat", true)
-			whr.Send()
-			whr.WaitForResponse()
-			ui.latestVersion := whr.ResponseText
-			ui.latestVersionText.text := "Available:`t" substr(ui.latestVersion,1,x) "." substr(ui.latestVersion,2,1) "." substr(ui.latestVersion,3,1) "." substr(ui.latestVersion,4,1)
+		whr.Send()
+		whr.WaitForResponse()
+		ui.latestVersion := whr.ResponseText
 	} catch {
-			if(msg != 0) {
-				ui.latestVersionText.text := "Available:`t--No Network--"
-				notifyOSD("Network down.`nTry again later.",3000)
+		if(msg != 0) {
+			ui.latestVersionText.text := "Available:`t--No Network--"
+			notifyOSD("Network down.`nTry again later.",3000)
 			ui.latestVersion := ui.installedVersion
 		}
 	}
 
+	
 	try {
 		if !inStr(ui.latestVersion,"404:") {
-			;msgBox(ui.latestVersion)
 			if (ui.installedVersion < ui.latestVersion) {
-				try {
-					winSetAlwaysOnTop(0,"ahk_id ui.mainGui.hwnd")
-				} 
-				try {
-					winSetAlwaysOnTop(0,"ahk_id ui.titleBarButtonGui.hwnd")
-				} 
-				try {
-					winSetAlwaysOnTop(0,"ahk_id ui.afkGui.hwnd")
-				} 
-				try {
-					winSetAlwaysOnTop(0,"ahk_id ui.gameSettingsGui.hwnd")
-				} 
-				try {
-					winSetAlwaysOnTop(0,"ahk_id ui.gameTabGui.hwnd")
-				} 
+				; try {
+					; winSetAlwaysOnTop(0,"ahk_id ui.mainGui.hwnd")
+				; } 
+				; try {
+					; winSetAlwaysOnTop(0,"ahk_id ui.titleBarButtonGui.hwnd")
+				; } 
+				; try {
+					; winSetAlwaysOnTop(0,"ahk_id ui.afkGui.hwnd")
+				; } 
+				; try {
+					; winSetAlwaysOnTop(0,"ahk_id ui.gameSettingsGui.hwnd")
+				; } 
+				; try {
+					; winSetAlwaysOnTop(0,"ahk_id ui.gameTabGui.hwnd")
+				; } 
 				sleep(1500)
 				runWait("./dapp_updater.exe")
 			} else {
