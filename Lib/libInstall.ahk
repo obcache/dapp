@@ -451,7 +451,7 @@ bail(*) {
 	return
 }
 	
-autoUpdate() {		
+autoUpdate() {	
 	runWait("cmd /C start /b /wait ping -n 1 8.8.8.8 > " a_scriptDir "/.tmp",,"Hide")
 	try {
 		if !inStr(fileRead(a_scriptDir "/.tmp"),"100% loss") {
@@ -460,19 +460,22 @@ autoUpdate() {
 			if cfg.pushNotificationsEnabled
 				setTimer () => pbNotify("Network Down. Bypassing Auto-Update.",1000),-100
 		}
-		try
 		if fileExist("./.tmp")
 			fileDelete("./.tmp")
 	}
 }	
 
 CheckForUpdates(msg,*) {
+	ui.latestVersion:="1111"
+	ui.installedVersion:="1111"
+	
+	if fileExist("./.tmp")
+		fileDelete("./.tmp")
+		
 	if fileExist("./dapp_currentBuild.dat") {
 		ui.installedVersion := fileRead("./dapp_currentBuild.dat")
 		ui.installedVersionText.text := "Installed:`t" substr(ui.installedVersion,1,1) "." substr(ui.installedVersion,2,1) "." substr(ui.installedVersion,3,1) "." substr(ui.installedVersion,4,1)
-	} else {
-		ui.installedVersionText.text:="0000"
-	}
+	} 
 	ui.installedVersionText.redraw()
 	
 	try {
@@ -485,40 +488,23 @@ CheckForUpdates(msg,*) {
 		if(msg != 0) {
 			ui.latestVersionText.text := "Available:`t--No Network--"
 			notifyOSD("Network down.`nTry again later.",3000)
-			ui.latestVersion := ui.installedVersion
 		}
 	}
 
+	ui.latestVersion := ui.installedVersion
 	
-	try {
-		if !inStr(ui.latestVersion,"404:") {
-			if (ui.installedVersion < ui.latestVersion) {
-				; try {
-					; winSetAlwaysOnTop(0,"ahk_id ui.mainGui.hwnd")
-				; } 
-				; try {
-					; winSetAlwaysOnTop(0,"ahk_id ui.titleBarButtonGui.hwnd")
-				; } 
-				; try {
-					; winSetAlwaysOnTop(0,"ahk_id ui.afkGui.hwnd")
-				; } 
-				; try {
-					; winSetAlwaysOnTop(0,"ahk_id ui.gameSettingsGui.hwnd")
-				; } 
-				; try {
-					; winSetAlwaysOnTop(0,"ahk_id ui.gameTabGui.hwnd")
-				; } 
-				sleep(1500)
-				runWait("./dapp_updater.exe")
-			} else {
-				if(msg != 0) {
-					ui.latestVersionText.text := "Available:`t" substr(ui.latestVersion,1,1) "." substr(ui.latestVersion,2,1) "." substr(ui.latestVersion,3,1) "." substr(ui.latestVersion,4,1)
-					notifyOSD("No upgraded needed.`nInstalled: " substr(ui.installedVersion,1,1) "." substr(ui.installedVersion,2,1) "." substr(ui.installedVersion,3,1) "." substr(ui.installedVersion,4,1) "`nAvailable: " substr(ui.latestVersion,1,1) "." substr(ui.latestVersion,2,1) "." substr(ui.latestVersion,3,1) "." substr(ui.latestVersion,4,1),2500)
-				}
-			}
+	if !inStr(ui.latestVersion,"404:") {
+		if (ui.installedVersion < ui.latestVersion) {
+			sleep(1500)
+			runWait("./dapp_updater.exe")
 		} else {
-			ui.latestVersionText.text:="Latest:`t           ERROR"
-			pbNotify("Cannot reach update site.`nCheck network.",5000)
+			if(msg != 0) {
+				ui.latestVersionText.text := "Available:`t" substr(ui.latestVersion,1,1) "." substr(ui.latestVersion,2,1) "." substr(ui.latestVersion,3,1) "." substr(ui.latestVersion,4,1)
+				notifyOSD("No upgraded needed.`nInstalled: " substr(ui.installedVersion,1,1) "." substr(ui.installedVersion,2,1) "." substr(ui.installedVersion,3,1) "." substr(ui.installedVersion,4,1) "`nAvailable: " substr(ui.latestVersion,1,1) "." substr(ui.latestVersion,2,1) "." substr(ui.latestVersion,3,1) "." substr(ui.latestVersion,4,1),2500)
+			}
 		}
+	} else {
+		ui.latestVersionText.text:="Latest:`t           ERROR"
+		pbNotify("Cannot reach update site.`nCheck network.",5000)
 	}
 }

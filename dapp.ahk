@@ -1,4 +1,4 @@
-A_FileVersion := "1.6.5.0"
+A_FileVersion := "1.6.5.1"
 a_appName := "dapp"
 if (fileExist("./dapp_currentBuild.dat"))
 a_fileVersion := fileRead("./dapp_currentBuild.dat")
@@ -129,16 +129,14 @@ advProgress(5)
 guiVis(ui.mainGui,false)
 guiVis(ui.gameSettingsGui,false)
 guiVis(ui.gameTabGui,false)
+
 winSetAlwaysOnTop(cfg.alwaysOnTopEnabled,ui.MainGui)
+
 ui.mainGui.Show("x" cfg.guix " y" cfg.guiy " w567 h213 NoActivate")
 ui.gameSettingsGui.show("x" cfg.guiX+34 " y" cfg.guiY+30 " w495 h182 noActivate")
 ui.gameTabGui.show("w497 h32 noActivate x" cfg.guiX+34 " y" cfg.guiY+183)
 
-advProgress(5)
 monitorResChanged()
-advProgress(5)
-
-
 
 advProgress(5)
 
@@ -146,7 +144,7 @@ if (cfg.startMinimizedEnabled) {
 	ui.mainGui.hide()
 	ui.gameSettingsGui.hide()
 	ui.gameTabGui.hide()
-} else
+}  
 
 advProgress(5)
 
@@ -159,23 +157,11 @@ try {
 }
 
 ui.mainGuiTabs.choose(cfg.mainTabList[1])
-;ui.MainGuiTabs.Choose(cfg.mainTabList[cfg.activeMainTab])
-
 ui.gameTabs.value:=cfg.activeGameTab
 tabsInit()
 fadeIn()
 
-
 autoUpdate()
 d2AutoGameConfigOverride()
 ui.isActiveWindow:=""
-;setTimer () => (ui.isActiveWindow:=(winActive("ahk_exe destiny2.exe")) ? (ui.isActiveWindow) ? 1 : (setCapsLockState(cfg.d2AlwaysRunEnabled),1) : (ui.isActiveWindow) ? (0,setCapsLockState(0)) : 0),500
 loadScreen(0)
-
-;themeColors:=map("primaryColor","afafaf","accentColor","688015")
-
-;colorMap:=map("baseColor","afafaf",")
-
-
-
-

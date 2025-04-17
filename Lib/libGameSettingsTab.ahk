@@ -468,7 +468,7 @@ setTimer(isGameRunning,2000)
 ; (ui.gameHwnd) ? 0 : ui.gameRunningStatus.setFont("underline","Euphemia")
 ; ui.gameRunningStatus.onEvent("click",launchDestiny)
 ; launchDestiny(*) {
-	; run("steam steam://1085660",,"Min",&destinyPID)
+; run("steam steam://1085660",,"Min",&destinyPID)
 	; ui.gameRunningStatus:="Launching Destiny 2"
 	; ui.gameRunningStatus.setFont("norm")
 ; }
