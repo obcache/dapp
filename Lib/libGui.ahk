@@ -58,7 +58,7 @@ tabsChanged(*) {
 			, guiVis(ui.gameSettingsGui,false)
 			, guiVis(ui.gameTabGui,false))
 			
-			ui.1_GameButtonDetail:=ui.mainGui.addPicture("x34 y2 w80 h25 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
+			ui.1_GameButtonDetail:=ui.mainGui.addPicture("x36 y3 w78 h25 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
 			ui.2_SetupButtonDetail:=ui.mainGui.addPicture("x117 y2 w77 h25 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")			
 			ui.1_GameButtonDetail.redraw()
 			ui.2_SetupButtonDetail.redraw()
@@ -166,10 +166,12 @@ advProgress(2)
 
 	ui.3_FillOutline:=ui.mainGui.addText("hidden x206 y1 w260 h29 center backgroundTrans","dapp")
 	ui.3_FillOutline.setFont("q5 s17 c" cfg.fontColor4,"Move-X")
-
-	ui.3_TitleTextDetail:=ui.mainGui.addText("x316 y9 w2 h20 background" cfg.trimColor1)
-	ui.3_TitleTextDetail2:=ui.mainGui.addText("x339 y9 w2 h20 background" cfg.trimColor1)
-	ui.3_TitleTextDetail3:=ui.mainGui.addText("x355 y9 w2 h20 background" cfg.trimColor1)
+	ui.3_FillDetail1:=ui.mainGui.addPicture("x196 y2 w340 h30 backgroundTrans","./img/custom/lightburst_top_bar_light.png")
+	ui.3_FillDetail2:=ui.mainGui.addPicture("x196 y2 w340 h30 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+	ui.3_FillDetail3:=ui.mainGui.addPicture("x196 y2 w340 h30 backgroundTrans","./img/custom/lightburst_bottom_light.png")
+	ui.3_TitleTextDetail:=ui.mainGui.addText("x316 y9 w2 h30 background" cfg.trimColor1)
+	ui.3_TitleTextDetail2:=ui.mainGui.addText("x339 y9 w2 h30 background" cfg.trimColor1)
+	ui.3_TitleTextDetail3:=ui.mainGui.addText("x355 y9 w2 h30 background" cfg.trimColor1)
 	(iniRead(cfg.themeFile,cfg.theme,"HideTitlebarText",0)) ? 0 : (ui.3_FillOutline.opt("-hidden"),ui.3_FillOutline.redraw())
 	
 	if !fileExist(cfg.titleBarImage)
