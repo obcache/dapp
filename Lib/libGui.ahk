@@ -405,54 +405,6 @@ CollapseGui() {
 	ui.MainGui.Move(mainX,mainY,35,)
 }
 
-redrawGuis(GuiWidth,mainX,mainY) {
-}
-
-UncollapseGui() {
-	winGetPos(&mainX,&mainY,&mainW,&mainH,ui.mainGui)
-	GuiWidth := 0
-	;guiVis(ui.titleBarButtonGui,false)
-	if (cfg.AnimationsEnabled) {
-		While GuiWidth < 160 {
-			ui.MainGui.Move(mainX,mainY,GuiWidth,)
-			GuiWidth += 30
-			sleep(20)
-		}
-	}
-
-	if (cfg.AnimationsEnabled) {
-		While GuiWidth < 575 {
-			ui.MainGui.Move(mainX,mainY,GuiWidth,)
-			GuiWidth += 30
-			sleep(20)
-		}
-	}
-	ui.mainGui.move(,,575,)
-	guiVis(ui.gameTabGui,true)
-	tabsChanged()
-}
-
-exitMenuShow(this_button) {
-	winGetPos(&tbX,&tbY,,,ui.mainGui)
-	ui.exitMenuGui := gui()
-	ui.exitMenuGui.Opt("-caption -border toolWindow AlwaysOnTop Owner" ui.mainGui.hwnd)
-	ui.exitMenuGui.BackColor := ui.transparentColor
-	ui.gamingModeLabel := ui.exitMenuGui.addText("x0 y2 w72 h15 center background" cfg.trimColor1 " c" cfg.trimColor3," Gaming Mode")
-	ui.gamingModeLabel.setFont("q5 s8")
-	ui.gamingLabels := ui.exitMenuGui.addText("x0 y16 w72 h52 center background" cfg.trimColor1 " c" cfg.trimColor4," Stop   Start ")
-	ui.gamingLabels.setFont("q5 s10")
-	ui.stopGamingButton := ui.exitMenuGui.addPicture("x0 y32 section w35 h35 background" cfg.fontColor2,"./img/button_quit.png")
-	ui.startGamingButton := ui.exitMenuGui.addPicture("x+2 ys w35 h35 background" cfg.fontColor2,"./img/button_exit_gaming.png")
-	ui.stopGamingButton.onEvent("Click",exitAppCallback)
-	ui.startGamingButton.onEvent("Click",stopGaming)
-	WinSetTransColor(ui.transparentColor,ui.exitMenuGui)
-	drawOutlineNamed("exitMenuBorder",ui.exitMenuGui,0,0,74,68,cfg.fontColor3,cfg.fontColor3,2)
-	ui.exitMenuGui.show("x" tbX+490 " y" tbY-70 " AutoSize noActivate")
-	loop 70 {
-		ui.exitMenuGui.move(tbX+490,tbY-a_index)
-	}
-	
-}
 
 exitButtonPushed(this_button,*) {
 	exitApp

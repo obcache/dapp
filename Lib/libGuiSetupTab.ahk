@@ -29,15 +29,13 @@ GuiSetupTab(&ui,&cfg) {
 	drawPanel(ui.mainGui,261,37,214,112,cfg.bgColor1,cfg.outlineColor2,cfg.outlineColor1,1,1,"none",100,"Features","calibri",cfg.fontColor1)
 	drawPanel(ui.mainGui,261,152,214,53,cfg.bgColor1,cfg.outlineColor2,cfg.outlineColor1,1,1,"none",100,"Features","calibri",cfg.fontColor1)
 	drawPanel(ui.mainGui,478,37,42,168,cfg.bgColor1,cfg.outlineColor2,cfg.outlineColor1,1,1,"none",100,"Features","calibri",cfg.fontColor1)
-	;line(ui.mainGui,34,0,30,2,cfg.bgColor0)	
 	line(ui.mainGui,529,184,29,2,cfg.accentColor1)
+
 	ui.MainGui.setFont("q5 s09")
-	;drawOutlineNamed("autoClicker",ui.mainGui,486,45,27,145,cfg.outlineColor2,cfg.outlineColor2,1)
 	ui.AutoClickerSpeedSlider := ui.MainGui.AddSlider("x487 y45 w25 h144 Range1-64 Vertical Left TickInterval8 Invert ToolTipTop",cfg.AutoClickerSpeed)
 	ui.AutoClickerSpeedSliderLabel2 := ui.MainGui.AddText("x475 y190 w50 r1 Center BackgroundTrans","CPS")
 	ui.AutoClickerSpeedSlider.ToolTip := "AutoClicker Speed"
 	ui.AutoClickerSpeedSlider.OnEvent("Change",AutoClickerSpeedChanged)
-
 	
 	ui.MainGui.setFont("q5 s10 c" cfg.fontColor1)
 	drawOutlineMainGui(34,28,497,200,cfg.accentColor3,cfg.accentColor3,2)
@@ -47,7 +45,6 @@ GuiSetupTab(&ui,&cfg) {
 	ui.labelToolTips 			:= ui.MainGui.AddText("x+5 ys+2 BackgroundTrans","  ToolTips")
 	ui.toggleToolTips.ToolTip 	:= "Toggles ToolTips"
 	ui.toggleToolTips.OnEvent("Click", toggleChanged)
-	
 	
 	ToggleAlwaysOnTop(*)
 	{
@@ -66,11 +63,9 @@ GuiSetupTab(&ui,&cfg) {
 											? (ui.toggleAlwaysOnTop.opt("Background" cfg.trimColor3),cfg.toggleOn) 
 											: (ui.toggleAlwaysOnTop.opt("Background" cfg.trimColor2),cfg.toggleOff))
 		ui.toggleAlwaysOnTop.Redraw()
+		
 		try {
 			winSetAlwaysOnTop(cfg.AlwaysOnTopenabled,ui.mainGui)
-		}
-		try { 
-			winSetAlwaysOnTop(cfg.AlwaysOnTopenabled,ui.afkGui)
 		}
 		try {
 			winSetAlwaysOnTop(cfg.AlwaysOnTopenabled,ui.gameSettingsGui)

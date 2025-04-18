@@ -467,8 +467,7 @@ autoUpdate() {
 
 CheckForUpdates(msg,*) {
 	ui.latestVersion:="1111"
-	ui.installedVersion:="1111"
-	
+		
 	if fileExist("./.tmp")
 		fileDelete("./.tmp")
 		
@@ -476,7 +475,9 @@ CheckForUpdates(msg,*) {
 		ui.installedVersion := fileRead("./dapp_currentBuild.dat")
 		ui.installedVersionText.text := "Installed:`t" substr(ui.installedVersion,1,1) "." substr(ui.installedVersion,2,1) "." substr(ui.installedVersion,3,1) "." substr(ui.installedVersion,4,1)
 	} 
+	
 	ui.installedVersionText.redraw()
+	ui.latestVersion := ui.installedVersion
 	
 	try {
 		whr := ComObject("WinHttp.WinHttpRequest.5.1")
@@ -490,14 +491,9 @@ CheckForUpdates(msg,*) {
 			notifyOSD("Network down.`nTry again later.",3000)
 		}
 	}
-
-	ui.latestVersion := ui.installedVersion
 	
 	if !inStr(ui.latestVersion,"404:") {
 		if (ui.installedVersion < ui.latestVersion) {
-			sleep(1500)
-			runWait("./dapp_updater.exe")
-		} else {
 			if(msg != 0) {
 				ui.latestVersionText.text := "Available:`t" substr(ui.latestVersion,1,1) "." substr(ui.latestVersion,2,1) "." substr(ui.latestVersion,3,1) "." substr(ui.latestVersion,4,1)
 				notifyOSD("No upgraded needed.`nInstalled: " substr(ui.installedVersion,1,1) "." substr(ui.installedVersion,2,1) "." substr(ui.installedVersion,3,1) "." substr(ui.installedVersion,4,1) "`nAvailable: " substr(ui.latestVersion,1,1) "." substr(ui.latestVersion,2,1) "." substr(ui.latestVersion,3,1) "." substr(ui.latestVersion,4,1),2500)
