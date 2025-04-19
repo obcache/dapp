@@ -274,9 +274,9 @@ drawGameTabs(tabNum := 1) {
 	winGetPos(&mainGuiX,&mainGuiY,,,ui.mainGui.hwnd)
 		ui.gameTabSpacer:=ui.gameTabGui.addText("y2 x240 w" 490-(ui.gameTabWidth) " h29 background" cfg.trimColor1)
 		ui.gameTabSpacer.onEvent("click",WM_LBUTTONDOWN_callback)
-		ui.gameTabSpacerDetail2:=ui.gameTabGui.addPicture("y2 x241 w" 490-ui.gameTabWidth " h28 backgroundTrans","./img/custom/lightburst_top_bar_light.png")
+		ui.gameTabSpacerDetail2:=ui.gameTabGui.addPicture("y2 x240 w" 490-ui.gameTabWidth " h28 backgroundTrans","./img/custom/lightburst_top_bar_light.png")
 		ui.gameTabSpacerDetail2.onEvent("click",WM_LBUTTONDOWN_callback)
-		ui.gameTabSpacerDetail:=ui.gameTabGui.addPicture("y2 x241 w" 490-ui.gameTabWidth " h28 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+		ui.gameTabSpacerDetail:=ui.gameTabGui.addPicture("y2 x240 w" 490-ui.gameTabWidth " h28 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 		ui.gameTabSpacerDetail.onEvent("click",WM_LBUTTONDOWN_callback)
 	if !(mainGuiX==0 && mainGuiY==0) {
 		ui.gameTabGui.show("w498 h32 noActivate x" mainGuiX+34 " y" mainGuiY+183)
