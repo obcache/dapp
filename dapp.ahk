@@ -1,4 +1,4 @@
-A_FileVersion := "1.6.5.7"
+A_FileVersion := "1.6.5.8"
 a_appName := "dapp"
 if (fileExist("./dapp_currentBuild.dat"))
 a_fileVersion := fileRead("./dapp_currentBuild.dat")
@@ -162,7 +162,7 @@ tabsInit()
 fadeIn()
 
 autoUpdate()
-msgBox(ui.installedVersion "`n" ui.latestVersion)
+;msgBox(ui.installedVersion "`n" ui.latestVersion)
 d2AutoGameConfigOverride()
 ui.isActiveWindow:=""
 loadScreen(0)
