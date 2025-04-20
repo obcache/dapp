@@ -47,12 +47,12 @@ GuiGameTab() {
 
 	ui.d2TopPanelOutline:=ui.gameSettingsGui.addText("x8 y5 w480 h66 background" cfg.outlineColor1)
 	ui.d2TopPanelBg:=ui.gameSettingsGui.addText("x9 y6 w478 h65 background" cfg.bgColor1)
-	ui.d2TopPanelDetail1:=ui.gameSettingsGui.addPicture("x9 y6 w478 h15 backgroundTrans","./img/custom/lightburst_top_bar_light.png")
-	ui.d2TopPanelDetail2:=ui.gameSettingsGui.addPicture("x9 y56 w478 h15 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+	ui.d2TopPanelDetail1:=ui.gameSettingsGui.addPicture("x9 y6 w478 h" 15-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_light.png")
+	ui.d2TopPanelDetail2:=ui.gameSettingsGui.addPicture("x9 y" 56+(15-cfg.curveAmount) " w478 h" 15-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 	ui.bottomPanelOutline:=ui.gameSettingsGui.addText("x8 y76 w480 h69 background" cfg.outlineColor1)
 	ui.bottomPanelBg:=ui.gameSettingsGui.addText("x9 y77 w478 h68 background" cfg.bgColor1)
-	ui.bottomPanelDetail2:=ui.gameSettingsGui.addPicture("x9 y77 w478 h18 backgroundTrans","./img/custom/lightburst_top_bar_light.png")
-	ui.bottomPanelDetail2:=ui.gameSettingsGui.addPicture("x9 y127 w478 h18 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+	ui.bottomPanelDetail2:=ui.gameSettingsGui.addPicture("x9 y77 w478 h" 18-(18-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_light.png")
+	ui.bottomPanelDetail2:=ui.gameSettingsGui.addPicture("x9 y" 127+(18-cfg.curveAmount) " w478 h" 18-(18-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 
 	drawKeybindBar()
 	drawLinkBar()
@@ -155,18 +155,14 @@ ui.gameTabWidth := 0
 		? ui.gameTab2Divider:=ui.gameTabGui.addText("y0 x238 w2 h34 background" cfg.accentColor1,"")
 		: ui.gameTab2Divider:=ui.gameTabGui.addText("y2 x238 w2 h30 background" cfg.accentColor2,""))
 
-	ui.gameTabHelpDetail:=ui.gameTabGui.addPicture("x464 y0 w31 h31 backgroundTrans","./img/custom/lightburst_bottom_bar_light.png")
-	;ui.gameTabDetail:=ui.gameTabGui.addPicture("x0 y0 w240 h30 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+	ui.gameTabHelpDetail:=ui.gameTabGui.addPicture("x464 y" 1+(30-cfg.curveAmount) " w31 h" 31-(31-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_light.png")
 	
-	ui.gameTabDetail:=ui.gameTabGui.addPicture("x0 y0 w240 h31 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+	ui.gameTabDetail1:=ui.gameTabGui.addPicture(((tabNum==1) ? "-hidden " : "-hidden ") "x0 y" 15+(15-cfg.curveAmount) " w108 h" 17-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_light.png")
+	ui.gameTabDetail2:=ui.gameTabGui.addPicture(((tabNum==2) ? "-hidden " : "hidden ") "x110 y" 15+(15-cfg.curveAmount) " w128 h" 17-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_light.png")	 
+	ui.gameTabDetail3:=ui.gameTabGui.addPicture(((tabNum==2) ? "-hidden " : "hidden ") "x0 y" 1 " w108 h" 15-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
+	ui.gameTabDetail4:=ui.gameTabGui.addPicture(((tabNum==1) ? "-hidden " : "hidden ") "x110 y" 1 " w128 h" 15-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")	 
 	
-	(tabNum==2)
-		? (ui.gameTabTopDetail:=ui.gameTabGui.addPicture("-hidden x0 y2 w110 h27 backgroundTrans","./img/custom/lightburst_top_bar_light.png")
-			, ui.gameTabTopDetail:=ui.gameTabGui.addPicture("hidden x0 y2 w110 h27 backgroundTrans","./img/custom/lightburst_top_bar_light.png"))
-			
-		: (ui.gameTabTopDetail2:=ui.gameTabGui.addPicture("hidden x110 y2 w130 h27 backgroundTrans","./img/custom/lightburst_top_bar_light.png")
-			, ui.gameTabTopDetail2:=ui.gameTabGui.addPicture("-hidden x110 y2 w130 h27 backgroundTrans","./img/custom/lightburst_top_bar_light.png"))
-	
+
 	ui.gameTab1SkinOutline.redraw()
 	ui.gameTab1Skin.redraw()
 	ui.gameTab1Label.redraw()
@@ -175,7 +171,8 @@ ui.gameTabWidth := 0
 	ui.gameTab2Skin.redraw()
 	ui.gameTab2Label.redraw()
 	ui.gameTab2Divider.redraw()
-	ui.gameTabDetail.redraw()
+	;ui.gameTabDetail.redraw()
+
 	
 
 }
@@ -236,8 +233,8 @@ drawGameTabs(tabNum := 1) {
 	
 	ui.gameTab2Skin := ui.gameTabGui.addText(
 		((tabNum == 2) 
-			? "y0 h30" 
-			: "y2 h28")
+			? "y0 h32" 
+			: "y2 h30")
 				" x110 w128 center background" 
 		((tabNum == 2) 
 			? cfg.bgColor0 
@@ -270,30 +267,39 @@ drawGameTabs(tabNum := 1) {
 		? ui.gameTab2Divider:=ui.gameTabGui.addText("y2 x238 w2 h34 background" cfg.accentColor1,"")
 		: ui.gameTab2Divider:=ui.gameTabGui.addText("y2 x238 w2 h30 background" cfg.accentColor2,""))
 	
+
+	ui.gameTabDetail1:=ui.gameTabGui.addPicture(((tabNum==1) ? "-hidden " : "-hidden ") "x0 y" 32+(30-cfg.curveAmount) " w106 h" 30-(30-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_light.png")
+	ui.gameTabDetail2:=ui.gameTabGui.addPicture(((tabNum==2) ? "-hidden " : "hidden ") "x110 y" 32+(30-cfg.curveAmount) " w126 h" 30-(30-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_light.png")	 
+	ui.gameTabDetail3:=ui.gameTabGui.addPicture(((tabNum==2) ? "-hidden " : "hidden ") "x0 y" 1 " w106" 30-(30-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
+	ui.gameTabDetail4:=ui.gameTabGui.addPicture(((tabNum==1) ? "hidden " : "-hidden ") "x110 y" 1 " w126" 30-(30-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")	 
 	
 	winGetPos(&mainGuiX,&mainGuiY,,,ui.mainGui.hwnd)
-		ui.gameTabSpacer:=ui.gameTabGui.addText("y2 x240 w" 490-(ui.gameTabWidth) " h29 background" cfg.trimColor1)
+		ui.gameTabSpacer:=ui.gameTabGui.addText("y2 x240 w" 490-(ui.gameTabWidth) " h29 background" cfg.titleBgColor)
 		ui.gameTabSpacer.onEvent("click",WM_LBUTTONDOWN_callback)
-		ui.gameTabSpacerDetail2:=ui.gameTabGui.addPicture("y2 x240 w" 490-ui.gameTabWidth " h28 backgroundTrans","./img/custom/lightburst_top_bar_light.png")
-		ui.gameTabSpacerDetail2.onEvent("click",WM_LBUTTONDOWN_callback)
-		ui.gameTabSpacerDetail:=ui.gameTabGui.addPicture("y2 x240 w" 490-ui.gameTabWidth " h28 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+		; ui.gameTabSpacerDetail2:=ui.gameTabGui.addPicture("y" 2 " x240 w" 490-240 " h" 30-(30-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
+		; ui.gameTabSpacerDetail2.onEvent("click",WM_LBUTTONDOWN_callback)
+		ui.gameTabSpacerDetail:=ui.gameTabGui.addPicture("y" 2+(30-cfg.curveAmount) " x240 w" 490-240 " h" 30-(30-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 		ui.gameTabSpacerDetail.onEvent("click",WM_LBUTTONDOWN_callback)
 	if !(mainGuiX==0 && mainGuiY==0) {
 		ui.gameTabGui.show("w498 h32 noActivate x" mainGuiX+34 " y" mainGuiY+183)
 		
 	}
-	line(ui.gameTabGui,241,30,500,1,cfg.accentColor3)
+	
+	
+	line(ui.gameTabGui,240,31,500,1,cfg.titleBgColor)
 	;line(ui.gameTabGui,216,299,280,1,cfg.accentColor2)
 	line(ui.gameTabGui,495,2,28,1,cfg.accentColor1,"VERT")
 	drawOutlineNamed("helpOutline",ui.gameTabGui,463,0,34,32,cfg.accentColor1,cfg.accentColor1,3)
 	ui.gameTabGui.addText("x464 y2 w31 h29 background" cfg.bgColor1)
 	ui.helpIcon := ui.gameTabGui.addPicture("x470 y3 w-1 h26 backgroundTrans","./img/icon_help.png")
-	ui.gameTabGui.addPicture("x464 y0 w31 h31 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+	ui.gameTabGui.addPicture("x463 y" 1 " w37 h" 30-(30-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_light.png")
+	ui.gameTabGui.addPicture("x463 y" 30+(30-cfg.curveAmount) " w37 h" 30-(30-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 	;ui.gameTabDetail:=ui.gameTabGui.addPicture("x0 y0 w240 h30 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 	
 	ui.buildNumber:=ui.gameTabGui.addText("x298 y12 w160 h29 right backgroundTrans","v" a_fileVersion)
 	ui.buildNumber.setFont("q5 s10 c" cfg.fontColor4,"Move-X")
-	ui.gameTabDetail:=ui.gameTabGui.addPicture("x0 y0 w240 h31 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+	ui.gameplayTabDetail:=ui.gameTabGui.addPicture("x0 y" 2+(30-cfg.curveAmount) " w110 h" 32-(30-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+	ui.vaultCleanerTabDetail:=ui.gameTabGui.addPicture("x110 y" 2+(30-cfg.curveAmount) " w130 h" 32-(30-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 	;ui.gameTabGui.addPicture("x90 y0 w212 h30 backgroundTrans","./img/custom/lightburst_bl_light.png")	
 }
 
@@ -306,21 +312,6 @@ ui.gameTabGui.setFont("s7 c" cfg.fontColor2,"small font")
 ui.gameHwnd:=0
 
 setTimer(isGameRunning,2000)
-; ui.gameRunningName:=ui.gameTabGui.addText("section right x220 y2 w60 h15 backgroundTrans","Destiny2 : ")
-; ui.gameRunningStatus:=ui.gameTabGui.addText("ys+0 w80 h15 backgroundTrans", (ui.gameHwnd) ? "Active" : "Not Active`nClick to Launch")
-; (ui.gameHwnd) ? 0 : ui.gameRunningStatus.setFont("underline","Euphemia")
-; ui.gameRunningStatus.onEvent("click",launchDestiny)
-; launchDestiny(*) {
-; run("steam steam://1085660",,"Min",&destinyPID)
-	; ui.gameRunningStatus:="Launching Destiny 2"
-	; ui.gameRunningStatus.setFont("norm")
-; }
-
-
-; ui.gameRunningExe:=ui.gameTabGui.addText("section right xs+0  y+-3 w60 h15 backgroundTrans","destiny2.exe : ")
-; ui.gameRunningHwnd:=ui.gameTabGui.addText("ys+0 w80 h15 backgroundTrans",ui.gameHwnd)
-; ui.gameLink:=ui.gameTabGui.addPicture("x470 y6 w22 h22 backgroundTrans",(winExist("ahk_exe destiny2.exe")) ? "./img/toggle_button_on.png" : "./img/toggle_button_off.png")
-; ui.gameLink.toolTip:="Game Link Status"
 isGameRunning(*) {
 	try {
 		return ui.gameHwnd := (winExist("ahk_exe destiny2.exe")) ? gameActive() : gameInactive()
@@ -360,7 +351,7 @@ MouseRemap(*) {
  ; LCtrl & RButton::y
  ; XButton1 & RButton::y
  
- ; LCtrl & MButton::x
+; LCtrl & MButton::x
  ; XButton1 & MButton::x
  
  ; XButton2::LAlt
@@ -408,7 +399,7 @@ MButtonDown(*) {
 	send("{" cfg.d2GameMouseMiddleButtonKey " up")
 }
 
-ui.d2Log:= ui.gameSettingsGui.addText("x405 y10 w68 h80 hidden background" cfg.trimColor1 " c" cfg.fontColor3," Destiny 2`n Log Started`n Waiting for Input")
+ui.d2Log:= ui.gameSettingsGui.addText("x405 y10 w68 h80 hidden background" cfg.titleBgColor " c" cfg.fontColor3," Destiny 2`n Log Started`n Waiting for Input")
 ui.d2Log.setFont("s7","ariel")
 
 
@@ -477,7 +468,7 @@ showCodeWindow(*) {
 		
 	;ui.d2wwCodeImg := ui.d2wwCodesGui.addPicture("x20 y20 w800 h600","./img/d2CodeMorgeth.png")
 	ui.d2CodeTitlebar:=ui.d2wwCodesGui.addText("x5 y0 w1200 h30 background" cfg.baseColor)
-	ui.d2CodeExit := ui.d2wwCodesGui.addPicture("x1175 y0 w30 h30 background" cfg.trimColor1,"./img/button_quit.png")
+	ui.d2CodeExit := ui.d2wwCodesGui.addPicture("x1175 y0 w30 h30 background" cfg.titleBgColor,"./img/button_quit.png")
 	ui.d2CodeExit.onEvent("click",hideCodeWindow)
 	;ui.d2wwCodeImg.onEvent("click",WM_LBUTTONDOWN_callback)
 	
@@ -818,19 +809,16 @@ drawInfographic(infographicName:="vod",imageWidth := 150,imageHeight := 150, num
 	infographicFolder := "./img/infogfx"
 	transparentColor := "030405"
 
-	if (cfg.topDockEnabled) {
-		infoGuiMon := cfg.dockbarMon
-	} else { 
-		winGetPos(&infoGuiX,&infoGuiY,,,ui.mainGui)
-		infoGuiMon := 1
-		loop monitorGetCount() {
-			monitorGet(a_index,&monLeft,,&monRight,)
-			if infoGuiX > monLeft && infoGuiX < monRight {
-				infoGuiMon := a_index
-				break
-			}
+	winGetPos(&infoGuiX,&infoGuiY,,,ui.mainGui)
+	infoGuiMon := 1
+	loop monitorGetCount() {
+		monitorGet(a_index,&monLeft,,&monRight,)
+		if infoGuiX > monLeft && infoGuiX < monRight {
+			infoGuiMon := a_index
+			break
 		}
 	}
+	 
 
 	monitorGet(infoGuiMon,&infoGuiMonL,&infoGuiMonT,&infoGuiMonR,&infoGuiMonB)
 	ui.infoGuiBg := gui()
@@ -919,7 +907,7 @@ joinFireteam(*) {
 	winSetTransColor("010203",joinGui)
 	joinGuiOutline:=joinGui.addText("x0 y0 w314 h" (ui.friendsList.length*30)+30 " background" cfg.accentColor1)
 	joinGuiBackground:=joinGui.addText("x2 y2 w310 h" (ui.friendsList.length*30)+30 " background" cfg.bgColor0)
-	joinGuiTitlebar:=joinGui.addText("x2 y2 w310 h" 24 " background" cfg.trimColor1)
+	joinGuiTitlebar:=joinGui.addText("x2 y2 w310 h" 24 " background" cfg.titleBgColor)
 	joinGuiTitlebar.onEvent("click",WM_LBUTTONDOWN_callback)
 	joinGuiAddTextOutline:=("x40 y5 w250 h10 background" cfg.accentColor1)
 	joinGuiAddFriendOutline:=joinGui.addText("x4 y4 w18 h18 background" cfg.accentColor1)
@@ -990,7 +978,7 @@ joinFireteam(*) {
 		}
 		
 		ui.joinGuiAddOutline:=joinGui.addText("section center x5 y" (ui.friendsList.length*30)+30 " w304 h26 background" cfg.outlineColor1)
-		ui.joinGuiAdd:=joinGui.addText("v" controlId "-" a_index  " section center x7 y" (ui.friendsList.length*30)+32 " w300 h20 background" cfg.trimColor1,"Add New Friend")
+		ui.joinGuiAdd:=joinGui.addText("v" controlId "-" a_index  " section center x7 y" (ui.friendsList.length*30)+32 " w300 h20 background" cfg.titleBgColor,"Add New Friend")
 		ui.joinGuiAdd.setFont("s14 bold c" cfg.fontColor1,"move-x")
 		ui.joinGuiAdd.onEvent("click",addFriend)
 		ui.joinGuiAddDetail:=joinGui.addPicture("section x5 y" (ui.friendsList.length*30)+30 " w304 h26 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
@@ -1296,5 +1284,5 @@ drawPanel5(*) {
 }
 
 ;line(ui.mainGui,529,0,2,30,cfg.accentColor2)
-;line(ui.gameTabGui,495,2,2,32,cfg.trimColor1)
+;line(ui.gameTabGui,495,2,2,32,cfg.titleBgColor)
 line(ui.mainGui,474,30,55,2,cfg.bgColor0)

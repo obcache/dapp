@@ -28,7 +28,7 @@ TitleBarImage=.\img\custom\lightburst_top_bar_dark.png
 [Denim & Leather]
 outlineColor1=426F93
 outlineColor2=AB883F
-accentColor1=CA8D01
+accentColor1=B79715
 accentColor2=38619E
 baseColor=10101
 fontColor1=EEF5F9
@@ -42,12 +42,13 @@ bgColor0=644832
 trimColor3=F7BB31
 trimColor2=797979
 trimColor4=EFBD10
-fontColor2=DFC995
+fontColor2=93B3E1
 TitleBarImage=.\img\custom\lightBurst_bottom_light.png
 accentColor3=5E7C9B
 accentColor4=445B73
 fontColor4=FBD184
 trimColor5=606060
+CurveAmount=15
 
 [Slate]
 trimColor2=AAAAAA
@@ -72,6 +73,7 @@ accentColor2=B0B0B0
 accentColor4=646464
 fontColor2=CDCDCD
 TitleBarImage=.\img\custom\lightburst_br_light.png
+CurveAmount=15
 
 [Autumn]
 TitleBarImage=.\img\custom\lightBurst_bottom_light.png
@@ -94,29 +96,31 @@ trimColor3=FE9833
 fontColor2=C1A97B
 
 [Foggy Shore]
-outlineColor1=16F6F
+outlineColor1=10101
 outlineColor2=919191
-accentColor1=A3A3A3
-accentColor2=326363
-baseColor=8A8A8A
+accentColor1=7298FE
+accentColor2=C0C0C0
+baseColor=3C3C3C
 fontColor1=FFFFFF
-fontColor3=D5C9AE
-bgColor1=5B798A
-trimColor1=3E5982
-bgColor3=355051
-bgColor2=113532
+fontColor3=FCD387
+bgColor1=727272
+trimColor1=282E35
+bgColor3=21533
+bgColor2=4A4A4A
 trimColor6=A4A4A4
-bgColor0=B0B0B0
-trimColor3=1D796
+bgColor0=14355A
+trimColor3=1C8DFF
 trimColor2=808080
 trimColor4=FFCC00
 fontColor2=A2A2A2
-TitleBarImage=.\img\custom\lightBurst_bottom_light.png
-trimColor5=56422C
+TitleBarImage=.\img\custom\lightburst_br_light.png
+trimColor5=404040
 HideTitlebarText=0
-accentColor4=404040
-accentColor3=242424
-fontColor4=1A685
+accentColor4=5B5B5B
+accentColor3=ADADAD
+fontColor4=CACAD9
+titleBgColor=163049
+CurveAmount=15
 
 
 [Modern Class]
@@ -166,6 +170,7 @@ accentColor3=14182
 accentColor4=445B73
 fontColor4=FBD184
 trimColor5=744F01
+CurveAmount=15
 
 [Partly Cloudy]
 trimColor2=B4B4B4
@@ -186,11 +191,12 @@ trimColor5=C7C7C7
 accentColor1=FFFFFF
 accentColor3=FFFFFF
 bgColor0=708180
-accentColor2=C7C7C7
+accentColor2=A6A6A6
 accentColor4=959595
 fontColor2=949494
 HideTitlebarText=0
 TitleBarImage=.\img\custom\lightburst_top_bar_light.png
+CurveAmount=15
 
 [Neon]
 baseColor=202020
@@ -217,29 +223,35 @@ HideTitlebarText=0
 TitleBarImage=.\img\custom\lightBurst_bottom_light.png
 fontColor4=FBD58E
 accentColor3=FF0180
+CurveAmount=15
 [Custom]
-accentColor4=445B73
-accentColor3=5E7C9B
-accentColor2=38619E
-accentColor1=CA8D01
-outlineColor2=AB883F
-outlineColor1=426F93
-baseColor=10101
-fontColor1=EEF5F9
-fontColor2=DFC995
-fontColor3=7C9EC0
-fontColor4=FBD184
-bgColor1=2F4151
-trimColor1=16181D
+accentColor4=646464
+accentColor3=ADADAD
+accentColor2=B0B0B0
+accentColor1=FFFFFF
+outlineColor2=A8A8A8
+outlineColor1=F9F9F9
+baseColor=383838
+fontColor1=FFFFFF
+fontColor2=CDCDCD
+fontColor3=CDCDCD
+fontColor4=E6E6E6
+bgColor1=666666
+trimColor1=282E35
 bgColor2=41576D
-bgColor3=2F2824
-trimColor6=292929
-trimColor5=606060
-bgColor0=644832
-trimColor3=F7BB31
-trimColor2=797979
-trimColor4=EFBD10
-ThemeTitlebarImage=.\img\custom\lightBurst_bottom_light.png
+bgColor3=666666
+trimColor6=404040
+trimColor5=B3F28C
+bgColor0=373737
+trimColor3=BFFF01
+trimColor2=AAAAAA
+trimColor4=F3850C
+ThemeTitlebarImage=.\img\custom\lightburst_br_light.png
+titleBarBorder=FFFFFF
+dragBarBorderColor=FFFFFF
+dragBorderColor=FFFFFF
+titleTrimColor=FFFFFF
+titleBgColor=204040
 [Jade Scarab]
 TitleBarImage=.\img\custom\lightBurst_bottom_light.png
 bgColor1=15340
@@ -264,6 +276,7 @@ accentColor3=E4BC18
 HideTitlebarText=0
 accentColor1=C2991D
 outlineColor1=1BEBE
+CurveAmount=15
 [Neon2-Test]
 TitleBarImage=.\img\custom\dapp_lightburst.png
 HideTitlebarText=0
@@ -332,7 +345,7 @@ trimColor5=1C8484
 outlineColor1=FECFA0
 trimColor2=ACACAC
 fontColor3=DCB985
-fontColor1=B9F0F0
+fontColor1=333333
 fontColor2=64717B
 accentColor1=3C616F
 baseColor=7D7D7D
@@ -359,6 +372,8 @@ trimColor3=E8C501
 trimColor2=681515
 trimColor4=FFB301
 TitleBarImage=.\img\custom\lightBurst_bottom_light.png
+titleBgColor=28AEAB
+CurveAmount=15
 [Event Horizon]
 accentColor4=445B73
 accentColor3=14182

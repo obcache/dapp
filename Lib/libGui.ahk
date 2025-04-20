@@ -58,8 +58,8 @@ tabsChanged(*) {
 			, guiVis(ui.gameSettingsGui,false)
 			, guiVis(ui.gameTabGui,false))
 			
-			ui.1_GameButtonDetail:=ui.mainGui.addPicture("x36 y3 w78 h25 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
-			ui.2_SetupButtonDetail:=ui.mainGui.addPicture("x117 y2 w77 h25 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")			
+			ui.1_GameButtonDetail:=ui.mainGui.addPicture("x36 y3 w78 h25 backgroundTrans","./img/custom/lightburst_top_bar_light.png")
+			ui.2_SetupButtonDetail:=ui.mainGui.addPicture("x117 y2 w77 h25 backgroundTrans","./img/custom/lightburst_top_bar_light.png")			
 			ui.1_GameButtonDetail.redraw()
 			ui.2_SetupButtonDetail.redraw()
 		;ui.mainTabsDetail:=ui.mainGui.addPicture("x-100 y2 w362 h25 backgroundTrans","./img/custom/lightburst_top_light.png")
@@ -153,7 +153,6 @@ advProgress(2)
 	ui.MainGui.MarginY := 0
 	ui.mainGuiAnchor := ui.mainGui.addText("x0 y0 w0 h0 section hidden")
 	
-	;ui.mainTabBg:=ui.mainGui.addText("x34 y1 w162 h28 background" cfg.accentColor1)
 	ui.mainBg := ui.mainGui.addText("x34 y30 w493 h185 background" cfg.bgColor0,"")
 
 	ui.1_GameButtonBg := ui.mainGui.addText("x34 y0 w81 h28 background" cfg.accentColor1)
@@ -162,16 +161,17 @@ advProgress(2)
 	advProgress(2)
 	
 	advProgress(2)
-	ui.3_FillBg:=ui.mainGui.addText("y2 x196 w280 h27 background" cfg.trimColor1)
+	ui.3_FillBg:=ui.mainGui.addText("y2 x196 w280 h27 background" cfg.titleBgColor)
 
 	ui.3_FillOutline:=ui.mainGui.addText("hidden x206 y1 w260 h29 center backgroundTrans","dapp")
 	ui.3_FillOutline.setFont("q5 s17 c" cfg.fontColor4,"Move-X")
-	ui.3_FillDetail1:=ui.mainGui.addPicture("x196 y2 w340 h30 backgroundTrans","./img/custom/lightburst_top_bar_light.png")
-	ui.3_FillDetail2:=ui.mainGui.addPicture("x196 y2 w340 h30 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
-	ui.3_FillDetail3:=ui.mainGui.addPicture("x196 y2 w340 h30 backgroundTrans","./img/custom/lightburst_bottom_light.png")
-	ui.3_TitleTextDetail:=ui.mainGui.addText("x316 y9 w2 h30 background" cfg.trimColor1)
-	ui.3_TitleTextDetail2:=ui.mainGui.addText("x339 y9 w2 h30 background" cfg.trimColor1)
-	ui.3_TitleTextDetail3:=ui.mainGui.addText("x355 y9 w2 h30 background" cfg.trimColor1)
+	ui.3_TitleTextDetail:=ui.mainGui.addText("x316 y9 w2 h14 background" cfg.titleBgColor)
+	ui.3_TitleTextDetail2:=ui.mainGui.addText("x339 y9 w2 h14 background" cfg.titleBgColor)
+	ui.3_TitleTextDetail3:=ui.mainGui.addText("x355 y9 w2 h14 background" cfg.titleBgColor)
+	ui.3_FillDetail1:=ui.mainGui.addPicture("x196 y2 w340 h28 backgroundTrans","./img/custom/lightburst_top_bar_light.png")
+	ui.3_FillDetail2:=ui.mainGui.addPicture("x196 y2 w340 h38 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+	ui.3_FillDetail3:=ui.mainGui.addPicture("x196 y2 w340 h28 backgroundTrans","./img/custom/lightburst_bottom_light.png")
+
 	(iniRead(cfg.themeFile,cfg.theme,"HideTitlebarText",0)) ? 0 : (ui.3_FillOutline.opt("-hidden"),ui.3_FillOutline.redraw())
 	
 	if !fileExist(cfg.titleBarImage)
@@ -193,8 +193,8 @@ advProgress(2)
 	ui.2_SetupButtonLabel := ui.mainGui.addText("y5 x117 w77 h26 center backgroundTrans","Setup")
 	ui.2_SetupButtonLabel.setFont("s12 c" cfg.fontColor2,"impact")
 
-	ui.1_gameButtonDetail:=ui.mainGui.addPicture("x36 y1 w80 h25 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
-	ui.2_setupButtonDetail2:=ui.mainGui.addPicture("x117 y2 w77 h25 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
+	ui.1_gameButtonDetail:=ui.mainGui.addPicture("x36 y1 w80 h25 backgroundTrans","./img/custom/lightburst_top_bar_light.png")
+	ui.2_setupButtonDetail2:=ui.mainGui.addPicture("x117 y1 w77 h25 backgroundTrans","./img/custom/lightburst_top_bar_light.png")
 
 	line(ui.mainGui,115,28,375,2,cfg.accentColor1)
 	line(ui.mainGui,115,0,30,2,cfg.accentColor1,"vert")
@@ -213,7 +213,8 @@ advProgress(2)
 	ui.mainGuiTabs.setFont("q5 s10 q5")
 	ui.MainGui.setFont("q5 s10 q5 c" cfg.fontColor1,"calibri")
 	ui.MainGuiTabs.OnEvent("Change",TabsChanged)
-	line(ui.mainGui,196,1,300,1,cfg.accentColor3)
+	line(ui.mainGui,196,1,300,1,cfg.titleTrimColor)
+	line(ui.mainGui,196,1,300,1,"010203")
 	advProgress(2)
 	ui.activeTab 				:= ui.mainGuiTabs.Text
 	ui.previousTab 				:= ui.activeTab
@@ -238,7 +239,7 @@ advProgress(2)
 
 	ui.DownButton.OnEvent("Click",guiHide)
 	ui.downButtonbg.onEvent("click",guiHide)
-	ui.ExitButtonDetail 	:= ui.mainGui.AddPicture("x470 y0 w94 h30 BackgroundTrans","./img/custom/lightburst_top_bar_light.png")	
+	ui.ExitButtonDetail 	:= ui.mainGui.AddPicture("x470 y1 w94 h27 BackgroundTrans","./img/custom/lightburst_top_bar_light.png")	
 	guiHide(*) {
 		ui.mainGui.hide()
 		ui.gameSettingsGui.hide()
@@ -327,84 +328,32 @@ fadeIn() {
 		ui.isFading := true
 		winGetPos(&mainGuiX,&mainGuiY,,,ui.mainGui)
 		transparency := 0
-		if cfg.topDockEnabled {
-			guiVis(ui.mainGui,false)
-			;guiVis(ui.titleBarButtonGui,false)
-			showDockBar()
-			while transparency < 253 {
-				transparency += 2.5
-				winSetTransparent(round(transparency),ui.dockBarGui)
-				sleep(1)
-			}
-			guiVis(ui.dockBarGui,true)
-		} else {
-			switch ui.mainGuiTabs.text {
-				case "1_Game____":
-					guiVis(ui.gameTabGui,true)
-					while transparency < 223 {
-						transparency += 4
-						winSetTransparent(min(round(transparency)+60,255),ui.gameTabGui)
-						winSetTransparent(round(transparency),ui.mainGui)	
-						winSetTransparent(min(round(transparency)+0,255),ui.gameSettingsGui)
-						sleep(1)
-					}
+		switch ui.mainGuiTabs.text {
+			case "1_Game____":
 				guiVis(ui.gameTabGui,true)
-					
-				default:
-				while transparency < 253 {
-					transparency += 2.5
-					winSetTransparent(round(transparency),ui.mainGui)
+				while transparency < 223 {
+					transparency += 4
+					winSetTransparent(min(round(transparency)+60,255),ui.gameTabGui)
+					winSetTransparent(round(transparency),ui.mainGui)	
+					winSetTransparent(min(round(transparency)+0,255),ui.gameSettingsGui)
 					sleep(1)
 				}
-
+			guiVis(ui.gameTabGui,true)
+					
+			default:
+			while transparency < 253 {
+				transparency += 2.5
+				winSetTransparent(round(transparency),ui.mainGui)
+				sleep(1)
 			}
-			guiVis(ui.mainGui,true)
 		}
-		ui.isFading := false
+		guiVis(ui.mainGui,true)
 	}
-	if (cfg.alwaysOnTopEnabled) {
-		ui.mainGui.opt("alwaysOnTop")
-	} else {
-		ui.mainGui.opt("-alwaysOnTop")
-		;ui.titleBarButtonGui.opt("-alwaysOnTop")
-	}
-	ui.mainGuiTabs.useTab("")
+	ui.isFading := false
 }
 
-autoFireButtonClicked(*) {
-	ToggleAutoFire()
-}
-
-toggleGuiCollapse(*) {
-	static activeMainTab := ui.mainGuiTabs.value
-		
-	(ui.GuiCollapsed := !ui.GuiCollapsed) 
-		? CollapseGui() 
-		: UncollapseGui()
-}
-
-CollapseGui() {
-	winGetPos(&mainX,&mainY,&mainW,&mainH,ui.mainGui)
-	GuiWidth := mainW
-	;guiVis(ui.titleBarButtonGui,false)
-	guiVis(ui.afkGui,false)
-	guiVis(ui.gameSettingsGui,false)
-	if (cfg.AnimationsEnabled) {
-		While GuiWidth > 250 {
-			ui.MainGui.Move(mainX,mainY,GuiWidth,)
-			GuiWidth -= 30
-			sleep(20)
-		}		
-		guiVis(ui.gameTabGui,false)
-		While GuiWidth > 5 {
-			ui.MainGui.Move(mainX,mainY,GuiWidth,)
-			GuiWidth -= 30
-			sleep(20)
-		}	
-	}
-	ui.MainGui.Move(mainX,mainY,35,)
-}
-
+winSetAlwaysOnTop(cfg.alwaysOnTopEnabled,ui.mainGui)
+ui.mainGuiTabs.useTab("")
 
 exitButtonPushed(this_button,*) {
 	exitApp

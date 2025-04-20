@@ -189,7 +189,7 @@ d2startSprinting(*) {
 
 cfg.d2LoadoutCoords1920x1080 := strSplit(iniRead(cfg.file,"Game"
 ,"d2LoadoutCoords1920x1080"
-,"145:3e	80,240:380,145:480,240:480,145:580,240:580,145:680,240:680,145:790,240:790,145:910,240:910"),",")
+,"145:380,240:380,145:480,240:480,145:580,240:580,145:680,240:680,145:790,240:790,145:910,240:910"),",")
 	
 cfg.d2LoadoutCoords1920x1200 := strSplit(iniRead(cfg.file,"Game"
 ,"d2LoadoutCoords1920x1200"
@@ -200,7 +200,7 @@ cfg.d2LoadoutCoords2560x1440 := strSplit(iniRead(cfg.file,"Game"
 ,"190:460,320:460,190:590,320:590,190:720,320:720,190:850,320:850,190:980,320:980,190:1100,320:1100"),",")	
 
 cfg.d2LoadoutCoords3440x1440 := strSplit(iniRead(cfg.file,"Game"
-,"d2LoadoutCoords3440x1440"
+,"d2LoadoutCoords3440x1440" 
 ,"636:460,760:460,636:590,760:590,636:720,760:720,636:850,760:850,636:980,760:980,636:1100,760:1100"),",")	
 				
 cfg.d2LoadoutCoordsCustom := strSplit(iniRead(cfg.file,"Game"
@@ -209,7 +209,6 @@ cfg.d2LoadoutCoordsCustom := strSplit(iniRead(cfg.file,"Game"
 
 ui.d2IsReloading := false
 ui.d2IsSprinting := false
-
 
 d2CreateLoadoutKeys(*) {
 	try {

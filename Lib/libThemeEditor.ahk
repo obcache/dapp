@@ -43,8 +43,8 @@ drawOutlineNamed("themeOutline",ui.themeEditorGui,0,0,398,250,cfg.outlineColor2,
 ;drawOutlineNamed("themeOutline",ui.themeEditorGui,1,0,324,24,cfg.outlineColor2,cfg.outlineColor1,2)
 ui.ColorSelectorLabel2 := ui.themeEditorGui.AddText("x6 y33 h21 center section w100 BackgroundTrans c"
 	((cfg.ColorPickerEnabled) 
-		? cfg.fontColor3 " background" cfg.trimColor1 
-		: cfg.fontColor3 " background" cfg.trimColor1) 
+		? cfg.fontColor3 " background" cfg.titleBgColor 
+		: cfg.fontColor3 " background" cfg.titleBgColor) 
 		,((cfg.ColorPickerEnabled) 
 		? (" Color App") 
 		: (" Swatches ")))
@@ -58,7 +58,7 @@ ui.ColorSelectorLabel2.setFont("q5 s14","calibri bold")
 ToggleColorSelector(*) {
 	ui.toggleColorSelector.Value := 
 		(cfg.ColorPickerEnabled := !cfg.ColorPickerEnabled) 
-			? (ui.ColorSelectorLabel2.Opt("c" cfg.fontColor3 " background" cfg.trimColor1)
+			? (ui.ColorSelectorLabel2.Opt("c" cfg.fontColor3 " background" cfg.titleBgColor)
 				,ui.ColorSelectorLabel2.Text := " Color App "
 				,"./Img/toggle_left.png")
 			: (ui.ColorSelectorLabel2.Opt("c" cfg.fontColor4 " background" cfg.trimColor4)
@@ -69,7 +69,7 @@ ToggleColorSelector(*) {
 ui.toggleColorSelector := ui.themeEditorGui.AddPicture("y30 x107 section w60 h27 backgroundTrans", (cfg.ColorPickerEnabled) ? ("./Img/toggle_left.png") : ("./Img/toggle_right.png"))
 ui.toggleColorSelector.OnEvent("Click", ToggleColorSelector)
 ui.toggleColorSelector.ToolTip := "Select color picking method for theming features"
-ui.buttonNewTheme := ui.themeEditorGui.AddPicture("x+4 ys+1 section w25 h23 Background" cfg.trimColor1,"./Img/button_plus_ready.png")
+ui.buttonNewTheme := ui.themeEditorGui.AddPicture("x+4 ys+1 section w25 h23 Background" cfg.titleBgColor,"./Img/button_plus_ready.png")
 ui.buttonNewTheme.OnEvent("Click",addTheme)
 
 ui.themeEditorGui.setFont("s11","move-x")
@@ -107,11 +107,11 @@ ui.ThemeElements := [
 	"bgColor2", 	"bgColor3","baseColor",
 	"fontColor1",	"fontColor2",
 	"fontColor3", 	"fontColor4",
-	"trimColor1",	"trimColor2",
+	"titleBgColor",	"trimColor2",
 	"trimColor3",	"trimColor4",
 	"trimColor5",	"trimColor6",	
 	"accentColor1",	"accentColor2",	
-	"accentColor3",	"accentColor4",			
+	"titleTrimColor",	"accentColor4",			
 	"outlineColor2","outlineColor1"
 		
 	 	]
@@ -136,7 +136,15 @@ Loop ui.ThemeElements.Length
 	ui.%this_color%Label := ui.themeEditorGui.AddText("x+6 ys+0 c" cfg.fontColor1,StrReplace(this_color,"Color"))
 	ui.%this_color%Picker.OnEvent("Click",PickColor)
 }
-
+ui.curveSliderOutline:=ui.themeEditorGui.addText("x98 y160 w80 h20 background" cfg.bgColor2)
+ui.curveSliderBg:=ui.themeEditorGui.addText("x99 y161 w78 h18 background" cfg.bgColor0)
+ui.curveSlider:=ui.themeEditorGui.addSlider("x100 y163 w75 h14 center range10-50 toolTip noTicks c" cfg.titleBgColor " vcurveSlider")
+ui.curveSlider.redraw()
+ui.curveSlider.onEvent("change",changeCurve)
+changeCurve(*) {
+	iniWrite(cfg.curveAmount:=ui.curveSlider.value,cfg.themeFile,cfg.theme,"CurveAmount")
+	reload()
+}
 ;ui.hideTitleTextLabel:=ui.themeEditorGui.addText("section x4 y174 w160 h20 right backgroundTrans","Hide Titlebar Text")
 ;ui.HideTitleTextLabel.setFont("s12 q5 c" cfg.fontColor1)
 ui.hidetitleTextCbValue:=iniRead(cfg.themeFile,cfg.theme,"HideTitlebarText",0)
@@ -155,7 +163,7 @@ ui.titleBarEditBgText:=ui.themeEditorGui.addText("section x47 y218 w280 h26 back
 ui.titleBarEditBgText.setFont("s14 c" cfg.fontColor2,"move-x")
 (ui.hideTitleTextCbValue) ? ui.titleBarEditBgText.opt("hidden") : ui.titleBarEditBgText.opt("-hidden")
 
-ui.titlebarEdit:=ui.themeEditorGui.addPicture("section x10 y214 w30 h30 backgroundTrans","./img/button_edit.png")
+ui.titlebarEdit:=ui.themeEditorGui.addPicture("section x10 y214 w30 h30 background" cfg.bgColor1,"./img/button_edit.png")
 ui.titlebarPreview:=ui.themeEditorGui.addPicture("x44 ys+0 w346 h30 backgroundTrans",cfg.titleBarImage)
 ;ui.titleBarPreviewLabel:=ui.themeEditorGui.addText("x5 y+5 w40 backgroundTrans center","Titlebar Image")
 drawOutline(ui.themeEditorGui,42,214,350,30,cfg.outlineColor1,cfg.outlineColor2,2)
@@ -224,10 +232,10 @@ ChooseColor(ColorType,prev_color) {
 		}
 	} else {
 		winGetPos(&DialogX,&DialogY,&DialogW,&DialogH,ui.themeEditorGui)
-		ui.colorGui := Gui()
+re("w515 h1000","./Img/color_swatches.png")
+		ui.colorGui.Show("x" DialogX " y" Dial		ui.colorGui := Gui()
 		ui.colorGui.Opt("+AlwaysOnTop -Caption toolWindow +Owner" ui.themeEditorGui.Hwnd)
-		ui.ColorPicker := ui.colorGui.AddPicture("w515 h1000","./Img/color_swatches.png")
-		ui.colorGui.Show("x" DialogX " y" DialogY+DialogH)
+		ui.ColorPicker := ui.colorGui.AddPictuogY+DialogH)
 		winSetAlwaysOnTop(1,"ahk_exe ColorChooser.exe")
 		ClickReceived := KeyWait("LButton","D T30")
 		msgBox(clickReceived)
@@ -271,7 +279,7 @@ addTheme(*) {
 	ui.newThemeOkButton := ui.newThemeGui.AddPicture("x+-7 ys w40 h40 Background" cfg.trimColor2,"./Img/button_save_up.png")
 	ui.newThemeOkButton.OnEvent("Click",addThemeToDDL)
 	ui.newThemeGui.Show("w260 h110 NoActivate")
-	drawOutline(ui.newThemeGui,5,5,250,100,cfg.accentColor4,cfg.accentColor3,2)	;New App Profile Modal Outline
+	drawOutline(ui.newThemeGui,5,5,250,100,cfg.accentColor4,cfg.titleTrimColor,2)	;New App Profile Modal Outline
 
 	addThemeToDDL(*) {
 		Global
@@ -284,7 +292,7 @@ addTheme(*) {
 
 		{ ;write new Theme to ini
 		IniWrite(cfg.accentColor4,cfg.themeFile,ui.newThemeEdit.Value,"accentColor4")
-		IniWrite(cfg.accentColor3,cfg.themeFile,ui.newThemeEdit.Value,"accentColor3")
+		IniWrite(cfg.titleTrimColor,cfg.themeFile,ui.newThemeEdit.Value,"titleTrimColor")
 		IniWrite(cfg.accentColor2,cfg.themeFile,ui.newThemeEdit.Value,"accentColor2")
 		IniWrite(cfg.accentColor1,cfg.themeFile,ui.newThemeEdit.Value,"accentColor1")
 		IniWrite(cfg.outlineColor2,cfg.themeFile,ui.newThemeEdit.Value,"outlineColor2")
@@ -295,7 +303,7 @@ addTheme(*) {
 		IniWrite(cfg.fontColor3,cfg.themeFile,ui.newThemeEdit.Value,"fontColor3")
 		IniWrite(cfg.fontColor4,cfg.themeFile,ui.newThemeEdit.Value,"fontColor4")
 		IniWrite(cfg.bgColor1,cfg.themeFile,ui.newThemeEdit.Value,"bgColor1")
-		IniWrite(cfg.trimColor1,cfg.themeFile,ui.newThemeEdit.Value,"trimColor1")
+		IniWrite(cfg.titleBgColor,cfg.themeFile,ui.newThemeEdit.Value,"titleBgColor")
 		IniWrite(cfg.bgColor0,cfg.themeFile,ui.newThemeEdit.Value,"bgColor2")
 		IniWrite(cfg.bgColor3,cfg.themeFile,ui.newThemeEdit.Value,"bgColor3")
 		IniWrite(cfg.trimColor6,cfg.themeFile,ui.newThemeEdit.Value,"trimColor6")

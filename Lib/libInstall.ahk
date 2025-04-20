@@ -473,9 +473,8 @@ CheckForUpdates(msg,*) {
 		
 	if fileExist("./dapp_currentBuild.dat") {
 		ui.installedVersion := fileRead("./dapp_currentBuild.dat")
-		ui.installedVersionText.text := "Installed:`t" substr(ui.installedVersion,1,1) "." substr(ui.installedVersion,2,1) "." substr(ui.installedVersion,3,1) "." substr(ui.installedVersion,4,1)
 	} 
-	
+	ui.installedVersionText.text := "Installed:`t" substr(ui.installedVersion,1,1) "." substr(ui.installedVersion,2,1) "." substr(ui.installedVersion,3,1) "." substr(ui.installedVersion,4,1)
 	ui.installedVersionText.redraw()
 	ui.latestVersion := ui.installedVersion
 	
