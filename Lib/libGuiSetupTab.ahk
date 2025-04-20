@@ -17,14 +17,12 @@ monitorResChanged(*) {
 		ui.monitorResDDL.add([a_screenWidth "x" a_screenHeight])
 		ui.monitorResDDL.text := a_screenWidth "x" a_screenHeight
 		}
-
 	d2CreateLoadoutKeys()
 }
 
 GuiSetupTab(&ui,&cfg) {
 	global
 	ui.MainGuiTabs.UseTab("2_Setup____")
-	
 	drawPanel(ui.mainGui,40,37,218,168,cfg.bgColor1,cfg.outlineColor2,cfg.outlineColor1,1,1,"none",100,"Features","calibri",cfg.fontColor1)
 	drawPanel(ui.mainGui,261,37,214,112,cfg.bgColor1,cfg.outlineColor2,cfg.outlineColor1,1,1,"none",100,"Features","calibri",cfg.fontColor1)
 	drawPanel(ui.mainGui,261,152,214,53,cfg.bgColor1,cfg.outlineColor2,cfg.outlineColor1,1,1,"none",100,"Features","calibri",cfg.fontColor1)
@@ -81,8 +79,6 @@ GuiSetupTab(&ui,&cfg) {
 	ui.toggleAnimations.ToolTip := "Toggles the app's slide and fade animations."
 	ui.labelAnimations:= ui.MainGui.AddText("x+5 ys+2 backgroundTrans","  Animations")
 
-
-
 	ui.toggleAutoStart := ui.MainGui.AddPicture("xs y+2 w50 h22 section vAutoStart " (cfg.autoStartEnabled ? ("Background" cfg.trimColor3) : ("Background" cfg.trimColor2)),((cfg.autoStartEnabled) ? (cfg.toggleOn) : (cfg.toggleOff)))
 	ui.toggleAutoStart.OnEvent("Click", toggleChangedAutoStart)
 	ui.toggleAutoStart.ToolTip := "Auto-starts the app on Windows login."
@@ -100,7 +96,6 @@ GuiSetupTab(&ui,&cfg) {
 	else
 		if (fileExist(A_StartMenu "\Programs\Startup\dapp.lnk"))
 			setAutoStart(0)
-	
 }
 	setAutoStart(OnOff) {
 		if (OnOff == "On" || OnOff == true || OnOff == 1) {

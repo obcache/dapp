@@ -464,7 +464,7 @@ autoUpdate() {
 	}
 }	
 
-CheckForUpdates(msg,*) {
+CheckForUpdates(msg:=0,*) {
 	ui.latestVersion:="1111"
 		
 	if fileExist("./.tmp")

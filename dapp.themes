@@ -74,6 +74,7 @@ accentColor4=646464
 fontColor2=CDCDCD
 TitleBarImage=.\img\custom\lightburst_br_light.png
 CurveAmount=15
+titleTrimColor=202020
 
 [Autumn]
 TitleBarImage=.\img\custom\lightBurst_bottom_light.png
@@ -250,7 +251,7 @@ ThemeTitlebarImage=.\img\custom\lightburst_br_light.png
 titleBarBorder=FFFFFF
 dragBarBorderColor=FFFFFF
 dragBorderColor=FFFFFF
-titleTrimColor=FFFFFF
+titleTrimColor=202020
 titleBgColor=204040
 [Jade Scarab]
 TitleBarImage=.\img\custom\lightBurst_bottom_light.png
