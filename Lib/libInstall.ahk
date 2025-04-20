@@ -457,7 +457,6 @@ autoUpdate() {
 		if !inStr(fileRead(a_scriptDir "/.tmp"),"100% loss") {
 			checkForUpdates(0)
 		} else {
-			if cfg.pushNotificationsEnabled
 				setTimer () => pbNotify("Network Down. Bypassing Auto-Update.",1000),-100
 		}
 		if fileExist("./.tmp")
@@ -495,11 +494,18 @@ CheckForUpdates(msg,*) {
 		if (ui.installedVersion < ui.latestVersion) {
 			if(msg != 0) {
 				ui.latestVersionText.text := "Available:`t" substr(ui.latestVersion,1,1) "." substr(ui.latestVersion,2,1) "." substr(ui.latestVersion,3,1) "." substr(ui.latestVersion,4,1)
-				notifyOSD("No upgraded needed.`nInstalled: " substr(ui.installedVersion,1,1) "." substr(ui.installedVersion,2,1) "." substr(ui.installedVersion,3,1) "." substr(ui.installedVersion,4,1) "`nAvailable: " substr(ui.latestVersion,1,1) "." substr(ui.latestVersion,2,1) "." substr(ui.latestVersion,3,1) "." substr(ui.latestVersion,4,1),2500)
-			}
+				if ui.latestVersion > ui.CurrentVersion
+					run("./dapp_updater.exe")
+					sleep(1000)
+					exit
+			} 
+		} else {
+			notifyOSD("No upgraded needed.`nInstalled: " substr(ui.installedVersion,1,1) "." substr(ui.installedVersion,2,1) "." substr(ui.installedVersion,3,1) "." substr(ui.installedVersion,4,1) "`nAvailable: " substr(ui.latestVersion,1,1) "." substr(ui.latestVersion,2,1) "." substr(ui.latestVersion,3,1) "." substr(ui.latestVersion,4,1),2500)
 		}
 	} else {
 		ui.latestVersionText.text:="Latest:`t           ERROR"
 		pbNotify("Cannot reach update site.`nCheck network.",5000)
 	}
+
+
 }
