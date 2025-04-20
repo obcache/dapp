@@ -455,7 +455,7 @@ autoUpdate() {
 	runWait("cmd /C start /b /wait ping -n 1 8.8.8.8 > " a_scriptDir "/.tmp",,"Hide")
 	try {
 		if !inStr(fileRead(a_scriptDir "/.tmp"),"100% loss") {
-			checkForUpdates(0)
+			checkForUpdates(1)
 		} else {
 				setTimer () => pbNotify("Network Down. Bypassing Auto-Update.",1000),-100
 		}
@@ -494,7 +494,7 @@ CheckForUpdates(msg:=0,*) {
 		if (ui.installedVersion < ui.latestVersion) {
 			if(msg != 0) {
 				ui.latestVersionText.text := "Available:`t" substr(ui.latestVersion,1,1) "." substr(ui.latestVersion,2,1) "." substr(ui.latestVersion,3,1) "." substr(ui.latestVersion,4,1)
-				if ui.latestVersion > ui.CurrentVersion
+				if ui.latestVersiontext.text > ui.CurrentVersionText.text
 					run("./dapp_updater.exe")
 					sleep(1000)
 					exit

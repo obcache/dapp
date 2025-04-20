@@ -432,7 +432,7 @@ NotifyOSD(NotifyMsg,Duration := 2000,guiName:=ui.mainGui,Alignment := "Left",YN 
 		ui.notifyGui.destroy()
 		notifyOSD("Timed out waiting for response.`nPlease try your action again",-1000)
 	}
-	(cfg.alwaysOnTopEnabled) ? ui.mainGui.opt("+alwaysOnTop") : 0
+	(cfg.alwaysOnTopEnabled) ? ui.notifyGui.opt("+alwaysOnTop") : 0
 }
 
 fadeOSD() {
