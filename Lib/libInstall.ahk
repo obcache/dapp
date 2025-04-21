@@ -492,13 +492,10 @@ CheckForUpdates(msg:=0,*) {
 	
 	if !inStr(ui.latestVersion,"404:") {
 		if (ui.installedVersion < ui.latestVersion) {
-			if(msg != 0) {
-				ui.latestVersionText.text := "Available:`t" substr(ui.latestVersion,1,1) "." substr(ui.latestVersion,2,1) "." substr(ui.latestVersion,3,1) "." substr(ui.latestVersion,4,1)
-				if ui.latestVersiontext.text > ui.CurrentVersionText.text
-					run("./dapp_updater.exe")
-					sleep(1000)
-					exit
-			} 
+			ui.latestVersionText.text := "Available:`t" substr(ui.latestVersion,1,1) "." substr(ui.latestVersion,2,1) "." substr(ui.latestVersion,3,1) "." substr(ui.latestVersion,4,1)
+			run("./dapp_updater.exe")
+			sleep(1000)
+			exit
 		} else {
 			notifyOSD("No upgraded needed.`nInstalled: " substr(ui.installedVersion,1,1) "." substr(ui.installedVersion,2,1) "." substr(ui.installedVersion,3,1) "." substr(ui.installedVersion,4,1) "`nAvailable: " substr(ui.latestVersion,1,1) "." substr(ui.latestVersion,2,1) "." substr(ui.latestVersion,3,1) "." substr(ui.latestVersion,4,1),2500)
 		}
