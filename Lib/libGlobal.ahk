@@ -191,7 +191,7 @@ cfgLoad(&cfg, &ui) {
 	cfg.d2AutoGameConfigEnabled := iniRead(cfg.file,"Game","d2AutoGameConfigEnabled",true)
 	cfg.titleBarImage			:= iniRead(cfg.themefile,cfg.theme,"TitlebarImage","./img/dapp_titlebar.png")
 	cfg.CurveAmount				:= iniRead(cfg.themefile,cfg.theme,"CurveAmount",5)
-	cfg.curveAmount:=15
+	cfg.curveAmount:=30
 	runWait("./redist/mouseSC_x64.exe /verticalScroll:1",,"hide")
 }
 
@@ -397,7 +397,7 @@ NotifyOSD(NotifyMsg,Duration := 2000,guiName:=ui.mainGui,Alignment := "Left",YN 
 {
 	if !InStr("LeftRightCenter",Alignment)
 		Alignment := "Left"
-	Transparent := 250
+		Transparent := 250
 	try
 		ui.notifyGui.Destroy()
 	ui.notifyGui			:= Gui()
@@ -405,15 +405,18 @@ NotifyOSD(NotifyMsg,Duration := 2000,guiName:=ui.mainGui,Alignment := "Left",YN 
 	ui.notifyGui.Opt(" -Caption +ToolWindow alwaysOnTop")  ; +ToolWindow avoids a taskbar button and an alt-tab menu item.
 	ui.notifyGui.BackColor := cfg.bgColor1  ; Can be any RGB color (it will be made transparent below).
 	ui.notifyGui.setFont("q5 s16")  ; Set a large font size (32-point).
+	ui.notifyGui.addText("x3 y3 w490 h212 background" cfg.bgColor2)
+	ui.notifyGui.addText("x5 y5 w486 h212 background" cfg.bgColor1)
+	
 	ui.notifyGui.AddText("c" cfg.fontColor1 " " Alignment " BackgroundTrans",NotifyMsg)  ; XX & YY serve to 00auto-size the window.
+
 	ui.notifyGui.AddText("xs hidden")
 	ui.notifyGui.getPos(&x,&y,&w,&h)
 	WinSetTransparent(0,ui.notifyGui)
 	winGetPos(&GuiX,&GuiY,&GuiW,&GuiH,ui.mainGui.hwnd)
-	ui.notifyGui.Show("x" (GuiX+(GuiW/2))/2 " y" GuiY )
+	ui.notifyGui.Show("x" GuiX+34 " y" GuiY " w" guiW-68 " h" guiH+2 " noActivate")
 	guiVis(ui.notifyGui,true)
-	drawOutlineNotifyGui(1,1,w,h,cfg.outlineColor2,cfg.outlineColor1,1)
-	drawOutlineNotifyGui(2,2,w-2,h-2,cfg.accentColor4,cfg.accentColor4,1)
+	;drawOutline(ui.notifyGUi,2,2,w-2,h-2,cfg.accentColor4,cfg.accentColor4,1)
 	if (YN) {
 		ui.notifyGui.AddText("xs hidden")
 		ui.notifyYesButton := ui.notifyGui.AddPicture("ys x30 y30","./Img/button_yes.png")

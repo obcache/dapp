@@ -138,7 +138,8 @@ Loop ui.ThemeElements.Length
 }
 ui.curveSliderOutline:=ui.themeEditorGui.addText("x98 y160 w80 h20 background" cfg.bgColor2)
 ui.curveSliderBg:=ui.themeEditorGui.addText("x99 y161 w78 h18 background" cfg.bgColor0)
-ui.curveSlider:=ui.themeEditorGui.addSlider("x100 y163 w75 h14 center range10-50 toolTip noTicks c" cfg.titleBgColor " vcurveSlider")
+cfg.curveAmount:=iniRead(cfg.themeFile,cfg.theme,"Game","CurveAmount")
+ui.curveSlider:=ui.themeEditorGui.addSlider("x100 y163 w75 h14 center range10-50 toolTip noTicks c" cfg.titleBgColor " vcurveSlider",cfg.curveAmount)
 ui.curveSlider.redraw()
 ui.curveSlider.onEvent("change",changeCurve)
 changeCurve(*) {
