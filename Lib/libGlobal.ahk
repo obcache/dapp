@@ -9,17 +9,6 @@ if (InStr(A_LineFile,A_ScriptFullPath)){
 }
 
 restoreWin(*) {
-	if !cfg.topDockEnabled {
-		ui.mainGui.show()
-		ui.gameSettingsGui.show()
-		ui.gameTabGui.show()
-		guiVis(ui.mainGui,true)
-		guiVis(ui.gameSettingsGui,true)
-		guiVis(ui.gameTabGui,true)
-		
-		tabsChanged()
-		;ui.mainGui.opt("-toolWindow")
-	}
 }
 
 hideGui(*) {
@@ -191,7 +180,6 @@ cfgLoad(&cfg, &ui) {
 	cfg.d2AutoGameConfigEnabled := iniRead(cfg.file,"Game","d2AutoGameConfigEnabled",true)
 	cfg.titleBarImage			:= iniRead(cfg.themefile,cfg.theme,"TitlebarImage","./img/dapp_titlebar.png")
 	cfg.CurveAmount				:= iniRead(cfg.themefile,cfg.theme,"CurveAmount",5)
-	cfg.curveAmount:=30
 	runWait("./redist/mouseSC_x64.exe /verticalScroll:1",,"hide")
 }
 

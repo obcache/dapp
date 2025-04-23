@@ -186,7 +186,7 @@ GuiSetupTab(&ui,&cfg) {
 	ui.checkForUpdatesButton := ui.mainGui.addPicture("xs+10 y+-7 w30 h30 section background" cfg.trimColor3,"./img/button_update.png")
 	ui.checkForUpdatesButton.onEvent("Click",checkForUpdates)
 	ui.checkForUpdatesButton.Tooltip := "Checks to see if a more recent version is available"	
-	ui.installedVersionText := ui.mainGui.addText("ys-1 x+17 section w140 h19 backgroundTrans c" cfg.fontColor3 ,"Installed:`t#.#.#.#")
+	ui.installedVersionText := ui.mainGui.addText("ys-1 x+17 section w140 h19 backgroundTrans c" cfg.fontColor3 ,"Installed:`t" substr(a_fileVersion,1,1) "." subStr(a_fileVersion,2,1) "." subStr(a_fileVersion,3,1) "." subStr(a_fileVersion,4,1))
 	ui.latestVersionText := ui.mainGui.addText("xs y+-4 w140 backgroundTrans c" cfg.fontColor3,"Available:`t#.#.#.#")
 	ui.monitorResList := ["1920x1080","1920x1200","2560x1440","3440x1440","Custom"]
 

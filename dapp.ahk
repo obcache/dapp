@@ -1,7 +1,9 @@
-A_FileVersion := "1.6.6.6"
+A_FileVersion := "1.6.6.7"
 a_appName := "dapp"
 if (fileExist("./dapp_currentBuild.dat"))
 a_fileVersion := fileRead("./dapp_currentBuild.dat")
+else
+a_fileVersion := "0000"
 	
 ;@ahk2Exe-let fileVersion=%a_priorLine~U)^(.+"){1}(.+)".*$~$2% 
 ;@ahk2Exe-setName dapp

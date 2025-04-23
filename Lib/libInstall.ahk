@@ -434,17 +434,16 @@ autoUpdate() {
 }	
 
 CheckForUpdates(msg:=0,*) {
-	ui.latestVersion:="1111"
-		
+	ui.latestVersion:="0"
+	
 	if fileExist("./.tmp")
 		fileDelete("./.tmp")
 		
-	if fileExist("./dapp_currentBuild.dat") {
-		ui.installedVersion := fileRead("./dapp_currentBuild.dat")
-	} 
-	ui.installedVersionText.text := "Installed:`t" substr(ui.installedVersion,1,1) "." substr(ui.installedVersion,2,1) "." substr(ui.installedVersion,3,1) "." substr(ui.installedVersion,4,1)
-	ui.installedVersionText.redraw()
-	ui.latestVersion := ui.installedVersion
+	; if fileExist("./dapp_currentBuild.dat") {
+		; ui.installedVersion := fileRead("./dapp_currentBuild.dat")
+		; ui.installedVersionText.text := "Installed:`t" substr(ui.installedVersion,1,1) "." substr(ui.installedVersion,2,1) "." substr(ui.installedVersion,3,1) "." substr(ui.installedVersion,4,1)
+		; ui.installedVersionText.redraw()
+	; }  else {
 	
 	try {
 		whr := ComObject("WinHttp.WinHttpRequest.5.1")
@@ -457,21 +456,21 @@ CheckForUpdates(msg:=0,*) {
 			ui.latestVersionText.text := "Available:`t--No Network--"
 			notifyOSD("Network down.`nTry again later.",3000)
 		}
-	}
-	
-	if !inStr(ui.latestVersion,"404:") {
-		if (ui.latestVersion-ui.installedVersion) > 0 {
-			ui.latestVersionText.text := "Available:`t" substr(ui.latestVersion,1,1) "." substr(ui.latestVersion,2,1) "." substr(ui.latestVersion,3,1) "." substr(ui.latestVersion,4,1)
-			run("./dapp_updater.exe")
-			sleep(1000)
-			exit
-		} else {
-			notifyOSD("No upgraded needed.`nInstalled: " substr(ui.installedVersion,1,1) "." substr(ui.installedVersion,2,1) "." substr(ui.installedVersion,3,1) "." substr(ui.installedVersion,4,1) "`nAvailable: " substr(ui.latestVersion,1,1) "." substr(ui.latestVersion,2,1) "." substr(ui.latestVersion,3,1) "." substr(ui.latestVersion,4,1),2500)
-		}
 	} else {
-		ui.latestVersionText.text:="Latest:`t           ERROR"
-		pbNotify("Cannot reach update site.`nCheck network.",5000)
+		ui.latestVersionText.text := "Available:`t" substr(ui.latestVersion,1,1) "." substr(ui.latestVersion,2,1) "." substr(ui.latestVersion,3,1) "." substr(ui.latestVersion,4,1)
+		ui.latestVersionText.redraw()
+		
+		if !inStr(ui.latestVersion,"404:") {
+			if ui.latestVersion > a_fileversion {
+				run("./dapp_updater.exe")
+				sleep(1000)
+				Exit
+			} else {
+				notifyOSD("No upgraded needed.`nInstalled: " substr(ui.installedVersion,1,1) "." substr(ui.installedVersion,2,1) "." substr(ui.installedVersion,3,1) "." substr(ui.installedVersion,4,1) "`nAvailable: " substr(ui.latestVersion,1,1) "." substr(ui.latestVersion,2,1) "." substr(ui.latestVersion,3,1) "." substr(ui.latestVersion,4,1),2500)
+			}
+		} else {
+			ui.latestVersionText.text:="Latest:`t           ERROR"
+			pbNotify("Cannot reach update site.`nCheck network.",5000)
+		} 
 	}
-
-
 }

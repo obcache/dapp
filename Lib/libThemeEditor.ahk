@@ -21,7 +21,8 @@ showThemeEditor(*) {
 ui.themeEditorGui := gui()
 ui.themeEditorGui.opt("-caption alwaysOnTop toolWindow owner" ui.mainGui.hwnd)
 ui.themeEditorGui.backColor := cfg.bgColor0
-ui.themeEditorGui.color := cfg.baseColor
+ui.themeEditorGui.color := "010203"
+
 ui.themeEditorTitlebar := ui.themeEditorGui.addText("x0 y0 w372 h30 background" cfg.bgColor1 " c" cfg.fontColor1,"")
 ui.themeEditorTitlebarText := ui.themeEditorGui.addText("x10 y6 w180 h30 backgroundTrans c" cfg.fontColor1,"Theme Editor" )
 ui.themeEditorTitlebarText.setFont("q5 s15","move-x")
@@ -136,14 +137,18 @@ Loop ui.ThemeElements.Length
 	ui.%this_color%Label := ui.themeEditorGui.AddText("x+6 ys+0 c" cfg.fontColor1,StrReplace(this_color,"Color"))
 	ui.%this_color%Picker.OnEvent("Click",PickColor)
 }
-ui.curveSliderOutline:=ui.themeEditorGui.addText("x98 y160 w80 h20 background" cfg.bgColor2)
+ui.curveSliderOutline:=ui.themeEditorGui.addText("x98 y160 w80 h20 background" cfg.bgColor1)
 ui.curveSliderBg:=ui.themeEditorGui.addText("x99 y161 w78 h18 background" cfg.bgColor0)
-cfg.curveAmount:=iniRead(cfg.themeFile,cfg.theme,"Game","CurveAmount")
-ui.curveSlider:=ui.themeEditorGui.addSlider("x100 y163 w75 h14 center range10-50 toolTip noTicks c" cfg.titleBgColor " vcurveSlider",cfg.curveAmount)
+cfg.curveAmount:=iniRead(cfg.themeFile,cfg.theme,"CurveAmount",20)
+ui.curveSliderBuddy:=ui.themeEditorGui.addText("x155 y163 w25 h14 backgroundTrans vCurveSliderBuddy c" cfg.fontColor1,cfg.curveAmount)
+ui.curveSliderBuddy.setFont("s10 q5 c" cfg.fontColor2,"Calibri")
+ui.curveSlider:=ui.themeEditorGui.addSlider("x100 y163 w50 h14 center range10-50 toolTip noTicks c" cfg.titleBgColor " vcurveSlider buddy2CurveSliderBuddy",cfg.curveAmount)
+ui.curveSlider.value:=cfg.curveAmount
 ui.curveSlider.redraw()
 ui.curveSlider.onEvent("change",changeCurve)
 changeCurve(*) {
-	iniWrite(cfg.curveAmount:=ui.curveSlider.value,cfg.themeFile,cfg.theme,"CurveAmount")
+	cfg.curveAmount:=ui.curveSlider.value
+	iniWrite(ui.curveSlider.value,cfg.themeFile,cfg.theme,"CurveAmount")
 	reload()
 }
 ;ui.hideTitleTextLabel:=ui.themeEditorGui.addText("section x4 y174 w160 h20 right backgroundTrans","Hide Titlebar Text")

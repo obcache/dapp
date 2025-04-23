@@ -285,6 +285,10 @@ drawGameTabs(tabNum := 1) {
 		
 	}
 	
+	createShading(objGui,objX,objY,objW,objH) {
+		objGui.addPicture("x" objX " y" objY " w" objW " h" min(cfg.curveAmount,(objH/2)))
+		objGui.addPicture("x" objX " y" objH-(min(cfg.curveAmount,(objH/2))) " w" objW " h" min(cfg.curveAmount,(objH/2)))
+	}
 	
 	line(ui.gameTabGui,240,31,500,1,cfg.titleBgColor)
 	;line(ui.gameTabGui,216,299,280,1,cfg.accentColor2)
@@ -292,8 +296,8 @@ drawGameTabs(tabNum := 1) {
 	drawOutlineNamed("helpOutline",ui.gameTabGui,463,0,34,32,cfg.accentColor1,cfg.accentColor1,3)
 	ui.gameTabGui.addText("x464 y2 w31 h29 background" cfg.bgColor1)
 	ui.helpIcon := ui.gameTabGui.addPicture("x470 y3 w-1 h26 backgroundTrans","./img/icon_help.png")
-	ui.gameTabGui.addPicture("x463 y" 1 " w37 h" 30-(30-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_light.png")
-	ui.gameTabGui.addPicture("x463 y" 30+(30-cfg.curveAmount) " w37 h" 30-(30-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+	ui.gameTabGui.addPicture("x463 y" 1 " w37 h" min(cfg.curveAmount,13) " backgroundTrans","./img/custom/lightburst_top_bar_light.png")
+	ui.gameTabGui.addPicture("x463 y" 13+min(cfg.curveAmount,13) " w37 h" min(cfg.curveAmount,13) " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 	;ui.gameTabDetail:=ui.gameTabGui.addPicture("x0 y0 w240 h30 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 	
 	ui.buildNumber:=ui.gameTabGui.addText("x298 y12 w160 h29 right backgroundTrans","v" a_fileVersion)

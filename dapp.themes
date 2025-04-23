@@ -48,7 +48,8 @@ accentColor3=5E7C9B
 accentColor4=445B73
 fontColor4=FBD184
 trimColor5=606060
-CurveAmount=CurveAmount
+CurveAmount=21
+titleTrimColor=484848
 
 [Slate]
 trimColor2=AAAAAA
@@ -251,7 +252,7 @@ ThemeTitlebarImage=.\img\custom\lightBurst_bottom_light.png
 titleBarBorder=FFFFFF
 dragBarBorderColor=FFFFFF
 dragBorderColor=FFFFFF
-titleTrimColor=FFFFFF
+titleTrimColor=484848
 titleBgColor=204040
 [Jade Scarab]
 TitleBarImage=.\img\custom\lightBurst_bottom_light.png
