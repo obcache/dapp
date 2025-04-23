@@ -142,7 +142,7 @@ ui.d2KeyBindHelpMsg.text := "     Assign keys you'd like to use for each functio
 		ui.d2keybindGameTabDetail.move(343,42,84,23)
 		ui.d2Panel1Tab1Detail1.value:="./img/custom/lightburst_top_bar_dark.png"
 		;ui.d2Panel1Tab1Detail2.value:="./img/custom/lightburst_bottom_bar_light.png"
-		ui.d2keybindGameTab3.setFont("s8 c" cfg.fontColor2,"thin")
+		ui.d2keybindGameTab3.setFont("s8 c" cfg.fontColor3,"thin")
 		ui.d2keybindGameTab1.move(345,labelY+5,89,12)
 		ui.d2keybindGameTab2.move(343,labelY+9,84,12)
 		ui.d2keybindGameTab3.move(343,labelY+8,84,18)
@@ -177,7 +177,7 @@ ui.d2KeyBindHelpMsg.text := "     Configure these to mirror your in-game binding
 		ui.d2keybindAppTabDetail.move(282,41,61,24)
 		ui.d2Panel1Tab1Detail1.value:="./img/custom/lightburst_top_bar_dark.png"
 		;ui.d2Panel1Tab1Detail2.value:="./img/custom/lightburst_top_bar_dark.png"
-		ui.d2keybindAppTab3.setFont("s8 c" cfg.fontColor2,"thin")
+		ui.d2keybindAppTab3.setFont("s8 c" cfg.fontColor3,"thin")
 		ui.d2keybindAppTab1.move(283,labelY+5,65,12)
 		ui.d2keybindAppTab2.move(284,labelY+9,61,12)
 		ui.d2keybindAppTab3.move(283,labelY+8,,18)
@@ -379,7 +379,7 @@ drawKeybindBar(*) {
 	ui.d2Panel1Tab1Bg4 		:= ui.gameSettingsGui.addText("hidden x47 y14 w431 h36 background" cfg.titleBgColor,"")
 	
 	ui.d2Panel1Tab2Bg 		:= ui.gameSettingsGui.addText("hidden x19 y11 w438 h42 background" cfg.accentColor1,"")
-	ui.d2Panel1Tab2Bg2 		:= ui.gameSettingsGui.addText("hidden x20 y12 w436 h40 background" cfg.bgColor0 " c" cfg.fontColor2,"")	
+	ui.d2Panel1Tab2Bg2 		:= ui.gameSettingsGui.addText("hidden x20 y12 w436 h40 background" cfg.bgColor0 " c" cfg.fontColor3,"")	
 	ui.d2Panel1Tab2Detail1	:= ui.gameSettingsGui.addPicture("x20 y12 w450 h15 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")	
 	;ui.d2Panel1Tab2Detail2	:= ui.gameSettingsGui.addPicture("x20 y10 w450 h15 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")	
 	ui.d2Panel1Tab2Bg3 		:= ui.gameSettingsGui.addText("hidden x21 y13 w434 h38 background" cfg.bgColor0,"")

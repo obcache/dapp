@@ -435,15 +435,19 @@ autoUpdate() {
 
 CheckForUpdates(msg:=0,*) {
 	ui.latestVersion:="0"
+	ui.installedVersionText.text := "Installed:`t" substr(ui.installedVersion,1,1) "." substr(ui.installedVersion,2,1) "." substr(ui.installedVersion,3,1) "." substr(ui.installedVersion,4,1)
+	ui.installedVersionText.redraw()
 	
 	if fileExist("./.tmp")
 		fileDelete("./.tmp")
-		
-	; if fileExist("./dapp_currentBuild.dat") {
-		; ui.installedVersion := fileRead("./dapp_currentBuild.dat")
-		; ui.installedVersionText.text := "Installed:`t" substr(ui.installedVersion,1,1) "." substr(ui.installedVersion,2,1) "." substr(ui.installedVersion,3,1) "." substr(ui.installedVersion,4,1)
-		; ui.installedVersionText.redraw()
-	; }  else {
+	
+
+	if fileExist("./dapp_currentBuild.dat") {
+		ui.installedVersion := fileRead("./dapp_currentBuild.dat")
+		ui.installedVersionText.text := "Installed:`t" substr(ui.installedVersion,1,1) "." substr(ui.installedVersion,2,1) "." substr(ui.installedVersion,3,1) "." substr(ui.installedVersion,4,1)
+		ui.installedVersionText.redraw()
+	} else {
+	}
 	
 	try {
 		whr := ComObject("WinHttp.WinHttpRequest.5.1")
@@ -452,21 +456,21 @@ CheckForUpdates(msg:=0,*) {
 		whr.WaitForResponse()
 		ui.latestVersion := whr.ResponseText
 	} catch {
-		if(msg != 0) {
+		if(msg != 1) {
 			ui.latestVersionText.text := "Available:`t--No Network--"
 			notifyOSD("Network down.`nTry again later.",3000)
 		}
 	} else {
 		ui.latestVersionText.text := "Available:`t" substr(ui.latestVersion,1,1) "." substr(ui.latestVersion,2,1) "." substr(ui.latestVersion,3,1) "." substr(ui.latestVersion,4,1)
 		ui.latestVersionText.redraw()
-		
 		if !inStr(ui.latestVersion,"404:") {
 			if ui.latestVersion > a_fileversion {
 				run("./dapp_updater.exe")
 				sleep(1000)
 				Exit
 			} else {
-				notifyOSD("No upgraded needed.`nInstalled: " substr(ui.installedVersion,1,1) "." substr(ui.installedVersion,2,1) "." substr(ui.installedVersion,3,1) "." substr(ui.installedVersion,4,1) "`nAvailable: " substr(ui.latestVersion,1,1) "." substr(ui.latestVersion,2,1) "." substr(ui.latestVersion,3,1) "." substr(ui.latestVersion,4,1),2500)
+				if msg != 1
+					notifyOSD("No upgraded needed.`nInstalled: " substr(ui.installedVersion,1,1) "." substr(ui.installedVersion,2,1) "." substr(ui.installedVersion,3,1) "." substr(ui.installedVersion,4,1) "`nAvailable: " substr(ui.latestVersion,1,1) "." substr(ui.latestVersion,2,1) "." substr(ui.latestVersion,3,1) "." substr(ui.latestVersion,4,1),2500)
 			}
 		} else {
 			ui.latestVersionText.text:="Latest:`t           ERROR"

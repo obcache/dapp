@@ -393,17 +393,17 @@ NotifyOSD(NotifyMsg,Duration := 2000,guiName:=ui.mainGui,Alignment := "Left",YN 
 	ui.notifyGui.Opt(" -Caption +ToolWindow alwaysOnTop")  ; +ToolWindow avoids a taskbar button and an alt-tab menu item.
 	ui.notifyGui.BackColor := cfg.bgColor1  ; Can be any RGB color (it will be made transparent below).
 	ui.notifyGui.setFont("q5 s16")  ; Set a large font size (32-point).
-	ui.notifyGui.addText("x3 y3 w490 h212 background" cfg.bgColor2)
-	ui.notifyGui.addText("x5 y5 w486 h212 background" cfg.bgColor1)
+	ui.notifyGui.addText("x3 y3 w494 h212 background" cfg.accentColor1)
+	ui.notifyGui.addText("x5 y5 w490 h208 background" cfg.bgColor0)
 	
-	ui.notifyGui.AddText("c" cfg.fontColor1 " " Alignment " BackgroundTrans",NotifyMsg)  ; XX & YY serve to 00auto-size the window.
+	ui.notifyGui.AddText("x10 y10 w480 h198 c" cfg.fontColor1 " " Alignment " BackgroundTrans",NotifyMsg)  ; XX & YY serve to 00auto-size the window.
 
 	ui.notifyGui.AddText("xs hidden")
 	ui.notifyGui.getPos(&x,&y,&w,&h)
 	WinSetTransparent(0,ui.notifyGui)
 	winGetPos(&GuiX,&GuiY,&GuiW,&GuiH,ui.mainGui.hwnd)
 	ui.notifyGui.Show("x" GuiX+34 " y" GuiY " w" guiW-68 " h" guiH+2 " noActivate")
-	guiVis(ui.notifyGui,true)
+	
 	;drawOutline(ui.notifyGUi,2,2,w-2,h-2,cfg.accentColor4,cfg.accentColor4,1)
 	if (YN) {
 		ui.notifyGui.AddText("xs hidden")
@@ -435,42 +435,42 @@ fadeOSD() {
 		Sleep(1)
 	}
 	try
-		guiVis(ui.notifyGui,false)
+		ui.notifyGui.destroy()
 	ui.Transparent := 0
 }
 
 loadScreen(visible := true,NotifyMsg := "dapp Loading",Duration := 10) {
 	if (visible) {
 		Transparent := 0
-		ui.notifyGui			:= Gui()
-		ui.notifyGui.Title 		:= "dapp Loading"
-		ui.notifyGui.Opt("+AlwaysOnTop -Caption +ToolWindow")  ; +ToolWindow avoids a taskbar button and an alt-tab menu item.
-		ui.notifyGui.BackColor := "c0c0c0" ; Can be any RGB color (it will be made transparent below).
-		ui.notifyGui.setFont("q5 s22")  ; Set a large font size (32-point).
-		ui.notifyGui.addText("section x1 y1 w238 h92 background353535")
-		ui.notifyGui.addPicture("y1 x2 w237 h92 backgroundTrans","./img/dapp_logo.png")
-		ui.loadingProgress := ui.notifyGui.addProgress("smooth x2 y94 w236 h21 caaaaaa background353535")
-		ui.notifyGui.AddText("xs hidden")
+		ui.loadScreenGui			:= Gui()
+		ui.loadScreenGui.Title 		:= "dapp Loading"
+		ui.loadScreenGui.Opt("+AlwaysOnTop -Caption +ToolWindow")  ; +ToolWindow avoids a taskbar button and an alt-tab menu item.
+		ui.loadScreenGui.BackColor := "c0c0c0" ; Can be any RGB color (it will be made transparent below).
+		ui.loadScreenGui.setFont("q5 s22")  ; Set a large font size (32-point).
+		ui.loadScreenGui.addText("section x1 y1 w238 h92 background353535")
+		ui.loadScreenGui.addPicture("y1 x2 w237 h92 backgroundTrans","./img/dapp_logo.png")
+		ui.loadingProgress := ui.loadScreenGui.addProgress("smooth x2 y94 w236 h21 caaaaaa background353535")
+		ui.loadScreenGui.AddText("xs hidden")
 		tmpX := iniRead(cfg.file,"Interface","GuiX",200)
 		tmpY := iniRead(cfg.file,"Interface","GuiY",200)
-		winGetPos(&x,&y,&w,&h,ui.notifyGui.hwnd)
-		winSetTransparent(0,ui.notifyGui)
-		ui.notifyGui.show("w240 h116 x" (tmpX+100)-(w/2) " y" (tmpY+50)-(h/2))
+		winGetPos(&x,&y,&w,&h,ui.loadScreenGui.hwnd)
+		winSetTransparent(0,ui.loadScreenGui)
+		ui.loadScreenGui.show("w240 h116 x" (tmpX+100)-(w/2) " y" (tmpY+50)-(h/2))
 		while transparent < 245 {
-			winSetTransparent(transparent,ui.notifyGui.hwnd)
+			winSetTransparent(transparent,ui.loadScreenGui.hwnd)
 			transparent += 8
 			sleep(10)
 		} 
-		winSetTransparent("Off",ui.notifyGui.hwnd)
+		winSetTransparent("Off",ui.loadScreenGui.hwnd)
 	} else {
 		transparent := 255
 		while transparent > 10 {
-			winSetTransparent(transparent,ui.notifyGui.hwnd)
+			winSetTransparent(transparent,ui.loadScreenGui.hwnd)
 			transparent -= 10
 			sleep(20)
 		}
-		ui.notifyGui.hide()
-		ui.notifyGui.destroy()
+		ui.loadScreenGui.hide()
+		ui.loadScreenGui.destroy()
 	}
 }
 
