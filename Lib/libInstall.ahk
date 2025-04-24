@@ -282,8 +282,8 @@ createPbConsole(title) {
 	;winSetTransparent(160,ui.pbConsoleBg)
 	ui.pbConsole := gui()
 	ui.pbConsole.opt("-caption")
-	ui.pbConsole.backColor := "454545"
-	ui.pbConsole.color := "b0b0b0"
+	ui.pbConsole.backColor := "050005"
+	ui.pbConsole.color := "ffeeff0"
 	if !fileExist("c:\windows\fonts\move-x.otf") {
 		fileInstall("./redist/move-x.otf","c:\windows\fonts\move-x.otf",1)
 		runWait('reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts" /v "FontName (TrueType)" /t REG_SZ /d move-x.otf /f',,"Min")
