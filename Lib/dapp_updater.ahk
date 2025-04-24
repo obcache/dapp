@@ -87,7 +87,7 @@ pbNotify(NotifyMsg,Duration := 10,YN := "")
 	ui.notifyGui			:= Gui()
 	ui.notifyGui.Title 		:= "Notify"
 	ui.notifyGui.Opt("+AlwaysOnTop -Caption +ToolWindow")  ; +ToolWindow avoids a taskbar button and an alt-tab menu item.
-	ui.notifyGui.BackColor := "353535" ; Can be any RGB color (it will be made transparent below).
+	ui.notifyGui.BackColor := "050005" ; Can be any RGB color (it will be made transparent below).
 	ui.notifyGui.setFont("q5 s16")  ; Set a large font size (32-point).
 	ui.notifyGui.AddText("c00FFFF center BackgroundTrans",NotifyMsg)  ; XX & YY serve to 00auto-size the window.
 	ui.notifyGui.AddText("xs hidden")
