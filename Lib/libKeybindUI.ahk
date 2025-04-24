@@ -385,7 +385,7 @@ drawKeybindBar(*) {
 	ui.d2Panel1Tab2Bg3 		:= ui.gameSettingsGui.addText("hidden x21 y13 w434 h38 background" cfg.bgColor0,"")
 	ui.d2Panel1Tab2Bg4 		:= ui.gameSettingsGui.addText("hidden x22 y14 w432 h36 background" cfg.trimColor2,"")
 	;ui.d2Panel1Tab2Bg := ui.gameSettingsGui.addText("x42 y10 w406 h42 background" cfg.bgColor0 " c" cfg.fontColor4,"")	
-	;drawOutlineNamed("gameSettings",ui.gameSettingsGui,43,11,404,42,cfg.accentColor1,cfg.titleTrimColor,1)
+	;drawOutlineNamed("gameSettings",ui.gameSettingsGui,43,11,404,42,cfg.accentColor1,cfg.disabledColor,1)
 	ui.currKey 				:= cfg.dappPauseKey
 	ui.dappPauseKey			:= ui.gameSettingsGui.addPicture("x50 y20 w" (ui.d2KeybindWidth + max(0,(strLen(ui.currKey)-6))*10) " h30 section backgroundTrans","./img/keyboard_key_up.png")
 	ui.dappPauseKeyData 	:= ui.gameSettingsGui.addText("xs-1 y+-24 w" (ui.d2KeybindWidth + max(0,(strLen(ui.currKey)-6))*10) " h21 center c" cfg.trimColor4 " backgroundTrans",subStr(strUpper(cfg.dappPauseKey),1,8))
@@ -435,17 +435,17 @@ drawKeybindBar(*) {
 	ui.dappSwordFlyKeyLabel 	:= ui.gameSettingsGui.addText("xs-2 y+-35 w40 h20 center c" cfg.fontColor3 " backgroundTrans","Fly")
 	ui.d2ClassSelectOutline		:= ui.gameSettingsGui.addText("xs+42 y13 w37 h39 background" cfg.accentColor1)
 	ui.d2ClassSelectOutline2	:= ui.gameSettingsGui.addText("xs+43 y13 w36 h38 background" cfg.bgColor3)
-	ui.d2ClassSelectBg			:= ui.gameSettingsGui.addText("x441 y12 w40 h40 background" cfg.accentColor4)
+	ui.d2ClassSelectBg			:= ui.gameSettingsGui.addText("x441 y12 w40 h40 background" cfg.disabledColor)
 	ui.d2ClassSelectDetail 		:= ui.gameSettingsGui.addPicture("x441 y12 w40 h40 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 
 	ui.d2ClassSelectBg3			:= ui.gameSettingsGui.addText("hidden xs+41 y+-14 w38 h14 background" cfg.bgColor2)
 	ui.d2ClassIcon				:= ui.gameSettingsGui.addPicture("x441 y9 w40 h30 center backgroundTrans","")
-	ui.d2ClassIconDown			:= ui.gameSettingsGui.addText("x442 y37 w19 h13 center backgroundTrans c" cfg.outlineColor1,"←")
-	ui.d2ClassIconUp			:= ui.gameSettingsGui.addText("x461 y37 w19 h13 center backgroundTrans c" cfg.outlineColor1,"→")
-	ui.d2ClassSelectSpacer 		:= ui.gameSettingsGui.addText("hidden x461 y37 w1 h15 background" cfg.outlineColor1)
-	ui.d2ClassSelectBgLine		:= ui.gameSettingsGui.addText("hidden x442 y12 w0 h0 background" cfg.outlineColor1)
-	ui.d2ClassSelectBgLine1		:= ui.gameSettingsGui.addText("hidden x442 y12 w0 h0 background" cfg.outlineColor1)
-	ui.d2ClassSelectBgLine2		:= ui.gameSettingsGui.addText("hidden x442 y37 w38 h1 background" cfg.outlineColor1)
+	ui.d2ClassIconDown			:= ui.gameSettingsGui.addText("x442 y37 w19 h13 center backgroundTrans c" cfg.accentColor4,"←")
+	ui.d2ClassIconUp			:= ui.gameSettingsGui.addText("x461 y37 w19 h13 center backgroundTrans c" cfg.accentColor4,"→")
+	ui.d2ClassSelectSpacer 		:= ui.gameSettingsGui.addText("hidden x461 y37 w1 h15 background" cfg.accentColor4)
+	ui.d2ClassSelectBgLine		:= ui.gameSettingsGui.addText("hidden x442 y12 w0 h0 background" cfg.accentColor4)
+	ui.d2ClassSelectBgLine1		:= ui.gameSettingsGui.addText("hidden x442 y12 w0 h0 background" cfg.accentColor4)
+	ui.d2ClassSelectBgLine2		:= ui.gameSettingsGui.addText("hidden x442 y37 w38 h1 background" cfg.accentColor4)
 	ui.d2KeyBindHelpMsg			:= ui.gameSettingsGui.addText("right x34 y52 w240 h12 backgroundTrans c" cfg.fontColor1,"")
 	ui.d2ClassIcon.toolTip 		:= "Click to Enable/Disable the Fly Macro"
 	ui.d2ClassIconDown.tooltip 	:= "Click to switch between character classes for the Fly Macro"
@@ -474,15 +474,15 @@ drawKeybindBar(*) {
 			case 1: 
 				(ui.d2FlyEnabled)
 					? (ui.d2ClassIcon.value := "./img/d2ClassIconWarlock_on.png",ui.d2ClassSelectBg.opt("background" cfg.trimColor4))
-					: (ui.d2ClassIcon.value := "./img/d2ClassIconWarlock_off.png",ui.d2ClassSelectBg.opt("background" cfg.trimColor5))
+					: (ui.d2ClassIcon.value := "./img/d2ClassIconWarlock_off.png",ui.d2ClassSelectBg.opt("background" cfg.disabledColor))
 			case 2:
 				(ui.d2FlyEnabled)
 					? (ui.d2ClassIcon.value := "./img/d2ClassIconHunter_on.png",ui.d2ClassSelectBg.opt("background" cfg.trimColor4))
-					: (ui.d2ClassIcon.value := "./img/d2ClassIconHunter_off.png",ui.d2ClassSelectBg.opt("background" cfg.trimColor5))
+					: (ui.d2ClassIcon.value := "./img/d2ClassIconHunter_off.png",ui.d2ClassSelectBg.opt("background" cfg.disabledColor))
 			case 3:
 			(ui.d2FlyEnabled)
 					? (ui.d2ClassIcon.value := "./img/d2ClassIconTitan_on.png",ui.d2ClassSelectBg.opt("background" cfg.trimColor4))
-					: (ui.d2ClassIcon.value := "./img/d2ClassIconTitan_off.png",ui.d2ClassSelectBg.opt("background" cfg.trimColor5))
+					: (ui.d2ClassIcon.value := "./img/d2ClassIconTitan_off.png",ui.d2ClassSelectBg.opt("background" cfg.disabledColor))
 			default:
 		}
 	}
@@ -722,8 +722,8 @@ drawLinkBar(*) {
 		ui.button_link_%a_index%.bg:=ui.gameSettingsGui.addPicture("x" xPos+2 " y" yPos+1 " w" cfg.button_link_size-1 " h-1 vbutton_link_" a_index " background" cfg.bgColor3,ui.button_link_%a_index%.thumb)
 		ui.button_link_%a_index%.fx:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos+1 " w" cfg.button_link_size-1 " h" cfg.button_link_size-1 " backgroundTrans","./img/custom/lightburst_tile.png")
 		ui.button_link_%a_index%.down:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos+1 " w" cfg.button_link_size-1 " h" cfg.button_link_size-1 " hidden backgroundTrans","./img/button_down_layer.png")
-		drawOutline(ui.gameSettingsGui,xPos,yPos,cfg.button_link_size+1,cfg.button_link_size+1,cfg.accentColor1,cfg.accentColor2,1)
-		;drawOutline(ui.gameSettingsGui,xPos+1,yPos+1,cfg.button_link_size-1,cfg.button_link_size-1,cfg.titleTrimColor,cfg.accentColor4,1)
+		drawOutline(ui.gameSettingsGui,xPos,yPos,cfg.button_link_size+1,cfg.button_link_size+1,cfg.outlineColor2,cfg.outlineColor1,1)
+		;drawOutline(ui.gameSettingsGui,xPos+1,yPos+1,cfg.button_link_size-1,cfg.button_link_size-1,cfg.disabledColor,cfg.accentColor4,1)
 
 		this_action:=cfg.button_link_%a_index%[3]
 		if cfg.button_link_%a_index%[2]=="URL" {

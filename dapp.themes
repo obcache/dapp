@@ -26,8 +26,8 @@ HideTitlebarText=0
 TitleBarImage=.\img\custom\lightburst_top_bar_dark.png
 
 [Denim & Leather]
-outlineColor1=588AB4
-outlineColor2=AB883F
+outlineColor1=154364
+outlineColor2=725A29
 accentColor1=D8B118
 accentColor2=38619E
 baseColor=10101
@@ -45,11 +45,12 @@ trimColor4=EFBD10
 fontColor2=93B3E1
 TitleBarImage=.\img\custom\lightBurst_bottom_light.png
 accentColor3=5E7C9B
-accentColor4=445B73
+accentColor4=6988A7
 fontColor4=FBD184
 trimColor5=606060
 CurveAmount=31
-titleTrimColor=484848
+titleTrimColor=865A39
+disabledColor=816A41
 
 [Slate]
 trimColor2=AAAAAA
@@ -227,12 +228,12 @@ fontColor4=FBD58E
 accentColor3=FF0180
 CurveAmount=15
 [Custom]
-accentColor4=445B73
+accentColor4=6988A7
 accentColor3=ADADAD
 accentColor2=38619E
 accentColor1=D8B118
-outlineColor2=AB883F
-outlineColor1=588AB4
+outlineColor2=725A29
+outlineColor1=154364
 baseColor=10101
 fontColor1=EEF5F9
 fontColor2=93B3E1
@@ -252,8 +253,9 @@ ThemeTitlebarImage=.\img\custom\lightBurst_bottom_light.png
 titleBarBorder=FFFFFF
 dragBarBorderColor=FFFFFF
 dragBorderColor=FFFFFF
-titleTrimColor=484848
+titleTrimColor=865A39
 titleBgColor=204040
+disabledColor=816A41
 [Jade Scarab]
 TitleBarImage=.\img\custom\lightBurst_bottom_light.png
 bgColor1=15340

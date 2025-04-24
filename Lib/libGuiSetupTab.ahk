@@ -36,7 +36,7 @@ GuiSetupTab(&ui,&cfg) {
 	ui.AutoClickerSpeedSlider.OnEvent("Change",AutoClickerSpeedChanged)
 	
 	ui.MainGui.setFont("q5 s10 c" cfg.fontColor1)
-	drawOutlineMainGui(34,28,497,200,cfg.titleTrimColor,cfg.titleTrimColor,2)
+	drawOutlineMainGui(34,28,497,200,cfg.disabledColor,cfg.disabledColor,2)
 	ui.mainGui.addText("hidden section x48 y26")
 	cfg.toolTipsEnabled			:= iniRead(cfg.file,"Toggles","ToolTipsEnabled",true)
 	ui.toggleToolTips 			:= ui.MainGui.AddPicture("xs y+3 w50 h22 section vToolTips " ((cfg.ToolTipsEnabled) ? ("Background" cfg.trimColor3) : ("Background" cfg.trimColor2)),((cfg.ToolTipsEnabled) ? (cfg.toggleOn) : (cfg.toggleOff)))
@@ -179,7 +179,7 @@ GuiSetupTab(&ui,&cfg) {
 	ui.mainGui.addText("x271 y46 w196 h60 background" cfg.outlineColor2)
 	ui.mainGui.addText("x272 y47 w194 h58 background" cfg.outlineColor1)
 	ui.mainGui.addText("x273 y48 w192 h56 background" cfg.titleBgColor)
-	;line(ui.mainGui,0,36,155,2,cfg.titleTrimColor)
+	;line(ui.mainGui,0,36,155,2,cfg.disabledColor)
 
 	ui.checkForUpdatesLabel := ui.mainGui.addtext("x280 y46 w200 h30 section backgroundTrans c" cfg.fontColor3,"Check For Updates")
 	ui.checkForUpdatesLabel.setFont("q5 s12","move-x")
@@ -252,7 +252,7 @@ ThemeList=Modern Class,Cold Steel,Militarized,Neon,Ocean
 [Modern Class]
 outlineColor1=C0C0C0
 outlineColor2=333333
-titleTrimColor=1D1D1D
+disabledColor=1D1D1D
 accentColor4=19F9F
 baseColor=4A5A60
 fontColor1=1FFFF
@@ -269,7 +269,7 @@ trimColor4=FFCC00
 [Cold Steel]
 outlineColor1=888888
 outlineColor2=333333
-titleTrimColor=313131
+disabledColor=313131
 accentColor4=C0C0C0
 baseColor=414141
 fontColor1=1FFFF
@@ -286,7 +286,7 @@ trimColor4=FFCC00
 [Militarized]
 outlineColor1=888888
 outlineColor2=333333
-titleTrimColor=66B1FE
+disabledColor=66B1FE
 accentColor4=FEFE98
 baseColor=606060
 fontColor1=98CBFE
@@ -303,7 +303,7 @@ trimColor4=FFCC00
 [Ocean]
 outlineColor1=446466
 outlineColor2=333333
-titleTrimColor=365154
+disabledColor=365154
 accentColor4=3C3C3C
 baseColor=2C3537
 fontColor1=1FFFF
@@ -321,7 +321,7 @@ trimColor4=FFCC00
 baseColor=B0C6B6
 outlineColor1=5B8471
 outlineColor2=5E5E01
-titleTrimColor=1D1D1D
+disabledColor=1D1D1D
 accentColor4=19F9F
 fontColor1=E9F977
 fontColor2=303030
@@ -338,7 +338,7 @@ trimColor4=FFCC00
 baseColor=414141
 outlineColor1=888888
 outlineColor2=333333
-titleTrimColor=C0C0C0
+disabledColor=C0C0C0
 accentColor4=FFFFFF
 fontColor1=1FFFF0
 fontColor2=FBD58E

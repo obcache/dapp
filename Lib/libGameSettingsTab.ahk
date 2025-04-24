@@ -45,11 +45,11 @@ GuiGameTab() {
 	ui.d2cleanupNeeded := false
 	ui.gameSettingsGui.setFont("s12 bold","calibri")
 
-	ui.d2TopPanelOutline:=ui.gameSettingsGui.addText("x8 y5 w480 h66 background" cfg.outlineColor1)
+	ui.d2TopPanelOutline:=ui.gameSettingsGui.addText("x8 y5 w480 h66 background" cfg.trimColor5)
 	ui.d2TopPanelBg:=ui.gameSettingsGui.addText("x9 y6 w478 h65 background" cfg.bgColor1)
 	ui.d2TopPanelDetail1:=ui.gameSettingsGui.addPicture("x9 y6 w478 h" 15-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_light.png")
 	ui.d2TopPanelDetail2:=ui.gameSettingsGui.addPicture("x9 y" 56+(15-cfg.curveAmount) " w478 h" 15-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
-	ui.bottomPanelOutline:=ui.gameSettingsGui.addText("x8 y76 w480 h70 background" cfg.outlineColor1)
+	ui.bottomPanelOutline:=ui.gameSettingsGui.addText("x8 y76 w480 h70 background" cfg.trimColor5)
 	ui.bottomPanelBg:=ui.gameSettingsGui.addText("x9 y77 w478 h69 background" cfg.bgColor1)
 	ui.bottomPanelDetail2:=ui.gameSettingsGui.addPicture("x9 y77 w478 h" 19-(18-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_light.png")
 	ui.bottomPanelDetail2:=ui.gameSettingsGui.addPicture("x9 y" 128+(18-cfg.curveAmount) " w478 h" 18-(18-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")

@@ -138,7 +138,7 @@ ui.gametabs.useTab("Vault Cleaner")
 			this.d2LaunchVaultCleanerText.text:="Vault Mode: On`nClick to Toggle"
 			this.statBg.opt("background" cfg.bgColor1)
 			this.statBg.value:="./img/custom/lightburst_tl.png"
-			drawOutlineNamed("vaultCleanerButton",ui.gameSettingsGui,13,82,230,58,cfg.titleTrimColor,cfg.titleTrimColor,1)
+			drawOutlineNamed("vaultCleanerButton",ui.gameSettingsGui,13,82,230,58,cfg.disabledColor,cfg.disabledColor,1)
 			this.d2LaunchVaultCleanerButton.value:="./img/button_vault_down.png"
 			; winMove((a_screenwidth/2)-640,(a_screenheight/2)-360,1280,720,this.gameWin)
 			; winActivate(ui.mainGui)

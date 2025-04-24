@@ -112,7 +112,7 @@ ui.ThemeElements := [
 	"trimColor3",	"trimColor4",
 	"trimColor5",	"trimColor6",	
 	"accentColor1",	"accentColor2",	
-	"titleTrimColor",	"accentColor4",			
+	"disabledColor",	"accentColor4",			
 	"outlineColor2","outlineColor1"
 		
 	 	]
@@ -286,7 +286,7 @@ addTheme(*) {
 	ui.newThemeOkButton := ui.newThemeGui.AddPicture("x+-7 ys w40 h40 Background" cfg.trimColor2,"./Img/button_save_up.png")
 	ui.newThemeOkButton.OnEvent("Click",addThemeToDDL)
 	ui.newThemeGui.Show("w260 h110 NoActivate")
-	drawOutline(ui.newThemeGui,5,5,250,100,cfg.accentColor4,cfg.titleTrimColor,2)	;New App Profile Modal Outline
+	drawOutline(ui.newThemeGui,5,5,250,100,cfg.accentColor4,cfg.disabledColor,2)	;New App Profile Modal Outline
 
 	addThemeToDDL(*) {
 		Global
@@ -299,7 +299,7 @@ addTheme(*) {
 
 		{ ;write new Theme to ini
 		IniWrite(cfg.accentColor4,cfg.themeFile,ui.newThemeEdit.Value,"accentColor4")
-		IniWrite(cfg.titleTrimColor,cfg.themeFile,ui.newThemeEdit.Value,"titleTrimColor")
+		IniWrite(cfg.disabledColor,cfg.themeFile,ui.newThemeEdit.Value,"disabledColor")
 		IniWrite(cfg.accentColor2,cfg.themeFile,ui.newThemeEdit.Value,"accentColor2")
 		IniWrite(cfg.accentColor1,cfg.themeFile,ui.newThemeEdit.Value,"accentColor1")
 		IniWrite(cfg.outlineColor2,cfg.themeFile,ui.newThemeEdit.Value,"outlineColor2")
