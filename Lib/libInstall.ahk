@@ -298,7 +298,7 @@ createPbConsole(title) {
 	drawOutlineNamed("pbConsoleOutside3",ui.pbConsole,3,3,694,394,"999999","999999",1)
 
 	ui.pbConsoleData := ui.pbConsole.addText("x10 y40 w680 h380 backgroundTrans c303030","")
-	ui.pbConsoleData.setFont("q5 s16")
+	ui.pbConsoleData.setFont("q5 s16 cffddff")
 	ui.pbConsole.show("w700 h400 noActivate")
 	;ui.pbConsoleBg.opt("-caption owner" ui.pbConsole.hwnd)
 }
