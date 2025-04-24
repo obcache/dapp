@@ -121,10 +121,6 @@ d2HoldToCrouch(*) {
 	send("{" cfg.d2gameHoldToCrouchKey " down}")
 	keywait(cfg.dappHoldToCrouchKey)
 	ui.dappHoldToCrouchKeyData.opt("c" cfg.trimColor4)
-	if (cfg.topDockEnabled) {
-		ui.dockBarD2HoldToCrouch.opt("background" cfg.trimColor3)
-		ui.dockBarD2HoldToCrouch.redraw()
-	}
 	send("{" cfg.d2gameHoldToCrouchKey " Up}")
 }
 

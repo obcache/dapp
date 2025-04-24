@@ -29,9 +29,7 @@ drawInfographic(infographicName:="vod",imageWidth := 150,imageHeight := 150, num
 	infographicFolder := "./img/infogfx"
 	transparentColor := "030405"
 
-	if (cfg.topDockEnabled) {
-		infoGuiMon := cfg.dockbarMon
-	} else { 
+
 		winGetPos(&infoGuiX,&infoGuiY,,,ui.mainGui)
 		infoGuiMon := 1
 		loop monitorGetCount() {
@@ -40,7 +38,7 @@ drawInfographic(infographicName:="vod",imageWidth := 150,imageHeight := 150, num
 				infoGuiMon := a_index
 				break
 			}
-		}
+		
 	}
 
 	monitorGet(infoGuiMon,&infoGuiMonL,&infoGuiMonT,&infoGuiMonR,&infoGuiMonB)

@@ -88,61 +88,40 @@ incursionNotice(this_trigger := "") {
 
 		
 		try {
-			if cfg.topDockEnabled {
-			
-				cfg.dockbarMonitor := iniRead(cfg.file,"Interface","DockbarMonitor",monitorGetPrimary())
-				if monitorGetCount() < cfg.dockbarMonitor {
-					cfg.dockbarMonitor := 1
+			incursionX := (a_screenWidth/2)-175
+			transLevel := 0
+			if winGetMinMax("ahk_exe destiny2.exe") > 0 {
+				if monitorGetCount() != 1 {
+					(monitorGetPrimary() == 1) 
+						? incursionNoticeMonitor := 2
+						: incursionNoticeMonitor := 1
+					monitorGet(incursionNoticeMonitor,&l,&t,&r,&b)
+					incursionX := ((r+l)/2)-175
 				}
-				monitorGet(cfg.dockbarMonitor,&dockbarMonitorL,&dockbarMonitorT,&dockbarMonitorR,&dockbarMonitorB,)
-				incursionGuix := ((dockbarMonitorL + dockbarMonitorR)/2)-175
-				dockbarPosY := dockbarMonitorT
-				if cfg.animationsEnabled {
-					ui.incursionGui.show("x" incursionGuix " y" dockbarPosY+31 " w350 h0 noActivate")
-					posH := 0
-					while posH < 60 {
-						posH += 10
-						ui.incursionGui.move(incursionGuix,dockbarPosY+31,,posH)
-						sleep(1)
-					}
-				}
-				ui.incursionGui.show("x" incursionGuix " y" dockbarPosY+31 " w352 h51 noActivate")
-				ui.d2ShowingIncursionNotice := true
-			} else {
-				incursionX := (a_screenWidth/2)-175
-				transLevel := 0
-				if winGetMinMax("ahk_exe destiny2.exe") > 0 {
-					if monitorGetCount() != 1 {
-						(monitorGetPrimary() == 1) 
-							? incursionNoticeMonitor := 2
-							: incursionNoticeMonitor := 1
-							monitorGet(incursionNoticeMonitor,&l,&t,&r,&b)
-							incursionX := ((r+l)/2)-175
-					}
-				}
-				
-				if cfg.animationsEnabled {
-					guiVis(ui.incursionGui,false)
-					ui.incursionGui.show("x" incursionX " y150 w350 h51 noActivate")
-					while transLevel < 255 {
-						transLevel += 5
-						winSetTransparent(transLevel,ui.incursionGui)
-						sleep(1)
-					}
-				}		
-				ui.incursionGui.show("y150 w352 h51 noActivate")
-				ui.d2ShowingIncursionNotice := true
 			}
-			winSetTransColor("010203",ui.incursionGui)
-			soundPlay("./redist/incursionAudio.mp3")
-			ui.d2FlashIncursionNoticeActive := true
-			setTimer(d2FlashIncursionNoticeA,2000)
-			sleep(1000)
-			setTimer(d2FlashIncursionNoticeB,2000)
-			cfg.lastIncursion := ui.latestIncursion
-			iniWrite(cfg.lastIncursion,cfg.file,"Game","LastIncursion")
+				
+			if cfg.animationsEnabled {
+				guiVis(ui.incursionGui,false)
+				ui.incursionGui.show("x" incursionX " y150 w350 h51 noActivate")
+				while transLevel < 255 {
+					transLevel += 5
+					winSetTransparent(transLevel,ui.incursionGui)
+					sleep(1)
+				}
+			}		
+			ui.incursionGui.show("y150 w352 h51 noActivate")
+			ui.d2ShowingIncursionNotice := true
 		}
+		winSetTransColor("010203",ui.incursionGui)
+		soundPlay("./redist/incursionAudio.mp3")
+		ui.d2FlashIncursionNoticeActive := true
+		setTimer(d2FlashIncursionNoticeA,2000)
+		sleep(1000)
+		setTimer(d2FlashIncursionNoticeB,2000)
+		cfg.lastIncursion := ui.latestIncursion
+		iniWrite(cfg.lastIncursion,cfg.file,"Game","LastIncursion")
 	}
+	
 }
 
 d2FlashIncursionNoticeA(*) {
