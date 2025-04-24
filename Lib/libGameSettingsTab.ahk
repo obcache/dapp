@@ -49,10 +49,10 @@ GuiGameTab() {
 	ui.d2TopPanelBg:=ui.gameSettingsGui.addText("x9 y6 w478 h65 background" cfg.bgColor1)
 	ui.d2TopPanelDetail1:=ui.gameSettingsGui.addPicture("x9 y6 w478 h" 15-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_light.png")
 	ui.d2TopPanelDetail2:=ui.gameSettingsGui.addPicture("x9 y" 56+(15-cfg.curveAmount) " w478 h" 15-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
-	ui.bottomPanelOutline:=ui.gameSettingsGui.addText("x8 y76 w480 h69 background" cfg.outlineColor1)
-	ui.bottomPanelBg:=ui.gameSettingsGui.addText("x9 y77 w478 h68 background" cfg.bgColor1)
-	ui.bottomPanelDetail2:=ui.gameSettingsGui.addPicture("x9 y77 w478 h" 18-(18-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_light.png")
-	ui.bottomPanelDetail2:=ui.gameSettingsGui.addPicture("x9 y" 127+(18-cfg.curveAmount) " w478 h" 18-(18-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+	ui.bottomPanelOutline:=ui.gameSettingsGui.addText("x8 y76 w480 h70 background" cfg.outlineColor1)
+	ui.bottomPanelBg:=ui.gameSettingsGui.addText("x9 y77 w478 h69 background" cfg.bgColor1)
+	ui.bottomPanelDetail2:=ui.gameSettingsGui.addPicture("x9 y77 w478 h" 19-(18-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_light.png")
+	ui.bottomPanelDetail2:=ui.gameSettingsGui.addPicture("x9 y" 128+(18-cfg.curveAmount) " w478 h" 18-(18-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 
 	drawKeybindBar()
 	drawLinkBar()
@@ -155,12 +155,12 @@ ui.gameTabWidth := 0
 		? ui.gameTab2Divider:=ui.gameTabGui.addText("y0 x238 w2 h34 background" cfg.accentColor1,"")
 		: ui.gameTab2Divider:=ui.gameTabGui.addText("y2 x238 w2 h30 background" cfg.accentColor2,""))
 
-	ui.gameTabHelpDetail:=ui.gameTabGui.addPicture("x464 y" 1+(30-cfg.curveAmount) " w31 h" 31-(31-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_light.png")
+	ui.gameTabHelpDetail:=ui.gameTabGui.addPicture("x464 y" 1+(30-cfg.curveAmount) " w31 h" 31-(31-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 	
-	ui.gameTabDetail1:=ui.gameTabGui.addPicture(((tabNum==1) ? "-hidden " : "-hidden ") "x0 y" 15+(15-cfg.curveAmount) " w108 h" 17-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_light.png")
-	ui.gameTabDetail2:=ui.gameTabGui.addPicture(((tabNum==2) ? "-hidden " : "hidden ") "x110 y" 15+(15-cfg.curveAmount) " w128 h" 17-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_light.png")	 
-	ui.gameTabDetail3:=ui.gameTabGui.addPicture(((tabNum==2) ? "-hidden " : "hidden ") "x0 y" 1 " w108 h" 15-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
-	ui.gameTabDetail4:=ui.gameTabGui.addPicture(((tabNum==1) ? "-hidden " : "hidden ") "x110 y" 1 " w128 h" 15-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")	 
+	ui.gameTabDetail1:=ui.gameTabGui.addPicture(((tabNum==1) ? "-hidden " : "-hidden ") "x0 y" ((tabNum==1) ? 18 : 15)+(15-cfg.curveAmount) " w110 h" 17-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+	ui.gameTabDetail2:=ui.gameTabGui.addPicture(((tabNum==2) ? "-hidden " : "-hidden ") "x110 y" ((tabNum==1) ? 18 : 15)+(15-cfg.curveAmount) " w130 h" 17-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")	 
+	ui.gameTabDetail3:=ui.gameTabGui.addPicture(((tabNum==2) ? "-hidden " : "hidden ") "x0 y" 3 " w108 h" 15-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
+	ui.gameTabDetail4:=ui.gameTabGui.addPicture(((tabNum==1) ? "-hidden " : "hidden ") "x110 y" 3 " w130 h" 15-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")	 
 	
 
 	ui.gameTab1SkinOutline.redraw()
@@ -268,15 +268,16 @@ drawGameTabs(tabNum := 1) {
 		: ui.gameTab2Divider:=ui.gameTabGui.addText("y2 x238 w2 h30 background" cfg.accentColor2,""))
 	
 
-	ui.gameTabDetail1:=ui.gameTabGui.addPicture(((tabNum==1) ? "-hidden " : "-hidden ") "x0 y" 32+(30-cfg.curveAmount) " w106 h" 30-(30-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_light.png")
-	ui.gameTabDetail2:=ui.gameTabGui.addPicture(((tabNum==2) ? "-hidden " : "hidden ") "x110 y" 32+(30-cfg.curveAmount) " w126 h" 30-(30-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_light.png")	 
-	ui.gameTabDetail3:=ui.gameTabGui.addPicture(((tabNum==2) ? "-hidden " : "hidden ") "x0 y" 1 " w106" 30-(30-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
-	ui.gameTabDetail4:=ui.gameTabGui.addPicture(((tabNum==1) ? "hidden " : "-hidden ") "x110 y" 1 " w126" 30-(30-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")	 
+	ui.gameTabDetail1:=ui.gameTabGui.addPicture(((tabNum==1) ? "-hidden " : "hidden ") "x0 y" 13+(15-cfg.curveAmount) " w110 h" 17-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+	ui.gameTabDetail2:=ui.gameTabGui.addPicture(((tabNum==2) ? "-hidden " : "-hidden ") "x110 y" 13+(15-cfg.curveAmount) " w128 h" 17-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")	 
+	ui.gameTabDetail3:=ui.gameTabGui.addPicture(((tabNum==2) ? "-hidden " : "hidden ") "x0 y" 2 " w108 h" 15-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
+	ui.gameTabDetail4:=ui.gameTabGui.addPicture(((tabNum==1) ? "-hidden " : "hidden ") "x110 y" 2 " w128 h" 15-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")	 
+	
 	
 	winGetPos(&mainGuiX,&mainGuiY,,,ui.mainGui.hwnd)
 		ui.gameTabSpacer:=ui.gameTabGui.addText("y2 x240 w" 490-(ui.gameTabWidth) " h29 background" cfg.titleBgColor)
 		ui.gameTabSpacer.onEvent("click",WM_LBUTTONDOWN_callback)
-		; ui.gameTabSpacerDetail2:=ui.gameTabGui.addPicture("y" 2 " x240 w" 490-240 " h" 30-(30-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
+		ui.gameTabSpacerDetail2:=ui.gameTabGui.addPicture("y" 2 " x240 w" 490-240 " h" 30-(30-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
 		; ui.gameTabSpacerDetail2.onEvent("click",WM_LBUTTONDOWN_callback)
 		ui.gameTabSpacerDetail:=ui.gameTabGui.addPicture("y" 2+(30-cfg.curveAmount) " x240 w" 490-240 " h" 30-(30-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 		ui.gameTabSpacerDetail.onEvent("click",WM_LBUTTONDOWN_callback)
@@ -976,6 +977,10 @@ joinFireteam(*) {
 		}
 		
 		joinFriend(friend_idx,*) {
+			if !winExist("ahk_exe destiny2.exe")
+				return
+			winActivate("ahk_exe destiny2.exe")
+			winWait("ahk_exe destiny2.exe")
 			send("{enter}")
 			send('/join " ui.friendsList[friend_idx] "`n"')
 			send("{enter}")
@@ -1061,6 +1066,7 @@ joinFireteam(*) {
 			;joinFireteam()
 
 			hotkey("ESC",closeJoinGui)
+			hotkey("ESC","On")
 			exit
 		}
 		addFriendClose(*) {
@@ -1233,59 +1239,6 @@ drawPanelLabel(guiName,labelX,labelY,labelW := 100,labelH := 20,labelText := "ne
 		guiName.addText("x" labelX+1 " y" labelY+1 " w" labelW-2 " h" labelH " backgroundTrans center c" fontColor, labelText) 
 }
 
-
-drawPanel5(*) {
-	ui.gameTabs.useTab("Mouse")
-	cfg.rmbBind:=iniRead(cfg.file,"Game","RButtonBind","RButton")
-	cfg.lmbBind:=iniRead(cfg.file,"Game","LButtonBind","LButton")
-	cfg.mmbBind:=iniRead(cfg.file,"Game","MButtonBind","MButton")
-	cfg.fbBind:=iniRead(cfg.file,"Game","XButton2Bind","XButton2")
-	cfg.bbBind:=iniRead(cfg.file,"Game","XButton1Bind","XButton1")
-	ui.mouse_lmb:=ui.gameSettingsGui.addPicture("section x15 y10 w65 h-1 vMouseLeftButton backgroundTrans","./img/mouse_lmb.png")
-	ui.mouse_rmb:=ui.gameSettingsGui.addPicture("x+35 ys w65 h-1 vMouseRightButton backgroundTrans","./img/mouse_rmb.png")
-	ui.mouse_mmb:=ui.gameSettingsGui.addPicture("x+35 ys w65 h-1 vMouseMiddleButton backgroundTrans","./img/mouse_mmb.png")
-	ui.mouse_bb:=ui.gameSettingsGui.addPicture("x+35 ys w65 h-1 vMouseBackButton backgroundTrans","./img/mouse_bb.png")
-	ui.mouse_fb:=ui.gameSettingsGui.addPicture("x+35 ys w65 h-1 vMouseForwardButton backgroundTrans","./img/mouse_fb.png")
-	ui.mouse_lmb.onEvent("click",assignMouse)
-	ui.mouse_rmb.onEvent("click",assignMouse)
-	ui.mouse_mmb.onEvent("click",assignMouse)
-	ui.mouse_bb.onEvent("click",assignMouse)
-	ui.mouse_fb.onEvent("click",assignMouse)
-	
-	assignMouse(this,id,*) {
-		tmpMouseLeftButton:=""
-		tmpMouseRightButton:=""
-		tmpMouseMiddleButton:=""
-		tmpMouseBackButton:=""
-		tmpMouseForwardButton:=""
-	
-		keyBindDialogBox(this.name,"Center")
-		Sleep(100)
-		ih := InputHook("L1 T6",inputHookAllowedKeys,"+V")
-		ih.start()
-		ih.wait()
-		if (ih.endKey == "" && ih.input =="") {
-			keyBindDialogBoxClose()
-			notifyOSD('No Key Detected.`nPlease Try Again.',2000,"Center")
-		} else {
-			if (ih.input)
-			{
-				tmp.%this.name% := ih.input
-			} else {
-				tmp.%this.name% := ih.endKey
-			}
-		}
-		keyBindDialogBoxClose()
-		cfg.d2Game%this.name%Key := tmp.%this.name%
-		ui.%this.name%Text.text := subStr(strUpper(cfg.d2Game%this.name%Key),1,8)
-	}
-	
-	ui.MouseLeftButtonText:=ui.gameSettingsGui.addText("section xs-13 w95 center background" cfg.bgColor0 " c" cfg.fontColor2,cfg.d2GameMouseLeftButtonKey)
-	ui.MouseRightButtonText:=ui.gameSettingsGui.addText("x+5 ys w95 center background" cfg.bgColor0 " c" cfg.fontColor2,cfg.d2GameMouseRightButtonKey)
-	ui.MouseMiddleButtonText:=ui.gameSettingsGui.addText("x+5 ys w95 center background" cfg.bgColor0 " c" cfg.fontColor2,cfg.d2GameMouseMiddleButtonKey)
-	ui.MouseBackButtonText:=ui.gameSettingsGui.addText("x+5 ys w95 center background" cfg.bgColor0 " c" cfg.fontColor2,cfg.d2GameMouseBackButtonKey)
-	ui.MouseForwardButtonText:=ui.gameSettingsGui.addText("x+5 ys w95 center background" cfg.bgColor0 " c" cfg.fontColor2,cfg.d2GameMouseForwardButtonKey)
-}
 
 ;line(ui.mainGui,529,0,2,30,cfg.accentColor2)
 ;line(ui.gameTabGui,495,2,2,32,cfg.titleBgColor)

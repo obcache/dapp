@@ -143,8 +143,8 @@ ui.d2KeyBindHelpMsg.text := "     Assign keys you'd like to use for each functio
 		ui.d2Panel1Tab1Detail1.value:="./img/custom/lightburst_top_bar_dark.png"
 		;ui.d2Panel1Tab1Detail2.value:="./img/custom/lightburst_bottom_bar_light.png"
 		ui.d2keybindGameTab3.setFont("s8 c" cfg.fontColor3,"thin")
-		ui.d2keybindGameTab1.move(345,labelY+5,89,12)
-		ui.d2keybindGameTab2.move(343,labelY+9,84,12)
+		ui.d2keybindGameTab1.move(345,labelY+5,89,13)
+		ui.d2keybindGameTab2.move(343,labelY+9,85,13)
 		ui.d2keybindGameTab3.move(343,labelY+8,84,18)
 
 		ui.d2keybindAppTab1.opt("background" cfg.accentColor1)
@@ -174,12 +174,12 @@ ui.d2KeyBindHelpMsg.text := "     Configure these to mirror your in-game binding
 		labelH := 30
 		ui.d2keybindAppTab1.opt("background" cfg.accentColor1)
 		ui.d2keybindAppTab2.opt("background" cfg.bgColor3) 
-		ui.d2keybindAppTabDetail.move(282,41,61,24)
+		ui.d2keybindAppTabDetail.move(283,41,62,24)
 		ui.d2Panel1Tab1Detail1.value:="./img/custom/lightburst_top_bar_dark.png"
 		;ui.d2Panel1Tab1Detail2.value:="./img/custom/lightburst_top_bar_dark.png"
 		ui.d2keybindAppTab3.setFont("s8 c" cfg.fontColor3,"thin")
-		ui.d2keybindAppTab1.move(283,labelY+5,65,12)
-		ui.d2keybindAppTab2.move(284,labelY+9,61,12)
+		ui.d2keybindAppTab1.move(281,labelY+5,68,12)
+		ui.d2keybindAppTab2.move(282,labelY+9,62,13)
 		ui.d2keybindAppTab3.move(283,labelY+8,,18)
 
 		ui.d2keybindGameTab1.opt("background" cfg.accentColor1)
@@ -681,8 +681,8 @@ drawKeybindBar(*) {
 
 
 drawLinkBar(*) {
-	static xPos:=15
-	static yPos:=82
+	static xPos:=14
+	static yPos:=84
 	
 	cfg.button_link_1:=["DIM","URL","https://app.destinyitemmanager.com","./img/button_DIM.png","Launches DIM in browser"]
 	cfg.button_link_2:=["Join","Function","toggleFireteam","./img/ft_icon.png","Unbound, click to assign"]

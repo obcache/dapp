@@ -194,6 +194,7 @@ preAutoExec(InstallDir,ConfigFileName) {
 			FileInstall("./Img/button_DIM_down.png",InstallDir "/Img/button_DIM_down.png",1)
 			fileInstall("./img/icon_DIM.png",installDir "/img/icon_dim.png",1)
 			FileInstall("./Img/button_power.png",InstallDir "/Img/button_power.png",1)
+			FileInstall("./Img/button_save.png",InstallDir "/Img/button_save.png",1)
 			FileInstall("./Img/button_save_up.png",InstallDir "/Img/button_save_up.png",1)
 			fileInstall("./img/button_edit.png",installDir "/img/button_edit.png",1)
 			FileInstall("./Img/button_up.png",InstallDir "/Img/button_up.png",1)
@@ -443,7 +444,7 @@ CheckForUpdates(msg:=0,*) {
 	
 
 	if fileExist("./dapp_currentBuild.dat") {
-		ui.installedVersion := fileRead("./dapp_currentBuild.dat")
+		ui.installedVersion := a_fileVersion
 		ui.installedVersionText.text := "Installed:`t" substr(ui.installedVersion,1,1) "." substr(ui.installedVersion,2,1) "." substr(ui.installedVersion,3,1) "." substr(ui.installedVersion,4,1)
 		ui.installedVersionText.redraw()
 	} else {
@@ -469,6 +470,7 @@ CheckForUpdates(msg:=0,*) {
 				sleep(1000)
 				Exit
 			} else {
+				msgBox("latestVersion: " ui.latestVersion "`ninstalledVersion " a_fileVersion "`n")
 				if msg != 1
 					notifyOSD("No upgraded needed.`nInstalled: " substr(ui.installedVersion,1,1) "." substr(ui.installedVersion,2,1) "." substr(ui.installedVersion,3,1) "." substr(ui.installedVersion,4,1) "`nAvailable: " substr(ui.latestVersion,1,1) "." substr(ui.latestVersion,2,1) "." substr(ui.latestVersion,3,1) "." substr(ui.latestVersion,4,1),2500)
 			}

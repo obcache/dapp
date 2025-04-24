@@ -1,9 +1,9 @@
-A_FileVersion := "1.6.6.8"
+A_FileVersion := "1.6.6.9"
 a_appName := "dapp"
-if (fileExist("./dapp_currentBuild.dat"))
-a_fileVersion := fileRead("./dapp_currentBuild.dat")
-else
-a_fileVersion := "0000"
+;if (fileExist("./dapp_currentBuild.dat"))
+;a_fileVersion := fileRead("./dapp_currentBuild.dat")
+; else
+; a_fileVersion := "0000"
 	
 ;@ahk2Exe-let fileVersion=%a_priorLine~U)^(.+"){1}(.+)".*$~$2% 
 ;@ahk2Exe-setName dapp
@@ -163,8 +163,9 @@ ui.gameTabs.value:=cfg.activeGameTab
 tabsInit()
 fadeIn()
 
+loadScreen(0)
 autoUpdate()
 ;msgBox(ui.installedVersion "`n" ui.latestVersion)
 d2AutoGameConfigOverride()
 ui.isActiveWindow:=""
-loadScreen(0)
+

@@ -238,10 +238,11 @@ ChooseColor(ColorType,prev_color) {
 		}
 	} else {
 		winGetPos(&DialogX,&DialogY,&DialogW,&DialogH,ui.themeEditorGui)
-re("w515 h1000","./Img/color_swatches.png")
-		ui.colorGui.Show("x" DialogX " y" Dial		ui.colorGui := Gui()
+		ui.colorGui := Gui()
+		ui.ColorPicker := ui.colorGui.addPicture("w515 h1000","./Img/color_swatches.png")
+		ui.colorGui.Show("x" DialogX " y" DialogY+DialogH)
 		ui.colorGui.Opt("+AlwaysOnTop -Caption toolWindow +Owner" ui.themeEditorGui.Hwnd)
-		ui.ColorPicker := ui.colorGui.AddPictuogY+DialogH)
+		
 		winSetAlwaysOnTop(1,"ahk_exe ColorChooser.exe")
 		ClickReceived := KeyWait("LButton","D T30")
 		msgBox(clickReceived)
