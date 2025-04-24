@@ -1,7 +1,7 @@
-A_FileVersion := "1.6.6.9"
+A_FileVersion := "1.6.7.0"
 a_appName := "dapp"
 ;if (fileExist("./dapp_currentBuild.dat"))
-;a_fileVersion := fileRead("./dapp_currentBuild.dat")
+a_fileVersion := fileRead("./dapp_currentBuild.dat")
 ; else
 ; a_fileVersion := "0000"
 	
