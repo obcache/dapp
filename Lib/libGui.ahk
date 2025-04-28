@@ -197,14 +197,14 @@ advProgress(2)
 
 
 	
-	ui.1_GameButton := ui.mainGui.addText("x36 y1 w79 h30 center background" cfg.bgColor0)
+	ui.1_GameButton := ui.mainGui.addText("x36 y2 w79 h30 center background" cfg.bgColor0)
 
 	ui.1_GameButtonLabel := ui.mainGui.addText("x36 y4 w77 h26 center backgroundTrans","Game")
 	ui.1_GameButton.setFont("s14 c" cfg.fontColor1,"move-x")
 	
 	ui.1_gameButton.redraw()
 
-	ui.2_SetupButton := ui.mainGui.addText("y1 x117 w77 h28 center background" cfg.bgColor1)
+	ui.2_SetupButton := ui.mainGui.addText("y2 x117 w77 h28 center background" cfg.bgColor1)
 	ui.2_setupButton.redraw()
 	ui.2_SetupButtonLabel := ui.mainGui.addText("y5 x117 w77 h26 center backgroundTrans","Setup")
 	ui.2_SetupButtonLabel.setFont("s12 c" cfg.fontColor2,"impact")

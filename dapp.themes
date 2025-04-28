@@ -26,14 +26,14 @@ HideTitlebarText=0
 TitleBarImage=.\img\custom\lightburst_top_bar_dark.png
 
 [Denim & Leather]
-outlineColor1=154364
+outlineColor1=DFB44D
 outlineColor2=725A29
 accentColor1=D8B118
-accentColor2=38619E
+accentColor2=7A96C0
 baseColor=10101
 fontColor1=EEF5F9
 fontColor3=E8D9BB
-bgColor1=2F4151
+bgColor1=3F5870
 trimColor1=16181D
 bgColor3=E2125
 bgColor2=232C32
@@ -230,16 +230,16 @@ CurveAmount=15
 [Custom]
 accentColor4=C5A070
 accentColor3=ADADAD
-accentColor2=38619E
+accentColor2=7A96C0
 accentColor1=D8B118
 outlineColor2=725A29
-outlineColor1=154364
+outlineColor1=DFB44D
 baseColor=10101
 fontColor1=EEF5F9
 fontColor2=93B3E1
 fontColor3=E8D9BB
 fontColor4=FBD184
-bgColor1=2F4151
+bgColor1=3F5870
 trimColor1=282E35
 bgColor2=41576D
 bgColor3=E2125

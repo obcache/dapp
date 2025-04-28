@@ -260,10 +260,7 @@ WriteConfig() {
 	} catch {
 		cfg.GuiX := 200
 		cfg.GuiY := 200
-	} else {
-		cfg.guiX := 200
-		cfg.guiY := 200
-	}
+	} 
 	
 	IniWrite(cfg.GuiX,cfg.file,"Interface","GuiX")
 	IniWrite(cfg.GuiY,cfg.file,"Interface","GuiY")
