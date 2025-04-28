@@ -679,7 +679,86 @@ drawKeybindBar(*) {
 
 }
 
-
+ui.mapBrowserVisible:=false
+toggleMapBrowser(*) {
+		(ui.mapBrowserVisible:=!ui.mapBrowserVisible)
+			? showMapBrowser()
+			: closeMapBrowser()
+			
+		closeMapBrowser(*) {
+			ui.mapBrowserVisible:=false
+			ui.mapGui.destroy()
+		}
+		showMapBrowser(*) {
+		winGetPos(&x,&y,,,ui.mainGui)
+		cfg.guiX:=x
+		cfg.guiY:=y
+			try
+				mapGui.destroy()
+				
+			ui.mapGui:=gui()
+			ui.mapGui.opt("toolWindow -border -caption alwaysOnTop owner" ui.mainGui.hwnd)
+			ui.mapGui.backColor:=cfg.bgColor1
+			ui.mapGui.color:="010203"
+			winSetTransColor("010203",ui.mapGui)
+			
+			mapGuiTitle:=ui.mapGui.addText("x0 y0 w1190 h30 background" cfg.bgColor0)
+			mapGuiTitle.onEvent("click",WM_LBUTTONDOWN_callback)
+			mapGuiTitleText:=ui.mapGui.addText("x5 y2 w200 h30 backgroundTrans c" cfg.fontColor1,"Map Browser")
+			mapGuiTitleText.setFont("s16 q5","move-x")
+			mapGuiClose:=ui.mapGui.AddText("x1190 y2 w30 h30 center BackgroundTrans","r")
+			mapGuiClose.setFont("s18 c" cfg.fontColor2,"Webdings")
+			mapGuiClose.onEvent("click",closeMapBrowser)
+			
+			colNum:=0
+			currX:=5
+			currY:=35
+			loop files, "./img/maps/*.*" {
+				colNum+=1
+				if colNum > 3 {
+					colNum:=0
+					currX:=5
+					currY+=205
+				}
+				
+				ui.mapThumb%a_index%:=ui.mapGui.addPicture("vmapThumb" a_index " x" currX " y" currY " w400 h200 backgroundTrans","./img/maps/" a_loopFilename)
+				ui.mapThumb%a_index%.onEvent("click",showMap)
+				activityLabel:=ui.mapGui.addText("center x" currX " y" currY+0 " w400 h25 background" cfg.bgColor0,strSplit(a_loopFilename,"_")[1])
+				ui.mapGui.addPicture("x" currX " y" currY " w400 h20 backgroundTrans","./img/custom/lightburst_top_bar_light.png")
+				encounterLabel:=ui.mapGui.addText("center x" currX " y" currY+175 " w400 h25 background" cfg.bgColor0,strSplit(strSplit(a_loopFilename,"_")[2],".")[1])
+				ui.mapGui.addPicture("x" currX " y" currY+180 " w400 h20 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+				activityLabel.setFont("c" cfg.fontColor1 " s14 q5","move-x")
+				encounterLabel.setFont("c" cfg.fontColor1 " s12 q5","move-x")
+				drawOutlineNamed("mapThumb" a_index,ui.mapGui,currX, currY,400,200,cfg.accentColor1,cfg.accentColor1,1)
+				currX+=405
+				
+			}
+			
+			ui.mapGui.show("x" cfg.guiX+34 " y" cfg.guiY " w1220")
+			winGetPos(&tX,&tY,&tW,&tH,ui.mapGui)
+			drawOutlineNamed("mapOutline",ui.mapGui,0,0,tW,tH,cfg.accentColor2,cfg.accentColor2,1)
+		}
+		showMap(this_control,*) {
+			showMapGui := gui() 
+			showMapGui.opt("-caption toolWindow alwaysOnTop owner" ui.mapGui.hwnd)
+			showMapGui.backColor:="010203"
+			winSetTransColor("010203",showMapGui)
+			fullMap:=showMapGui.addPicture("x0 y2 w1600 h-1 backgroundTrans",this_control.value)
+			fullMap.onEvent("click",closeMap)
+			winGetPos(&mbX,&mbY,&mbW,&mbH,ui.mapGui)
+			showMapGui.show("x" mbX " y" mbY " w1600")
+			
+			closeMap(*) {
+				try 
+					showMapGui.destroy()
+			}
+		}
+		
+		hideMapBrowser(*) {
+			try
+				mapGui.destroy()
+		}
+}
 
 drawLinkBar(*) {
 	static xPos:=15
@@ -690,7 +769,7 @@ drawLinkBar(*) {
 	cfg.button_link_3:=["Glyphs","Function","toggleGlyphWindow","./img/d2_glyphs_thumb.png","Shows Glyph callout infographic"]
 	cfg.button_link_4:=["Runes","Function","toggleRuneWindow","./img/d2_runes_thumb.png","Shows Rune callout infographic"]
 	cfg.button_link_5:=["WishCodes","Function","toggleCodeWindow","./img/d2_wishCodes_thumb.png","Shows codes for Wall of Wishes"]
-	cfg.button_link_6:=["Vault","Function","toggleVaultMode","./img/d2_maps_thumb.png","Shows collection of maps"]
+	cfg.button_link_6:=["Maps","Function","toggleMapBrowser","./img/d2_maps_thumb.png","Shows collection of maps"]
 
 	cfg.button_link_7:=["Unassigned","Function","editLinkBox","./img/d2_button_unbound.png","Unbound, click to assign"]
 	cfg.button_link_8:=["Unassigned","Function","editLinkBox","./img/d2_button_unbound.png","Unbound, Click to assign"]

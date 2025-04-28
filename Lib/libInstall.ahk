@@ -252,7 +252,14 @@ preAutoExec(InstallDir,ConfigFileName) {
 			fileInstall("./img/button_glyph.png",installDir "/img/button_glyph.png",1)
 			fileInstall("./img/button_glyph_down.png",installDir "/img/button_glyph_down.png",1)
 			fileInstall("./img/d2_button_unbound.png",installDir "/img/d2_button_unbound.png",1)
-			
+			if !dirExist(installDir "/img/maps")
+				dirCreate(installDir "/img/maps")
+			fileInstall("./img/maps/Sundered Doctrine_First Encounter.jpg",installDir "/img/maps/Sundered Doctrine_First Encouter.jpg",1)
+			;fileInstall("./img/maps/Sundered Doctrine_Second Encounter.jpg",installDir "/img/maps/Sundered Doctrine_Second Encouter.jpg",1)
+			fileInstall("./img/maps/Sundered Doctrine_Last Encounter.jpg",installDir "/img/maps/Sundered Doctrine_Last Encouter.jpg",1)
+			fileInstall("./img/maps/Ghosts of the Deep_First Encounter.jpg",installDir "/img/maps/Ghosts of the Deep_First Encounter.jpg",1)
+			fileInstall("./img/maps/Ghosts of the Deep_Second Encounter.jpg",installDir "/img/maps/Ghosts of the Deep_Second Encounter.jpg",1)
+			fileInstall("./img/maps/Ghosts of the Deep_Last Encounter.jpg",installDir "/img/maps/Ghosts of the Deep_Last Encounter.jpg",1)
 			
 		
 			if !fileExist("c:\windows\fonts\move-x.otf") {
