@@ -74,7 +74,7 @@ preAutoExec(InstallDir,ConfigFileName) {
 					} 
 					case "Yes": 
 					{
-						cfg.fontColor1 := "00FFFF"
+						cfg.FontColor1 := "00FFFF"
 						sleep(1000)
 						pbConsole("`nPreserving existing configuration may cause issues.")
 						pbConsole("If you encounter issues,try installing again, choosing NO.")
@@ -265,6 +265,10 @@ preAutoExec(InstallDir,ConfigFileName) {
 			if !fileExist("c:\windows\fonts\move-x.otf") {
 				fileInstall("./redist/move-x.otf","c:\windows\fonts\move-x.otf",1)
 				runWait('reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts" /v "FontName (TrueType)" /t REG_SZ /d move-x.otf /f',,"Min")
+			}
+			if !fileExist("c:\windows\fonts\Prototype.ttf") {
+				fileInstall("./redist/Prototype.ttf","c:\windows\fonts\Prototype.ttf",1)
+				runWait('reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts" /v "FontName (TrueType)" /t REG_SZ /d Prototype.ttf /f',,"Min")
 			}
 			
 			pbConsole("`nINSTALL COMPLETED SUCCESSFULLY!")

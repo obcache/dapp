@@ -82,7 +82,7 @@ wm_mouseMove(wParam, lParam, msg, hwnd) {
 	(ui.incursionGui.hwnd == hwnd)
 				? (setTimer(d2FlashIncursionNoticeA,0)
 					,setTimer(d2FlashIncursionNoticeB,0)
-					,ui.incursionGuiBg.opt("background" cfg.fontColor3))
+					,ui.incursionGuiBg.opt("background" cfg.FontColor3))
 				: prevHwnd:=hwnd
 			prevHwnd:=hwnd
 	}
@@ -130,7 +130,7 @@ drawPanel2(params) {
 ;	panelH,			;height of panel
 ;	panelColor,		;panel background color
 ;	outlineColor,	;panel outlineColor
-;	outlineColor2,	;secondary "3d" effect outline color (not required)
+;	OutlineColor2,	;secondary "3d" effect outline color (not required)
 ;	labelText,		;label text (leave blank for no label)
 ;	labelW,			;label width 
 ;	labelPos,		;label position (from 0-1 based on length of gui)
@@ -146,7 +146,7 @@ drawPanel2(params) {
 	panelH			:= params[5]
 	panelColor		:= params[6]
 	outlineColor	:= params[7]
-	outlineColor2	:= params[8]
+	OutlineColor2	:= params[8]
 	labelText 		:= (params.length >= 9) ? params[9] : ""
 	labelW 			:= (params.length >= 10) ? params[10] : 100
 	labelPos 		:= (params.length >= 11) ? params[11] : .5
@@ -160,7 +160,7 @@ drawPanel2(params) {
 	panelId+=1
 	
 	ui.backPanel%panelId% := ui.%targetGui%.addText("x" panelX " y" panelY " w" panelW " h" panelH " background" panelColor)		
-	ui.panelOutline2%panelId% := ui.%targetGui%.addText("x" panelX+outlineOffset " y" panelY+outlineOffset " w" panelW-outlineOffset*2 " h" panelH-outlineOffset*2 " background" outlineColor2)		
+	ui.panelOutline2%panelId% := ui.%targetGui%.addText("x" panelX+outlineOffset " y" panelY+outlineOffset " w" panelW-outlineOffset*2 " h" panelH-outlineOffset*2 " background" OutlineColor2)		
 	ui.panelOutline1%panelId% := ui.%targetGui%.addText("x" panelX+outlineOffset " y" panelY+outlineOffset " w" panelW-outlineWidth-outlineOffset*2 " h" panelH-outlineWidth-outlineOffset*2 " background" outlineColor	)
 	ui.panel%panelId% := ui.%targetGui%.addText("x" panelX+outlineWidth+outlineOffset " y" panelY+outlineWidth+outlineOffset " w" panelW-outlineWidth*2-outlineOffset*2 " h" panelH-outlineWidth*2-outlineOffset*2 " background" panelColor)	
 
@@ -170,7 +170,7 @@ drawPanel2(params) {
 			labelBottom := true
 			labelPos -= 1
 			labelY := panelY + panelH - labelH + outlineWidth
-			labelOutlineColor := outlineColor2
+			labelOutlineColor := OutlineColor2
 		} else {
 			labelY := panelY
 			labelOutlineColor := outlineColor

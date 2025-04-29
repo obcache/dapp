@@ -20,11 +20,11 @@ newGuid(*) {
 	return this_guid := comObject("Scriptlet.TypeLib").GUID
 }
 
-drawPanel(targetGui,panelX,panelY,panelW,panelH,panelColor,outlineColor,outlineColor2,outlineWidth := 1,outlineOffset := 1,labelPos := "none",labelW := 0,labelH := 20,labelText := "",labelFont := "calibri",labelFontColor := "white") {
+drawPanel(targetGui,panelX,panelY,panelW,panelH,panelColor,outlineColor,OutlineColor2,outlineWidth := 1,outlineOffset := 1,labelPos := "none",labelW := 0,labelH := 20,labelText := "",labelFont := "calibri",labelFontColor := "white") {
 	static panelId := 0
 	panelId+=1
 	ui.backPanel%panelId% := targetGui.addText("x" panelX " y" panelY " w" panelW " h" panelH " background" panelColor)		
-	ui.panelOutline2%panelId% := targetGui.addText("x" panelX+outlineOffset " y" panelY+outlineOffset " w" panelW-outlineOffset*2 " h" panelH-outlineOffset*2 " background" outlineColor2)		
+	ui.panelOutline2%panelId% := targetGui.addText("x" panelX+outlineOffset " y" panelY+outlineOffset " w" panelW-outlineOffset*2 " h" panelH-outlineOffset*2 " background" OutlineColor2)		
 	ui.panelOutline1%panelId% := targetGui.addText("x" panelX+outlineOffset " y" panelY+outlineOffset " w" panelW-outlineWidth-outlineOffset*2 " h" panelH-outlineWidth-outlineOffset*2 " background" outlineColor)	
 	ui.panel%panelId% := targetGui.addText("x" panelX+outlineWidth+outlineOffset " y" panelY+outlineWidth+outlineOffset " w" panelW-outlineWidth*2-outlineOffset*2 " h" panelH-outlineWidth*2-outlineOffset*2 " background" panelColor)	
 	ui.%panelId%cosmeticTop:= targetGui.addPicture("x" panelX+1 " y" panelY+1 " w" panelW-2 " h" (panelH/2-((panelH/2)-cfg.curveAmount))-1 " backgroundTrans","./img/custom/lightburst_top_bar_light.png")
@@ -34,7 +34,7 @@ drawPanel(targetGui,panelX,panelY,panelW,panelH,panelColor,outlineColor,outlineC
 		labelY := panelY
 		ui.label%panelId% := targetGui.addText("x" labelX " y" labelY+1 " w" labelW " h" labelH " background" outlineColor,"")
 		ui.label%panelId%.setFont("q5 s10")
-		ui.labelTop%panelId% := targetGui.addText("x" labelX+1 " y" labelY " w" labelW-2 " h" labelH " background" cfg.baseColor " center c" labelFontColor) 
+		ui.labelTop%panelId% := targetGui.addText("x" labelX+1 " y" labelY " w" labelW-2 " h" labelH " background" cfg.AuxColor2 " center c" labelFontColor) 
 		ui.labelTop%panelId%.setFont("q5 s10")
 		ui.labelBottom%panelId% := targetGui.addText("x" labelX+1 " y" labelY+2 " w" labelW-2 " h" labelH " backgroundTrans center c" labelFontColor, labelText) 
 		ui.labelBottom%panelId%.setFont("q5 s10")		

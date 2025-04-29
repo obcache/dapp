@@ -23,11 +23,11 @@ monitorResChanged(*) {
 GuiSetupTab(&ui,&cfg) {
 	global
 	ui.MainGuiTabs.UseTab("2_Setup____")
-	drawPanel(ui.mainGui,40,37,218,168,cfg.bgColor1,cfg.outlineColor2,cfg.outlineColor1,1,1,"none",100,"Features","calibri",cfg.fontColor1)
-	drawPanel(ui.mainGui,261,37,214,112,cfg.bgColor1,cfg.outlineColor2,cfg.outlineColor1,1,1,"none",100,"Features","calibri",cfg.fontColor1)
-	drawPanel(ui.mainGui,261,152,214,53,cfg.bgColor1,cfg.outlineColor2,cfg.outlineColor1,1,1,"none",100,"Features","calibri",cfg.fontColor1)
-	drawPanel(ui.mainGui,478,37,42,168,cfg.bgColor1,cfg.outlineColor2,cfg.outlineColor1,1,1,"none",100,"Features","calibri",cfg.fontColor1)
-	line(ui.mainGui,529,184,29,2,cfg.accentColor1)
+	drawPanel(ui.mainGui,40,37,218,168,cfg.TabColor2,cfg.OutlineColor2,cfg.OutlineColor1,1,1,"none",100,"Features","calibri",cfg.FontColor1)
+	drawPanel(ui.mainGui,261,37,214,112,cfg.TabColor2,cfg.OutlineColor2,cfg.OutlineColor1,1,1,"none",100,"Features","calibri",cfg.FontColor1)
+	drawPanel(ui.mainGui,261,152,214,53,cfg.TabColor2,cfg.OutlineColor2,cfg.OutlineColor1,1,1,"none",100,"Features","calibri",cfg.FontColor1)
+	drawPanel(ui.mainGui,478,37,42,168,cfg.TabColor2,cfg.OutlineColor2,cfg.OutlineColor1,1,1,"none",100,"Features","calibri",cfg.FontColor1)
+	line(ui.mainGui,529,184,29,2,cfg.TrimColor1)
 
 	ui.MainGui.setFont("q5 s09")
 	ui.AutoClickerSpeedSlider := ui.MainGui.AddSlider("x487 y45 w25 h144 Range1-64 Vertical Left TickInterval8 Invert ToolTipTop",cfg.AutoClickerSpeed)
@@ -35,31 +35,31 @@ GuiSetupTab(&ui,&cfg) {
 	ui.AutoClickerSpeedSlider.ToolTip := "AutoClicker Speed"
 	ui.AutoClickerSpeedSlider.OnEvent("Change",AutoClickerSpeedChanged)
 	
-	ui.MainGui.setFont("q5 s10 c" cfg.fontColor1)
-	drawOutlineMainGui(34,28,497,200,cfg.disabledColor,cfg.disabledColor,2)
+	ui.MainGui.setFont("q5 s10 c" cfg.FontColor1)
+	drawOutlineMainGui(34,28,497,200,cfg.DisabledColor,cfg.DisabledColor,2)
 	ui.mainGui.addText("hidden section x48 y26")
 	cfg.toolTipsEnabled			:= iniRead(cfg.file,"Toggles","ToolTipsEnabled",true)
-	ui.toggleToolTips 			:= ui.MainGui.AddPicture("xs y+3 w50 h22 section vToolTips " ((cfg.ToolTipsEnabled) ? ("Background" cfg.trimColor3) : ("Background" cfg.trimColor2)),((cfg.ToolTipsEnabled) ? (cfg.toggleOn) : (cfg.toggleOff)))
+	ui.toggleToolTips 			:= ui.MainGui.AddPicture("xs y+3 w50 h22 section vToolTips " ((cfg.ToolTipsEnabled) ? ("Background" cfg.OnColor) : ("Background" cfg.OffColor)),((cfg.ToolTipsEnabled) ? (cfg.toggleOn) : (cfg.toggleOff)))
 	ui.labelToolTips 			:= ui.MainGui.AddText("x+5 ys+2 BackgroundTrans","  ToolTips")
 	ui.toggleToolTips.ToolTip 	:= "Toggles ToolTips"
 	ui.toggleToolTips.OnEvent("Click", toggleChanged)
 	
 	ToggleAlwaysOnTop(*)
 	{
-		ui.toggleAlwaysOnTop.Opt((cfg.AlwaysOnTopEnabled := !cfg.AlwaysOnTopEnabled) ? ("Background" cfg.trimColor3) : ("Background" cfg.trimColor2))
+		ui.toggleAlwaysOnTop.Opt((cfg.AlwaysOnTopEnabled := !cfg.AlwaysOnTopEnabled) ? ("Background" cfg.OnColor) : ("Background" cfg.OffColor))
 		ui.toggleAlwaysOnTop.Redraw()
 	}
 	
 	ui.mainGui.opt((cfg.AlwaysOnTopEnabled) ? "alwaysOnTop" : "-alwaysOnTop")
-	ui.toggleAlwaysOnTop 			:= ui.MainGui.AddPicture("xs y+2 w50 h22 section vAlwaysOnTop " (cfg.AlwaysOnTopEnabled ? ("Background" cfg.trimColor3) : ("Background" cfg.trimColor2)),((cfg.AlwaysOnTopEnabled) ? (cfg.toggleOn) : (cfg.toggleOff)))
+	ui.toggleAlwaysOnTop 			:= ui.MainGui.AddPicture("xs y+2 w50 h22 section vAlwaysOnTop " (cfg.AlwaysOnTopEnabled ? ("Background" cfg.OnColor) : ("Background" cfg.OffColor)),((cfg.AlwaysOnTopEnabled) ? (cfg.toggleOn) : (cfg.toggleOff)))
 	ui.labelAlwaysOnTop				:= ui.MainGui.AddText("x+5 ys+2 backgroundTrans","  AlwaysOnTop")	
 	ui.toggleAlwaysOnTop.ToolTip 	:= "Keeps this app on top of all other windows."
 	ui.toggleAlwaysOnTop.OnEvent("Click", ToggleAlwaysOnTopChanged)
 		
 	ToggleAlwaysOnTopChanged(*) {
 		ui.toggleAlwaysOnTop.value 	:=	((cfg.AlwaysOnTopEnabled := !cfg.AlwaysOnTopEnabled) 
-											? (ui.toggleAlwaysOnTop.opt("Background" cfg.trimColor3),cfg.toggleOn) 
-											: (ui.toggleAlwaysOnTop.opt("Background" cfg.trimColor2),cfg.toggleOff))
+											? (ui.toggleAlwaysOnTop.opt("Background" cfg.OnColor),cfg.toggleOn) 
+											: (ui.toggleAlwaysOnTop.opt("Background" cfg.OffColor),cfg.toggleOff))
 		ui.toggleAlwaysOnTop.Redraw()
 		
 		try {
@@ -74,12 +74,12 @@ GuiSetupTab(&ui,&cfg) {
 	}
 	
 	cfg.animationsEnabled := iniRead(cfg.file,"Toggles","AnimationsEnabled",true)
-	ui.toggleAnimations := ui.MainGui.AddPicture("xs w50 y+2 h22 section vAnimations " (cfg.AnimationsEnabled ? ("Background" cfg.trimColor3) : ("Background" cfg.trimColor2)),((cfg.AnimationsEnabled) ? (cfg.toggleOn) : (cfg.toggleOff)))
+	ui.toggleAnimations := ui.MainGui.AddPicture("xs w50 y+2 h22 section vAnimations " (cfg.AnimationsEnabled ? ("Background" cfg.OnColor) : ("Background" cfg.OffColor)),((cfg.AnimationsEnabled) ? (cfg.toggleOn) : (cfg.toggleOff)))
 	ui.toggleAnimations.OnEvent("Click", toggleChanged)
 	ui.toggleAnimations.ToolTip := "Toggles the app's slide and fade animations."
 	ui.labelAnimations:= ui.MainGui.AddText("x+5 ys+2 backgroundTrans","  Animations")
 
-	ui.toggleAutoStart := ui.MainGui.AddPicture("xs y+2 w50 h22 section vAutoStart " (cfg.autoStartEnabled ? ("Background" cfg.trimColor3) : ("Background" cfg.trimColor2)),((cfg.autoStartEnabled) ? (cfg.toggleOn) : (cfg.toggleOff)))
+	ui.toggleAutoStart := ui.MainGui.AddPicture("xs y+2 w50 h22 section vAutoStart " (cfg.autoStartEnabled ? ("Background" cfg.OnColor) : ("Background" cfg.OffColor)),((cfg.autoStartEnabled) ? (cfg.toggleOn) : (cfg.toggleOff)))
 	ui.toggleAutoStart.OnEvent("Click", toggleChangedAutoStart)
 	ui.toggleAutoStart.ToolTip := "Auto-starts the app on Windows login."
 	ui.labelAutoStart:= ui.MainGui.AddText("x+5 ys+2 backgroundTrans","  AutoStart")
@@ -87,8 +87,8 @@ GuiSetupTab(&ui,&cfg) {
 	toggleChangedAutoStart(toggleControl,*) {
 		toggleControl.value := 
 		(cfg.%toggleControl.name%Enabled := !cfg.%toggleControl.name%Enabled)
-			? (toggleControl.Opt("Background" cfg.trimColor3),cfg.toggleOn)
-			: (toggleControl.Opt("Background" cfg.trimColor2),cfg.toggleOff)
+			? (toggleControl.Opt("Background" cfg.OnColor),cfg.toggleOn)
+			: (toggleControl.Opt("Background" cfg.OffColor),cfg.toggleOff)
 
 	if cfg.%toggleControl.name%Enabled 
 		if !(fileExist(A_StartMenu "\Programs\Startup\dapp.lnk"))
@@ -120,29 +120,29 @@ GuiSetupTab(&ui,&cfg) {
 	
 	ToggleStartMinimized(*)
 	{
-		ui.toggleStartMinimized.Opt((cfg.StartMinimizedEnabled := !cfg.StartMinimizedEnabled) ? ("Background" cfg.trimColor3) : ("Background" cfg.trimColor2))
+		ui.toggleStartMinimized.Opt((cfg.StartMinimizedEnabled := !cfg.StartMinimizedEnabled) ? ("Background" cfg.OnColor) : ("Background" cfg.OffColor))
 		ui.toggleStartMinimized.Redraw()
 		iniWrite(cfg.StartMinimizedEnabled,cfg.file,"System","StartMinimizedEnabled")
 	}
 	cfg.StartMinimizedEnabled:=iniRead(cfg.file,"Toggles","StartMinimizedEnabled",false)
-	ui.toggleStartMinimized := ui.MainGui.AddPicture("xs y+2 w50 h22 section vStartMinimized " (cfg.StartMinimizedEnabled ? ("Background" cfg.trimColor3) : ("Background" cfg.trimColor2)),((cfg.StartMinimizedEnabled) ? (cfg.toggleOn) : (cfg.toggleOff)))
+	ui.toggleStartMinimized := ui.MainGui.AddPicture("xs y+2 w50 h22 section vStartMinimized " (cfg.StartMinimizedEnabled ? ("Background" cfg.OnColor) : ("Background" cfg.OffColor)),((cfg.StartMinimizedEnabled) ? (cfg.toggleOn) : (cfg.toggleOff)))
 	ui.toggleStartMinimized.OnEvent("Click", toggleChanged)
 	ui.toggleStartMinimized.ToolTip := "Minimizes the app to system tray when started.  Useful when combined with 'Start with Windows'."
 	ui.labelStartMinimized:= ui.MainGui.AddText("x+5 ys+2 backgroundTrans","  Start Minimized")
 	; cfg.MouseRemapEnabled:=iniRead(cfg.file,"System","MouseRemapEnabled",false)
- 	; ui.toggleMouseRemap := ui.MainGui.AddPicture("xs y+2 w50 h22 section vMouseRemap " (cfg.MouseRemapEnabled ? ("Background" cfg.trimColor3) : ("Background" cfg.trimColor2)),((cfg.MouseRemapEnabled) ? (cfg.toggleOn) : (cfg.toggleOff)))
+ 	; ui.toggleMouseRemap := ui.MainGui.AddPicture("xs y+2 w50 h22 section vMouseRemap " (cfg.MouseRemapEnabled ? ("Background" cfg.OnColor) : ("Background" cfg.OffColor)),((cfg.MouseRemapEnabled) ? (cfg.toggleOn) : (cfg.toggleOff)))
 	; ui.toggleMouseRemap.OnEvent("Click", toggleChanged)
 	; ui.toggleMouseRemap.ToolTip := "Enables mouseping (cShift)"
 	; ui.labelMouseRemap:= ui.MainGui.AddText("x+5 ys+2 backgroundTrans","  Remap Mouse")
 	; ToggleMouseRemap(*)
 	; {
-		; ui.toggleMouseRemap.Opt((cfg.MouseRemapEnabled := !cfg.MouseRemapEnabled) ? ("Background" cfg.trimColor3) : ("Background" cfg.trimColor2))
+		; ui.toggleMouseRemap.Opt((cfg.MouseRemapEnabled := !cfg.MouseRemapEnabled) ? ("Background" cfg.OnColor) : ("Background" cfg.OffColor))
 		; ui.toggleMouseRemap.Redraw()
 		; iniWrite(cfg.MouseRemapEnabled,cfg.file,"System","MouseRemapEnabled")
 	; }
 	  
 	cfg.confirmExitEnabled:=iniRead(cfg.file,"Toggles","ConfirmExitEnabled",true)
-	ui.toggleconfirmExit := ui.MainGui.AddPicture("xs y+2 w50 h22 section vConfirmExit " (cfg.ConfirmExitEnabled ? ("Background" cfg.trimColor3) : ("Background" cfg.trimColor2)),((cfg.ConfirmExitEnabled) ? (cfg.toggleOn) : (cfg.toggleOff)))
+	ui.toggleconfirmExit := ui.MainGui.AddPicture("xs y+2 w50 h22 section vConfirmExit " (cfg.ConfirmExitEnabled ? ("Background" cfg.OnColor) : ("Background" cfg.OffColor)),((cfg.ConfirmExitEnabled) ? (cfg.toggleOn) : (cfg.toggleOff)))
 	ui.toggleConfirmExit.OnEvent("Click", toggleChanged)
 	ui.toggleConfirmExit.ToolTip := "Produces a confirmation prompt upon exiting the application."
 	ui.labelConfirmExit:= ui.MainGui.AddText("x+5 ys+2 backgroundTrans","  Confirm Exit")
@@ -150,54 +150,54 @@ GuiSetupTab(&ui,&cfg) {
 
 	TogglePushNotifications(*)
 	{
-		ui.togglePushNotifications.Opt((cfg.PushNotificationsEnabled := !cfg.PushNotificationsEnabled) ? ("Background" cfg.trimColor3) : ("Background" cfg.trimColor2))
+		ui.togglePushNotifications.Opt((cfg.PushNotificationsEnabled := !cfg.PushNotificationsEnabled) ? ("Background" cfg.OnColor) : ("Background" cfg.OffColor))
 		ui.togglePushNotifications.Redraw()
 		
 	}
 	cfg.PushNotificationsEnabled:=iniRead(cfg.file,"Toggles","PushNotificationsEnabled",true)
-	ui.togglePushNotifications := ui.MainGui.AddPicture("xs y+2 w50 h22 section vPushNotifications " (cfg.PushNotificationsEnabled ? ("Background" cfg.trimColor3) : ("Background" cfg.trimColor2)),((cfg.PushNotificationsEnabled) ? (cfg.toggleOn) : (cfg.toggleOff)))
+	ui.togglePushNotifications := ui.MainGui.AddPicture("xs y+2 w50 h22 section vPushNotifications " (cfg.PushNotificationsEnabled ? ("Background" cfg.OnColor) : ("Background" cfg.OffColor)),((cfg.PushNotificationsEnabled) ? (cfg.toggleOn) : (cfg.toggleOff)))
 	ui.togglePushNotifications.OnEvent("Click", toggleChanged)
 	ui.togglePushNotifications.ToolTip := "Enables pop-up notifications regarding in-game events."
 	ui.labelPushNotifications:= ui.MainGui.AddText("x+5 ys+2 backgroundTrans","  Notifications")
 
 	ToggleDebug(*)
 	{
-		ui.toggleDebug.Opt((cfg.DebugEnabled := !cfg.DebugEnabled) ? ("Background" cfg.trimColor3) : ("Background" cfg.trimColor2))
+		ui.toggleDebug.Opt((cfg.DebugEnabled := !cfg.DebugEnabled) ? ("Background" cfg.OnColor) : ("Background" cfg.OffColor))
 		ui.toggleDebug.Redraw()
 	}
 	cfg.DebugEnabled:=iniRead(cfg.file,"Toggles","DebugEnabled",false)
-	ui.toggleDebug := ui.MainGui.AddPicture("xs y+2 w50 h22 section vDebug " (cfg.DebugEnabled ? ("Background" cfg.trimColor3) : ("Background" cfg.trimColor2)),((cfg.DebugEnabled) ? (cfg.toggleOn) : (cfg.toggleOff)))
+	ui.toggleDebug := ui.MainGui.AddPicture("xs y+2 w50 h22 section vDebug " (cfg.DebugEnabled ? ("Background" cfg.OnColor) : ("Background" cfg.OffColor)),((cfg.DebugEnabled) ? (cfg.toggleOn) : (cfg.toggleOff)))
 	ui.toggleDebug.OnEvent("Click", toggleChanged)
 	ui.toggleDebug.ToolTip := "Keeps this app on top of all other windows."
 	ui.labelDebug:= ui.MainGui.AddText("x+5 ys+2 backgroundTrans","  Debug")
 
-	;drawOutlineNamed("toggleBlock",ui.mainGui,48,43,51,157,cfg.accentColor4,cfg.accentColor4,1)
-	;drawOutlineNamed("toggleBlock",ui.mainGui,47,43,50,157,cfg.accentColor2,cfg.accentColor2,1)
-	;drawOutlineNamed("toggleBlock",ui.mainGui,48,42,50,157,cfg.outlineColor2,cfg.outlineColor2,1)
+	;drawOutlineNamed("toggleBlock",ui.mainGui,48,43,51,157,cfg.AuxColor3,cfg.AuxColor3,1)
+	;drawOutlineNamed("toggleBlock",ui.mainGui,47,43,50,157,cfg.TrimColor2,cfg.TrimColor2,1)
+	;drawOutlineNamed("toggleBlock",ui.mainGui,48,42,50,157,cfg.OutlineColor2,cfg.OutlineColor2,1)
 	
-	ui.mainGui.addText("x270 y45 w198 h62 background" cfg.titleBgColor)
-	ui.mainGui.addText("x271 y46 w196 h60 background" cfg.outlineColor2)
-	ui.mainGui.addText("x272 y47 w194 h58 background" cfg.outlineColor1)
-	ui.mainGui.addText("x273 y48 w192 h56 background" cfg.titleBgColor)
-	;line(ui.mainGui,0,36,155,2,cfg.disabledColor)
+	ui.mainGui.addText("x270 y45 w198 h62 background" cfg.TrimColor3)
+	ui.mainGui.addText("x271 y46 w196 h60 background" cfg.OutlineColor2)
+	ui.mainGui.addText("x272 y47 w194 h58 background" cfg.OutlineColor1)
+	ui.mainGui.addText("x273 y48 w192 h56 background" cfg.TrimColor3)
+	;line(ui.mainGui,0,36,155,2,cfg.DisabledColor)
 
-	ui.checkForUpdatesLabel := ui.mainGui.addtext("x280 y46 w200 h30 section backgroundTrans c" cfg.fontColor3,"Check For Updates")
+	ui.checkForUpdatesLabel := ui.mainGui.addtext("x280 y46 w200 h30 section backgroundTrans c" cfg.FontColor3,"Check For Updates")
 	ui.checkForUpdatesLabel.setFont("q5 s12","move-x")
-	ui.checkForUpdatesButton := ui.mainGui.addPicture("xs+10 y+-7 w30 h30 section background" cfg.trimColor3,"./img/button_update.png")
+	ui.checkForUpdatesButton := ui.mainGui.addPicture("xs+10 y+-7 w30 h30 section background" cfg.OnColor,"./img/button_update.png")
 	ui.checkForUpdatesButton.onEvent("Click",checkForUpdates)
 	ui.checkForUpdatesButton.Tooltip := "Checks to see if a more recent version is available"	
-	ui.installedVersionText := ui.mainGui.addText("ys-1 x+17 section w140 h19 backgroundTrans c" cfg.fontColor3 ,"Installed:`t" substr(a_fileVersion,1,1) "." subStr(a_fileVersion,2,1) "." subStr(a_fileVersion,3,1) "." subStr(a_fileVersion,4,1))
-	ui.latestVersionText := ui.mainGui.addText("xs y+-4 w140 backgroundTrans c" cfg.fontColor3,"Available:`t#.#.#.#")
+	ui.installedVersionText := ui.mainGui.addText("ys-1 x+17 section w140 h19 backgroundTrans c" cfg.FontColor3 ,"Installed:`t" substr(a_fileVersion,1,1) "." subStr(a_fileVersion,2,1) "." subStr(a_fileVersion,3,1) "." subStr(a_fileVersion,4,1))
+	ui.latestVersionText := ui.mainGui.addText("xs y+-4 w140 backgroundTrans c" cfg.FontColor3,"Available:`t#.#.#.#")
 	ui.monitorResList := ["1920x1080","1920x1200","2560x1440","3440x1440","Custom"]
 
-	ui.monitorResDDL := ui.mainGui.AddDDL("xs-66 y+16 w90 r4 choose" cfg.monitorRes " c" cfg.fontColor4 " background" cfg.baseColor,ui.monitorResList)
-	ui.monitorResDDL.setFont("c" cfg.fontColor4)
+	ui.monitorResDDL := ui.mainGui.AddDDL("xs-66 y+16 w90 r4 choose" cfg.monitorRes " c" cfg.FontColor4 " background" cfg.AuxColor2,ui.monitorResList)
+	ui.monitorResDDL.setFont("c" cfg.FontColor4)
 	ui.monitorResDDL.onEvent("change",monitorResChanged)
-	ui.monitorResLabel := ui.mainGui.AddText("x+4 y+-25 w65 c" cfg.fontColor1 " backgroundTrans","Screen")	
-	ui.monitorResLabel2 := ui.mainGui.AddText("y+-2 w65 c" cfg.fontColor1 " backgroundTrans","Size")
+	ui.monitorResLabel := ui.mainGui.AddText("x+4 y+-25 w65 c" cfg.FontColor1 " backgroundTrans","Screen")	
+	ui.monitorResLabel2 := ui.mainGui.AddText("y+-2 w65 c" cfg.FontColor1 " backgroundTrans","Size")
 	ui.monitorResLabel.setFont("q5 s9")
 	ui.monitorResLabel2.setFont("q5 s9")
-	ui.monitorAutoLabel := ui.mainGui.addText("x+-28 y+-12 w25 h12 section c" cfg.fontColor1 " backgroundTrans","Auto")
+	ui.monitorAutoLabel := ui.mainGui.addText("x+-28 y+-12 w25 h12 section c" cfg.FontColor1 " backgroundTrans","Auto")
 	ui.monitorAutoLabel.setFont("q5 s8")
 	ui.monitorAuto := ui.mainGui.addCheckbox("x+-18 y+-26 w15 h15",cfg.displaySizeAuto)
 	ui.monitorAuto.onEvent("Click",toggleAutoDisplaySize)
@@ -250,106 +250,106 @@ ui.defaultThemes := "
 [Interface]
 ThemeList=Modern Class,Cold Steel,Militarized,Neon,Ocean
 [Modern Class]
-outlineColor1=C0C0C0
-outlineColor2=333333
-disabledColor=1D1D1D
-accentColor4=19F9F
+OutlineColor1=C0C0C0
+OutlineColor2=333333
+DisabledColor=1D1D1D
+AuxColor3=19F9F
 baseColor=4A5A60
-fontColor1=1FFFF
-fontColor2=FCC84B
-bgColor1=355051
-bgColor0=674704
-titleBgColor=355051
-bgColor3=1D5852
-trimColor6=292929
-bgColor0=212121
-trimColor3=FF01FF
-trimColor2=1FFFF
-trimColor4=FFCC00
+FontColor1=1FFFF
+FontColor2=FCC84B
+TabColor2=355051
+TabColor1=674704
+TrimColor3=355051
+TileColor=1D5852
+AuxColor2=292929
+TabColor1=212121
+OnColor=FF01FF
+OffColor=1FFFF
+AlertColor=FFCC00
 [Cold Steel]
-outlineColor1=888888
-outlineColor2=333333
-disabledColor=313131
-accentColor4=C0C0C0
+OutlineColor1=888888
+OutlineColor2=333333
+DisabledColor=313131
+AuxColor3=C0C0C0
 baseColor=414141
-fontColor1=1FFFF
-fontColor2=FAE7AD
-bgColor1=204040
-bgColor0=984C01
-titleBgColor=70D1C8
-bgColor3=654901
-trimColor6=292929
-bgColor0=212121
-trimColor3=FF01FF
-trimColor2=1FFFF
-trimColor4=FFCC00
+FontColor1=1FFFF
+FontColor2=FAE7AD
+TabColor2=204040
+TabColor1=984C01
+TrimColor3=70D1C8
+TileColor=654901
+AuxColor2=292929
+TabColor1=212121
+OnColor=FF01FF
+OffColor=1FFFF
+AlertColor=FFCC00
 [Militarized]
-outlineColor1=888888
-outlineColor2=333333
-disabledColor=66B1FE
-accentColor4=FEFE98
+OutlineColor1=888888
+OutlineColor2=333333
+DisabledColor=66B1FE
+AuxColor3=FEFE98
 baseColor=606060
-fontColor1=98CBFE
-fontColor2=FE8001
-bgColor1=202020
-bgColor0=984C01
-titleBgColor=355051
-bgColor3=70D1C8
-trimColor6=292929
-bgColor0=212121
-trimColor3=01FE80
-trimColor2=CFA645
-trimColor4=FFCC00
+FontColor1=98CBFE
+FontColor2=FE8001
+TabColor2=202020
+TabColor1=984C01
+TrimColor3=355051
+TileColor=70D1C8
+AuxColor2=292929
+TabColor1=212121
+OnColor=01FE80
+OffColor=CFA645
+AlertColor=FFCC00
 [Ocean]
-outlineColor1=446466
-outlineColor2=333333
-disabledColor=365154
-accentColor4=3C3C3C
+OutlineColor1=446466
+OutlineColor2=333333
+DisabledColor=365154
+AuxColor3=3C3C3C
 baseColor=2C3537
-fontColor1=1FFFF
-fontColor2=256D65
-bgColor1=355051
-bgColor0=70D1C8
-titleBgColor=355051
-bgColor3=70D1C8
-trimColor6=292929
-bgColor0=212121
-trimColor3=1FFFF
-trimColor2=9D9D9D
-trimColor4=FFCC00
+FontColor1=1FFFF
+FontColor2=256D65
+TabColor2=355051
+TabColor1=70D1C8
+TrimColor3=355051
+TileColor=70D1C8
+AuxColor2=292929
+TabColor1=212121
+OnColor=1FFFF
+OffColor=9D9D9D
+AlertColor=FFCC00
 [LCD]
 baseColor=B0C6B6
-outlineColor1=5B8471
-outlineColor2=5E5E01
-disabledColor=1D1D1D
-accentColor4=19F9F
-fontColor1=E9F977
-fontColor2=303030
-bgColor1=6D8B87
-bgColor0=73714D
-titleBgColor=6D8B87
-bgColor3=73714D
-trimColor6=CEAFD1
-bgColor0=212121
-trimColor3=FF01FF
-trimColor2=D7FF82
-trimColor4=FFCC00
+OutlineColor1=5B8471
+OutlineColor2=5E5E01
+DisabledColor=1D1D1D
+AuxColor3=19F9F
+FontColor1=E9F977
+FontColor2=303030
+TabColor2=6D8B87
+TabColor1=73714D
+TrimColor3=6D8B87
+TileColor=73714D
+AuxColor2=CEAFD1
+TabColor1=212121
+OnColor=FF01FF
+OffColor=D7FF82
+AlertColor=FFCC00
 [Neon]
 baseColor=414141
-outlineColor1=888888
-outlineColor2=333333
-disabledColor=C0C0C0
-accentColor4=FFFFFF
-fontColor1=1FFFF0
-fontColor2=FBD58E
-bgColor1=204040
-bgColor0=804001
-titleBgColor=204040
-bgColor3=804001
-trimColor6=292929
-bgColor0=212121
-trimColor3=FF01FF
-trimColor2=1FFFF0
-trimColor4=FFCC00
+OutlineColor1=888888
+OutlineColor2=333333
+DisabledColor=C0C0C0
+AuxColor3=FFFFFF
+FontColor1=1FFFF0
+FontColor2=FBD58E
+TabColor2=204040
+TabColor1=804001
+TrimColor3=204040
+TileColor=804001
+AuxColor2=292929
+TabColor1=212121
+OnColor=FF01FF
+OffColor=1FFFF0
+AlertColor=FFCC00
 )"
 }
