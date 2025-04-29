@@ -13,7 +13,7 @@ AlertColor=F3850C
 TabColor3=151515
 baseColor=363636
 OutlineColor2=5C5C5C
-OutlineColor1=448701
+OutlineColor1=5E8C2B
 AuxColor2=204001
 AuxColor1=A5D98C
 TrimColor1=659B01
@@ -23,12 +23,13 @@ TrimColor2=75848A
 AuxColor3=336501
 FontColor2=707070
 HideTitlebarText=0
-TitleBarImage=.\img\custom\lightburst_top_bar_dark.png
+TitleBarImage=.\img\custom\lightBurst_bottom_light.png
+CurveAmount=20
 
 [Denim & Leather]
-OutlineColor1=DFB44D
-OutlineColor2=725A29
-TrimColor1=304A6B
+OutlineColor1=76560C
+OutlineColor2=1A4B64
+TrimColor1=345174
 TrimColor2=3A4550
 baseColor=10101
 FontColor1=D7DCE8
@@ -233,9 +234,9 @@ CurveAmount=15
 AuxColor3=C1AA79
 accentColor3=ADADAD
 TrimColor2=3A4550
-TrimColor1=304A6B
-OutlineColor2=725A29
-OutlineColor1=DFB44D
+TrimColor1=345174
+OutlineColor2=1A4B64
+OutlineColor1=76560C
 baseColor=10101
 FontColor1=D7DCE8
 FontColor2=93B3E1
@@ -349,6 +350,7 @@ OnColor=FEF329
 OffColor=DF9A5B
 AlertColor=FFCC00
 TitleBarImage=.\img\custom\lightBurst_bottom_light.png
+CurveAmount=20
 [Ocean]
 TitleBarImage=.\img\custom\lightBurst_bl_light.png
 [Iceberg]
@@ -421,6 +423,7 @@ OnColor=9C7CD8
 OffColor=8E8AA4
 AlertColor=FFFC71
 TitleBarImage=.\img\custom\lightburst_top_bar.png
+CurveAmount=20
 [Blood]
 AuxColor3=606060
 accentColor3=6C0101

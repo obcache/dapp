@@ -51,7 +51,7 @@ ui.ColorSelectorLabel2 := ui.themeEditorGui.AddText("x2 y31 h24 center section w
 		? (" Color App") 
 		: (" Swatches ")))
 ;drawOutlineNamed("themeEditorCancelButtonOutline",ui.themeEditorGui,300,2,24,24,cfg.OutlineColor2,cfg.OutlineColor1,2)
-ui.ColorSelectorLabel2.setFont("q5 s14","calibri bold")
+ui.ColorSelectorLabel2.setFont("q5 s14","Prototype")
 ;drawOutlineNamed("ThemeOutlineShadow",ui.themeEditorGui,10,32,60,28,cfg.OutlineColor2,cfg.OutlineColor2,2)
 
 
@@ -132,15 +132,15 @@ Loop ui.ThemeElements.Length
 	ui.%this_color%Label.setFont("q5 c" cfg.fontColor2)
 	ui.%this_color%Picker.OnEvent("Click",PickColor)
 }
-ui.curveSliderOutline2:=ui.themeEditorGui.addText("x12 y153 w104 border h28 background" cfg.TabColor2)
-ui.curveSliderOutline:=ui.themeEditorGui.addText("x10 y151 w108 h32 background" cfg.TrimColor2)
+ui.curveSliderOutline2:=ui.themeEditorGui.addText("x11 y166 w103 border h18 background" cfg.TabColor2)
+ui.curveSliderOutline:=ui.themeEditorGui.addText("x10 y165 w105 h20 background" cfg.TrimColor2)
 ; ui.curveSliderBg:=ui.themeEditorGui.addText("x89 y161 w88 h22 background" cfg.TabColor2)
 cfg.curveAmount:=iniRead(cfg.themeFile,cfg.theme,"CurveAmount",20)
-ui.curveSliderLabel:=ui.themeEditorGui.addText("x34 y168 w80 h12 background" cfg.tabColor2,"3D Effect Depth")
-ui.curveSliderLabel.setFont("s8 q5 c" cfg.fontColor2)
-ui.curveSliderBuddy:=ui.themeEditorGui.addText("x15 y154 w22 h15 background" cfg.tabColor2 " vCurveSliderBuddy c" cfg.AuxColor2,cfg.curveAmount)
+ui.curveSliderLabel:=ui.themeEditorGui.addText("x120 y167 w70 h14 background" cfg.tabColor2,"Bevel Depth")
+ui.curveSliderLabel.setFont("s10 q5 c" cfg.fontColor2,"Prototype")
+ui.curveSliderBuddy:=ui.themeEditorGui.addText("x15 y167 w22 h16 background" cfg.tabColor2 " vCurveSliderBuddy c" cfg.AuxColor2,cfg.curveAmount)
 ui.curveSliderBuddy.setFont("s10 q5 c" cfg.FontColor2,"Calibri")
-ui.curveSlider:=ui.themeEditorGui.addSlider("x32 y154 w80 h15 range10-50 center NoTicks ToolTipTop buddyCurveSliderBuddy vcurveSlider",cfg.curveAmount)
+ui.curveSlider:=ui.themeEditorGui.addSlider("x32 y169 w80 h14 range10-50 center NoTicks ToolTipTop buddyCurveSliderBuddy vcurveSlider",cfg.curveAmount)
 ui.curveSlider.onEvent("change",changeCurve)
 ui.curveSlider.focus()
 
@@ -153,8 +153,8 @@ changeCurve(*) {
 ;ui.hideTitleTextLabel:=ui.themeEditorGui.addText("section x4 y174 w160 h20 right backgroundTrans","Hide Titlebar Text")
 ;ui.HideTitleTextLabel.setFont("s12 q5 c" cfg.FontColor1)
 ui.hidetitleTextCbValue:=iniRead(cfg.themeFile,cfg.theme,"HideTitlebarText",0)
-ui.hideTitleTextCb:=ui.themeEditorGui.addCheckbox("x12 y184 vHideTitleBarTextCb w150 h26 c" cfg.FontColor2,"Hide Titlebar Text")
-ui.hideTitleTextCb.setFont("s12 q5 c" cfg.FontColor2,"calibri")
+ui.hideTitleTextCb:=ui.themeEditorGui.addCheckbox("x12 y187 vHideTitleBarTextCb w150 h26 c" cfg.FontColor2,"Hide Titlebar Text")
+ui.hideTitleTextCb.setFont("s12 q5 c" cfg.FontColor2,"Prototype")
 ui.hideTitleTextCb.value:=ui.hideTitleTextCbValue
 ui.hideTitleTextCb.onEvent("click", toggleTitleText)
 toggleTitleText(*) {
@@ -164,7 +164,7 @@ toggleTitleText(*) {
 	;msgBox("value: " ui.hideTitleTextCb.value "`nFile: " cfg.themeFile)
 }
 
-ui.titleBarEditBgText:=ui.themeEditorGui.addText("x47 y218 w280 h26 backgroundTrans","dapp")
+ui.titleBarEditBgText:=ui.themeEditorGui.addText("x55 y218 w280 h26 backgroundTrans","dapp")
 ui.titleBarEditBgText.setFont("s14 c" cfg.FontColor2,"move-x")
 (ui.hideTitleTextCbValue) ? ui.titleBarEditBgText.opt("hidden") : ui.titleBarEditBgText.opt("-hidden")
 

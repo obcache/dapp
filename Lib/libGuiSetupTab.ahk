@@ -23,21 +23,21 @@ monitorResChanged(*) {
 GuiSetupTab(&ui,&cfg) {
 	global
 	ui.MainGuiTabs.UseTab("2_Setup____")
-	drawPanel(ui.mainGui,40,37,218,168,cfg.TabColor2,cfg.OutlineColor2,cfg.OutlineColor1,1,1,"none",100,"Features","calibri",cfg.FontColor1)
-	drawPanel(ui.mainGui,261,37,214,112,cfg.TabColor2,cfg.OutlineColor2,cfg.OutlineColor1,1,1,"none",100,"Features","calibri",cfg.FontColor1)
-	drawPanel(ui.mainGui,261,152,214,53,cfg.TabColor2,cfg.OutlineColor2,cfg.OutlineColor1,1,1,"none",100,"Features","calibri",cfg.FontColor1)
-	drawPanel(ui.mainGui,478,37,42,168,cfg.TabColor2,cfg.OutlineColor2,cfg.OutlineColor1,1,1,"none",100,"Features","calibri",cfg.FontColor1)
+	drawPanel(ui.mainGui,40,33,218,174,cfg.TabColor2,cfg.OutlineColor2,cfg.OutlineColor1,1,1,"none",100,"Features","calibri",cfg.FontColor1)
+	drawPanel(ui.mainGui,261,33,214,118,cfg.TabColor2,cfg.OutlineColor2,cfg.OutlineColor1,1,1,"none",100,"Features","calibri",cfg.FontColor1)
+	drawPanel(ui.mainGui,261,154,214,53,cfg.TabColor2,cfg.OutlineColor2,cfg.OutlineColor1,1,1,"none",100,"Features","calibri",cfg.FontColor1)
+	drawPanel(ui.mainGui,478,33,42,174,cfg.TabColor2,cfg.OutlineColor2,cfg.OutlineColor1,1,1,"none",100,"Features","calibri",cfg.FontColor1)
 	line(ui.mainGui,529,184,29,2,cfg.TrimColor1)
 
 	ui.MainGui.setFont("q5 s09")
-	ui.AutoClickerSpeedSlider := ui.MainGui.AddSlider("x487 y45 w25 h144 Range1-64 Vertical Left TickInterval8 Invert ToolTipTop",cfg.AutoClickerSpeed)
+	ui.AutoClickerSpeedSlider := ui.MainGui.AddSlider("disabled x487 y45 w25 h144 Range1-64 Vertical Left TickInterval8 Invert ToolTipTop",cfg.AutoClickerSpeed)
 	ui.AutoClickerSpeedSliderLabel2 := ui.MainGui.AddText("x475 y190 w50 r1 Center BackgroundTrans","CPS")
 	ui.AutoClickerSpeedSlider.ToolTip := "AutoClicker Speed"
 	ui.AutoClickerSpeedSlider.OnEvent("Change",AutoClickerSpeedChanged)
 	
 	ui.MainGui.setFont("q5 s10 c" cfg.FontColor1)
 	drawOutlineMainGui(34,28,497,200,cfg.DisabledColor,cfg.DisabledColor,2)
-	ui.mainGui.addText("hidden section x48 y26")
+	ui.mainGui.addText("hidden section x48 y21")
 	cfg.toolTipsEnabled			:= iniRead(cfg.file,"Toggles","ToolTipsEnabled",true)
 	ui.toggleToolTips 			:= ui.MainGui.AddPicture("xs y+3 w50 h22 section vToolTips " ((cfg.ToolTipsEnabled) ? ("Background" cfg.OnColor) : ("Background" cfg.OffColor)),((cfg.ToolTipsEnabled) ? (cfg.toggleOn) : (cfg.toggleOff)))
 	ui.labelToolTips 			:= ui.MainGui.AddText("x+5 ys+2 BackgroundTrans","  ToolTips")
@@ -187,19 +187,21 @@ GuiSetupTab(&ui,&cfg) {
 	ui.checkForUpdatesButton.onEvent("Click",checkForUpdates)
 	ui.checkForUpdatesButton.Tooltip := "Checks to see if a more recent version is available"	
 	ui.installedVersionText := ui.mainGui.addText("ys-1 x+17 section w140 h19 backgroundTrans c" cfg.FontColor3 ,"Installed:`t" substr(a_fileVersion,1,1) "." subStr(a_fileVersion,2,1) "." subStr(a_fileVersion,3,1) "." subStr(a_fileVersion,4,1))
+	ui.installedVersionText.setFont(,"Calibri")
 	ui.latestVersionText := ui.mainGui.addText("xs y+-4 w140 backgroundTrans c" cfg.FontColor3,"Available:`t#.#.#.#")
+	ui.latestVersionText.setFont(,"Calibri")
 	ui.monitorResList := ["1920x1080","1920x1200","2560x1440","3440x1440","Custom"]
 
-	ui.monitorResDDL := ui.mainGui.AddDDL("xs-66 y+16 w90 r4 choose" cfg.monitorRes " c" cfg.FontColor4 " background" cfg.AuxColor2,ui.monitorResList)
+	ui.monitorResDDL := ui.mainGui.AddDDL("xs-66 y+0 w90 r4 choose" cfg.monitorRes " c" cfg.FontColor4 " background" cfg.AuxColor2,ui.monitorResList)
 	ui.monitorResDDL.setFont("c" cfg.FontColor4)
 	ui.monitorResDDL.onEvent("change",monitorResChanged)
-	ui.monitorResLabel := ui.mainGui.AddText("x+4 y+-25 w65 c" cfg.FontColor1 " backgroundTrans","Screen")	
+	ui.monitorResLabel := ui.mainGui.AddText("x+4 y+-27 w65 c" cfg.FontColor1 " backgroundTrans","Screen")	
 	ui.monitorResLabel2 := ui.mainGui.AddText("y+-2 w65 c" cfg.FontColor1 " backgroundTrans","Size")
 	ui.monitorResLabel.setFont("q5 s9")
 	ui.monitorResLabel2.setFont("q5 s9")
 	ui.monitorAutoLabel := ui.mainGui.addText("x+-28 y+-12 w25 h12 section c" cfg.FontColor1 " backgroundTrans","Auto")
 	ui.monitorAutoLabel.setFont("q5 s8")
-	ui.monitorAuto := ui.mainGui.addCheckbox("x+-18 y+-26 w15 h15",cfg.displaySizeAuto)
+	ui.monitorAuto := ui.mainGui.addCheckbox("x+-18 y+-28 w15 h15",cfg.displaySizeAuto)
 	ui.monitorAuto.onEvent("Click",toggleAutoDisplaySize)
 
 
