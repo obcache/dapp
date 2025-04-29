@@ -171,7 +171,7 @@ advProgress(2)
 	ui.TransparentColor 	:= "010203"
 	ui.MainGui 				:= Gui()
 	
-	ui.mainGui.setFont("s14 q5 c" cfg.FontColor1,"impact")
+	ui.mainGui.setFont("s14 q5 c" cfg.FontColor1,"move-x")
 	drawOutlineMainGui(34,28,497,185,cfg.TrimColor1,cfg.TrimColor1,2)
 	advProgress(2)
 	ui.MainGui.Name 		:= "dapp"

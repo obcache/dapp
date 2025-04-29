@@ -270,22 +270,7 @@ preAutoExec(InstallDir,ConfigFileName) {
 				fileInstall("./redist/Prototype.ttf","c:\windows\fonts\Prototype.ttf",1)
 				runWait('reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts" /v "FontName (TrueType)" /t REG_SZ /d Prototype.ttf /f',,"Min")
 			}
-			if !fileExist("c:\windows\fonts\Qargeo-Regular.otf") {
-				fileInstall("./redist/Qargeo-Regular.otf","c:\windows\fonts\Qargeo-Regular.otf",1)
-				runWait('reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts" /v "FontName (TrueType)" /t REG_SZ /d Qargeo-Regular.otf /f',,"Min")
-			}
-			if !fileExist("c:\windows\fonts\Qargeo-Medium.otf") {
-				fileInstall("./redist/Qargeo-Medium.otf","c:\windows\fonts\Qargeo-Medium.otf",1)
-				runWait('reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts" /v "FontName (TrueType)" /t REG_SZ /d Qargeo-Medium.otf /f',,"Min")
-			}
-			if !fileExist("c:\windows\fonts\Qargeo-Thin.otf") {
-				fileInstall("./redist/Qargeo-Thin.otf","c:\windows\fonts\Qargeo-Thin.otf",1)
-				runWait('reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts" /v "FontName (TrueType)" /t REG_SZ /d Qargeo-Thin.otf /f',,"Min")
-			}
-			if !fileExist("c:\windows\fonts\Qargeo-Bold.otf") {
-				fileInstall("./redist/Qargeo-Bold.otf","c:\windows\fonts\Qargeo-Bold.otf",1)
-				runWait('reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts" /v "FontName (TrueType)" /t REG_SZ /d Qargeo-Bold.otf /f',,"Min")
-			}
+
 			
 			pbConsole("`nINSTALL COMPLETED SUCCESSFULLY!")
 			installLog("Copied Assets to: " InstallDir)	
