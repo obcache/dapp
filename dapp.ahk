@@ -1,7 +1,7 @@
-A_FileVersion := "1.6.9.3"
+A_FileVersion := "1.6.9.4"
 a_appName := "dapp"
 if (fileExist("./dapp_currentBuild.dat"))
-a_fileVersion := fileRead("./dapp_currentBuild.dat")
+	a_fileVersion := fileRead("./dapp_currentBuild.dat")
 
 ;@ahk2Exe-let fileVersion=%a_priorLine~U)^(.+"){1}(.+)".*$~$2% 
 ;@ahk2Exe-setName dapp
@@ -13,13 +13,11 @@ a_fileVersion := fileRead("./dapp_currentBuild.dat")
 #warn All, Off
 
 if !a_isAdmin {
-    try
-    {
-        if a_isCompiled
-            run '*runAs "' a_scriptFullPath '" /restart'
-			else
-            run '*runAs "' a_ahkPath '" /restart "' a_scriptFullPath '"'
-    }
+    if a_isCompiled
+		run '*runAs "' a_scriptFullPath '" /restart'
+	else
+		run '*runAs "' a_ahkPath '" /restart "' a_scriptFullPath '"'
+    
     exitApp()
 }
 

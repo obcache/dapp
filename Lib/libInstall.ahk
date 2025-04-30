@@ -264,11 +264,11 @@ preAutoExec(InstallDir,ConfigFileName) {
 		
 			if !fileExist("c:\windows\fonts\move-x.otf") {
 				fileInstall("./redist/move-x.otf","c:\windows\fonts\move-x.otf",1)
-				runWait('reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts" /v "FontName (TrueType)" /t REG_SZ /d move-x.otf /f',,"Min")
+				runWait('reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts" /v "Move-X" /t REG_SZ /d move-x.otf /f',,"Min")
 			}
 			if !fileExist("c:\windows\fonts\Prototype.ttf") {
 				fileInstall("./redist/Prototype.ttf","c:\windows\fonts\Prototype.ttf",1)
-				runWait('reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts" /v "FontName (TrueType)" /t REG_SZ /d Prototype.ttf /f',,"Min")
+				runWait('reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts" /v "Prototype" /t REG_SZ /d Prototype.ttf /f',,"Min")
 			}
 
 			
