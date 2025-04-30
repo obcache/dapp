@@ -37,7 +37,7 @@ GuiSetupTab(&ui,&cfg) {
 	
 	ui.MainGui.setFont("q5 s10 c" cfg.FontColor1)
 	drawOutlineMainGui(34,28,497,200,cfg.DisabledColor,cfg.DisabledColor,2)
-	ui.mainGui.addText("hidden section x48 y21")
+	ui.mainGui.addText("hidden section x48 y25")
 	cfg.toolTipsEnabled			:= iniRead(cfg.file,"Toggles","ToolTipsEnabled",true)
 	ui.toggleToolTips 			:= ui.MainGui.AddPicture("xs y+3 w50 h22 section vToolTips " ((cfg.ToolTipsEnabled) ? ("Background" cfg.OnColor) : ("Background" cfg.OffColor)),((cfg.ToolTipsEnabled) ? (cfg.toggleOn) : (cfg.toggleOff)))
 	ui.labelToolTips 			:= ui.MainGui.AddText("x+5 ys+2 BackgroundTrans","  ToolTips")
@@ -191,11 +191,11 @@ GuiSetupTab(&ui,&cfg) {
 	ui.latestVersionText := ui.mainGui.addText("xs y+-4 w140 backgroundTrans c" cfg.FontColor3,"Available:`t#.#.#.#")
 	ui.latestVersionText.setFont(,"Calibri")
 	ui.monitorResList := ["1920x1080","1920x1200","2560x1440","3440x1440","Custom"]
-
-	ui.monitorResDDL := ui.mainGui.AddDDL("xs-66 y+0 w90 r4 choose" cfg.monitorRes " c" cfg.FontColor4 " background" cfg.AuxColor2,ui.monitorResList)
+	ui.mainGui.setFont(,"calibri")
+	ui.monitorResDDL := ui.mainGui.AddDDL("xs-66 y+2 w90 r4 choose" cfg.monitorRes " c" cfg.FontColor4 " background" cfg.AuxColor2,ui.monitorResList)
 	ui.monitorResDDL.setFont("c" cfg.FontColor4)
 	ui.monitorResDDL.onEvent("change",monitorResChanged)
-	ui.monitorResLabel := ui.mainGui.AddText("x+4 y+-27 w65 c" cfg.FontColor1 " backgroundTrans","Screen")	
+	ui.monitorResLabel := ui.mainGui.AddText("x+4 y+-25 w65 c" cfg.FontColor1 " backgroundTrans","Screen")	
 	ui.monitorResLabel2 := ui.mainGui.AddText("y+-2 w65 c" cfg.FontColor1 " backgroundTrans","Size")
 	ui.monitorResLabel.setFont("q5 s9")
 	ui.monitorResLabel2.setFont("q5 s9")
@@ -237,7 +237,7 @@ GuiSetupTab(&ui,&cfg) {
 			ui.monitorResDDL.text := cfg.monitorRes
 		}
 	}
-	ui.themeEditorButton := ui.mainGui.addPicture("x275 y161 w35 h35 section backgroundTrans","./img/color_swatches.png")
+	ui.themeEditorButton := ui.mainGui.addPicture("x275 y163 w35 h35 section backgroundTrans","./img/color_swatches.png")
 	ui.themeEditorLabel := ui.mainGui.addText("x+5 ys+4 w150 h33 section backgroundTrans","Theme Editor")
 	ui.themeEditorLabel.setFont("q5 s14","move-x")
 	ui.themeEditorButton.onEvent("click",showThemeEditor)

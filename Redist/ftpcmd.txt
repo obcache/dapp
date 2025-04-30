@@ -1,8 +1,0 @@
-open www.sorryneedboost.com
-cashman
-cash@CC355
-cd /srv/www/wordpress/cacheApp/bin
-lcd ./versions
-mget cacheApp_1290.exe
-bye
-
