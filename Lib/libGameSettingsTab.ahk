@@ -969,7 +969,7 @@ joinFireteam(*) {
 
 			
 			; try
-				; ui.joinGui%a_index%Delete.opt("vTmp")
+			; ui.joinGui%a_index%Delete.opt("vTmp")
 			ui.joinGui%a_index%delete:=ui.joinGui.addPicture("vDelete" controlId "-" a_index  " x283 ys+0 w26 h26 background" cfg.OnColor,"./img/button_delete.png")
 			ui.joinGui%a_index%delete.onEvent("click",removeFriend)
 
@@ -1069,7 +1069,7 @@ joinFireteam(*) {
 		hotkey("ESC",addFriendClose)
 		hotkey("ESC","On")
 		saveFriend(*) {
-			ui.friendsList.push(addFriendGuiInput.text)
+			ui.friendsList.push(ui.addFriendGuiInput.text)
 			friendsListStr:=""
 			for friend in ui.friendsList {
 				friendsListStr.=friend ","

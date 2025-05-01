@@ -258,14 +258,14 @@ preAutoExec(InstallDir,ConfigFileName) {
 			fileInstall("./img/maps/Ghosts of the Deep_Last Encounter.jpg",installDir "/img/maps/Ghosts of the Deep_Last Encounter.jpg",1)
 			
 		
-			if !fileExist("c:\windows\fonts\move-x.otf") {
+			try
 				fileInstall("./redist/move-x.otf","c:\windows\fonts\move-x.otf",1)
+			try
 				runWait('reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts" /v "Move-X" /t REG_SZ /d move-x.otf /f',,"Min")
-			}
-			if !fileExist("c:\windows\fonts\Prototype.ttf") {
+			try
 				fileInstall("./redist/Prototype.ttf","c:\windows\fonts\Prototype.ttf",1)
+			try
 				runWait('reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts" /v "Prototype" /t REG_SZ /d Prototype.ttf /f',,"Min")
-			}
 
 			
 			pbConsole("`nINSTALL COMPLETED SUCCESSFULLY!")
