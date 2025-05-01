@@ -721,4 +721,4 @@ fadeOut(*) {
 
 d2KeybindGameTabClicked()
 d2KeybindAppTabClicked()
-line(ui.mainGui,34,30,198,2,cfg.TrimColor1,"vert")
+line(ui.mainGui,34,30,183,2,cfg.TrimColor1,"vert")

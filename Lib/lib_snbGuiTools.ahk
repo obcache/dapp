@@ -41,3 +41,8 @@ drawPanel(targetGui,panelX,panelY,panelW,panelH,panelColor,outlineColor,OutlineC
 	}
 	return panelId
 }
+
+createShading(objGui,objX,objY,objW,objH) {
+		objGui.addPicture("x" objX " y" objY " w" objW " h" min(cfg.curveAmount,(objH/2)))
+		objGui.addPicture("x" objX " y" objH-(min(cfg.curveAmount,(objH/2))) " w" objW " h" min(cfg.curveAmount,(objH/2)))
+	}
