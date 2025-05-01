@@ -226,7 +226,7 @@ ui.d2KeyBindHelpMsg.text := "     Configure these to mirror your in-game binding
 	
 		; ui.d2keybindGameTab3.move(344,labelY+6,,14)
 	; d2changeKeybindPanelTab(1)
-; }
+		; }
 
 
 d2changeKeybindPanelTab(panelNum := 2) {
@@ -373,33 +373,33 @@ drawKeybindBar(*) {
 	
 	
 	ui.d2keybindGameTab1 	:= guiName.addText("x" labelX " y" labelY+labelH/2 " w" labelW-4 " h" labelH/2+3 " background" outlineColor,"")
-	ui.d2Panel1Tab1Bg 		:= ui.gameSettingsGui.addText("hidden x44 y11 w437 h42 background" cfg.TrimColor1,"")
-	ui.d2Panel1Tab1Bg2 		:= ui.gameSettingsGui.addText("hidden x45 y12 w435 h40 background" cfg.TabColor1 " c" cfg.FontColor1,"")
-	ui.d2Panel1Tab1Detail1	:= ui.gameSettingsGui.addPicture("x45 y12 w405 h15 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
+	ui.d2Panel1Tab1Bg 		:= ui.gameSettingsGui.addText("hidden x44 y13 w437 h42 background" cfg.TrimColor1,"")
+	ui.d2Panel1Tab1Bg2 		:= ui.gameSettingsGui.addText("hidden x45 y14 w435 h40 background" cfg.TabColor1 " c" cfg.FontColor1,"")
+	ui.d2Panel1Tab1Detail1	:= ui.gameSettingsGui.addPicture("x45 y14 w405 h15 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
 	;ui.d2Panel1Tab1Detail2	:= ui.gameSettingsGui.addPicture("x45 y10 w435 h15 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
-	ui.d2Panel1Tab1Bg3 		:= ui.gameSettingsGui.addText("hidden x46 y13 w433 h38 background" cfg.TabColor1,"")
-	ui.d2Panel1Tab1Bg4 		:= ui.gameSettingsGui.addText("hidden x47 y14 w431 h36 background" cfg.TrimColor3,"")
+	ui.d2Panel1Tab1Bg3 		:= ui.gameSettingsGui.addText("hidden x46 y15 w433 h38 background" cfg.TabColor1,"")
+	ui.d2Panel1Tab1Bg4 		:= ui.gameSettingsGui.addText("hidden x47 y16 w431 h36 background" cfg.TrimColor3,"")
 	
-	ui.d2Panel1Tab2Bg 		:= ui.gameSettingsGui.addText("hidden x19 y11 w438 h42 background" cfg.TrimColor1,"")
-	ui.d2Panel1Tab2Bg2 		:= ui.gameSettingsGui.addText("hidden x20 y12 w436 h40 background" cfg.TabColor1 " c" cfg.FontColor3,"")	
+	ui.d2Panel1Tab2Bg 		:= ui.gameSettingsGui.addText("hidden x19 y13 w438 h42 background" cfg.TrimColor1,"")
+	ui.d2Panel1Tab2Bg2 		:= ui.gameSettingsGui.addText("hidden x20 y14 w436 h40 background" cfg.TabColor1 " c" cfg.FontColor3,"")	
 	ui.d2Panel1Tab2Detail1	:= ui.gameSettingsGui.addPicture("x20 y12 w450 h15 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")	
 	;ui.d2Panel1Tab2Detail2	:= ui.gameSettingsGui.addPicture("x20 y10 w450 h15 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")	
-	ui.d2Panel1Tab2Bg3 		:= ui.gameSettingsGui.addText("hidden x21 y13 w434 h38 background" cfg.TabColor1,"")
-	ui.d2Panel1Tab2Bg4 		:= ui.gameSettingsGui.addText("hidden x22 y14 w432 h36 background" cfg.OffColor,"")
+	ui.d2Panel1Tab2Bg3 		:= ui.gameSettingsGui.addText("hidden x21 y15 w434 h38 background" cfg.TabColor1,"")
+	ui.d2Panel1Tab2Bg4 		:= ui.gameSettingsGui.addText("hidden x22 y16 w432 h36 background" cfg.OffColor,"")
 	;ui.d2Panel1Tab2Bg := ui.gameSettingsGui.addText("x42 y10 w406 h42 background" cfg.TabColor1 " c" cfg.FontColor4,"")	
 	;drawOutlineNamed("gameSettings",ui.gameSettingsGui,43,11,404,42,cfg.TrimColor1,cfg.titleTrimColor,1)
 	ui.currKey 				:= cfg.dappPauseKey
-	ui.dappPauseKey			:= ui.gameSettingsGui.addPicture("x50 y20 w" (ui.d2KeybindWidth + max(0,(strLen(ui.currKey)-6))*10) " h30 section backgroundTrans","./img/keyboard_key_up.png")
+	ui.dappPauseKey			:= ui.gameSettingsGui.addPicture("x50 y22 w" (ui.d2KeybindWidth + max(0,(strLen(ui.currKey)-6))*10) " h30 section backgroundTrans","./img/keyboard_key_up.png")
 	ui.dappPauseKeyData 	:= ui.gameSettingsGui.addText("xs-1 y+-24 w" (ui.d2KeybindWidth + max(0,(strLen(ui.currKey)-6))*10) " h21 center c" cfg.OffColor " backgroundTrans",subStr(strUpper(cfg.dappPauseKey),1,8))
 	ui.dappPauseKeyLabel	:= ui.gameSettingsGui.addText("xs-1 y+-34 w" (ui.d2KeybindWidth + max(0,(strLen(ui.currKey)-6))*10) " h20 center c" cfg.FontColor3 " backgroundTrans","Pause")
 	
-	ui.keybindSpacer		:= ui.gameSettingsGui.addText("x113 y12 w1 h40 background" cfg.TrimColor2)		
-	ui.keybindSpacer2		:= ui.gameSettingsGui.addText("x114 y12 w1 h40 background" cfg.TrimColor1)
+	ui.keybindSpacer		:= ui.gameSettingsGui.addText("x113 y14 w1 h40 background" cfg.TrimColor2)		
+	ui.keybindSpacer2		:= ui.gameSettingsGui.addText("x114 y14 w1 h40 background" cfg.TrimColor1)
 	;ui.gameSettingsGui.setFont("s11","Arial")
 	
 	ui.currKey 				:= cfg.dappToggleSprintKey
 
-	ui.dappToggleSprintKey		:= ui.gameSettingsGui.addPicture("x+3 y20 w" 90
+	ui.dappToggleSprintKey		:= ui.gameSettingsGui.addPicture("x+3 y22 w" 90
 		" h30 section backgroundTrans","./img/keyboard_key_up.png")
 	ui.dappToggleSprintKeyData 	:= ui.gameSettingsGui.addText("xs-2 y+-24 w" 90 
 		" h21 center c" cfg.OffColor " backgroundTrans",subStr(strUpper(cfg.dappToggleSprintKey),1,8))
@@ -435,37 +435,37 @@ drawKeybindBar(*) {
 	ui.dappSwordFlyKeyData 	:= ui.gameSettingsGui.addText("xs+0 y+-24 w35 h21 center c" cfg.OffColor " backgroundTrans"
 		,subStr(strUpper(cfg.dappSwordFlyKey),1,8))
 	ui.dappSwordFlyKeyLabel 	:= ui.gameSettingsGui.addText("xs-2 y+-35 w40 h20 center c" cfg.FontColor3 " backgroundTrans","Fly")
-	ui.d2ClassSelectOutline		:= ui.gameSettingsGui.addText("xs+42 y13 w36 h39 background" cfg.TrimColor1)
-	ui.d2ClassSelectOutline2	:= ui.gameSettingsGui.addText("xs+43 y13 w35 h38 background" cfg.TileColor)
-	ui.d2ClassSelectBg			:= ui.gameSettingsGui.addText("x441 y12 w39 h40 background" cfg.AuxColor3)
+	ui.d2ClassSelectOutline		:= ui.gameSettingsGui.addText("xs+42 y15 w36 h39 background" cfg.TrimColor1)
+	ui.d2ClassSelectOutline2	:= ui.gameSettingsGui.addText("xs+43 y15 w35 h38 background" cfg.TileColor)
+	ui.d2ClassSelectBg			:= ui.gameSettingsGui.addText("x441 y14 w39 h40 background" cfg.AuxColor3)
 
 	ui.d2ClassSelectBg3			:= ui.gameSettingsGui.addText("hidden xs+41 y+-13 w37 h13 background" cfg.TrimColor3)
-	ui.d2ClassIcon				:= ui.gameSettingsGui.addPicture("x441 y9 w39 h30 center backgroundTrans","")
-	ui.d2ClassIconDown			:= ui.gameSettingsGui.addText("x442 y38 w19 h13 center backgroundTrans c" cfg.OutlineColor1,"←")
-	ui.d2ClassIconUp			:= ui.gameSettingsGui.addText("x461 y38 w19 h13 center backgroundTrans c" cfg.OutlineColor1,"→")
-	ui.d2ClassSelectSpacer 		:= ui.gameSettingsGui.addText("hidden x461 y38 w1 h15 background" cfg.TrimColor1)
-	ui.d2ClassSelectBgLine		:= ui.gameSettingsGui.addText("hidden x442 y12 w0 h0 background" cfg.OutlineColor1)
-	ui.d2ClassSelectBgLine1		:= ui.gameSettingsGui.addText("hidden x442 y12 w0 h0 background" cfg.OutlineColor1)
-	ui.d2ClassSelectBgLine2		:= ui.gameSettingsGui.addText("hidden x442 y38 w38 h1 background" cfg.TrimColor1)
-	ui.d2ClassSelectDetail 		:= ui.gameSettingsGui.addPicture("x441 y42 w39 h10 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
-	ui.d2ClassSelectDetail2 		:= ui.gameSettingsGui.addPicture("x441 y12 w39 h16 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
-	ui.d2KeyBindHelpMsg			:= ui.gameSettingsGui.addText("right x34 y52 w240 h12 backgroundTrans c" cfg.FontColor1,"")
+	ui.d2ClassIcon				:= ui.gameSettingsGui.addPicture("x441 y11 w39 h30 center backgroundTrans","")
+	ui.d2ClassIconDown			:= ui.gameSettingsGui.addText("x442 y38 w21 h13 center backgroundTrans c" cfg.OutlineColor1,"←")
+	ui.d2ClassIconUp			:= ui.gameSettingsGui.addText("x461 y38 w21 h13 center backgroundTrans c" cfg.OutlineColor1,"→")
+	ui.d2ClassSelectSpacer 		:= ui.gameSettingsGui.addText("hidden x461 y40 w1 h15 background" cfg.TrimColor1)
+	ui.d2ClassSelectBgLine		:= ui.gameSettingsGui.addText("hidden x442 y14 w0 h0 background" cfg.OutlineColor1)
+	ui.d2ClassSelectBgLine1		:= ui.gameSettingsGui.addText("hidden x442 y14 w0 h0 background" cfg.OutlineColor1)
+	ui.d2ClassSelectBgLine2		:= ui.gameSettingsGui.addText("hidden x442 y40 w38 h1 background" cfg.TrimColor1)
+	ui.d2ClassSelectDetail 		:= ui.gameSettingsGui.addPicture("x441 y42 w40 h12 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+	ui.d2ClassSelectDetail2 		:= ui.gameSettingsGui.addPicture("x441 y14 w39 h16 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
+	ui.d2KeyBindHelpMsg			:= ui.gameSettingsGui.addText("right x34 y53 w240 h12 backgroundTrans c" cfg.FontColor2,"")
 	ui.d2ClassIcon.toolTip 		:= "Click to Enable/Disable the Fly Macro"
 	ui.d2ClassIconDown.tooltip 	:= "Click to switch between character classes for the Fly Macro"
 	ui.d2ClassIconUp.tooltip 	:= "Click to switch between character classes for the Fly Macro"
 	
-	ui.keybindSpacer7			:= ui.gameSettingsGui.addText("x440 y12 w1 h40 background" cfg.TrimColor2)		
-	ui.keybindSpacer8			:= ui.gameSettingsGui.addText("x441 y12 w1 h40 background" cfg.TrimColor1)	
-	ui.keybindSpacer5			:= ui.gameSettingsGui.addText("x395 y12 w1 h40 background" cfg.TrimColor2)		
-	ui.keybindSpacer6			:= ui.gameSettingsGui.addText("x396 y12 w1 h40 background" cfg.TrimColor1)	
-	ui.keybindSpacer3			:= ui.gameSettingsGui.addText("x479	y12 w1 h40 background" cfg.TrimColor2)		
-	ui.keybindSpacer4			:= ui.gameSettingsGui.addText("x480 y12 w1 h40 background" cfg.TrimColor1)	
+	ui.keybindSpacer7			:= ui.gameSettingsGui.addText("x440 y14 w1 h40 background" cfg.TrimColor2)		
+	ui.keybindSpacer8			:= ui.gameSettingsGui.addText("x441 y14 w1 h40 background" cfg.TrimColor1)	
+	ui.keybindSpacer5			:= ui.gameSettingsGui.addText("x395 y14 w1 h40 background" cfg.TrimColor2)		
+	ui.keybindSpacer6			:= ui.gameSettingsGui.addText("x396 y14 w1 h40 background" cfg.TrimColor1)	
+	ui.keybindSpacer3			:= ui.gameSettingsGui.addText("x479	y14 w1 h40 background" cfg.TrimColor2)		
+	ui.keybindSpacer4			:= ui.gameSettingsGui.addText("x480 y14 w1 h40 background" cfg.TrimColor1)	
 
 	ui.d2ClassIconDown.setFont("s9 q5")
 	ui.d2ClassIconDown.onEvent("click",d2ClassIconDownChanged)
 	ui.d2ClassIconUp.setFont("s9 q5")
 	ui.d2ClassIconUp.onEvent("click",d2ClassIconUpChanged)
-	ui.d2KeyBindHelpMsg.setFont("s8 q5 c" cfg.FontColor3)
+	ui.d2KeyBindHelpMsg.setFont("s8 q5 c" cfg.FontColor2)
 	ui.d2ClassIcon.onEvent("click",d2ToggleFly)
 
 
@@ -658,7 +658,7 @@ drawKeybindBar(*) {
 	ui.d2keybindGameTabDetail := guiName.addPicture("x" labelX+4 " y" labelY+0 " w" labelW-18 " h" labelH+0 " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png") 
 ;	ui.d2keybindGameTabDetail2 := guiName.addPicture("hidden x" labelX+2 " y" labelY+10 " w" labelW-10 " h" labelH-11 " backgroundTrans","./img/custom/lightburst_blank.png") 
 	ui.d2keybindGameTab3 := guiName.addText("x" labelX-1 " y" labelY-6 " w" labelW-4 " h20 backgroundTrans center c" fontColor, labelText) 
-	ui.d2keybindGameTab3.setFont("s9","Thin")
+	ui.d2keybindGameTab3.setFont("s8 q5 c" cfg.FontColor3)
 
 	ui.d2keybindAppTab1.onEvent("click",d2keybindAppTabClicked)
 	ui.d2keybindAppTab2.onEvent("click",d2keybindAppTabClicked)
@@ -680,6 +680,329 @@ drawKeybindBar(*) {
 	ui.d2ToggleAppFunctionsLabel.setFont("s8")
 
 }
+
+keyBindDialogBox(Msg,Alignment := "Center") {
+	Global
+	if !InStr("LeftRightCenter",Alignment)
+		Alignment := "Left"
+	Transparent := 250
+	
+	ui.notifyGui			:= Gui()
+	ui.notifyGui.Title 		:= "Bind Key"
+
+	ui.notifyGui.Opt("+AlwaysOnTop -Caption +ToolWindow +Owner" ui.mainGui.hwnd)  ; +ToolWindow avoids a taskbar button and an alt-tab menu item.
+	ui.notifyGui.BackColor := cfg.TabColor2  ; Can be any RGB color (it will be made transparent below).
+	ui.notifyGui.SetFont("s12")  ; Set a large font size (32-point).
+	ui.notifyGui.AddText("c" cfg.OnColor " " Alignment " BackgroundTrans","Press desired key to use for: ")
+	ui.notifyGui.setFont("s14")
+	ui.notifyGui.addText("ys-4 x+0 c" cfg.AlertColor,Msg)
+	ui.notifyGui.setFont("s13 c" cfg.OnColor,"Courier Narrow Bold")
+	ui.notifyGui.addText("xs y+0","Or click target with desired mouse button")  ; XX & YY serve to 00auto-size the window.
+	ui.mouseBindingTarget := ui.notifyGui.addPicture("x+15 y+-18 w25 h25 backgroundTrans",".\img\button_keyBindTarget.png")
+	ui.mouseBindingTarget.onEvent("click",keybindMouseButtonClicked)
+	ui.mouseBindingTarget.onEvent("doubleClick",keybindMouseButtonClicked)
+	ui.notifyGui.AddText("xs hidden")
+	
+	keybindMouseButtonClicked(obj,msg*) {
+		msgBox(obj.id "`n" msg[1])
+	}
+	WinSetTransparent(0,ui.notifyGui)
+	ui.notifyGui.Show("NoActivate Autosize")  ; NoActivate avoids deactivating the currently active window.
+	ui.notifyGui.GetPos(&x,&y,&w,&h)
+	
+	winGetPos(&GuiX,&GuiY,&GuiW,&GuiH,ui.mainGui.hwnd)
+	ui.notifyGui.Show("x" (GuiX+(GuiW/2)-(w/2)) " y" GuiY+(100-(h/2)) " NoActivate")
+	drawOutlineNotifyGui(1,1,w,h,cfg.OutlineColor2,cfg.OutlineColor1,2)
+	drawOutlineNotifyGui(2,2,w-4,h-4,cfg.AuxColor3,cfg.AuxColor3,1)
+	
+	Transparency := 0
+	guiVis(ui.mainGui,false)
+	guiVis(ui.gameSettingsGui,false)
+	guiVis(ui.gameTabGui,false)
+	While Transparency < 253 {
+		Transparency += 5
+		WinSetTransparent(Round(Transparency),ui.notifyGui)
+	}
+}
+
+keyBindDialogBoxClose(*)
+{
+	Global
+	Try
+		ui.notifyGui.Destroy()
+	guiVis(ui.mainGui,true)
+	guiVis(ui.gameSettingsGui,true)
+	guiVis(ui.gameTabGui,true)
+}
+
+d2GameHoldToCrouchKeyClicked(*) {
+	tmpCrouchKey := ""
+	keyBindDialogBox('HoldToCrouch',"Center")
+	Sleep(100)
+	global d2GameHoldToCrouchKeyInput := InputHook("L1 T6",inputHookAllowedKeys,"+V")
+	d2GameHoldToCrouchKeyInput.start()
+	d2GameHoldToCrouchKeyInput.wait()
+	if (d2GameHoldToCrouchKeyInput.endKey == "" && d2GameHoldToCrouchKeyInput.input =="") {
+		keyBindDialogBoxClose()
+		notifyOSD('No Key Detected.`nPlease Try Again.',2000,"Center")
+	} else {
+		if (d2GameHoldToCrouchKeyInput.input)
+		{
+			tmpCrouchKey := d2GameHoldToCrouchKeyInput.input
+		} else {
+			tmpCrouchKey := d2GameHoldToCrouchKeyInput.endKey
+		}
+	}
+	keyBindDialogBoxClose()
+	cfg.d2GameHoldToCrouchKey := tmpCrouchKey
+	ui.d2GameHoldToCrouchKeyData.text := subStr(strUpper(cfg.d2GameHoldToCrouchKey),1,8)
+	d2CreateLoadoutKeys()
+	d2RedrawUI()
+}
+
+	dappHoldToCrouchKeyClicked(*) {
+		tmpCrouchKey := ""
+		keyBindDialogBox('HoldToCrouch',"Center")
+		Sleep(100)
+		global dappHoldToCrouchKeyInput := InputHook("L1 T6",inputHookAllowedKeys,"+V")
+		dappHoldToCrouchKeyInput.start()
+		dappHoldToCrouchKeyInput.wait()
+		if (dappHoldToCrouchKeyInput.endKey == "" && dappHoldToCrouchKeyInput.input =="") {
+			keyBindDialogBoxClose()
+			notifyOSD('No Key Detected.`nPlease Try Again.',2000,"Center")
+		} else {
+			if (dappHoldToCrouchKeyInput.input)
+			{
+				tmpCrouchKey := dappHoldToCrouchKeyInput.input
+			} else {
+				tmpCrouchKey := dappHoldToCrouchKeyInput.endKey
+			}
+		}
+		keyBindDialogBoxClose()
+		cfg.dappHoldToCrouchKey := tmpCrouchKey
+		ui.dappHoldToCrouchKeyData.text := subStr(strUpper(cfg.dappHoldToCrouchKey),1,8)
+		ui.dappHoldToCrouchKey.opt("w" ui.d2KeybindWidth + max(0,(strLen(ui.dappHoldToCrouchKeyData.text)-6))*10)
+		ui.dappHoldToCrouchKeyData.opt("w" ui.d2KeybindWidth + max(0,(strLen(ui.dappHoldToCrouchKeyData.text)-6))*10)
+		ui.dappHoldToCrouchKeyLabel.opt("w" ui.d2KeybindWidth + max(0,(strLen(ui.dappHoldToCrouchKeyData.text)-6))*10)
+		d2CreateLoadoutKeys()
+		d2RedrawUI()
+	}
+	
+	dappSwordFlyKeyClicked(*) {
+		tmpCrouchKey := ""
+		keyBindDialogBox('Fly Macro',"Center")
+		Sleep(100)
+		global dappSwordFlyKeyInput := InputHook("L1 T6",inputHookAllowedKeys,"+V")
+		dappSwordFlyKeyInput.start()
+		dappSwordFlyKeyInput.wait()
+		if (dappSwordFlyKeyInput.endKey == "" && dappSwordFlyKeyInput.input =="") {
+			keyBindDialogBoxClose()
+			notifyOSD('No Key Detected.`nPlease Try Again.',2000,"Center")
+		} else {
+			if (dappSwordFlyKeyInput.input)
+			{
+				tmpdappSwordFlyKey := dappSwordFlyKeyInput.input
+			} else {
+				tmpdappSwordFlyKey := dappSwordFlyKeyInput.endKey
+			}
+		}
+		keyBindDialogBoxClose()
+		cfg.dappSwordFlyKey := tmpdappSwordFlyKey
+		ui.dappSwordFlyKeyData.text := subStr(strUpper(cfg.dappSwordFlyKey),1,8)
+		d2CreateLoadoutKeys()
+		d2RedrawUI()
+	}	
+	
+	dappReloadKeyClicked(*) {
+		tmpdappReloadKey := ""
+		keyBindDialogBox('HoldToCrouch',"Center")
+		Sleep(100)
+		global dappReloadKeyInput := InputHook("L1 T6",inputHookAllowedKeys,"+V")
+		dappReloadKeyInput.start()
+		dappReloadKeyInput.wait()
+		if (dappReloadKeyInput.endKey == "" && dappReloadKeyInput.input =="") {
+			keyBindDialogBoxClose()
+			notifyOSD('No Key Detected.`nPlease Try Again.',2000,"Center")
+		} else {
+			if (dappReloadKeyInput.input)
+			{
+				tmpdappReloadKey := dappReloadKeyInput.input
+			} else {
+				tmpdappReloadKey := dappReloadKeyInput.endKey
+			}
+		}
+		keyBindDialogBoxClose()
+		cfg.dappReloadKey := tmpdappReloadKey
+		ui.dappReloadKeyData.text := subStr(strUpper(cfg.dappReloadKey),1,8)
+		d2CreateLoadoutKeys()
+		d2RedrawUI()
+	}
+
+	dappLoadoutKeyClicked(*) {
+		keyBindDialogBox('Loadout Modifier',"Center")
+		Sleep(100)
+		dappLoadoutKeyInput := InputHook("L1 T6", inputHookAllowedKeys,"+V")
+		dappLoadoutKeyInput.start()
+		dappLoadoutKeyInput.wait()
+		if (dappLoadoutKeyInput.endKey == "" && dappLoadoutKeyInput.input == "") {
+			keyBindDialogBoxClose()
+			notifyOSD('No Key Detected.`nPlease Try Again.',2000,"Center")
+		} else {
+			if (dappLoadoutKeyInput.input)
+			{
+				cfg.dappLoadoutKey := dappLoadoutKeyInput.input
+			} else {
+				cfg.dappLoadoutKey := dappLoadoutKeyInput.endKey
+			}
+			ui.dappLoadoutKeyData.text := subStr(strUpper(cfg.dappLoadoutKey),1,8)
+		}
+		keyBindDialogBoxClose()
+		d2CreateLoadoutKeys()
+		d2RedrawUI()
+	}
+
+	d2GameToggleSprintKeyClicked(*) {
+		keyBindDialogBox('Hold to Walk',"Center")
+		Sleep(100)
+		d2GameToggleSprintKeyInput := InputHook("L1 T6", inputHookAllowedKeys,"+V")
+		d2GameToggleSprintKeyInput.start()
+		d2GameToggleSprintKeyInput.wait()
+		if (d2GameToggleSprintKeyInput.endKey == "" && d2GameToggleSprintKeyInput.input == "") {
+			keyBindDialogBoxClose()
+			notifyOSD('No Key Detected.`nPlease Try Again.',2000,"Center")
+		} else {
+			if (d2GameToggleSprintKeyInput.input)
+			{
+				cfg.d2GameToggleSprintKey := d2GameToggleSprintKeyInput.input
+			} else {
+				cfg.d2GameToggleSprintKey := d2GameToggleSprintKeyInput.endKey
+			}
+			ui.d2GameToggleSprintKeyData.text := subStr(strUpper(cfg.d2GameToggleSprintKey),1,8)
+		}
+		keyBindDialogBoxClose()
+		d2CreateLoadoutKeys()
+		d2RedrawUI()
+	}
+
+	dappToggleSprintKeyClicked(*) {
+		keyBindDialogBox('Toggle Walk',"Center")
+		Sleep(100)
+		dappToggleSprintKeyInput := InputHook("L1 T6", inputHookAllowedKeys,"+V")
+		dappToggleSprintKeyInput.start()
+		dappToggleSprintKeyInput.wait()
+		if (dappToggleSprintKeyInput.endKey == "" && dappToggleSprintKeyInput.input == "") {
+			keyBindDialogBoxClose()
+			notifyOSD('No Key Detected.`nPlease Try Again.',2000,"Center")
+		} else {
+			if (dappToggleSprintKeyInput.input)
+			{
+				cfg.dappToggleSprintKey := dappToggleSprintKeyInput.input
+			} else {
+				cfg.dappToggleSprintKey := dappToggleSprintKeyInput.endKey
+			}
+			ui.dappToggleSprintKeyData.text := subStr(strUpper(cfg.dappToggleSprintKey),1,8)
+		}
+		keyBindDialogBoxClose()
+		d2CreateLoadoutKeys()
+		d2RedrawUI()
+	}
+
+	dappPauseKeyClicked(*) {
+		DialogBox('Assign key for: `n"Reload"',"Center")
+		Sleep(100)
+		dappPauseKeyInput := InputHook("L1 T6", inputHookAllowedKeys,"+V")
+		dappPauseKeyInput.start()
+		dappPauseKeyInput.wait()
+		if (dappPauseKeyInput.endKey == "" && dappPauseKeyInput.input == "") {
+			DialogBoxClose()
+			notifyOSD('No Key Detected.`nPlease Try Again.',2000,"Center")
+		} else {
+			if (dappPauseKeyInput.input)
+			{
+				cfg.dappPauseKey := dappPauseKeyInput.input
+			} else {
+				cfg.dappPauseKey := dappPauseKeyInput.endKey
+			}
+			ui.dappPauseKeyData.text := subStr(strUpper(cfg.dappPauseKey),1,8)
+		}
+		DialogBoxClose()
+		d2CreateLoadoutKeys()
+		d2RedrawUI()
+	}	
+	
+	d2GameReloadKeyClicked(*) {
+		DialogBox('Assign key for: `n"Reload"',"Center")
+		Sleep(100)
+		d2GameReloadKeyInput := InputHook("L1 T6", inputHookAllowedKeys,"+V")
+		d2GameReloadKeyInput.start()
+		d2GameReloadKeyInput.wait()
+		if (d2GameReloadKeyInput.endKey == "" && d2GameReloadKeyInput.input == "") {
+			DialogBoxClose()
+			notifyOSD('No Key Detected.`nPlease Try Again.',2000,"Center")
+		} else {
+			if (d2GameReloadKeyInput.input)
+			{
+				cfg.d2GameReloadKey := d2GameReloadKeyInput.input
+			} else {
+				cfg.d2GameReloadKey := d2GameReloadKeyInput.endKey
+			}
+			ui.d2GameReloadKeyData.text := subStr(strUpper(cfg.d2GameReloadKey),1,8)
+		}
+		DialogBoxClose()
+		d2CreateLoadoutKeys()
+		d2RedrawUI()
+	}
+	
+	d2GameGrenadeKeyClicked(*) {
+		DialogBox('Assign key for: `n"Grenade"',"Center")
+		Sleep(100)
+		d2GameGrenadeKeyInput := InputHook("L1 T6", inputHookAllowedKeys,"+V")
+		d2GameGrenadeKeyInput.start()
+		d2GameGrenadeKeyInput.wait()
+		if (d2GameGrenadeKeyInput.endKey == "" && d2GameGrenadeKeyInput.input == "") {
+			DialogBoxClose()
+			notifyOSD('No Key Detected.`nPlease Try Again.',2000,"Center")
+		} else {
+			if (d2GameGrenadeKeyInput.input)
+			{
+				cfg.d2GameGrenadeKey := d2GameGrenadeKeyInput.input
+			} else {
+				cfg.d2GameGrenadeKey := d2GameGrenadeKeyInput.endKey
+			}
+			ui.d2GameGrenadeKeyData.text := subStr(strUpper(cfg.d2GameGrenadeKey),1,8)
+		}
+		DialogBoxClose()
+		d2CreateLoadoutKeys()
+		d2RedrawUI()
+	}
+	
+d2GameSuperKeyClicked(*) {
+		DialogBox('Assign key for: `n"Super"',"Center")
+		Sleep(100)
+		d2GameSuperKeyInput := InputHook("L1 T6", inputHookAllowedKeys,"+V")
+		d2GameSuperKeyInput.start()
+		d2GameSuperKeyInput.wait()
+		if (d2GameSuperKeyInput.endKey == "" && d2GameSuperKeyInput.input == "") {
+			DialogBoxClose()
+			notifyOSD('No Key Detected.`nPlease Try Again.',2000,"Center")
+		} else {
+			if (d2GameSuperKeyInput.input)
+			{
+				cfg.d2GameSuperKey := d2GameSuperKeyInput.input
+			} else {
+				cfg.d2GameSuperKey := d2GameSuperKeyInput.endKey
+			}
+			ui.d2GameSuperKeyData.text := subStr(strUpper(cfg.d2GameSuperKey),1,8)
+		}
+		DialogBoxClose()
+		d2CreateLoadoutKeys()
+		d2RedrawUI()
+	}
+
+if (cfg.d2AlwaysRunEnabled) {
+	d2ToggleAppFunctionsOn()
+}
+
 
 ui.mapBrowserVisible:=false
 toggleMapBrowser(*) {
