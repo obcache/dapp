@@ -96,7 +96,7 @@ tabsInit(*) {
 			, ui.1_GameButtonDetail2:=ui.mainGui.addPicture("hidden x36 y0 w79 h28 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 			, ui.2_SetupButtonDetail:=ui.mainGui.addPicture("x117 y0 w80 h28 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")			
 			, ui.2_SetupButtonDetail2:=ui.mainGui.addPicture("x117 y0 w80 h28 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")	
-			, ui.Game_ActiveTabUi:=ui.mainGui.addText("hidden x34 y28 w81 h2 background" cfg.TabColor1)
+			, ui.Game_ActiveTabUi:=ui.mainGui.addText("hidden x33 y28 w81 h2 background" cfg.TabColor1)
 			, ui.1_GameButtonLabel := ui.mainGui.addText("x34 y4 w81 h26 center backgroundTrans","Game")
 			, ui.1_GameButtonLabel.setFont("s14 q5 c" cfg.FontColor1,"Impact")
 			, ui.2_SetupButtonLabel := ui.mainGui.addText("y4 x117 w78 h26 center backgroundTrans","Setup")
@@ -165,9 +165,9 @@ advProgress(2)
 
 	ui.3_FillOutline:=ui.mainGui.addText("hidden x206 y1 w260 h29 center backgroundTrans","dapp")
 	ui.3_FillOutline.setFont("q5 s17 c" cfg.AuxColor3,"Move-X")
-	ui.3_TitleTextDetail:=ui.mainGui.addText("x316 y9 w2 h15 background" cfg.TrimColor3)
-	ui.3_TitleTextDetail2:=ui.mainGui.addText("x339 y9 w2 h15 background" cfg.TrimColor3)
-	ui.3_TitleTextDetail3:=ui.mainGui.addText("x355 y9 w2 h15 background" cfg.TrimColor3)
+	ui.3_TitleTextDetail:=ui.mainGui.addText("hidden x316 y9 w2 h15 background" cfg.TrimColor3)
+	ui.3_TitleTextDetail2:=ui.mainGui.addText("hidden x339 y9 w2 h15 background" cfg.TrimColor3)
+	ui.3_TitleTextDetail3:=ui.mainGui.addText("hidden x355 y9 w2 h15 background" cfg.TrimColor3)
 	ui.3_FillDetail1:=ui.mainGui.addPicture("x196 y2 w340 h28 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
 	; ui.3_FillDetail2:=ui.mainGui.addPicture("x196 y16 w340 h14 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 	; ui.3_FillDetail3:=ui.mainGui.addPicture("x196 y16 w340 h14 backgroundTrans","./img/custom/lightburst_bottom_light.png")
@@ -676,7 +676,7 @@ guiVis(guiName,isVisible:= true) {
 				winSetAlwaysOnTop(cfg.AlwaysOnTopEnabled,ui.gameTabGui)
 			}
 		}
-	}
+		}
 }
 
 fadeOut(*) {
@@ -719,6 +719,6 @@ fadeOut(*) {
 	ui.disableMouseClick := false
 }
 
-d2KeybindGameTabClicked()
-d2KeybindAppTabClicked()
+; d2KeybindGameTabClicked()
+; d2KeybindAppTabClicked()
 line(ui.mainGui,34,30,183,2,cfg.TrimColor1,"vert")

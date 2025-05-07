@@ -56,13 +56,15 @@ GuiGameTab() {
 
 	drawKeybindBar()
 	drawLinkBar()
+
 	;d2drawPanel4()
 	if d2ActivePanel == 1 
-		d2ChangeKeybindPanelTab(1)
+		d2keybindAppTabClicked()
 	else
-		d2ChangeKeybindPanelTab(2)	
+		d2keybindGameTabClicked()	
 	
 	drawGameTabs(cfg.activeGameTab)
+;d2keybindAppTabClicked()
 }	 
 
 

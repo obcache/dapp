@@ -1,4 +1,4 @@
-A_FileVersion := "1.7.0.7"
+A_FileVersion := "1.7.0.8"
 a_appName := "dapp"
 if (fileExist("./dapp_currentBuild.dat"))
 	a_fileVersion := fileRead("./dapp_currentBuild.dat")
@@ -121,7 +121,6 @@ advProgress(1)
 
 OnExit(ExitFunc)
 
-winSetRegion("34-0 w497 h234",ui.mainGui)
 advProgress(5)
 
 guiVis(ui.mainGui,false)
@@ -129,10 +128,13 @@ guiVis(ui.gameSettingsGui,false)
 guiVis(ui.gameTabGui,false)
 
 winSetAlwaysOnTop(cfg.alwaysOnTopEnabled,ui.MainGui)
+;winSetRegion("0-0 w495 h190",ui.gameSettingsGui)
+winSetRegion("34-0 w497 h234",ui.mainGui)
 
 ui.mainGui.Show("x" cfg.guix " y" cfg.guiy " w567 h213 NoActivate")
-ui.gameSettingsGui.show("x" cfg.guiX+34 " y" cfg.guiY+30 " w495 h182 noActivate")
+ui.gameSettingsGui.show("x" cfg.guiX+34 " y" cfg.guiY+30 " w495 h183 noActivate")
 ui.gameTabGui.show("w497 h32 noActivate x" cfg.guiX+34 " y" cfg.guiY+183)
+
 
 monitorResChanged()
 
