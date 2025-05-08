@@ -173,8 +173,10 @@ drawGameTabs(tabNum := 1) {
 	winGetPos(&mainGuiX,&mainGuiY,,,ui.mainGui.hwnd)
 		ui.gameTabSpacer:=ui.gameTabGui.addText("y2 x240 w" 490-(ui.gameTabWidth) " h29 background" cfg.TrimColor3)
 		ui.gameTabSpacer.onEvent("click",WM_LBUTTONDOWN_callback)
-		ui.gameTabSpacerDetail2:=ui.gameTabGui.addPicture("y" 1 " x240 w" 490-240 " h" 15-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
+		ui.gameTabSpacerDetail2:=ui.gameTabGui.addPicture("y" 1 " x240 w" 490-240 " h" 15-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_light.png")
 		ui.gameTabSpacerDetail2.onEvent("click",WM_LBUTTONDOWN_callback)
+		; ui.gameTabSpacerDetail3:=ui.gameTabGui.addPicture("y" 1 " x240 w" 490-240 " h" 15-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_light.png")
+		; ui.gameTabSpacerDetail3.onEvent("click",WM_LBUTTONDOWN_callback)
 		ui.gameTabSpacerDetail:=ui.gameTabGui.addPicture("y" 2+(15+(15-cfg.curveAmount)) " x240 w" 490-240 " h" 15-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 		ui.gameTabSpacerDetail.onEvent("click",WM_LBUTTONDOWN_callback)
 

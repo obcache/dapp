@@ -442,7 +442,7 @@ drawKeybindBar(*) {
 	ui.d2ClassSelectOutline2	:= ui.gameSettingsGui.addText("xs+43 y15 w35 h38 background" cfg.TileColor)
 	ui.d2ClassSelectBg			:= ui.gameSettingsGui.addText("x441 y14 w39 h39 background" cfg.AuxColor3)
 
-	ui.d2ClassSelectBg3			:= ui.gameSettingsGui.addText("hidden xs+41 y+-14 w37 h14 background" cfg.TrimColor3)
+	ui.d2ClassSelectBg3			:= ui.gameSettingsGui.addText("hidden xs+41 y+-14 w37 h14 background" cfg.auxColor2)
 	ui.d2ClassIcon				:= ui.gameSettingsGui.addPicture("x442 y12 w39 h30 center backgroundTrans","")
 	ui.d2ClassIconDown			:= ui.gameSettingsGui.addText("x442 y40 w21 h13 center backgroundTrans c" cfg.OutlineColor1,"←")
 	ui.d2ClassIconUp			:= ui.gameSettingsGui.addText("x460 y40 w21 h13 center backgroundTrans c" cfg.OutlineColor1,"→")
@@ -450,7 +450,7 @@ drawKeybindBar(*) {
 	ui.d2ClassSelectBgLine		:= ui.gameSettingsGui.addText("hidden x442 y14 w0 h0 background" cfg.OutlineColor1)
 	ui.d2ClassSelectBgLine1		:= ui.gameSettingsGui.addText("hidden x442 y14 w0 h0 background" cfg.OutlineColor1)
 	ui.d2ClassSelectBgLine2		:= ui.gameSettingsGui.addText("hidden x442 y39 w38 h1 background" cfg.TrimColor1)
-	ui.d2ClassSelectDetail 		:= ui.gameSettingsGui.addPicture("x441 y42 w40 h12 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+	ui.d2ClassSelectDetail 		:= ui.gameSettingsGui.addPicture("x441 y43 w40 h12 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 	ui.d2ClassSelectDetail2 		:= ui.gameSettingsGui.addPicture("x441 y12 w39 h20 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
 	ui.d2KeyBindHelpMsg			:= ui.gameSettingsGui.addText("right x34 y54 w240 h12 backgroundTrans c" cfg.FontColor2,"")
 	ui.d2ClassIcon.toolTip 		:= "Click to Enable/Disable the Fly Macro"
@@ -1137,7 +1137,7 @@ drawLinkBar(*) {
 		ui.button_link_%a_index%.type:=cfg.button_link_%a_index%[2]
 		ui.button_link_%a_index%.action:=cfg.button_link_%a_index%[3]
 		ui.button_link_%a_index%.thumb:=cfg.button_link_%a_index%[4]
-		ui.button_link_%a_index%.bg:=ui.gameSettingsGui.addPicture("x" xPos+2 " y" yPos+1 " w" cfg.button_link_size-1 " h-1 vbutton_link_" a_index " background" cfg.tabColor1,ui.button_link_%a_index%.thumb)
+		ui.button_link_%a_index%.bg:=ui.gameSettingsGui.addPicture("x" xPos+2 " y" yPos+1 " w" cfg.button_link_size-1 " h-1 vbutton_link_" a_index " background" cfg.tileColor,ui.button_link_%a_index%.thumb)
 		ui.button_link_%a_index%.fx:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos-1 " w" cfg.button_link_size-1 " h" 50 " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
 		;ui.button_link_%a_index%.fx2:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos+(cfg.button_link_size-cfg.curveAmount) " w" cfg.button_link_size-1 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 		ui.button_link_%a_index%.down:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos+1 " w" cfg.button_link_size-1 " h" cfg.button_link_size-1 " hidden backgroundTrans","./img/button_down_layer.png")

@@ -45,8 +45,8 @@ drawOutlineNamed("themeOutline",ui.themeEditorGui,0,0,400,250,cfg.trimColor1,cfg
 ;drawOutlineNamed("themeOutline",ui.themeEditorGui,1,0,324,24,cfg.OutlineColor2,cfg.OutlineColor1,2)
 ui.ColorSelectorLabel2 := ui.themeEditorGui.AddText("x2 y31 h24 center section w114 BackgroundTrans c"
 	((cfg.ColorPickerEnabled) 
-		? cfg.FontColor3 " background" cfg.TrimColor3 
-		: cfg.FontColor3 " background" cfg.TrimColor3) 
+		? cfg.FontColor1 " background" cfg.disabledColor 
+		: cfg.FontColor1 " background" cfg.disabledColor) 
 		,((cfg.ColorPickerEnabled) 
 		? (" Color App") 
 		: (" Swatches ")))
@@ -60,10 +60,10 @@ ui.ColorSelectorLabel2.setFont("q5 s14","Prototype")
 ToggleColorSelector(*) {
 	ui.toggleColorSelector.Value := 
 		(cfg.ColorPickerEnabled := !cfg.ColorPickerEnabled) 
-			? (ui.ColorSelectorLabel2.Opt("c" cfg.FontColor3 " background" cfg.TrimColor3)
+			? (ui.ColorSelectorLabel2.Opt("c" cfg.fontColor1 " background" cfg.disabledColor)
 				,ui.ColorSelectorLabel2.Text := " Color App "
 				,"./Img/toggle_left.png")
-			: (ui.ColorSelectorLabel2.Opt("c" cfg.FontColor4 " background" cfg.AlertColor)
+			: (ui.ColorSelectorLabel2.Opt("c" cfg.fontColor1 " background" cfg.disabledColor)
 				,ui.ColorSelectorLabel2.Text := " Swatches "
 				,"./Img/toggle_right.png") 
 	ui.toggleColorSelector.Redraw()
@@ -76,7 +76,7 @@ ui.buttonNewTheme.OnEvent("Click",addTheme)
 ui.buttonDelTheme := ui.themeEditorGui.AddPicture("ys+0 x+0 w22 h25 Background" cfg.OffColor,"./Img/button_minus_ready.png")	
 ui.buttonDelTheme.OnEvent("Click",removeTheme)
 ui.themeEditorGui.setFont("s11 q5 c" cfg.fontColor2,"Prototype")
-ui.ThemeDDL := ui.themeEditorGui.AddDDL("ys+0 x+1 w176 section center c" cfg.FontColor1 " Background" cfg.AuxColor2,cfg.ThemeList)
+ui.ThemeDDL := ui.themeEditorGui.AddDDL("ys+0 x+1 w176 section center c" cfg.FontColor1 " Background" cfg.disabledColor,cfg.ThemeList)
 ui.themeDDL.setFont("s13","arial")
 ui.ThemeDDL.OnEvent("Change",ThemeChanged)
 ui.ThemeDDL.OnEvent("Focus",RepaintThemeDDL)

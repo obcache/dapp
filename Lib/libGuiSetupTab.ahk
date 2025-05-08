@@ -192,7 +192,7 @@ GuiSetupTab(&ui,&cfg) {
 	ui.latestVersionText.setFont(,"Calibri")
 	ui.monitorResList := ["1920x1080","1920x1200","2560x1440","3440x1440","Custom"]
 	ui.mainGui.setFont(,"calibri")
-	ui.monitorResDDL := ui.mainGui.AddDDL("xs-66 y+2 w90 r4 choose" cfg.monitorRes " c" cfg.FontColor4 " background" cfg.AuxColor2,ui.monitorResList)
+	ui.monitorResDDL := ui.mainGui.AddDDL("xs-66 y+2 w90 r4 choose" cfg.monitorRes " c" cfg.FontColor4 " background" cfg.disabledColor,ui.monitorResList)
 	ui.monitorResDDL.setFont("c" cfg.FontColor4)
 	ui.monitorResDDL.onEvent("change",monitorResChanged)
 	ui.monitorResLabel := ui.mainGui.AddText("x+4 y+-25 w65 c" cfg.FontColor1 " backgroundTrans","Screen")	
