@@ -37,7 +37,7 @@ GuiSetupTab(&ui,&cfg) {
 	
 	ui.MainGui.setFont("q5 s10 c" cfg.FontColor1)
 	drawOutlineMainGui(34,28,497,200,cfg.DisabledColor,cfg.DisabledColor,2)
-	ui.mainGui.addText("hidden section x48 y25")
+	ui.mainGui.addText("hidden section x48 y21")
 	cfg.toolTipsEnabled			:= iniRead(cfg.file,"Toggles","ToolTipsEnabled",true)
 	ui.toggleToolTips 			:= ui.MainGui.AddPicture("xs y+3 w50 h22 section vToolTips " ((cfg.ToolTipsEnabled) ? ("Background" cfg.OnColor) : ("Background" cfg.OffColor)),((cfg.ToolTipsEnabled) ? (cfg.toggleOn) : (cfg.toggleOff)))
 	ui.labelToolTips 			:= ui.MainGui.AddText("x+5 ys+2 BackgroundTrans","  ToolTips")

@@ -140,7 +140,7 @@ ui.curveSliderLabel:=ui.themeEditorGui.addText("x120 y167 w70 h14 background" cf
 ui.curveSliderLabel.setFont("s10 q5 c" cfg.fontColor2,"Prototype")
 ui.curveSliderBuddy:=ui.themeEditorGui.addText("x15 y167 w22 h16 background" cfg.tabColor2 " vCurveSliderBuddy c" cfg.AuxColor2,cfg.curveAmount)
 ui.curveSliderBuddy.setFont("s10 q5 c" cfg.FontColor2,"Calibri")
-ui.curveSlider:=ui.themeEditorGui.addSlider("x32 y169 w80 h14 range10-50 center NoTicks ToolTipTop buddyCurveSliderBuddy vcurveSlider",cfg.curveAmount)
+ui.curveSlider:=ui.themeEditorGui.addSlider("x32 y169 w80 h14 range10-30 center NoTicks ToolTipTop buddyCurveSliderBuddy vcurveSlider",cfg.curveAmount)
 ui.curveSlider.onEvent("change",changeCurve)
 ui.curveSlider.focus()
 
@@ -176,7 +176,7 @@ PostMessage(0x0153, 0, 18, ui.themeDDL)  ; Set height of list items.
 
 
 ;ui.titleBarPreviewLabel:=ui.themeEditorGui.addText("x5 y+5 w40 backgroundTrans center","Titlebar Image")
-drawOutline(ui.themeEditorGui,42,214,350,30,cfg.OutlineColor1,cfg.OutlineColor2,2)
+drawOutline(ui.themeEditorGui,42,214,350,30,cfg.OutlineColor2,cfg.OutlineColor2,2)
 ;ui.titlebarPreviewLabel.setFont("q5 s9 c" cfg.FontColor2,"ubuntu one")
 ui.titlebarPreview.onEvent("click",changeTitlebar)
 ui.titlebarEdit.onEvent("click",changeTitlebar)

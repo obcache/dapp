@@ -1137,8 +1137,9 @@ drawLinkBar(*) {
 		ui.button_link_%a_index%.type:=cfg.button_link_%a_index%[2]
 		ui.button_link_%a_index%.action:=cfg.button_link_%a_index%[3]
 		ui.button_link_%a_index%.thumb:=cfg.button_link_%a_index%[4]
-		ui.button_link_%a_index%.bg:=ui.gameSettingsGui.addPicture("x" xPos+2 " y" yPos+1 " w" cfg.button_link_size-1 " h-1 vbutton_link_" a_index " background" cfg.TileColor,ui.button_link_%a_index%.thumb)
-		ui.button_link_%a_index%.fx:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos+1 " w" cfg.button_link_size-1 " h" cfg.button_link_size-1 " backgroundTrans","./img/custom/lightburst_tile.png")
+		ui.button_link_%a_index%.bg:=ui.gameSettingsGui.addPicture("x" xPos+2 " y" yPos+1 " w" cfg.button_link_size-1 " h-1 vbutton_link_" a_index " background" cfg.tabColor1,ui.button_link_%a_index%.thumb)
+		ui.button_link_%a_index%.fx:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos-1 " w" cfg.button_link_size-1 " h" 50 " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
+		;ui.button_link_%a_index%.fx2:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos+(cfg.button_link_size-cfg.curveAmount) " w" cfg.button_link_size-1 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 		ui.button_link_%a_index%.down:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos+1 " w" cfg.button_link_size-1 " h" cfg.button_link_size-1 " hidden backgroundTrans","./img/button_down_layer.png")
 		drawOutlineNamed("button_link_" a_index "_outline",ui.gameSettingsGui,xPos,yPos,cfg.button_link_size+1,cfg.button_link_size+1,cfg.OutlineColor1,cfg.OutlineColor2,1)
 		;drawOutline(ui.gameSettingsGui,xPos+1,yPos+1,cfg.button_link_size-1,cfg.button_link_size-1,cfg.titleTrimColor,cfg.AuxColor3,1)
