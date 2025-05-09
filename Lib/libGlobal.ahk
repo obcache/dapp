@@ -260,8 +260,9 @@ WriteConfig() {
 	} catch {
 		cfg.GuiX := 200
 		cfg.GuiY := 200
-	} 
+	}
 	
+
 	IniWrite(cfg.GuiX,cfg.file,"Interface","GuiX")
 	IniWrite(cfg.GuiY,cfg.file,"Interface","GuiY")
 	IniWrite(cfg.toggleOn,cfg.file,"Interface","ToggleOnImage")
@@ -435,7 +436,15 @@ fadeOSD() {
 		ui.notifyGui.destroy()
 	ui.Transparent := 0
 }
-
+	setPos(*) {
+		winGetPos(&tmpX,&tmpY,&tmpW,&tmpH,ui.mainGui)
+		cfg.guiX:=tmpX
+		cfg.guiY:=tmpY
+		iniWrite(cfg.guiX,cfg.file,"Interface","GuiX")
+		iniWrite(cfg.guiY,cfg.file,"Interface","GuiY")
+		;msgBox(cfg.guiX "`t" cfg.guiY)
+	}	
+	
 loadScreen(visible := true,NotifyMsg := "dapp Loading",Duration := 10) {
 	if (visible) {
 		Transparent := 0
@@ -513,14 +522,15 @@ exitFunc(ExitReason,ExitCode) {
 			Return 1
 		}
 	}
-	guiVis(ui.gameSettingsGui,false)
-	guiVis(ui.mainGui,false)
-	try {
-		guiVis(ui.gameTabGui,false)
-	}
+
 	winGetPos(&winX,&winY,,,ui.mainGui.hwnd)
 	cfg.guiX := winX
 	cfg.guiY := winY
+	try {
+		guiVis(ui.gameSettingsGui,false)
+		guiVis(ui.mainGui,false)
+		guiVis(ui.gameTabGui,false)
+	}
 	WriteConfig()
 }
 

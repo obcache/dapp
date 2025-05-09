@@ -127,7 +127,7 @@ drawGameTabs(tabNum := 1) {
 	ui.gameTab2Skin := ui.gameTabGui.addText(
 		((tabNum == 2) 
 			? "y0 h30" 
-			: "y2 h28")
+			: "y3 h28")
 				" x110 w130 center background" 
 		((tabNum == 2) 
 			? cfg.TabColor1 
@@ -167,7 +167,7 @@ drawGameTabs(tabNum := 1) {
 	ui.gameTabDetail02:=ui.gameTabGui.addPicture(((tabNum==2) ? "-hidden " : "-hidden ") "x110 y" ((tabNum==1) ? 17 : 17)+(17-cfg.curveAmount) " w130 h" 17-(17-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")	 
 	ui.gameTabDetail2:=ui.gameTabGui.addPicture(((tabNum==2) ? "-hidden " : "-hidden ") "x110 y" ((tabNum==1) ? 17 : 17)+(17-cfg.curveAmount) " w130 h" 17-(17-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")	 
 	ui.gameTabDetail3:=ui.gameTabGui.addPicture(((tabNum==2) ? "-hidden " : "hidden ") "x0 y" 2 " w108 h" 15-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
-	ui.gameTabDetail4:=ui.gameTabGui.addPicture(((tabNum==1) ? "-hidden " : "hidden ") "x110 y" 1 " w130 h" 15-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")	 
+	ui.gameTabDetail4:=ui.gameTabGui.addPicture(((tabNum==1) ? "-hidden " : "hidden ") "x110 y" 2 " w130 h" 15-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")	 
 	
 	
 	winGetPos(&mainGuiX,&mainGuiY,,,ui.mainGui.hwnd)
@@ -198,7 +198,7 @@ drawGameTabs(tabNum := 1) {
 
 	;ui.gameTabDetail:=ui.gameTabGui.addPicture("x0 y0 w240 h30 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 	drawOutlineNamed("helpOutline",ui.gameTabGui,463,0,34,32,cfg.TrimColor1,cfg.TrimColor1,2)
-	ui.gameTabGui.addPicture("x463 y" 1 " w32 h" 16-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
+	ui.gameTabGui.addPicture("x463 y" 2 " w37 h" 16-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
 	ui.gameTabGui.addPicture("x463 y" 15+(15-cfg.curveAmount) " w37 h" 17-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 	
 	ui.buildNumber:=ui.gameTabGui.addText("x298 y12 w160 h29 right backgroundTrans","v" a_fileVersion)
@@ -303,20 +303,20 @@ refreshGameTabs(tabNum := 1) {
 	
 	ui.gameTabDetail0:=ui.gameTabGui.addPicture(((tabNum==1) ? "-hidden " : "-hidden ") "x0 y" ((tabNum==1) ? 17 : 17)+(17-cfg.curveAmount) " w110 h" 17-(17-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 	ui.gameTabDetail1:=ui.gameTabGui.addPicture(((tabNum==1) ? "-hidden " : "-hidden ") "x0 y" ((tabNum==1) ? 17 : 17)+(17-cfg.curveAmount) " w110 h" 17-(17-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
-	ui.gameTabDetail2:=ui.gameTabGui.addPicture(((tabNum==2) ? "-hidden " : "-hidden ") "x110 y" ((tabNum==1) ? 17 : 17)+(17-cfg.curveAmount) " w130 h" 17-(17-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")	 
-	ui.gameTabDetail02:=ui.gameTabGui.addPicture(((tabNum==2) ? "-hidden " : "-hidden ") "x110 y" ((tabNum==1) ? 17 : 17)+(17-cfg.curveAmount) " w130 h" 17-(17-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")	 
+	ui.gameTabDetail2:=ui.gameTabGui.addPicture(((tabNum==2) ? "-hidden " : "-hidden ") "x110 y" ((tabNum==1) ? 17 : 17)+(17-cfg.curveAmount) " w130 h" 19-(17-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")	 
+	;ui.gameTabDetail02:=ui.gameTabGui.addPicture(((tabNum==2) ? "-hidden " : "-hidden ") "x110 y" ((tabNum==1) ? 17 : 17)+(17-cfg.curveAmount) " w130 h" 17-(17-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")	 
 	ui.gameTabDetail3:=ui.gameTabGui.addPicture(((tabNum==2) ? "-hidden " : "hidden ") "x0 y" 2 " w108 h" 15-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
 	ui.gameTabDetail4:=ui.gameTabGui.addPicture(((tabNum==1) ? "-hidden " : "hidden ") "x110 y" 1 " w130 h" 15-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")	 
 	
 
-	ui.gameTab1SkinOutline.redraw()
-	ui.gameTab1Skin.redraw()
-	ui.gameTab1Label.redraw()
-	ui.gameTab1Divider.redraw()
-	ui.gameTab2SkinOutline.redraw()
-	ui.gameTab2Skin.redraw()
-	ui.gameTab2Label.redraw()
-	ui.gameTab2Divider.redraw()
+	; ui.gameTab1SkinOutline.redraw()
+	; ui.gameTab1Skin.redraw()
+	; ui.gameTab1Label.redraw()
+	; ui.gameTab1Divider.redraw()
+	; ui.gameTab2SkinOutline.redraw()
+	; ui.gameTab2Skin.redraw()
+	; ui.gameTab2Label.redraw()
+	; ui.gameTab2Divider.redraw()
 	;ui.gameTabDetail.redraw()
 
 	
@@ -670,15 +670,30 @@ joinFireteam(*) {
 		}
 		
 		joinFriend(this_ctrl,*) {
-			if !winExist("ahk_exe destiny2.exe")
-				return
-			winActivate("ahk_exe destiny2.exe")
-			winWait("ahk_exe destiny2.exe")
-			sleep(1000)
-			send("{enter}")
-			send('{Raw}/join ' ui.friendsList[strSplit(this_ctrl.name,"-")[2]])
-			sleep(1000)
-			send("{enter}")
+			a_clipboard:= "/join " ui.friendsList[strSplit(this_ctrl.name,"-")[2]]
+			static vertCenter:=(((ui.friendsList.length*30)+30)/2)-30
+			winGetPos(&tmpX,&tmpY,&tmpW,&tmpH,ui.joinGui)
+			confirmMsgBody:=ui.joinGui.addText("x2 y2 w" tmpW-4 " h" tmph-8 " background" cfg.tabColor1)		
+			confirmMsgOutline:=ui.joinGui.addText("x0 y0 w314 h" tmpH " background" cfg.trimColor1)
+	
+		
+			confirmMsgTitle:=ui.joinGui.addText("center x2 y" (tmpH/2)-30 " w310 h28 background" cfg.tabColor1,"Copied to Clipboard:")
+			confirmMsgTitle.setFont("s14 q5 c" cfg.fontColor1,"move-x")
+		
+			confirmMsgText:=ui.joinGui.addText("center x6 y" (tmpH/2) " w304 h24 background" cfg.tabColor2)
+			confirmMsgText.setFont("s12 q5 c" cfg.fontColor2,"Prototype")
+			confirmMsgText.text:=a_clipboard
+			setTimer(clearConfirm,-2000)
+				clearConfirm(*) {
+				confirmMsgOutline.opt("hidden")
+				confirmMsgBody.opt("hidden")
+				confirmMsgTitle.opt("hidden")
+				confirmMsgText.opt("hidden")
+				confirmMsgOutline:=""
+				confirmMsgBody:=""
+				confirmMsgTitle:=""
+				confirmMsgText:=""
+			}
 		}
 		
 		ui.joinGuiAddOutline:=ui.joinGui.addText("section center x5 y" (ui.friendsList.length*30)+30 " w304 h26 background" cfg.OutlineColor1)
@@ -704,7 +719,7 @@ joinFireteam(*) {
 			drawFriendsList()
 		}
 		moveDown(this_ctrl,*) {
-		msgBox(strSplit(this_ctrl.name,"-")[2] "`n" ui.friendsList.length )
+		;msgBox(strSplit(this_ctrl.name,"-")[2] "`n" ui.friendsList.length )
 			friend_idx:=strSplit(this_ctrl.name,"-")[2]
 			tmpFriendDown:=ui.friendsList[friend_idx+1]
 			ui.friendsList[friend_idx+1]:=ui.friendsList[friend_idx]
@@ -728,7 +743,7 @@ joinFireteam(*) {
 		ui.joinGui.hide()
 		winGetPos(&friendsX,&friendsY,&friendsW,&friendsH,ui.joinGui)
 	
-		ui.joinGui.show("x" (gsX+(gsW/2))-(friendsW/2) " y" (gsY+(gsH/2))-(friendsH/2) " w314 h" (ui.friendsList.length*30)+60)
+		ui.joinGui.show("x" (gsX+(gsW/2))-(friendsW/2) " y" (gsY+(gsH/2))-(friendsH/2) " w314 h" (ui.friendsList.length*30)+64)
 	
 	;addFriend()
 	
@@ -884,51 +899,31 @@ toggleRuneWindow(this_button,*) {
 }
 
 displayInfoGfx(imageFilename) {
-	static infoGfxSide:="right"
-	static infoGfxPosX:=""
-	static infoGfxPosH:=""
-	
-	monitorGetWorkArea(monitorGetPrimary(),&lPrimary,&tPrimary,&rPrimary,&bPrimary)
-	loop monitorGetCount() {
-		monitorGetWorkArea(a_index,&l,&t,&r,&b)
-		if l >= rPrimary {
-			infoGfxPosX:=l+((r-l)/2)
-			infoGfxPosH:=b-t
-		}
-	}
-	
-	if !infoGfxPosX {
-		infoGfxSide:="Left"
-		loop monitorGetCount() {
-			monitorGetWorkArea(a_index,&l,&t,&r,&b)
-			if r <= lPrimary {
-			infoGfxPosX:=r+((r-l)/2)
-			infoGfxPosH:=b-t
-			}
-		
-		}
-	}
-	
 	ui.infoGfxGui:=gui()
 	ui.infoGfxGui.opt("-caption toolWindow owner" ui.mainGui.hwnd)
 	ui.infoGfxGui.backColor:="010203"
 	winSetTransColor("010203",ui.infoGfxGui)
 
-
-
-	ui.infoGfxImage:=ui.infoGfxGui.addPicture("h0 w-1 backgroundTrans",imageFilename)
+	winGetPos(&tmpX,&tmpY,,,ui.mainGui)
+	ui.infoGfxMon:=object()
+	
+	loop monitorGetCount() {
+		monitorGetWorkArea(a_index,&l,&t,&r,&b)
+		if (tmpX >= l && tmpX <=r) && (tmpY >= t && tmpY <= b) {
+			ui.infoGfxMon.l:=l
+			ui.infoGfxMon.t:=t 
+			ui.infoGfxMon.r:=r
+			ui.infoGfxMon.b:=b
+		}
+	}
+	
+	ui.infoGfxImage:=ui.infoGfxGui.addPicture("h" ui.infoGfxMon.b-ui.infoGfxMon.t " w-1 backgroundTrans",imageFilename)
 	ui.infoGfxImage.onEvent("DoubleClick",closeThis)
 	ui.infoGfxImage.onEvent("click",WM_LBUTTONDOWN_callback)
 	ui.infoGfxImage.getPos(,,&imgW)
-	if monitorGetCount() > 1 {
-	if infoGfxSide=="Left" {
-		ui.infoGfxGui.show("x" l-imgW-20 " y" t)
-	} else {
-		ui.infoGfxGui.show("x" r+20 " y" t)
-	}	
-	} else {
-		ui.infoGfxGui.show("x" l " y" t)
-	}
+	
+	ui.infoGfxGui.show("x" (ui.infoGfxMon.l+((ui.infoGfxMon.r-ui.infoGfxMon.l)/2))-(imgW/2) " y" ui.infoGfxMon.t " h" ui.infoGfxMon.b-ui.infoGfxMon.t)
+
 	winSetTransColor("010203",ui.infoGfxGui)
 	
 }

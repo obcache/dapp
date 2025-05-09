@@ -37,7 +37,7 @@ ui.themeEditorCancelButtonBg.onEvent("click", closeThemeEditor)
 
 
 guiVis(ui.themeEditorGui,false)
-winGetPos(&mainX,&mainY,&mainW,&mainH,ui.gameSettingsGui.hwnd)
+
 ui.titlebarPreview:=ui.themeEditorGui.addPicture("x44 y214 w346 h30 background" cfg.tabColor2,cfg.titleBarImage)
 ui.titlebarEdit:=ui.themeEditorGui.addPicture("x10 y214 w30 h30 background" cfg.tabColor2,"./img/button_edit.png")
 
@@ -85,8 +85,9 @@ ui.ThemeDDL.ToolTip := "Select Theme Preset"
 
 ;drawOutlineNamed("ThemeOutline",ui.themeEditorGui,10,29,302,27,cfg.OutlineColor1,cfg.OutlineColor1,3)
 drawOutlineNamed("ThemeOutlineShadow",ui.themeEditorGui,0,30,400,27,cfg.TrimColor1,cfg.TrimColor1,2)
+winGetPos(&xi,&yi,,,ui.mainGui)
 
-ui.themeEditorGui.show("x" cfg.guiX+80 " y" cfg.guiY-15 " w400 h250 noActivate")
+ui.themeEditorGui.show("x" xi " y" yi " w400 h250 noActivate")
 
 closeThemeEditor(*) {
 	try {
