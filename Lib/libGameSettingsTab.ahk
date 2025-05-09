@@ -171,7 +171,7 @@ drawGameTabs(tabNum := 1) {
 	
 	
 	winGetPos(&mainGuiX,&mainGuiY,,,ui.mainGui.hwnd)
-		ui.gameTabSpacer:=ui.gameTabGui.addText("y2 x240 w" 490-(ui.gameTabWidth) " h29 background" cfg.TrimColor3)
+		ui.gameTabSpacer:=ui.gameTabGui.addText("y2 x240 w" 490-(ui.gameTabWidth) " h29 background" cfg.titleBgColor)
 		ui.gameTabSpacer.onEvent("click",WM_LBUTTONDOWN_callback)
 		ui.gameTabSpacerDetail2:=ui.gameTabGui.addPicture("y" 1 " x240 w" 490-240 " h" 15-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_light.png")
 		ui.gameTabSpacerDetail2.onEvent("click",WM_LBUTTONDOWN_callback)
@@ -202,7 +202,7 @@ drawGameTabs(tabNum := 1) {
 	ui.gameTabGui.addPicture("x463 y" 15+(15-cfg.curveAmount) " w37 h" 17-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 	
 	ui.buildNumber:=ui.gameTabGui.addText("x298 y12 w160 h29 right backgroundTrans","v" a_fileVersion)
-	ui.buildNumber.setFont("q5 s10 c" cfg.FontColor4,"Move-X")
+	ui.buildNumber.setFont("q5 s10 c" cfg.titleFontColor,"Move-X")
 	;ui.gameplayTabDetail:=ui.gameTabGui.addPicture("x0 y" 2+(30-cfg.curveAmount) " w110 h" 32-(30-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 	ui.vaultCleanerTabDetail:=ui.gameTabGui.addPicture("x110 y" 2+(30-cfg.curveAmount) " w130 h" 32-(30-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 	;ui.gameTabGui.addPicture("x90 y0 w212 h30 backgroundTrans","./img/custom/lightburst_bl_light.png")	
@@ -420,7 +420,7 @@ MButtonDown(*) {
 	send("{" cfg.d2GameMouseMiddleButtonKey " up")
 }
 
-ui.d2Log:= ui.gameSettingsGui.addText("x405 y10 w68 h80 hidden background" cfg.TrimColor3 " c" cfg.FontColor3," Destiny 2`n Log Started`n Waiting for Input")
+ui.d2Log:= ui.gameSettingsGui.addText("x405 y10 w68 h80 hidden background" cfg.titleBgColor " c" cfg.FontColor3," Destiny 2`n Log Started`n Waiting for Input")
 ui.d2Log.setFont("s7","ariel")
 
 
@@ -489,7 +489,7 @@ showCodeWindow(*) {
 		
 	;ui.d2wwCodeImg := ui.d2wwCodesGui.addPicture("x20 y20 w800 h600","./img/d2CodeMorgeth.png")
 	ui.d2CodeTitlebar:=ui.d2wwCodesGui.addText("x5 y0 w1200 h30 background" cfg.AuxColor2)
-	ui.d2CodeExit := ui.d2wwCodesGui.addPicture("x1175 y0 w30 h30 background" cfg.TrimColor3,"./img/button_quit.png")
+	ui.d2CodeExit := ui.d2wwCodesGui.addPicture("x1175 y0 w30 h30 background" cfg.titleBgColor,"./img/button_quit.png")
 	ui.d2CodeExit.onEvent("click",hideCodeWindow)
 	;ui.d2wwCodeImg.onEvent("click",WM_LBUTTONDOWN_callback)
 	
@@ -614,7 +614,7 @@ joinFireteam(*) {
 		winSetTransColor("010203",ui.joinGui)
 		ui.joinGuiOutline:=ui.joinGui.addText("x0 y0 w314 h" (ui.friendsList.length*30)+60 " background" cfg.TrimColor1)
 		ui.joinGuiBackground:=ui.joinGui.addText("x2 y2 w310 h" (ui.friendsList.length*30)+58 " background" cfg.TabColor1)
-		ui.joinGuiTitlebar:=ui.joinGui.addText("x2 y2 w284 h" 24 " background" cfg.TrimColor3)
+		ui.joinGuiTitlebar:=ui.joinGui.addText("x2 y2 w284 h" 24 " background" cfg.titleBgColor)
 		ui.joinGuiTitlebar.onEvent("click",WM_LBUTTONDOWN_callback)
 		ui.joinGuiCloseButton:=ui.joinGui.addText("x286 y2 w26 h24 background450836")
 		ui.joinGuiCloseButton.onEvent("click",closejoinGui)
@@ -697,7 +697,7 @@ joinFireteam(*) {
 		}
 		
 		ui.joinGuiAddOutline:=ui.joinGui.addText("section center x5 y" (ui.friendsList.length*30)+30 " w304 h26 background" cfg.OutlineColor1)
-		ui.joinGuiAdd:=ui.joinGui.addText("v" controlId "-" a_index  " section center x7 y" (ui.friendsList.length*30)+32 " w300 h20 background" cfg.TrimColor3,"Add New Friend")
+		ui.joinGuiAdd:=ui.joinGui.addText("v" controlId "-" a_index  " section center x7 y" (ui.friendsList.length*30)+32 " w300 h20 background" cfg.titleBgColor,"Add New Friend")
 		ui.joinGuiAdd.setFont("s14 bold c" cfg.FontColor1,"move-x")
 		ui.joinGuiAdd.onEvent("click",addFriend)
 		ui.joinGuiAddDetail:=ui.joinGui.addPicture("section x5 y" (ui.friendsList.length*30)+30 " w304 h26 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
@@ -985,5 +985,5 @@ drawPanelLabel(guiName,labelX,labelY,labelW := 100,labelH := 20,labelText := "ne
 
 
 ;line(ui.mainGui,529,0,2,30,cfg.TrimColor2)
-;line(ui.gameTabGui,495,2,2,32,cfg.TrimColor3)
+;line(ui.gameTabGui,495,2,2,32,cfg.titleBgColor)
 line(ui.mainGui,474,30,55,2,cfg.TabColor1)

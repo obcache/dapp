@@ -144,7 +144,7 @@ cfgLoad(&cfg, &ui) {
 	cfg.FontColor2			:= IniRead(cfg.themeFile,cfg.Theme,"FontColor2","FBD58E")
 	cfg.FontColor3			:= IniRead(cfg.themeFile,cfg.Theme,"FontColor3","1FFFF0")
 	cfg.FontColor4			:= IniRead(cfg.themeFile,cfg.Theme,"FontColor4","FBD58E")
-	cfg.AuxColor3		:= IniRead(cfg.themeFile,cfg.Theme,"AuxColor3","C0C0C0")
+	cfg.titleFontColor		:= IniRead(cfg.themeFile,cfg.Theme,"titleFontColor","C0C0C0")
 	cfg.DisabledColor		:= IniRead(cfg.themeFile,cfg.Theme,"DisabledColor","FFFFFF")
 	cfg.TrimColor2			:= IniRead(cfg.themeFile,cfg.Theme,"TrimColor2","C0C0C0")
 	cfg.TrimColor1			:= IniRead(cfg.themeFile,cfg.Theme,"TrimColor1","FFFFFF")
@@ -152,7 +152,7 @@ cfgLoad(&cfg, &ui) {
 	cfg.OutlineColor2	:= IniRead(cfg.themeFile,cfg.Theme,"OutlineColor2","333333")
 	cfg.TabColor2		:= IniRead(cfg.themeFile,cfg.Theme,"TabColor2","204040")
 	cfg.TabColor3		:= IniRead(cfg.themeFile,cfg.Theme,"TabColor3","804001")
-	cfg.TrimColor3		:= IniRead(cfg.themeFile,cfg.Theme,"TrimColor3","204040")
+	cfg.titleBgColor		:= IniRead(cfg.themeFile,cfg.Theme,"titleBgColor","204040")
 	cfg.TileColor		:= IniRead(cfg.themeFile,cfg.Theme,"TileColor","804001")
 	cfg.AuxColor2		:= IniRead(cfg.themeFile,cfg.Theme,"AuxColor2","292929")
 	cfg.AuxColor1		:= IniRead(cfg.themeFile,cfg.Theme,"AuxColor1","292929")
@@ -211,7 +211,7 @@ WriteConfig() {
 	IniWrite(ui.themeDDL.text,cfg.file,"Interface","Theme")
 	IniWrite(arr2str(cfg.themeList),cfg.themeFile,"Interface","ThemeList")
 	iniWrite(cfg.curveAmount,cfg.themeFile,cfg.theme,"CurveAmount")
-	IniWrite(cfg.AuxColor3,cfg.themeFile,"Custom","AuxColor3")
+	IniWrite(cfg.titleFontColor,cfg.themeFile,"Custom","titleFontColor")
 	IniWrite(cfg.DisabledColor,cfg.themeFile,"Custom","DisabledColor")
 	IniWrite(cfg.TrimColor2,cfg.themeFile,"Custom","TrimColor2")
 	IniWrite(cfg.TrimColor1,cfg.themeFile,"Custom","TrimColor1")
@@ -223,7 +223,7 @@ WriteConfig() {
 	IniWrite(cfg.FontColor3,cfg.themeFile,"Custom","FontColor3")
 	IniWrite(cfg.FontColor4,cfg.themeFile,"Custom","FontColor4")
 	IniWrite(cfg.TabColor2,cfg.themeFile,"Custom","TabColor2")
-	IniWrite(cfg.TrimColor3,cfg.themeFile,"Custom","TrimColor3")
+	IniWrite(cfg.titleBgColor,cfg.themeFile,"Custom","titleBgColor")
 	IniWrite(cfg.TabColor1,cfg.themeFile,"Custom","TabColor1")
 	IniWrite(cfg.TileColor,cfg.themeFile,"Custom","TileColor")
 	IniWrite(cfg.AuxColor2,cfg.themeFile,"Custom","AuxColor2")
@@ -361,7 +361,7 @@ DialogBox(Msg,Alignment := "Center") {
 	winGetPos(&GuiX,&GuiY,&GuiW,&GuiH,ui.mainGui.hwnd)
 	ui.notifyGui.Show("x" (GuiX+(GuiW/2)-(w/2)) " y" GuiY+(100-(h/2)) " NoActivate")
 	drawOutlineNotifyGui(1,1,w,h,cfg.OutlineColor2,cfg.OutlineColor1,1)
-	drawOutlineNotifyGui(2,2,w-2,h-2,cfg.AuxColor3,cfg.AuxColor3,1)
+	drawOutlineNotifyGui(2,2,w-2,h-2,cfg.titleFontColor,cfg.titleFontColor,1)
 	Transparency := 0
 	guiVis("all",false)	
 	While Transparency < 253 {
@@ -402,7 +402,7 @@ NotifyOSD(NotifyMsg,Duration := 2000,guiName:=ui.mainGui,Alignment := "Left",YN 
 	winGetPos(&GuiX,&GuiY,&GuiW,&GuiH,ui.mainGui.hwnd)
 	ui.notifyGui.Show("x" GuiX+34 " y" GuiY " w" guiW-68 " h" guiH+2 " noActivate")
 	
-	;drawOutline(ui.notifyGUi,2,2,w-2,h-2,cfg.AuxColor3,cfg.AuxColor3,1)
+	;drawOutline(ui.notifyGUi,2,2,w-2,h-2,cfg.titleFontColor,cfg.titleFontColor,1)
 	if (YN) {
 		ui.notifyGui.AddText("xs hidden")
 		ui.notifyYesButton := ui.notifyGui.AddPicture("ys x30 y30","./Img/button_yes.png")

@@ -107,9 +107,9 @@ Loop cfg.ThemeList.Length {
 ui.ThemeElements := [
 	
 	"TabColor1","TabColor2","TabColor3","TileColor",
-	"TrimColor1","TrimColor2","TrimColor3","DisabledColor",
+	"TrimColor1","TrimColor2","titleBgColor","DisabledColor",
 	"FontColor1","FontColor2","FontColor3","FontColor4","OutlineColor2","OutlineColor1",
-	"OffColor","OnColor","AlertColor","AuxColor1","AuxColor2","AuxColor3"
+	"OffColor","OnColor","AlertColor","AuxColor1","AuxColor2","titleFontColor"
 	 	]
 
 ui.themeEditorGui.AddText("x10 y50 section hidden")
@@ -286,7 +286,7 @@ addTheme(*) {
 	ui.newThemeOkButton := ui.newThemeGui.AddPicture("x+-7 ys w40 h40 Background" cfg.OffColor,"./Img/button_save_up.png")
 	ui.newThemeOkButton.OnEvent("Click",addThemeToDDL)
 	ui.newThemeGui.Show("w260 h110 NoActivate")
-	drawOutline(ui.newThemeGui,5,5,250,100,cfg.AuxColor3,cfg.DisabledColor,2)	;New App Profile Modal Outline
+	drawOutline(ui.newThemeGui,5,5,250,100,cfg.titleFontColor,cfg.DisabledColor,2)	;New App Profile Modal Outline
 
 	addThemeToDDL(*) {
 		Global
@@ -298,7 +298,7 @@ addTheme(*) {
 		ui.themeDDL.Choose(ui.newThemeEdit.value)
 
 		{ ;write new Theme to ini
-		IniWrite(cfg.AuxColor3,cfg.themeFile,ui.newThemeEdit.Value,"AuxColor3")
+		IniWrite(cfg.titleFontColor,cfg.themeFile,ui.newThemeEdit.Value,"titleFontColor")
 		IniWrite(cfg.DisabledColor,cfg.themeFile,ui.newThemeEdit.Value,"DisabledColor")
 		IniWrite(cfg.TrimColor2,cfg.themeFile,ui.newThemeEdit.Value,"TrimColor2")
 		IniWrite(cfg.TrimColor1,cfg.themeFile,ui.newThemeEdit.Value,"TrimColor1")
@@ -310,7 +310,7 @@ addTheme(*) {
 		IniWrite(cfg.FontColor3,cfg.themeFile,ui.newThemeEdit.Value,"FontColor3")
 		IniWrite(cfg.FontColor4,cfg.themeFile,ui.newThemeEdit.Value,"FontColor4")
 		IniWrite(cfg.TabColor2,cfg.themeFile,ui.newThemeEdit.Value,"TabColor2")
-		IniWrite(cfg.TrimColor3,cfg.themeFile,ui.newThemeEdit.Value,"TrimColor3")
+		IniWrite(cfg.titleBgColor,cfg.themeFile,ui.newThemeEdit.Value,"titleBgColor")
 		IniWrite(cfg.TabColor1,cfg.themeFile,ui.newThemeEdit.Value,"TabColor3")
 		IniWrite(cfg.TileColor,cfg.themeFile,ui.newThemeEdit.Value,"TileColor")
 		IniWrite(cfg.AuxColor2,cfg.themeFile,ui.newThemeEdit.Value,"AuxColor2")

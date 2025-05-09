@@ -161,13 +161,13 @@ advProgress(2)
 	advProgress(2)
 	
 	advProgress(2)
-	ui.3_FillBg:=ui.mainGui.addText("y2 x196 w280 h28 background" cfg.TrimColor3)
+	ui.3_FillBg:=ui.mainGui.addText("y2 x196 w280 h28 background" cfg.titleBgColor)
 
 	ui.3_FillOutline:=ui.mainGui.addText("hidden x206 y1 w260 h29 center backgroundTrans","dapp")
-	ui.3_FillOutline.setFont("q5 s17 c" cfg.AuxColor3,"Move-X")
-	ui.3_TitleTextDetail:=ui.mainGui.addText("hidden x316 y9 w2 h15 background" cfg.TrimColor3)
-	ui.3_TitleTextDetail2:=ui.mainGui.addText("hidden x339 y9 w2 h15 background" cfg.TrimColor3)
-	ui.3_TitleTextDetail3:=ui.mainGui.addText("hidden x355 y9 w2 h15 background" cfg.TrimColor3)
+	ui.3_FillOutline.setFont("q5 s17 c" cfg.titleFontColor,"Move-X")
+	ui.3_TitleTextDetail:=ui.mainGui.addText("hidden x316 y9 w2 h15 background" cfg.titleBgColor)
+	ui.3_TitleTextDetail2:=ui.mainGui.addText("hidden x339 y9 w2 h15 background" cfg.titleBgColor)
+	ui.3_TitleTextDetail3:=ui.mainGui.addText("hidden x355 y9 w2 h15 background" cfg.titleBgColor)
 	ui.3_FillDetail1:=ui.mainGui.addPicture("x196 y2 w340 h" 14-(14-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
 	; ui.3_FillDetail2:=ui.mainGui.addPicture("x196 y16 w340 h14 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 	; ui.3_FillDetail3:=ui.mainGui.addPicture("x196 y16 w340 h14 backgroundTrans","./img/custom/lightburst_bottom_light.png")
@@ -612,17 +612,17 @@ drawOpsOutlines() {
 
 ; drawGridLines() {
 	; ui.MainGuiTabs.UseTab("2_SETUP____")
-		; drawOutline(ui.MainGui,101,62,157,100,cfg.AuxColor3,cfg.AuxColor3,2) 	;Win1 Info Frame
+		; drawOutline(ui.MainGui,101,62,157,100,cfg.titleFontColor,cfg.titleFontColor,2) 	;Win1 Info Frame
 		; drawOutline(ui.MainGui,102,62,156,100,cfg.TrimColor1,cfg.TrimColor1,1) 	;Win1 Info Frame
-		; drawOutline(ui.MainGui,101,76,157,16,cfg.AuxColor3,cfg.AuxColor3,2)		;Win1 Info Gridlines  
+		; drawOutline(ui.MainGui,101,76,157,16,cfg.titleFontColor,cfg.titleFontColor,2)		;Win1 Info Gridlines  
 		; drawOutline(ui.MainGui,102,76,156,15,cfg.TrimColor1,cfg.TrimColor1,1)		;Win1 Line above ClassDDL
-		; drawOutline(ui.MainGui,101,90,157,17,cfg.AuxColor3,cfg.AuxColor3,2)		;Win1 Line above ClassDDL
+		; drawOutline(ui.MainGui,101,90,157,17,cfg.titleFontColor,cfg.titleFontColor,2)		;Win1 Line above ClassDDL
 		; drawOutline(ui.MainGui,102,90,156,15,cfg.TrimColor1,cfg.TrimColor1,1)		;Win1 Line above ClassDDL
-		; drawOutline(ui.MainGui,306,62,156,100,cfg.AuxColor3,cfg.AuxColor3,1)		;WIn2 Info Frame
+		; drawOutline(ui.MainGui,306,62,156,100,cfg.titleFontColor,cfg.titleFontColor,1)		;WIn2 Info Frame
 		; drawOutline(ui.MainGui,306,62,155,100,cfg.TrimColor1,cfg.TrimColor1,2)	;WIn2 Info Frame
-		; drawOutline(ui.MainGui,306,76,156,16,cfg.AuxColor3,cfg.AuxColor3,2)		;Win2 Info Gridlines
+		; drawOutline(ui.MainGui,306,76,156,16,cfg.titleFontColor,cfg.titleFontColor,2)		;Win2 Info Gridlines
 		; drawOutline(ui.MainGui,306,76,155,15,cfg.TrimColor1,cfg.TrimColor1,1)		;Win2 Line above ClassDDL
-		; drawOutline(ui.MainGui,306,90,156,16,cfg.AuxColor3,cfg.AuxColor3,2)		;Win2 Line above ClassDDL
+		; drawOutline(ui.MainGui,306,90,156,16,cfg.titleFontColor,cfg.titleFontColor,2)		;Win2 Line above ClassDDL
 		; drawOutline(ui.MainGui,306,90,155,15,cfg.TrimColor1,cfg.TrimColor1,1)		;Win2 Line above ClassDDL
 ; }
 		

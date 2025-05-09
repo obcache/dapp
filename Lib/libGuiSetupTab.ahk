@@ -171,14 +171,14 @@ GuiSetupTab(&ui,&cfg) {
 	ui.toggleDebug.ToolTip := "Keeps this app on top of all other windows."
 	ui.labelDebug:= ui.MainGui.AddText("x+5 ys+2 backgroundTrans","  Debug")
 
-	;drawOutlineNamed("toggleBlock",ui.mainGui,48,43,51,157,cfg.AuxColor3,cfg.AuxColor3,1)
+	;drawOutlineNamed("toggleBlock",ui.mainGui,48,43,51,157,cfg.titleFontColor,cfg.titleFontColor,1)
 	;drawOutlineNamed("toggleBlock",ui.mainGui,47,43,50,157,cfg.TrimColor2,cfg.TrimColor2,1)
 	;drawOutlineNamed("toggleBlock",ui.mainGui,48,42,50,157,cfg.OutlineColor2,cfg.OutlineColor2,1)
 	
-	ui.mainGui.addText("x270 y45 w198 h62 background" cfg.TrimColor3)
+	ui.mainGui.addText("x270 y45 w198 h62 background" cfg.titleBgColor)
 	ui.mainGui.addText("x271 y46 w196 h60 background" cfg.OutlineColor2)
 	ui.mainGui.addText("x272 y47 w194 h58 background" cfg.OutlineColor1)
-	ui.mainGui.addText("x273 y48 w192 h56 background" cfg.TrimColor3)
+	ui.mainGui.addText("x273 y48 w192 h56 background" cfg.titleBgColor)
 	;line(ui.mainGui,0,36,155,2,cfg.DisabledColor)
 
 	ui.checkForUpdatesLabel := ui.mainGui.addtext("x280 y46 w200 h30 section backgroundTrans c" cfg.FontColor3,"Check For Updates")
@@ -255,13 +255,13 @@ ThemeList=Modern Class,Cold Steel,Militarized,Neon,Ocean
 OutlineColor1=C0C0C0
 OutlineColor2=333333
 DisabledColor=1D1D1D
-AuxColor3=19F9F
+titleFontColor=19F9F
 baseColor=4A5A60
 FontColor1=1FFFF
 FontColor2=FCC84B
 TabColor2=355051
 TabColor1=674704
-TrimColor3=355051
+titleBgColor=355051
 TileColor=1D5852
 AuxColor2=292929
 TabColor1=212121
@@ -272,13 +272,13 @@ AlertColor=FFCC00
 OutlineColor1=888888
 OutlineColor2=333333
 DisabledColor=313131
-AuxColor3=C0C0C0
+titleFontColor=C0C0C0
 baseColor=414141
 FontColor1=1FFFF
 FontColor2=FAE7AD
 TabColor2=204040
 TabColor1=984C01
-TrimColor3=70D1C8
+titleBgColor=70D1C8
 TileColor=654901
 AuxColor2=292929
 TabColor1=212121
@@ -289,13 +289,13 @@ AlertColor=FFCC00
 OutlineColor1=888888
 OutlineColor2=333333
 DisabledColor=66B1FE
-AuxColor3=FEFE98
+titleFontColor=FEFE98
 baseColor=606060
 FontColor1=98CBFE
 FontColor2=FE8001
 TabColor2=202020
 TabColor1=984C01
-TrimColor3=355051
+titleBgColor=355051
 TileColor=70D1C8
 AuxColor2=292929
 TabColor1=212121
@@ -306,13 +306,13 @@ AlertColor=FFCC00
 OutlineColor1=446466
 OutlineColor2=333333
 DisabledColor=365154
-AuxColor3=3C3C3C
+titleFontColor=3C3C3C
 baseColor=2C3537
 FontColor1=1FFFF
 FontColor2=256D65
 TabColor2=355051
 TabColor1=70D1C8
-TrimColor3=355051
+titleBgColor=355051
 TileColor=70D1C8
 AuxColor2=292929
 TabColor1=212121
@@ -324,12 +324,12 @@ baseColor=B0C6B6
 OutlineColor1=5B8471
 OutlineColor2=5E5E01
 DisabledColor=1D1D1D
-AuxColor3=19F9F
+titleFontColor=19F9F
 FontColor1=E9F977
 FontColor2=303030
 TabColor2=6D8B87
 TabColor1=73714D
-TrimColor3=6D8B87
+titleBgColor=6D8B87
 TileColor=73714D
 AuxColor2=CEAFD1
 TabColor1=212121
@@ -341,12 +341,12 @@ baseColor=414141
 OutlineColor1=888888
 OutlineColor2=333333
 DisabledColor=C0C0C0
-AuxColor3=FFFFFF
+titleFontColor=FFFFFF
 FontColor1=1FFFF0
 FontColor2=FBD58E
 TabColor2=204040
 TabColor1=804001
-TrimColor3=204040
+titleBgColor=204040
 TileColor=804001
 AuxColor2=292929
 TabColor1=212121
