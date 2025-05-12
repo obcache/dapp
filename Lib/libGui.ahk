@@ -16,37 +16,38 @@ tabsChanged(*) {
 	ui.activeTab := ui.mainGuiTabs.Text
 	ui.activeMainTab := ui.mainGuiTabs.value
 	(ui.activeTab=="1_Game____")
-		? (ui.tabDivider:=ui.mainGui.addText("hidden x115 y0 w2 h28 background" cfg.TrimColor1)
-			, ui.1_GameButtonBg:=ui.mainGui.addText("x34 y0 w81 h30 background" cfg.TrimColor1)
+		? (	 ui.1_GameButtonBg:=ui.mainGui.addText("x34 y0 w83 h28 background" cfg.TrimColor1)
 			, ui.1_GameButton:=ui.mainGui.addText("x36 y2 w79 h28 background" cfg.TabColor1)
 			, ui.2_SetupButtonBg:=ui.mainGui.addText("x117 w80 y0 h28 background" cfg.TrimColor2)
 			, ui.2_SetupButton:=ui.mainGui.addText("x117 w78 y2 h28 background" cfg.TabColor2)
-
-			, ui.Setup_ActiveTabUi:=ui.mainGui.addText("x117 y28 w78 h2 background" cfg.TrimColor1)
-			, ui.1_GameButtonDetail:=ui.mainGui.addPicture("x34 y0 w81 h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
-			, ui.1_GameButtonDetail2:=ui.mainGui.addPicture("hidden x34 y" 13+(15-cfg.curveAmount) " w79 h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
-			, ui.2_SetupButtonDetail:=ui.mainGui.addPicture("x117 y0 w80 h" cfg.curveAmount "  backgroundTrans","./img/custom/lightburst_top_bar_dark.png")			
-			, ui.2_SetupButtonDetail2:=ui.mainGui.addPicture("x117 y" 13+(15-cfg.curveAmount) " w80 h" cfg.curveAmount "  backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")	
-			, ui.Game_ActiveTabUi:=ui.mainGui.addText("hidden x34 y28 w81 h2 background" cfg.trimColor1)
 			, ui.1_GameButtonLabel := ui.mainGui.addText("x34 y4 w81 h26 center backgroundTrans","Game")
 			, ui.1_GameButtonLabel.setFont("s14 q5 c" cfg.FontColor1,"Impact")
 			, ui.2_SetupButtonLabel := ui.mainGui.addText("y4 x117 w78 h26 center backgroundTrans","Setup")
-			, ui.2_SetupButtonLabel.setFont("s12 q5 c" cfg.FontColor2,"Impact")			
+			, ui.2_SetupButtonLabel.setFont("s12 q5 c" cfg.FontColor2,"Impact")				
+
+			, ui.Setup_ActiveTabUi:=ui.mainGui.addText("x117 y28 w78 h2 background" cfg.TrimColor1)
+			, ui.1_GameButtonDetail:=ui.mainGui.addPicture("x34 y0 w83 h28 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
+			, ui.1_GameButtonDetail2:=ui.mainGui.addPicture("hidden x36 y0 w81 h28 backgroundTrans","./img/custom/lightburst_bottom_bar_light.png")
+			, ui.2_SetupButtonDetail:=ui.mainGui.addPicture("x117 y0 w80 h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")			
+			, ui.2_SetupButtonDetail2:=ui.mainGui.addPicture("x117 y" 28-cfg.curveAmount " w80 h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_light.png")	
+			, ui.Game_ActiveTabUi:=ui.mainGui.addText("hidden x33 y28 w81 h2 background" cfg.trimColor1)
 			, ui.1_GameButtonBg.redraw()
 			, ui.1_GameButton.redraw()
-			, ui.1_GameButtonLabel.redraw()
-			, ui.2_SetupButtonBg.redraw()
-			, ui.2_SetupButton.redraw()
-			, ui.2_SetupButtonLabel.redraw()
-			, ui.Game_ActiveTabUi.redraw()
-			, ui.Setup_ActiveTabUi.redraw()
+			; , ui.1_GameButtonLabel.redraw()
+			; , ui.2_SetupButtonBg.redraw()
+			; , ui.2_SetupButton.redraw()
+			; , ui.2_SetupButtonLabel.redraw()
+			; , ui.Game_ActiveTabUi.redraw()
+			; , ui.Setup_ActiveTabUi.redraw()
+			, ui.2_SetupButtonDetail.redraw()
+			, ui.2_SetupButtonDetail2.redraw()
 			, guiVis(ui.gameSettingsGui,true)
 			, guiVis(ui.gameTabGui,true))
-		: (ui.tabDivider:=ui.mainGui.addText("hidden x115 y0 w2 h28 background" cfg.TrimColor1)
-			, ui.2_SetupButtonBg:=ui.mainGui.addText("x117 y0 w80 h28 background" cfg.TrimColor1)
+		: (ui.tabDivider:=ui.mainGui.addText("hidden x117 y02 w2 h28 background" cfg.TrimColor1)
+			, ui.2_SetupButtonBg:=ui.mainGui.addText("x115 y0 w82 h28 background" cfg.TrimColor1)
 			, ui.2_SetupButton:=ui.mainGui.addText("x117 y2 w78 h28 background" cfg.TabColor1)
-			, ui.1_GameButtonBg.opt("x37 y0 w81 h32 background" cfg.TrimColor2)
-			, ui.1_GameButton.opt("x36 y2 w81 h30 background" cfg.TabColor2)
+			, ui.1_GameButtonBg.opt("x34 y0 w81 h32 background" cfg.TrimColor2)
+			, ui.1_GameButton.opt("x36 y2 w79 h30 background" cfg.TabColor2)
 			, ui.1_GameButtonLabel.opt("hidden")
 			, ui.1_GameButtonLabel := ui.mainGui.addText("x36 y4 w79 h28 center backgroundTrans","Game")
 			, ui.1_GameButtonLabel.setFont("s12 q5 c" cfg.FontColor2,"Impact")
@@ -55,18 +56,22 @@ tabsChanged(*) {
 			, ui.2_SetupButtonLabel.setFont("s14 q5 c" cfg.FontColor1,"Impact")
 			, ui.Setup_ActiveTabUi:=ui.mainGui.addText("hidden x117 y28 w78 h2 background" cfg.trimColor1)
 			, ui.Game_ActiveTabUi:=ui.mainGui.addText("x34 y28 w81 h2 background" cfg.TrimColor1)		
-			, ui.1_GameButtonDetail:=ui.mainGui.addPicture("hidden x34 y0 w81 h" 13-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
-			, ui.1_GameButtonDetail2:=ui.mainGui.addPicture("x34 y" 15+(15-cfg.curveAmount) " w81 h" 13-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
-			, ui.2_SetupButtonDetail:=ui.mainGui.addPicture("x117 y0 w80 h" 13-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")			
-			, ui.2_SetupButtonDetail2:=ui.mainGui.addPicture("hidden x117 y" 15+(15-cfg.curveAmount) " w80 h" 13-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")	
-			, ui.1_GameButtonBg.redraw()
-			, ui.1_GameButton.redraw()
-			, ui.1_GameButtonLabel.redraw()
+			, ui.1_GameButtonDetail:=ui.mainGui.addPicture("hidden x34 y0 w81 h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
+			, ui.1_GameButtonDetail2:=ui.mainGui.addPicture("x34 y" 28-cfg.curveAmount " w81 h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_light.png")
+			, ui.2_SetupButtonDetail:=ui.mainGui.addPicture("x115 y0 w82 h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")			
+			, ui.2_SetupButtonDetail2:=ui.mainGui.addPicture("hidden x115 y" 28-cfg.curveAmount " w82 h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_light.png")	
+			; , ui.1_GameButtonBg.redraw()
+			; , ui.1_GameButton.redraw()
+			; , ui.1_GameButtonLabel.redraw()
 			, ui.2_SetupButtonBg.redraw()
 			, ui.2_SetupButton.redraw()
-			, ui.2_SetupButtonLabel.redraw()
-			, ui.Game_ActiveTabUi.redraw()
-			, ui.Setup_ActiveTabUi.redraw()
+			; , ui.2_SetupButtonLabel.redraw()
+			 , ui.Game_ActiveTabUi.redraw()
+			 , ui.Setup_ActiveTabUi.redraw()
+			; , ui.2_SetupButtonDetail.redraw()
+			; , ui.2_SetupButtonDetail2.redraw()
+			 , ui.1_GameButtonDetail.redraw()
+			 , ui.1_GameButtonDetail2.redraw()
 			, guiVis(ui.gameSettingsGui,false)
 			, guiVis(ui.gameTabGui,false))
 }
@@ -79,38 +84,9 @@ tabsInit(*) {
 	? (ui.gameSettingsGui.opt("-toolWindow")
 		, ui.gameTabGui.opt("-toolWindow")
 		, ui.mainGui.opt("-toolWindow")
-		, ui.1_GameButton.opt("x34 y2 w81 h18 background" cfg.TabColor1)
-		, ui.1_GameButtonBg.opt("y0 background" cfg.TrimColor1)
-		, ui.2_SetupButton.opt("x121 y2 background" cfg.TabColor2)
-		, ui.2_SetupButtonBg.opt("x121 y0 background" cfg.TrimColor2)
-		, ui.Game_ActiveTabUi.opt("-hidden")
-		, ui.Setup_ActiveTabUi.opt("hidden")
-		, ui.tabDivider:=ui.mainGui.addText("hidden x115 y0 w2 h28 background" cfg.TrimColor1)
-			, ui.1_GameButtonBg:=ui.mainGui.addText("x34 y0 w81 h28 background" cfg.TrimColor1)
-			, ui.1_GameButton:=ui.mainGui.addText("x36 y2 w79 h26 background" cfg.TabColor1)
-			, ui.2_SetupButtonBg:=ui.mainGui.addText("x117 w80 y0 h28 background" cfg.TrimColor2)
-			, ui.2_SetupButton:=ui.mainGui.addText("x117 w78 y2 h28 background" cfg.TabColor2)
 
-			, ui.Setup_ActiveTabUi:=ui.mainGui.addText("x117 y28 w78 h2 background" cfg.TrimColor1)
-			, ui.1_GameButtonDetail:=ui.mainGui.addPicture("x34 y0 w81 h28 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
-			, ui.1_GameButtonDetail2:=ui.mainGui.addPicture("hidden x36 y0 w79 h28 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
-			, ui.2_SetupButtonDetail:=ui.mainGui.addPicture("x117 y0 w80 h28 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")			
-			, ui.2_SetupButtonDetail2:=ui.mainGui.addPicture("x117 y0 w80 h28 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")	
-			, ui.Game_ActiveTabUi:=ui.mainGui.addText("hidden x33 y28 w81 h2 background" cfg.trimColor1)
-			, ui.1_GameButtonLabel := ui.mainGui.addText("x34 y4 w81 h26 center backgroundTrans","Game")
-			, ui.1_GameButtonLabel.setFont("s14 q5 c" cfg.FontColor1,"Impact")
-			, ui.2_SetupButtonLabel := ui.mainGui.addText("y4 x117 w78 h26 center backgroundTrans","Setup")
-			, ui.2_SetupButtonLabel.setFont("s12 q5 c" cfg.FontColor2,"Impact")			
-			, ui.1_GameButtonBg.redraw()
-			, ui.1_GameButton.redraw()
-			, ui.1_GameButtonLabel.redraw()
-			, ui.2_SetupButtonBg.redraw()
-			, ui.2_SetupButton.redraw()
-			, ui.2_SetupButtonLabel.redraw()
-			, ui.Game_ActiveTabUi.redraw()
-			, ui.Setup_ActiveTabUi.redraw()
-			, guiVis(ui.gameSettingsGui,true)
-			, guiVis(ui.gameTabGui,true))
+		, ui.Game_ActiveTabUi.opt("-hidden")
+		, ui.Setup_ActiveTabUi.opt("hidden"))
 	: (ui.gameTabGui.opt("+toolWindow")
 		, ui.gameSettingsGui.opt("+toolWindow")
 		, ui.mainGui.opt("-toolWindow")
@@ -150,13 +126,7 @@ advProgress(2)
 	ui.mainGuiAnchor := ui.mainGui.addText("x0 y0 w0 h0 section hidden")
 	
 	ui.mainBg := ui.mainGui.addText("x34 y30 w493 h185 background" cfg.TabColor1,"")
-	ui.tabDivider:=ui.mainGui.addText("x115 y0 w2 h28 background" cfg.TrimColor1)
-	ui.1_GameButtonBg := ui.mainGui.addText("x34 y0 w81 h28 background" cfg.TrimColor1)
-	;ui.1_GameButtonDetail:=ui.mainGui.addPicture("x34 y0 w81 h" 15-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_light.png")
-	;ui.1_GameButtonDetail2:=ui.mainGui.addPicture("x36 y0 w79 h" 15-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
-	ui.2_SetupButtonBg := ui.mainGui.addText("x117 y0 w84 h28 background" cfg.TrimColor2)
-	;ui.2_SetupButtonDetail:=ui.mainGui.addPicture("x117 y0 w84 h" 15-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_light.png")			
-	;ui.2_SetupButtonDetail2:=ui.mainGui.addPicture("x117 y15 w84 h" 15-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")	
+	ui.tabDivider:=ui.mainGui.addText("hidden x115 y0 w2 h28 background" cfg.TrimColor1)
 
 	advProgress(2)
 	
@@ -168,9 +138,6 @@ advProgress(2)
 	ui.3_TitleTextDetail:=ui.mainGui.addText("hidden x316 y9 w2 h15 background" cfg.titleBgColor)
 	ui.3_TitleTextDetail2:=ui.mainGui.addText("hidden x339 y9 w2 h15 background" cfg.titleBgColor)
 	ui.3_TitleTextDetail3:=ui.mainGui.addText("hidden x355 y9 w2 h15 background" cfg.titleBgColor)
-	ui.3_FillDetail1:=ui.mainGui.addPicture("x196 y2 w340 h" 14-(14-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
-	; ui.3_FillDetail2:=ui.mainGui.addPicture("x196 y16 w340 h14 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
-	; ui.3_FillDetail3:=ui.mainGui.addPicture("x196 y16 w340 h14 backgroundTrans","./img/custom/lightburst_bottom_light.png")
 
 	(iniRead(cfg.themeFile,cfg.theme,"HideTitlebarText",0)) ? 0 : (ui.3_FillOutline.opt("-hidden"),ui.3_FillOutline.redraw())
 	
@@ -178,26 +145,28 @@ advProgress(2)
 		cfg.titleBarImage:="./img/custom/lightburst_bottom_light.png"
 	ui.titleBar:=ui.mainGui.addPicture("x196 y2 w280 h27 left backgroundTrans",cfg.titleBarImage)
 	ui.titleBar.onEvent("click",wm_lbuttonDown_callback)
+	ui.3_FillDetail1:=ui.mainGui.addPicture("x196 y0 w340 h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
+	ui.3_FillDetailBottom:=ui.mainGui.addPicture("x196 y" 28-cfg.curveAmount " w280 h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_light.png")
 
-
-	
-	ui.1_GameButton := ui.mainGui.addText("x36 y2 w79 h30 center background" cfg.TabColor1)
-
-	ui.1_GameButtonLabel := ui.mainGui.addText("x36 y4 w77 h26 center backgroundTrans","Game")
-	ui.1_GameButtonLabel.setFont("s14 c" cfg.FontColor1,"prototype")
-	
-	ui.1_gameButton.redraw()
-
-	ui.2_SetupButton := ui.mainGui.addText("y2 x117 w77 h28 center background" cfg.TabColor2)
-	ui.2_setupButton.redraw()
-	ui.2_SetupButtonLabel := ui.mainGui.addText("y5 x117 w77 h26 center backgroundTrans","Setup")
-	ui.2_SetupButtonLabel.setFont("s12 c" cfg.FontColor2,"prototype")
-
+			ui.Game_ActiveTabUi:=ui.mainGui.addText("hidden x33 y28 w81 h2 background" cfg.trimColor1)
+			ui.1_GameButtonBg:=ui.mainGui.addText("x34 y0 w83 h28 background" cfg.TrimColor1)
+			ui.1_GameButton:=ui.mainGui.addText("x36 y2 w79 h28 background" cfg.TabColor1)
+			ui.2_SetupButtonBg:=ui.mainGui.addText("x117 w80 y0 h28 background" cfg.TrimColor2)
+			ui.2_SetupButton:=ui.mainGui.addText("x117 w78 y2 h28 background" cfg.TabColor2)
+			ui.1_GameButtonLabel := ui.mainGui.addText("x34 y4 w81 h26 center backgroundTrans","Game")
+			ui.1_GameButtonLabel.setFont("s14 q5 c" cfg.FontColor1,"Impact")
+			ui.2_SetupButtonLabel := ui.mainGui.addText("y4 x117 w78 h26 center backgroundTrans","Setup")
+			ui.2_SetupButtonLabel.setFont("s12 q5 c" cfg.FontColor2,"Impact")		
+			ui.Setup_ActiveTabUi:=ui.mainGui.addText("x117 y28 w78 h2 background" cfg.TrimColor1)
+			ui.1_GameButtonDetail:=ui.mainGui.addPicture("x34 y0 w83 h28 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
+			ui.1_GameButtonDetail2:=ui.mainGui.addPicture("hidden x36 y0 w81 h28 backgroundTrans","./img/custom/lightburst_bottom_bar_light.png")
+			ui.2_SetupButtonDetail:=ui.mainGui.addPicture("x117 y0 w80 h28 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")			
+			ui.2_SetupButtonDetail2:=ui.mainGui.addPicture("x117 y0 w80 h28 backgroundTrans","./img/custom/lightburst_bottom_bar_light.png")	
 
 	line(ui.mainGui,115,28,375,2,cfg.TrimColor1)
 	;line(ui.mainGui,115,0,30,2,cfg.TrimColor1,"vert")
-	ui.1_gameButtonDetail:=ui.mainGui.addPicture("x34 y0 w83 h" 13-(13-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
-	ui.2_setupButtonDetail2:=ui.mainGui.addPicture("x117 y0 w80 h" 13-(13-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
+	; ui.1_gameButtonDetail:=ui.mainGui.addPicture("x34 y0 w83 h" 13-(13-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_light.png")
+	; ui.2_setupButtonDetail2:=ui.mainGui.addPicture("x117 y0 w80 h" 13-(13-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_light.png")
 
 
 	ui.3_FillOutline.onEvent("click",WM_LBUTTONDOWN_callback)
@@ -241,12 +210,11 @@ advProgress(2)
 	ui.DownButton.OnEvent("Click",guiHide)
 	ui.downButtonbg.onEvent("click",guiHide)
 	ui.ExitButtonDetail 	:= ui.mainGui.AddPicture("x470 y0 w94 h" 26-(13-cfg.curveAmount) " BackgroundTrans","./img/custom/lightburst_top_bar_dark.png")	
-	;ui.ExitButtonBorder 	:= ui.mainGui.AddText("x470 y0 w64 h30 Background" cfg.TrimColor1,"")
+	
 	guiHide(*) {
 		ui.mainGui.hide()
 		ui.gameSettingsGui.hide()
 		ui.gameTabGui.hide()
-		
 	}
 	
 	advProgress(2)
@@ -328,7 +296,7 @@ isFading(*) {
 fadeIn() {
 	if (cfg.AnimationsEnabled) {
 		ui.isFading := true
-		winGetPos(&mainGuiX,&mainGuiY,,,ui.mainGui)
+		;winGetPos(&mainGuiX,&mainGuiY,,,ui.mainGui)
 		transparency := 0
 		switch ui.mainGuiTabs.text {
 			case "1_Game____":
@@ -359,84 +327,8 @@ ui.mainGuiTabs.useTab("")
 
 exitButtonPushed(this_button,*) {
 	exitApp
-	if !keyWait("LButton","T.450") {
-		exitMenuShow(this_button)
-		keyWait("LButton")
-		mouseGetPos(,,,&ctrlUnderMouse,2)
-		winGetPos(&menuX,&menuY,,&menuH,ui.exitMenuGui.hwnd)
-		switch ctrlUnderMouse {
-			case ui.startGamingButton.hwnd:
-				loop 69 {
-					ui.exitMenuGui.move(menuX,menuY+a_index,,menuH-a_index)
-				}
-					ui.exitMenuGui.destroy()
-					startGaming()
-			case ui.stopGamingButton.hwnd:
-				loop 69 {
-					ui.exitMenuGui.move(menuX,menuY+a_index,,menuH-a_index)	
-				}
-				ui.exitMenuGui.destroy()
-				stopGaming()
-			case ui.exitButton.hwnd:
-					loop 69 {
-						ui.exitMenuGui.move(menuX,menuY+a_index,,menuH-a_index)
-					}
-					ui.exitMenuGui.destroy()
-					exitApp()
-			default: 
-					loop 69 {
-						ui.exitMenuGui.move(menuX,menuY+a_index,,menuH-a_index)
-					}
-					ui.exitMenuGui.destroy()
-			}
-		} else {
-			mouseGetPos(,,,&ctrlUnderMouse,2)
-			winGetPos(&menuX,&menuY,,&menuH,ui.exitMenuGui.hwnd)	
-			switch ctrlUnderMouse {
-				case ui.startGamingButton.hwnd:
-					loop 69 {
-						ui.exitMenuGui.move(menuX,menuY+a_index,,menuH-a_index)
-					}
-					ui.exitMenuGui.destroy()
-					startGaming()
-				case ui.stopGamingButton.hwnd:
-					loop 69 {
-						ui.exitMenuGui.move(menuX,menuY+a_index,,menuH-a_index)
-					}
-					ui.exitMenuGui.destroy()
-					stopGaming()
-				case ui.exitButton.hwnd:
-					loop 69 {
-						ui.exitMenuGui.move(menuX,menuY+a_index,,menuH-a_index)
-					}
-					ui.exitMenuGui.destroy()
-					exitApp()
-				default: 
-					loop 69 {
-						ui.exitMenuGui.move(menuX,menuY+a_index,,menuH-a_index)
-					}
-					ui.exitMenuGui.destroy()
-			}
-		}
 } 
 
-; drawLinks(guiName:=ui.mainGui,linkArr:=["DIM"]) {
-		; linkW:=40
-		; linkH:=40
-		; linkBgColor:=cfg.TrimColor2
-		; for link in linkArr {
-; guiName.addText("x5 y5 w" linkW " h" linkH " background" linkbaseColor )}
-	
-; }
-
-stopGaming(*) {
-	winCloseAll("Gaming Mode")
-	exitApp()
-}
-
-startGaming(*) {
-	applyWinPos("Gaming Mode")
-}
 
 quickOSD()
 quickOSD(*) {
@@ -484,59 +376,6 @@ saveGuiPos(*) {
 	IniWrite(cfg.GuiY,cfg.file,"Interface","GuiY")
 	debugLog("Saving Window Location at x" GuiX " y" GuiY)
 }
-
-showGui(*) {
-	ui.mainGui.move(cfg.GuiX,cfg.GuiY)	
-	debugLog("Showing Interface")
-}
-
-; toggleConsole(*) {
-	; Global
-	; if (cfg.ConsoleVisible == false)
-	; {
-		; cfg.ConsoleVisible := true
-		
-		; ui.ButtonDebug.Value := "./Img/button_console_on.png"
-		; ui.ButtonDebug.Opt("Background" cfg.OnColor)
-		; ui.buttonHandlebarDebug.value := "./img/button_console_on.png"
-		; ui.buttonHandlebarDebug.opt("background" cfg.OnColor)
-		; if (cfg.AnimationsEnabled) {
-		; GuiH := 214	
-			; While (GuiH < 395)
-			; {
-				; GuiH += 10
-				; ui.mainGui.move(,,,GuiH) 
-				; Sleep(10)
-			; }
-		; }
-		; GuiH := 430
-		; ui.mainGui.Move(,,,GuiH)
-		; winGetPos(&GuiX,&GuiY,&GuiW,&GuiH,ui.mainGui)
-		;MsgBox(GuiX "`n" GuiY "`n" GuiW "`n" GuiH)
-		; debugLog("Showing Log")
-	; } else {
-		; cfg.ConsoleVisible := false
-		; ui.ButtonDebug.Value := "./Img/button_console_ready.png"
-		; ui.ButtonDebug.Opt("Background" cfg.OffColor)
-		; ui.buttonHandlebarDebug.value := "./img/button_console_ready.png"
-		; ui.buttonHandlebarDebug.opt("background" cfg.OffColor)
-
-		; winGetPos(&GuiX,&GuiY,&GuiW,&GuiH,ui.mainGui)
-		; if (cfg.AnimationsEnabled) {
-			; While (GuiH > 225)
-			; {
-				; GuiH -= 10
-				; ui.MainGui.move(,,,GuiH)
-				; Sleep(10)
-			; }
-		; }
-		; GuiH := 214
-		; ui.MainGui.move(,,,GuiH)
-		; debugLog("Hiding Log")
-	; }
-		; }
-
-
 
 initConsole(&ui) {
 	ui.gvMonitorSelectGui := Gui()

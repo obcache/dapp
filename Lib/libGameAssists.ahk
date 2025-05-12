@@ -112,10 +112,11 @@ d2reload(*) {
 }	
 
 d2HoldToCrouch(*) {
-	ui.dappHoldToCrouchKeyData.opt("c" cfg.AlertColor)
+	ui.dappHoldToCrouchKeyData.setFont("c" cfg.AlertColor)
 	send("{" cfg.d2gameHoldToCrouchKey " down}")
 	keywait(cfg.dappHoldToCrouchKey)
-	ui.dappHoldToCrouchKeyData.opt("c" cfg.OffColor)
+	ui.dappHoldToCrouchKeyData.setFont("c" cfg.OffColor)
+	ui.dappHoldToCrouchKeyData.redraw()
 	send("{" cfg.d2gameHoldToCrouchKey " Up}")
 }
 

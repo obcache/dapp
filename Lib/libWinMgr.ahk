@@ -17,24 +17,13 @@ WM_WINDOWPOSCHANGED(wParam, lParam, msg, Hwnd) {
 
 collateGuis(hwnd := ui.mainGui.hwnd) {
 	; msgBox(vaultTopGui.hwnd "`n" hwnd)
-	winGetPos(&tmpX,&tmpY,,,ui.mainGui)
-	cfg.guiX:=tmpX
-	cfg.guiY:=tmpY
+
 
 	if hwnd == ui.mainGui.hwnd {
-		ui.gameTabGui.move((cfg.guiX+34)*(A_ScreenDPI/96),(cfg.guiY+183)*(A_ScreenDPI/96))
-		ui.gameSettingsGui.move((cfg.guiX+34)*(A_ScreenDPI/96),(cfg.guiY+30)*(A_ScreenDPI/96))
-					;ui.gameSettingsLinkGui.move((mainGuiX+35+12)*(A_ScreenDPI/96),(mainGuiY+35+79)*(A_ScreenDPI/96))
-			
-			; case ui.infoGui.hwnd:
-					; winGetPos(&tmpX,&tmpY,,,ui.infoGui)
-					; ui.infoGuiBg.move(tmpX,tmpY)
-			
-			; case ui.pbConsoleBg.hwnd:
-				; winGetPos(&winX,&winY,,,ui.pbConsoleBg.hwnd)
-				; ui.pbConsole.move(winX,winY)
-			
-		}
+		winGetPos(&tmpX,&tmpY,,,ui.mainGui)
+		ui.gameTabGui.move((tmpX+34)*(A_ScreenDPI/96),(tmpY+183)*(A_ScreenDPI/96))
+		ui.gameSettingsGui.move((tmpX+34)*(A_ScreenDPI/96),(tmpY+30)*(A_ScreenDPI/96))
+	}
 				if hwnd == vaultTopGui.hwnd {
 				winGetPos(&tX,&tY,,,vaultTopGui)
 				winMove(tx+0,ty+30,,,"ahk_exe destiny2.exe")

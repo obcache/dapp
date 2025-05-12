@@ -9,6 +9,15 @@ if (InStr(A_LineFile,A_ScriptFullPath)){
 }
 
 restoreWin(*) {
+	
+		ui.mainGui.show("x" cfg.guiX " y" cfg.guiY)
+		ui.gameTabGui.move((cfg.guiX+34)*(A_ScreenDPI/96),(cfg.guiY+183)*(A_ScreenDPI/96))
+		ui.gameSettingsGui.move((cfg.guiY+34)*(A_ScreenDPI/96),(cfg.guiY+30)*(A_ScreenDPI/96))
+		guiVis(ui.mainGui,true)
+		if cfg.activeMainTab == "Game" {
+			guiVis(ui.gameTabGui,true)
+			guiVis(ui.gameSettingsGui,true)
+		}
 }
 
 hideGui(*) {
@@ -126,8 +135,8 @@ cfgLoad(&cfg, &ui) {
 	cfg.AlwaysOnTopEnabled		:= IniRead(cfg.file,"Interface","AlwaysOnTopEnabled",true)
 	cfg.AnimationsEnabled		:= IniRead(cfg.file,"Interface","AnimationsEnabled",true)
 	cfg.ColorPickerEnabled 		:= IniRead(cfg.file,"Interface","ColorPickerEnabled",true)
-	cfg.GuiX 					:= IniRead(cfg.file,"Interface","GuiX",PrimaryWorkAreaLeft + 200)
-	cfg.GuiY 					:= IniRead(cfg.file,"Interface","GuiY",PrimaryWorkAreaTop + 200)
+	cfg.GuiX 					:= IniRead(cfg.file,"Interface","GuiX",200)
+	cfg.GuiY 					:= IniRead(cfg.file,"Interface","GuiY",200)
 	cfg.GuiW					:= IniRead(cfg.file,"Interface","GuiW",545)
 	cfg.GuiH					:= IniRead(cfg.file,"Interface","GuiH",210)
 	cfg.pushNotificationsEnabled := iniRead(cfg.file,"Toggles","PushNotificationsEnabled",false)
@@ -253,18 +262,11 @@ WriteConfig() {
 	iniWrite(arr2str(cfg.d2LoadoutCoords%a_screenWidth%x%a_screenHeight%),cfg.file,"Game","d2LoadoutCoords" a_screenWidth "x" a_screenHeight)		
 
 	IniWrite(arr2str(cfg.mainTabList),cfg.file,"Interface","MainTabList")
-	try {
-		winGetPos(&guiX,&guiY,,,ui.mainGui.hwnd)
-		cfg.guiX := guiX
-		cfg.guiY := GuiY
-	} catch {
-		cfg.GuiX := 200
-		cfg.GuiY := 200
-	}
+;msgBox(cfg.guiX "`t" cfg.guiY)
 	
-
-	IniWrite(cfg.GuiX,cfg.file,"Interface","GuiX")
-	IniWrite(cfg.GuiY,cfg.file,"Interface","GuiY")
+	winGetPos(&tmpX,&tmpY,,,ui.mainGui)
+	IniWrite(tmpX,cfg.file,"Interface","GuiX")
+	IniWrite(tmpY,cfg.file,"Interface","GuiY")
 	IniWrite(cfg.toggleOn,cfg.file,"Interface","ToggleOnImage")
 	IniWrite(cfg.toggleOff,cfg.file,"Interface","ToggleOffImage")
 	IniWrite(cfg.AlwaysOnTopEnabled,cfg.file,"Interface","AlwaysOnTopEnabled")
@@ -275,33 +277,33 @@ WriteConfig() {
 }
 
 adjustPos(*) {
-	cfg.guiX := iniRead(cfg.file,"interface","GuiX",200)
-	cfg.guiY := iniRead(cfg.file,"interface","GuiY",200)
-	lowestHorz := 0
-	highestHorz := 0
-	lowestVert :=0
-	highestVert := 0
-	loop monitorGetCount() {
-		monitorGet(a_index,&ml,&mt,&mr,&mb)
-		if lowestHorz > ml
-			lowestHorz := ml
-		if highestHorz < mr
-			highestHorz := mr
-		if lowestVert > mt
-			lowestVert := mt
-		if highestVert < mb
-			highestVert := mb
-	}		
-	if (cfg.GuiX < lowestHorz) || (cfg.guiX+550 > highestHorz) {
-		cfg.GuiX := 200
-		cfg.GuiY := 200
-	}
-	if (cfg.GuiY < lowestVert) || (cfg.guiY+220 > highestVert) {
-		cfg.GuiX := 200
-		cfg.GuiY := 200
-	}
-	iniWrite(cfg.GuiX,cfg.file,"interface","GuiX")
-	iniWrite(cfg.GuiY,cfg.file,"interface","GuiY")
+	; cfg.guiX := iniRead(cfg.file,"Interface","GuiX",200)
+	; cfg.guiY := iniRead(cfg.file,"Interface","GuiY",200)
+	; lowestHorz := 0
+	; highestHorz := 0
+	; lowestVert :=0
+	; highestVert := 0
+	; loop monitorGetCount() {
+		; monitorGet(a_index,&ml,&mt,&mr,&mb)
+		; if lowestHorz > ml
+			; lowestHorz := ml
+		; if highestHorz < mr
+			; highestHorz := mr
+		; if lowestVert > mt
+			; lowestVert := mt
+		; if highestVert < mb
+			; highestVert := mb
+	; }		
+	; if (cfg.GuiX < lowestHorz) || (cfg.guiX+550 > highestHorz) {
+		; cfg.GuiX := 200
+		; cfg.GuiY := 200
+	; }
+	; if (cfg.GuiY < lowestVert) || (cfg.guiY+220 > highestVert) {
+		; cfg.GuiX := 200
+		; cfg.GuiY := 200
+	; }
+	; iniWrite(cfg.GuiX,cfg.file,"Interface","GuiX")
+	; iniWrite(cfg.GuiY,cfg.file,"Interface","GuiY")
 }
 
 runApp(appName) {
@@ -451,17 +453,17 @@ loadScreen(visible := true,NotifyMsg := "dapp Loading",Duration := 10) {
 		ui.loadScreenGui			:= Gui()
 		ui.loadScreenGui.Title 		:= "dapp Loading"
 		ui.loadScreenGui.Opt("+AlwaysOnTop -Caption +ToolWindow")  ; +ToolWindow avoids a taskbar button and an alt-tab menu item.
-		ui.loadScreenGui.BackColor := "c0c0c0" ; Can be any RGB color (it will be made transparent below).
+		ui.loadScreenGui.BackColor := cfg.outlineColor2 ; Can be any RGB color (it will be made transparent below).
 		ui.loadScreenGui.setFont("q5 s22")  ; Set a large font size (32-point).
-		ui.loadScreenGui.addText("section x1 y1 w238 h92 background353535")
+		ui.loadScreenGui.addText("section x1 y1 w238 h92 background" cfg.outlineColor1)
 		ui.loadScreenGui.addPicture("y1 x2 w237 h92 backgroundTrans","./img/dapp_logo.png")
-		ui.loadingProgress := ui.loadScreenGui.addProgress("smooth x2 y94 w236 h21 caaaaaa background353535")
+		ui.loadingProgress := ui.loadScreenGui.addProgress("smooth x2 y94 w236 h21 c" cfg.trimColor2 " background" cfg.offColor)
 		ui.loadScreenGui.AddText("xs hidden")
-		tmpX := iniRead(cfg.file,"Interface","GuiX",200)
-		tmpY := iniRead(cfg.file,"Interface","GuiY",200)
+		cfg.guiX := iniRead(cfg.file,"Interface","GuiX",200)
+		cfg.guiY := iniRead(cfg.file,"Interface","GuiY",200)
 		winGetPos(&x,&y,&w,&h,ui.loadScreenGui.hwnd)
 		winSetTransparent(0,ui.loadScreenGui)
-		ui.loadScreenGui.show("w240 h116 x" (tmpX+100)-(w/2) " y" (tmpY+50)-(h/2))
+		ui.loadScreenGui.show("w240 h116 x" (cfg.guiX+100)-(w/2) " y" (cfg.guiY+50)-(h/2))
 		while transparent < 245 {
 			winSetTransparent(transparent,ui.loadScreenGui.hwnd)
 			transparent += 8
@@ -523,14 +525,6 @@ exitFunc(ExitReason,ExitCode) {
 		}
 	}
 
-	winGetPos(&winX,&winY,,,ui.mainGui.hwnd)
-	cfg.guiX := winX
-	cfg.guiY := winY
-	try {
-		guiVis(ui.gameSettingsGui,false)
-		guiVis(ui.mainGui,false)
-		guiVis(ui.gameTabGui,false)
-	}
 	WriteConfig()
 }
 
