@@ -35,7 +35,7 @@ GuiSetupTab(&ui,&cfg) {
 	ui.AutoClickerSpeedSlider.ToolTip := "AutoClicker Speed"
 	ui.AutoClickerSpeedSlider.OnEvent("Change",AutoClickerSpeedChanged)
 	
-	ui.MainGui.setFont("q5 s10 c" cfg.FontColor1)
+	ui.MainGui.setFont("q5 s10 c" cfg.FontColor4)
 	drawOutlineMainGui(34,28,497,200,cfg.DisabledColor,cfg.DisabledColor,2)
 	ui.mainGui.addText("hidden section x48 y21")
 	cfg.toolTipsEnabled			:= iniRead(cfg.file,"Toggles","ToolTipsEnabled",true)
@@ -175,20 +175,20 @@ GuiSetupTab(&ui,&cfg) {
 	;drawOutlineNamed("toggleBlock",ui.mainGui,47,43,50,157,cfg.TrimColor2,cfg.TrimColor2,1)
 	;drawOutlineNamed("toggleBlock",ui.mainGui,48,42,50,157,cfg.OutlineColor2,cfg.OutlineColor2,1)
 	
-	ui.mainGui.addText("x270 y45 w198 h62 background" cfg.titleBgColor)
-	ui.mainGui.addText("x271 y46 w196 h60 background" cfg.OutlineColor2)
-	ui.mainGui.addText("x272 y47 w194 h58 background" cfg.OutlineColor1)
-	ui.mainGui.addText("x273 y48 w192 h56 background" cfg.titleBgColor)
+	ui.mainGui.addText("x270 y45 w198 h62 background" cfg.trimColor1)
+	ui.mainGui.addText("x271 y46 w196 h60 background" cfg.trimColor2)
+	ui.mainGui.addText("x272 y47 w194 h58 background" cfg.tabColor2)
+	ui.mainGui.addText("x273 y48 w192 h56 background" cfg.tabColor1)
 	;line(ui.mainGui,0,36,155,2,cfg.DisabledColor)
 
-	ui.checkForUpdatesLabel := ui.mainGui.addtext("x280 y46 w200 h30 section backgroundTrans c" cfg.FontColor3,"Check For Updates")
+	ui.checkForUpdatesLabel := ui.mainGui.addtext("x280 y46 w200 h30 section backgroundTrans c" cfg.fontColor4,"Check For Updates")
 	ui.checkForUpdatesLabel.setFont("q5 s12","move-x")
-	ui.checkForUpdatesButton := ui.mainGui.addPicture("xs+10 y+-7 w30 h30 section background" cfg.OnColor,"./img/button_update.png")
+	ui.checkForUpdatesButton := ui.mainGui.addPicture("xs+10 y+-7 w30 h30 section background" cfg.alertColor,"./img/button_update.png")
 	ui.checkForUpdatesButton.onEvent("Click",checkForUpdates)
 	ui.checkForUpdatesButton.Tooltip := "Checks to see if a more recent version is available"	
-	ui.installedVersionText := ui.mainGui.addText("ys-1 x+17 section w140 h19 backgroundTrans c" cfg.FontColor3 ,"Installed:`t" substr(a_fileVersion,1,1) "." subStr(a_fileVersion,2,1) "." subStr(a_fileVersion,3,1) "." subStr(a_fileVersion,4,1))
+	ui.installedVersionText := ui.mainGui.addText("ys-1 x+17 section w140 h19 backgroundTrans c" cfg.alertColor ,"Installed:`t" substr(a_fileVersion,1,1) "." subStr(a_fileVersion,2,1) "." subStr(a_fileVersion,3,1) "." subStr(a_fileVersion,4,1))
 	ui.installedVersionText.setFont(,"Calibri")
-	ui.latestVersionText := ui.mainGui.addText("xs y+-4 w140 backgroundTrans c" cfg.FontColor3,"Available:`t#.#.#.#")
+	ui.latestVersionText := ui.mainGui.addText("xs y+-4 w140 backgroundTrans c" cfg.alertColor,"Available:`t#.#.#.#")
 	ui.latestVersionText.setFont(,"Calibri")
 	ui.monitorResList := ["1920x1080","1920x1200","2560x1440","3440x1440","Custom"]
 	ui.mainGui.setFont(,"calibri")
@@ -200,7 +200,7 @@ GuiSetupTab(&ui,&cfg) {
 	ui.monitorResLabel.setFont("q5 s9")
 	ui.monitorResLabel2.setFont("q5 s9")
 	ui.monitorAutoLabel := ui.mainGui.addText("x+-28 y+-12 w25 h12 section c" cfg.FontColor1 " backgroundTrans","Auto")
-	ui.monitorAutoLabel.setFont("q5 s8")
+	ui.monitorAutoLabel.setFont("q5 s8 c" cfg.fontColor1)
 	ui.monitorAuto := ui.mainGui.addCheckbox("x+-18 y+-28 w15 h15",cfg.displaySizeAuto)
 	ui.monitorAuto.onEvent("Click",toggleAutoDisplaySize)
 
@@ -208,7 +208,7 @@ GuiSetupTab(&ui,&cfg) {
 	ui.macroSpeed := ui.mainGui.addText("x+7 y+-15 w35 h16 center border section")
 	ui.macroSpeed := ui.mainGui.addUpDown("vMacroSpeed range1-10",cfg.dappLoadoutMultiplier)
 	ui.macroSpeedLabel := ui.mainGui.addText("x+-31 ys+16 w30 backgroundTrans","Delay")
-	ui.macroSpeedLabel.setFont("q5 s8")
+	ui.macroSpeedLabel.setFont("q5 s8 c" cfg.fontColor1)
 	ui.macroSpeed.onEvent("change",macroSpeedChanged)
 	ui.installedVersionText.setFont("q5 s10")
 	ui.latestVersionText.setFont("q5 s10")

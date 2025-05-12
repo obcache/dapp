@@ -263,6 +263,11 @@ d2changeKeybindPanelTab(panelNum := 2) {
 			,ui.keybindSpacer6Detail
 			,ui.keybindSpacer7Detail
 			,ui.keybindSpacer8Detail
+			,ui.keybindSpacer60
+			,ui.keybindSpacer61
+			,ui.keybindSpacer62
+			,ui.keybindSpacer61Detail
+			,ui.keybindSpacer60Detail
 			,ui.dappPauseKey
 			,ui.dappPauseKeyData
 			,ui.dappPauseKeyLabel
@@ -484,8 +489,12 @@ drawKeybindBar(*) {
 	ui.keybindSpacer2Detail	:= ui.gameSettingsGui.addPicture("x112 y2 w4 h54 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 	ui.keybindSpacer3Detail	:= ui.gameSettingsGui.addPicture("x390 y16 w4 h40 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
 	ui.keybindSpacer4Detail	:= ui.gameSettingsGui.addPicture("x390 y2 w4 h54 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
-	ui.keybindSpacer5Detail	:= ui.gameSettingsGui.addPicture("x439 y16 w4 h40 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
-	ui.keybindSpacer6Detail	:= ui.gameSettingsGui.addPicture("x439 y2 w4 h54 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+	ui.keybindSpacer5Detail	:= ui.gameSettingsGui.addPicture("x439 y16 w4 h40 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")	
+	ui.keybindSpacer60			:= ui.gameSettingsGui.addText("x44 y16 w1 h40 background" cfg.trimColor1)		
+	ui.keybindSpacer61			:= ui.gameSettingsGui.addText("x45 y16 w2 h40 background" cfg.TabColor2)		
+	ui.keybindSpacer62			:= ui.gameSettingsGui.addText("x47 y16 w1 h40 background" cfg.TrimColor1)	
+	ui.keybindSpacer60Detail	:= ui.gameSettingsGui.addPicture("x44 y2 w4 h54 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+	ui.keybindSpacer61Detail	:= ui.gameSettingsGui.addPicture("x44 y16 w4 h40 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")	ui.keybindSpacer6Detail	:= ui.gameSettingsGui.addPicture("x439 y2 w4 h54 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 	ui.keybindSpacer7Detail	:= ui.gameSettingsGui.addPicture("x478 y16 w4 h40 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
 	ui.keybindSpacer8Detail	:= ui.gameSettingsGui.addPicture("x478 y2 w4 h54 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 

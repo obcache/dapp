@@ -9,26 +9,13 @@ if (InStr(A_LineFile,A_ScriptFullPath)){
 }
 
 restoreWin(*) {
-	
-		ui.mainGui.show("x" cfg.guiX " y" cfg.guiY)
-		ui.gameTabGui.move((cfg.guiX+34)*(A_ScreenDPI/96),(cfg.guiY+183)*(A_ScreenDPI/96))
-		ui.gameSettingsGui.move((cfg.guiY+34)*(A_ScreenDPI/96),(cfg.guiY+30)*(A_ScreenDPI/96))
-		guiVis(ui.mainGui,true)
-		if cfg.activeMainTab == "Game" {
-			guiVis(ui.gameTabGui,true)
-			guiVis(ui.gameSettingsGui,true)
-		}
+	ui.maingui.show()
+	if ui.mainGuiTabs.value==1 {
+		ui.gameSettingsGui.show()
+		ui.gameTabGui.show()
+	}
 }
 
-hideGui(*) {
-	winGetPos(&GuiX,&GuiY,,,ui.MainGui.hwnd)
-	cfg.guix := guiX
-	cfg.guiy := guiy
-	;ui.mainGui.opt("toolWindow")
-	guiVis(ui.mainGui,false)
-	guiVis(ui.gameSettingsGui,false)
-	guiVis(ui.gameTabGui,false)
-}
 resetDefaults(*) {
 	iniWrite(true,cfg.file,"Game","ResetFlag")
 	reload()
@@ -45,11 +32,17 @@ checkResetFlag(*) {
 	}
 }
 
+guiHide(*) {
+	ui.mainGui.hide()
+	ui.gameSettingsGui.hide()
+	ui.gameTabGui.hide()
+}
+
 initTrayMenu(*) {
 	A_TrayMenu.Delete
 	A_TrayMenu.Add
 	A_TrayMenu.Add("Show Window", restoreWin)
-	A_TrayMenu.Add("Hide Window", HideGui)
+	A_TrayMenu.Add("Hide Window", guiHide)
 	A_TrayMenu.Add()
 	A_TrayMenu.Add("Reset Window Position", ResetWindowPosition)
 	A_TrayMenu.Add("Restore Defaults", resetDefaults)
@@ -453,11 +446,11 @@ loadScreen(visible := true,NotifyMsg := "dapp Loading",Duration := 10) {
 		ui.loadScreenGui			:= Gui()
 		ui.loadScreenGui.Title 		:= "dapp Loading"
 		ui.loadScreenGui.Opt("+AlwaysOnTop -Caption +ToolWindow")  ; +ToolWindow avoids a taskbar button and an alt-tab menu item.
-		ui.loadScreenGui.BackColor := cfg.outlineColor2 ; Can be any RGB color (it will be made transparent below).
+		ui.loadScreenGui.BackColor := cfg.tabColor1 ; Can be any RGB color (it will be made transparent below).
 		ui.loadScreenGui.setFont("q5 s22")  ; Set a large font size (32-point).
-		ui.loadScreenGui.addText("section x1 y1 w238 h92 background" cfg.outlineColor1)
+		ui.loadScreenGui.addText("section x1 y1 w238 h92 background" cfg.tabColor1)
 		ui.loadScreenGui.addPicture("y1 x2 w237 h92 backgroundTrans","./img/dapp_logo.png")
-		ui.loadingProgress := ui.loadScreenGui.addProgress("smooth x2 y94 w236 h21 c" cfg.trimColor2 " background" cfg.offColor)
+		ui.loadingProgress := ui.loadScreenGui.addProgress("smooth x2 y94 w236 h21 c" cfg.trimColor1 " background" cfg.trimColor2)
 		ui.loadScreenGui.AddText("xs hidden")
 		cfg.guiX := iniRead(cfg.file,"Interface","GuiX",200)
 		cfg.guiY := iniRead(cfg.file,"Interface","GuiY",200)
