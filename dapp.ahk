@@ -1,4 +1,4 @@
-A_FileVersion := "1.7.1.5"
+A_FileVersion := "1.7.1.6"
 a_appName := "dapp"
 if (fileExist("./dapp_currentBuild.dat"))
 	a_fileVersion := fileRead("./dapp_currentBuild.dat")
@@ -169,3 +169,6 @@ autoUpdate()
 d2AutoGameConfigOverride()
 ui.isActiveWindow:=""
 
+sbUpdate("Application Version Current")
+sleep(2500)
+sbUpdate("Ready...")

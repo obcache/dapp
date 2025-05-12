@@ -180,8 +180,13 @@ drawGameTabs(tabNum := 1) {
 	ui.gameTabSpacerDetail2.onEvent("click",WM_LBUTTONDOWN_callback)
 	ui.gameTabSpacerDetail:=ui.gameTabGui.addPicture("y" 31-cfg.curveAmount " x240 w" 490-240 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 	ui.gameTabSpacerDetail.onEvent("click",WM_LBUTTONDOWN_callback)
+	ui.statusBarText:=ui.gameTabGui.addText("x246 y7 w240 h26 backgroundTrans")
+	ui.statusBarText.text:="     "
+	ui.statusBarText.setFont("s10 q1 c" cfg.titleFontColor,"Prototype")
 	ui.buildNumber:=ui.gameTabGui.addText("x298 y12 w160 h29 right backgroundTrans","v" a_fileVersion)
 	ui.buildNumber.setFont("q5 s10 c" cfg.titleFontColor,"Move-X")
+
+
 
 	if !(mainGuiX==0 && mainGuiY==0) {
 		ui.gameTabGui.show("w498 h32 noActivate x" mainGuiX+34 " y" mainGuiY+183)
@@ -379,6 +384,10 @@ MouseRemap(*) {
  
  ; XButton2::LAlt
  ; #hotIf
+
+sbUpdate(msg) {
+	ui.statusBarText.text:=(msg)		
+}
 
 
 isGameActive(*) {

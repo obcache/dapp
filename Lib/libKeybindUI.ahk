@@ -134,8 +134,8 @@ d2keybindAppTabClicked(*) {
 	guiName := ui.gameSettingsGui
 	ui.d2KeyBindHelpMsg.text := "     Assign keys you'd like to use for each function"
 	
-	ui.d2keybindAppTab1.move(		280,56,62,13)
-	ui.d2keybindAppTab2.move(		281,53,60,15)
+	ui.d2keybindAppTab1.move(		280,56,62,14)
+	ui.d2keybindAppTab2.move(		281,53,60,16)
 	ui.d2keybindAppTab3.move(		281,54,62,16)
 	ui.d2keybindAppTabDetail.move(	281,47,60,21)
 	ui.d2keybindAppTab3.setFont("s10 c" cfg.FontColor1,"bold")
@@ -170,7 +170,7 @@ d2keybindGameTabClicked(*) {
 
 	ui.d2keybindGameTab1.move(		341,55,92,14)
 	ui.d2keybindGameTab2.move(		342,53,90,14)
-	ui.d2keybindGameTab3.move(		341,54,92,17)
+	ui.d2keybindGameTab3.move(		341,53,92,17)
 	ui.d2keybindGameTabDetail.move(	342,47,90,21)
 	ui.d2keybindGameTab1.opt("background" cfg.TrimColor1)
 	ui.d2keybindGameTab2.opt("background" cfg.TabColor1)

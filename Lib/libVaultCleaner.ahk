@@ -399,7 +399,7 @@ cleanVaultStart(*) {
 			this.page-=1
 			this.pageCount.text:=format("{:03d}",this.page)
 			sleep(600)
-
+			
 	}
 	this.statusText.text:="Operation Complete"
 	stopCleaning()
