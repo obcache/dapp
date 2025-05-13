@@ -48,11 +48,11 @@ GuiGameTab() {
 	ui.d2TopPanelOutline:=ui.gameSettingsGui.addText("x8 y8 w480 h66 background" cfg.AuxColor1)
 	ui.d2TopPanelBg:=ui.gameSettingsGui.addText("x9 y9 w478 h65 background" cfg.TabColor2)
 	ui.d2TopPanelDetail1:=ui.gameSettingsGui.addPicture("x9 y8 w478 h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_light.png")
-	ui.d2TopPanelDetail2:=ui.gameSettingsGui.addPicture("x9 y" 8+(65-cfg.curveAmount) " w478 h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+	ui.d2TopPanelDetail2:=ui.gameSettingsGui.addPicture("x9 y" 9+(65-cfg.curveAmount) " w478 h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 	ui.bottomPanelOutline:=ui.gameSettingsGui.addText("x8 y82 w480 h62 background" cfg.AuxColor1)
 	ui.bottomPanelBg:=ui.gameSettingsGui.addText("x9 y83 w478 h61 background" cfg.TabColor2)
 	ui.bottomPanelDetail2:=ui.gameSettingsGui.addPicture("x9 y81 w478 h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_light.png")
-	ui.bottomPanelDetail2:=ui.gameSettingsGui.addPicture("x9 y" 83+(60-cfg.curveAmount) " w478 h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+	ui.bottomPanelDetail2:=ui.gameSettingsGui.addPicture("x9 y" 84+(60-cfg.curveAmount) " w478 h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 
 	drawKeybindBar()
 	drawLinkBar()
@@ -311,7 +311,6 @@ refreshGameTabs(tabNum := 1) {
 	ui.gameTabDetail3:=ui.gameTabGui.addPicture(((tabNum==2) ? "-hidden " : "hidden ") "x0 y" 2 " w108 h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
 	ui.gameTabDetail4:=ui.gameTabGui.addPicture(((tabNum==1) ? "-hidden " : "hidden ") "x110 y" 2 " w130 h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")	 
 	
-
 	ui.gameTab1SkinOutline.redraw()
 	ui.gameTab1Skin.redraw()
 	ui.gameTab1Label.redraw()
@@ -325,9 +324,6 @@ refreshGameTabs(tabNum := 1) {
 	ui.gameTabDetail2.redraw()
 	ui.gameTabDetail3.redraw()
 	ui.gameTabDetail4.redraw()
-
-	
-
 }
 
 

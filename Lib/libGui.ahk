@@ -209,7 +209,7 @@ advProgress(2)
 
 	ui.DownButton.OnEvent("Click",guiHide)
 	ui.downButtonbg.onEvent("click",guiHide)
-	ui.ExitButtonDetail 	:= ui.mainGui.AddPicture("x470 y0 w94 h" cfg.curveAmount " BackgroundTrans","./img/custom/lightburst_top_bar_light.png")	
+	ui.ExitButtonDetail 	:= ui.mainGui.AddPicture("x470 y0 w94 h" cfg.curveAmount " BackgroundTrans","./img/custom/lightburst_top_bar_dark.png")	
 	ui.ExitButtonDetail2 	:= ui.mainGui.AddPicture("x470 y" 28-cfg.curveAmount " w94 h" cfg.curveAmount " BackgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")	
 	
 	guiHide(*) {
