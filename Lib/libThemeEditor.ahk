@@ -141,7 +141,7 @@ ui.curveSliderLabel:=ui.themeEditorGui.addText("x120 y167 w70 h14 background" cf
 ui.curveSliderLabel.setFont("s10 q5 c" cfg.fontColor2,"Prototype")
 ui.curveSliderBuddy:=ui.themeEditorGui.addText("x15 y167 w22 h16 background" cfg.tabColor2 " vCurveSliderBuddy c" cfg.AuxColor2,cfg.curveAmount)
 ui.curveSliderBuddy.setFont("s10 q5 c" cfg.FontColor2,"Calibri")
-ui.curveSlider:=ui.themeEditorGui.addSlider("x32 y169 w80 h14 range0-30 center NoTicks ToolTipTop buddyCurveSliderBuddy vcurveSlider",cfg.curveAmount)
+ui.curveSlider:=ui.themeEditorGui.addSlider("x32 y169 w80 h14 range5-30 center NoTicks ToolTipTop buddyCurveSliderBuddy vcurveSlider",cfg.curveAmount)
 ui.curveSlider.onEvent("change",changeCurve)
 ui.curveSlider.focus()
 

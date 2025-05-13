@@ -147,7 +147,7 @@ d2keybindAppTabClicked(*) {
 	ui.d2keybindGameTab2.move(		342,57,90,11)
 	ui.d2keybindGameTab3.move(		342,55,90,17)
 	ui.d2keybindGameTabDetail.move(	342,49,89,18)
-	ui.d2keybindGameTab3.setFont("s8 q5 c" cfg.FontColor2,"thin")
+	ui.d2keybindGameTab3.setFont("s8 q5 c" cfg.FontColor4,"thin")
 	ui.d2keybindGameTab1.opt("background" cfg.TrimColor2)
 	ui.d2keybindGameTab2.opt("background" cfg.TileColor) 
 	ui.d2Panel1Tab1Detail1.value:="./img/custom/lightburst_top_bar_dark.png"
@@ -165,7 +165,7 @@ d2keybindGameTabClicked(*) {
 	ui.d2keybindAppTabDetail.move(	283,43,60,23)
 	ui.d2keybindAppTab1.opt("background" cfg.TrimColor2)
 	ui.d2keybindAppTab2.opt("background" cfg.TileColor) 
-	ui.d2keybindAppTab3.setFont("s8 q5 c" cfg.FontColor2,"thin")
+	ui.d2keybindAppTab3.setFont("s8 q5 c" cfg.FontColor4,"thin")
 	ui.d2Panel1Tab2Detail1.value:="./img/custom/lightburst_top_bar_dark.png"
 
 	ui.d2keybindGameTab1.move(		341,55,92,14)
@@ -460,8 +460,8 @@ drawKeybindBar(*) {
 
 	ui.d2ClassSelectBg3			:= ui.gameSettingsGui.addText("hidden x441 y42 w37 h14 background" cfg.auxColor2)
 	ui.d2ClassIcon				:= ui.gameSettingsGui.addPicture("x441 y16 w-1 h28 center backgroundTrans","")
-	ui.d2ClassIconDown			:= ui.gameSettingsGui.addText("x444 y43 w20 h12 center backgroundTrans c" cfg.OutlineColor2,"←")
-	ui.d2ClassIconUp			:= ui.gameSettingsGui.addText("x459 y43 w20 h12 center backgroundTrans c" cfg.OutlineColor2,"→")
+	ui.d2ClassIconDown			:= ui.gameSettingsGui.addText("x444 y42 w20 h12 center backgroundTrans c" cfg.OutlineColor2,"←")
+	ui.d2ClassIconUp			:= ui.gameSettingsGui.addText("x459 y42 w20 h12 center backgroundTrans c" cfg.OutlineColor2,"→")
 	ui.d2ClassSelectBgLine2		:= ui.gameSettingsGui.addText("hidden x442 y41 w38 h1 background" cfg.TrimColor1)
 	ui.d2ClassSelectBgLine1		:= ui.gameSettingsGui.addText("hidden x442 y35 w0 h0 background" cfg.TrimColor1)
 
