@@ -210,7 +210,7 @@ WriteConfig() {
 
 
 	iniWrite(cfg.pushNotificationsEnabled,cfg.file,"Toggles","PushNotificationsEnabled")
-	IniWrite(ui.themeDDL.text,cfg.file,"Interface","Theme")
+	IniWrite(cfg.theme,cfg.file,"Interface","Theme")
 	IniWrite(arr2str(cfg.themeList),cfg.themeFile,"Interface","ThemeList")
 	iniWrite(cfg.curveAmount,cfg.themeFile,cfg.theme,"CurveAmount")
 	IniWrite(cfg.titleFontColor,cfg.themeFile,"Custom","titleFontColor")
