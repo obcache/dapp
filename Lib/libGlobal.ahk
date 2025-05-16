@@ -88,7 +88,7 @@ cfgLoad(&cfg, &ui) {
 	ui.waitingForPrompt			:= true
 	ui.notifyResponse			:= false
 	ui.fastShutdown				:= false
-
+	ui.wizPanelGuids:=array()
 	ui.themeEditorVisible		:= false
 	cfg.forcedTooltipControls	:= "Win1,Win2,Win3"
 	this2:=object()
@@ -145,7 +145,7 @@ cfgLoad(&cfg, &ui) {
 	cfg.FontColor1			:= IniRead(cfg.themeFile,cfg.Theme,"FontColor1","1FFFF0")
 	cfg.FontColor2			:= IniRead(cfg.themeFile,cfg.Theme,"FontColor2","FBD58E")
 	cfg.FontColor3			:= IniRead(cfg.themeFile,cfg.Theme,"FontColor3","1FFFF0")
-	cfg.FontColor4			:= IniRead(cfg.themeFile,cfg.Theme,"FontColor4","FBD58E")
+	cfg.tab3FontColor			:= IniRead(cfg.themeFile,cfg.Theme,"tab3FontColor","FBD58E")
 	cfg.titleFontColor		:= IniRead(cfg.themeFile,cfg.Theme,"titleFontColor","C0C0C0")
 	cfg.DisabledColor		:= IniRead(cfg.themeFile,cfg.Theme,"DisabledColor","FFFFFF")
 	cfg.TrimColor2			:= IniRead(cfg.themeFile,cfg.Theme,"TrimColor2","C0C0C0")
@@ -223,7 +223,7 @@ WriteConfig() {
 	IniWrite(cfg.FontColor1,cfg.themeFile,"Custom","FontColor1")
 	IniWrite(cfg.FontColor2,cfg.themeFile,"Custom","FontColor2")
 	IniWrite(cfg.FontColor3,cfg.themeFile,"Custom","FontColor3")
-	IniWrite(cfg.FontColor4,cfg.themeFile,"Custom","FontColor4")
+	IniWrite(cfg.tab3FontColor,cfg.themeFile,"Custom","tab3FontColor")
 	IniWrite(cfg.TabColor2,cfg.themeFile,"Custom","TabColor2")
 	IniWrite(cfg.titleBgColor,cfg.themeFile,"Custom","titleBgColor")
 	IniWrite(cfg.TabColor1,cfg.themeFile,"Custom","TabColor1")
@@ -446,11 +446,11 @@ loadScreen(visible := true,NotifyMsg := "dapp Loading",Duration := 10) {
 		ui.loadScreenGui			:= Gui()
 		ui.loadScreenGui.Title 		:= "dapp Loading"
 		ui.loadScreenGui.Opt("+AlwaysOnTop -Caption +ToolWindow")  ; +ToolWindow avoids a taskbar button and an alt-tab menu item.
-		ui.loadScreenGui.BackColor := cfg.tabColor1 ; Can be any RGB color (it will be made transparent below).
+		ui.loadScreenGui.BackColor := cfg.trimColor2 ; Can be any RGB color (it will be made transparent below).
 		ui.loadScreenGui.setFont("q5 s22")  ; Set a large font size (32-point).
-		ui.loadScreenGui.addText("section x1 y1 w238 h92 background" cfg.tabColor1)
+		ui.loadScreenGui.addText("section x1 y1 w238 h92 background" cfg.trimColor2)
 		ui.loadScreenGui.addPicture("y1 x2 w237 h92 backgroundTrans","./img/dapp_logo.png")
-		ui.loadingProgress := ui.loadScreenGui.addProgress("smooth x2 y94 w236 h21 c" cfg.trimColor1 " background" cfg.trimColor2)
+		ui.loadingProgress := ui.loadScreenGui.addProgress("smooth x2 y94 w236 h21 c" cfg.alertColor " background" cfg.tabColor2)
 		ui.loadScreenGui.AddText("xs hidden")
 		cfg.guiX := iniRead(cfg.file,"Interface","GuiX",200)
 		cfg.guiY := iniRead(cfg.file,"Interface","GuiY",200)

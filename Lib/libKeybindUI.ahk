@@ -137,7 +137,8 @@ d2keybindAppTabClicked(*) {
 	ui.d2keybindAppTab1.move(		280,56,62,14)
 	ui.d2keybindAppTab2.move(		281,53,60,16)
 	ui.d2keybindAppTab3.move(		281,54,62,16)
-	ui.d2keybindAppTabDetail.move(	281,47,60,21)
+;	ui.d2keybindAppTabDetail.move(	281,47,60,21)
+	ui.d2keybindAppTabDetail.opt("hidden")
 	ui.d2keybindAppTab3.setFont("s10 c" cfg.FontColor1,"bold")
 	ui.d2keybindAppTab1.opt("background" cfg.TrimColor1)
 	ui.d2keybindAppTab2.opt("background" cfg.TabColor1)
@@ -145,11 +146,12 @@ d2keybindAppTabClicked(*) {
 	
 	ui.d2keybindGameTab1.move(		342,58,92,14)
 	ui.d2keybindGameTab2.move(		342,57,90,11)
-	ui.d2keybindGameTab3.move(		342,55,90,17)
-	ui.d2keybindGameTabDetail.move(	342,49,89,18)
-	ui.d2keybindGameTab3.setFont("s8 q5 c" cfg.FontColor4,"thin")
+	ui.d2keybindGameTab3.move(		342,56,90,17)
+	ui.d2keybindGameTabDetail.opt("-hidden")
+	ui.d2keybindGameTabDetail.move(	342,57,89,12)
+	ui.d2keybindGameTab3.setFont("s8 q5 c" cfg.tab3FontColor,"thin")
 	ui.d2keybindGameTab1.opt("background" cfg.TrimColor2)
-	ui.d2keybindGameTab2.opt("background" cfg.TileColor) 
+	ui.d2keybindGameTab2.opt("background" cfg.tabcolor3) 
 	ui.d2Panel1Tab1Detail1.value:="./img/custom/lightburst_top_bar_dark.png"
 	d2changeKeybindPanelTab(2)
 }
@@ -162,16 +164,17 @@ d2keybindGameTabClicked(*) {
 	ui.d2keybindAppTab1.move(		280,56,62,13)
 	ui.d2keybindAppTab2.move(		282,55,60,12)
 	ui.d2keybindAppTab3.move(		282,54,62,14)
-	ui.d2keybindAppTabDetail.move(	283,43,60,23)
+	ui.d2keybindAppTabDetail.opt("-hidden")
+	ui.d2keybindAppTabDetail.move(	283,55,60,12)
 	ui.d2keybindAppTab1.opt("background" cfg.TrimColor2)
-	ui.d2keybindAppTab2.opt("background" cfg.TileColor) 
-	ui.d2keybindAppTab3.setFont("s8 q5 c" cfg.FontColor4,"thin")
+	ui.d2keybindAppTab2.opt("background" cfg.tabColor3) 
+	ui.d2keybindAppTab3.setFont("s8 q5 c" cfg.tab3FontColor,"thin")
 	ui.d2Panel1Tab2Detail1.value:="./img/custom/lightburst_top_bar_dark.png"
 
 	ui.d2keybindGameTab1.move(		341,55,92,14)
-	ui.d2keybindGameTab2.move(		342,53,90,14)
+	ui.d2keybindGameTab2.move(		342,53,90,15)
 	ui.d2keybindGameTab3.move(		341,53,92,17)
-	ui.d2keybindGameTabDetail.move(	342,47,90,21)
+	ui.d2keybindGameTabDetail.opt("hidden")
 	ui.d2keybindGameTab1.opt("background" cfg.TrimColor1)
 	ui.d2keybindGameTab2.opt("background" cfg.TabColor1)
 	ui.d2keybindGameTab3.setFont("s10 c" cfg.FontColor1,"bold")
@@ -197,7 +200,7 @@ d2keybindGameTabClicked(*) {
 		; labelH := 30
 		; ui.d2keybindAppTab1.opt("background" cfg.OutlineColor2)
 		; ui.d2keybindAppTab2.opt("background" cfg.TabColor2) 
-		; ui.d2keybindAppTab3.setFont("s10 c" cfg.FontColor2,"thin")
+			; ui.d2keybindAppTab3.setFont("s10 c" cfg.FontColor2,"thin")
 		; ui.d2keybindAppTab1.move(280,labelY+7,70,15)
 		; ui.d2keybindAppTab2.move(281,labelY+7,65,14)
 		; ui.d2keybindAppTab3.move(280,labelY+6,,16)
@@ -234,7 +237,7 @@ d2changeKeybindPanelTab(panelNum := 2) {
 			,ui.dappReloadKey
 			,ui.dappReloadKeyData
 			,ui.dappReloadKeyLabel
-			,ui.d2ClassSelectBgLine
+			,ui.d2ClassSelectBgLine1
 			,ui.d2ClassSelectBgLine2
 			,ui.d2ClassSelectBg
 			; ,ui.d2ClassSelectBg2
@@ -387,7 +390,7 @@ drawKeybindBar(*) {
 	ui.d2Panel1Tab1Bg4 		:= ui.gameSettingsGui.addText("hidden x47 y18 w432 h36 background" cfg.titleBgColor,"")
 	ui.d2keybindAppTab1 := guiName.addText(			"x" 280 " y" 69 " w" 66 " h" 16 " background" cfg.trimColor1)
 	ui.d2keybindAppTab2 := guiName.addText(			"x" 281 " y" 69 " w" 64 " h" 18 " background" cfg.tabColor1) 
-	ui.d2keybindAppTabDetail := guiName.addPicture(	"x" 281 " y" 69 " w" 64 " h" 12 " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png") 
+	ui.d2keybindAppTabDetail := guiName.addPicture(	"x" 281 " y" 69 " w" 64 " h" 12 " backgroundTrans","./img/custom/lightburst_top_bar_dark.png") 
 	ui.d2keybindAppTab3 := guiName.addText(			"x" 281 " y" 69 " w" 64 " h" 18 " backgroundTrans center", "Keybinds") 
 	ui.d2keybindAppTab3.setFont("s10 q5 c" cfg.fontColor1,"Bold")
 
@@ -399,7 +402,7 @@ drawKeybindBar(*) {
 	ui.d2Panel1Tab2Bg4 		:= ui.gameSettingsGui.addText("hidden x22 y16 w432 h36 background" cfg.OffColor,"")
 	ui.d2keybindGameTab1 	:= guiName.addText(		"x" 346 " y" 67 " w" 92 " h" 18 " background" cfg.trimColor2)
 	ui.d2keybindGameTab2 := guiName.addText(		"x" 350 " y" 54 " w" 76 " h" 19 " background" cfg.tabColor3) 
-	ui.d2keybindGameTabDetail := guiName.addPicture("x" 350 " y" 54 " w" 78 " h" 13 " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png") 
+	ui.d2keybindGameTabDetail := guiName.addPicture("x" 350 " y" 54 " w" 78 " h" 13 " backgroundTrans","./img/custom/lightburst_top_bar_dark.png") 
 	ui.d2keybindGameTab3 := guiName.addText(		"x" 345 " y" 53 " w" 92 " h" 19 " backgroundTrans center", "Game Settings") 
 	ui.d2keybindGameTab3.setFont("s8 q5 c" cfg.FontColor3,"Medium")
 
@@ -458,15 +461,15 @@ drawKeybindBar(*) {
 	ui.d2ClassSelectOutline2	:= ui.gameSettingsGui.addText("x441 y17 w40 h37 background" cfg.TileColor)
 	ui.d2ClassSelectBg			:= ui.gameSettingsGui.addText("x442 y18 w36 h38 background" cfg.AuxColor2)
 
-	ui.d2ClassSelectBg3			:= ui.gameSettingsGui.addText("hidden x441 y42 w37 h14 background" cfg.auxColor2)
+	ui.d2ClassSelectBg3			:= ui.gameSettingsGui.addText("hidden x441 y41 w37 h15 background" cfg.tabColor1)
 	ui.d2ClassIcon				:= ui.gameSettingsGui.addPicture("x441 y16 w-1 h28 center backgroundTrans","")
-	ui.d2ClassIconDown			:= ui.gameSettingsGui.addText("x444 y42 w20 h12 center backgroundTrans c" cfg.OutlineColor2,"←")
-	ui.d2ClassIconUp			:= ui.gameSettingsGui.addText("x459 y42 w20 h12 center backgroundTrans c" cfg.OutlineColor2,"→")
-	ui.d2ClassSelectBgLine2		:= ui.gameSettingsGui.addText("hidden x442 y41 w38 h1 background" cfg.TrimColor1)
-	ui.d2ClassSelectBgLine1		:= ui.gameSettingsGui.addText("hidden x442 y35 w0 h0 background" cfg.TrimColor1)
+	ui.d2ClassIconDown			:= ui.gameSettingsGui.addText("x443 y41 w20 h11 center backgroundTrans c" cfg.fontColor1,"←")
+	ui.d2ClassIconUp			:= ui.gameSettingsGui.addText("x460 y41 w20 h11 center backgroundTrans c" cfg.fontColor1,"→")
+	ui.d2ClassSelectBgLine2		:= ui.gameSettingsGui.addText("hidden x442 y40 w38 h1 background" cfg.TrimColor1)
+	ui.d2ClassSelectBgLine1		:= ui.gameSettingsGui.addText("hidden x461 y41 w1 h14 background" cfg.TrimColor1)
 
 	
-	ui.d2ClassSelectBgLine		:= ui.gameSettingsGui.addText("hidden x442 y16 w0 h0 background" cfg.OutlineColor1)
+	ui.d2ClassSelectBgLine		:= ui.gameSettingsGui.addText("hidden x442 y16 w0 h0 background" cfg.trimColor1)
 	;ui.d2ClassSelectBgLine1		:= ui.gameSettingsGui.addText("hidden x442 y14 w0 h0 background" cfg.OutlineColor1)
 
 	ui.d2ClassSelectDetail 		:= ui.gameSettingsGui.addPicture("x441 y42 w39 h14 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
@@ -1100,7 +1103,7 @@ toggleMapBrowser(*) {
 
 drawLinkBar(*) {
 	static xPos:=21
-	static yPos:=90
+	static yPos:=88
 	
 	cfg.button_link_1:=["DIM","URL","https://app.destinyitemmanager.com","./img/button_DIM.png","Launches DIM in browser"]
 	cfg.button_link_2:=["Join","Function","toggleFireteam","./img/ft_icon.png","Unbound, click to assign"]
@@ -1137,12 +1140,12 @@ drawLinkBar(*) {
 		ui.button_link_%a_index%.type:=cfg.button_link_%a_index%[2]
 		ui.button_link_%a_index%.action:=cfg.button_link_%a_index%[3]
 		ui.button_link_%a_index%.thumb:=cfg.button_link_%a_index%[4]
-		ui.button_link_%a_index%.bg:=ui.gameSettingsGui.addPicture("x" xPos+3 " y" yPos+1 " w" cfg.button_link_size-3 " h-1 vbutton_link_" a_index " background" cfg.tileColor,ui.button_link_%a_index%.thumb)
+		ui.button_link_%a_index%.bg:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos+1 " w" cfg.button_link_size " h-1 vbutton_link_" a_index " background" cfg.tileColor,ui.button_link_%a_index%.thumb)
 		ui.button_link_%a_index%.fx:=ui.gameSettingsGui.addPicture("x" xPos " y" yPos+1 " w" cfg.button_link_size " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
-		ui.button_link_%a_index%.fx2:=ui.gameSettingsGui.addPicture("x" xPos " y" yPos+1 " w" cfg.curveAmount " h" cfg.button_link_size-2 " backgroundTrans","./img/custom/lightburst_left_bar_dark.png")
+		ui.button_link_%a_index%.fx2:=ui.gameSettingsGui.addPicture("x" xPos " y" yPos+1 " w" cfg.curveAmount " h" cfg.button_link_size-1 " backgroundTrans","./img/custom/lightburst_left_bar_dark.png")
 		;ui.button_link_%a_index%.fx2:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos+(cfg.button_link_size-cfg.curveAmount) " w" cfg.button_link_size-1 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
-		ui.button_link_%a_index%.down:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos+1 " w" cfg.button_link_size-1 " h" cfg.button_link_size-1 " hidden backgroundTrans","./img/button_down_layer.png")
-		drawOutlineNamed("button_link_" a_index "_outline",ui.gameSettingsGui,xPos,yPos,cfg.button_link_size+1,cfg.button_link_size-1,cfg.OutlineColor1,cfg.OutlineColor2,1)
+		ui.button_link_%a_index%.down:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos+1 " w" cfg.button_link_size-1 " h" cfg.button_link_size " hidden backgroundTrans","./img/button_down_layer.png")
+		drawOutlineNamed("button_link_" a_index "_outline",ui.gameSettingsGui,xPos,yPos,cfg.button_link_size+1,cfg.button_link_size+1,cfg.OutlineColor1,cfg.OutlineColor2,1)
 		;drawOutline(ui.gameSettingsGui,xPos+1,yPos+1,cfg.button_link_size-1,cfg.button_link_size-1,cfg.titleTrimColor,cfg.titleFontColor,1)
 
 		this_action:=cfg.button_link_%a_index%[3]
@@ -1162,7 +1165,7 @@ drawLinkBar(*) {
 		run("chrome.exe " cfg.%this_Url.name%[3])
 	}
 	
-	static xPos:=51
+	static xPos:=50
 	static yPos:=86
 	loop 8 {
 		(ui.button_link_%a_index%.thumb=="./img/d2_button_unbound.png")

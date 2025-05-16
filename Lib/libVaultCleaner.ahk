@@ -16,36 +16,36 @@ ui.gametabs.useTab("Vault Cleaner")
 	ui.gameSettingsGui.addText("x5 y3 w488 h146 background" cfg.TabColor1)
 	;drawOutlineNamed("vaultStats",ui.gameSettingsGui,5,4,488,150,cfg.OutlineColor1,cfg.OutlineColor1,1)
 	;ui.gameSettingsGui.addText("x11 y8 w118 h60 background" cfg.TileColor)
-	buttonBg:=ui.gameSettingsGui.addText("x9 y8 w66 h22 background" cfg.TabColor1)
-	textBg:=ui.gameSettingsGui.addText("x75 y8 w412 h22 background" cfg.TabColor1)
-	ui.gameSettingsGui.addPicture("x50 y30 w500 h10 backgroundTrans","./img/custom/lightburst_top_light.png")
+	buttonBg:=ui.gameSettingsGui.addText("x9 y8 w66 h20 background" cfg.TabColor1)
+	textBg:=ui.gameSettingsGui.addText("x75 y8 w412 h20 background" cfg.TabColor1)
+	;ui.gameSettingsGui.addPicture("x50 y30 w500 h10 backgroundTrans","./img/custom/lightburst_top_light.png")
 	;ui.gameSettingsGui.addPicture("x10 y30 w476 h22 backgroundTrans","./img/custom/lightburst_top_light.png")
 	;drawOutline(ui.gameSettingsGui,10,9,478,64,cfg.TrimColor1,cfg.TrimColor1,2)
-	ui.gameSettingsGui.setFont("s10 c" cfg.fontColor4)
-	this.mainButton:=ui.gameSettingsGui.addPicture("section center x10 y10 w75 h20 background" cfg.TabColor2 " c" cfg.fontColor3,"./img/custom/lightburst_top_bar_light.png")
-	this.mainButtonTextBg1:=ui.gameSettingsGui.addPicture("x10 y10 w480 h20 backgroundTrans","./img/custom/lightburst_top_bar_light.png")	
+	ui.gameSettingsGui.setFont("s10 c" cfg.fontColor2)
+	this.mainButton:=ui.gameSettingsGui.addPicture("hidden section center x10 y10 w75 h20 background" cfg.TabColor2 " c" cfg.fontColor2,"./img/custom/lightburst_top_bar_light.png")
+	this.mainButtonTextBg1:=ui.gameSettingsGui.addPicture("hidden x10 y10 w480 h20 backgroundTrans","./img/custom/lightburst_top_bar_light.png")	
 	;this.mainButtonTextBg:=ui.gameSettingsGui.addPicture("x85 y10 w200 h20 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 	;this.mainButtonTextBg1:=ui.gameSettingsGui.addPicture("x10 y10 w480 h20 backgroundTrans","./img/custom/lightburst_top_bar_light.png")
-	this.mainButtonBg:=ui.gameSettingsGui.addPicture("x10 y10 w85 h20 backgroundTrans","./img/custom/lightburst_br_light.png")
-	this.mainButtonText:=ui.gameSettingsGui.addText("section center x10 y9 w74 h20 backgroundTrans","Start")
+	this.mainButtonBg:=ui.gameSettingsGui.addPicture("hidden x10 y10 w85 h20 backgroundTrans","./img/custom/lightburst_br_light.png")
+	this.mainButtonText:=ui.gameSettingsGui.addText("hidden section center x10 y9 w74 h20 backgroundTrans","Start")
 	this.mainButtonText.setFont("s12 q5 c" cfg.fontColor3,"move-x")
 	
-	this.mainButtonHotkey:=ui.gameSettingsGui.addPicture("hidden left x36 y10 background" cfg.tabColor2 " c" cfg.fontColor3 " h20 w72")
-	this.mainButtonHotkeyDetail1:=ui.gameSettingsGui.addPicture("left x10 y10 backgroundTrans h20 w480","./img/custom/lightburst_bottom_bar_dark.png")
+	this.mainButtonHotkey:=ui.gameSettingsGui.addPicture("hidden hidden left x36 y10 background" cfg.tabColor2 " c" cfg.fontColor2 " h20 w72")
+	this.mainButtonHotkeyDetail1:=ui.gameSettingsGui.addPicture("hidden left x10 y10 backgroundTrans h20 w480","./img/custom/lightburst_bottom_bar_dark.png")
 	; this.mainButtonHotkeyDetail2:=ui.gameSettingsGui.addPicture("left x10 y10 backgroundTrans h20 w243","./img/custom/lightburst_tl_light.png")
 	;this.mainButtonHotkeyDetail1:=ui.gameSettingsGui.addPicture("left x245 y10 backgroundTrans h20 w243","./img/custom/lightburst_bottom_bar_dark.png")
 	; this.mainButtonHotkeyDetail2:=ui.gameSettingsGui.addPicture("left x245 y10 backgroundTrans h20 w243","./img/custom/lightburst_tr_light.png")
 
-	this.mainButtonHotkeyText:=ui.gameSettingsGui.addText("left x91 y9 backgroundTrans c" cfg.fontColor3 " h20 w280","Press [Del] to START")
+	this.mainButtonHotkeyText:=ui.gameSettingsGui.addText("hidden left x91 y9 backgroundTrans c" cfg.fontColor2 " h20 w280","Press [Del] to START")
 	;this.mainButtonHotkeyTextDetail:=ui.gameSettingsGui.addPicture("left x200 y18 backgroundTrans h14 w300","./img/custom/lightburst_bottom_light.png")
 	;this.mainButtonHotkeyTextDetail:=ui.gameSettingsGui.addPicture("left x200 y18 backgroundTrans h14 w300","./img/custom/lightburst_bottom_light.png")
 	this.mainButtonHotkeyText.setFont("s12 q5 c" cfg.fontColor3,"move-x")
 	this.mainButton.onEvent("click",cleanVaultStart)
 	this.mainButtonText.onEvent("click",cleanVaultStart)
-	ui.gameSettingsGui.setFont("s12 c" cfg.fontColor4)
-	this.statusTextBg:=ui.gameSettingsGui.addText("x10 y30 w480 h22 background" cfg.tabColor2,"")
-	this.statusText:=ui.gameSettingsGui.addText("x20 y31 w470 h22 backgroundTrans","Toggle VAULT MODE to enable START button")
-	this.statusText.setFont("s12 c" cfg.fontColor4,"move-x")
+	ui.gameSettingsGui.setFont("s12 c" cfg.tab3FontColor)
+	this.statusTextBg:=ui.gameSettingsGui.addText("hidden x10 y30 w480 h22 background" cfg.tabColor2,"")
+	this.statusText:=ui.gameSettingsGui.addText("hidden x20 y31 w470 h22 backgroundTrans","Toggle VAULT MODE to enable START button")
+	this.statusText.setFont("s12 c" cfg.tab3FontColor,"move-x")
 	; this.statusTextDetail:=ui.gameSettingsGui.addPicture("x20 y30 w468 h22 backgroundTrans","./img/custom/lightburst_tr_light.png")
 	; this.statusTextDetail2:=ui.gameSettingsGui.addPicture("x20 y30 w468 h22 backgroundTrans","./img/custom/lightburst_br_light.png")
 	; this.statusTextDetail3:=ui.gameSettingsGui.addPicture("x10 y30 w468 h22 backgroundTrans","./img/custom/lightburst_tl_light.png")
@@ -53,53 +53,199 @@ ui.gametabs.useTab("Vault Cleaner")
 
 
 
-	this.statBg:=ui.gameSettingsGui.addText("x10 y78 w239 h64 background" cfg.TabColor1)
+	this.statBg:=ui.gameSettingsGui.addText("hidden x10 y78 w239 h64 background" cfg.TabColor2)
 
 	this.statBg.onEvent("click",toggleVaultMode)
 	this.statBg2:=ui.gameSettingsGui.addPicture("hidden x240 y84 w200 h66 background" cfg.tabColor2)
-	ui.gameSettingsGui.addText("x245 y78 w245 h66 background" cfg.tabColor2 " c" cfg.fontColor3)
-	ui.gameSettingsGui.addText("x10 y78 w242 h66 background" cfg.tabColor2,"")
-	ui.gameSettingsGui.addPicture("x10 y" 78+(66-cfg.curveAmount) " w480 h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
-	ui.gameSettingsGui.addPicture("x10 y" 78 " w480 h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_light.png")
-	drawOutlineNamed("vaultStats2",ui.gameSettingsGui,242,78,249,66,cfg.TrimColor1,cfg.TrimColor1,1)
-	ui.gameSettingsGui.setFont("s9 q5","prototype")
-	this.pageLabel:=ui.gameSettingsGui.addText("right section x370 y87 w80 h25 backgroundTrans c" cfg.fontColor4 "","Page: ")
-	this.pageCount:=ui.gameSettingsGui.addText("x420 ys+1 right w56 h25 c" cfg.fontColor4 " backgroundTrans",format("{:03d}",this.page))
-	this.elapsedLabel:=ui.gameSettingsGui.addText("section x340 y102 w80 right h25 c" cfg.fontColor4 " backgroundTrans","Elapsed: ")
-	this.elapsedTime:=ui.gameSettingsGui.addText("x420 ys+0 left w80 h25 c" cfg.fontColor4 " backgroundTrans","00:00:00")
-	this.remaining:=ui.gameSettingsGui.addText("section x340 y116 right w80 h25 c" cfg.fontColor4 " backgroundTrans","Remaining: ")
-	this.remainingtime:=ui.gameSettingsGui.addText("x420 ys+0 left w80 h25 c" cfg.fontColor4 " backgroundTrans","00:00:00") 
+	ui.gameSettingsGui.addText("hidden x245 y78 w245 h66 background" cfg.tabColor2 " c" cfg.fontColor2)
+	ui.gameSettingsGui.addText("hidden x10 y78 w242 h66 background" cfg.tabColor2,"")
+	ui.gameSettingsGui.addPicture("hidden x10 y" 78+(66-cfg.curveAmount) " w480 h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+	ui.gameSettingsGui.addPicture("hidden x10 y" 78 " w480 h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_light.png")
+	;drawOutlineNamed("vaultStats2",ui.gameSettingsGui,242,78,249,66,cfg.TrimColor1,cfg.TrimColor1,1)
+	ui.gameSettingsGui.setFont("s9 q5 c" cfg.fontColor1,"prototype")
+	this.statBoxOutline:=ui.gameSettingsGui.addText("x244 y82 w246 h60 background" cfg.trimColor2)
+	this.statBoxBg:=ui.gameSettingsGui.addText("x247 y84 w241 h56 background" cfg.tabColor2)
+	this.pageLabel:=ui.gameSettingsGui.addText("right section x370 y88 w80 h25 backgroundTrans c" cfg.fontColor2 "","Page: ")
+	this.pageCount:=ui.gameSettingsGui.addText("x420 ys+1 right w56 h25 c" cfg.fontColor2 " backgroundTrans",format("{:03d}",this.page))
+	this.elapsedLabel:=ui.gameSettingsGui.addText("section x340 y104 w80 right h25 c" cfg.fontColor2 " backgroundTrans","Elapsed: ")
+	this.elapsedTime:=ui.gameSettingsGui.addText("x420 ys+0 left w80 h25 c" cfg.fontColor2 " backgroundTrans","00:00:00")
+	this.remaining:=ui.gameSettingsGui.addText("section x340 y119 right w80 h25 c" cfg.fontColor2 " backgroundTrans","Remaining: ")
+	this.remainingtime:=ui.gameSettingsGui.addText("x420 ys+0 left w80 h25 c" cfg.fontColor2 " backgroundTrans","00:00:00") 
 	
-	;this.dismantledHeaderLabel:=ui.gameSettingsGui.addText("x250 y0 w110 right h25 c" cfg.fontColor4 " backgroundTrans","")
-	this.dismantledLegendaryLabel:=ui.gameSettingsGui.addText("section x255 y87  left h25 c" cfg.fontColor4 " backgroundTrans","Legendary: ")
-	this.dismantledLegendary:=ui.gameSettingsGui.addText("x+0 ys+0 left w83 h25 c" cfg.fontColor4 " backgroundTrans",format("{:03d}","000"))
-	this.dismantledExoticLabel:=ui.gameSettingsGui.addText("section x255 y102 left h25 c" cfg.fontColor4 " backgroundTrans","Exotic: ")
-	this.dismantledExotics:=ui.gameSettingsGui.addText("x+0 ys+0 left w80 h25 c" cfg.fontColor4 " backgroundTrans",format("{:03d}","000"))
-	this.dismantledTotalLabel:=ui.gameSettingsGui.addText("section x255 y116 left h25 c" cfg.fontColor4 " backgroundTrans","Total: ")
-	this.dismantledTotal:=ui.gameSettingsGui.addText("x+0 ys+0 left w80 h25 c" cfg.fontColor4 " backgroundTrans",format("{:03d}","000"))
+	;this.dismantledHeaderLabel:=ui.gameSettingsGui.addText("x250 y0 w110 right h25 c" cfg.tab3FontColor " backgroundTrans","")
+	this.dismantledLegendaryLabel:=ui.gameSettingsGui.addText("section x255 y88  left h25 c" cfg.fontColor2 " backgroundTrans","Legendary: ")
+	this.dismantledLegendary:=ui.gameSettingsGui.addText("x+0 ys+0 left w83 h25 c" cfg.fontColor2 " backgroundTrans",format("{:03d}","000"))
+	this.dismantledExoticLabel:=ui.gameSettingsGui.addText("section x255 y104 left h25 c" cfg.fontColor2 " backgroundTrans","Exotic: ")
+	this.dismantledExotics:=ui.gameSettingsGui.addText("x+0 ys+0 left w80 h25 c" cfg.fontColor2 " backgroundTrans",format("{:03d}","000"))
+	this.dismantledTotalLabel:=ui.gameSettingsGui.addText("section x255 y119 left h25 c" cfg.fontColor2 " backgroundTrans","Total: ")
+	this.dismantledTotal:=ui.gameSettingsGui.addText("x+0 ys+0 left w80 h25 c" cfg.fontColor2 " backgroundTrans",format("{:03d}","000"))
 	
-	this.vaultProgressLabelBg:=ui.gameSettingsGui.addText("x10 y52 w96 h20 background" cfg.TabColor2,"")
+	this.vaultProgressLabelBg:=ui.gameSettingsGui.addText("x9 y60 w96 h20 background" cfg.TabColor2,"")
 
-	this.vaultProgress := ui.gameSettingsGui.addProgress("x106 y52 w384 h20 c" cfg.AuxColor1 " background" cfg.TabColor1 " range1-500")
+	this.vaultProgress := ui.gameSettingsGui.addProgress("x106 y62 w384 h20 c" cfg.fontColor2 " background" cfg.TabColor2 " range1-500")
 	; this.vaultDetail:=ui.gameSettingsGui.addPicture("x10 y52 w398 h" min(20,cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
-	this.vaultDetail2:=ui.gameSettingsGui.addPicture("x200 y" 52+20-min(20,cfg.curveAmount) " w292 h" min(20,cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_br_light.png")
-	this.completeMsg := ui.gameSettingsGui.addText("hidden x33 y61 w500 h30 backgroundTrans c" cfg.fontColor4 "","")
+	this.vaultDetail2:=ui.gameSettingsGui.addPicture("hidden x200 y" 60+20-min(20,cfg.curveAmount) " w292 h" min(20,cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_br_light.png")
+	this.completeMsg := ui.gameSettingsGui.addText("hidden x33 y61 w500 h30 backgroundTrans c" cfg.fontColor2 "","")
 	
-	this.statBgDetail:=ui.gameSettingsGui.addPicture("x10 y52 w480 h20 backgroundTrans","./img/custom/lightburst_bottom_bar_light.png")
-	this.statBgDetail2:=ui.gameSettingsGui.addPicture("x10 y52 w480 h20 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
+	this.statBgDetail:=ui.gameSettingsGui.addPicture("hidden x10 y60 w480 h20 backgroundTrans","./img/custom/lightburst_bottom_bar_light.png")
+	this.statBgDetail2:=ui.gameSettingsGui.addPicture("hidden x10 y80 w480 h20 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
+	this.statBgDetail3:=ui.gameSettingsGui.addPicture("hidden x10 y80 w6 h66 backgroundTrans","./img/custom/lightburst_left_bar_dark.png")
 	;drawOutlineNamed("vaultCleanerButton",ui.gameSettingsGui,10,79,234,65,cfg.OutlineColor1,cfg.OutlineColor1,1)
 	;drawOutlineNamed("vaultCleanerButton",ui.gameSettingsGui,247,79,243,64,cfg.TrimColor2,cfg.TrimColor1,4)
-	drawOutlineNamed("vaultStats",ui.gameSettingsGui,9,78,482,66,cfg.OutlineColor1,cfg.OutlineColor1,1)
-	drawOutlineNamed("vaultStats",ui.gameSettingsGui,9,9,482,64,cfg.OutlineColor1,cfg.OutlineColor1,1)
+	drawOutlineNamed("vaultStats",ui.gameSettingsGui,9,80,481,64,cfg.trimColor2,cfg.trimColor2,1)
+	;drawOutlineNamed("vaultStats",ui.gameSettingsGui,9,9,482,64,cfg.OutlineColor1,cfg.OutlineColor1,1)
 	
 	;this.vaultProgressLabelBg2:=ui.gameSettingsGui.addPicture("x10 y52 w96 h20 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
-	this.d2LaunchVaultCleanerButton := ui.gameSettingsGui.addPicture("x9 y76 w70 h70 backgroundTrans","./img/button_vault_up.png")
+	this.d2LaunchVaultCleanerButton := ui.gameSettingsGui.addPicture("hidden x9 y76 w70 h70 backgroundTrans","./img/button_vault_up.png")
 	this.d2LaunchVaultCleanerButton.onEvent("click",toggleVaultMode)
-	this.d2LaunchVaultCleanerText:=ui.gameSettingsGui.addText("x65 y85 w180 h50 center backgroundTrans c" cfg.fontColor4,'Vault Mode: Off`nClick to Toggle.')
-	this.d2LaunchVaultCleanerText.setFont("s14 c" cfg.fontColor4 " bold","Prototype")
-	this.vaultProgressLabel:=ui.gameSettingsGui.addText("x18 y54 w110 h20 backgroundTrans c" cfg.fontColor4,"Progress")
-	this.vaultProgressLabel.setFont("s10 c" cfg.fontColor3,"move-x")
-	drawOutlineNamed("vaultOutline",ui.gameSettingsGui,7,8,484,136,cfg.trimColor2,cfg.trimColor2,2)
+	this.d2LaunchVaultCleanerText:=ui.gameSettingsGui.addText("hidden x65 y85 w180 h50 center backgroundTrans c" cfg.fontColor2,'Vault Mode: Off`nClick to Toggle.')
+	this.d2LaunchVaultCleanerText.setFont("s14 c" cfg.fontColor2 " bold","Prototype")
+	this.vaultProgressLabel:=ui.gameSettingsGui.addText("x16 y62 w110 h16 backgroundTrans c" cfg.fontColor2,"Progress")
+	this.vaultProgressLabel.setFont("s10 c" cfg.fontColor2,"move-x")
+	drawOutlineNamed("vaultOutline",ui.gameSettingsGui,7,8,484,136,cfg.trimColor2,cfg.trimColor2,1)
+	
+	; this.vaultStepOutline
+	; this.vaultStepBg
+	; this.vaultStepText
+	; this.vaultStepText2
+	; this.vaultStepButton
+	
+	wizPanelParams:=[ui.gameSettingsGui,1,"Lock all items you wish to keep.",'Use DIM search: "is:unlocked" to verify items to be dismantled before proceeding.',"Next","Cancel",8,9,482,52]
+	wizPanel(wizPanelParams)
+	wizPanelParams:=[ui.gameSettingsGui,2,'Perform Manual Actions','Set Destiny 2 video mode to "Windowed Fullscreen in-game".','Next','Cancel',8,9,482,52]
+	wizPanel(wizPanelParams)
+	WizPanelParams:=[ui.gameSettingsGui,3,"Navigate to the VAULT screen in Destiny 2.",'Ensure that Destiny 2 is on the vault screen and click "Start" to begin cleaning.','Start','Cancel',8,9,482,52]
+	wizPanel(wizPanelParams)
+	
+	this.helpOutline:=ui.gameSettingsGui.addText("x" 9 " y" 82 " w" 239 " h" 60 " background" cfg.trimColor2)
+	this.helpBg:=ui.gameSettingsGui.addText("x" 10 " y" 84 " w" 238 " h" 56 " background" cfg.tabColor2)
+	this.helpText:=ui.gameSettingsGui.addText("x" 16 " y" 87 " w" 230 " h" 52 " backgroundTrans")
+	this.helpText.setFont("s10 q5 c" cfg.fontColor2,"Arial Narrow")
+	this.helpText.text:='         To avoid inconsistencies, Destiny 2`n         must be in "Windowed Fullscreen" mode. This wizard will outline the process.'
+	this.helpIcon:=ui.gameSettingsGui.addPicture("x17 y90 w20 h26 backgroundTrans","./img/icon_help.png")
+	this.helpTop:=ui.gameSettingsGui.addPicture("x" 9 " y" 82 " w" 240 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
+	this.helpBottom:=ui.gameSettingsGui.addPicture("x" 9 " y" 142-cfg.curveAmount " w" 240 " h" 60 " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+	this.helpLeft:=ui.gameSettingsGui.addPicture("x" 9 " y" 84 " w" cfg.curveAmount/3 " h" 60 " backgroundTrans","./img/custom/lightburst_left_bar_dark.png")
+	this.helpRight:=ui.gameSettingsGui.addPicture("x" 249-(cfg.curveAmount/3) " y" 84 " w" cfg.curveAmount/3 " h" 58 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")
+
+	wizPanel(wizPanelParams) {
+		this_guid:=newGuid()
+		ui.wizPanelGuids.push(this_guid)
+		
+		this_gui			:=wizPanelParams[1]
+		this_page			:=wizPanelParams[2]
+		this_text1			:=wizPanelParams[3]
+		this_text2			:=wizPanelParams[4]
+		this_buttonLabel1	:=wizPanelParams[5]
+		this_buttonLabel2	:=wizPanelParams[6]
+		this_X				:=wizPanelParams[7]
+		this_Y				:=wizPanelParams[8]
+		this_W				:=wizPanelParams[9]
+		this_H				:=wizPanelParams[10]
+		
+		ui.wizPanelOutline_%this_guid%:= this_gui.addText("x" this_X " y" this_Y " w" this_W " h" this_H " background" cfg.trimColor2)
+		ui.wizPanelBg_%this_guid%:=this_gui.addText("x" this_X+1 " y" this_Y+1 " w" this_W-2 " h" this_H-2 " background" cfg.tabColor2)
+		ui.wizPanelTextOutline_%this_guid%:=this_gui.addText("x" this_X+1 " y" this_Y+1 " w" this_W-2 " h" this_H-2 " background" cfg.trimColor2)
+
+		ui.wizPanelStepText1Bg_%this_guid%:=this_gui.addText("x" this_X+1 " y" this_Y+1 " w" 40 " h" 32 " background" cfg.tabColor2)
+		ui.wizPanelStepText2Bg_%this_guid%:=this_gui.addText("x" this_X+1 " y" this_Y+35 " w" 40 " h" 15 " background" cfg.fontColor2)
+		ui.wizPanelStepText1_%this_guid%:=this_gui.addText("center x" this_X+2 " y" this_Y+3 " w" 38 " h" 28 " backgroundTrans c" cfg.fontColor1,"1")
+		ui.wizPanelStepText1_%this_guid%.setFont("s18 c" cfg.fontColor2 " q5","Impact")
+		ui.wizPanelStepText2_%this_guid%:=this_gui.addText("center x" this_X+2 " y" this_Y+34 " w" 38 " h" 15 " backgroundTrans c" cfg.fontColor2,"Step")
+		ui.wizPanelStepText2_%this_guid%.setFont("s9 q5 c" cfg.tabColor2)
+		ui.wizPanelText1Bg_%this_guid%:=this_gui.addText("x" this_X+43 " y" this_Y+1 " w" this_W-198 " h" 17 " background" cfg.tabColor2)
+		ui.wizPanelText2Bg_%this_guid%:=this_gui.addText("x" this_X+43 " y" this_Y+20 " w" this_W-198 " h" 30 " background" cfg.tabColor1)
+		ui.wizPanelText1_%this_guid%:=this_gui.addText("x" this_X+47 " y" this_Y+2 " w" this_W-204 " h" 18 " backgroundTrans c" cfg.fontColor2,this_text1)
+		ui.wizPanelText1_%this_guid%.setFont("s10 c" cfg.fontColor2 " q5","Consolas")
+		ui.wizPanelText2_%this_guid%:=this_gui.addText("x" this_X+47 " y" this_Y+21 " w" this_W-204 " h" 29 " backgroundTrans c" cfg.fontColor2,this_text2)
+		ui.wizPanelText2_%this_guid%.setFont("s8 c" cfg.fontColor2 " q5","Consolas")
+		ui.wizPanelButtonOutline_%this_guid%:=this_gui.addText("x" this_X+this_W-153 " y" this_Y+1 " w" 86 " h" 49 " background" cfg.tabColor2)
+		ui.wizPanelButton1_%this_guid%:=this_gui.addPicture("x" (this_X+this_W)-150  " y" this_Y+2 " w" 80 " h" 24 " backgroundTrans","./img/button_next.png")
+		ui.wizPanelButton2_%this_guid%:=this_gui.addPicture("x" (this_X+this_W)-150 " y" this_Y+25 " w" 80 " h" 24 " backgroundTrans","./img/button_cancel.png")
+		ui.wizPanelButton1_%this_guid%.onEvent("click",wizNext)
+		ui.wizPanelButton2_%this_guid%.onEvent("click",wizCancel)
+		loop 3 {
+			ui.wizPanelStepBg%a_index%_%this_guid%:=this_gui.addText("right x" this_X+this_W-65 " y" this_Y+(a_index*17)-16 " w" 64 " h" 15 " background" 
+				((this_page!=a_index) ? cfg.fontColor2 : cfg.tabColor2))		
+			ui.wizPanelStep%a_index%_%this_guid%:=this_gui.addText("right x" this_X+this_W-84 " y" this_Y+(a_index*17)-16 " w" 80 " h" 15 " backgroundTrans", "Step " a_index " " ((this_page>=a_index) ? "■" : "□") " ")			
+			ui.wizPanelStep%a_index%_%this_guid%.setFont("s8 q5 c" ((this_page != a_index) ? cfg.tabColor2 : cfg.fontColor2),"Sans Serif")
+		}
+		
+	}
+
+	ui.wizPage:=1
+	wizPanelPageChange(1)
+
+		
+	wizPanelPageChange(pageNum:=ui.wizPage) {
+		for this_guid in ui.wizPanelGuids {
+			if a_index == pageNum {
+				ui.wizPanelOutline_%this_guid%.opt("-hidden")
+				ui.wizPanelBg_%this_guid%.opt("-hidden")
+				ui.wizPanelTextOutline_%this_guid%.opt("-hidden")
+				ui.wizPanelStepText1Bg_%this_guid%.opt("-hidden")
+				ui.wizPanelStepText2Bg_%this_guid%.opt("-hidden")
+				ui.wizPanelStepText1_%this_guid%.opt("-hidden")
+				ui.wizPanelStepText2_%this_guid%.opt("-hidden")
+				ui.wizPanelText1Bg_%this_guid%.opt("-hidden")
+				ui.wizPanelText2Bg_%this_guid%.opt("-hidden")
+				ui.wizPanelText1_%this_guid%.opt("-hidden")
+				ui.wizPanelText2_%this_guid%.opt("-hidden")
+				ui.wizPanelButtonOutline_%this_guid%.opt("-hidden")
+				ui.wizPanelButton1_%this_guid%.opt("-hidden")
+				ui.wizPanelButton2_%this_guid%.opt("-hidden")
+				ui.wizPanelStepBg1_%this_guid%.opt("-hidden")
+				ui.wizPanelStep1_%this_guid%.opt("-hidden")		
+				ui.wizPanelStepBg2_%this_guid%.opt("-hidden")		
+				ui.wizPanelStep2_%this_guid%.opt("-hidden")		
+				ui.wizPanelStepBg3_%this_guid%.opt("-hidden")		
+				ui.wizPanelStep3_%this_guid%.opt("-hidden")
+			} else {
+				ui.wizPanelOutline_%this_guid%.opt("hidden")
+				ui.wizPanelBg_%this_guid%.opt("hidden")
+				ui.wizPanelTextOutline_%this_guid%.opt("hidden")
+				ui.wizPanelStepText1Bg_%this_guid%.opt("hidden")
+				ui.wizPanelStepText2Bg_%this_guid%.opt("hidden")
+				ui.wizPanelStepText1_%this_guid%.opt("hidden")
+				ui.wizPanelStepText2_%this_guid%.opt("hidden")
+				ui.wizPanelText1Bg_%this_guid%.opt("hidden")
+				ui.wizPanelText2Bg_%this_guid%.opt("hidden")
+				ui.wizPanelText1_%this_guid%.opt("hidden")
+				ui.wizPanelText2_%this_guid%.opt("hidden")
+				ui.wizPanelButtonOutline_%this_guid%.opt("hidden")
+				ui.wizPanelButton1_%this_guid%.opt("hidden")
+				ui.wizPanelButton2_%this_guid%.opt("hidden")
+				ui.wizPanelStepBg1_%this_guid%.opt("hidden")
+				ui.wizPanelStep1_%this_guid%.opt("hidden")		
+				ui.wizPanelStepBg2_%this_guid%.opt("hidden")		
+				ui.wizPanelStep2_%this_guid%.opt("hidden")		
+				ui.wizPanelStepBg3_%this_guid%.opt("hidden")		
+				ui.wizPanelStep3_%this_guid%.opt("hidden")
+			}
+		}
+	}
+
+	wizNext(*) {
+		switch ui.wizPage {
+			case 2:
+				vaultModeOn()
+			case 3:
+				cleanVaultStart()
+				vaultModeOff()
+				ui.wizPage:=1
+				wizPanelPageChange(ui.wizPage)
+				Return
+		}		
+		ui.wizPage+=1
+		wizPanelPageChange(ui.wizPage)
+	}
+	
+	
+	wizCancel(*) {
+		ui.wizPage:=1
+		wizPanelPageChange(1)
+		
+	}
 	
 	isWindowedFullscreen(*) {
 		static tx:=""
@@ -138,19 +284,19 @@ ui.gametabs.useTab("Vault Cleaner")
 			this.d2LaunchVaultCleanerText.text:="Vault Mode: On`nClick to Toggle"
 			this.statBg.opt("background" cfg.TabColor2)
 			this.statBg.value:="./img/custom/lightburst_tl.png"
-			drawOutlineNamed("vaultCleanerButton",ui.gameSettingsGui,13,82,230,58,cfg.DisabledColor,cfg.DisabledColor,1)
+			drawOutlineNamed("vaultCleanerButton",ui.gameSettingsGui,13,82,230,56,cfg.DisabledColor,cfg.DisabledColor,1)
 			this.d2LaunchVaultCleanerButton.value:="./img/button_vault_down.png"
 			; winMove((a_screenwidth/2)-640,(a_screenheight/2)-360,1280,720,this.gameWin)
 			; winActivate(ui.mainGui)
 			vaultCleaner()
 			
 			buttonBg.opt("background" cfg.OnColor)
-			this.vaultProgressLabelBg.opt("background" cfg.TabColor1)
-			this.vaultProgressLabel.setFont("c" cfg.fontColor4)
+			this.vaultProgressLabelBg.opt("background" cfg.TabColor2)
+			this.vaultProgressLabel.setFont("c" cfg.fontColor2)
 			this.vaultProgressLabelBg.redraw()
-			this.mainButtonHotkeyText.setFont("c" cfg.fontColor4)
-			this.mainButtonText.setFont("s12 q5 c" cfg.fontColor4)
-			this.vaultProgressLabel.setFont("s10 c" cfg.fontColor4,"move-x")
+			this.mainButtonHotkeyText.setFont("c" cfg.fontColor2)
+			this.mainButtonText.setFont("s12 q5 c" cfg.tabColor2)
+			this.vaultProgressLabel.setFont("s10 c" cfg.fontColor2,"move-x")
 	
 			textBg.opt("background" cfg.TabColor2)
 			
@@ -169,9 +315,9 @@ ui.gametabs.useTab("Vault Cleaner")
 		this.statusText.text:="Cannot START vault cleaning when not in VAULT MODE"
 		; this.d2LaunchVaultCleanerButton.redraw()
 		this.d2LaunchVaultCleanerText.text:="Vault Mode: Off`nClick to Toggle"
-		this.statBg.opt("background" cfg.TabColor1)
+		this.statBg.opt("background" cfg.TabColor2)
 		this.statBg.value:="./img/custom/lightburst_br_light.png"
-		drawOutlineNamed("vaultCleanerButton",ui.gameSettingsGui,13,82,230,58,cfg.OutlineColor1,cfg.OutlineColor1,1)
+		drawOutlineNamed("vaultCleanerButton",ui.gameSettingsGui,13,82,230,60,cfg.OutlineColor1,cfg.OutlineColor1,1)
 		this.d2LaunchVaultCleanerButton.value:="./img/button_vault_up.png"
 		try 
 			vaultTopGui.destroy()
@@ -300,7 +446,7 @@ libVaultInit(*) {
 			;this.mainButtonHotkey.setFont("q5 c00FFFFE")
 			this.statusText.text:="Dismantles ALL unlocked items (DIM Search 'is:unlocked' to review)"
 			this.mainButton.opt("background" cfg.titleFontColor)
-			this.mainButtonText.setFont("c" cfg.fontColor4)
+			this.mainButtonText.setFont("c" cfg.tab3FontColor)
 			this.mainButton.redraw()
 			;this.vaultProgressLabelBg.opt("backgroundD0D0F0")
 			;this.vaultProgressLabelBg.redraw()
@@ -342,7 +488,7 @@ cleanVaultStart(*) {
 	(this.restartQueued) ? (this.restartQueued:=false,exit) : 0
 	
 	; this.mainButtonHotkey.text:="[Delete]" 	
-	; this.mainButton.opt("background" cfg.OnColor " c" cfg.fontColor4)
+	; this.mainButton.opt("background" cfg.OnColor " c" cfg.tab3FontColor)
 	; this.mainButtonText.text:="Stop"
 	mouseMove(955,170)
 	sleep(500)

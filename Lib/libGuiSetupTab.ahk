@@ -23,10 +23,10 @@ monitorResChanged(*) {
 GuiSetupTab(&ui,&cfg) {
 	global
 	ui.MainGuiTabs.UseTab("2_Setup____")
-	drawPanel(ui.mainGui,40,33,218,174,cfg.TabColor2,cfg.OutlineColor2,cfg.OutlineColor1,1,1,"none",100,"Features","calibri",cfg.FontColor1)
-	drawPanel(ui.mainGui,261,33,214,118,cfg.TabColor2,cfg.OutlineColor2,cfg.OutlineColor1,1,1,"none",100,"Features","calibri",cfg.FontColor1)
-	drawPanel(ui.mainGui,261,154,214,53,cfg.TabColor2,cfg.OutlineColor2,cfg.OutlineColor1,1,1,"none",100,"Features","calibri",cfg.FontColor1)
-	drawPanel(ui.mainGui,478,33,42,174,cfg.TabColor2,cfg.OutlineColor2,cfg.OutlineColor1,1,1,"none",100,"Features","calibri",cfg.FontColor1)
+	drawPanel(ui.mainGui,40,33,218,174,cfg.TabColor3,cfg.OutlineColor2,cfg.OutlineColor1,1,1,"none",100,"Features","calibri",cfg.FontColor1)
+	drawPanel(ui.mainGui,261,33,214,118,cfg.TabColor3,cfg.OutlineColor2,cfg.OutlineColor1,1,1,"none",100,"Features","calibri",cfg.FontColor1)
+	drawPanel(ui.mainGui,261,154,214,53,cfg.TabColor3,cfg.OutlineColor2,cfg.OutlineColor1,1,1,"none",100,"Features","calibri",cfg.FontColor1)
+	drawPanel(ui.mainGui,478,33,42,174,cfg.TabColor3,cfg.OutlineColor2,cfg.OutlineColor1,1,1,"none",100,"Features","calibri",cfg.FontColor1)
 	line(ui.mainGui,529,184,29,2,cfg.TrimColor1)
 
 	ui.MainGui.setFont("q5 s09")
@@ -35,7 +35,7 @@ GuiSetupTab(&ui,&cfg) {
 	ui.AutoClickerSpeedSlider.ToolTip := "AutoClicker Speed"
 	ui.AutoClickerSpeedSlider.OnEvent("Change",AutoClickerSpeedChanged)
 	
-	ui.MainGui.setFont("q5 s10 c" cfg.FontColor4)
+	ui.MainGui.setFont("q5 s10 c" cfg.tab3FontColor)
 	drawOutlineMainGui(34,28,497,200,cfg.DisabledColor,cfg.DisabledColor,2)
 	ui.mainGui.addText("hidden section x48 y21")
 	cfg.toolTipsEnabled			:= iniRead(cfg.file,"Toggles","ToolTipsEnabled",true)
@@ -181,7 +181,7 @@ GuiSetupTab(&ui,&cfg) {
 	ui.mainGui.addText("x273 y48 w192 h56 background" cfg.tabColor1)
 	;line(ui.mainGui,0,36,155,2,cfg.DisabledColor)
 
-	ui.checkForUpdatesLabel := ui.mainGui.addtext("x280 y46 w200 h30 section backgroundTrans c" cfg.fontColor4,"Check For Updates")
+	ui.checkForUpdatesLabel := ui.mainGui.addtext("x280 y46 w200 h30 section backgroundTrans c" cfg.tab3FontColor,"Check For Updates")
 	ui.checkForUpdatesLabel.setFont("q5 s12","move-x")
 	ui.checkForUpdatesButton := ui.mainGui.addPicture("xs+10 y+-7 w30 h30 section background" cfg.alertColor,"./img/button_update.png")
 	ui.checkForUpdatesButton.onEvent("Click",checkForUpdates)
@@ -192,8 +192,8 @@ GuiSetupTab(&ui,&cfg) {
 	ui.latestVersionText.setFont(,"Calibri")
 	ui.monitorResList := ["1920x1080","1920x1200","2560x1440","3440x1440","Custom"]
 	ui.mainGui.setFont(,"calibri")
-	ui.monitorResDDL := ui.mainGui.AddDDL("xs-66 y+2 w90 r4 choose" cfg.monitorRes " c" cfg.FontColor4 " background" cfg.disabledColor,ui.monitorResList)
-	ui.monitorResDDL.setFont("c" cfg.FontColor4)
+	ui.monitorResDDL := ui.mainGui.AddDDL("xs-66 y+2 w90 r4 choose" cfg.monitorRes " c" cfg.tab3FontColor " background" cfg.disabledColor,ui.monitorResList)
+	ui.monitorResDDL.setFont("c" cfg.tab3FontColor)
 	ui.monitorResDDL.onEvent("change",monitorResChanged)
 	ui.monitorResLabel := ui.mainGui.AddText("x+4 y+-25 w65 c" cfg.FontColor1 " backgroundTrans","Screen")	
 	ui.monitorResLabel2 := ui.mainGui.AddText("y+-2 w65 c" cfg.FontColor1 " backgroundTrans","Size")
@@ -240,6 +240,7 @@ GuiSetupTab(&ui,&cfg) {
 	ui.themeEditorButton := ui.mainGui.addPicture("x275 y163 w35 h35 section backgroundTrans","./img/color_swatches.png")
 	ui.themeEditorLabel := ui.mainGui.addText("x+5 ys+4 w150 h33 section backgroundTrans","Theme Editor")
 	ui.themeEditorLabel.setFont("q5 s14","move-x")
+
 	ui.themeEditorButton.onEvent("click",showThemeEditor)
 
   	AutoClickerSpeedChanged(*) {

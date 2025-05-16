@@ -15,183 +15,192 @@ if (InStr(A_LineFile,A_ScriptFullPath)) {
 
 
 showThemeEditor(*) {
+	drawThemeEditor()
+	ui.mainGui.getPos(&mainGuiX,&mainGuiY,&mainGuiW,&mainGuiH)
+	ui.themeEditorGui.move(mainGuiX+(mainGuiW/2)-(200),mainGuiY+(mainGuiH/2)-125)
 	guiVis(ui.themeEditorGui,true)
 }
 
-ui.themeEditorGui := gui()
-ui.themeEditorGui.opt("-caption -border alwaysOnTop toolWindow owner" ui.mainGui.hwnd)
-ui.themeEditorGui.backColor := cfg.tabColor2
-ui.themeEditorGui.color := cfg.fontColor2
+drawThemeEditor()
+drawThemeEditor(*) {
+	if ui.hasProp("themeEditorGui")
+		try
+			ui.themeEditorGui.destroy()
+	
+	ui.themeEditorGui := gui()
+	ui.themeEditorGui.opt("-caption -border alwaysOnTop toolWindow owner" ui.mainGui.hwnd)
+	ui.themeEditorGui.backColor := cfg.tabColor2
+	ui.themeEditorGui.color := cfg.fontColor2
 
-ui.themeEditorTitlebar := ui.themeEditorGui.addText("x0 y0 w372 h30 background" cfg.TabColor1 " c" cfg.FontColor1,"")
-ui.themeEditorTitlebarText := ui.themeEditorGui.addText("x10 y6 w180 h30 backgroundTrans c" cfg.FontColor1,"Theme Editor" )
-ui.themeEditorTitlebarText.setFont("q5 s15","move-x")
-ui.themeEditorTitlebar.onEvent("click",wm_lButtonDown_callback)
+	ui.themeEditorTitlebar := ui.themeEditorGui.addText("x0 y0 w372 h30 background" cfg.TabColor1 " c" cfg.FontColor1,"")
+	ui.themeEditorTitlebarText := ui.themeEditorGui.addText("x10 y6 w180 h30 backgroundTrans c" cfg.FontColor1,"Theme Editor" )
+	ui.themeEditorTitlebarText.setFont("q5 s15","move-x")
+	ui.themeEditorTitlebar.onEvent("click",wm_lButtonDown_callback)
 
-;drawOutlineNamed("ThemeOutline",ui.themeEditorGui,85,32,61,26,cfg.OutlineColor1,cfg.OutlineColor1,1)
-ui.themeEditorCancelButtonBg := ui.themeEditorGui.addText("x370 y3 w26 h27 background" cfg.TabColor2)
-ui.themeEditorCancelButton := ui.themeEditorGui.addText("x369 y1 w26 h26 backgroundTrans c" cfg.FontColor2,"r")
-ui.themeEditorCancelButton.setFont("s22","Webdings")
-ui.themeEditorCancelButton.onEvent("click", closeThemeEditor)
-ui.themeEditorCancelButtonBg.onEvent("click", closeThemeEditor)
-
-
-guiVis(ui.themeEditorGui,false)
-
-ui.titlebarPreview:=ui.themeEditorGui.addPicture("x44 y214 w346 h30 background" cfg.tabColor2,cfg.titleBarImage)
-ui.titlebarEdit:=ui.themeEditorGui.addPicture("x10 y214 w30 h30 background" cfg.tabColor2,"./img/button_edit.png")
-
-drawOutlineNamed("themeOutline",ui.themeEditorGui,0,0,400,250,cfg.trimColor1,cfg.trimColor1,3)
-;drawOutlineNamed("themeOutline",ui.themeEditorGui,1,0,324,24,cfg.OutlineColor2,cfg.OutlineColor1,2)
-ui.ColorSelectorLabel2 := ui.themeEditorGui.AddText("x2 y31 h24 center section w114 BackgroundTrans c"
-	((cfg.ColorPickerEnabled) 
-		? cfg.FontColor1 " background" cfg.disabledColor 
-		: cfg.FontColor1 " background" cfg.disabledColor) 
-		,((cfg.ColorPickerEnabled) 
-		? (" Color App") 
-		: (" Swatches ")))
-;drawOutlineNamed("themeEditorCancelButtonOutline",ui.themeEditorGui,300,2,24,24,cfg.OutlineColor2,cfg.OutlineColor1,2)
-ui.ColorSelectorLabel2.setFont("q5 s14","Prototype")
-;drawOutlineNamed("ThemeOutlineShadow",ui.themeEditorGui,10,32,60,28,cfg.OutlineColor2,cfg.OutlineColor2,2)
+	;drawOutlineNamed("ThemeOutline",ui.themeEditorGui,85,32,61,26,cfg.OutlineColor1,cfg.OutlineColor1,1)
+	ui.themeEditorCancelButtonBg := ui.themeEditorGui.addText("x370 y3 w26 h27 background" cfg.TabColor2)
+	ui.themeEditorCancelButton := ui.themeEditorGui.addText("x369 y1 w26 h26 backgroundTrans c" cfg.FontColor2,"r")
+	ui.themeEditorCancelButton.setFont("s22","Webdings")
+	ui.themeEditorCancelButton.onEvent("click", closeThemeEditor)
+	ui.themeEditorCancelButtonBg.onEvent("click", closeThemeEditor)
 
 
+	guiVis(ui.themeEditorGui,false)
+
+	ui.titlebarPreview:=ui.themeEditorGui.addPicture("x44 y214 w346 h30 background" cfg.tabColor2,cfg.titleBarImage)
+	ui.titlebarEdit:=ui.themeEditorGui.addPicture("x10 y214 w30 h30 background" cfg.tabColor2,"./img/button_edit.png")
+
+	drawOutlineNamed("themeOutline",ui.themeEditorGui,0,0,400,250,cfg.trimColor1,cfg.trimColor1,3)
+	;drawOutlineNamed("themeOutline",ui.themeEditorGui,1,0,324,24,cfg.OutlineColor2,cfg.OutlineColor1,2)
+	ui.ColorSelectorLabel2 := ui.themeEditorGui.AddText("x2 y31 h28 center section w114 BackgroundTrans c"
+		((cfg.ColorPickerEnabled) 
+			? cfg.FontColor1 " background" cfg.disabledColor 
+			: cfg.FontColor1 " background" cfg.disabledColor) 
+			,((cfg.ColorPickerEnabled) 
+			? (" Color App") 
+			: (" Swatches ")))
+	;drawOutlineNamed("themeEditorCancelButtonOutline",ui.themeEditorGui,300,2,24,24,cfg.OutlineColor2,cfg.OutlineColor1,2)
+	ui.ColorSelectorLabel2.setFont("q5 s14","Prototype")
+	;drawOutlineNamed("ThemeOutlineShadow",ui.themeEditorGui,10,32,60,28,cfg.OutlineColor2,cfg.OutlineColor2,2)
 
 
-ToggleColorSelector(*) {
-	ui.toggleColorSelector.Value := 
-		(cfg.ColorPickerEnabled := !cfg.ColorPickerEnabled) 
-			? (ui.ColorSelectorLabel2.Opt("c" cfg.fontColor1 " background" cfg.disabledColor)
-				,ui.ColorSelectorLabel2.Text := " Color App "
-				,"./Img/toggle_left.png")
-			: (ui.ColorSelectorLabel2.Opt("c" cfg.fontColor1 " background" cfg.disabledColor)
-				,ui.ColorSelectorLabel2.Text := " Swatches "
-				,"./Img/toggle_right.png") 
-	ui.toggleColorSelector.Redraw()
-}
-ui.toggleColorSelector := ui.themeEditorGui.AddPicture("y30 x114 section w60 h27 backgroundTrans", (cfg.ColorPickerEnabled) ? ("./Img/toggle_left.png") : ("./Img/toggle_right.png"))
-ui.toggleColorSelector.OnEvent("Click", ToggleColorSelector)
-ui.toggleColorSelector.ToolTip := "Select color picking method for theming features"
-ui.buttonNewTheme := ui.themeEditorGui.AddPicture("x+1 ys+1 section w25 h25 Background" cfg.OffColor,"./Img/button_plus_ready.png")
-ui.buttonNewTheme.OnEvent("Click",addTheme)
-ui.buttonDelTheme := ui.themeEditorGui.AddPicture("ys+0 x+0 w22 h25 Background" cfg.OffColor,"./Img/button_minus_ready.png")	
-ui.buttonDelTheme.OnEvent("Click",removeTheme)
-ui.themeEditorGui.setFont("s11 q5 c" cfg.fontColor2,"Prototype")
-ui.ThemeDDL := ui.themeEditorGui.AddDDL("ys+0 x+1 w176 section center c" cfg.FontColor1 " Background" cfg.disabledColor,cfg.ThemeList)
-ui.themeDDL.setFont("s13","arial")
-ui.ThemeDDL.OnEvent("Change",ThemeChanged)
-ui.ThemeDDL.OnEvent("Focus",RepaintThemeDDL)
-ui.ThemeDDL.OnEvent("LoseFocus",RepaintThemeDDL)
-ui.ThemeDDL.ToolTip := "Select Theme Preset"
 
-;drawOutlineNamed("ThemeOutline",ui.themeEditorGui,10,29,302,27,cfg.OutlineColor1,cfg.OutlineColor1,3)
-drawOutlineNamed("ThemeOutlineShadow",ui.themeEditorGui,0,30,400,27,cfg.TrimColor1,cfg.TrimColor1,2)
-winGetPos(&xi,&yi,,,ui.mainGui)
 
-ui.themeEditorGui.show("x" xi " y" yi " w400 h250 noActivate")
+	ToggleColorSelector(*) {
+		ui.toggleColorSelector.Value := 
+			(cfg.ColorPickerEnabled := !cfg.ColorPickerEnabled) 
+				? (ui.ColorSelectorLabel2.Opt("c" cfg.fontColor1 " background" cfg.disabledColor)
+					,ui.ColorSelectorLabel2.Text := " Color App "
+					,"./Img/toggle_left.png")
+				: (ui.ColorSelectorLabel2.Opt("c" cfg.fontColor1 " background" cfg.disabledColor)
+					,ui.ColorSelectorLabel2.Text := " Swatches "
+					,"./Img/toggle_right.png") 
+		ui.toggleColorSelector.Redraw()
+	}
+	ui.toggleColorSelector := ui.themeEditorGui.AddPicture("y30 x114 section w60 h28 backgroundTrans", (cfg.ColorPickerEnabled) ? ("./Img/toggle_left.png") : ("./Img/toggle_right.png"))
+	ui.toggleColorSelector.OnEvent("Click", ToggleColorSelector)
+	ui.toggleColorSelector.ToolTip := "Select color picking method for theming features"
+	ui.buttonNewTheme := ui.themeEditorGui.AddPicture("x+1 ys+1 section w25 h26 Background" cfg.OffColor,"./Img/button_plus_ready.png")
+	ui.buttonNewTheme.OnEvent("Click",addTheme)
+	ui.buttonDelTheme := ui.themeEditorGui.AddPicture("ys+0 x+0 w22 h26 Background" cfg.OffColor,"./Img/button_minus_ready.png")	
+	ui.buttonDelTheme.OnEvent("Click",removeTheme)
+	ui.themeEditorGui.setFont("s11 q5 c" cfg.fontColor2,"Prototype")
+	ui.ThemeDDL := ui.themeEditorGui.AddDDL("ys+0 x+1 w176 section center altSubmit c" cfg.FontColor1 " Background" cfg.disabledColor,cfg.ThemeList)
+	ui.themeDDL.setFont("s13","arial")
+	ui.ThemeDDL.OnEvent("Change",ThemeChanged)
+	ui.ThemeDDL.OnEvent("Focus",RepaintThemeDDL)
+	ui.ThemeDDL.OnEvent("LoseFocus",RepaintThemeDDL)
+	ui.ThemeDDL.ToolTip := "Select Theme Preset"
 
-closeThemeEditor(*) {
-	try {
-		ui.themeEditorGui.Hide()
-		ui.themeEditor.destroy()
+	;drawOutlineNamed("ThemeOutline",ui.themeEditorGui,10,29,302,27,cfg.OutlineColor1,cfg.OutlineColor1,3)
+	drawOutlineNamed("ThemeOutlineShadow",ui.themeEditorGui,0,30,400,28,cfg.TrimColor1,cfg.TrimColor1,2)
+	ui.themeEditorGui.show("w400 h250 noActivate")
+
+
+	closeThemeEditor(*) {
+		try {
+			ui.themeEditorGui.Hide()
+			ui.themeEditorGui.destroy()
+			}
+	}
+
+	ui.ThemeDDL.Choose(1)
+	Loop cfg.ThemeList.Length {
+		if (cfg.ThemeList[A_Index] == cfg.Theme) {
+			ui.ThemeDDL.Choose(cfg.Theme)
+			Break
 		}
-}
-
-ui.ThemeDDL.Choose(1)
-Loop cfg.ThemeList.Length {
-	if (cfg.ThemeList[A_Index] == cfg.Theme) {
-		ui.ThemeDDL.Choose(cfg.Theme)
-		Break
-	}
-}
-
-ui.ThemeElements := [
-	
-	"TabColor1","TabColor2","TabColor3","TileColor",
-	"TrimColor1","TrimColor2","titleBgColor","DisabledColor",
-	"FontColor1","FontColor2","FontColor3","FontColor4","OutlineColor2","OutlineColor1",
-	"OffColor","OnColor","AlertColor","AuxColor1","AuxColor2","titleFontColor"
-	 	]
-
-ui.themeEditorGui.AddText("x10 y50 section hidden")
-
-Loop ui.ThemeElements.Length
-{
-	this_color := ui.ThemeElements[A_Index]
-	switch a_index {
-		case 5: 
-			ui.themeEditorGui.AddText("section x+18 y50 hidden")
-		case 9:
-			ui.themeEditorGui.AddText("section x+18 y50 hidden")
-		case 15:
-			ui.themeEditorGui.AddText("section x+18 y50 hidden")
 	}
 
-	ui.themeEditorGui.addText("section xs+0 y+4 w30 h20 background" cfg.trimColor2)
-	ui.%this_color%Picker := ui.themeEditorGui.AddText("xs+1 y+-19 w28 h18 Border Background" cfg.%this_color% " c" cfg.%this_color%,this_color)
-	ui.%this_color%picker.redraw()
-	ui.%this_color%Label := ui.themeEditorGui.AddText("x+6 ys+0 backgroundTrans c" cfg.FontColor2,StrReplace(this_color,"Color"))
-	ui.%this_color%Label.setFont("q5 c" cfg.fontColor2)
-	ui.%this_color%Picker.OnEvent("Click",PickColor)
-}
-ui.curveSliderOutline2:=ui.themeEditorGui.addText("x11 y166 w103 border h18 background" cfg.TabColor2)
-ui.curveSliderOutline:=ui.themeEditorGui.addText("x10 y165 w105 h20 background" cfg.TrimColor2)
-; ui.curveSliderBg:=ui.themeEditorGui.addText("x89 y161 w88 h22 background" cfg.TabColor2)
-cfg.curveAmount:=iniRead(cfg.themeFile,cfg.theme,"CurveAmount",20)
-ui.curveSliderLabel:=ui.themeEditorGui.addText("x120 y167 w70 h14 background" cfg.tabColor2,"Bevel Depth")
-ui.curveSliderLabel.setFont("s10 q5 c" cfg.fontColor2,"Prototype")
-ui.curveSliderBuddy:=ui.themeEditorGui.addText("x15 y167 w22 h16 background" cfg.tabColor2 " vCurveSliderBuddy c" cfg.AuxColor2,cfg.curveAmount)
-ui.curveSliderBuddy.setFont("s10 q5 c" cfg.FontColor2,"Calibri")
-ui.curveSlider:=ui.themeEditorGui.addSlider("x32 y169 w80 h14 range5-30 center NoTicks ToolTipTop buddyCurveSliderBuddy vcurveSlider",cfg.curveAmount)
-ui.curveSlider.onEvent("change",changeCurve)
-ui.curveSlider.focus()
+	ui.ThemeElements := [
+		
+		"TabColor1","TabColor2","TabColor3","TileColor",
+		"TrimColor1","TrimColor2","titleBgColor","DisabledColor",
+		"FontColor1","FontColor2","FontColor3","tab3FontColor","OutlineColor2","OutlineColor1",
+		"OffColor","OnColor","AlertColor","AuxColor1","AuxColor2","titleFontColor"
+			]
 
-ui.themeEditorTitlebarText.focus()
-changeCurve(*) {
-	cfg.curveAmount:=ui.curveSlider.value
-	iniWrite(ui.curveSlider.value,cfg.themeFile,cfg.theme,"CurveAmount")
-	reload()
+	ui.themeEditorGui.AddText("x10 y50 section hidden")
+
+	Loop ui.ThemeElements.Length
+	{
+		this_color := ui.ThemeElements[A_Index]
+		switch a_index {
+			case 5: 
+				ui.themeEditorGui.AddText("section x+18 y50 hidden")
+			case 9:
+				ui.themeEditorGui.AddText("section x+18 y50 hidden")
+			case 15:
+				ui.themeEditorGui.AddText("section x+18 y50 hidden")
+		}
+
+		ui.themeEditorGui.addText("section xs+0 y+4 w30 h20 background" cfg.trimColor2)
+		ui.%this_color%Picker := ui.themeEditorGui.AddText("xs+1 y+-19 w28 h18 Border Background" cfg.%this_color% " c" cfg.%this_color%,this_color)
+		ui.%this_color%picker.redraw()
+		ui.%this_color%Label := ui.themeEditorGui.AddText("x+6 ys+0 backgroundTrans c" cfg.FontColor2,StrReplace(this_color,"Color"))
+		ui.%this_color%Label.setFont("q5 c" cfg.fontColor2)
+		ui.%this_color%Picker.OnEvent("Click",PickColor)
+	}
+	ui.curveSliderOutline2:=ui.themeEditorGui.addText("x11 y166 w103 border h18 background" cfg.TabColor2)
+	ui.curveSliderOutline:=ui.themeEditorGui.addText("x10 y165 w105 h20 background" cfg.TrimColor2)
+	; ui.curveSliderBg:=ui.themeEditorGui.addText("x89 y161 w88 h22 background" cfg.TabColor2)
+	cfg.curveAmount:=iniRead(cfg.themeFile,cfg.theme,"CurveAmount",20)
+	ui.curveSliderLabel:=ui.themeEditorGui.addText("x120 y167 w70 h14 background" cfg.tabColor2,"Bevel Depth")
+	ui.curveSliderLabel.setFont("s10 q5 c" cfg.fontColor2,"Prototype")
+	ui.curveSliderBuddy:=ui.themeEditorGui.addText("x15 y167 w22 h16 background" cfg.tabColor2 " vCurveSliderBuddy c" cfg.AuxColor2,cfg.curveAmount)
+	ui.curveSliderBuddy.setFont("s10 q5 c" cfg.FontColor2,"Calibri")
+	ui.curveSlider:=ui.themeEditorGui.addSlider("x32 y169 w80 h14 range5-30 center NoTicks ToolTipTop buddyCurveSliderBuddy vcurveSlider",cfg.curveAmount)
+	ui.curveSlider.onEvent("change",changeCurve)
+	ui.curveSlider.focus()
+
+	ui.themeEditorTitlebarText.focus()
+	changeCurve(*) {
+		cfg.curveAmount:=ui.curveSlider.value
+		iniWrite(ui.curveSlider.value,cfg.themeFile,cfg.theme,"CurveAmount")
+		reload()
+	}
+	;ui.hideTitleTextLabel:=ui.themeEditorGui.addText("section x4 y174 w160 h20 right backgroundTrans","Hide Titlebar Text")
+	;ui.HideTitleTextLabel.setFont("s12 q5 c" cfg.FontColor1)
+	ui.hidetitleTextCbValue:=iniRead(cfg.themeFile,cfg.theme,"HideTitlebarText",0)
+	ui.hideTitleTextCb:=ui.themeEditorGui.addCheckbox("x12 y187 vHideTitleBarTextCb w150 h26 c" cfg.FontColor2,"Hide Titlebar Text")
+	ui.hideTitleTextCb.setFont("s12 q5 c" cfg.FontColor2,"Prototype")
+	ui.hideTitleTextCb.value:=ui.hideTitleTextCbValue
+	ui.hideTitleTextCb.onEvent("click", toggleTitleText)
+	toggleTitleText(*) {
+		
+		iniWrite((ui.hideTitleTextCb.value),cfg.themeFile,cfg.theme,"HideTitlebarText")
+		reload()
+		;msgBox("value: " ui.hideTitleTextCb.value "`nFile: " cfg.themeFile)
+	}
+
+	ui.titleBarEditBgText:=ui.themeEditorGui.addText("x55 y218 w280 h26 backgroundTrans","dapp")
+	ui.titleBarEditBgText.setFont("s14 c" cfg.FontColor2,"move-x")
+	(ui.hideTitleTextCbValue) ? ui.titleBarEditBgText.opt("hidden") : ui.titleBarEditBgText.opt("-hidden")
+
+
+	; ui.themeEditorCancelButton := ui.themeEditorGui.addPicture("x297 y2 w23 h30","./img/button_quit.png")
+	; ui.themeEditorCancelButton.onEvent("click", (*) => guiVis(ui.themeEditorGui,false))
+	PostMessage(0x0153, -1, 20, ui.themeDDL)  ; Set height of selection field.
+	PostMessage(0x0153, 0, 18, ui.themeDDL)  ; Set height of list items.
+
+
+	;ui.titleBarPreviewLabel:=ui.themeEditorGui.addText("x5 y+5 w40 backgroundTrans center","Titlebar Image")
+	drawOutline(ui.themeEditorGui,42,214,350,30,cfg.OutlineColor2,cfg.OutlineColor2,2)
+	;ui.titlebarPreviewLabel.setFont("q5 s9 c" cfg.FontColor2,"ubuntu one")
+	ui.titlebarPreview.onEvent("click",changeTitlebar)
+	ui.titlebarEdit.onEvent("click",changeTitlebar)
+	changeTitlebar(*) {
+		titleBarImage:=fileSelect(,a_scriptDir "\img\custom\","Select Titlebar Image","*.png;*.jpg")
+		splitPath(titleBarImage,&titleBarImageFilename)
+		cfg.titleBarImage:=".\img\custom\" titleBarImageFilename
+		ui.titlebarPreview.value:=cfg.titleBarImage
+		iniWrite(cfg.titleBarImage,cfg.themeFile,cfg.theme,"TitleBarImage")
+		reload()
+	}
+
+	ControlFocus(ui.toggleColorSelector,ui.themeEditorGui)
 }
-;ui.hideTitleTextLabel:=ui.themeEditorGui.addText("section x4 y174 w160 h20 right backgroundTrans","Hide Titlebar Text")
-;ui.HideTitleTextLabel.setFont("s12 q5 c" cfg.FontColor1)
-ui.hidetitleTextCbValue:=iniRead(cfg.themeFile,cfg.theme,"HideTitlebarText",0)
-ui.hideTitleTextCb:=ui.themeEditorGui.addCheckbox("x12 y187 vHideTitleBarTextCb w150 h26 c" cfg.FontColor2,"Hide Titlebar Text")
-ui.hideTitleTextCb.setFont("s12 q5 c" cfg.FontColor2,"Prototype")
-ui.hideTitleTextCb.value:=ui.hideTitleTextCbValue
-ui.hideTitleTextCb.onEvent("click", toggleTitleText)
-toggleTitleText(*) {
 	
-	iniWrite((ui.hideTitleTextCb.value),cfg.themeFile,cfg.theme,"HideTitlebarText")
-	reload()
-	;msgBox("value: " ui.hideTitleTextCb.value "`nFile: " cfg.themeFile)
-}
-
-ui.titleBarEditBgText:=ui.themeEditorGui.addText("x55 y218 w280 h26 backgroundTrans","dapp")
-ui.titleBarEditBgText.setFont("s14 c" cfg.FontColor2,"move-x")
-(ui.hideTitleTextCbValue) ? ui.titleBarEditBgText.opt("hidden") : ui.titleBarEditBgText.opt("-hidden")
-
-
-; ui.themeEditorCancelButton := ui.themeEditorGui.addPicture("x297 y2 w23 h30","./img/button_quit.png")
-; ui.themeEditorCancelButton.onEvent("click", (*) => guiVis(ui.themeEditorGui,false))
-PostMessage(0x0153, -1, 20, ui.themeDDL)  ; Set height of selection field.
-PostMessage(0x0153, 0, 18, ui.themeDDL)  ; Set height of list items.
-
-
-;ui.titleBarPreviewLabel:=ui.themeEditorGui.addText("x5 y+5 w40 backgroundTrans center","Titlebar Image")
-drawOutline(ui.themeEditorGui,42,214,350,30,cfg.OutlineColor2,cfg.OutlineColor2,2)
-;ui.titlebarPreviewLabel.setFont("q5 s9 c" cfg.FontColor2,"ubuntu one")
-ui.titlebarPreview.onEvent("click",changeTitlebar)
-ui.titlebarEdit.onEvent("click",changeTitlebar)
-changeTitlebar(*) {
-	titleBarImage:=fileSelect(,a_scriptDir "\img\custom\","Select Titlebar Image","*.png;*.jpg")
-	splitPath(titleBarImage,&titleBarImageFilename)
-	cfg.titleBarImage:=".\img\custom\" titleBarImageFilename
-	ui.titlebarPreview.value:=cfg.titleBarImage
-	iniWrite(cfg.titleBarImage,cfg.themeFile,cfg.theme,"TitleBarImage")
-	reload()
-}
-
-ControlFocus(ui.toggleColorSelector,ui.themeEditorGui)
-
 PickColor(Obj,msg,Info*)
 {
 	this_color := Obj.Text
@@ -240,12 +249,11 @@ ChooseColor(ColorType,prev_color) {
 		winGetPos(&DialogX,&DialogY,&DialogW,&DialogH,ui.themeEditorGui)
 		ui.colorGui := Gui()
 		ui.ColorPicker := ui.colorGui.addPicture("w515 h1000","./Img/color_swatches.png")
-		ui.colorGui.Show("x" DialogX " y" DialogY+DialogH)
 		ui.colorGui.Opt("+AlwaysOnTop -Caption toolWindow +Owner" ui.themeEditorGui.Hwnd)
-		
-		winSetAlwaysOnTop(1,"ahk_exe ColorChooser.exe")
+		ui.colorGui.Show("x" DialogX " y" DialogY+DialogH)
+		sleep(1000)
 		ClickReceived := KeyWait("LButton","D T30")
-		msgBox(clickReceived)
+		;msgBox(clickReceived)
 		if (ClickReceived)
 		{
 			MouseGetPos(&MouseX,&MouseY)
@@ -256,8 +264,8 @@ ChooseColor(ColorType,prev_color) {
 				SetTimer(DialogBoxClose,-3000)
 				Return prev_color
 			} else {
-				DialogBox("You have selected: " ChosenColor "`nfor the " ColorType " category.")
-				SetTimer(DialogBoxClose,-3000)
+				;DialogBox("You have selected: " ChosenColor "`nfor the " ColorType " category.")
+				;SetTimer(DialogBoxClose,-3000)
 				if (InStr(ChosenColor,"0x")) {
 					ChosenColor := SubStr(ChosenColor,3,6)
 				}
@@ -308,7 +316,7 @@ addTheme(*) {
 		IniWrite(cfg.FontColor1,cfg.themeFile,ui.newThemeEdit.Value,"FontColor1")
 		IniWrite(cfg.FontColor2,cfg.themeFile,ui.newThemeEdit.Value,"FontColor2")
 		IniWrite(cfg.FontColor3,cfg.themeFile,ui.newThemeEdit.Value,"FontColor3")
-		IniWrite(cfg.FontColor4,cfg.themeFile,ui.newThemeEdit.Value,"FontColor4")
+		IniWrite(cfg.tab3FontColor,cfg.themeFile,ui.newThemeEdit.Value,"tab3FontColor")
 		IniWrite(cfg.TabColor2,cfg.themeFile,ui.newThemeEdit.Value,"TabColor2")
 		IniWrite(cfg.titleBgColor,cfg.themeFile,ui.newThemeEdit.Value,"titleBgColor")
 		IniWrite(cfg.TabColor1,cfg.themeFile,ui.newThemeEdit.Value,"TabColor3")
@@ -336,13 +344,12 @@ addTheme(*) {
 
 
 removeTheme(*) {
-	if cfg.themeList.Length == 1 {
-	{
-		ResetDefaultThemes()
-	} else {
-		cfg.themeList.RemoveAt(ui.themeDDL.value)
-		ui.themeDDL.Delete()
-		ui.themeDDL.Add(cfg.themeList)
-		ui.themeDDL.Choose(1)
+	for theme in cfg.themeList {
+		if theme==ui.themeDDL.value {
+			cfg.themeList.RemoveAt(a_index)
+			ui.themeDDL.Delete()
+			ui.themeDDL.Add(cfg.themeList)
+			ui.themeDDL.Choose(1)
+		}
 	}
 }
