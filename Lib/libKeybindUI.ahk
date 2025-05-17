@@ -1074,8 +1074,24 @@ toggleMapBrowser(*) {
 				currX+=405
 				
 			}
-			
-			ui.mapGui.show("x" cfg.guiX+34 " y" cfg.guiY " w1220")
+					winGetPos(&mbX,&mbY,&mbW,&mbH,ui.mapGui)
+
+			ui.mainGui.getPos(&tmpX,&tmpY)
+			ui.infoGfxMon:=object()
+			loop monitorGetCount() {
+				monitorGetWorkArea(a_index,&l,&t,&r,&b)
+				if (tmpX >= l && tmpX <=r) && (tmpY >= t && tmpY <= b) {
+					ui.infoGfxMon.l:=l
+					ui.infoGfxMon.t:=t 
+					ui.infoGfxMon.r:=r
+					ui.infoGfxMon.b:=b
+				}
+			}
+			;msgBox(ui.infoGfxMon.l "`t" ui.infoGfxMon.t "`t" ui.infoGfxMon.r "`t" ui.infoGfxMon.b)
+		  
+			ui.mapGui.show("x" (ui.infoGfxMon.l+((ui.infoGfxMon.r-ui.infoGfxMon.l)/2)-610) " w1220")
+			ui.mapGui.getPos(&tmpX,&tmpY,&tmpW,&tmpH)
+			ui.mapGui.show("x" (ui.infoGfxMon.l+((ui.infoGfxMon.r-ui.infoGfxMon.l)/2)-610) " y" (ui.infoGfxMon.t+((ui.infoGfxMon.b-ui.infoGfxMon.t)/2))-(tmpH/2))
 			winGetPos(&tX,&tY,&tW,&tH,ui.mapGui)
 			drawOutlineNamed("mapOutline",ui.mapGui,0,0,tW,tH,cfg.TrimColor2,cfg.TrimColor2,1)
 		}
@@ -1086,8 +1102,10 @@ toggleMapBrowser(*) {
 			winSetTransColor("010203",showMapGui)
 			fullMap:=showMapGui.addPicture("x0 y2 w1600 h-1 backgroundTrans",this_control.value)
 			fullMap.onEvent("click",closeMap)
-			winGetPos(&mbX,&mbY,&mbW,&mbH,ui.mapGui)
-			showMapGui.show("x" mbX " y" mbY " w1600")
+			
+			showMapGui.show("x" ui.infoGfxMon.l+((ui.infoGfxMon.r-ui.infoGfxMon.l)/2)-800  " w1600")
+			winGetPos(&tmpX,&tmpY,&tmpW,&tmpH,showMapGui)
+			showMapGui.show("y" ui.infoGfxMon.t+((ui.infoGfxMon.b-ui.infoGfxMon.t)/2)-(tmpH/2))
 			
 			closeMap(*) {
 				try 

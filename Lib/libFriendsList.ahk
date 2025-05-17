@@ -35,19 +35,19 @@ joinFireteam(*) {
 		ui.joinGui.backColor:=cfg.TabColor1
 		ui.joinGui.color:="010203"
 		winSetTransColor("010203",ui.joinGui)
-		ui.joinGuiOutline:=ui.joinGui.addText("x0 y0 w314 h" (ui.friendsList.length*30)+60 " background" cfg.TrimColor1)
+		ui.joinGuiOutline:=ui.joinGui.addText("x0 y0 w314 h" (ui.friendsList.length*30)+64 " background" cfg.TrimColor1)
 		ui.joinGuiBackground:=ui.joinGui.addText("x2 y2 w310 h" (ui.friendsList.length*30)+58 " background" cfg.TabColor1)
-		ui.joinGuiTitlebar:=ui.joinGui.addText("x2 y2 w284 h" 24 " background" cfg.titleBgColor)
+		ui.joinGuiTitlebar:=ui.joinGui.addText("x2 y2 w284 h" 24 " background" cfg.tabColor2)
 		ui.joinGuiTitlebar.onEvent("click",WM_LBUTTONDOWN_callback)
 		ui.joinGuiCloseButton:=ui.joinGui.addText("x286 y2 w26 h24 background450836")
 		ui.joinGuiCloseButton.onEvent("click",closejoinGui)
 		ui.joinGuiCloseLetter:=ui.joinGui.addText("x287 y1 w26 h26 backgroundTrans cCCCCCC","r")
 		ui.joinGuiCloseLetter.setFont("s18","webdings")
-		ui.joinGuiAddTextOutline:=("x40 y5 w250 h10 background" cfg.TrimColor1)
+		ui.joinGuiAddTextOutline:=("x40 y5 w250 h10 background" cfg.TrimColor2)
 		;ui.joinGuiAddFriendOutline:=ui.joinGui.addText("x4 y4 w18 h18 background" cfg.TrimColor1)
 		;ui.joinGuiAddFriend:=ui.joinGui.addPicture("x5 y5 w16 h16 background" cfg.OnColor,"./img/button_plus.png")
-		ui.joinGuiAddText:=ui.joinGui.addText("x35 y4 w246 h20 backgroundTrans","Click to Join a Friend")		
-		ui.joinGuiAddText.setFont("s14 c" cfg.tab3FontColor,"Qargeo")
+		ui.joinGuiAddText:=ui.joinGui.addText("x8 y2 w246 h20 backgroundTrans","Click to Join a Friend")		
+		ui.joinGuiAddText.setFont("s14 c" cfg.fontColor1,"Prototype")
 		ui.joinGuiAddText.onEvent("click",addFriend)
 			
 		ui.joinGuiAnchor:=ui.joinGui.addText("x5 y20 backgroundTrans section")
@@ -69,15 +69,20 @@ joinFireteam(*) {
 			; try
 			; ui.joinGui%a_index%.opt("vTmp")
 			if ui.friendsListNicknames.length >= a_index {
-				if ui.friendsListNicknames[a_index] 
-					ui.joinGui%a_index%:=ui.joinGui.addText("vJoin" controlId "-" a_index  " section x5 y" (a_index*30) " w220 h26 background" cfg.TabColor2,friend)
-				else
-					ui.joinGui%a_index%:=ui.joinGui.addText("vJoin" controlId "-" a_index  " section x5 y" (a_index*30) " w220 h26 background" cfg.TabColor2,friend)
+				if ui.friendsListNicknames[a_index] {
+					ui.joinGuiBg%a_index%:=ui.joinGui.addText("vJoinBg" controlId "-" a_index  " section x5 y" (a_index*30) " w223 h26 background" cfg.tileColor)
+					ui.joinGuiText%a_index%:=ui.joinGui.addText("vJoinText" controlId "-" a_index  " section x10 y" (a_index*30)+1 " w220 h26 backgroundTrans",friend)
+				} else {
+					ui.joinGuiBg%a_index%:=ui.joinGui.addText("vJoinBg" controlId "-" a_index  " section x5 y" (a_index*30) " w223 h26 background" cfg.tileColor)
+					ui.joinGuiText%a_index%:=ui.joinGui.addText("vJoinText" controlId "-" a_index  " section x10 y" (a_index*30)+1 " w220 h26 backgroundTrans",friend)
+				}
 			} else {
-					ui.joinGui%a_index%:=ui.joinGui.addText("vJoin" controlId "-" a_index  " section x5 y" (a_index*30) " w220 h26 background" cfg.TabColor2,friend)
+					ui.joinGuiBg%a_index%:=ui.joinGui.addText("vJoinBg" controlId "-" a_index  " section x5 y" (a_index*30) " w223 h26 background" cfg.tileColor)
+					ui.joinGuiText%a_index%:=ui.joinGui.addText("vJoinText" controlId "-" a_index  " section x10 y" (a_index*30)+1 " w220 h26 backgroundTrans",friend)
 			}
-			ui.joinGui%a_index%.setFont("s13 c" cfg.FontColor1,"courier sys")
-			ui.joinGui%a_index%.onEvent("click",joinFriend)
+			ui.joinGuiText%a_index%.setFont("s13 q5 c" cfg.titleFontColor,"prototype")
+			ui.joinGuiText%a_index%.onEvent("click",joinFriend)
+			ui.joinGuiBg%a_index%.onEvent("click",joinFriend)
 			
 			
 			; ui.joinGui%a_index%Nickname:=ui.joinGui.addPicture("vNickname" controlId "-" a_index " x189 y" (a_index*30) " w36 h26 background" cfg.onColor,"./img/icon_nickname.png")
@@ -97,7 +102,7 @@ joinFireteam(*) {
 			
 			; try
 			; ui.joinGui%a_index%Delete.opt("vTmp")
-			ui.joinGui%a_index%delete:=ui.joinGui.addPicture("vDelete" controlId "-" a_index  " x283 ys+0 w26 h26 background" cfg.OnColor,"./img/button_delete.png")
+			ui.joinGui%a_index%delete:=ui.joinGui.addPicture("vDelete" controlId "-" a_index  " x283 y" (a_index*30) " w26 h26 background" cfg.OnColor,"./img/button_delete.png")
 			ui.joinGui%a_index%delete.onEvent("click",removeFriend)
 
 			ui.joinGui%a_index%Detail:=ui.joinGui.addPicture("x5 y" a_index*30 " w305 h26 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
@@ -115,8 +120,8 @@ joinFireteam(*) {
 			ui.addNicknameGuiOutline:=ui.addNicknameGui.addText("x0 y0 w320 h46 background" cfg.TrimColor2)
 			ui.addNicknameGuiBg:=ui.addNicknameGui.addText("x2 y2 w310 h42 background" cfg.TabColor2)
 			ui.addNicknameGuiText:=ui.addNicknameGui.addText("x5 w245 y1 h20 backgroundTrans","Nickname")
-			ui.addNicknameGuiText.setFont("s14 c" cfg.FontColor2,"move-x")
-			ui.addNicknameGui.setFont("s10 c" cfg.FontColor1,"calibri")
+			ui.addNicknameGuiText.setFont("s14 q5 c" cfg.FontColor2,"move-x")
+			ui.addNicknameGui.setFont("s10 q5 c" cfg.FontColor1,"calibri")
 			ui.addNicknameGuiInput:=ui.addNicknameGui.addEdit("r1 x5 y20 w260 background" cfg.TabColor1 " -wantReturn")
 			
 			ui.addNicknameGuiSaveButton:=ui.addNicknameGui.addPicture("x270 y4 w40 h38 backgroundTrans","./img/button_save.png")
@@ -181,7 +186,7 @@ joinFireteam(*) {
 		
 		ui.joinGuiAddOutline:=ui.joinGui.addText("section center x5 y" (ui.friendsList.length*30)+30 " w304 h26 background" cfg.OutlineColor1)
 		ui.joinGuiAdd:=ui.joinGui.addText("v" controlId "-" a_index  " section center x7 y" (ui.friendsList.length*30)+32 " w300 h20 background" cfg.titleBgColor,"Add New Friend")
-		ui.joinGuiAdd.setFont("s14 bold c" cfg.FontColor1,"move-x")
+		ui.joinGuiAdd.setFont("s14 bold q5 c" cfg.titleFontColor,"move-x")
 		ui.joinGuiAdd.onEvent("click",addFriend)
 		ui.joinGuiAddDetail:=ui.joinGui.addPicture("section x5 y" (ui.friendsList.length*30)+30 " w304 h26 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 
@@ -217,6 +222,7 @@ joinFireteam(*) {
 		}
 
 		winGetPos(,,&joinW,&joinH,ui.joinGui)
+		guiVis(ui.joinGui,false)
 		ui.joinGui.show("h" (ui.friendsList.length*30)+60)
 		ui.joinGuiOutline.opt("h" joinH+30)
 		ui.joinGuiOutline.redraw()
@@ -227,7 +233,7 @@ joinFireteam(*) {
 		winGetPos(&friendsX,&friendsY,&friendsW,&friendsH,ui.joinGui)
 	
 		ui.joinGui.show("x" (gsX+(gsW/2))-(friendsW/2) " y" (gsY+(gsH/2))-(friendsH/2) " w314 h" (ui.friendsList.length*30)+64)
-	
+		guiVis(ui.joinGui,true)
 	;addFriend()
 	
 	hotkey("ESC",closeJoinGui)

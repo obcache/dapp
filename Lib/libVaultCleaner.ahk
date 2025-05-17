@@ -136,7 +136,7 @@ ui.gametabs.useTab("Vault Cleaner")
 	this.helpTop:=ui.gameSettingsGui.addPicture("x" 10 " y" 84 " w" 237 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
 	this.helpBottom:=ui.gameSettingsGui.addPicture("x" 10 " y" 84+56-cfg.curveAmount " w" 237 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 	this.helpLeft:=ui.gameSettingsGui.addPicture("x" 9 " y" 82 " w" cfg.curveAmount/3 " h" 62 " backgroundTrans","./img/custom/lightburst_left_bar_dark.png")
-	this.helpRight:=ui.gameSettingsGui.addPicture("x" 249-(cfg.curveAmount/3) " y" 82 " w" cfg.curveAmount/3 " h" 60 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")
+	this.helpRight:=ui.gameSettingsGui.addPicture("x" 248-(cfg.curveAmount/3) " y" 82 " w" cfg.curveAmount/3 " h" 60 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")
 
 	wizPanel(wizPanelParams) {
 		this_guid:=newGuid()

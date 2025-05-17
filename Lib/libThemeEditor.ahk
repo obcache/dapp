@@ -104,14 +104,15 @@ drawThemeEditor(*) {
 			}
 	}
 
-	ui.ThemeDDL.Choose(1)
-	Loop cfg.ThemeList.Length {
-		if (cfg.ThemeList[A_Index] == cfg.Theme) {
-			ui.ThemeDDL.Choose(cfg.Theme)
-			Break
-		}
-	}
+	; ui.ThemeDDL.Choose(1)
+	; Loop cfg.ThemeList.Length {
+		; if (cfg.ThemeList[A_Index] == cfg.Theme) {
+			; ui.ThemeDDL.Choose(cfg.Theme)
+			; Break
+		; }
+	; }
 
+	ui.themeDDL.choose(cfg.theme)
 	ui.ThemeElements := [
 		
 		"TabColor1","TabColor2","TabColor3","TileColor",
@@ -220,6 +221,9 @@ RepaintThemeDDL(*) {
 }
 
 ThemeChanged(*) {
+	cfg.theme:=ui.themeDDL.text
+	iniWrite(cfg.theme,cfg.file,"Interface","Theme")
+	; msgBox(cfg.theme "`n" cfg.file)
 	Reload()
 }
 
