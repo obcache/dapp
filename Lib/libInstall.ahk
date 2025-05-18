@@ -478,7 +478,7 @@ CheckForUpdates(msg:=0,*) {
 		ui.latestVersionText.text := "Available:`t" substr(ui.latestVersion,1,1) "." substr(ui.latestVersion,2,1) "." substr(ui.latestVersion,3,1) "." substr(ui.latestVersion,4,1)
 		ui.latestVersionText.redraw()
 		if !inStr(ui.latestVersion,"404:") {
-			if ui.latestVersion > ui.installedVersion {
+			if 1=1 { ; } ui.latestVersion > ui.installedVersion {
 				;msgBox("latest version: " ui.latestVersion "`ninstalled version: " ui.installedVersion "`nhigestVersion: " max(ui.latestVersion,ui.installedVersion))
 				run("./dapp_updater.exe")
 				sleep(1000)

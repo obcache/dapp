@@ -115,10 +115,10 @@ drawThemeEditor(*) {
 	ui.themeDDL.choose(cfg.theme)
 	ui.ThemeElements := [
 		
-		"TabColor1","TabColor2","TabColor3","TileColor",
-		"TrimColor1","TrimColor2","titleBgColor","DisabledColor",
-		"FontColor1","FontColor2","FontColor3","tab3FontColor","OutlineColor2","OutlineColor1",
-		"OffColor","OnColor","AlertColor","AuxColor1","AuxColor2","titleFontColor"
+		"TabColor1","TabColor2","TabColor3","TabColor4",
+		"FontColor1","FontColor2","FontColor3","FontColor4",
+		"TileColor","TrimColor1","TrimColor2","OffColor","OnColor","AlertColor",
+		"OutlineColor1","OutlineColor2","DisabledColor","TitleBgColor","TitleFontColor","AuxColor1",
 			]
 
 	ui.themeEditorGui.AddText("x10 y50 section hidden")
@@ -128,11 +128,11 @@ drawThemeEditor(*) {
 		this_color := ui.ThemeElements[A_Index]
 		switch a_index {
 			case 5: 
-				ui.themeEditorGui.AddText("section x+18 y50 hidden")
+				ui.themeEditorGui.AddText("section x+22 y50 hidden")
 			case 9:
-				ui.themeEditorGui.AddText("section x+18 y50 hidden")
+				ui.themeEditorGui.AddText("section x+24 y50 hidden")
 			case 15:
-				ui.themeEditorGui.AddText("section x+18 y50 hidden")
+				ui.themeEditorGui.AddText("section x+24 y50 hidden")
 		}
 
 		ui.themeEditorGui.addText("section xs+0 y+4 w30 h20 background" cfg.trimColor2)
@@ -148,7 +148,7 @@ drawThemeEditor(*) {
 	cfg.curveAmount:=iniRead(cfg.themeFile,cfg.theme,"CurveAmount",20)
 	ui.curveSliderLabel:=ui.themeEditorGui.addText("x120 y167 w70 h14 background" cfg.tabColor2,"Bevel Depth")
 	ui.curveSliderLabel.setFont("s10 q5 c" cfg.fontColor2,"Prototype")
-	ui.curveSliderBuddy:=ui.themeEditorGui.addText("x15 y167 w22 h16 background" cfg.tabColor2 " vCurveSliderBuddy c" cfg.AuxColor2,cfg.curveAmount)
+	ui.curveSliderBuddy:=ui.themeEditorGui.addText("x15 y167 w22 h16 background" cfg.tabColor2 " vCurveSliderBuddy c" cfg.tabColor4,cfg.curveAmount)
 	ui.curveSliderBuddy.setFont("s10 q5 c" cfg.FontColor2,"Calibri")
 	ui.curveSlider:=ui.themeEditorGui.addSlider("x32 y169 w80 h14 range5-30 center NoTicks ToolTipTop buddyCurveSliderBuddy vcurveSlider",cfg.curveAmount)
 	ui.curveSlider.onEvent("change",changeCurve)
@@ -319,13 +319,13 @@ addTheme(*) {
 		IniWrite(cfg.baseColor,cfg.themeFile,ui.newThemeEdit.Value,"baseColor")
 		IniWrite(cfg.FontColor1,cfg.themeFile,ui.newThemeEdit.Value,"FontColor1")
 		IniWrite(cfg.FontColor2,cfg.themeFile,ui.newThemeEdit.Value,"FontColor2")
-		IniWrite(cfg.FontColor3,cfg.themeFile,ui.newThemeEdit.Value,"FontColor3")
-		IniWrite(cfg.tab3FontColor,cfg.themeFile,ui.newThemeEdit.Value,"tab3FontColor")
+		IniWrite(cfg.fontColor4,cfg.themeFile,ui.newThemeEdit.Value,"fontColor4")
+		IniWrite(cfg.fontColor3,cfg.themeFile,ui.newThemeEdit.Value,"fontColor3")
 		IniWrite(cfg.TabColor2,cfg.themeFile,ui.newThemeEdit.Value,"TabColor2")
 		IniWrite(cfg.titleBgColor,cfg.themeFile,ui.newThemeEdit.Value,"titleBgColor")
 		IniWrite(cfg.TabColor1,cfg.themeFile,ui.newThemeEdit.Value,"TabColor3")
 		IniWrite(cfg.TileColor,cfg.themeFile,ui.newThemeEdit.Value,"TileColor")
-		IniWrite(cfg.AuxColor2,cfg.themeFile,ui.newThemeEdit.Value,"AuxColor2")
+		IniWrite(cfg.tabColor4,cfg.themeFile,ui.newThemeEdit.Value,"tabColor4")
 		IniWrite(cfg.AuxColor1,cfg.themeFile,ui.newThemeEdit.Value,"AuxColor1")
 		IniWrite(cfg.TabColor1,cfg.themeFile,ui.newThemeEdit.Value,"TabColor1")
 		IniWrite(cfg.OnColor,cfg.themeFile,ui.newThemeEdit.Value,"OnColor")

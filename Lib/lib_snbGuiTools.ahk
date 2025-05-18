@@ -34,7 +34,7 @@ drawPanel(targetGui,panelX,panelY,panelW,panelH,panelColor,outlineColor,OutlineC
 		labelY := panelY
 		ui.label%panelId% := targetGui.addText("x" labelX " y" labelY+1 " w" labelW " h" labelH " background" outlineColor,"")
 		ui.label%panelId%.setFont("q5 s10")
-		ui.labelTop%panelId% := targetGui.addText("x" labelX+1 " y" labelY " w" labelW-2 " h" labelH " background" cfg.AuxColor2 " center c" labelFontColor) 
+		ui.labelTop%panelId% := targetGui.addText("x" labelX+1 " y" labelY " w" labelW-2 " h" labelH " background" cfg.tabColor4 " center c" labelFontColor) 
 		ui.labelTop%panelId%.setFont("q5 s10")
 		ui.labelBottom%panelId% := targetGui.addText("x" labelX+1 " y" labelY+2 " w" labelW-2 " h" labelH " backgroundTrans center c" labelFontColor, labelText) 
 		ui.labelBottom%panelId%.setFont("q5 s10")		

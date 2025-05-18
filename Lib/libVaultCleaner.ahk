@@ -28,7 +28,7 @@ ui.gametabs.useTab("Vault Cleaner")
 	;this.mainButtonTextBg1:=ui.gameSettingsGui.addPicture("x10 y10 w480 h20 backgroundTrans","./img/custom/lightburst_top_bar_light.png")
 	this.mainButtonBg:=ui.gameSettingsGui.addPicture("hidden x10 y10 w85 h20 backgroundTrans","./img/custom/lightburst_br_light.png")
 	this.mainButtonText:=ui.gameSettingsGui.addText("hidden section center x10 y9 w74 h20 backgroundTrans","Start")
-	this.mainButtonText.setFont("s12 q5 c" cfg.fontColor3,"move-x")
+	this.mainButtonText.setFont("s12 q5 c" cfg.fontColor4,"move-x")
 	
 	this.mainButtonHotkey:=ui.gameSettingsGui.addPicture("hidden hidden left x36 y10 background" cfg.tabColor2 " c" cfg.fontColor2 " h20 w72")
 	this.mainButtonHotkeyDetail1:=ui.gameSettingsGui.addPicture("hidden left x10 y10 backgroundTrans h20 w480","./img/custom/lightburst_bottom_bar_dark.png")
@@ -39,13 +39,13 @@ ui.gametabs.useTab("Vault Cleaner")
 	this.mainButtonHotkeyText:=ui.gameSettingsGui.addText("hidden left x91 y9 backgroundTrans c" cfg.fontColor2 " h20 w280","Press [Del] to START")
 	;this.mainButtonHotkeyTextDetail:=ui.gameSettingsGui.addPicture("left x200 y18 backgroundTrans h14 w300","./img/custom/lightburst_bottom_light.png")
 	;this.mainButtonHotkeyTextDetail:=ui.gameSettingsGui.addPicture("left x200 y18 backgroundTrans h14 w300","./img/custom/lightburst_bottom_light.png")
-	this.mainButtonHotkeyText.setFont("s12 q5 c" cfg.fontColor3,"move-x")
+	this.mainButtonHotkeyText.setFont("s12 q5 c" cfg.fontColor4,"move-x")
 	this.mainButton.onEvent("click",cleanVaultStart)
 	this.mainButtonText.onEvent("click",cleanVaultStart)
-	ui.gameSettingsGui.setFont("s12 c" cfg.tab3FontColor)
+	ui.gameSettingsGui.setFont("s12 c" cfg.fontColor3)
 	this.statusTextBg:=ui.gameSettingsGui.addText("hidden x10 y30 w480 h22 background" cfg.tabColor2,"")
 	this.statusText:=ui.gameSettingsGui.addText("hidden x20 y31 w470 h22 backgroundTrans","Toggle VAULT MODE to enable START button")
-	this.statusText.setFont("s12 c" cfg.tab3FontColor,"move-x")
+	this.statusText.setFont("s12 c" cfg.fontColor3,"move-x")
 	; this.statusTextDetail:=ui.gameSettingsGui.addPicture("x20 y30 w468 h22 backgroundTrans","./img/custom/lightburst_tr_light.png")
 	; this.statusTextDetail2:=ui.gameSettingsGui.addPicture("x20 y30 w468 h22 backgroundTrans","./img/custom/lightburst_br_light.png")
 	; this.statusTextDetail3:=ui.gameSettingsGui.addPicture("x10 y30 w468 h22 backgroundTrans","./img/custom/lightburst_tl_light.png")
@@ -82,7 +82,7 @@ ui.gametabs.useTab("Vault Cleaner")
 	this.remaining:=ui.gameSettingsGui.addText("section x340 y119 right w80 h25 c" cfg.fontColor2 " backgroundTrans","Remaining: ")
 	this.remainingtime:=ui.gameSettingsGui.addText("x420 ys+0 left w80 h25 c" cfg.fontColor2 " backgroundTrans","00:00:00") 
 	
-	;this.dismantledHeaderLabel:=ui.gameSettingsGui.addText("x250 y0 w110 right h25 c" cfg.tab3FontColor " backgroundTrans","")
+	;this.dismantledHeaderLabel:=ui.gameSettingsGui.addText("x250 y0 w110 right h25 c" cfg.fontColor3 " backgroundTrans","")
 	this.dismantledLegendaryLabel:=ui.gameSettingsGui.addText("section x255 y88  left h25 c" cfg.fontColor2 " backgroundTrans","Legendary: ")
 	this.dismantledLegendary:=ui.gameSettingsGui.addText("x+0 ys+0 left w83 h25 c" cfg.fontColor2 " backgroundTrans",format("{:03d}","000"))
 	this.dismantledExoticLabel:=ui.gameSettingsGui.addText("section x255 y104 left h25 c" cfg.fontColor2 " backgroundTrans","Exotic: ")
@@ -110,7 +110,7 @@ ui.gametabs.useTab("Vault Cleaner")
 	this.d2LaunchVaultCleanerButton.onEvent("click",toggleVaultMode)
 	this.d2LaunchVaultCleanerText:=ui.gameSettingsGui.addText("hidden x65 y85 w180 h50 center backgroundTrans c" cfg.fontColor2,'Vault Mode: Off`nClick to Toggle.')
 	this.d2LaunchVaultCleanerText.setFont("s14 c" cfg.fontColor2 " bold","Prototype")
-	this.vaultProgressLabel:=ui.gameSettingsGui.addText("x16 y62 w110 h16 backgroundTrans c" cfg.fontColor2,"Progress")
+	this.vaultProgressLabel:=ui.gameSettingsGui.addText("x16 y63 w110 h15 backgroundTrans c" cfg.fontColor2,"Progress")
 	this.vaultProgressLabel.setFont("s10 c" cfg.fontColor2,"move-x")
 	drawOutlineNamed("vaultOutline",ui.gameSettingsGui,7,8,484,136,cfg.trimColor2,cfg.trimColor2,1)
 	
@@ -335,15 +335,15 @@ ui.gametabs.useTab("Vault Cleaner")
 		winRestore(this.gameWin)
 		winActivate(ui.mainGui)
 
-		this.mainButtonText.setFont("s12 q5 c" cfg.fontColor3)
-		this.vaultProgressLabel.setFont("s10 c" cfg.fontColor3,"move-x")
+		this.mainButtonText.setFont("s12 q5 c" cfg.fontColor4)
+		this.vaultProgressLabel.setFont("s10 c" cfg.fontColor4,"move-x")
 
 		buttonBg.opt("background" cfg.TabColor2)
-		this.vaultProgressLabelBg.opt("background" cfg.AuxColor2)
-		this.vaultProgressLabel.setFont("c" cfg.fontColor3)
+		this.vaultProgressLabelBg.opt("background" cfg.tabColor4)
+		this.vaultProgressLabel.setFont("c" cfg.fontColor4)
 		this.vaultProgressLabelBg.redraw()
-		this.mainButtonHotkeyText.setFont("c" cfg.fontColor3)
-		textBg.opt("background" cfg.AuxColor2)
+		this.mainButtonHotkeyText.setFont("c" cfg.fontColor4)
+		textBg.opt("background" cfg.tabColor4)
 		textBg.redraw()
 
 		
@@ -456,7 +456,7 @@ libVaultInit(*) {
 			;this.mainButtonHotkey.setFont("q5 c00FFFFE")
 			this.statusText.text:="Dismantles ALL unlocked items (DIM Search 'is:unlocked' to review)"
 			this.mainButton.opt("background" cfg.titleFontColor)
-			this.mainButtonText.setFont("c" cfg.tab3FontColor)
+			this.mainButtonText.setFont("c" cfg.fontColor3)
 			this.mainButton.redraw()
 			;this.vaultProgressLabelBg.opt("backgroundD0D0F0")
 			;this.vaultProgressLabelBg.redraw()
@@ -474,7 +474,7 @@ stopCleaning(*) {
 	this.restartQueued:=false
 	this.mainButtonText.text:="Start"
 	this.statusText.text:="[Del] to start cleaning"
-	this.mainButton.opt("background" cfg.AlertColor "c" cfg.fontColor3)
+	this.mainButton.opt("background" cfg.AlertColor "c" cfg.fontColor4)
 	setTimer(timer,0)
 	this.restartQueue:=false
 	exit
@@ -498,7 +498,7 @@ cleanVaultStart(*) {
 	(this.restartQueued) ? (this.restartQueued:=false,exit) : 0
 	
 	; this.mainButtonHotkey.text:="[Delete]" 	
-	; this.mainButton.opt("background" cfg.OnColor " c" cfg.tab3FontColor)
+	; this.mainButton.opt("background" cfg.OnColor " c" cfg.fontColor3)
 	; this.mainButtonText.text:="Stop"
 	mouseMove(955,170)
 	sleep(500)

@@ -452,7 +452,7 @@ MButtonDown(*) {
 	send("{" cfg.d2GameMouseMiddleButtonKey " up")
 }
 
-ui.d2Log:= ui.gameSettingsGui.addText("x405 y10 w68 h80 hidden background" cfg.titleBgColor " c" cfg.FontColor3," Destiny 2`n Log Started`n Waiting for Input")
+ui.d2Log:= ui.gameSettingsGui.addText("x405 y10 w68 h80 hidden background" cfg.titleBgColor " c" cfg.fontColor4," Destiny 2`n Log Started`n Waiting for Input")
 ui.d2Log.setFont("s7","ariel")
 
 
@@ -520,7 +520,7 @@ showCodeWindow(*) {
 		
 		
 	;ui.d2wwCodeImg := ui.d2wwCodesGui.addPicture("x20 y20 w800 h600","./img/d2CodeMorgeth.png")
-	ui.d2CodeTitlebar:=ui.d2wwCodesGui.addText("x5 y0 w1200 h30 background" cfg.AuxColor2)
+	ui.d2CodeTitlebar:=ui.d2wwCodesGui.addText("x5 y0 w1200 h30 background" cfg.tabColor4)
 	ui.d2CodeExit := ui.d2wwCodesGui.addPicture("x1175 y0 w30 h30 background" cfg.titleBgColor,"./img/button_quit.png")
 	ui.d2CodeExit.onEvent("click",hideCodeWindow)
 	;ui.d2wwCodeImg.onEvent("click",WM_LBUTTONDOWN_callback)

@@ -35,7 +35,7 @@ GuiSetupTab(&ui,&cfg) {
 	ui.AutoClickerSpeedSlider.ToolTip := "AutoClicker Speed"
 	ui.AutoClickerSpeedSlider.OnEvent("Change",AutoClickerSpeedChanged)
 	
-	ui.MainGui.setFont("q5 s10 c" cfg.tab3FontColor)
+	ui.MainGui.setFont("q5 s10 c" cfg.fontColor3)
 	drawOutlineMainGui(34,28,497,200,cfg.DisabledColor,cfg.DisabledColor,2)
 	ui.mainGui.addText("hidden section x48 y21")
 	cfg.toolTipsEnabled			:= iniRead(cfg.file,"Toggles","ToolTipsEnabled",true)
@@ -192,8 +192,8 @@ GuiSetupTab(&ui,&cfg) {
 	ui.latestVersionText.setFont(,"Calibri")
 	ui.monitorResList := ["1920x1080","1920x1200","2560x1440","3440x1440","Custom"]
 	ui.mainGui.setFont(,"calibri")
-	ui.monitorResDDL := ui.mainGui.AddDDL("xs-66 y+2 w90 r4 choose" cfg.monitorRes " c" cfg.tab3FontColor " background" cfg.disabledColor,ui.monitorResList)
-	ui.monitorResDDL.setFont("c" cfg.tab3FontColor)
+	ui.monitorResDDL := ui.mainGui.AddDDL("xs-66 y+2 w90 r4 choose" cfg.monitorRes " c" cfg.fontColor3 " background" cfg.disabledColor,ui.monitorResList)
+	ui.monitorResDDL.setFont("c" cfg.fontColor3)
 	ui.monitorResDDL.onEvent("change",monitorResChanged)
 	ui.monitorResLabel := ui.mainGui.AddText("x+4 y+-25 w65 c" cfg.FontColor1 " backgroundTrans","Screen")	
 	ui.monitorResLabel2 := ui.mainGui.AddText("y+-2 w65 c" cfg.FontColor1 " backgroundTrans","Size")
@@ -264,7 +264,7 @@ TabColor2=355051
 TabColor1=674704
 titleBgColor=355051
 TileColor=1D5852
-AuxColor2=292929
+tabColor4=292929
 TabColor1=212121
 OnColor=FF01FF
 OffColor=1FFFF
@@ -281,7 +281,7 @@ TabColor2=204040
 TabColor1=984C01
 titleBgColor=70D1C8
 TileColor=654901
-AuxColor2=292929
+tabColor4=292929
 TabColor1=212121
 OnColor=FF01FF
 OffColor=1FFFF
@@ -298,7 +298,7 @@ TabColor2=202020
 TabColor1=984C01
 titleBgColor=355051
 TileColor=70D1C8
-AuxColor2=292929
+tabColor4=292929
 TabColor1=212121
 OnColor=01FE80
 OffColor=CFA645
@@ -315,7 +315,7 @@ TabColor2=355051
 TabColor1=70D1C8
 titleBgColor=355051
 TileColor=70D1C8
-AuxColor2=292929
+tabColor4=292929
 TabColor1=212121
 OnColor=1FFFF
 OffColor=9D9D9D
@@ -332,7 +332,7 @@ TabColor2=6D8B87
 TabColor1=73714D
 titleBgColor=6D8B87
 TileColor=73714D
-AuxColor2=CEAFD1
+tabColor4=CEAFD1
 TabColor1=212121
 OnColor=FF01FF
 OffColor=D7FF82
@@ -349,7 +349,7 @@ TabColor2=204040
 TabColor1=804001
 titleBgColor=204040
 TileColor=804001
-AuxColor2=292929
+tabColor4=292929
 TabColor1=212121
 OnColor=FF01FF
 OffColor=1FFFF0
