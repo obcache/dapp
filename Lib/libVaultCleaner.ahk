@@ -28,7 +28,7 @@ ui.gametabs.useTab("Vault Cleaner")
 	;this.mainButtonTextBg1:=ui.gameSettingsGui.addPicture("x10 y10 w480 h20 backgroundTrans","./img/custom/lightburst_top_bar_light.png")
 	this.mainButtonBg:=ui.gameSettingsGui.addPicture("hidden x10 y10 w85 h20 backgroundTrans","./img/custom/lightburst_br_light.png")
 	this.mainButtonText:=ui.gameSettingsGui.addText("hidden section center x10 y9 w74 h20 backgroundTrans","Start")
-	this.mainButtonText.setFont("s12 q5 c" cfg.fontColor4,"move-x")
+	this.mainButtonText.setFont("s12 q5 c" cfg.LabelColor1,"move-x")
 	
 	this.mainButtonHotkey:=ui.gameSettingsGui.addPicture("hidden hidden left x36 y10 background" cfg.tabColor2 " c" cfg.fontColor2 " h20 w72")
 	this.mainButtonHotkeyDetail1:=ui.gameSettingsGui.addPicture("hidden left x10 y10 backgroundTrans h20 w480","./img/custom/lightburst_bottom_bar_dark.png")
@@ -39,7 +39,7 @@ ui.gametabs.useTab("Vault Cleaner")
 	this.mainButtonHotkeyText:=ui.gameSettingsGui.addText("hidden left x91 y9 backgroundTrans c" cfg.fontColor2 " h20 w280","Press [Del] to START")
 	;this.mainButtonHotkeyTextDetail:=ui.gameSettingsGui.addPicture("left x200 y18 backgroundTrans h14 w300","./img/custom/lightburst_bottom_light.png")
 	;this.mainButtonHotkeyTextDetail:=ui.gameSettingsGui.addPicture("left x200 y18 backgroundTrans h14 w300","./img/custom/lightburst_bottom_light.png")
-	this.mainButtonHotkeyText.setFont("s12 q5 c" cfg.fontColor4,"move-x")
+	this.mainButtonHotkeyText.setFont("s12 q5 c" cfg.LabelColor1,"move-x")
 	this.mainButton.onEvent("click",cleanVaultStart)
 	this.mainButtonText.onEvent("click",cleanVaultStart)
 	ui.gameSettingsGui.setFont("s12 c" cfg.fontColor3)
@@ -335,14 +335,14 @@ ui.gametabs.useTab("Vault Cleaner")
 		winRestore(this.gameWin)
 		winActivate(ui.mainGui)
 
-		this.mainButtonText.setFont("s12 q5 c" cfg.fontColor4)
-		this.vaultProgressLabel.setFont("s10 c" cfg.fontColor4,"move-x")
+		this.mainButtonText.setFont("s12 q5 c" cfg.LabelColor1)
+		this.vaultProgressLabel.setFont("s10 c" cfg.LabelColor1,"move-x")
 
 		buttonBg.opt("background" cfg.TabColor2)
 		this.vaultProgressLabelBg.opt("background" cfg.tabColor4)
-		this.vaultProgressLabel.setFont("c" cfg.fontColor4)
+		this.vaultProgressLabel.setFont("c" cfg.LabelColor1)
 		this.vaultProgressLabelBg.redraw()
-		this.mainButtonHotkeyText.setFont("c" cfg.fontColor4)
+		this.mainButtonHotkeyText.setFont("c" cfg.LabelColor1)
 		textBg.opt("background" cfg.tabColor4)
 		textBg.redraw()
 
@@ -474,7 +474,7 @@ stopCleaning(*) {
 	this.restartQueued:=false
 	this.mainButtonText.text:="Start"
 	this.statusText.text:="[Del] to start cleaning"
-	this.mainButton.opt("background" cfg.AlertColor "c" cfg.fontColor4)
+	this.mainButton.opt("background" cfg.AlertColor "c" cfg.LabelColor1)
 	setTimer(timer,0)
 	this.restartQueue:=false
 	exit

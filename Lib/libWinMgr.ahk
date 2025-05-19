@@ -73,7 +73,7 @@ wm_mouseMove(wParam, lParam, msg, hwnd) {
 	(ui.incursionGui.hwnd == hwnd)
 				? (setTimer(d2FlashIncursionNoticeA,0)
 					,setTimer(d2FlashIncursionNoticeB,0)
-					,ui.incursionGuiBg.opt("background" cfg.fontColor4))
+					,ui.incursionGuiBg.opt("background" cfg.LabelColor1))
 				: prevHwnd:=hwnd
 			prevHwnd:=hwnd
 	}

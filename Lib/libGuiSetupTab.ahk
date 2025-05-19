@@ -23,10 +23,10 @@ monitorResChanged(*) {
 GuiSetupTab(&ui,&cfg) {
 	global
 	ui.MainGuiTabs.UseTab("2_Setup____")
-	drawPanel(ui.mainGui,40,33,218,174,cfg.TabColor3,cfg.OutlineColor2,cfg.OutlineColor1,1,1,"none",100,"Features","calibri",cfg.FontColor1)
-	drawPanel(ui.mainGui,261,33,214,118,cfg.TabColor3,cfg.OutlineColor2,cfg.OutlineColor1,1,1,"none",100,"Features","calibri",cfg.FontColor1)
-	drawPanel(ui.mainGui,261,154,214,53,cfg.TabColor3,cfg.OutlineColor2,cfg.OutlineColor1,1,1,"none",100,"Features","calibri",cfg.FontColor1)
-	drawPanel(ui.mainGui,478,33,42,174,cfg.TabColor3,cfg.OutlineColor2,cfg.OutlineColor1,1,1,"none",100,"Features","calibri",cfg.FontColor1)
+	drawPanel(ui.mainGui,40,33,218,174,cfg.TabColor4,cfg.OutlineColor2,cfg.OutlineColor1,1,1,"none",100,20,"Features","calibri",cfg.FontColor1)
+	drawPanel(ui.mainGui,261,33,214,118,cfg.TabColor4,cfg.OutlineColor2,cfg.OutlineColor1,1,1,"none",100,20,"Features","calibri",cfg.FontColor1)
+	drawPanel(ui.mainGui,261,154,214,53,cfg.TabColor4,cfg.OutlineColor2,cfg.OutlineColor1,1,1,"none",100,20,"Features","calibri",cfg.FontColor1,"showThemeEditor")
+	drawPanel(ui.mainGui,478,33,42,174,cfg.TabColor4,cfg.OutlineColor2,cfg.OutlineColor1,1,1,"none",100,20,"Features","calibri",cfg.FontColor1)
 	line(ui.mainGui,529,184,29,2,cfg.TrimColor1)
 
 	ui.MainGui.setFont("q5 s09")
@@ -237,9 +237,9 @@ GuiSetupTab(&ui,&cfg) {
 			ui.monitorResDDL.text := cfg.monitorRes
 		}
 	}
-	ui.themeEditorButton := ui.mainGui.addPicture("x275 y163 w35 h35 section backgroundTrans","./img/color_swatches.png")
-	ui.themeEditorLabel := ui.mainGui.addText("x+5 ys+4 w150 h33 section backgroundTrans","Theme Editor")
-	ui.themeEditorLabel.setFont("q5 s14","move-x")
+	ui.themeEditorButton := ui.mainGui.addPicture("x275 y164 w35 h35 section backgroundTrans","./img/color_swatches.png")
+	ui.themeEditorLabel := ui.mainGui.addText("x+5 ys+7 w150 h33 section backgroundTrans","Theme Editor")
+	ui.themeEditorLabel.setFont("q5 s13 bold","move-x")
 
 	ui.themeEditorButton.onEvent("click",showThemeEditor)
 

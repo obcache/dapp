@@ -452,7 +452,7 @@ MButtonDown(*) {
 	send("{" cfg.d2GameMouseMiddleButtonKey " up")
 }
 
-ui.d2Log:= ui.gameSettingsGui.addText("x405 y10 w68 h80 hidden background" cfg.titleBgColor " c" cfg.fontColor4," Destiny 2`n Log Started`n Waiting for Input")
+ui.d2Log:= ui.gameSettingsGui.addText("x405 y10 w68 h80 hidden background" cfg.titleBgColor " c" cfg.LabelColor1," Destiny 2`n Log Started`n Waiting for Input")
 ui.d2Log.setFont("s7","ariel")
 
 

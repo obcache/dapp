@@ -396,7 +396,7 @@ drawKeybindBar(*) {
 
 
 	ui.d2Panel1Tab2Bg 		:= ui.gameSettingsGui.addText("hidden x19 y13 w438 h42 background" cfg.TrimColor1,"")
-	ui.d2Panel1Tab2Bg2 		:= ui.gameSettingsGui.addText("hidden x20 y14 w436 h40 background" cfg.TabColor1 " c" cfg.fontColor4,"")	
+	ui.d2Panel1Tab2Bg2 		:= ui.gameSettingsGui.addText("hidden x20 y14 w436 h40 background" cfg.TabColor1 " c" cfg.LabelColor1,"")	
 	ui.d2Panel1Tab2Detail1	:= ui.gameSettingsGui.addPicture("x20 y14 w436 h14 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")	
 	ui.d2Panel1Tab2Bg3 		:= ui.gameSettingsGui.addText("hidden x21 y15 w434 h38 background" cfg.TabColor1,"")
 	ui.d2Panel1Tab2Bg4 		:= ui.gameSettingsGui.addText("hidden x22 y16 w432 h36 background" cfg.OffColor,"")
@@ -404,12 +404,12 @@ drawKeybindBar(*) {
 	ui.d2keybindGameTab2 := guiName.addText(		"x" 350 " y" 54 " w" 76 " h" 19 " background" cfg.tabColor3) 
 	ui.d2keybindGameTabDetail := guiName.addPicture("x" 350 " y" 54 " w" 78 " h" 13 " backgroundTrans","./img/custom/lightburst_top_bar_dark.png") 
 	ui.d2keybindGameTab3 := guiName.addText(		"x" 345 " y" 53 " w" 92 " h" 19 " backgroundTrans center", "Game Settings") 
-	ui.d2keybindGameTab3.setFont("s8 q5 c" cfg.fontColor4,"Medium")
+	ui.d2keybindGameTab3.setFont("s8 q5 c" cfg.LabelColor1,"Medium")
 
 	ui.currKey 				:= cfg.dappPauseKey
 	ui.dappPauseKey			:= ui.gameSettingsGui.addPicture("x50 y24 w" (ui.d2KeybindWidth + max(0,(strLen(ui.currKey)-6))*10) " h30 section backgroundTrans","./img/keyboard_key_up.png")
 	ui.dappPauseKeyData 	:= ui.gameSettingsGui.addText("xs-1 y+-24 w" (ui.d2KeybindWidth + max(0,(strLen(ui.currKey)-6))*10) " h21 center c" cfg.OffColor " backgroundTrans",subStr(strUpper(cfg.dappPauseKey),1,8))
-	ui.dappPauseKeyLabel	:= ui.gameSettingsGui.addText("xs-1 y+-34 w" (ui.d2KeybindWidth + max(0,(strLen(ui.currKey)-6))*10) " h20 center c" cfg.fontColor4 " backgroundTrans","Pause")
+	ui.dappPauseKeyLabel	:= ui.gameSettingsGui.addText("xs-1 y+-34 w" (ui.d2KeybindWidth + max(0,(strLen(ui.currKey)-6))*10) " h20 center c" cfg.LabelColor1 " backgroundTrans","Pause")
 	
 	ui.keybindSpacer		:= ui.gameSettingsGui.addText("x112 y16 w1 h40 background" cfg.trimColor1)		
 	ui.keybindSpacer1		:= ui.gameSettingsGui.addText("x113 y16 w2 h40 background" cfg.TabColor2)		
@@ -423,7 +423,7 @@ drawKeybindBar(*) {
 	ui.dappToggleSprintKeyData 	:= ui.gameSettingsGui.addText("xs-2 y+-24 w" 88 
 		" h21 center c" cfg.OffColor " backgroundTrans",subStr(strUpper(cfg.dappToggleSprintKey),1,8))
 	ui.dappToggleSprintKeyLabel	:= ui.gameSettingsGui.addText("xs-1 y+-34 w" 88 
-		" h20 center c" cfg.fontColor4 " backgroundTrans","Sprint")
+		" h20 center c" cfg.LabelColor1 " backgroundTrans","Sprint")
 	
 	ui.currKey := cfg.dappHoldToCrouchKey
 	ui.dappHoldToCrouchKey		:= ui.gameSettingsGui.AddPicture("x+1 ys w" 60 
@@ -431,7 +431,7 @@ drawKeybindBar(*) {
 	ui.dappHoldToCrouchKeyData 	:= ui.gameSettingsGui.addText("xs-1 y+-24 w" 60 
 		" h21 center c" cfg.OffColor " backgroundTrans",subStr(strUpper(cfg.dappHoldToCrouchKey),1,8))
 	ui.dappHoldToCrouchKeyLabel	:= ui.gameSettingsGui.addText("xs-1 y+-34 w" 60 
-		" h20 center c" cfg.fontColor4 " backgroundTrans","Crouch")
+		" h20 center c" cfg.LabelColor1 " backgroundTrans","Crouch")
 
 	ui.currKey := cfg.dappReloadKey
 	ui.dappReloadKey			:= ui.gameSettingsGui.addPicture("x+1 ys w" 56 
@@ -439,7 +439,7 @@ drawKeybindBar(*) {
 	ui.dappReloadKeyData 		:= ui.gameSettingsGui.addText("xs-1 y+-24 w" 56 
 		" h21 center c" cfg.OffColor " backgroundTrans",subStr(strUpper(cfg.dappReloadKey),1,8))
 	ui.dappReloadKeyLabel		:= ui.gameSettingsGui.addText("xs-1 y+-34 w" 56 
-	" h20 center c" cfg.fontColor4 " backgroundTrans","Reload")
+	" h20 center c" cfg.LabelColor1 " backgroundTrans","Reload")
 
 	ui.currKey := cfg.dappLoadoutKey
 	ui.dappLoadoutKey			:= ui.gameSettingsGui.addPicture("x+1 ys w" 64 
@@ -447,13 +447,13 @@ drawKeybindBar(*) {
 	ui.dappLoadoutKeyData 		:= ui.gameSettingsGui.addText("xs-3 y+-24 w" 64 
 		"  h21 center c" cfg.OffColor " backgroundTrans",subStr(strUpper(cfg.dappLoadoutKey),1,8))
 	ui.dappLoadoutKeyLabel 		:= ui.gameSettingsGui.addText("xs+0 y+-34 w" 64 
-		"  h20 center c" cfg.fontColor4 " backgroundTrans","Loadout")
+		"  h20 center c" cfg.LabelColor1 " backgroundTrans","Loadout")
 	
 	ui.currKey 					:= cfg.dappSwordFlyKey
 	ui.dappSwordFlyKey			:= ui.gameSettingsGui.addPicture("x+12 ys w35 h30 section backgroundTrans","./img/keyboard_key_up.png")
 	ui.dappSwordFlyKeyData 	:= ui.gameSettingsGui.addText("xs+0 y+-24 w35 h21 center c" cfg.OffColor " backgroundTrans"
 		,subStr(strUpper(cfg.dappSwordFlyKey),1,8))
-	ui.dappSwordFlyKeyLabel 	:= ui.gameSettingsGui.addText("xs-2 y+-35 w40 h20 center c" cfg.fontColor4 " backgroundTrans","Fly")
+	ui.dappSwordFlyKeyLabel 	:= ui.gameSettingsGui.addText("xs-2 y+-35 w40 h20 center c" cfg.LabelColor1 " backgroundTrans","Fly")
 	
 	
 	
@@ -1203,7 +1203,7 @@ drawLinkBar(*) {
 		ui.editLinkGui.opt("-caption -border toolWindow alwaysOnTop")
 		ui.editLinkGui.backColor:="010203"
 		winSetTransColor("010203",ui.editLinkGui)
-		ui.editLinkGui.color:=cfg.fontColor4
+		ui.editLinkGui.color:=cfg.LabelColor1
 		ui.editLinkBg:=ui.editLinkGui.addText("x0 y0 w300 h80 background" cfg.TabColor1)
 		ui.editLinkTitlebar:=ui.editLinkGui.addText("x0 y0 w80 h20 background" cfg.TabColor2)
 		ui.editLinkTitlebar.onEvent("click",WM_LBUTTONDOWN_callback)

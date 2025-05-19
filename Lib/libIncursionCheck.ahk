@@ -61,17 +61,17 @@ incursionNotice(this_trigger := "") {
 		ui.incursionNoticeHwnd := ui.incursionGui.hwnd
 		ui.incursionGui.opt("-caption -border toolWindow alwaysOnTop owner" ui.mainGui.hwnd)
 		ui.incursionGui.backColor := "010203"
-		ui.incursionGuiBg := ui.incursionGui.addText("x3 y3 w344 h44 background" cfg.fontColor4)
+		ui.incursionGuiBg := ui.incursionGui.addText("x3 y3 w344 h44 background" cfg.LabelColor1)
 		ui.incursionGuiBg2 := ui.incursionGui.addText("x5 y5 w340 h40 background" cfg.titleBgColor)
 		drawOutlineNamed("notice",ui.incursionGui,1,1,348,48,cfg.TrimColor2,cfg.titleFontColor,2)			
-		drawPanelLabel(ui.incursionGui,224,0,100,20,"Destiny2 Event",cfg.fontColor4,cfg.titleFontColor,cfg.titleBgColor)
-		ui.incursionNotice := ui.incursionGui.addText("x10 y5 w339 h70 backgroundTrans c" cfg.fontColor4,"Vex Incursion!")
-		ui.incursionGui.setFont("q5 s9 c" cfg.fontColor4,"Cascadia Code")
+		drawPanelLabel(ui.incursionGui,224,0,100,20,"Destiny2 Event",cfg.LabelColor1,cfg.titleFontColor,cfg.titleBgColor)
+		ui.incursionNotice := ui.incursionGui.addText("x10 y5 w339 h70 backgroundTrans c" cfg.LabelColor1,"Vex Incursion!")
+		ui.incursionGui.setFont("q5 s9 c" cfg.LabelColor1,"Cascadia Code")
 		ui.incursionTime := ui.incursionGui.addText("x15 y27 w260 h16 backgroundTrans"," Timestamp:" formatTime("T12"," MM/dd hh:mm:ss "))
 		ui.incursionClose := ui.incursionGui.addPicture("x330 y0 w20 h20 background" cfg.AlertColor,"./img/button_quit.png")
 		drawOutlineNamed("incursionClose",ui.incursionGui,329,-2,21,22,cfg.titleFontColor,cfg.titleFontColor,1)
 		ui.incursionGui.setFont("q5 s12","Arial")
-		ui.incursionOptOut := ui.incursionGui.addPicture("x224 y27 w13 h13 section backgroundTrans c" cfg.fontColor4,"./img/checkbox_false.png")
+		ui.incursionOptOut := ui.incursionGui.addPicture("x224 y27 w13 h13 section backgroundTrans c" cfg.LabelColor1,"./img/checkbox_false.png")
 			
 		if cfg.pushNotificationsEnabled	== true {
 			ui.incursionOptOut.value := "./img/checkbox_false.png"
@@ -79,11 +79,11 @@ incursionNotice(this_trigger := "") {
 			ui.incursionOptOut.value := "./img/checkbox_true.png"
 		}
 				
-		ui.incursionOptOutLabel := ui.incursionGui.addText("x+6 ys-1 w359 backgroundTrans c" cfg.fontColor4,"Dont Show Again")
+		ui.incursionOptOutLabel := ui.incursionGui.addText("x+6 ys-1 w359 backgroundTrans c" cfg.LabelColor1,"Dont Show Again")
 		ui.incursionOptOutLabel.setFont("q5 s9","Arial")
 		ui.incursionClose.onEvent("click", closeIncursionNotice)
 		ui.incursionOptOut.onEvent("click",toggleIncursionNotice)
-		ui.incursionNotice.setFont("q5 s19 c" cfg.fontColor4,"Courier")
+		ui.incursionNotice.setFont("q5 s19 c" cfg.LabelColor1,"Courier")
 
 
 		
@@ -130,6 +130,6 @@ d2FlashIncursionNoticeA(*) {
 	}
 
 d2FlashIncursionNoticeB(*) {
-	ui.incursionGuiBg.opt("background" cfg.fontColor4)
+	ui.incursionGuiBg.opt("background" cfg.LabelColor1)
 	ui.incursionGuiBg.redraw()
 }
