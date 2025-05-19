@@ -10,10 +10,6 @@ if (InStr(A_LineFile,A_ScriptFullPath))
 }
 
 
-^+a:: {
-	toggleVaultOn()
-}
-
 
 ^+[:: {
 	static currOutputDeviceNum := 1
@@ -39,8 +35,4 @@ if (InStr(A_LineFile,A_ScriptFullPath))
 	TrayTip("Audio Changed:`n " strSplit(ui.audioDevices[currOutputDeviceNum],"\")[1],"dapp Audio Mgr","Iconi Mute")
 }
 
-
-^!+v:: {
-	incursionNotice("manualFire")
-}
 
