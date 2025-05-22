@@ -65,14 +65,14 @@ ui.gametabs.useTab("Vault Cleaner")
 	ui.gameSettingsGui.setFont("s9 q5 c" cfg.fontColor1,"prototype")
 
 
-	this.statBoxOutline:=ui.gameSettingsGui.addText("x244 y82 w246 h60 background" cfg.trimColor2)
-	this.statBoxBg:=ui.gameSettingsGui.addText("x247 y84 w242 h56 background" cfg.tabColor2)
+	this.statBoxOutline:=ui.gameSettingsGui.addText("x248 y82 w242 h60 background" cfg.trimColor2)
+	this.statBoxBg:=ui.gameSettingsGui.addText("x249 y84 w242 h56 background" cfg.tabColor2)
 	
 	
-	this.statTop:=ui.gameSettingsGui.addPicture("x" 249 " y" 84 " w" 237 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
-	this.statBottom:=ui.gameSettingsGui.addPicture("x" 249 " y" 84+56-cfg.curveAmount " w" 237 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+	this.statTop:=ui.gameSettingsGui.addPicture("x" 249 " y" 84 " w" 239 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
+	this.statBottom:=ui.gameSettingsGui.addPicture("x" 249 " y" 84+56-cfg.curveAmount " w" 239 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 	this.statLeft:=ui.gameSettingsGui.addPicture("x" 249 " y" 82 " w" cfg.curveAmount/3 " h" 62 " backgroundTrans","./img/custom/lightburst_left_bar_dark.png")
-	this.statRight:=ui.gameSettingsGui.addPicture("x" 250+240-(cfg.curveAmount/3) " y" 82 " w" cfg.curveAmount/3 " h" 60 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")
+	this.statRight:=ui.gameSettingsGui.addPicture("x" 252+240-(cfg.curveAmount/3) " y" 82 " w" cfg.curveAmount/3 " h" 60 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")
 	
 	
 	this.pageLabel:=ui.gameSettingsGui.addText("right section x370 y88 w80 h25 backgroundTrans c" cfg.fontColor2 "","Page: ")
@@ -127,16 +127,16 @@ ui.gametabs.useTab("Vault Cleaner")
 	WizPanelParams:=[ui.gameSettingsGui,3,"Navigate to the VAULT screen in Destiny 2.",'Ensure that Destiny 2 is on the vault screen and click "Start" to begin cleaning.','Start','Cancel',8,9,482,52]
 	wizPanel(wizPanelParams)
 	
-	this.helpOutline:=ui.gameSettingsGui.addText("x" 8 " y" 82 " w" 240 " h" 60 " background" cfg.trimColor2)
-	this.helpBg:=ui.gameSettingsGui.addText("x" 9 " y" 84 " w" 239 " h" 56 " background" cfg.tabColor2)
-	this.helpText:=ui.gameSettingsGui.addText("x" 15 " y" 87 " w" 231 " h" 52 " backgroundTrans")
+	this.helpOutline:=ui.gameSettingsGui.addText("x" 8 " y" 82 " w" 232 " h" 60 " background" cfg.trimColor2)
+	this.helpBg:=ui.gameSettingsGui.addText("x" 9 " y" 84 " w" 231 " h" 56 " background" cfg.tabColor2)
+	this.helpText:=ui.gameSettingsGui.addText("x" 15 " y" 87 " w" 223 " h" 52 " backgroundTrans")
 	this.helpText.setFont("s10 q5 c" cfg.fontColor2,"Arial Narrow")
 	this.helpText.text:='         To avoid inconsistencies, Destiny 2`n         must be in "Windowed Fullscreen" mode. This wizard will outline the process.'
 	this.helpIcon:=ui.gameSettingsGui.addPicture("x16 y90 w20 h26 backgroundTrans","./img/icon_help.png")
-	this.helpTop:=ui.gameSettingsGui.addPicture("x" 10 " y" 84 " w" 237 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
-	this.helpBottom:=ui.gameSettingsGui.addPicture("x" 10 " y" 84+56-cfg.curveAmount " w" 237 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+	this.helpTop:=ui.gameSettingsGui.addPicture("x" 10 " y" 84 " w" 229 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
+	this.helpBottom:=ui.gameSettingsGui.addPicture("x" 10 " y" 84+56-cfg.curveAmount " w" 229 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 	this.helpLeft:=ui.gameSettingsGui.addPicture("x" 9 " y" 82 " w" cfg.curveAmount/3 " h" 62 " backgroundTrans","./img/custom/lightburst_left_bar_dark.png")
-	this.helpRight:=ui.gameSettingsGui.addPicture("x" 248-(cfg.curveAmount/3) " y" 82 " w" cfg.curveAmount/3 " h" 60 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")
+	this.helpRight:=ui.gameSettingsGui.addPicture("x" 250-(cfg.curveAmount/3) " y" 82 " w" cfg.curveAmount/3 " h" 60 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")
 
 	wizPanel(wizPanelParams) {
 		this_guid:=newGuid()
@@ -167,11 +167,13 @@ ui.gametabs.useTab("Vault Cleaner")
 		ui.wizPanelText2Bg_%this_guid%:=this_gui.addText("x" this_X+43 " y" this_Y+20 " w" this_W-198 " h" 30 " background" cfg.tabColor1)
 		ui.wizPanelText1_%this_guid%:=this_gui.addText("x" this_X+47 " y" this_Y+2 " w" this_W-204 " h" 18 " backgroundTrans c" cfg.fontColor2,this_text1)
 		ui.wizPanelText1_%this_guid%.setFont("s10 c" cfg.fontColor2 " q5","Consolas")
-		ui.wizPanelText2_%this_guid%:=this_gui.addText("x" this_X+47 " y" this_Y+21 " w" this_W-204 " h" 29 " backgroundTrans c" cfg.fontColor2,this_text2)
-		ui.wizPanelText2_%this_guid%.setFont("s8 c" cfg.fontColor2 " q5","Consolas")
+		ui.wizPanelText2_%this_guid%:=this_gui.addText("x" this_X+47 " y" this_Y+22 " w" this_W-204 " h" 29 " backgroundTrans c" cfg.fontColor1,this_text2)
+		ui.wizPanelText2_%this_guid%.setFont("s8 c" cfg.fontColor1 " q5","Consolas")
 		ui.wizPanelButtonOutline_%this_guid%:=this_gui.addText("x" this_X+this_W-153 " y" this_Y+1 " w" 86 " h" 49 " background" cfg.tabColor2)
 		ui.wizPanelButton1_%this_guid%:=this_gui.addPicture("x" (this_X+this_W)-150  " y" this_Y+2 " w" 80 " h" 24 " backgroundTrans","./img/button_next.png")
 		ui.wizPanelButton2_%this_guid%:=this_gui.addPicture("x" (this_X+this_W)-150 " y" this_Y+25 " w" 80 " h" 24 " backgroundTrans","./img/button_cancel.png")
+		ui.wizPanelStep1Detail_%this_guid%:=this_gui.addPicture("x" this_X+1 " y" this_Y+1 " w" 40 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
+		ui.wizPanelStep1Detail2_%this_guid%:=this_gui.addPicture("x" this_X+43 " y" this_Y+1 " w" 284 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
 		ui.wizPanelButton1_%this_guid%.onEvent("click",wizNext)
 		ui.wizPanelButton2_%this_guid%.onEvent("click",wizCancel)
 		loop 3 {
@@ -210,6 +212,8 @@ ui.gametabs.useTab("Vault Cleaner")
 				ui.wizPanelStep2_%this_guid%.opt("-hidden")		
 				ui.wizPanelStepBg3_%this_guid%.opt("-hidden")		
 				ui.wizPanelStep3_%this_guid%.opt("-hidden")
+				ui.wizPanelStep1Detail_%this_guid%.opt("-hidden")
+				ui.wizPanelStep1Detail2_%this_guid%.opt("-hidden")
 			} else {
 				ui.wizPanelOutline_%this_guid%.opt("hidden")
 				ui.wizPanelBg_%this_guid%.opt("hidden")
@@ -231,6 +235,8 @@ ui.gametabs.useTab("Vault Cleaner")
 				ui.wizPanelStep2_%this_guid%.opt("hidden")		
 				ui.wizPanelStepBg3_%this_guid%.opt("hidden")		
 				ui.wizPanelStep3_%this_guid%.opt("hidden")
+				ui.wizPanelStep1Detail_%this_guid%.opt("hidden")
+				ui.wizPanelStep1Detail2_%this_guid%.opt("hidden")
 			}
 		}
 	}
@@ -461,8 +467,8 @@ libVaultInit(*) {
 			;this.vaultProgressLabelBg.opt("backgroundD0D0F0")
 			;this.vaultProgressLabelBg.redraw()
 	} else {
-				msgBox("Process " setting.gameExe " not Running")
 		}
+				msgBox("Process " setting.gameExe " not Running")
 }
 
 

@@ -144,11 +144,11 @@ d2keybindAppTabClicked(*) {
 	ui.d2keybindAppTab2.opt("background" cfg.TabColor1)
 	ui.d2Panel1Tab2Detail1.value:="./img/custom/lightburst_top_bar_dark.png"	
 	
-	ui.d2keybindGameTab1.move(		342,58,92,14)
-	ui.d2keybindGameTab2.move(		342,57,90,11)
-	ui.d2keybindGameTab3.move(		342,56,90,17)
+	ui.d2keybindGameTab1.move(		342,58,92,15)
+	ui.d2keybindGameTab2.move(		342,57,90,12)
+	ui.d2keybindGameTab3.move(		342,56,90,18)
 	ui.d2keybindGameTabDetail.opt("-hidden")
-	ui.d2keybindGameTabDetail.move(	342,57,89,12)
+	ui.d2keybindGameTabDetail.move(	342,57,89,13)
 	ui.d2keybindGameTab3.setFont("s8 q5 c" cfg.fontColor3,"thin")
 	ui.d2keybindGameTab1.opt("background" cfg.TrimColor2)
 	ui.d2keybindGameTab2.opt("background" cfg.tabcolor3) 

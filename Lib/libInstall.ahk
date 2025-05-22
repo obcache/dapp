@@ -240,6 +240,7 @@ preAutoExec(InstallDir,ConfigFileName) {
 			fileInstall("./img/custom/lightburst_tr_light.png",installDir "/img/custom/lightburst_tr_light.png",1)
 			fileInstall("./img/custom/lightburst_bl_light.png",installDir "/img/custom/lightburst_bl_light.png",1)
 			fileInstall("./img/custom/lightburst_br_light.png",installDir "/img/custom/lightburst_br_light.png",1)
+			fileInstall("./img/custom/lightburst_top_light_flipped.png",installDir "/img/custom/lightburst_top_light_flipped.png",1)
 			fileInstall("./img/button_next.png",installDir "/img/button_next.png",1)
 			fileInstall("./img/button_cancel.png",installDir "/img/button_cancel.png",1)
 			fileInstall("./img/button_start.png",installDir "/img/button_start.png",1)
