@@ -63,9 +63,15 @@ ui.gametabs.useTab("Vault Cleaner")
 	ui.gameSettingsGui.addPicture("hidden x10 y" 78 " w480 h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_light.png")
 	;drawOutlineNamed("vaultStats2",ui.gameSettingsGui,242,78,249,66,cfg.TrimColor1,cfg.TrimColor1,1)
 	ui.gameSettingsGui.setFont("s9 q5 c" cfg.fontColor1,"prototype")
+	this.vaultProgressLabelBg:=ui.gameSettingsGui.addText("x8 y60 w96 h22 background" cfg.TabColor2,"")
+
+	this.vaultProgress := ui.gameSettingsGui.addProgress("x106 y62 w384 h20 c" cfg.trimColor1 " background" cfg.tabColor1 " range1-500")
+	; this.vaultDetail:=ui.gameSettingsGui.addPicture("x10 y52 w398 h" min(20,cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
+	this.vaultDetail2:=ui.gameSettingsGui.addPicture("hidden x200 y" 60+20-min(20,cfg.curveAmount) " w292 h" min(20,cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_br_light.png")
+	this.completeMsg := ui.gameSettingsGui.addText("hidden x33 y61 w500 h30 backgroundTrans c" cfg.fontColor2 "","")
 
 
-	this.statBoxOutline:=ui.gameSettingsGui.addText("x248 y82 w242 h60 background" cfg.trimColor2)
+	this.statBoxOutline:=ui.gameSettingsGui.addText("x248 y82 w242 h61 background" cfg.trimColor2)
 	this.statBoxBg:=ui.gameSettingsGui.addText("x249 y84 w242 h56 background" cfg.tabColor2)
 	
 	
@@ -73,7 +79,9 @@ ui.gametabs.useTab("Vault Cleaner")
 	this.statBottom:=ui.gameSettingsGui.addPicture("x" 249 " y" 84+56-cfg.curveAmount " w" 239 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 	this.statLeft:=ui.gameSettingsGui.addPicture("x" 249 " y" 82 " w" cfg.curveAmount/3 " h" 62 " backgroundTrans","./img/custom/lightburst_left_bar_dark.png")
 	this.statRight:=ui.gameSettingsGui.addPicture("x" 252+240-(cfg.curveAmount/3) " y" 82 " w" cfg.curveAmount/3 " h" 60 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")
-	
+
+
+
 	
 	this.pageLabel:=ui.gameSettingsGui.addText("right section x370 y88 w80 h25 backgroundTrans c" cfg.fontColor2 "","Page: ")
 	this.pageCount:=ui.gameSettingsGui.addText("x420 ys+1 right w56 h25 c" cfg.fontColor2 " backgroundTrans",format("{:03d}",this.page))
@@ -90,19 +98,13 @@ ui.gametabs.useTab("Vault Cleaner")
 	this.dismantledTotalLabel:=ui.gameSettingsGui.addText("section x255 y119 left h25 c" cfg.fontColor2 " backgroundTrans","Total: ")
 	this.dismantledTotal:=ui.gameSettingsGui.addText("x+0 ys+0 left w80 h25 c" cfg.fontColor2 " backgroundTrans",format("{:03d}","000"))
 	
-	this.vaultProgressLabelBg:=ui.gameSettingsGui.addText("x8 y60 w96 h20 background" cfg.TabColor2,"")
-
-	this.vaultProgress := ui.gameSettingsGui.addProgress("x106 y62 w384 h20 c" cfg.tabColor2 " background" cfg.fontColor2 " range1-500")
-	; this.vaultDetail:=ui.gameSettingsGui.addPicture("x10 y52 w398 h" min(20,cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
-	this.vaultDetail2:=ui.gameSettingsGui.addPicture("hidden x200 y" 60+20-min(20,cfg.curveAmount) " w292 h" min(20,cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_br_light.png")
-	this.completeMsg := ui.gameSettingsGui.addText("hidden x33 y61 w500 h30 backgroundTrans c" cfg.fontColor2 "","")
 	
 	this.statBgDetail:=ui.gameSettingsGui.addPicture("hidden x10 y60 w480 h20 backgroundTrans","./img/custom/lightburst_bottom_bar_light.png")
 	this.statBgDetail2:=ui.gameSettingsGui.addPicture("hidden x10 y80 w480 h20 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
 	this.statBgDetail3:=ui.gameSettingsGui.addPicture("hidden x10 y80 w6 h66 backgroundTrans","./img/custom/lightburst_left_bar_dark.png")
 	;drawOutlineNamed("vaultCleanerButton",ui.gameSettingsGui,10,79,234,65,cfg.OutlineColor1,cfg.OutlineColor1,1)
 	;drawOutlineNamed("vaultCleanerButton",ui.gameSettingsGui,247,79,243,64,cfg.TrimColor2,cfg.TrimColor1,4)
-	drawOutlineNamed("vaultStats",ui.gameSettingsGui,9,80,481,64,cfg.trimColor2,cfg.trimColor2,1)
+	;drawOutlineNamed("vaultStats",ui.gameSettingsGui,9,80,481,64,cfg.trimColor2,cfg.trimColor2,1)
 	;drawOutlineNamed("vaultStats",ui.gameSettingsGui,9,9,482,64,cfg.OutlineColor1,cfg.OutlineColor1,1)
 	
 	;this.vaultProgressLabelBg2:=ui.gameSettingsGui.addPicture("x10 y52 w96 h20 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
@@ -174,6 +176,8 @@ ui.gametabs.useTab("Vault Cleaner")
 		ui.wizPanelButton2_%this_guid%:=this_gui.addPicture("x" (this_X+this_W)-150 " y" this_Y+25 " w" 80 " h" 24 " backgroundTrans","./img/button_cancel.png")
 		ui.wizPanelStep1Detail_%this_guid%:=this_gui.addPicture("x" this_X+1 " y" this_Y+1 " w" 40 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
 		ui.wizPanelStep1Detail2_%this_guid%:=this_gui.addPicture("x" this_X+43 " y" this_Y+1 " w" 284 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
+		ui.wizPanelStep1Detail3_%this_guid%:=this_gui.addPicture("x" this_X+43 " y" this_Y+20 " w" 284 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
+		ui.wizPanelStep1Detail4_%this_guid%:=this_gui.addPicture("x" this_X+1 " y" this_Y+20+32 " w" 96 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
 		ui.wizPanelButton1_%this_guid%.onEvent("click",wizNext)
 		ui.wizPanelButton2_%this_guid%.onEvent("click",wizCancel)
 		loop 3 {
@@ -214,6 +218,9 @@ ui.gametabs.useTab("Vault Cleaner")
 				ui.wizPanelStep3_%this_guid%.opt("-hidden")
 				ui.wizPanelStep1Detail_%this_guid%.opt("-hidden")
 				ui.wizPanelStep1Detail2_%this_guid%.opt("-hidden")
+				ui.wizPanelStep1Detail3_%this_guid%.opt("-hidden")
+				ui.wizPanelStep1Detail4_%this_guid%.opt("-hidden")
+				
 			} else {
 				ui.wizPanelOutline_%this_guid%.opt("hidden")
 				ui.wizPanelBg_%this_guid%.opt("hidden")
@@ -237,6 +244,8 @@ ui.gametabs.useTab("Vault Cleaner")
 				ui.wizPanelStep3_%this_guid%.opt("hidden")
 				ui.wizPanelStep1Detail_%this_guid%.opt("hidden")
 				ui.wizPanelStep1Detail2_%this_guid%.opt("hidden")
+				ui.wizPanelStep1Detail3_%this_guid%.opt("hidden")
+				ui.wizPanelStep1Detail4_%this_guid%.opt("hidden")
 			}
 		}
 	}

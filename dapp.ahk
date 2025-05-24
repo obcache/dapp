@@ -1,4 +1,4 @@
-A_FileVersion := "1.7.3.4"
+A_FileVersion := "1.7.3.5"
 a_appName := "dapp"
 if (fileExist("./dapp_currentBuild.dat"))
 	a_fileVersion := fileRead("./dapp_currentBuild.dat")
@@ -130,11 +130,12 @@ guiVis(ui.gameSettingsGui,false)
 guiVis(ui.gameTabGui,false)
 
 winSetAlwaysOnTop(cfg.alwaysOnTopEnabled,ui.MainGui)
-;winSetRegion("0-0 w495 h190",ui.gameSettingsGui)
+
 winSetRegion("34-0 w497 h234",ui.mainGui)
 
-ui.mainGui.Show("x" cfg.guiX " y" cfg.guiY " w567 h213 NoActivate")
+ui.mainGui.Show("x" cfg.guiX " y" cfg.guiY " w532 h215 NoActivate")
 ui.gameSettingsGui.show("x" cfg.guiX+34 " y" cfg.guiY+30 " w495 h183 noActivate")
+;ui.gameSettingsGui.show("x" cfg.guiX+34 " y" cfg.guiY+30 " w495 h150 noActivate")
 ui.gameTabGui.show("w497 h32 noActivate x" cfg.guiX+34 " y" cfg.guiY+183)
 
 
@@ -150,16 +151,17 @@ if (cfg.startMinimizedEnabled) {
 
 advProgress(5)
 
-try {
-	whr := ComObject("WinHttp.WinHttpRequest.5.1")
-	whr.Open("GET", "http://sorryneedboost.com/cacheApp/recentIncursion.dat", true)
-	whr.Send()
-	whr.WaitForResponse()
-	iniWrite(whr.ResponseText,cfg.file,"Game","LastIncursion")
-}
+; try {
+	; whr := ComObject("WinHttp.WinHttpRequest.5.1")
+	; whr.Open("GET", "http://sorryneedboost.com/cacheApp/recentIncursion.dat", true)
+	; whr.Send()
+	; whr.WaitForResponse()
+	; iniWrite(whr.ResponseText,cfg.file,"Game","LastIncursion")
+; }
 
 ui.mainGuiTabs.choose(cfg.mainTabList[1])
 ui.gameTabs.value:=cfg.activeGameTab
+
 
 tabsInit()
 ;msgBox('here')
