@@ -584,23 +584,6 @@ drawOutlineNamed("gameTabOutline",ui.mainGui,ui.bt.x,ui.bt.y,ui.bt.w,ui.bt.h
 
 bottomTabChanged(1)
 
-gameTabCtrls:=[
-ui.gameTab1SkinOutline,
-ui.gameTab1Skin,
-ui.gameTab1Label,
-ui.gameTab1Divider,
-ui.gameTab2SkinOutline,
-ui.gameTab2Skin,
-ui.gameTab2Label,
-ui.gameTab2Divider,
-ui.gameTabDetail1,
-ui.gameTabDetail2,
-ui.gameTabDetail3,
-ui.gameTabDetail4,
-ui.gameTabDetail6,
-ui.gameTabDetail5
-]
-
 gameTab1Ctrls:=[
 ui.gameTab1SkinOutline,
 ui.gameTab1Skin,
