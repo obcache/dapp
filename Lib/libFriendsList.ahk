@@ -25,7 +25,7 @@ joinFireteam(*) {
 
 	
 	drawFriendsList(*) {
-		ui.friendsList:=strSplit(iniRead(cfg.file,"Game","FriendsList",""),",")
+		ui.friendsList:=map(iniRead(cfg.file,"Game","FriendsList",""),",")
 		ui.friendsListNicknames:=strSplit(iniRead(cfg.file,"Game","FriendsListNicknames",""),",")
 		
 		try
@@ -35,9 +35,9 @@ joinFireteam(*) {
 		ui.joinGui.backColor:=cfg.TabColor1
 		ui.joinGui.color:="010203"
 		winSetTransColor("010203",ui.joinGui)
-		ui.joinGuiOutline:=ui.joinGui.addText("x0 y0 w314 h" (ui.friendsList.length*30)+64 " background" cfg.TrimColor1)
-		ui.joinGuiBackground:=ui.joinGui.addText("x2 y2 w310 h" (ui.friendsList.length*30)+58 " background" cfg.TabColor1)
-		ui.joinGuiTitlebar:=ui.joinGui.addText("x2 y2 w284 h" 24 " background" cfg.tabColor2)
+		ui.joinGuiOutline:=ui.joinGui.addText("x0 y0 w437 h" (ui.friendsList.count*30)+64 " background" cfg.TrimColor1)
+		ui.joinGuiBackground:=ui.joinGui.addText("x2 y2 w433 h" (ui.friendsList.count*30)+60 " background" cfg.TabColor1)
+		ui.joinGuiTitlebar:=ui.joinGui.addText("x2 y2 w433 h" 24 " background" cfg.tabColor2)
 		ui.joinGuiTitlebar.onEvent("click",WM_LBUTTONDOWN_callback)
 		ui.joinGuiCloseButton:=ui.joinGui.addText("x286 y2 w26 h24 background450836")
 		ui.joinGuiCloseButton.onEvent("click",closejoinGui)
@@ -53,8 +53,9 @@ joinFireteam(*) {
 		ui.joinGuiAnchor:=ui.joinGui.addText("x5 y20 backgroundTrans section")
 		static controlId:=0
 		controlId+=1
-		for friend in ui.friendsList {			
+		for friend,nickname in ui.friendsList {			
 			ui.joinGui%a_index%:=""
+			ui.joinGui%a_index%Nickname:=""
 			ui.joinGui%a_index%MoveDown:=""
 			ui.joinGui%a_index%MoveUp:=""
 
@@ -70,42 +71,43 @@ joinFireteam(*) {
 			; ui.joinGui%a_index%.opt("vTmp")
 			if ui.friendsListNicknames.length >= a_index {
 				if ui.friendsListNicknames[a_index] {
-					ui.joinGuiBg%a_index%:=ui.joinGui.addText("vJoinBg" controlId "-" a_index  " section x5 y" (a_index*30) " w223 h26 background" cfg.tileColor)
-					ui.joinGuiText%a_index%:=ui.joinGui.addText("vJoinText" controlId "-" a_index  " section x10 y" (a_index*30)+1 " w220 h26 backgroundTrans",friend)
+					ui.joinGuiBg%a_index%:=ui.joinGui.addText("vJoinBg" controlId "-" a_index  " section x5 y" (a_index*30) " w203 h26 background" cfg.tileColor)
+					ui.joinGuiText%a_index%:=ui.joinGui.addText("vJoinText" controlId "-" a_index  " section x10 y" (a_index*30)+1 " w200 h26 backgroundTrans",friend)
 				} else {
-					ui.joinGuiBg%a_index%:=ui.joinGui.addText("vJoinBg" controlId "-" a_index  " section x5 y" (a_index*30) " w223 h26 background" cfg.tileColor)
-					ui.joinGuiText%a_index%:=ui.joinGui.addText("vJoinText" controlId "-" a_index  " section x10 y" (a_index*30)+1 " w220 h26 backgroundTrans",friend)
+					ui.joinGuiBg%a_index%:=ui.joinGui.addText("vJoinBg" controlId "-" a_index  " section x5 y" (a_index*30) " w203 h26 background" cfg.tileColor)
+					ui.joinGuiText%a_index%:=ui.joinGui.addText("vJoinText" controlId "-" a_index  " section x10 y" (a_index*30)+1 " w200 h26 backgroundTrans",friend)
 				}
 			} else {
-					ui.joinGuiBg%a_index%:=ui.joinGui.addText("vJoinBg" controlId "-" a_index  " section x5 y" (a_index*30) " w223 h26 background" cfg.tileColor)
-					ui.joinGuiText%a_index%:=ui.joinGui.addText("vJoinText" controlId "-" a_index  " section x10 y" (a_index*30)+1 " w220 h26 backgroundTrans",friend)
+					ui.joinGuiBg%a_index%:=ui.joinGui.addText("vJoinBg" controlId "-" a_index  " section x5 y" (a_index*30) " w203 h26 background" cfg.tileColor)
+					ui.joinGuiText%a_index%:=ui.joinGui.addText("vJoinText" controlId "-" a_index  " section x10 y" (a_index*30)+1 " w200 h26 backgroundTrans",friend)
 			}
 			ui.joinGuiText%a_index%.setFont("s13 q5 c" cfg.titleFontColor,"prototype")
 			ui.joinGuiText%a_index%.onEvent("click",joinFriend)
 			ui.joinGuiBg%a_index%.onEvent("click",joinFriend)
 			
 			
-			; ui.joinGui%a_index%Nickname:=ui.joinGui.addPicture("vNickname" controlId "-" a_index " x189 y" (a_index*30) " w36 h26 background" cfg.onColor,"./img/icon_nickname.png")
-			; ui.joinGui%a_index%Nickname.onEvent("click",addNickname)
+			ui.joinGui%a_index%Nickname:=ui.joinGui.addText("vNicknameBg" controlId "-" a_index " section x210 y" (a_index*30) " w140 h26 background" cfg.tileColor)
+			ui.joinGuiText%a_index%:=ui.joinGui.addText("vNicknameText" controlId "-" a_index  " section x214 y" (a_index*30)+1 " w137 h26 backgroundTrans",nickname)
+			ui.joinGui%a_index%Nickname.onEvent("click",addNickname)
 			
 			; try
 			; ui.joinGui%a_index%MoveUp.opt("vTmp")
-			ui.joinGui%a_index%MoveUp:=ui.joinGui.addPicture("vUp" controlId "-" a_index  " x229 y" (a_index*30) " w25 h26 background" ((a_index>1) ? cfg.OnColor : cfg.OffColor),"./img/button_up_arrow.png")
+			ui.joinGui%a_index%MoveUp:=ui.joinGui.addPicture("vUp" controlId "-" a_index  " x352 y" (a_index*30) " w25 h26 background" ((a_index>1) ? cfg.OnColor : cfg.OffColor),"./img/button_up_arrow.png")
 			ui.joinGui%a_index%MoveUp.onEvent("click",(a_index>1) ? moveUp : doNothing)
 
 			; try
 			; ui.joinGui%a_index%MoveDown.opt("vTmp")
-			ui.joinGui%a_index%MoveDown:=ui.joinGui.addPicture("vDown" controlId "-" a_index  " x256 y" (a_index*30) " w25 h26 background" ((a_index<ui.friendsList.length) ? cfg.OnColor : cfg.offColor),"./img/button_down_arrow.png")
+			ui.joinGui%a_index%MoveDown:=ui.joinGui.addPicture("vDown" controlId "-" a_index  " x379 y" (a_index*30) " w25 h26 background" ((a_index<ui.friendsList.count) ? cfg.OnColor : cfg.offColor),"./img/button_down_arrow.png")
 			;ui.joinGui%a_index%MoveDown.onEvent("click",moveDown)
-			ui.joinGui%a_index%MoveDown.onEvent("click",(a_index==ui.friendsList.length) ? doNothing : moveDown)
+			ui.joinGui%a_index%MoveDown.onEvent("click",(a_index==ui.friendsList.count) ? doNothing : moveDown)
 
 			
 			; try
 			; ui.joinGui%a_index%Delete.opt("vTmp")
-			ui.joinGui%a_index%delete:=ui.joinGui.addPicture("vDelete" controlId "-" a_index  " x283 y" (a_index*30) " w26 h26 background" cfg.OnColor,"./img/button_delete.png")
+			ui.joinGui%a_index%delete:=ui.joinGui.addPicture("vDelete" controlId "-" a_index  " x406 y" (a_index*30) " w26 h26 background" cfg.OnColor,"./img/button_delete.png")
 			ui.joinGui%a_index%delete.onEvent("click",removeFriend)
 
-			ui.joinGui%a_index%Detail:=ui.joinGui.addPicture("x5 y" a_index*30 " w305 h26 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+			ui.joinGui%a_index%Detail:=ui.joinGui.addPicture("x5 y" a_index*30 " w427 h26 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 		}
 		
 		addNickname(this_ctrl,*) {
@@ -159,7 +161,7 @@ joinFireteam(*) {
 		
 		joinFriend(this_ctrl,*) {
 			a_clipboard:= "/join " ui.friendsList[strSplit(this_ctrl.name,"-")[2]]
-			static vertCenter:=(((ui.friendsList.length*30)+30)/2)-30
+			static vertCenter:=(((ui.friendsList.count*30)+30)/2)-30
 			winGetPos(&tmpX,&tmpY,&tmpW,&tmpH,ui.joinGui)
 			confirmMsgBody:=ui.joinGui.addText("x2 y2 w" tmpW-4 " h" tmph-8 " background" cfg.tabColor1)		
 			confirmMsgOutline:=ui.joinGui.addText("x0 y0 w314 h" tmpH " background" cfg.trimColor1)
@@ -184,11 +186,11 @@ joinFireteam(*) {
 			}
 		}
 		
-		ui.joinGuiAddOutline:=ui.joinGui.addText("section center x5 y" (ui.friendsList.length*30)+30 " w304 h26 background" cfg.OutlineColor1)
-		ui.joinGuiAdd:=ui.joinGui.addText("v" controlId "-" a_index  " section center x7 y" (ui.friendsList.length*30)+32 " w300 h20 background" cfg.titleBgColor,"Add New Friend")
+		ui.joinGuiAddOutline:=ui.joinGui.addText("section center x5 y" (ui.friendsList.count*30)+30 " w304 h26 background" cfg.OutlineColor1)
+		ui.joinGuiAdd:=ui.joinGui.addText("v" controlId "-" a_index  " section center x7 y" (ui.friendsList.count*30)+32 " w300 h20 background" cfg.titleBgColor,"Add New Friend")
 		ui.joinGuiAdd.setFont("s14 bold q5 c" cfg.titleFontColor,"move-x")
 		ui.joinGuiAdd.onEvent("click",addFriend)
-		ui.joinGuiAddDetail:=ui.joinGui.addPicture("section x5 y" (ui.friendsList.length*30)+30 " w304 h26 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+		ui.joinGuiAddDetail:=ui.joinGui.addPicture("section x5 y" (ui.friendsList.count*30)+30 " w304 h26 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 
 		doNothing(*) {
 			return 0
@@ -207,7 +209,7 @@ joinFireteam(*) {
 			drawFriendsList()
 		}
 		moveDown(this_ctrl,*) {
-		;msgBox(strSplit(this_ctrl.name,"-")[2] "`n" ui.friendsList.length )
+		;msgBox(strSplit(this_ctrl.name,"-")[2] "`n" ui.friendsList.count )
 			friend_idx:=strSplit(this_ctrl.name,"-")[2]
 			tmpFriendDown:=ui.friendsList[friend_idx+1]
 			ui.friendsList[friend_idx+1]:=ui.friendsList[friend_idx]
@@ -223,7 +225,7 @@ joinFireteam(*) {
 
 		winGetPos(,,&joinW,&joinH,ui.joinGui)
 		guiVis(ui.joinGui,false)
-		ui.joinGui.show("h" (ui.friendsList.length*30)+60)
+		ui.joinGui.show("h" (ui.friendsList.count*30)+60)
 		ui.joinGuiOutline.opt("h" joinH+30)
 		ui.joinGuiOutline.redraw()
 		ui.joinGuiBackground.opt("h" joinH+30)
@@ -232,7 +234,7 @@ joinFireteam(*) {
 		ui.joinGui.hide()
 		winGetPos(&friendsX,&friendsY,&friendsW,&friendsH,ui.joinGui)
 	
-		ui.joinGui.show("x" (gsX+(gsW/2))-(friendsW/2) " y" (gsY+(gsH/2))-(friendsH/2) " w480 h" (ui.friendsList.length*30)+64)
+		ui.joinGui.show("x" (gsX+(gsW/2))-(friendsW/2) " y" (gsY+(gsH/2))-(friendsH/2) " w480 h" (ui.friendsList.count*30)+64)
 		guiVis(ui.joinGui,true)
 	;addFriend()
 	
@@ -359,10 +361,10 @@ joinFireteam(*) {
 		; ui.joinGui%friend_idx%moveUp:=""
 		; ui.joinGui%friend_idx%MoveDown:=""
 		; ui.joinGui%friend_idx%Delete:=""
-		; ui.joinGuiAddOutline.move(,(ui.friendsList.length*30)+60)
-		; ui.joinGuiAdd.move(,(ui.friendsList.length*30)+32)
-		; ui.joinGuiAddDetail.move(,(ui.friendsList.length*30)+32)
-		; ui.joinGui.show("h" (ui.friendsList.length*30)+60)
+		; ui.joinGuiAddOutline.move(,(ui.friendsList.count*30)+60)
+		; ui.joinGuiAdd.move(,(ui.friendsList.count*30)+32)
+		; ui.joinGuiAddDetail.move(,(ui.friendsList.count*30)+32)
+		; ui.joinGui.show("h" (ui.friendsList.count*30)+60)
 	}
 }
 
