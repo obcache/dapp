@@ -134,9 +134,9 @@ d2keybindAppTabClicked(*) {
 	guiName := ui.gameSettingsGui
 	ui.d2KeyBindHelpMsg.text := "     Assign keys you'd like to use for each function"
 	
-	ui.d2keybindAppTab1.move(		280,56,62,14)
-	ui.d2keybindAppTab2.move(		281,53,60,16)
-	ui.d2keybindAppTab3.move(		281,54,62,16)
+	ui.d2keybindAppTab1.move(		280,56,61,15)
+	ui.d2keybindAppTab2.move(		281,56,59,14)
+	ui.d2keybindAppTab3.move(		281,55,60,14)
 ;	ui.d2keybindAppTabDetail.move(	281,47,60,21)
 	ui.d2keybindAppTabDetail.opt("hidden")
 	ui.d2keybindAppTab3.setFont("s10 c" cfg.FontColor1,"bold")
@@ -144,13 +144,13 @@ d2keybindAppTabClicked(*) {
 	ui.d2keybindAppTab2.opt("background" cfg.TabColor1)
 	ui.d2Panel1Tab2Detail1.value:="./img/custom/lightburst_top_bar_dark.png"	
 	
-	ui.d2keybindGameTab1.move(		342,58,92,15)
-	ui.d2keybindGameTab2.move(		342,57,90,12)
-	ui.d2keybindGameTab3.move(		342,56,90,18)
+	ui.d2keybindGameTab1.move(		341,57,92,13)
+	ui.d2keybindGameTab2.move(		341,57,91,12)
+	ui.d2keybindGameTab3.move(		341,57,90,12)
 	ui.d2keybindGameTabDetail.opt("-hidden")
-	ui.d2keybindGameTabDetail.move(	342,57,89,13)
-	ui.d2keybindGameTab3.setFont("s8 q5 c" cfg.LabelColor1,"thin")
-	ui.d2keybindGameTab1.opt("background" cfg.TrimColor2)
+	ui.d2keybindGameTabDetail.move(	341,57,91,12)
+	ui.d2keybindGameTab3.setFont("s8 q5 c" cfg.fontColor3,"thin")
+	ui.d2keybindGameTab1.opt("background" cfg.TrimColor1)
 	ui.d2keybindGameTab2.opt("background" cfg.tabcolor3) 
 	ui.d2Panel1Tab1Detail1.value:="./img/custom/lightburst_top_bar_dark.png"
 	d2changeKeybindPanelTab(2)
@@ -161,19 +161,19 @@ d2keybindGameTabClicked(*) {
 	ui.d2KeyBindHelpMsg.text := "Configure to match in-game settings"
 
 
-	ui.d2keybindAppTab1.move(		280,56,62,13)
-	ui.d2keybindAppTab2.move(		282,55,60,12)
-	ui.d2keybindAppTab3.move(		282,55,62,14)
+	ui.d2keybindAppTab1.move(		280,57,62,13)
+	ui.d2keybindAppTab2.move(		282,57,60,12)
+	ui.d2keybindAppTab3.move(		282,57,62,12)
 	ui.d2keybindAppTabDetail.opt("-hidden")
-	ui.d2keybindAppTabDetail.move(	283,55,60,12)
+	ui.d2keybindAppTabDetail.move(	282,57,60,12)
 	ui.d2keybindAppTab1.opt("background" cfg.TrimColor2)
 	ui.d2keybindAppTab2.opt("background" cfg.tabColor3) 
-	ui.d2keybindAppTab3.setFont("s8 q5 c" cfg.LabelColor1,"thin")
+	ui.d2keybindAppTab3.setFont("s8 q5 c" cfg.fontColor3,"thin")
 	ui.d2Panel1Tab2Detail1.value:="./img/custom/lightburst_top_bar_dark.png"
 
-	ui.d2keybindGameTab1.move(		341,55,92,14)
-	ui.d2keybindGameTab2.move(		342,53,90,15)
-	ui.d2keybindGameTab3.move(		341,53,92,17)
+	ui.d2keybindGameTab1.move(		341,56,92,15)
+	ui.d2keybindGameTab2.move(		342,56,90,14)
+	ui.d2keybindGameTab3.move(		341,55,92,14)
 	ui.d2keybindGameTabDetail.opt("hidden")
 	ui.d2keybindGameTab1.opt("background" cfg.TrimColor1)
 	ui.d2keybindGameTab2.opt("background" cfg.TabColor1)
@@ -395,14 +395,14 @@ drawKeybindBar(*) {
 	ui.d2keybindAppTab3.setFont("s10 q5 c" cfg.fontColor1,"Bold")
 
 
-	ui.d2Panel1Tab2Bg 		:= ui.gameSettingsGui.addText("hidden x19 y13 w438 h42 background" cfg.TrimColor1,"")
-	ui.d2Panel1Tab2Bg2 		:= ui.gameSettingsGui.addText("hidden x20 y14 w436 h40 background" cfg.TabColor1 " c" cfg.LabelColor1,"")	
-	ui.d2Panel1Tab2Detail1	:= ui.gameSettingsGui.addPicture("x20 y14 w436 h14 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")	
-	ui.d2Panel1Tab2Bg3 		:= ui.gameSettingsGui.addText("hidden x21 y15 w434 h38 background" cfg.TabColor1,"")
-	ui.d2Panel1Tab2Bg4 		:= ui.gameSettingsGui.addText("hidden x22 y16 w432 h36 background" cfg.OffColor,"")
-	ui.d2keybindGameTab1 	:= guiName.addText(		"x" 346 " y" 67 " w" 92 " h" 18 " background" cfg.trimColor2)
-	ui.d2keybindGameTab2 := guiName.addText(		"x" 350 " y" 54 " w" 76 " h" 19 " background" cfg.tabColor3) 
-	ui.d2keybindGameTabDetail := guiName.addPicture("x" 350 " y" 54 " w" 78 " h" 13 " backgroundTrans","./img/custom/lightburst_top_bar_dark.png") 
+	ui.d2Panel1Tab2Bg 		:= ui.gameSettingsGui.addText("hidden x19 y15 w438 h42 background" cfg.TrimColor1,"")
+	ui.d2Panel1Tab2Bg2 		:= ui.gameSettingsGui.addText("hidden x20 y16 w436 h40 background" cfg.TabColor1 " c" cfg.LabelColor1,"")	
+	ui.d2Panel1Tab2Detail1	:= ui.gameSettingsGui.addPicture("x20 y16 w436 h14 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")	
+	ui.d2Panel1Tab2Bg3 		:= ui.gameSettingsGui.addText("hidden x21 y17 w434 h38 background" cfg.TabColor1,"")
+	ui.d2Panel1Tab2Bg4 		:= ui.gameSettingsGui.addText("hidden x22 y18 w432 h36 background" cfg.OffColor,"")
+	ui.d2keybindGameTab1 	:= guiName.addText(		"x" 346 " y" 67 " w" 77 " h" 19 " background" cfg.trimColor2)
+	ui.d2keybindGameTab2 := guiName.addText(		"x" 347 " y" 54 " w" 76 " h" 18 " background" cfg.tabColor3) 
+	ui.d2keybindGameTabDetail := guiName.addPicture("x" 347 " y" 54 " w" 76 " h" 18 " backgroundTrans","./img/custom/lightburst_top_bar_dark.png") 
 	ui.d2keybindGameTab3 := guiName.addText(		"x" 345 " y" 53 " w" 92 " h" 19 " backgroundTrans center", "Game Settings") 
 	ui.d2keybindGameTab3.setFont("s8 q5 c" cfg.LabelColor1,"Medium")
 
