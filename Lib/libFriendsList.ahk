@@ -232,7 +232,7 @@ joinFireteam(*) {
 		ui.joinGui.hide()
 		winGetPos(&friendsX,&friendsY,&friendsW,&friendsH,ui.joinGui)
 	
-		ui.joinGui.show("x" (gsX+(gsW/2))-(friendsW/2) " y" (gsY+(gsH/2))-(friendsH/2) " w314 h" (ui.friendsList.length*30)+64)
+		ui.joinGui.show("x" (gsX+(gsW/2))-(friendsW/2) " y" (gsY+(gsH/2))-(friendsH/2) " w480 h" (ui.friendsList.length*30)+64)
 		guiVis(ui.joinGui,true)
 	;addFriend()
 	
