@@ -16,20 +16,20 @@ WM_WINDOWPOSCHANGED(wParam, lParam, msg, Hwnd) {
 }
 
 collateGuis(hwnd := ui.mainGui.hwnd) {
-	; msgBox(vaultTopGui.hwnd "`n" hwnd)
-
-
-	if hwnd == ui.mainGui.hwnd {
-		winGetPos(&tmpX,&tmpY,,,ui.mainGui)
-		ui.gameTabGui.move((tmpX+34)*(A_ScreenDPI/96),(tmpY+183)*(A_ScreenDPI/96))
-		ui.gameSettingsGui.move((tmpX+34)*(A_ScreenDPI/96),(tmpY+30)*(A_ScreenDPI/96))
-	}
-				if hwnd == vaultTopGui.hwnd {
-				winGetPos(&tX,&tY,,,vaultTopGui)
-				winMove(tx+0,ty+30,,,"ahk_exe destiny2.exe")
-		} 
+	errorLevel:=1
+	(hwnd==ui.mainGui.hwnd)
+	? (winGetPos(&tmpX,&tmpY,,,ui.mainGui)
+	,  ui.gameTabGui.move((tmpX+34)*(A_ScreenDPI/96),(tmpY+183)*(A_ScreenDPI/96))
+	,  ui.gameSettingsGui.move((tmpX+34)*(A_ScreenDPI/96),(tmpY+30)*(A_ScreenDPI/96)))
+	: (hwnd==ui.joinGui.hwnd && ui.joinGuiAdd.visible) 
+		? (winGetPos(&jgX,&jgY,&jgW,&jgH,ui.joinGUi)
+		,  ui.addFriendGui.move(jgX,jgY+jgH-36))
+		: (hwnd==vaultTopGui.hwnd)
+			? (winGetPos(&tX,&tY,,,vaultTopGui)
+			,  winMove(tx+0,ty+30,,,"ahk_exe destiny2.exe"))
+		: errorLevel:=0
+	return errorLevel
 }
-
 
 { ;mouse events
 wm_winActivated(this_control,info,msg,hwnd) {

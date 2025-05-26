@@ -1,4 +1,4 @@
-A_FileVersion := "1.7.4.0"
+A_FileVersion := "1.7.4.2"
 a_appName := "dapp"
 if (fileExist("./dapp_currentBuild.dat"))
 	a_fileVersion := fileRead("./dapp_currentBuild.dat")
@@ -37,9 +37,6 @@ installDir 		:= a_myDocuments "\dapp"
 configFileName 	:= "dapp.ini"
 themeFileName	:= "dapp.themes"
 
-advProgress(progressAmount:=5,*) {
-		ui.loadingProgress.value += progressAmount
-}
 
 preAutoExec(InstallDir,ConfigFileName)
 cfg.file 		:= "./" ConfigFileName

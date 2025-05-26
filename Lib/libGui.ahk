@@ -284,7 +284,7 @@ toggleChange(name,onOff := "",toggleOnImg := cfg.toggleOn,toggleOffImg := cfg.to
 		? (%name%.Opt("Background" toggleOnColor),toggleOnImg) 
 		: (%name%.Opt("Background" toggleOffColor),toggleOffImg)
 }
-ui.loadingProgress.value += 5
+ui.loadingProgressValue += 5
 
 ui.isFading := false
 hotIf(isFading)

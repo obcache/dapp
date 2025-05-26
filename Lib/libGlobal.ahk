@@ -82,7 +82,7 @@ cfgLoad(&cfg, &ui) {
 	ui.pauseAlwaysRun		:= false
 	ui.inGameChat			:= false
 	ui.reloading			:= false
-
+	ui.loadingProgressValue:=0
 	ui.profileList				:= array()
 	ui.profileListStr			:= ""
 	ui.waitingForPrompt			:= true
@@ -185,9 +185,6 @@ cfgLoad(&cfg, &ui) {
 	runWait("./redist/mouseSC_x64.exe /verticalScroll:1",,"hide")
 }
 
-initProgress(progressAmount:=5,*) {
-		ui.loadingProgress.value += progressAmount
-}
 
 WriteConfig() {
 	Global
@@ -440,17 +437,44 @@ fadeOSD() {
 		;msgBox(cfg.guiX "`t" cfg.guiY)
 	}	
 	
+
+
+
+
+advProgress(progressAmount:=5,*) {
+		ui.loadingProgressValue += progressAmount
+		ui.lp:=ui.loadingProgressValue*2.12
+		ui.lpW:=ui.lp
+		ui.lpX:= round(ui.lp)
+		
+		ui.loadingPercent.text := round(ui.lpX/2.3) "%"
+		ui.loadingPercent.move(ui.lpX-40,,40)
+		
+		ui.loadingProgress.move(,,ui.lpX)
+		ui.loadingPercent.redraw()
+		
+		;ui.loadingProgressEdit.redraw()
+}
+
 loadScreen(visible := true,NotifyMsg := "dapp Loading",Duration := 10) {
+	ui.lpW:=0
 	if (visible) {
 		Transparent := 0
+		
 		ui.loadScreenGui			:= Gui()
 		ui.loadScreenGui.Title 		:= "dapp Loading"
 		ui.loadScreenGui.Opt("+AlwaysOnTop -Caption +ToolWindow")  ; +ToolWindow avoids a taskbar button and an alt-tab menu item.
-		ui.loadScreenGui.BackColor := cfg.trimColor2 ; Can be any RGB color (it will be made transparent below).
+		ui.loadScreenGui.BackColor := cfg.titleFontColor ; Can be any RGB color (it will be made transparent below).
+		ui.loadScreenGui.color := "010203"
+		winSetTransColor("010203",ui.loadScreenGui)
 		ui.loadScreenGui.setFont("q5 s22")  ; Set a large font size (32-point).
-		ui.loadScreenGui.addText("section x1 y1 w238 h92 background" cfg.tabColor1)
+		ui.loadScreenGui.addText("section x1 y1 w238 h92 backgroundTrans")
 		ui.loadScreenGui.addPicture("y1 x2 w237 h92 backgroundTrans","./img/dapp_logo.png")
-		ui.loadingProgress := ui.loadScreenGui.addProgress("smooth x2 y94 w236 h21 c" cfg.trimColor1 " background" cfg.titleBgColor)
+		ui.loadingProgressEdit := ui.loadScreenGui.addText("x2 y94 w236 h21 background" cfg.titleBgColor)
+		ui.loadingProgress := ui.loadScreenGui.addText("x3 y95 w" ui.loadingProgressValue " h19 background" cfg.titleFontColor)
+		;ui.loadingProgress := ui.loadScreenGui.addProgress("smooth x2 y94 w236 h21 c" cfg.titleFontColor " background" cfg.titleBgColor)
+		ui.loadingPercent := ui.loadScreenGui.addText("x2 y95 w" ui.lpW " h19 c" cfg.titleBgColor " background" cfg.titleFontColor,ui.loadingProgressValue "%")
+		ui.loadingPercent.setFont("s12","Prototype")
 		ui.loadScreenGui.AddText("xs hidden")
 		cfg.guiX := iniRead(cfg.file,"Interface","GuiX",200)
 		cfg.guiY := iniRead(cfg.file,"Interface","GuiY",200)
