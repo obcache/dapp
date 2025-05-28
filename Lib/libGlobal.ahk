@@ -469,7 +469,7 @@ loadScreen(visible := true,NotifyMsg := "dapp Loading",Duration := 10) {
 		winSetTransColor("010203",ui.loadScreenGui)
 		ui.loadScreenGui.setFont("q5 s22")  ; Set a large font size (32-point).
 		ui.loadScreenGui.addText("section x1 y1 w238 h92 backgroundTrans")
-		ui.loadScreenGui.addPicture("y1 x2 w237 h92 backgroundTrans","./img/dapp_logo.png")
+		ui.loadScreenGui.addPicture("y1 x1 w238 h92 backgroundTrans","./img/dapp_logo.png")
 		ui.loadingProgressEdit := ui.loadScreenGui.addText("x2 y94 w236 h21 background" cfg.titleBgColor)
 		ui.loadingProgress := ui.loadScreenGui.addText("x3 y95 w" ui.loadingProgressValue " h19 background" cfg.titleFontColor)
 		;ui.loadingProgress := ui.loadScreenGui.addProgress("smooth x2 y94 w236 h21 c" cfg.titleFontColor " background" cfg.titleBgColor)

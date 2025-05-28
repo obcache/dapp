@@ -10,6 +10,19 @@ if (InStr(A_LineFile,A_ScriptFullPath))
 }
 ; ui.1_GameButtonDetail:=ui.mainGui.addPicture("x36 y3 w78 h28 backgroundTrans","./img/custom/lightburst_tr_light.png")
 ; ui.2_SetupButtonDetail := ui.mainGui.addPicture("x116 y3 w78 h32 backgroundTrans","./img/custom/lightburst_tl_light.png")
+mainTabsChanged(*) {
+	changeTabs(ui.mainTabGui,ui.mainGuiTabs)
+	if ui.mainGuiTabs.value==1 {
+		guiVis(ui.gameSettingsGui,true)
+		guiVis(ui.gameTabGui,true)
+	} else {
+		guiVis(ui.gameSettingsGui,false)
+		guiVis(ui.gameTabGui,false)
+	}
+	
+}
+
+
 tabsChanged(*) {
 	;ui.tabDivider:=ui.mainGui.addText("x117 y0 w2 h28 background" cfg.TrimColor1)
 	;line(ui.mainGui,115,0,30,2,cfg.TrimColor1,"vert")
@@ -97,9 +110,95 @@ tabsInit(*) {
 		, ui.Setup_ActiveTabUi.opt("-hidden"))
 }
 
+ui.mainTabGui:=gui()
+ui.mainTabGui.name:="mainTabGui"
+drawTabs(this_gui:=ui.mainTabGui,tabControl:=ui.mainGuiTabs,tabX:=0,tabY:=0,tabNames:=["Game","Setup"],tabWidths:=[83,82],orient:="top") {
+	this_gui.opt("-caption toolWindow alwaysOnTop +E0x20 owner" ui.mainGui.hwnd)
+	this_gui.backColor:=ui.TransparentColor
+	this_gui.color:=ui.transparentColor
+	winSetTransColor(ui.transparentColor,this_gui)
+	ui.%this_Gui.name%Tab1BgOff:=this_gui.addText("x" 0 " y" 0 " w" tabWidths[1]-2 " h" 30 " background" cfg.trimColor2)
+	ui.%this_Gui.name%Tab1Off:=this_gui.addText("x" 0+2 " y" 0+2 " w" tabWidths[1]-4 " h" 28 " background" cfg.tabColor2)
+	ui.%this_Gui.name%Tab1Bg:=this_gui.addText("x" 0 " y" 0 " w" tabWidths[1]-2 " h" 30 " background" cfg.trimColor1)
+	ui.%this_Gui.name%Tab1:=this_gui.addText("x" 0+2 " y" 0+2 " w" tabWidths[1]-4 " h" 28 " background" cfg.tabColor1)
+	ui.%this_Gui.name%Tab1Label:=this_gui.addText("center x" 0+2 " y" 0+2 " w" tabWidths[1]-4 " h" 28 " backgroundTrans",tabNames[1])
+	ui.%this_Gui.name%Tab1Label.setFont("s15 c" cfg.fontColor1,"Impact")
+	ui.%this_Gui.name%Tab2Bg:=this_gui.addText("x" 0+tabWidths[1] " y" 0 " w" tabWidths[2]-2 " h" 30 " background" cfg.trimColor1)
+	ui.%this_Gui.name%Tab2:=this_gui.addText("x" 0+tabWidths[1] " y" 0+2 " w" tabWidths[2]-4 " h" 28 " background" cfg.tabColor1)
+	ui.%this_Gui.name%Tab2BgOff:=this_gui.addText("x" 0+tabWidths[1] " y" 0 " w" tabWidths[2]-2 " h" 30 " background" cfg.trimColor2)
+	ui.%this_Gui.name%Tab2Off:=this_gui.addText("x" 0+tabWidths[1] " y" 0+2 " w" tabWidths[2]-4 " h" 28 " background" cfg.tabColor2)
+	ui.%this_Gui.name%Tab2Label:=this_gui.addText("center x" 0+tabWidths[1] " y" 4 " w" tabWidths[2]-4 " h" 28 " backgroundTrans",tabNames[2])
+	ui.%this_Gui.name%Tab2Label.setFont("s12 c" cfg.fontColor2,"Impact")
+	ui.%this_gui.name%Tab1Inactive:=this_gui.addText("hidden x" tabX " y" 28 " w" tabWidths[1] " h" 2 " background" cfg.trimColor1)
+	ui.%this_gui.name%Tab1InactiveBottom:=this_gui.addPicture("hidden x" tabX " y" 28-(cfg.curveAmount/2) " w" tabWidths[1] " h" cfg.curveAmount/2 " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+	ui.%this_gui.name%Tab1InactiveRight:=this_gui.addPicture("hidden x" tabX+tabWidths[1]-(cfg.curveAmount/3) " y" 2 " w" cfg.curveAmount/3 " h" 26 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")
+	ui.%this_gui.name%Tab2Inactive:=this_gui.addText("x" tabX+tabWidths[1]-2 " y" 28 " w" tabWidths[2] " h" 2 " background" cfg.trimColor1)
+	ui.%this_gui.name%Tab2InactiveBottom:=this_gui.addPicture("x" tabX+tabWidths[1]-2 " y" 28-(cfg.curveAmount/2) " w" tabWidths[2] " h" cfg.curveAmount/2 " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+	ui.%this_gui.name%Tab2InactiveLeft:=this_gui.addPicture("x" tabX+tabWidths[1] " y" 2 " w" cfg.curveAmount/3 " h" 26 " backgroundTrans","./img/custom/lightburst_left_bar_dark.png")
+	ui.%this_gui.name%tab12Divider:=this_gui.addText("x" tabX+tabWidths[1]-2 " y" 0 " w" 2 " h" 28 " background" cfg.trimColor1)
+	ui.%this_gui.name%TopDetail:=this_gui.addPicture("x" tabX " y" tabY " w" tabWidths[1]+tabWidths[2]-2 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
+	winGetPos(&mainTabX,&mainTabY,&tW,&tH,ui.mainGui)
+	this_gui.show("x" tabX+mainTabX+34 " y" mainTabY+tabY " w" tabWidths[1]+tabWidths[2] " h" 30 " noActivate")
+}
 
-initGui(&cfg, &ui) {
+changeTabs(this_gui:=ui.mainTabGui,this_tabControl:=ui.mainGuiTabs) {
+	
+	if this_tabControl.value==1 {
+		ui.%this_Gui.name%Tab1BgOff.opt("hidden")
+		ui.%this_Gui.name%Tab1Off.opt("hidden")
+		ui.%this_Gui.name%Tab1Bg.opt("-hidden")
+		ui.%this_Gui.name%Tab1.opt("-hidden")
+		ui.%this_gui.name%Tab1Label.move(,2)
+		ui.%this_Gui.name%Tab1Label.setFont("s15 c" cfg.fontColor1,"Impact")
+		ui.%this_Gui.name%Tab2Bg.opt("hidden")
+		ui.%this_Gui.name%Tab2.opt("hidden")
+		ui.%this_Gui.name%Tab2BgOff.opt("-hidden")
+		ui.%this_Gui.name%Tab2Off.opt("-hidden")
+		ui.%this_gui.name%Tab2Label.move(,4)
+		ui.%this_Gui.name%Tab2Label.setFont("s12 c" cfg.fontColor2,"Impact")
+		ui.%this_gui.name%Tab1Inactive.opt("hidden")
+		ui.%this_gui.name%Tab1InactiveBottom.opt("hidden")
+		ui.%this_gui.name%Tab1InactiveRight.opt("hidden")
+		ui.%this_gui.name%Tab2Inactive.opt("-hidden")
+		ui.%this_gui.name%Tab2InactiveBottom.opt("-hidden")
+		ui.%this_gui.name%Tab2InactiveLeft.opt("-hidden")
+	} else {
+		ui.%this_Gui.name%Tab1BgOff.opt("-hidden")
+		ui.%this_Gui.name%Tab1Off.opt("-hidden")
+		ui.%this_Gui.name%Tab1Bg.opt("hidden")
+		ui.%this_Gui.name%Tab1.opt("hidden")
+		ui.%this_gui.name%Tab1Label.move(,4)
+		ui.%this_Gui.name%Tab1Label.setFont("s12 c" cfg.fontColor2,"Impact")
+		ui.%this_Gui.name%Tab2Bg.opt("-hidden")
+		ui.%this_Gui.name%Tab2.opt("-hidden")
+		ui.%this_Gui.name%Tab2BgOff.opt("hidden")
+		ui.%this_Gui.name%Tab2Off.opt("hidden")
+		ui.%this_gui.name%Tab2Label.move(,2)
+		ui.%this_Gui.name%Tab2Label.setFont("s15 c" cfg.fontColor2,"Impact")
+		ui.%this_gui.name%Tab1Inactive.opt("-hidden")
+		ui.%this_gui.name%Tab1InactiveBottom.opt("-hidden")
+		ui.%this_gui.name%Tab1InactiveRight.opt("-hidden")
+		ui.%this_gui.name%Tab2Inactive.opt("hidden")
+		ui.%this_gui.name%Tab2InactiveBottom.opt("hidden")
+		ui.%this_gui.name%Tab2InactiveLeft.opt("hidden")
 		
+		
+		}
+	}
+	
+	; drawMainTabs(activeTab:=1) {
+		
+		
+		; ui.tabDivider:=ui.mainTabGui.addText("hidden x115 y0 w2 h28 background" cfg.TrimColor1)
+		; tabsInit()
+		; tabsChanged()
+	; }
+	
+initGui(&cfg, &ui) {
+
+
+
+
 advProgress(2)
 	ui.TransparentColor 	:= "010203"
 	ui.MainGui 				:= Gui()
@@ -125,47 +224,50 @@ advProgress(2)
 	ui.mainGuiAnchor := ui.mainGui.addText("x0 y0 w0 h0 section hidden")
 	
 	ui.mainBg := ui.mainGui.addText("x34 y30 w493 h185 background" cfg.TabColor1,"")
-	ui.tabDivider:=ui.mainGui.addText("hidden x115 y0 w2 h28 background" cfg.TrimColor1)
 
 	advProgress(2)
 	
 	advProgress(2)
-	ui.3_FillBg:=ui.mainGui.addText("y2 x196 w280 h28 background" cfg.titleBgColor)
+	
+	
+	
+		ui.3_FillBg:=ui.mainGui.addText("y2 x196 w280 h28 background" cfg.titleBgColor)
+		ui.3_FillOutline:=ui.mainGui.addText("hidden x206 y1 w260 h29 center backgroundTrans","dapp")
+		ui.3_FillOutline.setFont("q5 s17 c" cfg.titleFontColor,"Move-X")
+		ui.3_TitleTextDetail:=ui.mainGui.addText("x316 y9 w2 h15 background" cfg.titleBgColor)
+		(iniRead(cfg.themeFile,cfg.theme,"HideTitlebarText",0)) ? 0 : (ui.3_FillOutline.opt("-hidden"),ui.3_FillOutline.redraw())
 
-	ui.3_FillOutline:=ui.mainGui.addText("hidden x206 y1 w260 h29 center backgroundTrans","dapp")
-	ui.3_FillOutline.setFont("q5 s17 c" cfg.titleFontColor,"Move-X")
-	ui.3_TitleTextDetail:=ui.mainGui.addText("x316 y9 w2 h15 background" cfg.titleBgColor)
-	; ui.3_TitleTextDetail2:=ui.mainGui.addText("x339 y9 w2 h15 background" cfg.titleBgColor)
+; ui.3_TitleTextDetail2:=ui.mainGui.addText("x339 y9 w2 h15 background" cfg.titleBgColor)
 	; ui.3_TitleTextDetail3:=ui.mainGui.addText("x355 y9 w2 h15 background" cfg.titleBgColor)
 
-	(iniRead(cfg.themeFile,cfg.theme,"HideTitlebarText",0)) ? 0 : (ui.3_FillOutline.opt("-hidden"),ui.3_FillOutline.redraw())
 	
 	if !fileExist(cfg.titleBarImage)
 		cfg.titleBarImage:="./img/custom/lightburst_bottom_light.png"
 	ui.titleBar:=ui.mainGui.addPicture("x196 y2 w280 h27 left backgroundTrans",cfg.titleBarImage)
 	ui.titleBar.onEvent("click",wm_lbuttonDown_callback)
 	ui.3_FillDetail1:=ui.mainGui.addPicture("x196 y0 w340 h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
-	ui.3_FillDetailBottom:=ui.mainGui.addPicture("x196 y" 28-cfg.curveAmount " w280 h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+	ui.3_FillDetailBottom:=ui.mainGui.addPicture("x196 y" 28-(cfg.curveAmount/2) " w280 h" cfg.curveAmount/2 " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+	ui.3_FillDetailLeft:=ui.mainGui.addPicture("x196 y" 2 " w" cfg.curveAmount/3 " h" 26 " backgroundTrans","./img/custom/lightburst_left_bar_dark.png")
 
 			ui.Game_ActiveTabUi:=ui.mainGui.addText("hidden x33 y28 w81 h2 background" cfg.trimColor1)
-			ui.1_GameButtonBg:=ui.mainGui.addText("x34 y0 w83 h28 background" cfg.TrimColor1)
-			ui.1_GameButton:=ui.mainGui.addText("x36 y2 w79 h28 background" cfg.TabColor1)
-			ui.2_SetupButtonBg:=ui.mainGui.addText("x117 w80 y0 h28 background" cfg.TrimColor2)
-			ui.2_SetupButton:=ui.mainGui.addText("x117 w78 y2 h28 background" cfg.TabColor2)
-			ui.1_GameButtonLabel := ui.mainGui.addText("x34 y4 w81 h26 center backgroundTrans","Game")
+			ui.1_GameButtonBg:=ui.mainGui.addText("hidden x34 y0 w83 h28 background" cfg.TrimColor1)
+			ui.1_GameButton:=ui.mainGui.addText("hidden x36 y2 w79 h28 background" cfg.TabColor1)
+			ui.2_SetupButtonBg:=ui.mainGui.addText("hidden x117 w80 y0 h28 background" cfg.TrimColor2)
+			ui.2_SetupButton:=ui.mainGui.addText("hidden x117 w78 y2 h28 background" cfg.TabColor2)
+			ui.1_GameButtonLabel := ui.mainGui.addText("hidden x34 y4 w81 h26 center backgroundTrans","Game")
 			ui.1_GameButtonLabel.setFont("s14 q5 c" cfg.FontColor1,"Impact")
-			ui.2_SetupButtonDetail:=ui.mainGui.addPicture("x117 y0 w80 h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")			
-			ui.2_SetupButtonDetail2:=ui.mainGui.addPicture("x117 y" 30-cfg.curveAmount " w" 80 " h" cfg.curveAmount-2 " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")	
-			ui.2_SetupButtonDetail3:=ui.mainGui.addPicture("x" 117 " y" 2 " w" cfg.curveAmount/3 " h" 26 " backgroundTrans","./img/custom/lightburst_left_bar_dark.png")
+			ui.2_SetupButtonDetail:=ui.mainGui.addPicture("hidden x117 y0 w80 h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")			
+			ui.2_SetupButtonDetail2:=ui.mainGui.addPicture("hidden x117 y" 30-cfg.curveAmount " w" 80 " h" cfg.curveAmount-2 " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")	
+			ui.2_SetupButtonDetail3:=ui.mainGui.addPicture("hidden x" 117 " y" 2 " w" cfg.curveAmount/3 " h" 26 " backgroundTrans","./img/custom/lightburst_left_bar_dark.png")
 	
-			ui.2_SetupButtonLabel := ui.mainGui.addText("y4 x117 w78 h26 center backgroundTrans","Setup")
+			ui.2_SetupButtonLabel := ui.mainGui.addText("hidden y4 x117 w78 h26 center backgroundTrans","Setup")
 			ui.2_SetupButtonLabel.setFont("s12 q5 c" cfg.FontColor2,"Impact")		
-			ui.Setup_ActiveTabUi:=ui.mainGui.addText("x117 y28 w78 h2 background" cfg.TrimColor1)
-			ui.1_GameButtonDetail:=ui.mainGui.addPicture("x34 y0 w83 h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
+			ui.Setup_ActiveTabUi:=ui.mainGui.addText("hidden x117 y28 w78 h2 background" cfg.TrimColor1)
+			ui.1_GameButtonDetail:=ui.mainGui.addPicture("hidden x34 y0 w83 h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
 			ui.1_GameButtonDetail2:=ui.mainGui.addPicture("hidden x36 y" 29-cfg.curveAmount " w81 h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
-			ui.2_GameButtonDetail4:=ui.mainGui.addPicture("x" 196+275-(cfg.curveAmount/3) " y" 2 " w" cfg.curveAmount/3 " h" 26 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")
-			ui.2_GameButtonDetail5:=ui.mainGui.addPicture("x" 115+82 " y" 2 " w" cfg.curveAmount/3 " h" 26 " backgroundTrans","./img/custom/lightburst_left_bar_dark.png")
-			ui.1_GameButtonDetail3:=ui.mainGui.addPicture("x" 34-(cfg.curveAmount/2) " y" 2 " w" cfg.curveAmount/2 " h" 26 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")
+			ui.2_GameButtonDetail4:=ui.mainGui.addPicture("hidden x" 196+275-(cfg.curveAmount/3) " y" 2 " w" cfg.curveAmount/3 " h" 26 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")
+			ui.2_GameButtonDetail5:=ui.mainGui.addPicture("hidden x" 115+82 " y" 2 " w" cfg.curveAmount/3 " h" 26 " backgroundTrans","./img/custom/lightburst_left_bar_dark.png")
+			ui.1_GameButtonDetail3:=ui.mainGui.addPicture("hidden x" 34-(cfg.curveAmount/2) " y" 2 " w" cfg.curveAmount/2 " h" 26 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")
 
 	line(ui.mainGui,115,28,375,2,cfg.TrimColor1)
 	;line(ui.mainGui,115,0,30,2,cfg.TrimColor1,"vert")
@@ -186,7 +288,7 @@ advProgress(2)
 	
 	ui.mainGuiTabs.setFont("q5 s10 q5")
 	ui.MainGui.setFont("q5 s12 c" cfg.FontColor1,"prototype")
-	ui.MainGuiTabs.OnEvent("Change",TabsChanged)
+	ui.MainGuiTabs.OnEvent("Change",mainTabsChanged)
 	line(ui.mainGui,197,1,300,1,cfg.DisabledColor)
 	line(ui.mainGui,197,0,300,2,"010203")
 	advProgress(2)
@@ -567,156 +669,3 @@ fadeOut(*) {
 ; d2KeybindAppTabClicked()
 line(ui.mainGui,34,30,183,2,cfg.TrimColor1,"vert")
 
-
-;tmpGameTabs()
-tmpGameTabs(*) {
-
-ui.bt:=object()
-ui.bt.x:=34
-ui.bt.y:=183
-ui.bt.w:=497
-ui.bt.h:= 32
-
-drawOutlineNamed("gameTabOutline",ui.mainGui,ui.bt.x,ui.bt.y,ui.bt.w,ui.bt.h
-	,cfg.TrimColor1,cfg.TrimColor1,2)
-
-;winSetTransColor(ui.transparentColor,ui.gameTabGui)
-
-bottomTabChanged(1)
-
-gameTab1Ctrls:=[
-ui.gameTab1SkinOutline,
-ui.gameTab1Skin,
-ui.gameTab1Label,
-ui.gameTab1Divider,
-ui.gameTabDetail1,
-ui.gameTabDetail3,
-ui.gameTabDetail4
-]
-
-ui.gameTab2Ctrls:=[
-ui.gameTab2SkinOutline,
-ui.gameTab2Skin,
-ui.gameTab2Label,
-ui.gameTab2Divider,
-ui.gameTabDetail2,
-ui.gameTabDetail6,
-ui.gameTabDetail5,
-]
-
-ui.gameTab1SkinOutline.redraw()
-ui.gameTab1Skin.redraw()
-ui.gameTab1Label.redraw()
-ui.gameTab1Divider.redraw()
-ui.gameTab2SkinOutline.redraw()
-ui.gameTab2Skin.redraw()
-ui.gameTab2Label.redraw()
-ui.gameTab2Divider.redraw()
-ui.gameTabDetail1.redraw()
-ui.gameTabDetail2.redraw()
-ui.gameTabDetail3.redraw()
-ui.gameTabDetail4.redraw()
-ui.gameTabDetail6.redraw()
-ui.gameTabDetail5.redraw()
-
-	; ui.gameTabDetail1:=ui.mainGui.addPicture(((tabNum==1) ? "-hidden " : "-hidden ") "x" ui.bt.x+0 " y" ((tabNum==1) ? 2 : 2)+30-cfg.curveAmount " w110 h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
-	; ui.gameTabDetail2:=ui.mainGui.addPicture(((tabNum==2) ? "-hidden " : "-hidden ") "x110 y" ((tabNum==1) ? 2 : 2)+30-cfg.curveAmount " w130 h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")	 
-	; ui.gameTabDetail3:=ui.mainGui.addPicture(((tabNum==2) ? "-hidden " : "hidden ") "x0 y" 2 " w108 h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
-	; ui.gameTabDetail4:=ui.mainGui.addPicture(((tabNum==1) ? "hidden " : "-hidden ") "x" 108-(cfg.curveAmount/3) " y" 2 " w" cfg.curveAmount/3 " h" 28 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")	 
- 	; ui.gameTabDetail6:=ui.mainGui.addPicture(((tabNum==2) ? "hidden " : "-hidden ") "x112 y" 2 " w130 h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
-	; ui.gameTabDetail5:=ui.mainGui.addPicture(((tabNum==1) ? "-hidden " : "hidden ") "x110 y" 2 " w" cfg.curveAmount/3 " h" 28 " backgroundTrans","./img/custom/lightburst_left_bar_dark.png")	
-	
-	; ui.gameTab1SkinOutline.redraw()
-	; ui.gameTab1Skin.redraw()
-	; ui.gameTab1Label.redraw()
-	; ui.gameTab1Divider.redraw()
-	; ui.gameTab2SkinOutline.redraw()
-	; ui.gameTab2Skin.redraw()
-	; ui.gameTab2Label.redraw()
-	; ui.gameTab2Divider.redraw()
-	;ui.gameTabDetail0.redraw()
-	; ui.gameTabDetail1.redraw()
-	; ui.gameTabDetail2.redraw()
-	; ui.gameTabDetail3.redraw()
-	; ui.gameTabDetail4.redraw()
-	; ui.gameTabDetail5.redraw()
-	; ui.gameTabDetail6.redraw()
-	
-	
-
-	ui.gameTabSpacer:=ui.mainGui.addText("y" ui.bt.y+2 " x" ui.bt.x+240 " w" 490 " h29 background" cfg.titleBgColor)
-	ui.gameTabSpacer.onEvent("click",WM_LBUTTONDOWN_callback)
-	ui.buildNumber:=ui.mainGui.addText("x" ui.bt.x+298 " y" ui.bt.y+16 " w160 h29 right backgroundTrans","v" a_fileVersion)
-	ui.buildNumber.setFont("q5 s9 c" cfg.titleFontColor,"move-x")	
-
-	ui.statusBarText:=ui.mainGui.addText("hidden x250 y9 w240 h26 backgroundTrans")
-	ui.statusBarText.text:="     "
-	ui.statusBarText.setFont("s10 q5 c" cfg.titleFontColor,"calibri")
-	
-	ui.gameTabSpacerDetail2:=ui.mainGui.addPicture("y" ui.bt.y+2 " x" ui.bt.x+240 " w" 250 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
-	ui.gameTabSpacerDetail2.onEvent("click",WM_LBUTTONDOWN_callback)
-	ui.gameTabSpacerDetail:=ui.mainGui.addPicture("y" ui.bt.y+31-cfg.curveAmount " x" ui.bt.x+240 " w" 250 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
-	ui.gameTabSpacerDetail.onEvent("click",WM_LBUTTONDOWN_callback)
-	ui.mainGui.addPicture("x" ui.bt.x+240 " y" ui.bt.y+2 " w" cfg.curveAmount/3 " h" 29 " backgroundTrans","./img/custom/lightburst_left_bar_dark.png")
-	ui.mainGui.addPicture("x" ui.bt.x+466-(cfg.curveAmount/3) " y" ui.bt.y+2 " w" cfg.curveAmount/3 " h" 29 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")	
-	ui.mainGui.addPicture("x" ui.bt.x+240 " y" ui.bt.y+2 " w250 h29 backgroundTrans",(fileExist(subStr(cfg.titleBarImage,1,(strLen(cfg.titleBarImage)-4)) "_flipped.png")) ? subStr(cfg.titleBarImage,1,(strLen(cfg.titleBarImage)-4)) "_flipped.png" : cfg.titleBarImage)
-	if !fileExist(cfg.titleBarImage)
-		cfg.titleBarImage:="./img/custom/lightburst_bottom_light.png"
-
-
-	createShading(objGui,objX,objY,objW,objH) {
-		objGui.addPicture("x" objX " y" objY " w" objW " h" min(cfg.curveAmount,(objH/2)))
-		objGui.addPicture("x" objX " y" objH-(min(cfg.curveAmount,(objH/2))) " w" objW " h" min(cfg.curveAmount,(objH/2)))
-	}
-	
-	line(ui.mainGui,ui.bt.x+240,214,500,1,"010203")
-	line(ui.mainGui,ui.bt.x+529,185,28,1,cfg.TrimColor1,"VERT")
-	ui.mainGui.addText("x" 499 " y" ui.bt.y+2 " w31 h29 background" cfg.TabColor2)
-	ui.helpIcon := ui.mainGui.addPicture("x" 504 " y" ui.bt.y+3 " w-1 h26 backgroundTrans","./img/icon_help.png")
-	ui.helpIcon.onEvent("click",test)
-	ui.mainGui.addPicture("x" 499 " y" 185 " w30 h" 16-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
-	ui.mainGui.addPicture("x" 497 " y" 198+(15-cfg.curveAmount) " w37 h" 17-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
-	drawOutlineNamed("helpOutline",ui.mainGui,497,183,34,32,cfg.TrimColor1,cfg.TrimColor1,2)
-
-
-	ui.vaultCleanerTabDetail:=ui.mainGui.addPicture("x144 y" 185+(30-cfg.curveAmount) " w130 h" 32-(30-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
-	ui.gameplayTabDetail:=ui.mainGui.addPicture("x36 y" 185+(30-cfg.curveAmount) " w108 h" 32-(30-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
-	ui.vaultCleanerTabDetail.onEvent("click",test)
-}
-
-test(*) {
-msgbox('test')
-	}
-bottomTabChanged(activeGameTab,*) {
-	cfg.activeGameTab:=activeGameTab
-	if cfg.activeGameTab == 1 {
-		ui.gameTab1SkinOutline := ui.mainGui.addText("section x" ui.bt.x+0 " y" ui.bt.y+0 " w110 h32 background" cfg.TrimColor1)
-		ui.gameTab1SkinOutline.onEvent("click",test)
-		ui.gameTab1Skin := ui.mainGui.addText("y" ui.bt.y+0 " h30 x" ui.bt.x+2 " w108  background" cfg.TabColor1)
-		ui.gameTab1Skin.onEvent("click",test)
-		ui.gameTab1Label := ui.mainGui.addText("y" ui.bt.y+2 " h28 x" ui.bt.x+2 " w108 center backgroundTrans c" cfg.FontColor1,"Gameplay")
-		ui.gameTab1Label.setFont("s14","Impact")
-		ui.gameTab1Label.onEvent("click",test)
-		ui.gameTab1Divider:=ui.mainGui.addText("y" ui.bt.y+0 " x" ui.bt.x+108 " w2 h34 background" cfg.TrimColor1)
-		ui.gameTab2SkinOutline := ui.mainGui.addText("x" ui.bt.x+110 " y" ui.bt.y+2 " w130 h30 background" cfg.TrimColor2)
-		ui.gameTab2Skin := ui.mainGui.addText("y" ui.bt.y+2 " h28 x" ui.bt.x+110 " w130 center background" cfg.TabColor2)
-		ui.gameTab2Skin.onEvent("click",test)
-		ui.gameTab2Label := ui.mainGui.addText("y" ui.bt.y+5 " h32 x" ui.bt.x+110 " w130 center backgroundTrans c" cfg.FontColor2,"Vault Cleaner")
-		ui.gameTab2Label.setFont("s12","Impact")
-		ui.gameTab2Label.onEvent("click",test)
-		ui.gameTab2Divider:=ui.mainGui.addText("y" ui.bt.y+2 " x" ui.bt.x+238 " w2 h32 background" cfg.TrimColor2)
-	} else {
-		ui.gameTab1SkinOutline := ui.mainGui.addText("section x" ui.bt.x+0 " y" ui.bt.y+2 " w110 h30 background" cfg.TrimColor2)
-		ui.gameTab1Skin := ui.mainGui.addText("y" ui.bt.y+2 " h28 x" ui.bt.x+2 " w108 background" cfg.TabColor2)
-		ui.gameTab1Skin.onEvent("click",bottomTabChanged)
-		ui.gameTab1Label := ui.mainGui.addText("ys" ui.bt.y+2 " h28 x" ui.bt.x+2 " w108 center backgroundTrans c" cfg.FontColor2,"Vault Cleaner")
-		ui.gameTab1Label.setFont("s12","Impact")
-		ui.gameTab1Divider:=ui.mainGui.addText("y" ui.bt.y+0 " x" ui.bt.x+108 " w2 h34 background" cfg.TrimColor1)
-		ui.gameTab2SkinOutline := ui.mainGui.addText("x" ui.bt.x+108 " y" ui.bt.x+0 " w130 h34 background" cfg.TrimColor1)
-		ui.gameTab2Skin := ui.mainGui.addText("y" ui.bt.y+0 " h30 x" ui.bt.x+110 " w130 center background" cfg.TabColor1)
-		ui.gameTab2Skin.onEvent("click",bottomTabChanged)
-		ui.gameTab2Label := ui.mainGui.addText("y" ui.bt.y+3 " h26 x" ui.bt.x+110 " w130 center backgroundTrans c" cfg.FontColor1,"Vault Cleaner")
-		ui.gameTab2Label.setFont("s14","Impact")
-		ui.gameTab2Divider:=ui.mainGui.addText("y" ui.bt.y+2 " x" ui.bt.x+238 " w2 h30 background" cfg.TrimColor2,"")
-	}
-}

@@ -1,4 +1,4 @@
-A_FileVersion := "1.7.4.3"
+A_FileVersion := "1.7.4.4"
 a_appName := "dapp"
 if (fileExist("./dapp_currentBuild.dat"))
 	a_fileVersion := fileRead("./dapp_currentBuild.dat")
@@ -129,9 +129,10 @@ guiVis(ui.gameTabGui,false)
 winSetAlwaysOnTop(cfg.alwaysOnTopEnabled,ui.MainGui)
 
 winSetRegion("34-0 w497 h234",ui.mainGui)
-
 ui.mainGui.Show("x" cfg.guiX " y" cfg.guiY " w532 h214 NoActivate")
 ui.gameSettingsGui.show("x" cfg.guiX+34 " y" cfg.guiY+30 " w495 h183 noActivate")
+drawTabs()
+
 ;ui.gameSettingsGui.show("x" cfg.guiX+34 " y" cfg.guiY+30 " w495 h150 noActivate")
 ui.gameTabGui.show("w497 h32 noActivate x" cfg.guiX+34 " y" cfg.guiY+183)
 
