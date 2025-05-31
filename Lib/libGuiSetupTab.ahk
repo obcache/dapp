@@ -27,7 +27,7 @@ GuiSetupTab(&ui,&cfg) {
 	drawPanel(ui.mainGui,261,33,214,118,cfg.TabColor4,cfg.OutlineColor2,cfg.OutlineColor1,1,1,"none",100,20,"Features","calibri",cfg.FontColor1)
 	drawPanel(ui.mainGui,261,154,214,53,cfg.TabColor4,cfg.OutlineColor2,cfg.OutlineColor1,1,1,"none",100,20,"Features","calibri",cfg.FontColor1,"showThemeEditor")
 	drawPanel(ui.mainGui,478,33,42,174,cfg.TabColor4,cfg.OutlineColor2,cfg.OutlineColor1,1,1,"none",100,20,"Features","calibri",cfg.FontColor1)
-	line(ui.mainGui,529,184,29,2,cfg.TrimColor1)
+	line(ui.mainGui,529,184,29,2,cfg.trimColor2)
 
 	ui.MainGui.setFont("q5 s09")
 	ui.AutoClickerSpeedSlider := ui.MainGui.AddSlider("disabled x487 y45 w25 h144 Range1-64 Vertical Left TickInterval8 Invert ToolTipTop",cfg.AutoClickerSpeed)
@@ -175,25 +175,25 @@ GuiSetupTab(&ui,&cfg) {
 	;drawOutlineNamed("toggleBlock",ui.mainGui,47,43,50,157,cfg.TrimColor2,cfg.TrimColor2,1)
 	;drawOutlineNamed("toggleBlock",ui.mainGui,48,42,50,157,cfg.OutlineColor2,cfg.OutlineColor2,1)
 	
-	ui.mainGui.addText("x270 y45 w198 h62 background" cfg.trimColor1)
-	ui.mainGui.addText("x271 y46 w196 h60 background" cfg.trimColor2)
+	ui.mainGui.addText("x270 y45 w198 h62 background" cfg.tabColor2)
+	ui.mainGui.addText("x271 y46 w196 h60 background" cfg.fontColor2)
 	ui.mainGui.addText("x272 y47 w194 h58 background" cfg.tabColor2)
-	ui.mainGui.addText("x273 y48 w192 h56 background" cfg.tabColor1)
+	ui.mainGui.addText("x273 y48 w192 h56 background" cfg.fontColor2)
 	;line(ui.mainGui,0,36,155,2,cfg.DisabledColor)
 
-	ui.checkForUpdatesLabel := ui.mainGui.addtext("x280 y46 w200 h30 section backgroundTrans c" cfg.fontColor1,"Check For Updates")
-	ui.checkForUpdatesLabel.setFont("q5 s12","move-x")
-	ui.checkForUpdatesButton := ui.mainGui.addPicture("xs+10 y+-7 w30 h30 section background" cfg.alertColor,"./img/button_update.png")
+	ui.checkForUpdatesLabel := ui.mainGui.addtext("x290 y46 w200 h30 section backgroundTrans c" cfg.tabColor2,"Check For Updates")
+	ui.checkForUpdatesLabel.setFont("q5 s14","Prototype")
+	ui.checkForUpdatesButton := ui.mainGui.addPicture("xs+10 y+-5 w30 h30 section background" cfg.offColor,"./img/button_update.png")
 	ui.checkForUpdatesButton.onEvent("Click",checkForUpdates)
 	ui.checkForUpdatesButton.Tooltip := "Checks to see if a more recent version is available"	
-	ui.installedVersionText := ui.mainGui.addText("ys-1 x+17 section w140 h19 backgroundTrans c" cfg.alertColor ,"Installed:`t" substr(a_fileVersion,1,1) "." subStr(a_fileVersion,2,1) "." subStr(a_fileVersion,3,1) "." subStr(a_fileVersion,4,1))
+	ui.installedVersionText := ui.mainGui.addText("ys-1 x+17 section w140 h19 backgroundTrans c" cfg.fontColor3 ,"Installed:`t" substr(a_fileVersion,1,1) "." subStr(a_fileVersion,2,1) "." subStr(a_fileVersion,3,1) "." subStr(a_fileVersion,4,1))
 	ui.installedVersionText.setFont(,"Calibri")
-	ui.latestVersionText := ui.mainGui.addText("xs y+-4 w140 backgroundTrans c" cfg.alertColor,"Available:`t#.#.#.#")
+	ui.latestVersionText := ui.mainGui.addText("xs y+-4 w140 backgroundTrans c" cfg.fontColor3,"Available:`t#.#.#.#")
 	ui.latestVersionText.setFont(,"Calibri")
 	ui.monitorResList := ["1920x1080","1920x1200","2560x1440","3440x1440","Custom"]
 	ui.mainGui.setFont(,"calibri")
-	ui.monitorResDDL := ui.mainGui.AddDDL("xs-66 y+2 w90 r4 choose" cfg.monitorRes " c" cfg.fontColor3 " background" cfg.disabledColor,ui.monitorResList)
-	ui.monitorResDDL.setFont("c" cfg.fontColor3)
+	ui.monitorResDDL := ui.mainGui.AddDDL("xs-66 y+2 w90 r4 choose" cfg.monitorRes " c" ((cfg.displaySizeAuto) ? cfg.tabColor2 : cfg.fontColor2) " background" ((cfg.displaySizeAuto) ? cfg.fontColor2 : cfg.tabColor2),ui.monitorResList)
+	ui.monitorResDDL.setFont("c" cfg.fontColor2)
 	ui.monitorResDDL.onEvent("change",monitorResChanged)
 	ui.monitorResLabel := ui.mainGui.AddText("x+4 y+-25 w65 c" cfg.FontColor1 " backgroundTrans","Screen")	
 	ui.monitorResLabel2 := ui.mainGui.AddText("y+-2 w65 c" cfg.FontColor1 " backgroundTrans","Size")
@@ -228,10 +228,10 @@ GuiSetupTab(&ui,&cfg) {
 	toggleAutoDisplaySize(*) {
 		cfg.displaySizeAuto := ui.monitorAuto.Value
 		if cfg.displaySizeAuto {
-			ui.monitorResDDL.opt("disabled")
+			ui.monitorResDDL.opt("disabled background" cfg.fontColor2 " c" cfg.tabColor2)
 			monitorResChanged()
 		} else {
-			ui.monitorResDDL.opt("-disabled")
+			ui.monitorResDDL.opt("-disabled background" cfg.tabColor2 " c" cfg.fontColor2)
 			ui.monitorResDDL.delete()
 			ui.monitorResDDL.add(["1920x1080","1920x1200","2560x1440","3440x1440","Custom"])
 			ui.monitorResDDL.text := cfg.monitorRes

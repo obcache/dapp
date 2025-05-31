@@ -71,14 +71,14 @@ ui.gametabs.useTab("Vault Cleaner")
 	this.completeMsg := ui.gameSettingsGui.addText("hidden x33 y61 w500 h30 backgroundTrans c" cfg.fontColor2 "","")
 
 
-	this.statBoxOutline:=ui.gameSettingsGui.addText("x248 y82 w242 h61 background" cfg.trimColor2)
+	this.statBoxOutline:=ui.gameSettingsGui.addText("x248 y82 w242 h60 background" cfg.trimColor2)
 	this.statBoxBg:=ui.gameSettingsGui.addText("x249 y84 w242 h56 background" cfg.tabColor2)
 	
 	
 	this.statTop:=ui.gameSettingsGui.addPicture("x" 249 " y" 84 " w" 239 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
 	this.statBottom:=ui.gameSettingsGui.addPicture("x" 249 " y" 84+56-cfg.curveAmount " w" 239 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
-	this.statLeft:=ui.gameSettingsGui.addPicture("x" 249 " y" 82 " w" cfg.curveAmount/3 " h" 62 " backgroundTrans","./img/custom/lightburst_left_bar_dark.png")
-	this.statRight:=ui.gameSettingsGui.addPicture("x" 252+240-(cfg.curveAmount/3) " y" 82 " w" cfg.curveAmount/3 " h" 60 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")
+	this.statLeft:=ui.gameSettingsGui.addPicture("x" 248 " y" 82 " w" cfg.curveAmount/3 " h" 60 " backgroundTrans","./img/custom/lightburst_left_bar_dark.png")
+	this.statRight:=ui.gameSettingsGui.addPicture("x" 249+240-(cfg.curveAmount/3) " y" 82 " w" cfg.curveAmount/3 " h" 60 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")
 
 
 
@@ -114,7 +114,7 @@ ui.gametabs.useTab("Vault Cleaner")
 	this.d2LaunchVaultCleanerText.setFont("s14 c" cfg.fontColor2 " bold","Prototype")
 	this.vaultProgressLabel:=ui.gameSettingsGui.addText("x16 y63 w110 h15 backgroundTrans c" cfg.fontColor2,"Progress")
 	this.vaultProgressLabel.setFont("s10 c" cfg.fontColor2,"move-x")
-	drawOutlineNamed("vaultOutline",ui.gameSettingsGui,7,8,484,136,cfg.trimColor2,cfg.trimColor2,1)
+	drawOutlineNamed("vaultOutline",ui.gameSettingsGui,7,7,484,137,cfg.trimColor2,cfg.trimColor2,1)
 	
 	; this.vaultStepOutline
 	; this.vaultStepBg
@@ -137,8 +137,9 @@ ui.gametabs.useTab("Vault Cleaner")
 	this.helpIcon:=ui.gameSettingsGui.addPicture("x16 y90 w20 h26 backgroundTrans","./img/icon_help.png")
 	this.helpTop:=ui.gameSettingsGui.addPicture("x" 10 " y" 84 " w" 229 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
 	this.helpBottom:=ui.gameSettingsGui.addPicture("x" 10 " y" 84+56-cfg.curveAmount " w" 229 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
-	this.helpLeft:=ui.gameSettingsGui.addPicture("x" 9 " y" 82 " w" cfg.curveAmount/3 " h" 62 " backgroundTrans","./img/custom/lightburst_left_bar_dark.png")
-	this.helpRight:=ui.gameSettingsGui.addPicture("x" 250-(cfg.curveAmount/3) " y" 82 " w" cfg.curveAmount/3 " h" 60 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")
+	this.helpLeft:=ui.gameSettingsGui.addPicture("x" 8 " y" 82 " w" cfg.curveAmount/3 " h" 62 " backgroundTrans","./img/custom/lightburst_left_bar_dark.png")
+	this.helpRight:=ui.gameSettingsGui.addPicture("hidden x" 250-(cfg.curveAmount/3) " y" 84 " w" cfg.curveAmount/3 " h" 56 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")
+	this.helpRight2:=ui.gameSettingsGui.addPicture("x" 240-(cfg.curveAmount/3) " y" 82 " w" cfg.curveAmount/3 " h" 60 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")
 
 	wizPanel(wizPanelParams) {
 		this_guid:=newGuid()

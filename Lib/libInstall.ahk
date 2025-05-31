@@ -138,7 +138,12 @@ preAutoExec(InstallDir,ConfigFileName) {
 			
 			fileInstall("./redist/mouseSC_x64.exe",installDir "/redist/mouseSC_x64.exe",1)
 			fileInstall("./img/dapp_icon.ico",installDir "/img/dapp_icon.ico",1)
-			fileInstall("./img/dapp_logo.png",installDir "/img/dapp_logo.png",1)
+			fileInstall("./img/dapp_logo1.png",installDir "/img/dapp_logo1.png",1)
+			fileInstall("./img/dapp_logo2.png",installDir "/img/dapp_logo2.png",1)
+			fileInstall("./img/dapp_logo3.png",installDir "/img/dapp_logo3.png",1)
+			fileInstall("./img/dapp_logo4.png",installDir "/img/dapp_logo4.png",1)
+			fileInstall("./img/dapp_logo5.png",installDir "/img/dapp_logo5.png",1)
+			fileInstall("./img/dapp_logo6.png",installDir "/img/dapp_logo6.png",1)
 			fileInstall("./img/dapp_titlebar.png",installDir "/img/dapp_titlebar.png",1)
 			fileInstall("./img/custom/dapp_titlebar.png",installDir "/img/custom/dapp_titlebar.png",1)
 			fileInstall("./img/custom/dapp_titlebar2.png",installDir "/img/custom/dapp_titlebar2.png",1)

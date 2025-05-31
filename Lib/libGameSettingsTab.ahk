@@ -159,7 +159,7 @@ drawGameTabs(tabNum := 1) {
 	ui.gameTabGui.addPicture("x" 466-(cfg.curveAmount/3) " y" 2 " w" cfg.curveAmount/3 " h" 29 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")	
 	;ui.gameTabGui.addPicture("x240 y" 2 " w250 h29 backgroundTrans",(fileExist(subStr(cfg.titleBarImage,1,(strLen(cfg.titleBarImage)-4)) "_flipped.png")) ? subStr(cfg.titleBarImage,1,(strLen(cfg.titleBarImage)-4)) "_flipped.png" : cfg.titleBarImage)
 	; if !fileExist(cfg.titleBarImage)
-		; cfg.titleBarImage:="./img/custom/lightburst_bottom_light.png"
+	; cfg.titleBarImage:="./img/custom/lightburst_bottom_light.png"
 
 
 
