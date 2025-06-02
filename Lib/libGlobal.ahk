@@ -10,6 +10,8 @@ if (InStr(A_LineFile,A_ScriptFullPath)){
 
 restoreWin(*) {
 	ui.maingui.show()
+	ui.mainTabGui.show()
+	
 	if ui.mainGuiTabs.value==1 {
 		ui.gameSettingsGui.show()
 		ui.gameTabGui.show()

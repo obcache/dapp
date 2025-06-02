@@ -162,6 +162,8 @@ changeTabs(this_gui:=ui.mainTabGui,this_tabControl:=ui.mainGuiTabs) {
 		ui.%this_gui.name%Tab2Inactive.opt("-hidden")
 		ui.%this_gui.name%Tab2InactiveBottom.opt("-hidden")
 		ui.%this_gui.name%Tab2InactiveLeft.opt("-hidden")
+		ui.gameSettingsGui.show()
+		ui.gameTabGui.show()
 	} else {
 		ui.%this_Gui.name%Tab1BgOff.opt("-hidden")
 		ui.%this_Gui.name%Tab1Off.opt("-hidden")
@@ -181,7 +183,6 @@ changeTabs(this_gui:=ui.mainTabGui,this_tabControl:=ui.mainGuiTabs) {
 		ui.%this_gui.name%Tab2Inactive.opt("hidden")
 		ui.%this_gui.name%Tab2InactiveBottom.opt("hidden")
 		ui.%this_gui.name%Tab2InactiveLeft.opt("hidden")
-		
 		
 		}
 	}
@@ -238,7 +239,7 @@ advProgress(2)
 		(iniRead(cfg.themeFile,cfg.theme,"HideTitlebarText",0)) ? 0 : (ui.3_FillOutline.opt("-hidden"),ui.3_FillOutline.redraw())
 
 ; ui.3_TitleTextDetail2:=ui.mainGui.addText("x339 y9 w2 h15 background" cfg.titleBgColor)
-	; ui.3_TitleTextDetail3:=ui.mainGui.addText("x355 y9 w2 h15 background" cfg.titleBgColor)
+; ui.3_TitleTextDetail3:=ui.mainGui.addText("x355 y9 w2 h15 background" cfg.titleBgColor)
 
 	
 	if !fileExist(cfg.titleBarImage)
@@ -248,7 +249,7 @@ advProgress(2)
 	ui.3_FillDetail1:=ui.mainGui.addPicture("x196 y0 w340 h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
 	ui.3_FillDetailBottom:=ui.mainGui.addPicture("x196 y" 28-(cfg.curveAmount/2) " w280 h" cfg.curveAmount/2 " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 	ui.3_FillDetailLeft:=ui.mainGui.addPicture("x196 y" 2 " w" cfg.curveAmount/3 " h" 26 " backgroundTrans","./img/custom/lightburst_left_bar_dark.png")
-
+	ui.4_FillDetailRight:=ui.mainGui.addPicture("x" 196+276-(cfg.curveAmount/3) " y" 2 " w" cfg.curveAmount/3 " h" 26 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")
 			ui.Game_ActiveTabUi:=ui.mainGui.addText("hidden x33 y28 w81 h2 background" cfg.trimColor1)
 			ui.1_GameButtonBg:=ui.mainGui.addText("hidden x34 y0 w83 h28 background" cfg.TrimColor1)
 			ui.1_GameButton:=ui.mainGui.addText("hidden x36 y2 w79 h28 background" cfg.TabColor1)
@@ -320,6 +321,7 @@ advProgress(2)
 	
 	guiHide(*) {
 		ui.mainGui.hide()
+		ui.mainTabGui.hide()
 		ui.gameSettingsGui.hide()
 		ui.gameTabGui.hide()
 	}
