@@ -9,7 +9,9 @@ if (InStr(A_LineFile,A_ScriptFullPath))
 	Return
 }
 
-
+^+Enter:: {
+	toggleThemeEditor()
+}
 
 ^+[:: {
 	static currOutputDeviceNum := 1

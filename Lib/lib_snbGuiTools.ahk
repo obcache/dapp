@@ -17,7 +17,7 @@ if (InStr(A_LineFile,A_ScriptFullPath))
 
 newGuid(*) {
 	;returns a Global Unique ID in standard GUID format.
-	return this_guid := comObject("Scriptlet.TypeLib").GUID
+	return strReplace(trim(gui().addEdit(,comObject("ScriptLet.TypeLib").GUID).text,"{}"),"-","")
 }
 
 drawPanel(targetGui,panelX,panelY,panelW,panelH,panelColor,outlineColor,OutlineColor2,outlineWidth := 1,outlineOffset := 1,labelPos := "none",labelW := 0,labelH := 20,labelText := "",labelFont := "calibri",labelFontColor := "white",onClickFunction:=0) {

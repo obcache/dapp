@@ -38,8 +38,8 @@ joinFireteam(*) {
 		ui.joinGui.name:="joinGui"
 		ui.joinGui.opt("-caption -border alwaysOnTop owner" ui.gameSettingsGui.hwnd)
 		ui.joinGui.backColor:=cfg.TabColor1
-		ui.joinGui.color:="010203"
-		winSetTransColor("010203",ui.joinGui)
+		ui.joinGui.color:=ui.transparentColor
+		winSetTransColor(ui.transparentColor,ui.joinGui)
 		ui.joinGuiOutline:=ui.joinGui.addText("x0 y22 w437 h" (ui.friendsList.count*28)+54 " background" cfg.TrimColor2)
 		ui.joinGuiBackground:=ui.joinGui.addText("x2 y24 w433 h" (ui.friendsList.count*28)+50 " background" cfg.TabColor4)
 		ui.joinGuiTitlebar:=ui.joinGui.addText("hidden x2 y2 w409 h" 24 " background" cfg.tabColor2)
@@ -66,7 +66,7 @@ joinFireteam(*) {
 		ui.joinGuiColHeader3:= ui.joinGui.addText("x352 y25 w52 h26 background" cfg.tabColor1)
 		ui.joinGuiColHeader4:=ui.joinGui.addText("hidden x406 y25 w26 h26 background" cfg.tabColor3)
 		ui.joinGui%a_index%Detail0:=ui.joinGui.addPicture("x5 y" 25 " w427 h" cfg.curveAmount/2 " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
-		ui.joinGui%a_index%Detail11:=ui.joinGui.addPicture("x5 y" 36 " w427 h" cfg.curveAmount/2 " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+		ui.joinGui%a_index%Detail11:=ui.joinGui.addPicture("x5 y" 42 " w427 h" cfg.curveAmount/2 " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 
 		ui.joinGuiColHeader1Text:=ui.joinGui.addText("x9 y26 w160 h22 backgroundTrans c" cfg.fontColor2,"Bungie ID")
 		
@@ -101,9 +101,9 @@ joinFireteam(*) {
 			; ui.joinGui%a_index%.opt("vTmp")
 				
 			
-			ui.joinGuiBg%a_index%:=ui.joinGui.addText("v_" friend  " section x5 y" (a_index*28)+23 " w203 h28 " ((mod(a_index+2,2)==0) ? "background" cfg.tabColor2 : "background" cfg.fontColor2))
+			ui.joinGuiBg%a_index%:=ui.joinGui.addText("v_" friend  " section x5 w203 h28" ((mod(a_index+2,2)==0) ? " y" (a_index*28)+23 " background" cfg.tabColor2 : " y" (a_index*28)+23 " background" cfg.fontColor2))
 			ui.joinGuiText%a_index%:=ui.joinGui.addText("v2_" friend " section x10 y" (a_index*28)+27 " w200 h28 backgroundTrans",strSplit(friend,"_")[2])
-			ui.joinGuiBg%a_index%Nickname:=ui.joinGui.addText("v3_" friend " section x210 y" (a_index*28)+23 " w140 h28 " ((mod(a_index+2,2)==0) ? "background" cfg.tabColor2 : "background" cfg.fontColor2))
+			ui.joinGuiBg%a_index%Nickname:=ui.joinGui.addText("v3_" friend " section x210 y" (a_index*28)+23 " w140 h28 " ((mod(a_index+2,2)==0) ? " y" (a_index*28)+23 " background" cfg.tabColor2 : " y" (a_index*28)+23 " background" cfg.fontColor2))
 			ui.joinGuiText%a_index%Nickname:=ui.joinGui.addText("v4_" friend " section x214 y" (a_index*28)+27 " w137 h28 backgroundTrans",nickname)
 		
 			ui.joinGuiText%a_index%Nickname.setFont("s12 q5 " ((mod(a_index+2,2)==0) ? "c" cfg.fontColor2 : "c" cfg.tabColor2),"prototype")
@@ -141,7 +141,9 @@ joinFireteam(*) {
 			ui.joinGui%a_index%delete:=ui.joinGui.addPicture("v7_" friend " x406 y" (a_index*28+23) " w26 h28 background" ((mod(a_index+2,2)==0) ? cfg.tabColor2 : cfg.tabColor2),"./img/button_delete.png")
 			ui.joinGui%a_index%delete.onEvent("click",removeFriend)
 
-			ui.joinGui%a_index%Detail:=ui.joinGui.addPicture("x5 y" a_index*28+23 " w427 h" cfg.curveAmount/2 " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
+			if mod(a_index+2,2)==1 
+				ui.joinGui%a_index%Detail:=ui.joinGui.addPicture("x5 y" a_index*28+23 " w427 h" cfg.curveAmount/2 " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
+			ui.joinGui%a_index%Detail2:=ui.joinGui.addPicture("x5 y" a_index*28+23 " w427 h" cfg.curveAmount/2 " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
 		}
 		
 		
@@ -204,7 +206,13 @@ joinFireteam(*) {
 			tmpFriendsArr[ui.friend_idx-1]:=ui.friend_idx-1 "_" strSplit(tmpFriendCurrent,"_")[2]
 			tmpNicknamesArr[ui.friend_idx-1]:=tmpNicknameCurrent
 
-			
+			tmpFriendCurrent:=tmpFriendsArr[ui.friend_idx]
+			tmpNicknameCurrent:=tmpNicknamesArr[ui.friend_idx]
+			tmpFriendsArr[ui.friend_idx]:=ui.friend_idx "_" strSplit(tmpFriendsArr[ui.friend_idx+1],"_")[2]
+			tmpNicknamesArr[ui.friend_idx]:=tmpNicknamesArr[ui.friend_idx+1]
+			tmpFriendsArr[ui.friend_idx+1]:=ui.friend_idx+1 "_" strSplit(tmpFriendCurrent,"_")[2]
+			tmpNicknamesArr[ui.friend_idx+1]:=tmpNicknameCurrent
+
 
 			friendsListStr:=""
 			ui.friendsList:=map()
@@ -296,7 +304,7 @@ joinFireteam(*) {
 		ui.addFriendGuiSubmit:=ui.addFriendGui.addButton("hidden w0 h0 default")
 		ui.addFriendGuiSubmit.onEvent("click",saveFriend)
 		ui.addFriendGuiOutline:=ui.addFriendGui.addText("x0 y0 w437 h46 background" cfg.TrimColor2)
-		ui.addFriendGuiBg:=ui.addFriendGui.addText("x2 y2 w433 h42 background" cfg.TabColor2)
+		ui.addFriendGuiBg:=ui.addFriendGui.addText("x2 y2 w393 h42 background" cfg.TabColor2)
 		ui.addNicknameGuiBg:=ui.addFriendGui.addText("x207 y2 w140 h42 background" cfg.TabColor2)
 		ui.addFriendGuiText:=ui.addFriendGui.addText("x5 w470 y1 h20 backgroundTrans","Enter Friend Info")
 		ui.addFriendGuiText.setFont("s14 q5 c" cfg.FontColor2,"move-x")
@@ -317,25 +325,27 @@ joinFireteam(*) {
 			
 		hotkey("ESC",addFriendClose)
 		hotkey("ESC","On")
-		saveFriend(*) {
-			
-			ui.friendsList[ui.friendsList.count+1 "_" ui.addFriendGuiInput.text]:=ui.addNicknameGuiInput.text
-			
-			;ui.friendsListNicknames.push(" ")
-			friendsListStr:=""
-			for friend,nickname in ui.friendsList {
-				friendsListStr.=friend "," nickname ","
-			}
-			iniWrite(rtrim(friendsListStr,","),cfg.file,"Game","FriendsList")
-			ui.addFriendGui.destroy()
-			drawFriendsList()
-			;joinFireteam()
+	}	
 
-			hotkey("ESC",closeJoinGui)
-			hotkey("ESC","On")
-			exit
+	saveFriend(*) {
+			
+		ui.friendsList[ui.friendsList.count+1 "_" ui.addFriendGuiInput.text]:=ui.addNicknameGuiInput.text
+			
+		;ui.friendsListNicknames.push(" ")
+		friendsListStr:=""
+		for friend,nickname in ui.friendsList {
+			friendsListStr.=friend "," nickname ","
 		}
+		iniWrite(rtrim(friendsListStr,","),cfg.file,"Game","FriendsList")
+		ui.addFriendGui.destroy()
+		drawFriendsList()
+		;joinFireteam()
+
+		hotkey("ESC",closeJoinGui)
+		hotkey("ESC","On")
+		exit
 	}
+	
 		
 	addFriendClose(*) {
 		ui.addFriendGui.destroy()

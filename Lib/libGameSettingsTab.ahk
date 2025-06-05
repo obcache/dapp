@@ -28,8 +28,8 @@ GuiGameTab() {
 		
 	ui.gameSettingsGui := Gui()
 	ui.gameSettingsGui.Name := "dapp"
-	ui.gameSettingsGui.BackColor := cfg.TabColor1
-	ui.gameSettingsGui.Color := cfg.TabColor1
+	ui.gameSettingsGui.BackColor := cfg.tabColor1
+	ui.gameSettingsGui.Color := cfg.tabColor1
 	ui.gameSettingsGui.MarginX := 5
 	ui.gameSettingsGui.Opt("-Caption -Border +AlwaysOnTop owner" ui.mainGui.hwnd)
 	ui.gameSettingsGui.SetFont("s14 c" cfg.FontColor1,"calibri")
@@ -142,21 +142,21 @@ drawGameTabs(tabNum := 1) {
 
 	
 	winGetPos(&mainGuiX,&mainGuiY,,,ui.mainGui.hwnd)
-	ui.gameTabSpacer:=ui.gameTabGui.addText("y2 x240 w" 490-240 " h29 background" cfg.titleBgColor)
+	ui.gameTabSpacer:=ui.gameTabGui.addText("y2 x240 w" 490-240 " h28 background" cfg.titleBgColor)
 	ui.gameTabSpacer.onEvent("click",WM_LBUTTONDOWN_callback)
-	ui.buildNumber:=ui.gameTabGui.addText("x298 y16 w160 h29 right backgroundTrans","v" a_fileVersion)
+	ui.buildNumber:=ui.gameTabGui.addText("x298 y14 w160 h29 right backgroundTrans","v" a_fileVersion)
 	ui.buildNumber.setFont("q5 s9 c" cfg.titleFontColor,"move-x")	
 
 	ui.statusBarText:=ui.gameTabGui.addText("hidden x250 y9 w240 h26 backgroundTrans")
 	ui.statusBarText.text:="     "
 	ui.statusBarText.setFont("s10 q5 c" cfg.titleFontColor,"calibri")
 	
-	ui.gameTabSpacerDetail2:=ui.gameTabGui.addPicture("y" 2 " x240 w" 250 " h" cfg.curveAmount-2 " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
+	ui.gameTabSpacerDetail2:=ui.gameTabGui.addPicture("y" 2 " x240 w" 250 " h" cfg.curveAmount/2 " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
 	ui.gameTabSpacerDetail2.onEvent("click",WM_LBUTTONDOWN_callback)
-	ui.gameTabSpacerDetail:=ui.gameTabGui.addPicture("y" 28-cfg.curveAmount+6 " x240 w" 250 " h" cfg.curveAmount-2 " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+	ui.gameTabSpacerDetail:=ui.gameTabGui.addPicture("y" 30-(cfg.curveAmount/2) " x240 w" 250 " h" cfg.curveAmount/2 " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 	ui.gameTabSpacerDetail.onEvent("click",WM_LBUTTONDOWN_callback)
 	ui.gameTabGui.addPicture("x240 y" 2 " w" cfg.curveAmount/3 " h" 29 " backgroundTrans","./img/custom/lightburst_left_bar_dark.png")
-	ui.gameTabGui.addPicture("x" 466-(cfg.curveAmount/3) " y" 2 " w" cfg.curveAmount/3 " h" 29 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")	
+	ui.gameTabGui.addPicture("x" 464-(cfg.curveAmount/3) " y" 2 " w" cfg.curveAmount/3 " h" 29 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")	
 	;ui.gameTabGui.addPicture("x240 y" 2 " w250 h29 backgroundTrans",(fileExist(subStr(cfg.titleBarImage,1,(strLen(cfg.titleBarImage)-4)) "_flipped.png")) ? subStr(cfg.titleBarImage,1,(strLen(cfg.titleBarImage)-4)) "_flipped.png" : cfg.titleBarImage)
 	; if !fileExist(cfg.titleBarImage)
 	; cfg.titleBarImage:="./img/custom/lightburst_bottom_light.png"
@@ -175,14 +175,18 @@ drawGameTabs(tabNum := 1) {
 		objGui.addPicture("x" objX " y" objH-(min(cfg.curveAmount,(objH/2))) " w" objW " h" min(cfg.curveAmount,(objH/2)))
 	}
 	
-	line(ui.gameTabGui,240,31,500,1,"010203")
+	line(ui.gameTabGui,240,30,500,4,ui.transparentColor)
+	; line(ui.gameSettingsGui,240,26+183,500,4,ui.transparentColor)
+	; line(ui.mainGui,240,26+183,500,4,ui.transparentColor)
+	; winSetTransColor(ui.transparentColor,ui.gameSettingsGui)
+	winSetTransColor(ui.transparentColor,ui.gameTabGui)
 	line(ui.gameTabGui,495,2,28,1,cfg.TrimColor1,"VERT")
 	ui.gameTabGui.addText("x464 y2 w31 h29 background" cfg.TabColor2)
 	ui.helpIcon := ui.gameTabGui.addPicture("x470 y3 w-1 h26 backgroundTrans","./img/icon_help.png")
 
 	drawOutlineNamed("helpOutline",ui.gameTabGui,463,0,34,32,cfg.TrimColor1,cfg.TrimColor1,2)
-	ui.gameTabGui.addPicture("x465 y" 2 " w30 h" 16-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
-	ui.gameTabGui.addPicture("x463 y" 15+(15-cfg.curveAmount) " w37 h" 17-(15-cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+	ui.gameTabGui.addPicture("x465 y" 2 " w30 h" cfg.curveAmount/2 " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
+	ui.gameTabGui.addPicture("x463 y" 32-(cfg.curveAmount/2) " w37 h" cfg.curveAmount/2 " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 
 
 }

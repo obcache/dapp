@@ -13,15 +13,24 @@ if (InStr(A_LineFile,A_ScriptFullPath)) {
 	Return
 }
 
-
+toggleThemeEditor(*) {
+	(ui.themeEditorVisible:=!ui.themeEditorVisible)
+		? showThemeEditor()
+		: closeThemeEditor()
+}
 showThemeEditor(*) {
 	drawThemeEditor()
-	ui.mainGui.getPos(&mainGuiX,&mainGuiY,&mainGuiW,&mainGuiH)
-	ui.themeEditorGui.move(mainGuiX+(mainGuiW/2)-(200),mainGuiY+(mainGuiH/2)-125)
-	guiVis(ui.themeEditorGui,true)
+
 }
 
-drawThemeEditor()
+closeThemeEditor(*) {
+	try {
+		ui.themeEditorGui.Hide()
+		ui.themeEditorGui.destroy()
+		}
+}
+	
+;drawThemeEditor()
 drawThemeEditor(*) {
 	if ui.hasProp("themeEditorGui")
 		try
@@ -46,7 +55,7 @@ drawThemeEditor(*) {
 	ui.themeEditorCancelButtonBg.onEvent("click", closeThemeEditor)
 
 
-	guiVis(ui.themeEditorGui,false)
+
 
 	ui.titlebarPreview:=ui.themeEditorGui.addPicture("x44 y214 w346 h30 background" cfg.tabColor2,cfg.titleBarImage)
 	ui.titlebarEdit:=ui.themeEditorGui.addPicture("x10 y214 w30 h30 background" cfg.tabColor2,"./img/button_edit.png")
@@ -78,6 +87,7 @@ drawThemeEditor(*) {
 					,"./Img/toggle_right.png") 
 		ui.toggleColorSelector.Redraw()
 	}
+
 	ui.toggleColorSelector := ui.themeEditorGui.AddPicture("y30 x114 section w60 h28 backgroundTrans", (cfg.ColorPickerEnabled) ? ("./Img/toggle_left.png") : ("./Img/toggle_right.png"))
 	ui.toggleColorSelector.OnEvent("Click", ToggleColorSelector)
 	ui.toggleColorSelector.ToolTip := "Select color picking method for theming features"
@@ -95,15 +105,13 @@ drawThemeEditor(*) {
 
 	;drawOutlineNamed("ThemeOutline",ui.themeEditorGui,10,29,302,27,cfg.OutlineColor1,cfg.OutlineColor1,3)
 	drawOutlineNamed("ThemeOutlineShadow",ui.themeEditorGui,0,30,400,28,cfg.TrimColor1,cfg.TrimColor1,2)
+	guiVis(ui.themeEditorGui,false)
 	ui.themeEditorGui.show("w400 h250 noActivate")
+	ui.mainGui.getPos(&mainGuiX,&mainGuiY,&mainGuiW,&mainGuiH)
+	ui.themeEditorGui.move(mainGuiX+(mainGuiW/2)-(200),mainGuiY+(mainGuiH/2)-125)
+	guiVis(ui.themeEditorGui,true)
 
 
-	closeThemeEditor(*) {
-		try {
-			ui.themeEditorGui.Hide()
-			ui.themeEditorGui.destroy()
-			}
-	}
 
 	; ui.ThemeDDL.Choose(1)
 	; Loop cfg.ThemeList.Length {
@@ -225,7 +233,7 @@ ThemeChanged(*) {
 	cfg.theme:=ui.themeDDL.text
 	iniWrite(cfg.theme,cfg.file,"Interface","Theme")
 	; msgBox(cfg.theme "`n" cfg.file)
-	Reload()
+reload()
 }
 
 ChooseColor(ColorType,prev_color) {

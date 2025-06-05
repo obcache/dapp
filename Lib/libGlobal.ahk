@@ -38,6 +38,7 @@ guiHide(*) {
 	ui.mainGui.hide()
 	ui.gameSettingsGui.hide()
 	ui.gameTabGui.hide()
+	ui.mainTabGui.hide()
 }
 
 initTrayMenu(*) {
@@ -370,7 +371,7 @@ DialogBoxClose(*)
 	Try
 		ui.notifyGui.Destroy()
 	guiVis("all",true)
-	tabsChanged()
+	changeTabs()
 }
 
 NotifyOSD(NotifyMsg,Duration := 2000,guiName:=ui.mainGui,Alignment := "Left",YN := "")
@@ -466,11 +467,11 @@ loadScreen(visible := true,NotifyMsg := "dapp Loading",Duration := 10) {
 		ui.loadScreenGui			:= Gui()
 		ui.loadScreenGui.Title 		:= "dapp Loading"
 		ui.loadScreenGui.Opt("+AlwaysOnTop -Caption +ToolWindow")  ; +ToolWindow avoids a taskbar button and an alt-tab menu item.
-		ui.loadScreenGui.BackColor := cfg.titleFontColor ; Can be any RGB color (it will be made transparent below).
+		ui.loadScreenGui.BackColor := cfg.tabColor1 ; Can be any RGB color (it will be made transparent below).
 		ui.loadScreenGui.color := "010203"
 		winSetTransColor("010203",ui.loadScreenGui)
 		ui.loadScreenGui.setFont("q5 s22")  ; Set a large font size (32-point).
-		ui.loadScreenGui.addText("section x1 y1 w238 h92 backgroundTrans")
+		ui.loadScreenGui.addText("section x1 y1 w238 h92 background" cfg.tileColor)
 		ui.loadScreenGui.addPicture("y1 x1 w238 h92 backgroundTrans","./img/dapp_logo" round(random(1,6)) ".png")
 		ui.loadingProgressEdit := ui.loadScreenGui.addText("x2 y94 w236 h21 background" cfg.titleBgColor)
 		ui.loadingProgress := ui.loadScreenGui.addText("x3 y95 w" ui.loadingProgressValue " h19 background" cfg.titleFontColor)
@@ -528,7 +529,7 @@ resetWindowPosition(*) {
 		ui.gameTabGui.show()
 		guiVis(ui.gameTabGui,true)
 	}
-	tabsChanged()
+	changeTabs()
 }
 
 
