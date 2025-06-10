@@ -258,24 +258,29 @@ advProgress(2)
 	
 	
 	
-		ui.3_FillBg:=ui.mainGui.addText("y4 x196 w280 h26 background" cfg.titleBgColor)
+	ui.3_FillBg:=ui.mainGui.addText("y4 x196 w280 h26 background" cfg.titleBgColor)
+
+if !fileExist(cfg.titleBarImage)
+		cfg.titleBarImage:="./img/custom/lightburst_bottom_light.png"
+	ui.titleBar:=ui.mainGui.addPicture("x196 y4 w280 h24 left backgroundTrans",cfg.titleBarImage)
+	ui.titleBar.onEvent("click",wm_lbuttonDown_callback)
+	
+		ui.3_TitleTextDetail:=ui.mainGui.addText("x316 y9 w2 h15 background" cfg.titleBgColor)
 		ui.3_FillOutline:=ui.mainGui.addText("hidden x194 y4 w280 h29 center backgroundTrans","dapp")
 		ui.3_FillOutline.setFont("q5 s15 c" cfg.titleFontColor,"Move-X")
-		ui.3_TitleTextDetail:=ui.mainGui.addText("x316 y9 w2 h15 background" cfg.titleBgColor)
+
 		(iniRead(cfg.themeFile,cfg.theme,"HideTitlebarText",0)) ? 0 : (ui.3_FillOutline.opt("-hidden"),ui.3_FillOutline.redraw())
 
 ; ui.3_TitleTextDetail2:=ui.mainGui.addText("x339 y9 w2 h15 background" cfg.titleBgColor)
 ; ui.3_TitleTextDetail3:=ui.mainGui.addText("x355 y9 w2 h15 background" cfg.titleBgColor)
 
 	
-	if !fileExist(cfg.titleBarImage)
-		cfg.titleBarImage:="./img/custom/lightburst_bottom_light.png"
-	ui.titleBar:=ui.mainGui.addPicture("x196 y4 w280 h24 left backgroundTrans",cfg.titleBarImage)
-	ui.titleBar.onEvent("click",wm_lbuttonDown_callback)
+
 	ui.3_FillDetail1:=ui.mainGui.addPicture("x196 y4 w340 h" cfg.curveAmount/2 " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
 	ui.3_FillDetailBottom:=ui.mainGui.addPicture("x196 y" 28-(cfg.curveAmount/2) " w280 h" cfg.curveAmount/2 " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 	ui.3_FillDetailLeft:=ui.mainGui.addPicture("x198 y" 4 " w" cfg.curveAmount/3 " h" 24 " backgroundTrans","./img/custom/lightburst_left_bar_dark.png")
 	ui.4_FillDetailRight:=ui.mainGui.addPicture("x" 196+276-(cfg.curveAmount/3) " y" 4 " w" cfg.curveAmount/3 " h" 24 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")
+			
 			ui.Game_ActiveTabUi:=ui.mainGui.addText("hidden x33 y28 w81 h2 background" cfg.trimColor1)
 			ui.1_GameButtonBg:=ui.mainGui.addText("hidden x34 y0 w83 h28 background" cfg.TrimColor1)
 			ui.1_GameButton:=ui.mainGui.addText("hidden x36 y2 w79 h28 background" cfg.TabColor1)

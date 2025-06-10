@@ -200,11 +200,9 @@ drawThemeEditor(*) {
 	ui.titlebarPreview.onEvent("click",changeTitlebar)
 	ui.titlebarEdit.onEvent("click",changeTitlebar)
 	changeTitlebar(*) {
-		titleBarImage:=fileSelect(,a_scriptDir "\img\custom\","Select Titlebar Image","*.png;*.jpg")
-		splitPath(titleBarImage,&titleBarImageFilename)
-		cfg.titleBarImage:=".\img\custom\" titleBarImageFilename
-		ui.titlebarPreview.value:=cfg.titleBarImage
+		cfg.titleBarImage:=strReplace(fileSelect(,a_scriptDir "\img\custom\","Select Titlebar Image","*.png;*.jpg"),a_scriptDir,".")
 		iniWrite(cfg.titleBarImage,cfg.themeFile,cfg.theme,"TitleBarImage")
+		ui.titlebarPreview.value:=cfg.titleBarImage
 		reload()
 	}
 
@@ -219,6 +217,7 @@ PickColor(Obj,msg,Info*)
 	IniWrite(cfg.%this_color%,cfg.themeFile,cfg.Theme,this_color)
 	;ui.ThemeDDL.Choose("Custom")
 	;Sleep(1000)
+	;refreshTheme()
 	Reload()
 }
 
@@ -233,7 +232,7 @@ ThemeChanged(*) {
 	cfg.theme:=ui.themeDDL.text
 	iniWrite(cfg.theme,cfg.file,"Interface","Theme")
 	; msgBox(cfg.theme "`n" cfg.file)
-reload()
+	reload()
 }
 
 ChooseColor(ColorType,prev_color) {
@@ -363,6 +362,7 @@ addTheme(*) {
 		ui.newThemeGui.Destroy()
 		cfg.theme:=newThemeName
 		ui.themeDDL.choose(cfg.theme)
+		;refreshTheme()
 		reload()
 	}
 }
@@ -386,6 +386,35 @@ removeTheme(*) {
 			cfg.theme:=cfg.themeList[a_index-1]
 			ui.themeDDL.Choose(cfg.theme)
 			reload()
+		}
+	}
+}
+
+
+refreshTheme(themeElement:="",newColor:="FFFFFF") {
+	if themeElement=="" {
+		for themeElement in ui.themeElements {
+			refreshThemeElement(themeElement,cfg.%themeElement%)
+		}
+	} else {
+		refreshThemeElement()
+	}
+}
+
+refreshThemeElement(themeElement:="",newColor:="FFFFFF") {
+	for ctrl in ui.ownProps {
+		if ctrl.hasProp("backColor") {
+			if ctrl.backColor==themeElement {
+				ctrl.backColor:=newColor
+				ctrl.redraw()
+			}
+		}
+	
+		if ctrl.hasProp("Color") {
+			if ctrl.Color==themeElement {
+				ctrl.opt("c" newColor)
+				ctrl.redraw()
+			}
 		}
 	}
 }

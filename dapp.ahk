@@ -1,4 +1,4 @@
-A_FileVersion := "1.7.4.9"
+A_FileVersion := "1.7.5.0"
 a_appName := "dapp"
 if (fileExist("./dapp_currentBuild.dat"))
 	a_fileVersion := fileRead("./dapp_currentBuild.dat")
@@ -168,8 +168,10 @@ advProgress(5)
 ;msgBox('here')
 ;tabsInit()
 ;msgBox('here')
+
 fadeIn()
 ui.mainGuiTabs.choose(cfg.mainTabList[1])
+changeTabs(ui.mainTabGui,ui.mainGuiTabs)
 ui.gameTabs.value:=cfg.activeGameTab
 
 loadScreen(0)
