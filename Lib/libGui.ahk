@@ -260,16 +260,17 @@ advProgress(2)
 	
 	ui.3_FillBg:=ui.mainGui.addText("y4 x196 w280 h26 background" cfg.titleBgColor)
 
+	
+
+ui.3_FillOutline:=ui.mainGui.addText("hidden x194 y4 w280 h29 center backgroundTrans","dapp")
+		ui.3_FillOutline.setFont("q5 s15 c" cfg.titleFontColor,"Move-X")
+		ui.3_TitleTextDetail:=ui.mainGui.addText("x316 y9 w2 h15 background" cfg.titleBgColor)
+
+		(iniRead(cfg.themeFile,cfg.theme,"HideTitlebarText",0)) ? 0 : (ui.3_FillOutline.opt("-hidden"),ui.3_FillOutline.redraw())
 if !fileExist(cfg.titleBarImage)
 		cfg.titleBarImage:="./img/custom/lightburst_bottom_light.png"
 	ui.titleBar:=ui.mainGui.addPicture("x196 y4 w280 h24 left backgroundTrans",cfg.titleBarImage)
 	ui.titleBar.onEvent("click",wm_lbuttonDown_callback)
-	
-		ui.3_TitleTextDetail:=ui.mainGui.addText("x316 y9 w2 h15 background" cfg.titleBgColor)
-		ui.3_FillOutline:=ui.mainGui.addText("hidden x194 y4 w280 h29 center backgroundTrans","dapp")
-		ui.3_FillOutline.setFont("q5 s15 c" cfg.titleFontColor,"Move-X")
-
-		(iniRead(cfg.themeFile,cfg.theme,"HideTitlebarText",0)) ? 0 : (ui.3_FillOutline.opt("-hidden"),ui.3_FillOutline.redraw())
 
 ; ui.3_TitleTextDetail2:=ui.mainGui.addText("x339 y9 w2 h15 background" cfg.titleBgColor)
 ; ui.3_TitleTextDetail3:=ui.mainGui.addText("x355 y9 w2 h15 background" cfg.titleBgColor)

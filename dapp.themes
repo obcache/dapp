@@ -2,7 +2,7 @@
 ThemeList=Alien,Autumn,Iceberg,Denim & Leather,Sunset,Jade Scarab,Foggy Shore,Marine,Neon,Partly Cloudy,Slate,Embers,Event Horizon,Blood,Matrix,Grayscale,Militarized,Insomnia,lucidity,Burst
 
 [Alien]
-OffColor=AAAAAA
+OffColor=A6A6A6
 FontColor1=C1D2D0
 TabColor2=656D6B
 TileColor=DBDBDB
@@ -11,7 +11,7 @@ trimColor1=BAC2C1
 LabelColor1=91B0AA
 OnColor=4DB387
 AlertColor=4BB497
-TabColor3=839493
+TabColor3=3A4343
 baseColor=363636
 OutlineColor2=AEAEAE
 OutlineColor1=374645
@@ -24,8 +24,8 @@ TrimColor2=A2A2A2
 titleFontColor=112623
 FontColor2=ADBCB6
 HideTitlebarText=0
-TitleBarImage=.\img\custom\lightBurst_top.png
-CurveAmount=20
+TitleBarImage=.\Img\custom\lightburst_br_light.png
+CurveAmount=26
 DisabledColor=202020
 titleBgColor=E8EAE9
 
@@ -263,9 +263,9 @@ tabColor4=5B6868
 AuxColor1=818D87
 TabColor1=3F5C59
 OnColor=4DB387
-OffColor=AAAAAA
+OffColor=A6A6A6
 AlertColor=4BB497
-ThemeTitlebarImage=.\img\custom\lightBurst_top.png
+ThemeTitlebarImage=.\Img\custom\lightburst_br_light.png
 titleBarBorder=FFFFFF
 dragBarBorderColor=FFFFFF
 dragBorderColor=FFFFFF
