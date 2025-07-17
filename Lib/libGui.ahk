@@ -37,7 +37,6 @@ tabsChanged(*) {
 			, ui.1_GameButtonLabel.setFont("s14 q5 c" cfg.FontColor1,"Impact")
 			, ui.2_SetupButtonLabel := ui.mainGui.addText("y4 x117 w78 h26 center backgroundTrans","Setup")
 			, ui.2_SetupButtonLabel.setFont("s12 q5 c" cfg.FontColor2,"Impact")				
-
 			, ui.Setup_ActiveTabUi:=ui.mainGui.addText("x117 y28 w78 h2 background" cfg.TrimColor1)
 			, ui.1_GameButtonDetail:=ui.mainGui.addPicture("x34 y0 w83 h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
 			, ui.1_GameButtonDetail2:=ui.mainGui.addPicture("hidden x36 y" 28-cfg.curveAmount " w81 h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
@@ -159,7 +158,6 @@ drawTabs(this_gui:=ui.mainTabGui,tabControl:=ui.mainGuiTabs,tabX:=0,tabY:=0,tabN
 }
 
 changeTabs(this_gui:=ui.mainTabGui,this_tabControl:=ui.mainGuiTabs) {
-	
 	if this_tabControl.value==1 {
 		ui.%this_Gui.name%Tab1BgOff.opt("hidden")
 		ui.%this_Gui.name%Tab1Off.opt("hidden")
@@ -417,7 +415,7 @@ toggleChanged(toggleControl,*) {
 		(cfg.%toggleControl.name%Enabled := !cfg.%toggleControl.name%Enabled)
 			? (toggleControl.Opt("Background" cfg.OnColor),cfg.toggleOn)
 			: (toggleControl.Opt("Background" cfg.OffColor),cfg.toggleOff)
-			iniWrite(cfg.%toggleControl.name%Enabled,cfg.file,"Toggles",toggleControl.name "Enabled")
+			iniWrite(cfg.%toggleControl.name%Enabled,cfg.file,"Interface",toggleControl.name "Enabled")
 			trayTip(toggleControl.name " changed to " ((cfg.%toggleControl.name%Enabled) ? "On" : "Off"),"dapp Config Change","Iconi Mute")
 
 		; reload()
@@ -723,5 +721,3 @@ fadeOut(*) {
 ; d2KeybindGameTabClicked()
 ; d2KeybindAppTabClicked()
 line(ui.mainGui,34,30,183,2,cfg.TrimColor1,"vert")
-
-

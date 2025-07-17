@@ -77,19 +77,28 @@ refreshGameTabs(activeTabNum:=1) {
 			ui.gameTab%tabNum%Skin%a_index%.opt((a_index==activeTabNum) ? "-hidden" : "hidden")
 			ui.gameTab%tabNum%Skin%a_index%.redraw()
 			ui.gameTab%tabNum%Divider%a_index%.opt((a_index==activeTabNum) ? "-hidden" : "hidden")
-		}	ui.gameTab%tabNum%Divider%a_index%.redraw()
+		}	
+		ui.gameTab%tabNum%Divider%a_index%.redraw()
 	}
 
+	ui.gameTab1BottomDetail.opt((activeTabNum==1) ? "y" 32-(cfg.curveAmount) : "y" 31-(cfg.curveAmount))
+	ui.gameTab1TopDetail.opt((activeTabNum==1) ? "hidden" : "-hidden")
+	ui.gameTab1SideDetail.opt((activeTabNum==1) ? "hidden" : "-hidden")
+	ui.gameTab2BottomDetail.move(,(activeTabNum==2) ? 32-(cfg.curveAmount) : 31-(cfg.curveAmount))
+	ui.gameTab2TopDetail.opt((activeTabNum==2) ? "hidden" : "-hidden")
+	ui.gameTab2SideDetail.opt((activeTabNum==2) ? "hidden" : "-hidden")
 	ui.gameTab1Active.opt((activetabNum==1) ? "hidden" : "-hidden")
 	ui.gameTab2Active.opt((activetabNum==2) ? "hidden" : "-hidden")
-	ui.gameTab1RightDetail.opt((activetabNum==1) ? "hidden" : "-hidden")
-	ui.gameTab1RightDetail.redraw()
-	ui.gameTab1TopDetail.opt((activetabNum==1) ? "hidden" : "-hidden")
-	ui.gameTab1TopDetail.redraw()
-	ui.gameTab2LeftDetail.opt((activetabNum==2) ? "hidden" : "-hidden")
-	ui.gameTab2LeftDetail.redraw()
-	ui.gameTab2TopDetail.opt((activetabNum==2) ? "hidden" : "-hidden")
-	ui.gameTab2TopDetail.redraw()
+	ui.gameTab1Trans.opt((activeTabNum==1) ? "hidden" : "-hidden")
+	ui.gameTab2Trans.opt((activeTabNum==2) ? "hidden" : "-hidden")
+	; ui.gameTab1RightDetail.opt((activetabNum==1) ? "hidden" : "-hidden")
+	; ui.gameTab1RightDetail.redraw()
+	; ui.gameTab1TopDetail.opt((activetabNum==1) ? "hidden" : "-hidden")
+	; ui.gameTab1TopDetail.redraw()
+	; ui.gameTab2LeftDetail.opt((activetabNum==2) ? "hidden" : "-hidden")
+	; ui.gameTab2LeftDetail.redraw()
+	; ui.gameTab2TopDetail.opt((activetabNum==2) ? "hidden" : "-hidden")
+	; ui.gameTab2TopDetail.redraw()
 	ui.gameTab1Label.move(,(activetabNum==1) ? 3 : 5)
 	ui.gameTab1Label.setFont((activetabNum==1) ? "s14 c" cfg.fontColor1 : "s12 c" cfg.fontColor2)
 	ui.gameTab2Label.move(,(activetabNum==2) ? 3 : 5)
@@ -106,26 +115,24 @@ drawGameTabs(tabNum := 1) {
 	drawOutlineNamed("gameTabOutline",ui.gameTabGui,0,0,498,2
 		,cfg.TrimColor1,cfg.TrimColor1,2)
 
-
-
-	ui.gameTab1SkinOutline2 := ui.gameTabGui.addText("x0 y0 w110 h32 background" cfg.TrimColor2,"")
+	ui.gameTab1SkinOutline2 := ui.gameTabGui.addText("x0 y1 w110 h29 background" cfg.TrimColor2,"")
 	ui.gameTab1SkinOutline1 := ui.gameTabGui.addText("x0 y0 w110 h32 background" cfg.TrimColor1,"" )
-	ui.gameTab1Skin2 := ui.gameTabGui.addText("y2 h28 x2 w108 background" cfg.TabColor2	" c" cfg.FontColor2,"")
-	ui.gameTab1Skin1 := ui.gameTabGui.addText("y0 h30 x2 w108  background" cfg.TabColor1 " c" cfg.FontColor1,"")
-	ui.gameTab1Divider2:=ui.gameTabGui.addText("y2 x108 w2 h30 background" cfg.TrimColor2,"")
+	ui.gameTab1Skin2 := ui.gameTabGui.addText("y2 h26 x2 w106 background" cfg.TabColor2	" c" cfg.FontColor2,"")
+	ui.gameTab1Skin1 := ui.gameTabGui.addText("y0 h30 x2 w106  background" cfg.TabColor1 " c" cfg.FontColor1,"")
+	ui.gameTab1Divider2:=ui.gameTabGui.addText("y2 x108 w2 h29 background" cfg.TrimColor1,"")
 	ui.gameTab1Divider1:=ui.gameTabGui.addText("y0 x108 w2 h34 background" cfg.TrimColor1,"")
 	ui.gameTab1Label := ui.gameTabGui.addText("y2 h28 x2 w108 center backgroundTrans c" cfg.FontColor1,"Gameplay")
 	ui.gameTab1Label.setFont("s14","Impact")
 
 
 
-	ui.gameTab2SkinOutline2 := ui.gameTabGui.addText("x110 y0 w130 h34 background" cfg.TrimColor1,"" )
-	ui.gameTab2SkinOutline1 := ui.gameTabGui.addText("x110 y2 w130 h30 background" cfg.TrimColor2,"")
+	ui.gameTab2SkinOutline2 := ui.gameTabGui.addText("x108 y0 w130 h34 background" cfg.TrimColor1,"" )
+	ui.gameTab2SkinOutline1 := ui.gameTabGui.addText("x108 y1 w130 h28 background" cfg.TrimColor1,"")
 	ui.gameTab2Skin2 := ui.gameTabGui.addText("y0 h30 x110 w130 center background" cfg.TabColor1 " c" cfg.FontColor1,"")
 	ui.gameTab2Skin1 := ui.gameTabGui.addText("y2 h28 x110 w130 center background" cfg.TabColor2 " c" cfg.FontColor2,"")
-	ui.gameTab2Divider2:=ui.gameTabGui.addText("y0 x238 w2 h34 background" cfg.TrimColor1,"")
-	ui.gameTab2Divider1:=ui.gameTabGui.addText("y2 x238 w2 h30 background" cfg.TrimColor2,"")
-	ui.gameTab2Label := ui.gameTabGui.addText("y3 h26 x110 w130 center backgroundTrans c" cfg.FontColor1,"Vault Cleaner")
+	ui.gameTab2Divider2:=ui.gameTabGui.addText("y0 x238 w2 h33 background" cfg.TrimColor1,"")
+	ui.gameTab2Divider1:=ui.gameTabGui.addText("y2 x238 w2 h28 background" cfg.TrimColor2,"")
+	ui.gameTab2Label := ui.gameTabGui.addText("y3 h25 x110 w130 center backgroundTrans c" cfg.FontColor1,"Vault Cleaner")
 	ui.gameTab2Label.setFont("s14","Impact") 
 
 
@@ -134,11 +141,13 @@ drawGameTabs(tabNum := 1) {
 
 	ui.gameTab1BottomDetail:=ui.gameTabGui.addPicture("-hidden x0 y" 32-(cfg.curveAmount) " w110 h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 	ui.gameTab1TopDetail:=ui.gameTabGui.addPicture("hidden x0 y" 2 " w108 h" cfg.curveAmount/2 " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
-	ui.gameTab1RightDetail:=ui.gameTabGui.addPicture("hidden x" 109-(cfg.curveAmount/3) " y" 2 " w" cfg.curveAmount/3 " h" 28 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")	 
+	ui.gameTab1SideDetail:=ui.gameTabGui.addPicture("hidden x" 108-(cfg.curveAmount/3) " y" 2 " w" cfg.curveAmount/3 " h" 28 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")	 
 
 	ui.gameTab2BottomDetail:=ui.gameTabGui.addPicture("-hidden x110 y" 32-(cfg.curveAmount) " w130 h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")	 
 	ui.gameTab2TopDetail:=ui.gameTabGui.addPicture("hidden x112 y" 2 " w130 h" cfg.curveAmount/2 " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
-	ui.gameTab2LeftDetail:=ui.gameTabGui.addPicture("hidden x110 y" 2 " w" cfg.curveAmount/3 " h" 28 " backgroundTrans","./img/custom/lightburst_left_bar_dark.png")	
+	ui.gameTab2SideDetail:=ui.gameTabGui.addPicture("hidden x110 y" 2 " w" cfg.curveAmount/3 " h" 27 " backgroundTrans","./img/custom/lightburst_left_bar_dark.png")	
+	ui.gameTab1Trans:=ui.gameTabGui.addText("x0 y30 w110 h2 background" ui.transparentColor)
+	ui.gameTab2Trans:=ui.gameTabGui.addText("x110 y30 w130 h2 background" ui.transparentColor)
 
 	
 	winGetPos(&mainGuiX,&mainGuiY,,,ui.mainGui.hwnd)
@@ -153,10 +162,10 @@ drawGameTabs(tabNum := 1) {
 	
 	ui.gameTabSpacerDetail2:=ui.gameTabGui.addPicture("y" 2 " x240 w" 250 " h" cfg.curveAmount/2 " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
 	ui.gameTabSpacerDetail2.onEvent("click",WM_LBUTTONDOWN_callback)
-	ui.gameTabSpacerDetail:=ui.gameTabGui.addPicture("y" 30-(cfg.curveAmount/2) " x240 w" 250 " h" cfg.curveAmount/2 " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+	ui.gameTabSpacerDetail:=ui.gameTabGui.addPicture("y" 31-(cfg.curveAmount) " x240 w" 250 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 	ui.gameTabSpacerDetail.onEvent("click",WM_LBUTTONDOWN_callback)
-	ui.gameTabGui.addPicture("x240 y" 2 " w" cfg.curveAmount/3 " h" 29 " backgroundTrans","./img/custom/lightburst_left_bar_dark.png")
-	ui.gameTabGui.addPicture("x" 464-(cfg.curveAmount/3) " y" 2 " w" cfg.curveAmount/3 " h" 29 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")	
+	ui.gameTabGui.addPicture("x240 y" 2 " w" cfg.curveAmount/3 " h" 30 " backgroundTrans","./img/custom/lightburst_left_bar_dark.png")
+	ui.gameTabGui.addPicture("x" 464-(cfg.curveAmount/3) " y" 2 " w" cfg.curveAmount/3 " h" 30 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")	
 	;ui.gameTabGui.addPicture("x240 y" 2 " w250 h29 backgroundTrans",(fileExist(subStr(cfg.titleBarImage,1,(strLen(cfg.titleBarImage)-4)) "_flipped.png")) ? subStr(cfg.titleBarImage,1,(strLen(cfg.titleBarImage)-4)) "_flipped.png" : cfg.titleBarImage)
 	; if !fileExist(cfg.titleBarImage)
 	; cfg.titleBarImage:="./img/custom/lightburst_bottom_light.png"
@@ -250,19 +259,16 @@ refreshGameTabs2(tabNum := 1) {
 		: "s12")
 			,"Impact")
 	ui.gameTabWidth += 110
-	((tabNum == 1 || tabNum == 2)
-		? ui.gameTab1Divider:=ui.gameTabGui.addText("y0 x108 w2 h34 background" cfg.TrimColor1,"")
-		: ui.gameTab1Divider:=ui.gameTabGui.addText("y2 x108 w2 h30 background" cfg.TrimColor2,""))
-	((tabNum == 2)
-		? ui.gameTab2SkinOutline := ui.gameTabGui.addText("x110 y0 w130 h34 background" cfg.TrimColor1,"" )
-		: ui.gameTab2SkinOutline := ui.gameTabGui.addText("x110 y2 w130 h30 background" cfg.TrimColor2,""))
+	ui.gameTab1Divider:=ui.gameTabGui.addText("y0 x108 w2 h34 background" cfg.TrimColor1,"")
 
+	ui.gameTab2SkinOutline := ui.gameTabGui.addText("x110 y0 w130 h30 background" cfg.TrimColor1,"" )
+		
 	
 	ui.gameTab2Skin := ui.gameTabGui.addText(
 		((tabNum == 2) 
 			? "y0 h30" 
 			: "y2 h28")
-				" x110 w130 center background" 
+				" x112 w130 center background" 
 		((tabNum == 2) 
 			? cfg.TabColor1 
 			: cfg.TabColor2)
@@ -292,7 +298,7 @@ refreshGameTabs2(tabNum := 1) {
 	ui.gameTabWidth += 130	
 	((tabNum == 2 || tabNum == 3)
 		? ui.gameTab2Divider:=ui.gameTabGui.addText("y0 x238 w2 h34 background" cfg.TrimColor1,"")
-		: ui.gameTab2Divider:=ui.gameTabGui.addText("y2 x238 w2 h30 background" cfg.TrimColor2,""))
+		: ui.gameTab2Divider:=ui.gameTabGui.addText("y2 x238 w2 h30 background" cfg.TrimColor1,""))
 
 	ui.gameTabDetail1:= ""
 	ui.gameTabDetail2:= ""
@@ -429,14 +435,16 @@ ui.d2Log:= ui.gameSettingsGui.addText("x405 y10 w68 h80 hidden background" cfg.t
 ui.d2Log.setFont("s7","ariel")
 
 
-toggleCodeWindow(lparam,*) {
+toggleCodeWindow(this_Ctrl,*) {
 	static codeWindowVisible := false
 		(codeWindowVisible := !codeWindowVisible)
-			? showCodeWindow()
-			: hideCodeWindow()  
+			? showCodeWindow(this_Ctrl)
+			: hideCodeWindow(this_Ctrl)  
 }
 	
-showCodeWindow(*) {
+showCodeWindow(this_Ctrl,*) {
+	ui.button_link_%strSplit(this_Ctrl.name,"_")[3]%.bg.opt("background" cfg.alertColor)
+	ui.button_link_%strSplit(this_Ctrl.name,"_")[3]%.bg.redraw()
 	ui.codesArr:=["ShuroChi","MorgethBridge","CorruptedEggs","Glyphs","Runes","NumbersOfPowerEmblem"]
 	ui.codeImageSize:=80
 	
@@ -501,8 +509,12 @@ showCodeWindow(*) {
 	ui.d2wwCodesGui.show()
 }																																																																																																																																																																																																																				
 
-hideCodeWindow(*) {
+hideCodeWindow(this_Ctrl,*) {
 	;ui.d2LaunchBrayTechButton.value := "./img/button_brayTech.png"
+	ui.button_link_%strSplit(this_Ctrl.name,"_")[3]%.bg.opt("background" cfg.auxColor1)
+	ui.button_link_%strSplit(this_Ctrl.name,"_")[3]%.bg.redraw()
+			
+
 	try
 		ui.d2wwCodesGui.destroy()
 }
@@ -595,28 +607,32 @@ closeInfographic(*) {
 }
 
 
-toggleGlyphWindow(this_button,*) {
+toggleGlyphWindow(this_Ctrl,*) {
 	closeThis()
 	static glyphWindowVisible := false
 	(glyphWindowVisible := !glyphWindowVisible)
-		? (ui.button_link_%strSplit(this_button.name,"_")[3]%.down.opt("-hidden"),showGlyphWindow())		
-		: (ui.button_link_%strSplit(this_button.name,"_")[3]%.down.opt("hidden"),-1000,hideGlyphWindow())
+		? showGlyphWindow(this_Ctrl)		
+		: hideGlyphWindow(this_Ctrl)
 }
 
-showGlyphWindow(*) {
-displayInfoGfx("./img/d2_glyphs.png")
+showGlyphWindow(this_Ctrl,*) {
+	ui.button_link_%strSplit(this_Ctrl.name,"_")[3]%.bg.opt("background" cfg.alertColor)
+	ui.button_link_%strSplit(this_Ctrl.name,"_")[3]%.bg.redraw()
+	displayInfoGfx("./img/d2_glyphs.png")
 }
 
-hideGlyphWindow(*) {
+hideGlyphWindow(this_Ctrl,*) {
+	ui.button_link_%strSplit(this_Ctrl.name,"_")[3]%.bg.opt("background" cfg.auxColor1)
+	ui.button_link_%strSplit(this_Ctrl.name,"_")[3]%.bg.redraw()
 	closeThis()
 }
 
-toggleRuneWindow(this_button,*) {
+toggleRuneWindow(this_Ctrl,*) {
 	closeThis()
 	static runeWindowVisible := false
 	(runeWindowVisible := !runeWindowVisible)
-		? (ui.button_link_%strSplit(this_button.name,"_")[3]%.down.opt("-hidden"),showRuneWindow())		
-		: (ui.button_link_%strSplit(this_button.name,"_")[3]%.down.opt("hidden"),-1000,hideRuneWindow())
+		? showRuneWindow(this_Ctrl)		
+		: hideRuneWindow(this_Ctrl)
 }
 
 displayInfoGfx(imageFilename) {
@@ -661,11 +677,15 @@ displayInfoGfx(imageFilename) {
 		glyphWindowVisible:=false
 	}
 	
-showRuneWindow(*) {
+showRuneWindow(this_Ctrl,*) {
+	ui.button_link_%strSplit(this_Ctrl.name,"_")[3]%.bg.opt("background" cfg.alertColor)
+	ui.button_link_%strSplit(this_Ctrl.name,"_")[3]%.bg.redraw()
 	displayInfoGfx("./img/d2_runes.png")
 }
 
-hideRuneWindow(*) {
+hideRuneWindow(this_Ctrl,*) {
+	ui.button_link_%strSplit(this_Ctrl.name,"_")[3]%.bg.opt("background" cfg.auxColor1)
+	ui.button_link_%strSplit(this_Ctrl.name,"_")[3]%.bg.redraw()
 	closeThis()
 }
 

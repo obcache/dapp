@@ -110,7 +110,7 @@ cfgLoad(&cfg, &ui) {
 	this.YOffset:=748
 	this.restartQueued:=false
 	this.elapsedSec:=1
-	cfg.gameTabList			:= strSplit(iniRead(cfg.file,"Game","gameTabList"," Gameplay  , Vault Cleaner ,InfoGFX"),",")
+	cfg.gameTabList				:= strSplit(iniRead(cfg.file,"Game","gameTabList"," Gameplay  , Vault Cleaner ,InfoGFX"),",")
 	cfg.gameList				:= StrSplit(IniRead(cfg.file,"Game","GameList","Roblox,Rocket League"),",")
 	cfg.mainTabList				:= strSplit(IniRead(cfg.file,"Interface","MainTabList","1_GAME,2_SETUP"),",")
 	cfg.mainGui					:= IniRead(cfg.file,"System","MainGui","MainGui")
@@ -135,7 +135,7 @@ cfgLoad(&cfg, &ui) {
 	cfg.GuiY 					:= IniRead(cfg.file,"Interface","GuiY",200)
 	cfg.GuiW					:= IniRead(cfg.file,"Interface","GuiW",545)
 	cfg.GuiH					:= IniRead(cfg.file,"Interface","GuiH",210)
-	cfg.pushNotificationsEnabled := iniRead(cfg.file,"Toggles","PushNotificationsEnabled",false)
+	cfg.pushNotificationsEnabled := iniRead(cfg.file,"Interface","PushNotificationsEnabled",false)
 	cfg.displaySizeAuto			:= iniRead(cfg.file,"Game","DisplaySizeAuto",true)
 	cfg.AutoDetectGame			:= IniRead(cfg.file,"Game","AutoDetectGame",true)
 	cfg.excludedProcesses		:= IniRead(cfg.file,"Game","ExcludedProcesses",true)
@@ -173,11 +173,11 @@ cfgLoad(&cfg, &ui) {
 	cfg.dappSwordFlyKey		:= iniRead(cfg.file,"Game","dappSwordFlyKey","t")
 	cfg.dappLoadoutKey			:= IniRead(cfg.file,"Game","dappLoadoutKey","[")
 	cfg.dappLoadoutMultiplier	:= iniRead(cfg.file,"Game","dappLoadoutMultiplier",1)
-	cfg.dappToggleSprintKey	:= IniRead(cfg.file,"Game","dappToggleSprintKey","capslock")
+	cfg.dappInterfaceprintKey	:= IniRead(cfg.file,"Game","dappInterfaceprintKey","capslock")
 	cfg.dappReloadKey			:= IniRead(cfg.file,"Game","dappReloadKey","r")
 	cfg.dappHoldToCrouchKey	:= IniRead(cfg.file,"Game","dappHoldToCrouchKey","lshift")
 	cfg.d2GameHoldToCrouchKey	:= iniRead(cfg.file,"Game","d2GameHoldToCrouchKey","c")
-	cfg.d2GameToggleSprintKey	:= IniRead(cfg.file,"Game","d2GameToggleSprintKey","capslock")
+	cfg.d2GameInterfaceprintKey	:= IniRead(cfg.file,"Game","d2GameInterfaceprintKey","capslock")
 	cfg.d2GameReloadKey			:= IniRead(cfg.file,"Game","d2GameReloadKey","r")
 	cfg.d2GameGrenadeKey		:= IniRead(cfg.file,"Game","d2GameGrenadeKey","[")
 	cfg.d2GameSuperKey			:= IniRead(cfg.file,"Game","d2GameSuperKey","\")
@@ -193,6 +193,7 @@ WriteConfig() {
 	Global
 	tmpGameList := ""
 	
+	iniWrite(a_schemaVersion,cfg.file,"Interface","SchemaVersion")
 	iniWrite(cfg.displaySizeAuto,cfg.file,"Game","DisplaySizeAuto")
 	iniWrite(cfg.excludedProcesses,cfg.file,"Game","ExcludedProcesses")
 	IniWrite(cfg.autoDetectGame,cfg.file,"Game","AutoDetectGame")
@@ -209,7 +210,7 @@ WriteConfig() {
 
 
 
-	iniWrite(cfg.pushNotificationsEnabled,cfg.file,"Toggles","PushNotificationsEnabled")
+	iniWrite(cfg.pushNotificationsEnabled,cfg.file,"Interface","PushNotificationsEnabled")
 	IniWrite(cfg.theme,cfg.file,"Interface","Theme")
 	IniWrite(arr2str(cfg.themeList),cfg.themeFile,"Interface","ThemeList")
 	iniWrite(cfg.curveAmount,cfg.themeFile,cfg.theme,"CurveAmount")
@@ -242,10 +243,10 @@ WriteConfig() {
 	IniWrite(cfg.dappLoadoutKey,cfg.file,"Game","dappLoadoutKey")
 	iniWrite(cfg.dappSwordFlyKey,cfg.file,"Game","dappSwordFlyKey")
 	iniWrite(cfg.dappLoadoutMultiplier,cfg.file,"Game","dappLoadoutMultiplier")
-	IniWrite(cfg.dappToggleSprintKey,cfg.file,"Game","dappToggleSprintKey")
+	IniWrite(cfg.dappInterfaceprintKey,cfg.file,"Game","dappInterfaceprintKey")
 	IniWrite(cfg.dappReloadKey,cfg.file,"Game","dappReloadKey")
 	IniWrite(cfg.d2GameHoldToCrouchKey,cfg.file,"Game","d2GameHoldToCrouchKey")
-	IniWrite(cfg.d2GameToggleSprintKey,cfg.file,"Game","d2GameToggleSprintKey")
+	IniWrite(cfg.d2GameInterfaceprintKey,cfg.file,"Game","d2GameInterfaceprintKey")
 	IniWrite(cfg.d2GameReloadKey,cfg.file,"Game","d2GameReloadKey")
 	IniWrite(cfg.d2GameGrenadeKey,cfg.file,"Game","d2GameGrenadeKey")
 	IniWrite(cfg.d2GameSuperKey,cfg.file,"Game","d2GameSuperKey")
@@ -255,8 +256,7 @@ WriteConfig() {
 	iniWrite(arr2str(cfg.d2LoadoutCoords%a_screenWidth%x%a_screenHeight%),cfg.file,"Game","d2LoadoutCoords" a_screenWidth "x" a_screenHeight)		
 
 	IniWrite(arr2str(cfg.mainTabList),cfg.file,"Interface","MainTabList")
-;msgBox(cfg.guiX "`t" cfg.guiY)
-	
+	;msgBox(cfg.guiX "`t" cfg.guiY)
 	winGetPos(&tmpX,&tmpY,,,ui.mainGui)
 	IniWrite(tmpX,cfg.file,"Interface","GuiX")
 	IniWrite(tmpY,cfg.file,"Interface","GuiY")
@@ -572,5 +572,4 @@ resetKeyStates() {
 appChangeTrans(transLevel) {
 	try
 		winSetTransparent(transLevel,ui.dockBarGui.hwnd)
-}
-
+}		

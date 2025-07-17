@@ -1,5 +1,7 @@
-A_FileVersion := "1.7.5.2"
+A_FileVersion := "1.7.5.6"
+A_SchemaVersion:="1.1.1.1"
 a_appName := "dapp"
+
 if (fileExist("./dapp_currentBuild.dat"))
 	a_fileVersion := fileRead("./dapp_currentBuild.dat")
 
@@ -36,7 +38,6 @@ setWorkingDir(a_scriptDir)
 installDir 		:= a_myDocuments "\dapp"
 configFileName 	:= "dapp.ini"
 themeFileName	:= "dapp.themes"
-
 
 preAutoExec(InstallDir,ConfigFileName)
 cfg.file 		:= "./" ConfigFileName
@@ -138,12 +139,9 @@ ui.mainGui.Show("x" cfg.guiX " y" cfg.guiY " w532 h212 NoActivate")
 ui.gameTabGui.show("w497 h32 noActivate x" cfg.guiX+34 " y" cfg.guiY+183)
 ui.gameSettingsGui.show("x" cfg.guiX+34 " y" cfg.guiY+30 " w495 h183 noActivate")
 
-
 ;ui.gameSettingsGui.show("x" cfg.guiX+34 " y" cfg.guiY+30 " w495 h150 noActivate")
 
-
 monitorResChanged()
-
 advProgress(5)
 
 if (cfg.startMinimizedEnabled) {
@@ -163,8 +161,6 @@ advProgress(5)
 	; iniWrite(whr.ResponseText,cfg.file,"Game","LastIncursion")
 ; }
 
-
-
 ;msgBox('here')
 ;tabsInit()
 ;msgBox('here')
@@ -183,3 +179,4 @@ ui.isActiveWindow:=""
 sbUpdate("Application Version Current")
 sleep(2500)
 sbUpdate("Ready...")
+

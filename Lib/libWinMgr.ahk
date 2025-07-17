@@ -18,7 +18,7 @@ WM_WINDOWPOSCHANGED(wParam, lParam, msg, Hwnd) {
 collateGuis(hwnd := ui.mainGui.hwnd) {
 	errorLevel:=1
 	(hwnd==ui.mainTabGui.hwnd)
-		? (winGetPos(&tmpX,&tmpY,,,ui.mainTabGui)
+		? (winGetPos(&tmpX,&tmpY,&tmpW,&tmpH,ui.mainTabGui)
 		,  ui.gameTabGui.move((tmpX)*(A_ScreenDPI/96),(tmpY+183)*(A_ScreenDPI/96))
 		,  ui.gameSettingsGui.move((tmpX)*(A_ScreenDPI/96),(tmpY+30)*(A_ScreenDPI/96))
 		,  ui.mainGui.move((tmpX-34)*(a_screenDPI/96),(tmpY+0)*(a_screenDPI/96)))

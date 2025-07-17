@@ -9,7 +9,7 @@ if (InStr(A_LineFile,A_ScriptFullPath)) { ;run main app
 }
 
 hotIfWinActive("ahk_exe destiny2.exe")
-		hotKey("*" cfg.dappToggleSprintKey,d2ToggleAlwaysSprint)
+		hotKey("*" cfg.dappInterfaceprintKey,d2ToggleAlwaysSprint)
 		hotKey("*" cfg.dappPauseKey,d2ToggleAppFunctions)
 hotIf()
 
@@ -73,7 +73,7 @@ d2MorgethWarlock(*) {
 		send("{" cfg.d2GameGrenadeKey " down}")
 		sleep(1700)
 		send("{" cfg.d2GameGrenadeKey " up}")
-		send("{" strLower(cfg.d2GameToggleSprintKey) "}")
+		send("{" strLower(cfg.d2GameInterfaceprintKey) "}")
 		sleep(800)
 		send("{space down}{space up}")
 		sleep(80)
@@ -126,7 +126,7 @@ d2FireButtonClicked(*) {
 
 	send("{LButton Up}")
 	if ui.d2IsSprinting
-		send("{" cfg.d2GameToggleSprintKey "}")
+		send("{" cfg.d2GameInterfaceprintKey "}")
 }
 d2ReadyToSwordFly(*) {
 	if winActive("ahk_exe destiny2.exe") && !cfg.dappPaused && ui.d2FlyEnabled
@@ -168,7 +168,7 @@ d2ReadyToSprint(*) {
 d2startSprinting(*) {
 	ui.d2IsSprinting := true
 	if (cfg.d2AlwaysRunEnabled) {
-		send("{" strLower(cfg.d2GameToggleSprintKey) "}")
+		send("{" strLower(cfg.d2GameInterfaceprintKey) "}")
 		setCapsLockState(0)
 	}
 	keyWait("w","L")
@@ -332,17 +332,17 @@ d2LoadoutModifier(hotKeyName,isController := false) {
 	
 d2ToggleAlwaysSprint(*) {
 	(cfg.d2AlwaysRunEnabled := !cfg.d2AlwaysRunEnabled)
-		? (ui.dappToggleSprintKeyData.opt("c" cfg.AlertColor)
-			,ui.dappToggleSprintKeyData.redraw()
-			,ui.d2GameToggleSprintKeyData.opt("c" cfg.AlertColor)
-			,ui.d2GameToggleSprintKeyData.redraw())
+		? (ui.dappInterfaceprintKeyData.opt("c" cfg.AlertColor)
+			,ui.dappInterfaceprintKeyData.redraw()
+			,ui.d2GameInterfaceprintKeyData.opt("c" cfg.AlertColor)
+			,ui.d2GameInterfaceprintKeyData.redraw())
 		: (ui.d2IsSprinting := false
-			(ui.dappToggleSprintKeyData.opt("c" cfg.OffColor)
-			,ui.dappToggleSprintKeyData.redraw()
-			,ui.d2GameToggleSprintKeyData.opt("c" cfg.OffColor)
-			,ui.d2GameToggleSprintKeyData.redraw()
+			(ui.dappInterfaceprintKeyData.opt("c" cfg.OffColor)
+			,ui.dappInterfaceprintKeyData.redraw()
+			,ui.d2GameInterfaceprintKeyData.opt("c" cfg.OffColor)
+			,ui.d2GameInterfaceprintKeyData.redraw()
 			,((ui.d2IsSprinting)
-				? send("{" cfg.dappToggleSprintKey "}")
+				? send("{" cfg.dappInterfaceprintKey "}")
 				: 0)))
 	setCapsLockState(0)
 }
@@ -373,7 +373,7 @@ d2ToggleAutoGameConfig(*) {
 	
 	
 d2ToggleAutoGameConfigOn() {
-	;ui.d2Log.text := " start: SPRINT`n rcvd: " strUpper(subStr(cfg.dappToggleSprintKey,1,8)) "`n" ui.d2Log.text
+	;ui.d2Log.text := " start: SPRINT`n rcvd: " strUpper(subStr(cfg.dappInterfaceprintKey,1,8)) "`n" ui.d2Log.text
 	ui.d2ToggleAutoGameConfig.Opt("Background" cfg.AlertColor)
 	ui.d2ToggleAutoGameConfig.value := "./img/toggle_vertical_trans_on.png"
 }

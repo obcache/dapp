@@ -38,10 +38,10 @@ GuiSetupTab(&ui,&cfg) {
 	ui.MainGui.setFont("q5 s10 c" cfg.labelColor1)
 	drawOutlineMainGui(34,28,497,200,cfg.DisabledColor,cfg.DisabledColor,2)
 	ui.mainGui.addText("hidden section x48 y21")
-	cfg.toolTipsEnabled			:= iniRead(cfg.file,"Toggles","ToolTipsEnabled",true)
+	cfg.toolTipsEnabled			:= iniRead(cfg.file,"Interface","ToolTipsEnabled",true)
 	ui.toggleToolTips 			:= ui.MainGui.AddPicture("xs y+3 w50 h22 section vToolTips " ((cfg.ToolTipsEnabled) ? ("Background" cfg.OnColor) : ("Background" cfg.OffColor)),((cfg.ToolTipsEnabled) ? (cfg.toggleOn) : (cfg.toggleOff)))
 	ui.labelToolTips 			:= ui.MainGui.AddText("x+2 ys+2 BackgroundTrans","  ToolTips")
-	ui.toggleToolTips.ToolTip 	:= "Toggles ToolTips"
+	ui.toggleToolTips.ToolTip 	:= "Interface ToolTips"
 	ui.toggleToolTips.OnEvent("Click", toggleChanged)
 	
 	ToggleAlwaysOnTop(*)
@@ -73,10 +73,10 @@ GuiSetupTab(&ui,&cfg) {
 		}
 	}
 	
-	cfg.animationsEnabled := iniRead(cfg.file,"Toggles","AnimationsEnabled",true)
+	cfg.animationsEnabled := iniRead(cfg.file,"Interface","AnimationsEnabled",true)
 	ui.toggleAnimations := ui.MainGui.AddPicture("xs w50 y+2 h22 section vAnimations " (cfg.AnimationsEnabled ? ("Background" cfg.OnColor) : ("Background" cfg.OffColor)),((cfg.AnimationsEnabled) ? (cfg.toggleOn) : (cfg.toggleOff)))
 	ui.toggleAnimations.OnEvent("Click", toggleChanged)
-	ui.toggleAnimations.ToolTip := "Toggles the app's slide and fade animations."
+	ui.toggleAnimations.ToolTip := "Interface the app's slide and fade animations."
 	ui.labelAnimations:= ui.MainGui.AddText("x+2 ys+2 backgroundTrans","  Animations")
 
 	ui.toggleAutoStart := ui.MainGui.AddPicture("xs y+2 w50 h22 section vAutoStart " (cfg.autoStartEnabled ? ("Background" cfg.OnColor) : ("Background" cfg.OffColor)),((cfg.autoStartEnabled) ? (cfg.toggleOn) : (cfg.toggleOff)))
@@ -118,16 +118,16 @@ GuiSetupTab(&ui,&cfg) {
 	}
 	
 	
-	ToggleStartMinimized(*)
+	InterfacetartMinimized(*)
 	{
-		ui.toggleStartMinimized.Opt((cfg.StartMinimizedEnabled := !cfg.StartMinimizedEnabled) ? ("Background" cfg.OnColor) : ("Background" cfg.OffColor))
-		ui.toggleStartMinimized.Redraw()
+		ui.InterfacetartMinimized.Opt((cfg.StartMinimizedEnabled := !cfg.StartMinimizedEnabled) ? ("Background" cfg.OnColor) : ("Background" cfg.OffColor))
+		ui.InterfacetartMinimized.Redraw()
 		iniWrite(cfg.StartMinimizedEnabled,cfg.file,"System","StartMinimizedEnabled")
 	}
-	cfg.StartMinimizedEnabled:=iniRead(cfg.file,"Toggles","StartMinimizedEnabled",false)
-	ui.toggleStartMinimized := ui.MainGui.AddPicture("xs y+2 w50 h22 section vStartMinimized " (cfg.StartMinimizedEnabled ? ("Background" cfg.OnColor) : ("Background" cfg.OffColor)),((cfg.StartMinimizedEnabled) ? (cfg.toggleOn) : (cfg.toggleOff)))
-	ui.toggleStartMinimized.OnEvent("Click", toggleChanged)
-	ui.toggleStartMinimized.ToolTip := "Minimizes the app to system tray when started.  Useful when combined with 'Start with Windows'."
+	cfg.StartMinimizedEnabled:=iniRead(cfg.file,"Interface","StartMinimizedEnabled",false)
+	ui.InterfacetartMinimized := ui.MainGui.AddPicture("xs y+2 w50 h22 section vStartMinimized " (cfg.StartMinimizedEnabled ? ("Background" cfg.OnColor) : ("Background" cfg.OffColor)),((cfg.StartMinimizedEnabled) ? (cfg.toggleOn) : (cfg.toggleOff)))
+	ui.InterfacetartMinimized.OnEvent("Click", toggleChanged)
+	ui.InterfacetartMinimized.ToolTip := "Minimizes the app to system tray when started.  Useful when combined with 'Start with Windows'."
 	ui.labelStartMinimized:= ui.MainGui.AddText("x+2 ys+2 backgroundTrans","  Start Minimized")
 	; cfg.MouseRemapEnabled:=iniRead(cfg.file,"System","MouseRemapEnabled",false)
  	; ui.toggleMouseRemap := ui.MainGui.AddPicture("xs y+2 w50 h22 section vMouseRemap " (cfg.MouseRemapEnabled ? ("Background" cfg.OnColor) : ("Background" cfg.OffColor)),((cfg.MouseRemapEnabled) ? (cfg.toggleOn) : (cfg.toggleOff)))
@@ -141,7 +141,7 @@ GuiSetupTab(&ui,&cfg) {
 		; iniWrite(cfg.MouseRemapEnabled,cfg.file,"System","MouseRemapEnabled")
 	; }
 	  
-	cfg.confirmExitEnabled:=iniRead(cfg.file,"Toggles","ConfirmExitEnabled",true)
+	cfg.confirmExitEnabled:=iniRead(cfg.file,"Interface","ConfirmExitEnabled",true)
 	ui.toggleconfirmExit := ui.MainGui.AddPicture("xs y+2 w50 h22 section vConfirmExit " (cfg.ConfirmExitEnabled ? ("Background" cfg.OnColor) : ("Background" cfg.OffColor)),((cfg.ConfirmExitEnabled) ? (cfg.toggleOn) : (cfg.toggleOff)))
 	ui.toggleConfirmExit.OnEvent("Click", toggleChanged)
 	ui.toggleConfirmExit.ToolTip := "Produces a confirmation prompt upon exiting the application."
@@ -154,7 +154,7 @@ GuiSetupTab(&ui,&cfg) {
 		ui.togglePushNotifications.Redraw()
 		
 	}
-	cfg.PushNotificationsEnabled:=iniRead(cfg.file,"Toggles","PushNotificationsEnabled",true)
+	cfg.PushNotificationsEnabled:=iniRead(cfg.file,"Interface","PushNotificationsEnabled",true)
 	ui.togglePushNotifications := ui.MainGui.AddPicture("xs y+2 w50 h22 section vPushNotifications " (cfg.PushNotificationsEnabled ? ("Background" cfg.OnColor) : ("Background" cfg.OffColor)),((cfg.PushNotificationsEnabled) ? (cfg.toggleOn) : (cfg.toggleOff)))
 	ui.togglePushNotifications.OnEvent("Click", toggleChanged)
 	ui.togglePushNotifications.ToolTip := "Enables pop-up notifications regarding in-game events."
@@ -165,7 +165,7 @@ GuiSetupTab(&ui,&cfg) {
 		ui.toggleDebug.Opt((cfg.DebugEnabled := !cfg.DebugEnabled) ? ("Background" cfg.OnColor) : ("Background" cfg.OffColor))
 		ui.toggleDebug.Redraw()
 	}
-	cfg.DebugEnabled:=iniRead(cfg.file,"Toggles","DebugEnabled",false)
+	cfg.DebugEnabled:=iniRead(cfg.file,"Interface","DebugEnabled",false)
 	ui.toggleDebug := ui.MainGui.AddPicture("xs y+2 w50 h22 section vDebug " (cfg.DebugEnabled ? ("Background" cfg.OnColor) : ("Background" cfg.OffColor)),((cfg.DebugEnabled) ? (cfg.toggleOn) : (cfg.toggleOff)))
 	ui.toggleDebug.OnEvent("Click", toggleChanged)
 	ui.toggleDebug.ToolTip := "Keeps this app on top of all other windows."

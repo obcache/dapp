@@ -120,9 +120,9 @@ d2AutoGameConfigOverride(*) {
 						if curr_value == "none"
 							return
 						else {
-							cfg.d2GameToggleSprintKey := curr_value
-							ui.d2GameToggleSprintKeyData.text := strUpper(curr_value)
-							ui.d2GameToggleSprintKeyData.redraw()
+							cfg.d2GameInterfaceprintKey := curr_value
+							ui.d2GameInterfaceprintKeyData.text := strUpper(curr_value)
+							ui.d2GameInterfaceprintKeyData.redraw()
 						}
 					}
 				}
@@ -223,9 +223,9 @@ d2keybindGameTabClicked(*) {
 
 d2changeKeybindPanelTab(panelNum := 2) {
 		ui.d2Panel1Objects := [
-			ui.dappToggleSprintKey
-			,ui.dappToggleSprintKeyData
-			,ui.dappToggleSprintKeyLabel
+			ui.dappInterfaceprintKey
+			,ui.dappInterfaceprintKeyData
+			,ui.dappInterfaceprintKeyLabel
 			,ui.dappHoldToCrouchKey
 			,ui.dappHoldToCrouchKeyData 
 			,ui.dappHoldToCrouchKeyLabel
@@ -299,9 +299,9 @@ d2changeKeybindPanelTab(panelNum := 2) {
 			]
 
 	ui.d2Panel2Objects := [
-			ui.d2GameToggleSprintKey
-			,ui.d2GameToggleSprintKeyData
-			,ui.d2GameToggleSprintKeyLabel
+			ui.d2GameInterfaceprintKey
+			,ui.d2GameInterfaceprintKeyData
+			,ui.d2GameInterfaceprintKeyLabel
 			,ui.d2GameHoldToCrouchKey
 			,ui.d2GameHoldToCrouchKeyData 
 			,ui.d2GameHoldToCrouchKeyLabel
@@ -432,13 +432,13 @@ drawKeybindBar(*) {
 	ui.keybindSpacer2		:= ui.gameSettingsGui.addText("x115 y16 w1 h40 background" cfg.TrimColor1)
 	;ui.gameSettingsGui.setFont("s11","Arial")
 	
-	ui.currKey 				:= cfg.dappToggleSprintKey
+	ui.currKey 				:= cfg.dappInterfaceprintKey
 
-	ui.dappToggleSprintKey		:= ui.gameSettingsGui.addPicture("x+3 y24 w" 88
+	ui.dappInterfaceprintKey		:= ui.gameSettingsGui.addPicture("x+3 y24 w" 88
 		" h30 section backgroundTrans","./img/keyboard_key_up.png")
-	ui.dappToggleSprintKeyData 	:= ui.gameSettingsGui.addText("xs-2 y+-24 w" 88 
-		" h21 center c" cfg.OffColor " backgroundTrans",subStr(strUpper(cfg.dappToggleSprintKey),1,8))
-	ui.dappToggleSprintKeyLabel	:= ui.gameSettingsGui.addText("xs-1 y+-34 w" 88 
+	ui.dappInterfaceprintKeyData 	:= ui.gameSettingsGui.addText("xs-2 y+-24 w" 88 
+		" h21 center c" cfg.OffColor " backgroundTrans",subStr(strUpper(cfg.dappInterfaceprintKey),1,8))
+	ui.dappInterfaceprintKeyLabel	:= ui.gameSettingsGui.addText("xs-1 y+-34 w" 88 
 		" h20 center c" cfg.LabelColor1 " backgroundTrans","Sprint")
 	
 	ui.currKey := cfg.dappHoldToCrouchKey
@@ -570,9 +570,9 @@ drawKeybindBar(*) {
 	ui.dappLoadoutKey.ToolTip				:= "Click to Assign"
 	ui.dappLoadoutKeyData.ToolTip  		:= "Click to Assign"
 	ui.dappLoadoutKeyLabel.ToolTip			:= "Click to Assign"
-	ui.dappToggleSprintKey.ToolTip			:= "Click to Assign"
-	ui.dappToggleSprintKeyData.ToolTip  	:= "Click to Assign"
-	ui.dappToggleSprintKeyLabel.ToolTip	:= "Click to Assign"
+	ui.dappInterfaceprintKey.ToolTip			:= "Click to Assign"
+	ui.dappInterfaceprintKeyData.ToolTip  	:= "Click to Assign"
+	ui.dappInterfaceprintKeyLabel.ToolTip	:= "Click to Assign"
 	ui.dappHoldToCrouchKey.ToolTip			:= "Click to Assign"
 	ui.dappHoldToCrouchKeyData.ToolTip  	:= "Click to Assign"
 	ui.dappHoldToCrouchKeyLabel.ToolTip	:= "Click to Assign"
@@ -583,7 +583,7 @@ drawKeybindBar(*) {
 	ui.dappLoadoutKeyData.setFont("s11 q5")
 	ui.dappPauseKeyData.setFont("s11 q5")
 	ui.dappHoldToCrouchKeyData.setFont("s11 q5")
-	ui.dappToggleSprintKeyData.setFont("s11 q5")
+	ui.dappInterfaceprintKeyData.setFont("s11 q5")
 	ui.dappReloadKeyData.setFont("s12 q5")
 	ui.dappSwordFlyKeyData.setFont("s11 q5")
 	
@@ -591,27 +591,27 @@ drawKeybindBar(*) {
 	ui.dappReloadKeyLabel.setFont("s10 q5")
 	ui.dappHoldToCrouchKeyLabel.setFont("s10 q5")
 	ui.dappLoadoutKeyLabel.setFont("s10 q5")
-	ui.dappToggleSprintKeyLabel.setFont("s10 q5")
+	ui.dappInterfaceprintKeyLabel.setFont("s10 q5")
 	ui.dappSwordFlyKeyLabel.setFont("s10 q5")
 
 	ui.dappPauseKey.onEvent("click",dappPauseKeyClicked)
 	ui.dappHoldToCrouchKey.onEvent("click",dappHoldToCrouchKeyClicked)
 	ui.dappHoldToCrouchKeyData.onEvent("click",dappHoldToCrouchKeyClicked)
 	ui.dappSwordFlyKey.onEvent("click",dappSwordFlyKeyClicked)
-	ui.dappToggleSprintKey.onEvent("click",dappToggleSprintKeyClicked)
+	ui.dappInterfaceprintKey.onEvent("click",dappInterfaceprintKeyClicked)
 	ui.dappLoadoutKey.onEvent("click",dappLoadoutKeyClicked)
 	ui.dappSwordFlyKeyData.onEvent("click",dappSwordFlyKeyClicked)
 	ui.dappReloadKey.onEvent("click",dappReloadKeyClicked)
 	ui.dappReloadKeyData.onEvent("click",dappReloadKeyClicked)
 	ui.dappReloadKey.onEvent("click",dappReloadKeyClicked)
 	
-	ui.currKey := cfg.d2GameToggleSprintKey
+	ui.currKey := cfg.d2GameInterfaceprintKey
 	ui.currKeyLabel := "Toggle Sprint"
 	
 		
-	ui.d2GameToggleSprintKey				:= ui.gameSettingsGui.AddPicture("x25 y22 w" 18+(ui.d2KeybindWidth + max(max(0,(strLen(ui.currKey)-6))*10,max(0,(strLen(ui.currKeyLabel)-12)*5))) " h30 section backgroundTrans","./img/keyboard_key_up.png")
-	ui.d2GameToggleSprintKeyData 			:= ui.gameSettingsGui.addText("xs-3 y+-24 w" 18+(ui.d2KeybindWidth + max(max(0,(strLen(ui.currKey)-6))*10,max(0,(strLen(ui.currKeyLabel)-12)*5))) " h21 center c" cfg.OffColor " backgroundTrans",subStr(strUpper(cfg.d2GameToggleSprintKey),1,8))
-	ui.d2GameToggleSprintKeyLabel			:= ui.gameSettingsGui.addText("xs-1 y+-34 w" 18+(ui.d2KeybindWidth + max(max(0,(strLen(ui.currKey)-6))*10,max(0,(strLen(ui.currKeyLabel)-12)*5))) " h20 center c" cfg.FontColor1 " backgroundTrans","Toggle Sprint")
+	ui.d2GameInterfaceprintKey				:= ui.gameSettingsGui.AddPicture("x25 y22 w" 18+(ui.d2KeybindWidth + max(max(0,(strLen(ui.currKey)-6))*10,max(0,(strLen(ui.currKeyLabel)-12)*5))) " h30 section backgroundTrans","./img/keyboard_key_up.png")
+	ui.d2GameInterfaceprintKeyData 			:= ui.gameSettingsGui.addText("xs-3 y+-24 w" 18+(ui.d2KeybindWidth + max(max(0,(strLen(ui.currKey)-6))*10,max(0,(strLen(ui.currKeyLabel)-12)*5))) " h21 center c" cfg.OffColor " backgroundTrans",subStr(strUpper(cfg.d2GameInterfaceprintKey),1,8))
+	ui.d2GameInterfaceprintKeyLabel			:= ui.gameSettingsGui.addText("xs-1 y+-34 w" 18+(ui.d2KeybindWidth + max(max(0,(strLen(ui.currKey)-6))*10,max(0,(strLen(ui.currKeyLabel)-12)*5))) " h20 center c" cfg.FontColor1 " backgroundTrans","Toggle Sprint")
 	
 	ui.currKey := cfg.d2GameHoldToCrouchKey
 	ui.currKeyLabel := "Hold Crouch"
@@ -650,8 +650,8 @@ drawKeybindBar(*) {
 	;ui.d2ToggleAutoGameConfigOutline := ui.gameSettingsGui.addText("ys+3 x+0 w1 h30 background" cfg.TrimColor2)
 	ui.d2ToggleAutoGameConfigLabel := ui.gameSettingsGui.addText("xs-2 y+0 w28 h10 backgroundTrans","Auto")
 	ui.d2ToggleAutoGameConfigLabel.setFont("s8")
-	ui.d2gameToggleSprintKey.onEvent("click",d2gameToggleSprintKeyClicked)
-	ui.d2gameToggleSprintKeyData.onEvent("click",d2gameToggleSprintKeyClicked)
+	ui.d2gameInterfaceprintKey.onEvent("click",d2gameInterfaceprintKeyClicked)
+	ui.d2gameInterfaceprintKeyData.onEvent("click",d2gameInterfaceprintKeyClicked)
 	ui.d2GameReloadKey.onEvent("click",d2GameReloadKeyClicked)
 	ui.d2GameReloadKeyData.onEvent("click",d2GameReloadKeyClicked)
 	ui.d2GameSuperKey.onEvent("click",d2GameSuperKeyClicked)
@@ -661,9 +661,9 @@ drawKeybindBar(*) {
 	ui.d2GameHoldToCrouchKey.onEvent("click",d2GameHoldToCrouchKeyClicked)
 	ui.d2GameHoldToCrouchKeyData.onEvent("click",d2GameHoldToCrouchKeyClicked)
 
-	ui.d2gameToggleSprintKey.ToolTip		:= "Click to Assign"
-	ui.d2gameToggleSprintKeyData.ToolTip  	:= "Click to Assign"
-	ui.d2gameToggleSprintKeyLabel.ToolTip	:= "Click to Assign"
+	ui.d2gameInterfaceprintKey.ToolTip		:= "Click to Assign"
+	ui.d2gameInterfaceprintKeyData.ToolTip  	:= "Click to Assign"
+	ui.d2gameInterfaceprintKeyLabel.ToolTip	:= "Click to Assign"
 	ui.d2GameReloadKey.ToolTip				:= "Click to Assign"
 	ui.d2GameReloadKeyData.ToolTip  		:= "Click to Assign"
 	ui.d2GameReloadKeyLabel.ToolTip			:= "Click to Assign"
@@ -677,8 +677,8 @@ drawKeybindBar(*) {
 	ui.d2GameHoldToCrouchKeyData.ToolTip  	:= "Click to Assign"
 	ui.d2GameHoldToCrouchKeyLabel.ToolTip	:= "Click to Assign"
 
-	ui.d2gameToggleSprintKeyLabel.setFont("s10")
-	ui.d2gameToggleSprintKeyData.setFont("s11")
+	ui.d2gameInterfaceprintKeyLabel.setFont("s10")
+	ui.d2gameInterfaceprintKeyData.setFont("s11")
 	ui.d2GameReloadKeyData.setFont("s11")
 	ui.d2GameReloadKeylabel.setFont("s10")
 	ui.d2GameSuperKeyData.setFont("s11")
@@ -893,46 +893,46 @@ d2GameHoldToCrouchKeyClicked(*) {
 		d2RedrawUI()
 	}
 
-	d2GameToggleSprintKeyClicked(*) {
+	d2GameInterfaceprintKeyClicked(*) {
 		keyBindDialogBox('Hold to Walk',"Center")
 		Sleep(100)
-		d2GameToggleSprintKeyInput := InputHook("L1 T6", inputHookAllowedKeys,"+V")
-		d2GameToggleSprintKeyInput.start()
-		d2GameToggleSprintKeyInput.wait()
-		if (d2GameToggleSprintKeyInput.endKey == "" && d2GameToggleSprintKeyInput.input == "") {
+		d2GameInterfaceprintKeyInput := InputHook("L1 T6", inputHookAllowedKeys,"+V")
+		d2GameInterfaceprintKeyInput.start()
+		d2GameInterfaceprintKeyInput.wait()
+		if (d2GameInterfaceprintKeyInput.endKey == "" && d2GameInterfaceprintKeyInput.input == "") {
 			keyBindDialogBoxClose()
 			notifyOSD('No Key Detected.`nPlease Try Again.',2000,"Center")
 		} else {
-			if (d2GameToggleSprintKeyInput.input)
+			if (d2GameInterfaceprintKeyInput.input)
 			{
-				cfg.d2GameToggleSprintKey := d2GameToggleSprintKeyInput.input
+				cfg.d2GameInterfaceprintKey := d2GameInterfaceprintKeyInput.input
 			} else {
-				cfg.d2GameToggleSprintKey := d2GameToggleSprintKeyInput.endKey
+				cfg.d2GameInterfaceprintKey := d2GameInterfaceprintKeyInput.endKey
 			}
-			ui.d2GameToggleSprintKeyData.text := subStr(strUpper(cfg.d2GameToggleSprintKey),1,8)
+			ui.d2GameInterfaceprintKeyData.text := subStr(strUpper(cfg.d2GameInterfaceprintKey),1,8)
 		}
 		keyBindDialogBoxClose()
 		d2CreateLoadoutKeys()
 		d2RedrawUI()
 	}
 
-	dappToggleSprintKeyClicked(*) {
+	dappInterfaceprintKeyClicked(*) {
 		keyBindDialogBox('Toggle Walk',"Center")
 		Sleep(100)
-		dappToggleSprintKeyInput := InputHook("L1 T6", inputHookAllowedKeys,"+V")
-		dappToggleSprintKeyInput.start()
-		dappToggleSprintKeyInput.wait()
-		if (dappToggleSprintKeyInput.endKey == "" && dappToggleSprintKeyInput.input == "") {
+		dappInterfaceprintKeyInput := InputHook("L1 T6", inputHookAllowedKeys,"+V")
+		dappInterfaceprintKeyInput.start()
+		dappInterfaceprintKeyInput.wait()
+		if (dappInterfaceprintKeyInput.endKey == "" && dappInterfaceprintKeyInput.input == "") {
 			keyBindDialogBoxClose()
 			notifyOSD('No Key Detected.`nPlease Try Again.',2000,"Center")
 		} else {
-			if (dappToggleSprintKeyInput.input)
+			if (dappInterfaceprintKeyInput.input)
 			{
-				cfg.dappToggleSprintKey := dappToggleSprintKeyInput.input
+				cfg.dappInterfaceprintKey := dappInterfaceprintKeyInput.input
 			} else {
-				cfg.dappToggleSprintKey := dappToggleSprintKeyInput.endKey
+				cfg.dappInterfaceprintKey := dappInterfaceprintKeyInput.endKey
 			}
-			ui.dappToggleSprintKeyData.text := subStr(strUpper(cfg.dappToggleSprintKey),1,8)
+			ui.dappInterfaceprintKeyData.text := subStr(strUpper(cfg.dappInterfaceprintKey),1,8)
 		}
 		keyBindDialogBoxClose()
 		d2CreateLoadoutKeys()
@@ -1031,27 +1031,34 @@ d2GameSuperKeyClicked(*) {
 		d2RedrawUI()
 	}
 
+
+resourceViewer(resourceType:="Maps",*) {
+	}
+
 if (cfg.d2AlwaysRunEnabled) {
 	d2ToggleAppFunctionsOn()
 }
 
 
 ui.mapBrowserVisible:=false
-toggleMapBrowser(*) {
+toggleMapBrowser(this_Ctrl,*) {
 		(ui.mapBrowserVisible:=!ui.mapBrowserVisible)
-			? showMapBrowser()
-			: closeMapBrowser()
+			? showMapBrowser(this_Ctrl)
+			: closeMapBrowser(this_Ctrl)
 			
-		closeMapBrowser(*) {
+		closeMapBrowser(this_Ctrl,*) {
 			ui.mapBrowserVisible:=false
 			ui.mapGui.destroy()
+
+			ui.button_link_%strSplit(this_Ctrl.name,"_")[3]%.bg.opt("background" cfg.auxColor1)
+			ui.button_link_%strSplit(this_Ctrl.name,"_")[3]%.bg.redraw()
 		}
-		showMapBrowser(*) {
-		winGetPos(&x,&y,,,ui.mainGui)
-		cfg.guiX:=x
-		cfg.guiY:=y
+		showMapBrowser(this_Ctrl,*) {
+			ui.button_link_%strSplit(this_Ctrl.name,"_")[3]%.bg.opt("background" cfg.alertColor)
+			ui.button_link_%strSplit(this_Ctrl.name,"_")[3]%.bg.redraw()
+			
 			try
-				mapGui.destroy()
+				ui.mapGui.destroy()
 				
 			ui.mapGui:=gui()
 			ui.mapGui.opt("toolWindow -border -caption alwaysOnTop owner" ui.mainGui.hwnd)
@@ -1059,8 +1066,14 @@ toggleMapBrowser(*) {
 			ui.mapGui.color:="010203"
 			winSetTransColor("010203",ui.mapGui)
 			
-			mapGuiTitle:=ui.mapGui.addText("x0 y0 w1190 h30 background" cfg.TabColor1)
+			mapGuiTitle:=ui.mapGui.addText("x0 y0 w1126 h30 background" cfg.TabColor1)
 			mapGuiTitle.onEvent("click",WM_LBUTTONDOWN_callback)
+			mapGuiMoveLeftBg:=ui.mapGui.addText("x1130 y0 w30 h30 background" cfg.tabColor1)
+			mapGuiMoveLeft:=ui.mapGui.addText("x1134 y0 w26 h30 backgroundTrans c" cfg.fontColor1,"Û")
+			mapGuiMoveLeft.setFont("s23","Wingdings")
+			mapGuiMoveRightBg:=ui.mapGui.addText("x1164 y0 w28 h30 background" cfg.tabColor1)
+			mapGuiMoveRight:=ui.mapGui.addText("x1168 y0 w30 h30 backgroundTrans c" cfg.fontColor1,"Ü")
+			mapGuiMoveRight.setFont("s23","Wingdings")
 			mapGuiTitleText:=ui.mapGui.addText("x5 y2 w200 h30 backgroundTrans c" cfg.FontColor1,"Map Browser")
 			mapGuiTitleText.setFont("s16 q5","move-x")
 			mapGuiClose:=ui.mapGui.AddText("x1190 y2 w30 h30 center BackgroundTrans","r")
@@ -1080,13 +1093,14 @@ toggleMapBrowser(*) {
 				
 				ui.mapThumb%a_index%:=ui.mapGui.addPicture("vmapThumb" a_index " x" currX " y" currY " w400 h200 backgroundTrans","./img/maps/" a_loopFilename)
 				ui.mapThumb%a_index%.onEvent("click",showMap)
-				activityLabel:=ui.mapGui.addText("center x" currX " y" currY+0 " w400 h25 background" cfg.TabColor1,strSplit(a_loopFilename,"_")[1])
+				activityLabelBg:=ui.mapGui.addText("center x" currX " y" currY+0 " w400 h25 background" cfg.TabColor1)
+				activityLabel:=ui.mapGui.addText("center x" currX " y" currY+4 " w400 h25 backgroundTrans",strSplit(a_loopFilename,"_")[1])
 				ui.mapGui.addPicture("x" currX " y" currY " w400 h20 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
 				encounterLabel:=ui.mapGui.addText("center x" currX " y" currY+175 " w400 h25 background" cfg.TabColor1,strSplit(strSplit(a_loopFilename,"_")[2],".")[1])
 				ui.mapGui.addPicture("x" currX " y" currY+180 " w400 h20 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 				activityLabel.setFont("c" cfg.FontColor1 " s14 q5","move-x")
 				encounterLabel.setFont("c" cfg.FontColor1 " s12 q5","move-x")
-				drawOutlineNamed("mapThumb" a_index,ui.mapGui,currX, currY,400,200,cfg.TrimColor1,cfg.TrimColor1,1)
+				drawOutlineNamed("mapThumb" a_index,ui.mapGui,currX, currY,400,200,cfg.TrimColor1,cfg.outlineColor2,1)
 				currX+=405
 				
 			}
@@ -1111,6 +1125,7 @@ toggleMapBrowser(*) {
 			winGetPos(&tX,&tY,&tW,&tH,ui.mapGui)
 			drawOutlineNamed("mapOutline",ui.mapGui,0,0,tW,tH,cfg.TrimColor2,cfg.TrimColor2,1)
 		}
+	
 		showMap(this_control,*) {
 			showMapGui := gui() 
 			showMapGui.opt("-caption toolWindow alwaysOnTop owner" ui.mapGui.hwnd)
@@ -1133,6 +1148,7 @@ toggleMapBrowser(*) {
 			try
 				mapGui.destroy()
 		}
+
 }
 
 drawLinkBar(*) {
@@ -1174,7 +1190,7 @@ drawLinkBar(*) {
 		ui.button_link_%a_index%.type:=cfg.button_link_%a_index%[2]
 		ui.button_link_%a_index%.action:=cfg.button_link_%a_index%[3]
 		ui.button_link_%a_index%.thumb:=cfg.button_link_%a_index%[4]
-		ui.button_link_%a_index%.bg:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos+1 " w" cfg.button_link_size " h-1 vbutton_link_" a_index " background" cfg.tileColor,ui.button_link_%a_index%.thumb)
+		ui.button_link_%a_index%.bg:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos+1 " w" cfg.button_link_size " h-1 vbutton_link_" a_index " background" cfg.auxColor1,ui.button_link_%a_index%.thumb)
 		ui.button_link_%a_index%.fx:=ui.gameSettingsGui.addPicture("x" xPos " y" yPos+1 " w" cfg.button_link_size " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
 		ui.button_link_%a_index%.fx2:=ui.gameSettingsGui.addPicture("x" xPos " y" yPos+1 " w" cfg.curveAmount " h" cfg.button_link_size-1 " backgroundTrans","./img/custom/lightburst_left_bar_dark.png")
 		;ui.button_link_%a_index%.fx2:=ui.gameSettingsGui.addPicture("x" xPos+1 " y" yPos+(cfg.button_link_size-cfg.curveAmount) " w" cfg.button_link_size-1 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
@@ -1194,8 +1210,11 @@ drawLinkBar(*) {
 
 	}
 	openUrl(this_Url,*) {
-		ui.button_link_%strSplit(this_Url.name,"_")[3]%.down.opt("-hidden")
-		setTimer () => ui.button_link_%strSplit(this_Url.name,"_")[3]%.down.opt("hidden"),-1000
+		;ui.button_link_%strSplit(this_Url.name,"_")[3]%.down.opt("-hidden")
+		ui.button_link_%strSplit(this_Url.name,"_")[3]%.bg.opt("background" cfg.alertColor)
+		ui.button_link_%strSplit(this_Url.name,"_")[3]%.bg.redraw()
+		setTimer () => (ui.button_link_%strSplit(this_Url.name,"_")[3]%.bg.opt("background" cfg.auxColor1),ui.button_link_%strSplit(this_Url.name,"_")[3]%.bg.redraw()),-1500
+		
 		run("chrome.exe " cfg.%this_Url.name%[3])
 	}
 	

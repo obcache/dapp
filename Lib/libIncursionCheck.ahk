@@ -9,7 +9,7 @@ if (InStr(A_LineFile,A_ScriptFullPath))
 	Return
 }
 
-;if cfg.pushNotificationsEnabled:=iniRead(cfg.file,"Toggles","PushNotificationsEnabled",false)
+;if cfg.pushNotificationsEnabled:=iniRead(cfg.file,"Interface","PushNotificationsEnabled",false)
 ;	setTimer(incursionNotice,15000)
 	
 
