@@ -127,8 +127,8 @@ preAutoExec(InstallDir,ConfigFileName) {
 			{
 				DirCreate(InstallDir "\Redist")
 			}
-			fileInstall("./redist/maps.7z",install "/redist/maps.7z",1)
-			run("./redist/7z.exe x ./redist/maps.7z -o../img",1)
+			fileInstall("./redist/maps.7z",installDir "/redist/maps.7z",1)
+			run("./redist/7z.exe x ./redist/maps.7z -o../img",,"Hide")
 			installLog("Created Img folder")
 			
 			if !dirExist(installDir "/img/infogfx")
