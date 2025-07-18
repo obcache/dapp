@@ -1162,6 +1162,7 @@ drawLinkBar(*) {
 	cfg.button_link_5:=["WishCodes","Function","toggleCodeWindow","./img/d2_wishCodes_thumb.png","Shows codes for Wall of Wishes"]
 	cfg.button_link_6:=["Maps","Function","toggleMapBrowser","./img/d2_maps_thumb.png","Shows collection of maps"]
 
+
 	cfg.button_link_7:=["Unassigned","Function","editLinkBox","./img/d2_button_unbound.png","Unbound, click to assign"]
 	cfg.button_link_8:=["Unassigned","Function","editLinkBox","./img/d2_button_unbound.png","Unbound, Click to assign"]
 	ui.button_link_1:=""

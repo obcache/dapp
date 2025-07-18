@@ -434,10 +434,9 @@ MButtonDown(*) {
 ui.d2Log:= ui.gameSettingsGui.addText("x405 y10 w68 h80 hidden background" cfg.titleBgColor " c" cfg.LabelColor1," Destiny 2`n Log Started`n Waiting for Input")
 ui.d2Log.setFont("s7","ariel")
 
-
+ui.codeWindowVisible := false
 toggleCodeWindow(this_Ctrl,*) {
-	static codeWindowVisible := false
-		(codeWindowVisible := !codeWindowVisible)
+		(ui.codeWindowVisible := !ui.codeWindowVisible)
 			? showCodeWindow(this_Ctrl)
 			: hideCodeWindow(this_Ctrl)  
 }
@@ -503,11 +502,37 @@ showCodeWindow(this_Ctrl,*) {
 	;ui.d2wwCodeImg := ui.d2wwCodesGui.addPicture("x20 y20 w800 h600","./img/d2CodeMorgeth.png")
 	ui.d2CodeTitlebar:=ui.d2wwCodesGui.addText("x5 y0 w1200 h30 background" cfg.tabColor4)
 	ui.d2CodeExit := ui.d2wwCodesGui.addPicture("x1175 y0 w30 h30 background" cfg.titleBgColor,"./img/button_quit.png")
-	ui.d2CodeExit.onEvent("click",hideCodeWindow)
+	ui.d2CodeExit.onEvent("click",exitCodeWindow)
 	;ui.d2wwCodeImg.onEvent("click",WM_LBUTTONDOWN_callback)
 	
-	ui.d2wwCodesGui.show()
+	if !winExist("ahk_exe destiny2.exe")
+		return
+	if monitorGetCount() > 1 {
+		winGetPos(&gamex,&gamey,&gamew,&gameh,"ahk_exe destiny2.exe")
+		monitorGetWorkArea(monitorGetPrimary(),&ml,&mt,&mr,&mb)
+		if sysGet(78) > gamex+gamew {
+			try
+				ui.d2wwcodesGui.show("x" gamex+gamew " y" mt)
+		} else {
+			try
+				ui.d2wwcodesGui.show("x0 y" mt)
+		}
+	} else {
+		ui.d2wwCodesGui.show()
+	}
 }																																																																																																																																																																																																																				
+exitCodeWindow(*) {
+	ui.codeWindowVisible:=false 
+	loop 8 {
+		if ui.button_link_%a_index%.action=="toggleCodeWindow" {
+			ui.button_link_%a_index%.bg.opt("background" cfg.auxColor1)
+			ui.button_link_%a_index%.bg.redraw()
+		}
+	}
+	try
+		ui.d2wwCodesGui.destroy()
+
+}
 
 hideCodeWindow(this_Ctrl,*) {
 	;ui.d2LaunchBrayTechButton.value := "./img/button_brayTech.png"
