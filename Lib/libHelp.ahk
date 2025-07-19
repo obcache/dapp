@@ -30,7 +30,7 @@ createHelp(*) {
 	ui.helpGuiPos.h:=390
 	ui.helpGuiPos.x:=(a_screenwidth/2)-(ui.helpGuiPos.w/2)
 	ui.helpGuiPos.y:=(a_screenheight/2)-(ui.helpGuiPos.h/2)
-	ui.helpGui.opt("-caption -border toolWindow alwaysOnTop")
+	ui.helpGui.opt("-caption -border toolWindow alwaysOnTop owner" ui.gameTabGUi.hwnd)
 	ui.helpGui.backColor:=ui.transparentColor
 	ui.helpGui.color:=ui.transparentcolor
 

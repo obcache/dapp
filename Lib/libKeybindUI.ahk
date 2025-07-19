@@ -138,7 +138,7 @@ d2keybindAppTabClicked(*) {
 	ui.d2keybindAppTab2.move(		282,56,58,14)
 	ui.d2keybindAppTab3.move(		281,55,60,14)
 	ui.d2keybindAppTabDetail2.move(	281,59,60,12)
-;	ui.d2keybindAppTabDetail.move(	281,47,60,21)
+	;	ui.d2keybindAppTabDetail.move(	281,47,60,21)
 	ui.d2keybindAppTabDetail.opt("hidden")
 	ui.d2keybindAppTab3.setFont("s10 c" cfg.FontColor1,"bold")
 	ui.d2keybindAppTab1.opt("background" cfg.TrimColor1)

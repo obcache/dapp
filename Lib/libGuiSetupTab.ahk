@@ -237,7 +237,7 @@ GuiSetupTab(&ui,&cfg) {
 			ui.monitorResDDL.text := cfg.monitorRes
 		}
 	}
-	ui.themeEditorButton := ui.mainGui.addPicture("x275 y164 w35 h35 section backgroundTrans","./img/color_swatches.png")
+	ui.themeEditorButton := ui.mainGui.addPicture("x275 y160 w35 h35 section backgroundTrans","./img/color_swatches.png")
 	ui.themeEditorLabel := ui.mainGui.addText("x+5 ys+7 w150 h33 section backgroundTrans","Theme Editor")
 	ui.themeEditorLabel.setFont("q5 s13 bold","move-x")
 

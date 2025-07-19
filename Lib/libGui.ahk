@@ -15,9 +15,11 @@ mainTabsChanged(*) {
 	if ui.mainGuiTabs.value==1 {
 		guiVis(ui.gameSettingsGui,true)
 		guiVis(ui.gameTabGui,true)
+		guiVis(ui.helpGuiButton,true)
 	} else {
 		guiVis(ui.gameSettingsGui,false)
 		guiVis(ui.gameTabGui,false)
+		guiVis(ui.helpGuiButton,false)
 	}
 	
 }
