@@ -33,7 +33,7 @@ GuiGameTab() {
 	ui.gameSettingsGui.MarginX := 5
 	ui.gameSettingsGui.Opt("-Caption -Border +AlwaysOnTop owner" ui.mainGui.hwnd)
 	ui.gameSettingsGui.SetFont("s14 c" cfg.FontColor1,"calibri")
-	ui.gameTabs := ui.gameSettingsGui.addTab3("-redraw x0 y-5 h194 0x400 bottom c" cfg.TabColor2 " choose" cfg.activeGameTab,["Gameplay","Vault Cleaner"])
+	ui.gameTabs := ui.gameSettingsGui.addTab3("-redraw x0 y-5 h194 w600 bottom c" cfg.TabColor2 " choose" cfg.activeGameTab,["Gameplay","Vault Cleaner"])
 
 	ui.gameTabs.value:=cfg.activeGameTab
 	ui.gameTabs.onEvent("Change",gameTabChanged)
@@ -150,7 +150,7 @@ drawGameTabs(tabNum := 1) {
 
 	
 	winGetPos(&mainGuiX,&mainGuiY,,,ui.mainGui.hwnd)
-	ui.gameTabSpacer:=ui.gameTabGui.addText("y2 x240 w" 490-240 " h28 background" cfg.titleBgColor)
+	ui.gameTabSpacer:=ui.gameTabGui.addText("y2 x240 w" 490-266 " h28 background" cfg.titleBgColor)
 	ui.gameTabSpacer.onEvent("click",WM_LBUTTONDOWN_callback)
 	ui.buildNumber:=ui.gameTabGui.addText("x298 y14 w160 h29 right backgroundTrans","v" a_fileVersion)
 	ui.buildNumber.setFont("q5 s9 c" cfg.titleFontColor,"move-x")	
@@ -159,9 +159,9 @@ drawGameTabs(tabNum := 1) {
 	ui.statusBarText.text:="     "
 	ui.statusBarText.setFont("s10 q5 c" cfg.titleFontColor,"calibri")
 	
-	ui.gameTabSpacerDetail2:=ui.gameTabGui.addPicture("y" 2 " x240 w" 250 " h" cfg.curveAmount/2 " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
+	ui.gameTabSpacerDetail2:=ui.gameTabGui.addPicture("y" 2 " x240 w" 224 " h" cfg.curveAmount/2 " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
 	ui.gameTabSpacerDetail2.onEvent("click",WM_LBUTTONDOWN_callback)
-	ui.gameTabSpacerDetail:=ui.gameTabGui.addPicture("y" 30-(cfg.curveAmount/2) " x240 w" 250 " h" cfg.curveAmount/2 " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+	ui.gameTabSpacerDetail:=ui.gameTabGui.addPicture("y" 30-(cfg.curveAmount/2) " x240 w" 224 " h" cfg.curveAmount/2 " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 	ui.gameTabSpacerDetail.onEvent("click",WM_LBUTTONDOWN_callback)
 	ui.gameTabGui.addPicture("x240 y" 2 " w" cfg.curveAmount/3 " h" 30 " backgroundTrans","./img/custom/lightburst_left_bar_dark.png")
 	ui.gameTabGui.addPicture("x" 464-(cfg.curveAmount/3) " y" 2 " w" cfg.curveAmount/3 " h" 30 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")	
@@ -190,13 +190,19 @@ drawGameTabs(tabNum := 1) {
 	; winSetTransColor(ui.transparentColor,ui.gameSettingsGui)
 	winSetTransColor(ui.transparentColor,ui.gameTabGui)
 	line(ui.gameTabGui,495,2,28,1,cfg.TrimColor1,"VERT")
-	ui.gameTabGui.addText("x464 y2 w31 h29 background" cfg.TabColor2)
-	ui.helpIcon := ui.gameTabGui.addPicture("x470 y3 w-1 h26 backgroundTrans","./img/icon_help.png")
 
-	drawOutlineNamed("helpOutline",ui.gameTabGui,463,0,34,32,cfg.TrimColor1,cfg.TrimColor1,2)
-	ui.gameTabGui.addPicture("x465 y" 2 " w30 h" cfg.curveAmount/2 " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
-	ui.gameTabGui.addPicture("x463 y" 32-(cfg.curveAmount/2) " w37 h" cfg.curveAmount/2 " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
-
+	ui.helpGui:=gui()
+	ui.helpGui.opt("-border -caption alwaysOnTop owner" ui.gameTabGui.hwnd)
+	ui.helpGui.backColor:=ui.transparentColor
+	ui.helpGui.color:=ui.transparentColor
+	winSetTransColor(ui.transparentColor,ui.helpGui)
+	ui.helpIconBg:=ui.helpGui.addText("x2 y2 w31 h29 background" cfg.TabColor2)
+	ui.helpIcon := ui.helpGui.addPicture("x8 y3 w-1 h26 backgroundTrans","./img/icon_help.png")
+	ui.helpIconBg.onEvent("click",toggleHelp)
+	drawOutlineNamed("helpOutline",ui.helpGui,0,0,34,32,cfg.TrimColor1,cfg.TrimColor1,2)
+	ui.helpGui.addPicture("x2 y" 2 " w30 h" cfg.curveAmount/2 " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
+	ui.helpGui.addPicture("x0 y" 32-(cfg.curveAmount/2) " w37 h" cfg.curveAmount/2 " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+	
 
 }
 
