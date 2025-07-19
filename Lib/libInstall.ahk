@@ -211,7 +211,7 @@ preAutoExec(InstallDir,ConfigFileName) {
 			FileInstall("./Img/keyboard_key_down.png",InstallDir "/img/keyboard_key_down.png",1)
 			fileInstall("./redist/Discord.exe",installDir "/redist/Discord.exe",1)
 			fileInstall("./redist/getNir.exe",installDir "/redist/getNir.exe",1)
-			;fileInstall("./redist/soundVolumeView.exe",installDir "/redist/soundVolumeView.exe",1)
+			fileInstall("./redist/soundVolumeView.exe",installDir "/redist/soundVolumeView.exe",1)
 			fileInstall("./redist/sqlite3.dll",installDir "/redist/sqlite3.dll",1)
 			fileInstall("./redist/incursionAudio.mp3",installDir "/redist/incursionAudio.mp3",1)
 			FileInstall("./lib/ColorChooser.exe",InstallDir "/lib/ColorChooser.exe",1)
