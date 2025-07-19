@@ -394,7 +394,7 @@ if !fileExist(cfg.titleBarImage)
 ui.Setup_ActiveTabUi:=ui.mainGui.addText("hidden x117 y30 w76 h2 background" cfg.TabColor1)
 ui.Game_ActiveTabUi:=ui.mainGui.addText("hidden x36 y30 w79 h2 background" cfg.TabColor1)
 advProgress(2)
-line(ui.mainGui,34,211,495,2,cfg.TrimColor1)
+line(ui.mainGui,34,208,495,2,cfg.TrimColor1)
 
 
 }
@@ -449,7 +449,7 @@ fadeIn() {
 			case "1_Game____":
 				
 				while transparency < 223 {
-					transparency += 4
+					transparency += 25
 					;winSetTransparent(min(round(transparency+40),255),ui.mainTabGui)
 					winSetTransparent(min(round(transparency)+60,255),ui.gameTabGui)
 					winSetTransparent(round(transparency),ui.mainGui)

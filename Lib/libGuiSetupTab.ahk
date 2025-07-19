@@ -23,15 +23,15 @@ monitorResChanged(*) {
 GuiSetupTab(&ui,&cfg) {
 	global
 	ui.MainGuiTabs.UseTab("2_Setup____")
-	drawPanel(ui.mainGui,40,33,218,174,cfg.TabColor4,cfg.OutlineColor2,cfg.OutlineColor1,1,1,"none",100,20,"Features","calibri",cfg.FontColor1)
-	drawPanel(ui.mainGui,261,33,214,118,cfg.TabColor4,cfg.OutlineColor2,cfg.OutlineColor1,1,1,"none",100,20,"Features","calibri",cfg.FontColor1)
-	drawPanel(ui.mainGui,261,154,214,53,cfg.TabColor4,cfg.OutlineColor2,cfg.OutlineColor1,1,1,"none",100,20,"Features","calibri",cfg.FontColor1,"showThemeEditor")
-	drawPanel(ui.mainGui,478,33,42,174,cfg.TabColor4,cfg.OutlineColor2,cfg.OutlineColor1,1,1,"none",100,20,"Features","calibri",cfg.FontColor1)
+	drawPanel(ui.mainGui,40,30,218,174,cfg.TabColor4,cfg.OutlineColor2,cfg.OutlineColor1,1,1,"none",100,20,"Features","calibri",cfg.FontColor1)
+	drawPanel(ui.mainGui,261,30,214,118,cfg.TabColor4,cfg.OutlineColor2,cfg.OutlineColor1,1,1,"none",100,20,"Features","calibri",cfg.FontColor1)
+	drawPanel(ui.mainGui,261,150,214,54,cfg.TabColor4,cfg.OutlineColor2,cfg.OutlineColor1,1,1,"none",100,20,"Features","calibri",cfg.FontColor1,"showThemeEditor")
+	drawPanel(ui.mainGui,478,30,42,174,cfg.TabColor4,cfg.OutlineColor2,cfg.OutlineColor1,1,1,"none",100,20,"Features","calibri",cfg.FontColor1)
 	line(ui.mainGui,529,184,29,2,cfg.trimColor2)
 
 	ui.MainGui.setFont("q5 s09")
-	ui.AutoClickerSpeedSlider := ui.MainGui.AddSlider("disabled x487 y45 w25 h144 Range1-64 Vertical Left TickInterval8 Invert ToolTipTop",cfg.AutoClickerSpeed)
-	ui.AutoClickerSpeedSliderLabel2 := ui.MainGui.AddText("x475 y190 w50 r1 Center BackgroundTrans","CPS")
+	ui.AutoClickerSpeedSlider := ui.MainGui.AddSlider("disabled x487 y45 w25 h142 Range1-64 Vertical Left TickInterval8 Invert ToolTipTop",cfg.AutoClickerSpeed)
+	ui.AutoClickerSpeedSliderLabel2 := ui.MainGui.AddText("x475 y186 w50 r1 Center BackgroundTrans","CPS")
 	ui.AutoClickerSpeedSlider.ToolTip := "AutoClicker Speed"
 	ui.AutoClickerSpeedSlider.OnEvent("Change",AutoClickerSpeedChanged)
 	
