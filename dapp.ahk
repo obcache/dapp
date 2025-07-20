@@ -1,4 +1,4 @@
-A_FileVersion := "1.7.7.2"
+A_FileVersion := "1.7.7.3"
 A_SchemaVersion:="1.1.1.1"
 a_appName := "dapp"
 
@@ -128,6 +128,7 @@ advProgress(5)
 guiVis(ui.mainGui,false)
 guiVis(ui.gameSettingsGui,false)
 guiVis(ui.gameTabGui,false)
+guiVis(ui.helpGuiButton,false)
 
 winSetAlwaysOnTop(cfg.alwaysOnTopEnabled,ui.MainGui)
 winSetAlwaysOnTop(cfg.alwaysOnTopEnabled,ui.mainTabGui)
@@ -164,7 +165,8 @@ advProgress(5)
 	; whr.WaitForResponse()
 	; iniWrite(whr.ResponseText,cfg.file,"Game","LastIncursion")
 ; }
-
+try
+	incursionNotice()
 ;msgBox('here')
 ;tabsInit()
 ;msgBox('here')
@@ -173,7 +175,7 @@ fadeIn()
 ui.mainGuiTabs.choose(cfg.mainTabList[1])
 changeTabs(ui.mainTabGui,ui.mainGuiTabs)
 ui.gameTabs.value:=cfg.activeGameTab
-createHelp()
+
 loadScreen(0)
 autoUpdate()
 

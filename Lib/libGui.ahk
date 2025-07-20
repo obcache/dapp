@@ -443,7 +443,7 @@ isFading(*) {
 }
 
 fadeIn() {
-	if (cfg.AnimationsEnabled) {
+	if (cfg.AnimationsEnabled==3) {
 		ui.isFading := true
 		;winGetPos(&mainGuiX,&mainGuiY,,,ui.mainGui)
 		transparency := 0
@@ -454,6 +454,8 @@ fadeIn() {
 					transparency += 25
 					;winSetTransparent(min(round(transparency+40),255),ui.mainTabGui)
 					winSetTransparent(min(round(transparency)+60,255),ui.gameTabGui)
+					winSetTransparent(min(round(transparency)+60,255),ui.helpGuiButton)
+					
 					winSetTransparent(round(transparency),ui.mainGui)
 					winSetTransparent(min(round(transparency)+0,255),ui.gameSettingsGui)
 					sleep(1)
@@ -472,6 +474,7 @@ fadeIn() {
 	guiVis(ui.mainTabGui,true)
 	guiVis(ui.mainGui,true)
 	guiVis(ui.gameSettingsGui,true)
+	guiVis(ui.helpGuiButton,true)
 	guiVis(ui.gameTabGui,true)
 }
 
