@@ -22,6 +22,8 @@ monitorResChanged(*) {
 
 GuiSetupTab(&ui,&cfg) {
 	global
+	cfg.toggleOn:="./img/toggle_on.png"
+	cfg.toggleOff:="./img/toggle_off.png"
 	ui.MainGuiTabs.UseTab("2_Setup____")
 	drawPanel(ui.mainGui,40,30,218,174,cfg.TabColor4,cfg.OutlineColor2,cfg.OutlineColor1,1,1,"none",100,20,"Features","calibri",cfg.FontColor1)
 	drawPanel(ui.mainGui,261,30,214,118,cfg.TabColor4,cfg.OutlineColor2,cfg.OutlineColor1,1,1,"none",100,20,"Features","calibri",cfg.FontColor1)

@@ -1046,7 +1046,8 @@ toggleMapBrowser(this_Ctrl,*) {
 			? showMapBrowser(this_Ctrl)
 			: closeMapBrowser(this_Ctrl)
 			
-		closeMapBrowser(this_Ctrl,*) {
+		closeMapBrowser(*) {
+			this_Ctrl:=ui.mapButton
 			ui.mapBrowserVisible:=false
 			ui.mapGui.destroy()
 
@@ -1054,6 +1055,7 @@ toggleMapBrowser(this_Ctrl,*) {
 			ui.button_link_%strSplit(this_Ctrl.name,"_")[3]%.bg.redraw()
 		}
 		showMapBrowser(this_Ctrl,*) {
+			ui.mapButton:=this_Ctrl
 			ui.button_link_%strSplit(this_Ctrl.name,"_")[3]%.bg.opt("background" cfg.alertColor)
 			ui.button_link_%strSplit(this_Ctrl.name,"_")[3]%.bg.redraw()
 			
@@ -1069,10 +1071,10 @@ toggleMapBrowser(this_Ctrl,*) {
 			mapGuiTitle:=ui.mapGui.addText("x0 y0 w1126 h30 background" cfg.TabColor1)
 			mapGuiTitle.onEvent("click",WM_LBUTTONDOWN_callback)
 			mapGuiMoveLeftBg:=ui.mapGui.addText("x1130 y0 w30 h30 background" cfg.tabColor1)
-			mapGuiMoveLeft:=ui.mapGui.addText("x1134 y0 w26 h30 backgroundTrans c" cfg.fontColor1,"Û")
+			mapGuiMoveLeft:=ui.mapGui.addText("x1132 y0 w26 h30 backgroundTrans c" cfg.fontColor1,"Û")
 			mapGuiMoveLeft.setFont("s23","Wingdings")
 			mapGuiMoveRightBg:=ui.mapGui.addText("x1164 y0 w28 h30 background" cfg.tabColor1)
-			mapGuiMoveRight:=ui.mapGui.addText("x1168 y0 w30 h30 backgroundTrans c" cfg.fontColor1,"Ü")
+			mapGuiMoveRight:=ui.mapGui.addText("x1165 y0 w30 h30 backgroundTrans c" cfg.fontColor1,"Ü")
 			mapGuiMoveRight.setFont("s23","Wingdings")
 			mapGuiTitleText:=ui.mapGui.addText("x5 y2 w200 h30 backgroundTrans c" cfg.FontColor1,"Map Browser")
 			mapGuiTitleText.setFont("s16 q5","move-x")
