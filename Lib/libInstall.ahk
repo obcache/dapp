@@ -127,14 +127,7 @@ preAutoExec(InstallDir,ConfigFileName) {
 			{
 				DirCreate(InstallDir "\Redist")
 			}
-			fileInstall("./redist/maps.7z",installDir "/redist/maps.7z",1)
-			fileInstall("./redist/7z.exe",installDir "/redist/7z.exe",1)
-			; if dirExist("/img/maps")
-				; dirDelete("/img/maps","recurse")
-			
-			runW(installDir "/redist/7z.exe x " installDir "/redist/maps.7z -o" installDir "/img",,"Hide")
-			installLog("Created Img folder")
-			
+						
 			if !dirExist(installDir "/img/infogfx")
 				dirCreate(installDir "/img/infogfx")
 			
@@ -230,6 +223,17 @@ preAutoExec(InstallDir,ConfigFileName) {
 			fileInstall("./img/d2_CorruptedEggs_thumb.png",installDir "/img/d2_CorruptedEggs_thumb.png",1)
 			fileInstall("./img/d2_NumbersOfPowerEmblem.png",installDir "/img/d2_NumbersOfPowerEmblem.png",1)
 			fileInstall("./img/button_down_layer.png",installDir "/img/button_down_layer.png",1)
+			fileInstall("./img/maps/Ghosts of the Deep_[1] The Ritual.jpg",installDir "/img/maps/Ghosts of the Deep_[1] The Ritual.jpg",1)
+			fileInstall("./img/maps/Ghosts of the Deep_[2] Ecthar.jpg",installDir "/img/maps/Ghosts of the Deep_[2] Ecthar.jpg",1)
+			fileInstall("./img/maps/Ghosts of the Deep_[3] Simmumah Ur-Norku.jpg",installDir "/img/maps/Ghosts of the Deep_[3] Simmumah Ur-Norku.jpg",1)
+			fileInstall("./img/maps/King's Fall_[1] Totems.png",installDir "/img/maps/King's Fall_[1] Totems.png",1)
+			fileInstall("./img/maps/King's Fall_[2] Warpriest.png",installDir "/img/maps/King's Fall_[2] Warpriest.png",1)
+			fileInstall("./img/maps/King's Fall_[3] Golgoroth's Cellar.png",installDir "/img/maps/King's Fall_[3] Golgoroth's Cellar.png",1)
+			fileInstall("./img/maps/King's Fall_[4] Golgorath.jpg",installDir "/img/maps/King's Fall_[4] Golgorath.jpg",1)
+			fileInstall("./img/maps/King's Fall_[5] Deathsingers.png",installDir "/img/maps/King's Fall_[5] Deathsingers.png",1)
+			fileInstall("./img/maps/King's Fall_[6] Oryx.png",installDir "/img/maps/King's Fall_[6] Oryx.png",1)
+			fileInstall("./img/maps/Sundered Doctrine_[1] Flooded Inspection.jpg",installDir "/img/maps/Sundered Doctrine_[1] Flooded Inspection.jpg",1)
+			fileInstall("./img/maps/Sundered Doctrine_[3] Isolate Preservation.jpg",installDir "/img/maps/Sundered Doctrine_[3] Isolate Preservation.jpg",1)
 
 			fileInstall("./img/custom/lightburst_bottom.png",installDir "/img/custom/lightburst_bottom.png",1)
 			fileInstall("./img/custom/lightburst_top.png",installDir "/img/custom/lightburst_top.png",1)
