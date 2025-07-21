@@ -1,4 +1,4 @@
-A_FileVersion := "1.7.7.3"
+A_FileVersion := "1.7.7.4"
 A_SchemaVersion:="1.1.1.1"
 a_appName := "dapp"
 
@@ -143,9 +143,6 @@ ui.gameTabGui.show("w497 h32 noActivate x" cfg.guiX+34 " y" cfg.guiY+183)
 ui.gameSettingsGui.show("x" cfg.guiX+34 " y" cfg.guiY+30 " w495 h183 noActivate")
 ui.helpGuiButton.show("x" cfg.guiX+497 " y" cfg.guiY+183 " w40 h40 noActivate")
 
-
-;ui.gameSettingsGui.show("x" cfg.guiX+34 " y" cfg.guiY+30 " w495 h150 noActivate")
-
 monitorResChanged()
 advProgress(5)
 
@@ -158,18 +155,8 @@ if (cfg.startMinimizedEnabled) {
 
 advProgress(5)
 
-; try {
-	; whr := ComObject("WinHttp.WinHttpRequest.5.1")
-	; whr.Open("GET", "http://sorryneedboost.com/cacheApp/recentIncursion.dat", true)
-	; whr.Send()
-	; whr.WaitForResponse()
-	; iniWrite(whr.ResponseText,cfg.file,"Game","LastIncursion")
-; }
 try
 	incursionNotice()
-;msgBox('here')
-;tabsInit()
-;msgBox('here')
 
 fadeIn()
 ui.mainGuiTabs.choose(cfg.mainTabList[1])

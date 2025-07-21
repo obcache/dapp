@@ -95,7 +95,7 @@ cfgLoad(&cfg, &ui) {
 	ui.themeEditorVisible		:= false
 	cfg.forcedTooltipControls	:= "Win1,Win2,Win3"
 	this2:=object()
-	this.gameWin:="ahk_exe " setting.gameExe
+	this.gameWin:="ahk_exe destiny2.exe"
 	this.page:=0
 	this.row:=1
 	this.col:=1

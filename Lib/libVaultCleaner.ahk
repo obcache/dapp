@@ -124,7 +124,7 @@ ui.gametabs.useTab("Vault Cleaner")
 	
 	wizPanelParams:=[ui.gameSettingsGui,1,"Lock all items you wish to keep.",'Use DIM search: "is:unlocked" to verify items to be dismantled before proceeding.',"Next","Cancel",8,9,482,52]
 	wizPanel(wizPanelParams)
-	wizPanelParams:=[ui.gameSettingsGui,2,'Perform Manual Actions','Set Destiny 2 video mode to "Windowed Fullscreen in-game".','Next','Cancel',8,9,482,52]
+	wizPanelParams:=[ui.gameSettingsGui,2,'Perform Manual Actions','Set Destiny 2 video mode to "Borderless Windowed" in-game.','Next','Cancel',8,9,482,52]
 	wizPanel(wizPanelParams)
 	WizPanelParams:=[ui.gameSettingsGui,3,"Navigate to the VAULT screen in Destiny 2.",'Ensure that Destiny 2 is on the vault screen and click "Start" to begin cleaning.','Start','Cancel',8,9,482,52]
 	wizPanel(wizPanelParams)
@@ -133,7 +133,7 @@ ui.gametabs.useTab("Vault Cleaner")
 	this.helpBg:=ui.gameSettingsGui.addText("x" 9 " y" 84 " w" 231 " h" 56 " background" cfg.tabColor2)
 	this.helpText:=ui.gameSettingsGui.addText("x" 15 " y" 87 " w" 223 " h" 52 " backgroundTrans")
 	this.helpText.setFont("s10 q5 c" cfg.fontColor2,"Arial Narrow")
-	this.helpText.text:='         To avoid inconsistencies, Destiny 2`n         must be in "Windowed Fullscreen" mode. This wizard will outline the process.'
+	this.helpText.text:='         To avoid inconsistencies, Destiny 2`n         must be in "Borderless Windowed" mode. This wizard will outline the process.'
 	this.helpIcon:=ui.gameSettingsGui.addPicture("x16 y90 w20 h26 backgroundTrans","./img/icon_help.png")
 	this.helpTop:=ui.gameSettingsGui.addPicture("x" 10 " y" 84 " w" 229 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
 	this.helpBottom:=ui.gameSettingsGui.addPicture("x" 10 " y" 84+56-cfg.curveAmount " w" 229 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
@@ -298,6 +298,7 @@ ui.gametabs.useTab("Vault Cleaner")
 
 	vaultModeOn(*) {
 		;if isWindowedFullscreen() {
+		this.gameWin:="ahk_exe destiny2.exe"
 		if !winExist(this.gameWin) {
 			notifyOSD("Game window not found. Vault mode aborted.",2000,ui.gameSettingsGui)
 			vaultMode:=false
@@ -406,7 +407,7 @@ libVaultInit(*) {
 		
 		
 		;msgBox(winGetMinMax("ahk_exe destiny2.exe"))
-		pbNotify('If Destiny 2 is not already set to "Windowed Fullscreen",`n please do it now and then click "Proceed"',30,"YN","fullscreenProcess","fullscreenCancel")
+		pbNotify('If Destiny 2 is not already set to "Borderless Windowed",`n please do it now and then click "Proceed"',30,"YN","fullscreenProcess","fullscreenCancel")
 		; try 
 			; vaultTopGui.destroy()
 		; vaultTopGui := gui()
@@ -477,8 +478,9 @@ libVaultInit(*) {
 			;this.vaultProgressLabelBg.opt("backgroundD0D0F0")
 			;this.vaultProgressLabelBg.redraw()
 	} else {
-		}
+		
 				msgBox("Process " setting.gameExe " not Running")
+	}
 }
 
 
@@ -523,7 +525,7 @@ cleanVaultStart(*) {
 
 	loop {
 	;(this.restartQueued) ? stopCleaning() : 0
-		if subStr(pixelGetColor(970,170),3,1)<="3" {
+		if subStr(pixelGetColor(970,170),3,1)<="4" {
 			mouseMove(955,170)
 			this.page+=1
 			this.pageCount.text:=format("{:03d}",this.page)
@@ -536,11 +538,11 @@ cleanVaultStart(*) {
 		}
 	}
 	(this.restartQueued) ? stopCleaning() : 0
-	sleep(250) 	
+	sleep(550) 	
 	mouseMove(905,170)
-	sleep(250)
+	sleep(550)
 	send("{LButton Down}")
-	sleep(250)
+	sleep(550)
 	send("{LButton Up}")
 	this.page-=1
 	this.maxRange:=this.page*50
@@ -704,10 +706,10 @@ vault_exitFunc(*) {
 		setTimer(timer,0)
 	try
 		vaultBottomGui.hide()
-	try
-		winSetStyle("-0xC00000",this.GameWin)
-	try
-		winMove(0,0,a_screenWidth,a_screenHeight,this.gameWin)
+	; try
+		; winSetStyle("-0xC00000",this.GameWin)
+	; try
+		; winMove(0,0,a_screenWidth,a_screenHeight,this.gameWin)
 	sleep(2000)
 	this.restartQueued:=false
 
