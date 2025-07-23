@@ -364,6 +364,7 @@ if !fileExist(cfg.titleBarImage)
 		ui.mainTabGui.hide()
 		ui.gameSettingsGui.hide()
 		ui.gameTabGui.hide()
+		ui.helpGuiButton.hide()
 	}
 	
 	advProgress(2)

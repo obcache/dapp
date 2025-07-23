@@ -1,4 +1,4 @@
-A_FileVersion := "1.7.7.8"
+A_FileVersion := "1.7.7.9"
 A_SchemaVersion:="1.1.1.1"
 a_appName := "dapp"
 
@@ -120,6 +120,10 @@ advProgress(2)
 advProgress(1)
 #include <libHelp>
 advProgress(1)
+; #include <Class_OD_Colors>
+; advProgress(1)
+#include <libResourceBrowser>
+advProgress(2)
 
 OnExit(ExitFunc)
 

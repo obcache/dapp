@@ -12,32 +12,53 @@ if (InStr(A_LineFile,A_ScriptFullPath))
 
 WM_WINDOWPOSCHANGED(wParam, lParam, msg, Hwnd) {
 	try
+	if hwnd==ui.mainGui.hwnd
 		collateGuis(hwnd)
+	try
+	if hwnd==ui.mapGui.Hwnd
+		mapGui_move()
+	try
+	if hwnd == ui.joinGui.hwnd && ui.joinGuiAdd.visible {
+			winGetPos(&jgX,&jgY,&jgW,&jgH,ui.joinGUi)
+			ui.addFriendGui.move(jgX,jgY+jgH-36)
+		
+	}
+}
+
+
+
+mapGui_Move(*) {
+	winGetPos(&tX,&tY,,,ui.mapGui.hwnd)
+	ui.resThumbsGui.move(tX,tY+30)
+		
 }
 
 collateGuis(hwnd := ui.mainGui.hwnd) {
 	errorLevel:=1
-	(hwnd==ui.mainTabGui.hwnd)
-		? (winGetPos(&tmpX,&tmpY,&tmpW,&tmpH,ui.mainTabGui)
-		,  ui.gameTabGui.move((tmpX)*(A_ScreenDPI/96),(tmpY+183)*(A_ScreenDPI/96))
-		,  ui.gameSettingsGui.move((tmpX)*(A_ScreenDPI/96),(tmpY+30)*(A_ScreenDPI/96))
-		,  ui.mainGui.move((tmpX-34)*(a_screenDPI/96),(tmpY+0)*(a_screenDPI/96)))
-		:	(hwnd==ui.mainGui.hwnd)
-			? (winGetPos(&tmpX,&tmpY,,,ui.mainGui)
-			,  ui.gameTabGui.move((tmpX+34)*(A_ScreenDPI/96),(tmpY+183)*(A_ScreenDPI/96))
-			,  ui.gameSettingsGui.move((tmpX+34)*(A_ScreenDPI/96),(tmpY+30)*(A_ScreenDPI/96))
-			,  ui.mainTabGui.move((tmpX+34)*(a_screenDPI/96),(tmpY+0)*(a_screenDPI/96))
-			,  ui.helpGuiButton.move((tmpX+497)*(a_screenDPI/96),(tmpY+183)*(a_screenDPI/96)))
-			: (hwnd==ui.joinGui.hwnd && ui.joinGuiAdd.visible) 
-				? (winGetPos(&jgX,&jgY,&jgW,&jgH,ui.joinGUi)
-				,  ui.addFriendGui.move(jgX,jgY+jgH-36))
-				: (hwnd==vaultTopGui.hwnd)
-					? (winGetPos(&tX,&tY,,,vaultTopGui)
-					,  winMove(tx+0,ty+30,,,"ahk_exe destiny2.exe"))
-				: errorLevel:=0
-	return errorLevel
-}
+		if hwnd == ui.mainGui.hwnd {
+			winGetPos(&tmpX,&tmpY,,,ui.mainGui)
+			ui.gameTabGui.move((tmpX+34)*(A_ScreenDPI/96),(tmpY+183)*(A_ScreenDPI/96))
+			ui.gameSettingsGui.move((tmpX+34)*(A_ScreenDPI/96),(tmpY+30)*(A_ScreenDPI/96))
+			ui.mainTabGui.move((tmpX+34)*(a_screenDPI/96),(tmpY+0)*(a_screenDPI/96))
+			ui.helpGuiButton.move((tmpX+497)*(a_screenDPI/96),(tmpY+183)*(a_screenDPI/96))
+		}	
+		
+		; if hwnd == ui.mainGuiTab.hwnd {
+			; winGetPos(&tmpX,&tmpY,&tmpW,&tmpH,ui.mainTabGui)
+			; ui.gameTabGui.move((tmpX)*(A_ScreenDPI/96),(tmpY+183)*(A_ScreenDPI/96))
+			; ui.gameSettingsGui.move((tmpX)*(A_ScreenDPI/96),(tmpY+30)*(A_ScreenDPI/96))
+			; ui.mainGui.move((tmpX-34)*(a_screenDPI/96),(tmpY+0)*(a_screenDPI/96))
+		; }
 
+
+		; if hwnd == vaultTopGui.hwnd {
+			; winGetPos(&tX,&tY,,,vaultTopGui)
+			; winMove(tx+0,ty+30,,,"ahk_exe destiny2.exe")
+		; }
+
+	return errorLevel
+	
+}
 { ;mouse events
 wm_winActivated(this_control,info,msg,hwnd) {
 	static prev_hwnd := hwnd

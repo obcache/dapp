@@ -15,6 +15,7 @@ restoreWin(*) {
 	if ui.mainGuiTabs.value==1 {
 		ui.gameSettingsGui.show()
 		ui.gameTabGui.show()
+		ui.helpGuiButton.show()
 	}
 }
 
@@ -35,10 +36,14 @@ checkResetFlag(*) {
 }
 
 guiHide(*) {
+	msgBox("min clicked")
+	ui.helpGuiButton.hide()
+	msgBox("done")
 	ui.mainGui.hide()
 	ui.gameSettingsGui.hide()
 	ui.gameTabGui.hide()
 	ui.mainTabGui.hide()
+	
 }
 
 initTrayMenu(*) {
