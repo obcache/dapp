@@ -238,7 +238,7 @@ advProgress(2)
 	ui.MainGui.BackColor 	:= ui.transparentColor
 	ui.MainGui.Color 		:= ui.TransparentColor
 	winSetTransColor(ui.transparentColor,ui.mainGui)
-	ui.MainGui.Opt("-Caption -Border")
+	ui.MainGui.Opt("-Caption -Border toolWindow")
 	advProgress(2)
 	
 	if (cfg.AlwaysOnTopEnabled)

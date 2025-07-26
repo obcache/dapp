@@ -152,7 +152,7 @@ d2keybindAppTabClicked(*) {
 	ui.d2keybindGameTabDetail.move(	341,57,87,12)
 	ui.d2keybindGameTabDetail3.move(	341,58,88,12)
 	ui.d2keybindGameTab3.setFont("s8 q5 c" cfg.offColor,"thin")
-	ui.d2keybindGameTab1.opt("background" cfg.offColor)
+	ui.d2keybindGameTab1.opt("background" cfg.trimColor2)
 	ui.d2keybindGameTab2.opt("background" cfg.tabcolor3) 
 	ui.d2Panel1Tab1Detail1.value:="./img/custom/lightburst_top_bar_dark.png"
 	d2changeKeybindPanelTab(2)
@@ -171,7 +171,7 @@ d2keybindGameTabClicked(*) {
 	ui.d2keybindAppTabDetail3.move(	280,58,61,12)
 	ui.d2keybindAppTab1.opt("background" cfg.trimColor2)
 	ui.d2keybindAppTab2.opt("background" cfg.tabColor3) 
-	ui.d2keybindAppTab3.setFont("s8 q5 c" cfg.trimColor2,"thin")
+	ui.d2keybindAppTab3.setFont("s8 q5 c" cfg.offColor,"thin")
 	ui.d2Panel1Tab2Detail1.value:="./img/custom/lightburst_top_bar_dark.png"
 
 	ui.d2keybindGameTab1.move(		341,56,88,15)

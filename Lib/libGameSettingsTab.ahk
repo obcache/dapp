@@ -187,9 +187,10 @@ drawGameTabs(tabNum := 1) {
 	ui.helpIconBg:=ui.helpGuiButton.addText("x2 y2 w30 h29 background" cfg.TabColor2)
 	ui.helpIcon := ui.helpGuiButton.addPicture("x8 y3 w-1 h26 backgroundTrans","./img/icon_help.png")
 	ui.helpIconBg.onEvent("click",toggleHelp)
+	drawOutlineNamed("helpOutline",ui.helpGuiButton,0,0,34,32,cfg.TrimColor1,cfg.TrimColor1,2)
 	ui.helpGuiButton.addPicture("x2 y" 2 " w30 h" cfg.curveAmount/2 " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
 	ui.helpGuiButton.addPicture("x0 y" 32-(cfg.curveAmount/2) " w34 h" cfg.curveAmount/2 " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
-	drawOutlineNamed("helpOutline",ui.helpGuiButton,0,0,34,32,cfg.TrimColor1,cfg.TrimColor1,2)
+
 
 	
 

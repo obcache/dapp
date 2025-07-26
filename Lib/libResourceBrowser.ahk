@@ -44,11 +44,11 @@ toggleMapBrowser(this_Ctrl,*) {
 		
 		
 		
-		ui.mapGuiTitleBg:=ui.mapGui.addText("x0 y0 w300 h30 background" cfg.TabColor1)
+		ui.mapGuiTitleBg:=ui.mapGui.addText("x0 y0 w500 h30 background" cfg.TabColor1)
 		ui.mapGuiTitleBg.onEvent("click",WM_LButtonDown_Callback)
-		ui.mapGuiTitleText:=ui.mapGui.addText("x5 y2 w295 h31 backgroundTrans","Resource Browser")
+		ui.mapGuiTitleText:=ui.mapGui.addText("x5 y2 w495 h31 backgroundTrans","Resource Browser")
 		ui.mapGuiTitleText.setFont("s16 Bold c" cfg.fontColor1,"move-x")
-		ui.mapGuiName:=ui.mapGui.addDDL("x330 y2 w600 center background" cfg.tabColor1)
+		ui.mapGuiName:=ui.mapGui.addDDL("x530 y2 w400 center background" cfg.tabColor1)
 		ui.mapGuiName.setFont("s13 c" cfg.fontColor1,"move-x")
 		ui.mapGuiName.onEvent("change",mapChanged)
 		mapChanged(*) {
@@ -56,13 +56,13 @@ toggleMapBrowser(this_Ctrl,*) {
 			refreshMaps()
 		}
 		;OD_Colors.attach(hMapNameDDL, {T: 0x000080, B: 0x656565, 4: {T: 0xFFFFFF, B: 0xFF0000}, 6: {T: 0x858585, B: 0xFF0000}})
-		ui.mapGuiMoveLeftBg:=ui.mapGui.addText("x300 y0 w30 h30 background" cfg.tabColor1)
-		ui.mapGuiMoveLeft:=ui.mapGui.addText("x300 y-1 w26 h30 backgroundTrans c" cfg.fontColor1,"Û")
+		ui.mapGuiMoveLeftBg:=ui.mapGui.addText("x500 y0 w30 h30 background" cfg.tabColor1)
+		ui.mapGuiMoveLeft:=ui.mapGui.addText("x500 y-1 w26 h30 backgroundTrans c" cfg.fontColor1,"Û")
 		ui.mapGuiMoveLeft.setFont("s23","Wingdings")
 		ui.mapGuiMoveRightBg:=ui.mapGui.addText("x930 y0 w28 h30 background" cfg.tabColor1)
 		ui.mapGuiMoveRight:=ui.mapGui.addText("x932 y-1 w30 h30 backgroundTrans c" cfg.fontColor1,"Ü")
 		ui.mapGuiMoveLeft.onEvent("click",mapDown)
-		ui.mapGuiTitleSpacer:=ui.mapGui.addText("x958 y0 w232 h31 background" cfg.tabColor1)
+		ui.mapGuiTitleSpacer:=ui.mapGui.addText("x958 y0 w232 h30 background" cfg.tabColor1)
 		ui.mapGuiTitleSpacer.onEvent("click",WM_LButtonDown_Callback)
 		ui.mapNum:=0
 		mapDown(*) {
@@ -116,9 +116,9 @@ toggleMapBrowser(this_Ctrl,*) {
 		ui.selectedMap:=ui.mapArr[1]
 		ui.mapGuiName.add(ui.mapArr)
 		ui.mapGuiName.choose(ui.selectedMap)
-		
 		ui.thumbCount:=0
-		refreshMaps(*) {
+	
+	refreshMaps(*) {
 		
 		try
 			ui.resThumbsGui.destroy()
@@ -134,6 +134,8 @@ toggleMapBrowser(this_Ctrl,*) {
 			currY:=5
 			loop files, "./img/maps/*.*" {
 			
+				if strSplit(a_loopFilename,"_").length < 3
+					continue
 				ui.this_map:=strSplit(a_loopFilename,"_")[1]
 				ui.this_resource:=strSplit(strSplit(a_loopFilename,"_")[2],".")[1]
 				if (ui.selectedMap == ui.this_map) {
@@ -141,25 +143,29 @@ toggleMapBrowser(this_Ctrl,*) {
 					if colNum > 3 {
 						colNum:=0
 						currX:=5
-						currY+=205
+						currY+=208
 					}
 				
-				ui.mapThumb%a_index%:=ui.resThumbsGui.addPicture(" x" currX " y" currY " w400 h200 backgroundTrans","./img/maps/" a_loopFilename)
+				ui.mapThumb%a_index%:=ui.resThumbsGui.addPicture(" x" currX " y" currY " w400 h196 backgroundTrans","./img/maps/" a_loopFilename)
 				ui.mapThumb%a_index%.onEvent("click",showMap)
 				activityLabelBg:=ui.resThumbsGui.addText("center x" currX " y" currY+0 " w400 h25 background" cfg.TabColor1)
-				activityLabel:=ui.resThumbsGui.addText("center x" currX " y" currY+4 " w400 h25 backgroundTrans",strSplit(a_loopFilename,"_")[1])
-				ui.resThumbsGui.addPicture("x" currX " y" currY " w400 h20 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
-				encounterLabel:=ui.resThumbsGui.addText("center x" currX " y" currY+175 " w400 h25 background" cfg.TabColor1,strSplit(strSplit(a_loopFilename,"_")[2],".")[1])
-				ui.resThumbsGui.addPicture("x" currX " y" currY+180 " w400 h20 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
-				activityLabel.setFont("c" cfg.FontColor1 " s14 q5","move-x")
-				encounterLabel.setFont("c" cfg.FontColor1 " s12 q5","move-x")
-				drawOutlineNamed("mapThumb" a_index,ui.resThumbsGui,currX, currY,400,200,cfg.TrimColor1,cfg.outlineColor2,1)
+				activityLabel:=ui.resThumbsGui.addText("left x" currX+10 " y" currY+4 " w290 h25 backgroundTrans",strSplit(a_loopFilename,"_")[1])
+				encounterIndexLabel:=ui.resThumbsGui.addText("right x" currX+200 " y" currY+4 " w190 h21 background" cfg.TabColor1,subStr(strSplit(strSplit(a_loopFilename,"_")[2],".")[1],4))
+				ui.resThumbsGui.addPicture("x" currX " y" currY " w400 h25 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
+				encounterNameLabelBg:=ui.resThumbsGui.addText("center x" currX " y" currY+176 " w400 h24 background" cfg.TabColor1)
+				encounterNameLabel:=ui.resThumbsGui.addText("center x" currX " y" currY+176 " w400 h24 backgroundTrans",strSplit(strSplit(a_loopFilename,"_")[3],".")[1])
+				ui.resThumbsGui.addPicture("x" currX " y" currY+176 " w400 h24 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+				activityLabel.setFont("c" cfg.auxColor1 " s12 q5","move-x")
+				encounterIndexLabel.setFont("c" cfg.auxColor1 " s12 q5","move-x")
+				encounterNameLabel.setFont("c" cfg.fontColor3 " s15 bold q5","move-x")
+				;drawOutlineNamed("mapThumb" a_index,ui.resThumbsGui,currX, currY,400,196,cfg.TrimColor1,cfg.outlineColor2,1)
 				currX+=405
 				}
 			}
 					
 					winGetPos(&tmpX,&tmpY,&tmpW,&tmpH,ui.mapGui.hwnd)
 					ui.resThumbsGui.show("x" tmpX " y" tmpY+30 " w1220")
+		ui.mapGuiMoveLeft.focus()
 		}
 		winGetPos(&mbX,&mbY,&mbW,&mbH,ui.mapGui)
 
@@ -182,6 +188,7 @@ toggleMapBrowser(this_Ctrl,*) {
 		winGetPos(&tX,&tY,&tW,&tH,ui.mapGui)
 		drawOutlineNamed("mapOutline",ui.mapGui,0,0,tW,tH,cfg.TrimColor2,cfg.TrimColor2,1)
 		refreshMaps()
+		
 
 	}
 
