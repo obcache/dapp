@@ -11,7 +11,25 @@ if (InStr(A_LineFile,A_ScriptFullPath)) { ;run main app
 hotIfWinActive("ahk_exe destiny2.exe")
 		hotKey("*" cfg.dappInterfaceprintKey,d2ToggleAlwaysSprint)
 		hotKey("*" cfg.dappPauseKey,d2ToggleAppFunctions)
+		hotkey("~*" cfg.dappPTTKey,togglePTT)
 hotIf()
+
+togglePTT(*) {
+	(ui.dappPTTOn:=!ui.dappPTTOn)
+		? pttOn()
+		: pttOff()
+	
+	pttOn(*) {
+		sendEvent("{" cfg.d2GamePTTKey " Down}")
+		ui.dappPTTKeyData.setFont("c" cfg.OnColor)
+		;trayTip("Sending " cfg.d2GamePTTKey " Down")
+	}
+	pttOff(*) {
+	sendEvent("{" cfg.d2GamePTTKey " Up}")
+		ui.dappPTTKeyData.setFont("c" cfg.OffColor)
+		;trayTip("Sending " cfg.d2GamePTTKey " Up")
+	}
+}
 
 hotIf(d2RemapCrouchEnabled)
 		hotkey("~*$" cfg.dappHoldToCrouchKey,d2HoldToCrouch)
@@ -356,6 +374,7 @@ d2ToggleAppFunctions(*) {
 d2ToggleAppFunctionsOn() {
 	ui.d2ToggleAppFunctions.Opt("Background" cfg.AlertColor)
 	ui.d2ToggleAppFunctions.value := "./img/toggle_vertical_trans_on.png"
+	ui.dappPauseKeyData.setFont("c" cfg.OnColor)
 }
 
 d2ToggleAppFunctionsOff() {
@@ -363,6 +382,7 @@ d2ToggleAppFunctionsOff() {
 	ui.d2ToggleAppFunctions.opt("background" cfg.OffColor)
 	ui.d2ToggleAppFunctions.value := "./img/toggle_vertical_trans_off.png"
 	ui.d2ToggleAppFunctions.redraw()
+	ui.dappPauseKeyData.setFont("c" cfg.OffColor)
 }
 
 d2ToggleAutoGameConfig(*) {

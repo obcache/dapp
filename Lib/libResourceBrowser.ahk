@@ -44,11 +44,11 @@ toggleMapBrowser(this_Ctrl,*) {
 		
 		
 		
-		ui.mapGuiTitleBg:=ui.mapGui.addText("x0 y0 w500 h30 background" cfg.TabColor1)
+		ui.mapGuiTitleBg:=ui.mapGui.addText("x0 y0 w600 h30 background" cfg.TabColor1)
 		ui.mapGuiTitleBg.onEvent("click",WM_LButtonDown_Callback)
-		ui.mapGuiTitleText:=ui.mapGui.addText("x5 y2 w495 h31 backgroundTrans","Resource Browser")
+		ui.mapGuiTitleText:=ui.mapGui.addText("x5 y2 w595 h31 backgroundTrans","Resource Browser")
 		ui.mapGuiTitleText.setFont("s16 Bold c" cfg.fontColor1,"move-x")
-		ui.mapGuiName:=ui.mapGui.addDDL("x530 y2 w400 center background" cfg.tabColor1)
+		ui.mapGuiName:=ui.mapGui.addDDL("x630 y2 w400 center background" cfg.tabColor1)
 		ui.mapGuiName.setFont("s13 c" cfg.fontColor1,"move-x")
 		ui.mapGuiName.onEvent("change",mapChanged)
 		mapChanged(*) {
@@ -56,13 +56,13 @@ toggleMapBrowser(this_Ctrl,*) {
 			refreshMaps()
 		}
 		;OD_Colors.attach(hMapNameDDL, {T: 0x000080, B: 0x656565, 4: {T: 0xFFFFFF, B: 0xFF0000}, 6: {T: 0x858585, B: 0xFF0000}})
-		ui.mapGuiMoveLeftBg:=ui.mapGui.addText("x500 y0 w30 h30 background" cfg.tabColor1)
-		ui.mapGuiMoveLeft:=ui.mapGui.addText("x500 y-1 w26 h30 backgroundTrans c" cfg.fontColor1,"Û")
+		ui.mapGuiMoveLeftBg:=ui.mapGui.addText("x600 y0 w30 h30 background" cfg.tabColor1)
+		ui.mapGuiMoveLeft:=ui.mapGui.addText("x600 y-1 w26 h30 backgroundTrans c" cfg.fontColor1,"Û")
 		ui.mapGuiMoveLeft.setFont("s23","Wingdings")
-		ui.mapGuiMoveRightBg:=ui.mapGui.addText("x930 y0 w28 h30 background" cfg.tabColor1)
-		ui.mapGuiMoveRight:=ui.mapGui.addText("x932 y-1 w30 h30 backgroundTrans c" cfg.fontColor1,"Ü")
+		ui.mapGuiMoveRightBg:=ui.mapGui.addText("x1030 y0 w28 h30 background" cfg.tabColor1)
+		ui.mapGuiMoveRight:=ui.mapGui.addText("x1032 y-1 w30 h30 backgroundTrans c" cfg.fontColor1,"Ü")
 		ui.mapGuiMoveLeft.onEvent("click",mapDown)
-		ui.mapGuiTitleSpacer:=ui.mapGui.addText("x958 y0 w232 h30 background" cfg.tabColor1)
+		ui.mapGuiTitleSpacer:=ui.mapGui.addText("x1058 y0 w132 h30 background" cfg.tabColor1)
 		ui.mapGuiTitleSpacer.onEvent("click",WM_LButtonDown_Callback)
 		ui.mapNum:=0
 		mapDown(*) {
@@ -198,12 +198,21 @@ toggleMapBrowser(this_Ctrl,*) {
 		showMapGui.backColor:="010203"
 		winSetTransColor("010203",showMapGui)
 		fullMap:=showMapGui.addPicture("x0 y2 w1600 h-1 backgroundTrans",this_control.value)
-		fullMap.onEvent("click",closeMap)
-		
-		showMapGui.show("x" ui.infoGfxMon.l+((ui.infoGfxMon.r-ui.infoGfxMon.l)/2)-800  " w1600")
+		fullMap.onEvent("doubleClick",closeMap)
+		fullMap.onEvent("click",dragMap)
+		fullMap.getPos(,,,&mH)
+		showMapGui.show("x" ui.infoGfxMon.l+((ui.infoGfxMon.r-ui.infoGfxMon.l)/2)-800  " w1600 h" mH)
 		winGetPos(&tmpX,&tmpY,&tmpW,&tmpH,showMapGui)
 		showMapGui.show("y" ui.infoGfxMon.t+((ui.infoGfxMon.b-ui.infoGfxMon.t)/2)-(tmpH/2))
 		
+		dragMap(*) {
+			mouseGetPos(&startingMouseX,&startingMouseY)
+			postMessage("0xA1",2,,,"A")
+			while getKeyState("LButton")
+				mouseGetPos(&mouseX,&mouseY)
+				
+			showMapGui.show("y" ui.infoGfxMon.t+((ui.infoGfxMon.b-ui.infoGfxMon.t)/2)-(tmpH/2))
+		}
 		closeMap(*) {
 			try 
 				showMapGui.destroy()

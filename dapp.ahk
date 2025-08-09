@@ -1,4 +1,4 @@
-A_FileVersion := "1.7.8.4"
+A_FileVersion := "1.7.8.7"
 A_SchemaVersion:="1.1.1.1"
 a_appName := "dapp"
 
@@ -149,7 +149,7 @@ ui.helpGuiButton.show("x" cfg.guiX+497 " y" cfg.guiY+183 " w40 h40 noActivate")
 
 monitorResChanged()
 advProgress(5)
-
+d2AutoGameConfigOverride()
 if (cfg.startMinimizedEnabled) {
 	ui.mainGui.hide()
 	ui.mainTabGui.hide()
@@ -170,7 +170,7 @@ ui.gameTabs.value:=cfg.activeGameTab
 loadScreen(0)
 autoUpdate()
 
-d2AutoGameConfigOverride()
+
 ui.isActiveWindow:=""
 
 sbUpdate("Application Version Current")

@@ -65,6 +65,7 @@ initTrayMenu(*) {
 cfgLoad(&cfg, &ui) {
 	global
 	checkResetFlag()
+	
 	cfg.dbFileName := A_ScriptDir . "\dapp.DB"
 	data.queryResult		:= array()
 	ui.guiH					:= 220  	;430 for Console Mode
@@ -174,6 +175,9 @@ cfgLoad(&cfg, &ui) {
 	cfg.holdToCrouchEnabled 	:= IniRead(cfg.file,"game","HoldToCrouch",true)
 	cfg.dappPauseKey			:= iniRead(cfg.file,"Game","dappPauseKey","Pause")
 	cfg.dappPaused				:= iniRead(cfg.file,"Game","dappPaused",false)
+	cfg.dappPTTKey					:= iniRead(cfg.file,"Game","dappPTTKey","LCTrl")
+	cfg.d2GamePTTKey			:= iniRead(cfg.file,"Game","d2GamePTTKey","LCtrl")
+	ui.dappPTTOn				:= false
 	cfg.d2AlwaysRunEnabled		:= iniRead(cfg.file,"Game","d2AlwaysRunEnabled",false)
 	cfg.dappSwordFlyKey		:= iniRead(cfg.file,"Game","dappSwordFlyKey","t")
 	cfg.dappLoadoutKey			:= IniRead(cfg.file,"Game","dappLoadoutKey","[")
@@ -250,6 +254,9 @@ WriteConfig() {
 	iniWrite(cfg.dappLoadoutMultiplier,cfg.file,"Game","dappLoadoutMultiplier")
 	IniWrite(cfg.dappInterfaceprintKey,cfg.file,"Game","dappInterfaceprintKey")
 	IniWrite(cfg.dappReloadKey,cfg.file,"Game","dappReloadKey")
+	iniWrite(cfg.dappPTTKey,cfg.file,"Game","dappPTTKey")
+	iniWrite(cfg.d2GamePTTKey,cfg.file,"Game","d2GamePTTKey")
+	
 	IniWrite(cfg.d2GameHoldToCrouchKey,cfg.file,"Game","d2GameHoldToCrouchKey")
 	IniWrite(cfg.d2GameInterfaceprintKey,cfg.file,"Game","d2GameInterfaceprintKey")
 	IniWrite(cfg.d2GameReloadKey,cfg.file,"Game","d2GameReloadKey")

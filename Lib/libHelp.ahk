@@ -13,6 +13,8 @@ createHelp(*) {
 	ui.keybase:=map()
 	ui.keybase["00_CapsLock "]:="Start/Stop Autorun"
 	ui.keybase["01_Pause "]:="Enable/Disable DApp"
+	ui.keybase["02_Loadout "]:="Hold ~ and press 1-8 for the desired loadout"
+	ui.keybase["03_Prismatic "]:="Press ~ twice to swap between Prismatic and current subclass"
 	ui.keybase["02_Ctrl-Shift-Enter "]:="Theme Editor"
 	ui.keybase["03_Alt-Pause "]:="Default Audio Device +"
 	ui.keybase["04_"]:=""
