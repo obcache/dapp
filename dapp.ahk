@@ -1,4 +1,4 @@
-A_FileVersion := "1.7.8.7"
+A_FileVersion := "1.7.9.1"
 A_SchemaVersion:="1.1.1.1"
 a_appName := "dapp"
 
@@ -143,8 +143,8 @@ winSetRegion("34-0 w497 h234",ui.mainGui)
 drawTabs()
 ui.mainTabGui.show("noActivate x" cfg.guiX+34 " y" cfg.guiY " w497 h" 30)
 ui.mainGui.Show("x" cfg.guiX " y" cfg.guiY " w532 h210 NoActivate")
-ui.gameTabGui.show("w497 h32 noActivate x" cfg.guiX+34 " y" cfg.guiY+183)
-ui.gameSettingsGui.show("x" cfg.guiX+34 " y" cfg.guiY+30 " w495 h183 noActivate")
+ui.gameTabGui.show("w497 h32 noActivate  x" cfg.guiX+34 " y" cfg.guiY+183)
+ui.gameSettingsGui.show("x" cfg.guiX+34 " y" cfg.guiY+30 " w495 h160 noActivate")
 ui.helpGuiButton.show("x" cfg.guiX+497 " y" cfg.guiY+183 " w40 h40 noActivate")
 
 monitorResChanged()

@@ -230,7 +230,7 @@ advProgress(2)
 	ui.MainGui 				:= Gui()
 	
 	ui.mainGui.setFont("s14 q5 c" cfg.FontColor1,"move-x")
-	drawOutlineMainGui(34,28,497,185,cfg.TrimColor1,cfg.TrimColor1,2)
+	drawOutlineMainGui(34,28,497,182,cfg.TrimColor1,cfg.TrimColor1,2)
 	advProgress(2)
 	ui.MainGui.Name 		:= "dapp"
 	ui.mainGui.Title		:= "dapp"
@@ -319,7 +319,7 @@ if !fileExist(cfg.titleBarImage)
 	advProgress(2)
 
 	
-	ui.mainGuiTabs := ui.MainGui.AddTab3("x34 y4 w494 -redraw h231 Buttons 0x400 Background" cfg.TabColor1 " -E0x200",["1_Game____","2_Setup____"])
+	ui.mainGuiTabs := ui.MainGui.AddTab3("x34 y4 w494 -redraw h210 Buttons 0x400 Background" cfg.TabColor1 " -E0x200",["1_Game____","2_Setup____"])
 	ui.mainGuiTabs.useTab("")
 	TCM_SETMINTABWIDTH:= 0x1331
 	TCM_SETPADDING  := 0x132b

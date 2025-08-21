@@ -69,14 +69,14 @@ wm_winActivated(this_control,info,msg,hwnd) {
 }
 
 WM_LBUTTONDOWN_callback(thisControl,info) {
-	postMessage("0xA1",2,,,"A")
-	;WM_LBUTTONDOWN(0,0,0,thisControl)	
+	;WM_LBUTTONDOWN(0,0,0,thisControl)
+	WM_LBUTTONDOWN(0,0,0,"A")
 }
 
 WM_LBUTTONDOWN_pBcallback(*) {
 	WM_LBUTTONDOWN(0,0,0,"A")
-}
 
+}
 ; setTimer () => 	msgbox(winGetTitle(winActive("A"))),3000
 
 WM_LBUTTONDOWN(wParam, lParam, msg, Hwnd) {
@@ -116,7 +116,7 @@ toolTipDelayStart(origHwnd) {
 				toolTip(origGuiCtrl.toolTipData)
 			else
 				toolTip(origGuiCtrl.toolTip)
-			setTimer () => toolTip(), -4000
+			setTimer () => toolTip(), -2000
 		}
 	}
 }

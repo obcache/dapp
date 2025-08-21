@@ -9,7 +9,31 @@ if (InStr(A_LineFile,A_ScriptFullPath))
 	Return
 }
 
+
+opInt(*) {
+	static timeout:=0
+	if !isIdle() {
+		while !isIdle() && !winActive(ui.game) {
+			sleep(1000)
+			timeout+=1
+			if timeout>=300 {
+				wizCancel()
+				Return
+			}
+		}
+	}
+}
+
+isIdle(*) {
+	if (A_TimeIdlePhysical > 1500 && A_TimeIdleMouse > 1500)
+		return 1
+	else 
+		return 0
+}
+
 ui.vaultCleanerOpen := false
+
+
 
 
 ui.gametabs.useTab("Vault Cleaner")
@@ -31,7 +55,7 @@ ui.gametabs.useTab("Vault Cleaner")
 	this.mainButtonText.setFont("s12 q5 c" cfg.LabelColor1,"move-x")
 	
 	this.mainButtonHotkey:=ui.gameSettingsGui.addPicture("hidden hidden left x36 y10 background" cfg.tabColor2 " c" cfg.fontColor2 " h20 w72")
-	this.mainButtonHotkeyDetail1:=ui.gameSettingsGui.addPicture("hidden left x10 y10 backgroundTrans h20 w480","./img/custom/lightburst_bottom_bar_dark.png")
+this.mainButtonHotkeyDetail1:=ui.gameSettingsGui.addPicture("hidden left x10 y10 backgroundTrans h20 w480","./img/custom/lightburst_bottom_bar_dark.png")
 	; this.mainButtonHotkeyDetail2:=ui.gameSettingsGui.addPicture("left x10 y10 backgroundTrans h20 w243","./img/custom/lightburst_tl_light.png")
 	;this.mainButtonHotkeyDetail1:=ui.gameSettingsGui.addPicture("left x245 y10 backgroundTrans h20 w243","./img/custom/lightburst_bottom_bar_dark.png")
 	; this.mainButtonHotkeyDetail2:=ui.gameSettingsGui.addPicture("left x245 y10 backgroundTrans h20 w243","./img/custom/lightburst_tr_light.png")
@@ -66,7 +90,7 @@ ui.gametabs.useTab("Vault Cleaner")
 	this.vaultProgressLabelBg:=ui.gameSettingsGui.addText("x8 y60 w96 h22 background" cfg.TabColor2,"")
 
 	this.vaultProgress := ui.gameSettingsGui.addProgress("x106 y62 w384 h20 c" cfg.trimColor1 " background" cfg.tabColor1 " range1-500")
-	; this.vaultDetail:=ui.gameSettingsGui.addPicture("x10 y52 w398 h" min(20,cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
+; this.vaultDetail:=ui.gameSettingsGui.addPicture("x10 y52 w398 h" min(20,cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
 	this.vaultDetail2:=ui.gameSettingsGui.addPicture("hidden x200 y" 60+20-min(20,cfg.curveAmount) " w292 h" min(20,cfg.curveAmount) " backgroundTrans","./img/custom/lightburst_br_light.png")
 	this.completeMsg := ui.gameSettingsGui.addText("hidden x33 y61 w500 h30 backgroundTrans c" cfg.fontColor2 "","")
 
@@ -101,7 +125,7 @@ ui.gametabs.useTab("Vault Cleaner")
 	
 	this.statBgDetail:=ui.gameSettingsGui.addPicture("hidden x10 y60 w480 h20 backgroundTrans","./img/custom/lightburst_bottom_bar_light.png")
 	this.statBgDetail2:=ui.gameSettingsGui.addPicture("hidden x10 y80 w480 h20 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
-	this.statBgDetail3:=ui.gameSettingsGui.addPicture("hidden x10 y80 w6 h66 backgroundTrans","./img/custom/lightburst_left_bar_dark.png")
+this.statBgDetail3:=ui.gameSettingsGui.addPicture("hidden x10 y80 w6 h66 backgroundTrans","./img/custom/lightburst_left_bar_dark.png")
 	;drawOutlineNamed("vaultCleanerButton",ui.gameSettingsGui,10,79,234,65,cfg.OutlineColor1,cfg.OutlineColor1,1)
 	;drawOutlineNamed("vaultCleanerButton",ui.gameSettingsGui,247,79,243,64,cfg.TrimColor2,cfg.TrimColor1,4)
 	;drawOutlineNamed("vaultStats",ui.gameSettingsGui,9,80,481,64,cfg.trimColor2,cfg.trimColor2,1)
@@ -136,7 +160,7 @@ ui.gametabs.useTab("Vault Cleaner")
 	this.helpText.text:='         To avoid inconsistencies, Destiny 2`n         must be in "Borderless Windowed" mode. This wizard will outline the process.'
 	this.helpIcon:=ui.gameSettingsGui.addPicture("x16 y90 w20 h26 backgroundTrans","./img/icon_help.png")
 	this.helpTop:=ui.gameSettingsGui.addPicture("x" 10 " y" 84 " w" 229 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
-	this.helpBottom:=ui.gameSettingsGui.addPicture("x" 10 " y" 84+56-cfg.curveAmount " w" 229 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+this.helpBottom:=ui.gameSettingsGui.addPicture("x" 10 " y" 84+56-cfg.curveAmount " w" 229 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 	this.helpLeft:=ui.gameSettingsGui.addPicture("x" 8 " y" 82 " w" cfg.curveAmount/3 " h" 62 " backgroundTrans","./img/custom/lightburst_left_bar_dark.png")
 	this.helpRight:=ui.gameSettingsGui.addPicture("hidden x" 250-(cfg.curveAmount/3) " y" 84 " w" cfg.curveAmount/3 " h" 56 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")
 	this.helpRight2:=ui.gameSettingsGui.addPicture("x" 240-(cfg.curveAmount/3) " y" 82 " w" cfg.curveAmount/3 " h" 60 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")
@@ -499,12 +523,15 @@ stopCleaning(*) {
 }	
 
 cleanVaultStart(*) {
+	if opInt()
+		return
 	this.restartQueued:=true
 
 	(winExist(this.gameWin)) 
 		? winActivate(this.gameWin)
 		: notifyOSD("No Destiny Window Found")
-	
+	if opInt()
+		return	
 	winActivate(this.gameWin)
 	
 
@@ -512,7 +539,8 @@ cleanVaultStart(*) {
 	setTimer(timer,1000)
 	timer()
 	coordMode("mouse","client")
-	
+		if opInt()
+		return
 	(this.restartQueued) ? (this.restartQueued:=false,exit) : 0
 	
 	; this.mainButtonHotkey.text:="[Delete]" 	
@@ -522,7 +550,8 @@ cleanVaultStart(*) {
 	sleep(500)
 	notLastPage:=true
 	pageUpColor:=""
-
+	if opInt()
+		return
 	loop {
 	;(this.restartQueued) ? stopCleaning() : 0
 		if subStr(pixelGetColor(970,170),3,1)<="4" {
@@ -533,6 +562,8 @@ cleanVaultStart(*) {
 			send("{LButton Down}")
 			sleep(250)
 			send("{LButton Up}")
+			if opInt()
+				return
 		} else {
 			break
 		}
@@ -541,9 +572,13 @@ cleanVaultStart(*) {
 	sleep(550) 	
 	mouseMove(905,170)
 	sleep(550)
+	if opInt()
+		return
 	send("{LButton Down}")
 	sleep(550)
 	send("{LButton Up}")
+	if opInt()
+		return
 	this.page-=1
 	this.maxRange:=this.page*50
 	this.pageCount.text:=format("{:03d}",this.page)
@@ -552,7 +587,11 @@ cleanVaultStart(*) {
 	sleep(800)
 
 	while this.page>0 {
+		if opInt()
+			return
 		loop setting.rowCount {
+			if opInt()
+				return
 			this.row:=setting.rowCount-a_index
 			loop setting.columnCount {
 				;(this.restartQueued) ? stopCleaning() : 0
@@ -569,7 +608,8 @@ cleanVaultStart(*) {
 			send("{LButton Down}")
 			sleep(350)
 			send("{LButton Up}")
-
+			if opInt()
+				return
 			this.page-=1
 			this.pageCount.text:=format("{:03d}",this.page)
 			sleep(600)
@@ -693,12 +733,7 @@ isVault(*) {
 		return 0
 }
 		
-isIdle(*) {
-	if (A_TimeIdlePhysical > 1500 && A_TimeIdleMouse > 1500)
-		return 1
-	else 
-		return 0
-}
+
 
 vault_exitFunc(*) {
 	ui.vaultCleanerOpen:=false

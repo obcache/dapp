@@ -9,8 +9,8 @@ if (InStr(A_LineFile,A_ScriptFullPath)) { ;run main app
 }
 
 hotIfWinActive("ahk_exe destiny2.exe")
-		hotKey("*" cfg.dappInterfaceprintKey,d2ToggleAlwaysSprint)
-		hotKey("*" cfg.dappPauseKey,d2ToggleAppFunctions)
+		hotKey("*" cfg.dappAutoSprintKey,d2ToggleAlwaysSprint)
+		hotKey("*" cfg.dappAutoSprintKey,dappToggleEnabledFunc)
 		hotkey("~*" cfg.dappPTTKey,togglePTT)
 hotIf()
 
@@ -56,13 +56,13 @@ togglePrismatic(*) {
 	send("{F1}")
 }
 
-dappPause(*) {
-	(cfg.dappPaused := !cfg.dappPaused)
+dappEnabled(*) {
+	(cfg.dappEnabled := !cfg.dappEnabled)
 	
 }
 	
 d2RemapCrouchEnabled(*) {
-	return ((winActive("ahk_exe destiny2.exe") && !cfg.dappPaused)
+	return ((winActive("ahk_exe destiny2.exe") && !cfg.dappEnabled)
 		? cfg.d2AlwaysRunEnabled
 			? 1
 			: 0
@@ -91,7 +91,7 @@ d2MorgethWarlock(*) {
 		send("{" cfg.d2GameGrenadeKey " down}")
 		sleep(1700)
 		send("{" cfg.d2GameGrenadeKey " up}")
-		send("{" strLower(cfg.d2GameInterfaceprintKey) "}")
+		send("{" strLower(cfg.d2GameAutoSprintKey) "}")
 		sleep(800)
 		send("{space down}{space up}")
 		sleep(80)
@@ -120,10 +120,10 @@ d2reload(*) {
 	ui.dappReloadKeyData.opt("c" cfg.AlertColor)
 	ui.dappReloadKeyData.redraw()
 	ui.d2IsReloading := true
-	d2ToggleAppFunctionsOff()
+	dappToggleEnabledFuncOff()
 	
 	setTimer () => (ui.d2IsReloading := false
-		,d2ToggleAppFunctionsOn()
+		,dappToggleEnabledFuncOn()
 		,ui.dappReloadKeyData.opt("c" cfg.OffColor)
 		,ui.d2GameReloadKeyData.opt("c" cfg.OffColor)
 		,ui.d2GameReloadKeyData.redraw()),-2600
@@ -144,17 +144,17 @@ d2FireButtonClicked(*) {
 
 	send("{LButton Up}")
 	if ui.d2IsSprinting
-		send("{" cfg.d2GameInterfaceprintKey "}")
+		send("{" cfg.d2GameAutoSprintKey "}")
 }
 d2ReadyToSwordFly(*) {
-	if winActive("ahk_exe destiny2.exe") && !cfg.dappPaused && ui.d2FlyEnabled
+	if winActive("ahk_exe destiny2.exe") && !cfg.dappEnabled && ui.d2FlyEnabled
 		return 1
 	else
 		return 0
 }
 
 d2ReadyToReload(*) {
-	if winActive("ahk_exe destiny2.exe") && !ui.d2IsReloading && !cfg.dappPaused
+	if winActive("ahk_exe destiny2.exe") && !ui.d2IsReloading && !cfg.dappEnabled
 		return 1
 	else
 		return 0	
@@ -167,7 +167,7 @@ chatWindowActive(*) {
 d2ReadyToSprint(*) {
 	return (winActive("ahk_exe destiny2.exe")) 
 		? (cfg.d2AlwaysRunEnabled)
-			? (!cfg.dappPaused)
+			? (!cfg.dappEnabled)
 					? (!getKeyState("LButton")) 
 						? (!getKeyState("RButton")) 
 							? (!getKeyState("["))
@@ -186,7 +186,7 @@ d2ReadyToSprint(*) {
 d2startSprinting(*) {
 	ui.d2IsSprinting := true
 	if (cfg.d2AlwaysRunEnabled) {
-		send("{" strLower(cfg.d2GameInterfaceprintKey) "}")
+		send("{" strLower(cfg.d2GameAutoSprintKey) "}")
 		setCapsLockState(0)
 	}
 	keyWait("w","L")
@@ -230,7 +230,7 @@ d2CreateLoadoutKeys(*) {
 		d2LoadOutCoordsStr .= cfg.d2LoadoutCoords[a_index] ","
 	}	
 
-	hotIf(dappEnabled)
+	hotIf(isDappEnabled)
 	hotkey("Joy12",d2controllerLoadoutChange)
 	if cfg.dappLoadoutKey != "???"
 		hotkey(cfg.dappLoadoutKey,d2LoadoutModifier)
@@ -246,8 +246,8 @@ d2CreateLoadoutKeys(*) {
 	hotIf()
 }
 
-dappEnabled(*) {
-	if !cfg.dappPaused && winActive("ahk_exe destiny2.exe")
+isDappEnabled(*) {
+	if !cfg.dappEnabled && winActive("ahk_exe destiny2.exe")
 		return 1
 	else
 		return 0
@@ -350,39 +350,41 @@ d2LoadoutModifier(hotKeyName,isController := false) {
 	
 d2ToggleAlwaysSprint(*) {
 	(cfg.d2AlwaysRunEnabled := !cfg.d2AlwaysRunEnabled)
-		? (ui.dappInterfaceprintKeyData.opt("c" cfg.AlertColor)
-			,ui.dappInterfaceprintKeyData.redraw()
-			,ui.d2GameInterfaceprintKeyData.opt("c" cfg.AlertColor)
-			,ui.d2GameInterfaceprintKeyData.redraw())
+		? (ui.dappAutoSprintKeyData.opt("c" cfg.AlertColor)
+			,ui.dappAutoSprintKeyData.redraw()
+			,ui.d2GameAutoSprintKeyData.opt("c" cfg.AlertColor)
+			,ui.d2GameAutoSprintKeyData.redraw())
 		: (ui.d2IsSprinting := false
-			(ui.dappInterfaceprintKeyData.opt("c" cfg.OffColor)
-			,ui.dappInterfaceprintKeyData.redraw()
-			,ui.d2GameInterfaceprintKeyData.opt("c" cfg.OffColor)
-			,ui.d2GameInterfaceprintKeyData.redraw()
+			(ui.dappAutoSprintKeyData.opt("c" cfg.OffColor)
+			,ui.dappAutoSprintKeyData.redraw()
+			,ui.d2GameAutoSprintKeyData.opt("c" cfg.OffColor)
+			,ui.d2GameAutoSprintKeyData.redraw()
 			,((ui.d2IsSprinting)
-				? send("{" cfg.dappInterfaceprintKey "}")
+				? send("{" cfg.dappAutoSprintKey "}")
 				: 0)))
 	setCapsLockState(0)
 }
 
-d2ToggleAppFunctions(*) {
-	(cfg.dappPaused := !cfg.dappPaused)
-		? d2ToggleAppFunctionsOff()
-		: d2ToggleAppFunctionsOn()
+dappToggleEnabledFunc(*) {
+	(cfg.dappEnabled := !cfg.dappEnabled)
+		? dappToggleEnabledFuncOff()
+		: dappToggleEnabledFuncOn()
 }
 
-d2ToggleAppFunctionsOn() {
-	ui.d2ToggleAppFunctions.Opt("Background" cfg.AlertColor)
-	ui.d2ToggleAppFunctions.value := "./img/toggle_vertical_trans_on.png"
-	ui.dappPauseKeyData.setFont("c" cfg.OnColor)
+dappToggleEnabledFuncOn() {
+;cfg.dappEnabled:=true
+	cfg.dappEnabledToggle.Opt("Background" cfg.AlertColor)
+	cfg.dappEnabledToggle.redraw()
+	;cfg.dappEnabledToggle.value := "./img/toggle_vertical_trans_on.png"
+	ui.dappEnabledKeyData.setFont("c" cfg.OnColor)
 }
 
-d2ToggleAppFunctionsOff() {
-	ui.dappFunctionsEnabled := false
-	ui.d2ToggleAppFunctions.opt("background" cfg.OffColor)
-	ui.d2ToggleAppFunctions.value := "./img/toggle_vertical_trans_off.png"
-	ui.d2ToggleAppFunctions.redraw()
-	ui.dappPauseKeyData.setFont("c" cfg.OffColor)
+dappToggleEnabledFuncOff() {
+	;cfg.dappEnabled := false
+	cfg.dappEnabledToggle.opt("background" cfg.auxColor1)
+	;cfg.dappEnabledToggle.value := "./img/toggle_vertical_trans_off.png"
+	cfg.dappEnabledToggle.redraw()
+	ui.dappEnabledKeyData.setFont("c" cfg.OffColor)
 }
 
 d2ToggleAutoGameConfig(*) {
@@ -393,7 +395,7 @@ d2ToggleAutoGameConfig(*) {
 	
 	
 d2ToggleAutoGameConfigOn() {
-	;ui.d2Log.text := " start: SPRINT`n rcvd: " strUpper(subStr(cfg.dappInterfaceprintKey,1,8)) "`n" ui.d2Log.text
+	;ui.d2Log.text := " start: SPRINT`n rcvd: " strUpper(subStr(cfg.dappAutoSprintKey,1,8)) "`n" ui.d2Log.text
 	ui.d2ToggleAutoGameConfig.Opt("Background" cfg.AlertColor)
 	ui.d2ToggleAutoGameConfig.value := "./img/toggle_vertical_trans_on.png"
 }
@@ -406,7 +408,7 @@ d2ToggleAutoGameConfigOff() {
 }
 
 if (cfg.d2AlwaysRunEnabled) {
-		d2ToggleAppFunctionsOn()
+		dappToggleEnabledFuncOn()
 }
 
 

@@ -29,7 +29,7 @@ createHelp(*) {
 	ui.helpGui:=gui()
 	ui.helpGuiPos:=object()
 	ui.helpGuiPos.w:=820
-	ui.helpGuiPos.h:=390
+	ui.helpGuiPos.h:=410
 	ui.helpGuiPos.x:=(a_screenwidth/2)-(ui.helpGuiPos.w/2)
 	ui.helpGuiPos.y:=(a_screenheight/2)-(ui.helpGuiPos.h/2)
 	ui.helpGui.opt("-caption -border toolWindow alwaysOnTop owner" ui.helpGuiButton.hwnd)

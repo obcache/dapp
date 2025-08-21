@@ -97,11 +97,22 @@ ui.gameTab1Trans.opt((activeTabNum==1) ? "hidden" : "-hidden")
 	ui.gameTab1Label.setFont((activetabNum==1) ? "s14 c" cfg.fontColor1 : "s12 c" cfg.fontColor2)
 	ui.gameTab2Label.move(,(activetabNum==2) ? 3 : 5)
 	ui.gameTab2Label.setFont((activetabNum==2) ? "s14 c" cfg.fontColor1 : "s12 c" cfg.fontColor2)
+	ui.gameTab1Label.onEvent("click",gameTabClicked)
+	ui.gameTab2Label.onEvent("click",vaultTabClicked)
 }
 
-drawGameTabs(tabNum := 1) {
+	gameTabClicked(this_ctrl,*) {
+		ui.gameTabs.choose("Gameplay")
+		refreshGameTabs(1)
+		
+	}
+	vaultTabClicked(*) {
+		ui.gameTabs.choose("Vault Cleaner")
+		refreshGameTabs(2)
+	}
+	drawGameTabs(tabNum := 1) {
 	ui.gameTabGui := gui()
-	ui.gameTabGui.opt("-caption toolWindow alwaysOnTop +E0x20 owner" ui.gameSettingsGui.hwnd)
+	ui.gameTabGui.opt("-caption toolWindow alwaysOnTop owner" ui.gameSettingsGui.hwnd)
 	ui.gameTabGui.backColor := ui.transparentColor
 	ui.gameTabGui.color := ui.transparentColor
 	winSetTransColor(ui.transparentColor,ui.gameTabGui)
@@ -110,6 +121,7 @@ drawGameTabs(tabNum := 1) {
 		,cfg.TrimColor1,cfg.TrimColor1,2)
 
 	ui.gameTab1SkinOutline2 := ui.gameTabGui.addText("x0 y1 w110 h29 background" cfg.TrimColor2,"")
+
 	ui.gameTab1SkinOutline1 := ui.gameTabGui.addText("x0 y0 w110 h32 background" cfg.TrimColor1,"" )
 	ui.gameTab1Skin2 := ui.gameTabGui.addText("y2 h26 x2 w106 background" cfg.TabColor2	" c" cfg.FontColor2,"")
 	ui.gameTab1Skin1 := ui.gameTabGui.addText("y0 h30 x2 w106  background" cfg.TabColor1 " c" cfg.FontColor1,"")
@@ -117,10 +129,10 @@ drawGameTabs(tabNum := 1) {
 	ui.gameTab1Divider1:=ui.gameTabGui.addText("y0 x108 w2 h30 background" cfg.TrimColor1,"")
 	ui.gameTab1Label := ui.gameTabGui.addText("y2 h28 x2 w108 center backgroundTrans c" cfg.FontColor1,"Gameplay")
 	ui.gameTab1Label.setFont("s14","Impact")
+	ui.gameTab1Label.onEvent("click",gameTabClicked)
 
 
-
-	ui.gameTab2SkinOutline2 := ui.gameTabGui.addText("x110 y0 w130 h34 background" cfg.TrimColor1,"" )
+	ui.gameTab2SkinOutline2 := ui.gameTabGui.addText("x108 y0 w132 h32 background" cfg.TrimColor1,"" )
 	ui.gameTab2SkinOutline1 := ui.gameTabGui.addText("x110 y1 w130 h30 background" cfg.TrimColor2,"")
 	ui.gameTab2Skin2 := ui.gameTabGui.addText("y0 h30 x110 w130 center background" cfg.TabColor1 " c" cfg.FontColor1,"")
 	ui.gameTab2Skin1 := ui.gameTabGui.addText("y2 h26 x110 w130 center background" cfg.TabColor2 " c" cfg.FontColor2,"")
@@ -128,14 +140,14 @@ drawGameTabs(tabNum := 1) {
 	ui.gameTab2Divider1:=ui.gameTabGui.addText("y2 x238 w2 h29 background" cfg.TrimColor2,"")
 	ui.gameTab2Label := ui.gameTabGui.addText("y3 h25 x110 w130 center backgroundTrans c" cfg.FontColor1,"Vault Cleaner")
 	ui.gameTab2Label.setFont("s14","Impact") 
+	ui.gameTab2Label.onEvent("click",vaultTabClicked)
 
-
-	ui.gameTab2Active:=ui.gameTabGui.addText("x110 y0 w130 h2 background" cfg.trimColor1,"")
+	ui.gameTab2Active:=ui.gameTabGui.addText("x108 y0 w132 h2 background" cfg.trimColor1,"")
 	ui.gameTab1Active:=ui.gameTabGui.addText("x0 y0 w110 h2 background" cfg.trimColor1,"")
 
 	ui.gameTab1BottomDetail:=ui.gameTabGui.addPicture("-hidden x0 y" 32-(cfg.curveAmount) " w110 h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 	ui.gameTab1TopDetail:=ui.gameTabGui.addPicture("hidden x0 y" 2 " w108 h" cfg.curveAmount/2 " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
-	ui.gameTab1SideDetail:=ui.gameTabGui.addPicture("hidden x" 108-(cfg.curveAmount/3) " y" 2 " w" cfg.curveAmount/3 " h" 28 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")	 
+	ui.gameTab1SideDetail:=ui.gameTabGui.addPicture("hidden x" 109-(cfg.curveAmount/3) " y" 2 " w" cfg.curveAmount/3 " h" 28 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")	 
 
 	ui.gameTab2BottomDetail:=ui.gameTabGui.addPicture("-hidden x110 y" 32-(cfg.curveAmount) " w130 h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")	 
 	ui.gameTab2TopDetail:=ui.gameTabGui.addPicture("hidden x112 y" 2 " w130 h" cfg.curveAmount/2 " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
@@ -144,25 +156,25 @@ drawGameTabs(tabNum := 1) {
 
 	
 	winGetPos(&mainGuiX,&mainGuiY,,,ui.mainGui.hwnd)
-	ui.gameTabSpacer:=ui.gameTabGui.addText("y2 x240 w" 490-267 " h29 background" cfg.titleBgColor)
+	ui.gameTabSpacer:=ui.gameTabGui.addText("y2 x240 w" 490-267 " h30 background" cfg.titleBgColor)
 	ui.gameTabSpacer.onEvent("click",WM_LBUTTONDOWN_callback)
-	ui.buildNumber:=ui.gameTabGui.addText("x298 y14 w160 h29 right backgroundTrans","v" a_fileVersion)
+	ui.buildNumber:=ui.gameTabGui.addText("x298 y14 w160 h26 right backgroundTrans","v" a_fileVersion)
 	ui.buildNumber.setFont("q5 s9 c" cfg.titleFontColor,"move-x")	
-
-	ui.statusBarText:=ui.gameTabGui.addText("hidden x250 y9 w240 h26 backgroundTrans")
+	
+	ui.statusBarText:=ui.gameTabGui.addText("hidden x250 y8 w240 h26 backgroundTrans")
 	ui.statusBarText.text:="     "
 	ui.statusBarText.setFont("s10 q5 c" cfg.titleFontColor,"calibri")
 	
 	ui.gameTabSpacerDetail2:=ui.gameTabGui.addPicture("y" 2 " x240 w" 223 " h" cfg.curveAmount/2 " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
 	ui.gameTabSpacerDetail2.onEvent("click",WM_LBUTTONDOWN_callback)
-	ui.gameTabSpacerDetail:=ui.gameTabGui.addPicture("y" 30-(cfg.curveAmount/2) " x240 w" 223 " h" cfg.curveAmount/2 " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+	ui.gameTabSpacerDetail:=ui.gameTabGui.addPicture("y" 28-(cfg.curveAmount/2) " x240 w" 223 " h" cfg.curveAmount/2 " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 	ui.gameTabSpacerDetail.onEvent("click",WM_LBUTTONDOWN_callback)
 	ui.gameTabGui.addPicture("x240 y" 2 " w" cfg.curveAmount/3 " h" 28 " backgroundTrans","./img/custom/lightburst_left_bar_dark.png")
-	ui.gameTabGui.addPicture("x" 463-(cfg.curveAmount/3) " y" 2 " w" cfg.curveAmount/3 " h" 29 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")	
+	ui.gameTabGui.addPicture("x" 464-(cfg.curveAmount/3) " y" 2 " w" cfg.curveAmount/3 " h" 26 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")	
 
 
-	ui.gameTab1Trans:=ui.gameTabGui.addText("x0 y30 w110 h2 background" ui.transparentColor)
-	ui.gameTab2Trans:=ui.gameTabGui.addText("x110 y30 w130 h2 background" ui.transparentColor)
+	ui.gameTab1Trans:=ui.gameTabGui.addText("hidden x0 y30 w108 h2 background" ui.transparentColor)
+	ui.gameTab2Trans:=ui.gameTabGui.addText("hidden x110 y30 w130 h2 background" ui.transparentColor)
 
 
 	refreshGameTabs(1)
@@ -175,10 +187,13 @@ drawGameTabs(tabNum := 1) {
 		objGui.addPicture("x" objX " y" objH-(min(cfg.curveAmount,(objH/2))) " w" objW " h" min(cfg.curveAmount,(objH/2)))
 	}
 	
-	line(ui.gameTabGui,240,30,500,4,ui.transparentColor)
+	line(ui.gameTabGui,240,28,300,18,ui.transparentColor)
+	;line(ui.gameSettingsGui,240,186,300,36,"FF0000")
+	;line(ui.mainGui,240,186,300,36,"00FF00")
 
 	winSetTransColor(ui.transparentColor,ui.gameTabGui)
-
+	winSetTransColor(ui.transparentColor,ui.gameSettingsGui)
+	winSetTransColor(ui.transparentColor,ui.mainGui)
 	ui.helpGuiButton:=gui()
 	ui.helpGuiButton.opt("-caption alwaysOnTop owner" ui.gameTabGui.hwnd)
 	ui.helpGuiButton.backColor:=ui.transparentColor

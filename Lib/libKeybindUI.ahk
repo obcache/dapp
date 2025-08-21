@@ -130,9 +130,9 @@ d2AutoGameConfigOverride(*) {
 						if curr_value == "none"
 							return
 						else {
-							cfg.d2GameInterfaceprintKey := curr_value
-							ui.d2GameInterfaceprintKeyData.text := strUpper(curr_value)
-							ui.d2GameInterfaceprintKeyData.redraw()
+							cfg.d2GameAutoSprintKey := curr_value
+							ui.d2GameAutoSprintKeyData.text := strUpper(curr_value)
+							ui.d2GameAutoSprintKeyData.redraw()
 						}
 					}
 				}
@@ -233,9 +233,9 @@ d2keybindGameTabClicked(*) {
 
 d2changeKeybindPanelTab(panelNum := 2) {
 		ui.d2Panel1Objects := [
-			ui.dappInterfaceprintKey
-			,ui.dappInterfaceprintKeyData
-			,ui.dappInterfaceprintKeyLabel
+			ui.dappAutoSprintKey
+			,ui.dappAutoSprintKeyData
+			,ui.dappAutoSprintKeyLabel
 			,ui.dappHoldToCrouchKey
 			,ui.dappHoldToCrouchKeyData 
 			,ui.dappHoldToCrouchKeyLabel
@@ -285,20 +285,20 @@ d2changeKeybindPanelTab(panelNum := 2) {
 			,ui.keybindSpacer62
 			,ui.keybindSpacer61Detail
 			,ui.keybindSpacer60Detail
-			,ui.dappPauseKey
-			,ui.dappPauseKeyData
-			,ui.dappPauseKeyLabel
-			,ui.d2ToggleAppFunctions
+			,ui.dappEnabledKey
+			,ui.dappEnabledKeyData
+			,ui.dappEnabledKeyLabel
+			,cfg.dappEnabledToggle
 			,ui.d2ClassSelectOutline
 			,ui.d2ClassSelectOutline2
-			,ui.d2ToggleAppFunctionsLabel
-			,ui.d2ToggleAppFunctionsOutline
+			,cfg.dappEnabledToggleLabel
+			,cfg.dappEnabledToggleOutline
 			,ui.d2Panel1Tab1Bg
 			,ui.d2Panel1Tab1Bg2
 			; ,ui.d2Panel1Tab1Bg3
 			; ,ui.d2Panel1Tab1Bg4
 			,ui.d2ClassSelectBg3
-			,ui.d2ToggleAppFunctionsOutline
+			,cfg.dappEnabledToggleOutline
 			,ui.d2Panel1Tab1Detail1
 			,ui.d2ClassSelectDetail
 			; ,ui.d2KeybindAppTab1
@@ -312,9 +312,9 @@ d2changeKeybindPanelTab(panelNum := 2) {
 			]
 
 	ui.d2Panel2Objects := [
-			ui.d2GameInterfaceprintKey
-			,ui.d2GameInterfaceprintKeyData
-			,ui.d2GameInterfaceprintKeyLabel
+			ui.d2GameAutoSprintKey
+			,ui.d2GameAutoSprintKeyData
+			,ui.d2GameAutoSprintKeyLabel
 			,ui.d2GameHoldToCrouchKey
 			,ui.d2GameHoldToCrouchKeyData 
 			,ui.d2GameHoldToCrouchKeyLabel
@@ -342,11 +342,11 @@ d2changeKeybindPanelTab(panelNum := 2) {
 		]
 
 	if panelNum == 1 {
-		ui.d2ToggleAppFunctions.opt("-hidden")
+		cfg.dappEnabledToggle.opt("-hidden")
 		this_panelObjects := ui.d2Panel1Objects
 		other_panelObjects := ui.d2Panel2Objects
 	} else {
-		ui.d2ToggleAppFunctions.opt("hidden")
+		cfg.dappEnabledToggle.opt("hidden")
 		this_panelObjects := ui.d2Panel2Objects
 		other_panelObjects := ui.d2Panel1Objects
 		try {
@@ -404,7 +404,7 @@ drawKeybindBar(*) {
 	
 	
 	
-	ui.d2Panel1Tab1Bg 		:= ui.gameSettingsGui.addText("hidden x44 y15 w438 h42 background" cfg.TrimColor1,"")
+	ui.d2Panel1Tab1Bg 		:= ui.gameSettingsGui.addText("hidden x14 y15 w468 h42 background" cfg.TrimColor1,"")
 	ui.d2Panel1Tab1Bg2 		:= ui.gameSettingsGui.addText("hidden x45 y16 w434 h40 background" cfg.TabColor1 " c" cfg.FontColor1,"")
 	ui.d2Panel1Tab1Detail1	:= ui.gameSettingsGui.addPicture("x45 y16 w436 h20 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
 	ui.d2Panel1Tab1Bg3 		:= ui.gameSettingsGui.addText("hidden x46 y17 w434 h38 background" cfg.TabColor1,"")
@@ -430,28 +430,46 @@ drawKeybindBar(*) {
 	ui.d2keybindGameTab3.setFont("s8 q5 c" cfg.LabelColor1,"Medium")
 	ui.d2keybindGameTabDetail2 := guiName.addPicture("x" 347 " y" 54 " w" 76 " h" 18 " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png") 
 	ui.d2keybindGameTabDetail3 := guiName.addPicture("x" 347 " y" 54 " w" 76 " h" 18 " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png") 
-
-	ui.currKey 				:= cfg.dappPauseKey
-	ui.dappPauseKey			:= ui.gameSettingsGui.addPicture("x48 y24 w" 56 " h30 section backgroundTrans","./img/keyboard_key_up.png")
-	ui.dappPauseKeyData 	:= ui.gameSettingsGui.addText("xs-1 y+-24 w" 56 " h21 center c" cfg.OffColor " backgroundTrans",subStr(strUpper(cfg.dappPauseKey),1,6))
-	if subStr(strUpper(cfg.dappPauseKey),1,6) == "SCROLL"
-	ui.dappPauseKeyData.text:="SCROLL"
+	
+	
+	ui.keybindSpacer21		:= ui.gameSettingsGui.addText("x14 y16 w1 h40 background" cfg.trimColor1)		
+	ui.keybindSpacer22		:= ui.gameSettingsGui.addText("x15 y16 w2 h40 background" cfg.TabColor2)		
+	ui.keybindSpacer23		:= ui.gameSettingsGui.addText("x17 y16 w1 h40 background" cfg.TrimColor1)
+	ui.keybindSpacer21Detail	:= ui.gameSettingsGui.addPicture("x14 y16 w4 h40 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
+	ui.keybindSpacer22Detail	:= ui.gameSettingsGui.addPicture("x14 y2 w4 h54 backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
+	cfg.dappEnabled := true
+	
+	cfg.dappEnabledToggle := ui.gameSettingsGui.addText("x18 y16 w30 h40 section background" ((cfg.dappEnabled) ? cfg.auxColor1 : cfg.onColor))
+	cfg.dappEnabledToggleLine:=ui.gameSettingsGui.AddText("hidden x0 y0 w0 h0 backgroundTrans")
+	cfg.dappEnabledToggle.onEvent("click",dappToggleEnabledFunc)
+	cfg.dappEnabledToggleOutline := ui.gameSettingsGui.addText("ys+4 x+0 w1 h32 background" cfg.TrimColor2)
+	cfg.dappEnabledToggleLabel := ui.gameSettingsGui.addText("xs-2 y+-28 w28 h28 backgroundTrans center","")
+	cfg.dappEnabledToggleLabel.setFont("s16 c" cfg.titleFontColor,"Segoe MDL2 Assets")
+	
+	
+	ui.dappEnabledDetail1:=ui.gameSettingsGui.addPicture("x18 y16 w30 backgroundTrans h" cfg.curveAmount,"./img/custom/lightburst_top_bar_dark.png")
+	ui.dappEnabledDetail2:=ui.gameSettingsGui.addPicture("x18 y" 56-cfg.curveAmount " w30 backgroundTrans h" cfg.curveAmount,"./img/custom/lightburst_bottom_bar_dark.png")
+	ui.currKey 				:= cfg.dappEnabledKey
+	ui.dappEnabledKey			:= ui.gameSettingsGui.addPicture("x48 y24 w" 56 " h30 section backgroundTrans","./img/keyboard_key_up.png")
+	ui.dappEnabledKeyData 	:= ui.gameSettingsGui.addText("xs-1 y+-24 w" 56 " h21 center c" cfg.OffColor " backgroundTrans",subStr(strUpper(cfg.dappEnabledKey),1,6))
+	if subStr(strUpper(cfg.dappEnabledKey),1,6) == "SCROLL"
+	ui.dappEnabledKeyData.text:="SCROLL"
 	else
-	ui.dappPauseKeyData.text:=subStr(strUpper(cfg.dappPauseKey),1,6)
-	ui.dappPauseKeyLabel	:= ui.gameSettingsGui.addText("xs-1 y+-34 w" 56 " h20 center c" cfg.LabelColor1 " backgroundTrans","Enable")
+	ui.dappEnabledKeyData.text:=subStr(strUpper(cfg.dappEnabledKey),1,6)
+	ui.dappEnabledKeyLabel	:= ui.gameSettingsGui.addText("xs-1 y+-34 w" 56 " h20 center c" cfg.LabelColor1 " backgroundTrans","Enable")
 	
 	ui.keybindSpacer		:= ui.gameSettingsGui.addText("x104 y16 w1 h40 background" cfg.trimColor1)		
 	ui.keybindSpacer1		:= ui.gameSettingsGui.addText("x105 y16 w2 h40 background" cfg.TabColor2)		
 	ui.keybindSpacer2		:= ui.gameSettingsGui.addText("x107 y16 w1 h40 background" cfg.TrimColor1)
 	;ui.gameSettingsGui.setFont("s11","Arial")
 	
-	ui.currKey 				:= cfg.dappInterfaceprintKey
+	ui.currKey 				:= cfg.dappAutoSprintKey
 
-	ui.dappInterfaceprintKey		:= ui.gameSettingsGui.addPicture("x+0 y24 w" 76
+	ui.dappAutoSprintKey		:= ui.gameSettingsGui.addPicture("x+0 y24 w" 76
 		" h30 section backgroundTrans","./img/keyboard_key_up.png")
-	ui.dappInterfaceprintKeyData 	:= ui.gameSettingsGui.addText("xs-2 y+-24 w" 76 
-		" h21 center c" cfg.OffColor " backgroundTrans",subStr(strUpper(cfg.dappInterfaceprintKey),1,8))
-	ui.dappInterfaceprintKeyLabel	:= ui.gameSettingsGui.addText("xs-1 y+-34 w" 76 
+	ui.dappAutoSprintKeyData 	:= ui.gameSettingsGui.addText("xs-2 y+-24 w" 76 
+		" h21 center c" cfg.OffColor " backgroundTrans",subStr(strUpper(cfg.dappAutoSprintKey),1,8))
+	ui.dappAutoSprintKeyLabel	:= ui.gameSettingsGui.addText("xs-1 y+-34 w" 76 
 		" h20 center c" cfg.LabelColor1 " backgroundTrans","Sprint")
 	
 	ui.currKey := cfg.dappHoldToCrouchKey
@@ -584,16 +602,16 @@ drawKeybindBar(*) {
 	
 	d2ClassIconUpChanged()
 
-	ui.dappPauseKey.ToolTip 				:= "Click to Assign"
+	ui.dappEnabledKey.ToolTip 				:= "Click to Assign"
 	ui.dappHoldToCrouchKey.ToolTip 		:= "Click to Assign"
 	ui.dappHoldToCrouchKeyData.ToolTip 	:= "Click to Assign"
 	ui.dappHoldToCrouchKeyLabel.ToolTip	:= "Click to Assign"
 	ui.dappLoadoutKey.ToolTip				:= "Click to Assign"
 	ui.dappLoadoutKeyData.ToolTip  		:= "Click to Assign"
 	ui.dappLoadoutKeyLabel.ToolTip			:= "Click to Assign"
-	ui.dappInterfaceprintKey.ToolTip			:= "Click to Assign"
-	ui.dappInterfaceprintKeyData.ToolTip  	:= "Click to Assign"
-	ui.dappInterfaceprintKeyLabel.ToolTip	:= "Click to Assign"
+	ui.dappAutoSprintKey.ToolTip			:= "Click to Assign"
+	ui.dappAutoSprintKeyData.ToolTip  	:= "Click to Assign"
+	ui.dappAutoSprintKeyLabel.ToolTip	:= "Click to Assign"
 	ui.dappHoldToCrouchKey.ToolTip			:= "Click to Assign"
 	ui.dappHoldToCrouchKeyData.ToolTip  	:= "Click to Assign"
 	ui.dappHoldToCrouchKeyLabel.ToolTip	:= "Click to Assign"
@@ -602,40 +620,40 @@ drawKeybindBar(*) {
 	ui.dappReloadKeyLabel.ToolTip			:= "Click to Assign"
 
 	ui.dappLoadoutKeyData.setFont("s10 q5")
-	ui.dappPauseKeyData.setFont("s10 q5")
+	ui.dappEnabledKeyData.setFont("s10 q5")
 	ui.dappHoldToCrouchKeyData.setFont("s10 q5")
-	ui.dappInterfaceprintKeyData.setFont("s10 q5")
+	ui.dappAutoSprintKeyData.setFont("s10 q5")
 	ui.dappReloadKeyData.setFont("s10 q5")
 	ui.dappPTTKeyData.setFont("s10 q5")
 	ui.dappSwordFlyKeyData.setFont("s10 q5")
 	
-	ui.dappPauseKeyLabel.setFont("s9 q5")
+	ui.dappEnabledKeyLabel.setFont("s9 q5")
 	ui.dappReloadKeyLabel.setFont("s9 q5")
 	ui.dappPTTKeyLabel.setFont("s9 q5")
 	ui.dappHoldToCrouchKeyLabel.setFont("s9 q5")
 	ui.dappLoadoutKeyLabel.setFont("s9 q5")
-	ui.dappInterfaceprintKeyLabel.setFont("s9 q5")
+	ui.dappAutoSprintKeyLabel.setFont("s9 q5")
 	ui.dappSwordFlyKeyLabel.setFont("s9 q5")
 
-	ui.dappPauseKey.onEvent("click",dappPauseKeyClicked)
+	ui.dappEnabledKey.onEvent("click",dappEnabledKeyClicked)
 	ui.dappPTTKey.onEvent("click",dappPTTKeyClicked)
 	ui.dappHoldToCrouchKey.onEvent("click",dappHoldToCrouchKeyClicked)
 	ui.dappHoldToCrouchKeyData.onEvent("click",dappHoldToCrouchKeyClicked)
 	ui.dappSwordFlyKey.onEvent("click",dappSwordFlyKeyClicked)
-	ui.dappInterfaceprintKey.onEvent("click",dappInterfaceprintKeyClicked)
+	ui.dappAutoSprintKey.onEvent("click",dappAutoSprintKeyClicked)
 	ui.dappLoadoutKey.onEvent("click",dappLoadoutKeyClicked)
 	ui.dappSwordFlyKeyData.onEvent("click",dappSwordFlyKeyClicked)
 	ui.dappReloadKey.onEvent("click",dappReloadKeyClicked)
 	ui.dappReloadKeyData.onEvent("click",dappReloadKeyClicked)
 	ui.dappReloadKey.onEvent("click",dappReloadKeyClicked)
 	
-	ui.currKey := cfg.d2GameInterfaceprintKey
+	ui.currKey := cfg.d2GameAutoSprintKey
 	ui.currKeyLabel := "Toggle Sprint"
 	
 		
-	ui.d2GameInterfaceprintKey				:= ui.gameSettingsGui.AddPicture("x25 y22 w" 18+(ui.d2KeybindWidth + max(max(0,(strLen(ui.currKey)-6))*10,max(0,(strLen(ui.currKeyLabel)-12)*5))) " h30 section backgroundTrans","./img/keyboard_key_up.png")
-	ui.d2GameInterfaceprintKeyData 			:= ui.gameSettingsGui.addText("xs-3 y+-24 w" 18+(ui.d2KeybindWidth + max(max(0,(strLen(ui.currKey)-6))*10,max(0,(strLen(ui.currKeyLabel)-12)*5))) " h21 center c" cfg.OffColor " backgroundTrans",subStr(strUpper(cfg.d2GameInterfaceprintKey),1,8))
-	ui.d2GameInterfaceprintKeyLabel			:= ui.gameSettingsGui.addText("xs-1 y+-34 w" 18+(ui.d2KeybindWidth + max(max(0,(strLen(ui.currKey)-6))*10,max(0,(strLen(ui.currKeyLabel)-12)*5))) " h20 center c" cfg.FontColor1 " backgroundTrans","Toggle Sprint")
+	ui.d2GameAutoSprintKey				:= ui.gameSettingsGui.AddPicture("x25 y22 w" 18+(ui.d2KeybindWidth + max(max(0,(strLen(ui.currKey)-6))*10,max(0,(strLen(ui.currKeyLabel)-12)*5))) " h30 section backgroundTrans","./img/keyboard_key_up.png")
+	ui.d2GameAutoSprintKeyData 			:= ui.gameSettingsGui.addText("xs-3 y+-24 w" 18+(ui.d2KeybindWidth + max(max(0,(strLen(ui.currKey)-6))*10,max(0,(strLen(ui.currKeyLabel)-12)*5))) " h21 center c" cfg.OffColor " backgroundTrans",subStr(strUpper(cfg.d2GameAutoSprintKey),1,8))
+	ui.d2GameAutoSprintKeyLabel			:= ui.gameSettingsGui.addText("xs-1 y+-34 w" 18+(ui.d2KeybindWidth + max(max(0,(strLen(ui.currKey)-6))*10,max(0,(strLen(ui.currKeyLabel)-12)*5))) " h20 center c" cfg.FontColor1 " backgroundTrans","Toggle Sprint")
 	
 	ui.currKey := cfg.d2GameHoldToCrouchKey
 	ui.currKeyLabel := "Hold Crouch"
@@ -674,8 +692,8 @@ drawKeybindBar(*) {
 	;ui.d2ToggleAutoGameConfigOutline := ui.gameSettingsGui.addText("ys+3 x+0 w1 h30 background" cfg.TrimColor2)
 	ui.d2ToggleAutoGameConfigLabel := ui.gameSettingsGui.addText("xs-2 y+0 w28 h10 backgroundTrans","Auto")
 	ui.d2ToggleAutoGameConfigLabel.setFont("s8")
-	ui.d2gameInterfaceprintKey.onEvent("click",d2gameInterfaceprintKeyClicked)
-	ui.d2gameInterfaceprintKeyData.onEvent("click",d2gameInterfaceprintKeyClicked)
+	ui.d2gameAutoSprintKey.onEvent("click",d2gameAutoSprintKeyClicked)
+	ui.d2gameAutoSprintKeyData.onEvent("click",d2gameAutoSprintKeyClicked)
 	ui.d2GameReloadKey.onEvent("click",d2GameReloadKeyClicked)
 	ui.d2GameReloadKeyData.onEvent("click",d2GameReloadKeyClicked)
 	ui.d2GameSuperKey.onEvent("click",d2GameSuperKeyClicked)
@@ -685,9 +703,9 @@ drawKeybindBar(*) {
 	ui.d2GameHoldToCrouchKey.onEvent("click",d2GameHoldToCrouchKeyClicked)
 	ui.d2GameHoldToCrouchKeyData.onEvent("click",d2GameHoldToCrouchKeyClicked)
 
-	ui.d2gameInterfaceprintKey.ToolTip		:= "Click to Assign"
-	ui.d2gameInterfaceprintKeyData.ToolTip  	:= "Click to Assign"
-	ui.d2gameInterfaceprintKeyLabel.ToolTip	:= "Click to Assign"
+	ui.d2gameAutoSprintKey.ToolTip		:= "Click to Assign"
+	ui.d2gameAutoSprintKeyData.ToolTip  	:= "Click to Assign"
+	ui.d2gameAutoSprintKeyLabel.ToolTip	:= "Click to Assign"
 	ui.d2GameReloadKey.ToolTip				:= "Click to Assign"
 	ui.d2GameReloadKeyData.ToolTip  		:= "Click to Assign"
 	ui.d2GameReloadKeyLabel.ToolTip			:= "Click to Assign"
@@ -701,8 +719,8 @@ drawKeybindBar(*) {
 	ui.d2GameHoldToCrouchKeyData.ToolTip  	:= "Click to Assign"
 	ui.d2GameHoldToCrouchKeyLabel.ToolTip	:= "Click to Assign"
 
-	ui.d2gameInterfaceprintKeyLabel.setFont("s10")
-	ui.d2gameInterfaceprintKeyData.setFont("s11")
+	ui.d2gameAutoSprintKeyLabel.setFont("s10")
+	ui.d2gameAutoSprintKeyData.setFont("s11")
 	ui.d2GameReloadKeyData.setFont("s11")
 	ui.d2GameReloadKeylabel.setFont("s10")
 	ui.d2GameSuperKeyData.setFont("s11")
@@ -721,19 +739,7 @@ drawKeybindBar(*) {
 	ui.d2keybindGameTab1.onEvent("click",d2keybindGameTabClicked)
 	ui.d2keybindGameTab2.onEvent("click",d2keybindGameTabClicked)
 	ui.d2keybindGameTab3.onEvent("click",d2keybindGameTabClicked)
-	ui.dappFunctionsEnabled := true
-	ui.d2ToggleAppFunctions := ui.gameSettingsGui.addPicture("x14 y15 w24 h42 section "
-	((ui.dappFunctionsEnabled) 
-		? ("Background" cfg.OnColor) 
-			: ("Background" cfg.OffColor)),
-	((ui.dappFunctionsEnabled) 
-		? ("./img/toggle_vertical_trans_on.png") 
-			: ("./img/toggle_vertical_trans_off.png")))
-	UI.d2ToggleAppFunctionsLine:=ui.gameSettingsGui.AddText("hidden x0 y0 w0 h0 backgroundTrans")
-	ui.d2ToggleAppFunctions.onEvent("click",d2ToggleAppFunctions)
-	ui.d2ToggleAppFunctionsOutline := ui.gameSettingsGui.addText("ys+4 x+0 w1 h32 background" cfg.TrimColor2)
-	ui.d2ToggleAppFunctionsLabel := ui.gameSettingsGui.addText("xs-2 y+5 w28 h10 backgroundTrans center","Pause")
-	ui.d2ToggleAppFunctionsLabel.setFont("s8")
+
 d2keybindAppTabClicked()
 
 }
@@ -918,46 +924,46 @@ d2GameHoldToCrouchKeyClicked(*) {
 		d2RedrawUI()
 	}
 
-	d2GameInterfaceprintKeyClicked(*) {
+	d2GameAutoSprintKeyClicked(*) {
 		keyBindDialogBox('Hold to Walk',"Center")
 		Sleep(100)
-		d2GameInterfaceprintKeyInput := InputHook("L1 T6", inputHookAllowedKeys,"+V")
-		d2GameInterfaceprintKeyInput.start()
-		d2GameInterfaceprintKeyInput.wait()
-		if (d2GameInterfaceprintKeyInput.endKey == "" && d2GameInterfaceprintKeyInput.input == "") {
+		d2GameAutoSprintKeyInput := InputHook("L1 T6", inputHookAllowedKeys,"+V")
+		d2GameAutoSprintKeyInput.start()
+		d2GameAutoSprintKeyInput.wait()
+		if (d2GameAutoSprintKeyInput.endKey == "" && d2GameAutoSprintKeyInput.input == "") {
 			keyBindDialogBoxClose()
 			notifyOSD('No Key Detected.`nPlease Try Again.',2000,"Center")
 		} else {
-			if (d2GameInterfaceprintKeyInput.input)
+			if (d2GameAutoSprintKeyInput.input)
 			{
-				cfg.d2GameInterfaceprintKey := d2GameInterfaceprintKeyInput.input
+				cfg.d2GameAutoSprintKey := d2GameAutoSprintKeyInput.input
 			} else {
-				cfg.d2GameInterfaceprintKey := d2GameInterfaceprintKeyInput.endKey
+				cfg.d2GameAutoSprintKey := d2GameAutoSprintKeyInput.endKey
 			}
-			ui.d2GameInterfaceprintKeyData.text := subStr(strUpper(cfg.d2GameInterfaceprintKey),1,8)
+			ui.d2GameAutoSprintKeyData.text := subStr(strUpper(cfg.d2GameAutoSprintKey),1,8)
 		}
 		keyBindDialogBoxClose()
 		d2CreateLoadoutKeys()
 		d2RedrawUI()
 	}
 
-	dappInterfaceprintKeyClicked(*) {
+	dappAutoSprintKeyClicked(*) {
 		keyBindDialogBox('Toggle Walk',"Center")
 		Sleep(100)
-		dappInterfaceprintKeyInput := InputHook("L1 T6", inputHookAllowedKeys,"+V")
-		dappInterfaceprintKeyInput.start()
-		dappInterfaceprintKeyInput.wait()
-		if (dappInterfaceprintKeyInput.endKey == "" && dappInterfaceprintKeyInput.input == "") {
+		dappAutoSprintKeyInput := InputHook("L1 T6", inputHookAllowedKeys,"+V")
+		dappAutoSprintKeyInput.start()
+		dappAutoSprintKeyInput.wait()
+		if (dappAutoSprintKeyInput.endKey == "" && dappAutoSprintKeyInput.input == "") {
 			keyBindDialogBoxClose()
 			notifyOSD('No Key Detected.`nPlease Try Again.',2000,"Center")
 		} else {
-			if (dappInterfaceprintKeyInput.input)
+			if (dappAutoSprintKeyInput.input)
 			{
-				cfg.dappInterfaceprintKey := dappInterfaceprintKeyInput.input
+				cfg.dappAutoSprintKey := dappAutoSprintKeyInput.input
 			} else {
-				cfg.dappInterfaceprintKey := dappInterfaceprintKeyInput.endKey
+				cfg.dappAutoSprintKey := dappAutoSprintKeyInput.endKey
 			}
-			ui.dappInterfaceprintKeyData.text := subStr(strUpper(cfg.dappInterfaceprintKey),1,8)
+			ui.dappAutoSprintKeyData.text := subStr(strUpper(cfg.dappAutoSprintKey),1,8)
 		}
 		keyBindDialogBoxClose()
 		d2CreateLoadoutKeys()
@@ -987,23 +993,23 @@ dappPTTKeyClicked(*) {
 		d2RedrawUI()
 	}	
 
-dappPauseKeyClicked(*) {
+dappEnabledKeyClicked(*) {
 		DialogBox('Assign key for: `n"Reload"',"Center")
 		Sleep(100)
-		dappPauseKeyInput := InputHook("L1 T6", inputHookAllowedKeys,"+V")
-		dappPauseKeyInput.start()
-		dappPauseKeyInput.wait()
-		if (dappPauseKeyInput.endKey == "" && dappPauseKeyInput.input == "") {
+		dappEnabledKeyInput := InputHook("L1 T6", inputHookAllowedKeys,"+V")
+		dappEnabledKeyInput.start()
+		dappEnabledKeyInput.wait()
+		if (dappEnabledKeyInput.endKey == "" && dappEnabledKeyInput.input == "") {
 			DialogBoxClose()
 			notifyOSD('No Key Detected.`nPlease Try Again.',2000,"Center")
 		} else {
-			if (dappPauseKeyInput.input)
+			if (dappEnabledKeyInput.input)
 			{
-				cfg.dappPauseKey := dappPauseKeyInput.input
+				cfg.dappEnabledKey := dappEnabledKeyInput.input
 			} else {
-				cfg.dappPauseKey := dappPauseKeyInput.endKey
+				cfg.dappEnabledKey := dappEnabledKeyInput.endKey
 			}
-			ui.dappPauseKeyData.text := subStr(strUpper(cfg.dappPauseKey),1,8)
+			ui.dappEnabledKeyData.text := subStr(strUpper(cfg.dappEnabledKey),1,8)
 		}
 		DialogBoxClose()
 		d2CreateLoadoutKeys()
@@ -1084,7 +1090,7 @@ resourceViewer(resourceType:="Maps",*) {
 	}
 
 if (cfg.d2AlwaysRunEnabled) {
-	d2ToggleAppFunctionsOn()
+	dappToggleEnabledFuncOn()
 }
 
 
