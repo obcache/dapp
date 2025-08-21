@@ -193,25 +193,48 @@ toggleMapBrowser(this_Ctrl,*) {
 	}
 
 	showMap(this_control,*) {
-		showMapGui := gui() 
-		showMapGui.opt("-caption toolWindow alwaysOnTop owner" ui.mapGui.hwnd)
-		showMapGui.backColor:="010203"
-		winSetTransColor("010203",showMapGui)
-		fullMap:=showMapGui.addPicture("x0 y2 w1600 h-1 backgroundTrans",this_control.value)
-		fullMap.onEvent("doubleClick",closeMap)
-		fullMap.onEvent("click",dragMap)
-		fullMap.getPos(,,,&mH)
-		showMapGui.show("x" ui.infoGfxMon.l+((ui.infoGfxMon.r-ui.infoGfxMon.l)/2)-800  " w1600 h" mH)
-		winGetPos(&tmpX,&tmpY,&tmpW,&tmpH,showMapGui)
-		showMapGui.show("y" ui.infoGfxMon.t+((ui.infoGfxMon.b-ui.infoGfxMon.t)/2)-(tmpH/2))
+		ui.showMapGui := gui() 
+		ui.showMapGui.opt("-caption toolWindow alwaysOnTop owner" ui.mapGui.hwnd)
+		ui.showMapGui.backColor:="010203"
+		winSetTransColor("010203",ui.showMapGui)
+		ui.fullMap:=ui.showMapGui.addPicture("x0 y2 w1600 h-1 backgroundTrans",this_control.value)
+		ui.fullMap.onEvent("doubleClick",closeMap)
+		ui.fullMap.onEvent("click",dragMap)
+		ui.fullMap.getPos(,,,&mH)
+		ui.showMapGui.show("x" ui.infoGfxMon.l+((ui.infoGfxMon.r-ui.infoGfxMon.l)/2)-800  " w1600 h" mH)
+		winGetPos(&tmpX,&tmpY,&tmpW,&tmpH,ui.showMapGui)
+		ui.showMapGui.show("y0")
+		
+		
+		postMessage("0xA1",2,,,"A")
+
+		hotIf(isViewingMap) 
+		hotkey(WheelUp,mapScrollUp)
+		hotkey(WheelDown,mapScrollDown)
+		hotIf()
+		mapScrollUp(*) {
+			winGetPos(&tX,&tY,&tW,&tH,ui.showMapGui)
+			ui.showMapGui.move(tY-1)
+			msgBox(tY "-" tY-1)
+		}
+		mapScrollDown(*) {
+			winGetPos(&tX,&tY,&tW,&tH,ui.showMapGui)
+			ui.showMapGui.move(tY+1)
+		}
+		isViewingMap(*) {
+			if winActive(ui.showMapGui) 
+				return 1
+			else
+				return 0
+		}
 		
 		dragMap(*) {
 			mouseGetPos(&startingMouseX,&startingMouseY)
-			postMessage("0xA1",2,,,"A")
 			while getKeyState("LButton")
 				mouseGetPos(&mouseX,&mouseY)
+			;msgBox(startingMouseX ',' startingMouseY '`n' mouseX ',' mouseY)
 				
-			showMapGui.show("y" ui.infoGfxMon.t+((ui.infoGfxMon.b-ui.infoGfxMon.t)/2)-(tmpH/2))
+			showMapGui.show("y" ui.infoGfxMon.t+((ui.infoGfxMon.b-ui.infoGfxMon.t)/2)-(tmpH/2)-(startingMouseY-mouseY))
 		}
 		closeMap(*) {
 			try 

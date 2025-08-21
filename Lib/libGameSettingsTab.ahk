@@ -158,7 +158,7 @@ ui.gameTab1Trans.opt((activeTabNum==1) ? "hidden" : "-hidden")
 	winGetPos(&mainGuiX,&mainGuiY,,,ui.mainGui.hwnd)
 	ui.gameTabSpacer:=ui.gameTabGui.addText("y2 x240 w" 490-267 " h30 background" cfg.titleBgColor)
 	ui.gameTabSpacer.onEvent("click",WM_LBUTTONDOWN_callback)
-	ui.buildNumber:=ui.gameTabGui.addText("x298 y14 w160 h26 right backgroundTrans","v" a_fileVersion)
+	ui.buildNumber:=ui.gameTabGui.addText("x298 y10 w160 h26 right backgroundTrans","v" a_fileVersion)
 	ui.buildNumber.setFont("q5 s9 c" cfg.titleFontColor,"move-x")	
 	
 	ui.statusBarText:=ui.gameTabGui.addText("hidden x250 y8 w240 h26 backgroundTrans")

@@ -10,7 +10,7 @@ if (InStr(A_LineFile,A_ScriptFullPath)) { ;run main app
 
 hotIfWinActive("ahk_exe destiny2.exe")
 		hotKey("*" cfg.dappAutoSprintKey,d2ToggleAlwaysSprint)
-		hotKey("*" cfg.dappAutoSprintKey,dappToggleEnabledFunc)
+		hotKey("*" cfg.dappEnabledKey,dappToggleEnabledFunc)
 		hotkey("~*" cfg.dappPTTKey,togglePTT)
 hotIf()
 

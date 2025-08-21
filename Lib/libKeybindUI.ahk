@@ -443,8 +443,8 @@ drawKeybindBar(*) {
 	cfg.dappEnabledToggleLine:=ui.gameSettingsGui.AddText("hidden x0 y0 w0 h0 backgroundTrans")
 	cfg.dappEnabledToggle.onEvent("click",dappToggleEnabledFunc)
 	cfg.dappEnabledToggleOutline := ui.gameSettingsGui.addText("ys+4 x+0 w1 h32 background" cfg.TrimColor2)
-	cfg.dappEnabledToggleLabel := ui.gameSettingsGui.addText("xs-2 y+-28 w28 h28 backgroundTrans center","")
-	cfg.dappEnabledToggleLabel.setFont("s16 c" cfg.titleFontColor,"Segoe MDL2 Assets")
+	cfg.dappEnabledToggleLabel := ui.gameSettingsGui.addText("xs-1 y+-26 w28 h28 backgroundTrans center","")
+	cfg.dappEnabledToggleLabel.setFont("s16 bold c" cfg.titleFontColor,"Segoe MDL2 Assets")
 	
 	
 	ui.dappEnabledDetail1:=ui.gameSettingsGui.addPicture("x18 y16 w30 backgroundTrans h" cfg.curveAmount,"./img/custom/lightburst_top_bar_dark.png")
