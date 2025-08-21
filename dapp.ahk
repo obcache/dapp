@@ -1,4 +1,4 @@
-A_FileVersion := "1.7.9.3"
+A_FileVersion := "1.7.9.4"
 A_SchemaVersion:="1.1.1.1"
 a_appName := "dapp"
 
