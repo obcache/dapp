@@ -156,8 +156,8 @@ this.statBgDetail3:=ui.gameSettingsGui.addPicture("hidden x10 y80 w6 h66 backgro
 	this.helpOutline:=ui.gameSettingsGui.addText("x" 8 " y" 82 " w" 232 " h" 60 " background" cfg.trimColor2)
 	this.helpBg:=ui.gameSettingsGui.addText("x" 9 " y" 84 " w" 231 " h" 56 " background" cfg.tabColor2)
 	this.helpText:=ui.gameSettingsGui.addText("x" 15 " y" 87 " w" 223 " h" 52 " backgroundTrans")
-	this.helpText.setFont("s10 q5 c" cfg.fontColor2,"Arial Narrow")
-	this.helpText.text:='         To avoid inconsistencies, Destiny 2`n         must be in "Borderless Windowed" mode. This wizard will outline the process.'
+	this.helpText.setFont("s10 q5 c" cfg.fontColor2,"Consolas")
+	this.helpText.text:='    To avoid inconsistencies, `n    Destiny 2 must be in "Borderless Windowed" mode.'
 	this.helpIcon:=ui.gameSettingsGui.addPicture("x16 y90 w20 h26 backgroundTrans","./img/icon_help.png")
 	this.helpTop:=ui.gameSettingsGui.addPicture("x" 10 " y" 84 " w" 229 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
 this.helpBottom:=ui.gameSettingsGui.addPicture("x" 10 " y" 84+56-cfg.curveAmount " w" 229 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")

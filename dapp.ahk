@@ -1,4 +1,4 @@
-A_FileVersion := "1.7.9.4"
+A_FileVersion := "1.7.9.5"
 A_SchemaVersion:="1.1.1.1"
 a_appName := "dapp"
 
@@ -176,4 +176,5 @@ ui.isActiveWindow:=""
 sbUpdate("Application Version Current")
 sleep(2500)
 sbUpdate("Ready...")
+
 

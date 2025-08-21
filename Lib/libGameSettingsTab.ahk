@@ -764,3 +764,6 @@ drawPanelLabel(guiName,labelX,labelY,labelW := 100,labelH := 20,labelText := "ne
 ;line(ui.mainGui,529,0,2,30,cfg.TrimColor2)
 ;line(ui.gameTabGui,495,2,2,32,cfg.titleBgColor)
 line(ui.mainGui,474,30,55,2,cfg.TabColor1)
+
+dappToggleEnabledFuncOff()
+dappToggleEnabledFuncOn()
