@@ -10,18 +10,27 @@ if (InStr(A_LineFile,A_ScriptFullPath))
 }
 
 
+
 opInt(*) {
-	static timeout:=0
-	if !isIdle() {
-		while !isIdle() && !winActive(ui.game) {
-			sleep(1000)
-			timeout+=1
-			if timeout>=300 {
-				wizCancel()
-				Return
-			}
-		}
+	if this.stopQueued {
+		static timeout:=0
+		stopCleaning()
+		this.stopQueued:=false
+	; if !isIdle() {
+		; while !isIdle() && !winActive(this.gameWin) {
+			; sleep(1000)
+			; timeout+=1
+			; if timeout>=300 {
+				; wizCancel()
+				; Return
+			; }
+		; }
+	; }
+		return 1
+	} else {
+		return 0
 	}
+	
 }
 
 isIdle(*) {
@@ -37,6 +46,11 @@ ui.vaultCleanerOpen := false
 
 
 ui.gametabs.useTab("Vault Cleaner")
+	this.vcRunGui:=gui()
+	this.vcRunGui.opt("-caption -border alwaysOnTop owner" ui.gameSettingsGui.hwnd)
+	this.vcRunGui.backColor:="333333"
+	this.vcRunGui.color:="333333"
+	winSetTransparent(160,this.vcRunGui)
 	ui.gameSettingsGui.addText("x5 y3 w488 h146 background" cfg.TabColor1)
 	;drawOutlineNamed("vaultStats",ui.gameSettingsGui,5,4,488,150,cfg.OutlineColor1,cfg.OutlineColor1,1)
 	;ui.gameSettingsGui.addText("x11 y8 w118 h60 background" cfg.TileColor)
@@ -102,7 +116,7 @@ this.mainButtonHotkeyDetail1:=ui.gameSettingsGui.addPicture("hidden left x10 y10
 	this.statTop:=ui.gameSettingsGui.addPicture("x" 249 " y" 84 " w" 239 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
 	this.statBottom:=ui.gameSettingsGui.addPicture("x" 249 " y" 84+56-cfg.curveAmount " w" 239 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 	this.statLeft:=ui.gameSettingsGui.addPicture("x" 248 " y" 82 " w" cfg.curveAmount/3 " h" 60 " backgroundTrans","./img/custom/lightburst_left_bar_dark.png")
-	this.statRight:=ui.gameSettingsGui.addPicture("x" 249+240-(cfg.curveAmount/3) " y" 82 " w" cfg.curveAmount/3 " h" 60 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")
+;	this.statRight:=ui.gameSettingsGui.addPicture("x" 252+240-(cfg.curveAmount/3) " y" 8 " w" cfg.curveAmount/3 " h" 132 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")
 
 
 
@@ -125,7 +139,7 @@ this.mainButtonHotkeyDetail1:=ui.gameSettingsGui.addPicture("hidden left x10 y10
 	
 	this.statBgDetail:=ui.gameSettingsGui.addPicture("hidden x10 y60 w480 h20 backgroundTrans","./img/custom/lightburst_bottom_bar_light.png")
 	this.statBgDetail2:=ui.gameSettingsGui.addPicture("hidden x10 y80 w480 h20 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
-this.statBgDetail3:=ui.gameSettingsGui.addPicture("hidden x10 y80 w6 h66 backgroundTrans","./img/custom/lightburst_left_bar_dark.png")
+	this.statBgDetail3:=ui.gameSettingsGui.addPicture("hidden x10 y80 w6 h66 backgroundTrans","./img/custom/lightburst_left_bar_dark.png")
 	;drawOutlineNamed("vaultCleanerButton",ui.gameSettingsGui,10,79,234,65,cfg.OutlineColor1,cfg.OutlineColor1,1)
 	;drawOutlineNamed("vaultCleanerButton",ui.gameSettingsGui,247,79,243,64,cfg.TrimColor2,cfg.TrimColor1,4)
 	;drawOutlineNamed("vaultStats",ui.gameSettingsGui,9,80,481,64,cfg.trimColor2,cfg.trimColor2,1)
@@ -154,16 +168,17 @@ this.statBgDetail3:=ui.gameSettingsGui.addPicture("hidden x10 y80 w6 h66 backgro
 	wizPanel(wizPanelParams)
 	
 	this.helpOutline:=ui.gameSettingsGui.addText("x" 8 " y" 82 " w" 232 " h" 60 " background" cfg.trimColor2)
-	this.helpBg:=ui.gameSettingsGui.addText("x" 9 " y" 84 " w" 231 " h" 56 " background" cfg.tabColor2)
+	this.helpBg:=ui.gameSettingsGui.addText("x" 8 " y" 84 " w" 231 " h" 56 " background" cfg.tabColor2)
 	this.helpText:=ui.gameSettingsGui.addText("x" 15 " y" 87 " w" 223 " h" 52 " backgroundTrans")
 	this.helpText.setFont("s10 q5 c" cfg.fontColor2,"Consolas")
-	this.helpText.text:='    To avoid inconsistencies, `n    Destiny 2 must be in "Borderless Windowed" mode.'
+	this.helpText.text:='    Destiny 2 must be manually`n   set to "Borderless Windowed"`n   to allow window resizing.'
 	this.helpIcon:=ui.gameSettingsGui.addPicture("x16 y90 w20 h26 backgroundTrans","./img/icon_help.png")
 	this.helpTop:=ui.gameSettingsGui.addPicture("x" 10 " y" 84 " w" 229 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
 this.helpBottom:=ui.gameSettingsGui.addPicture("x" 10 " y" 84+56-cfg.curveAmount " w" 229 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
-	this.helpLeft:=ui.gameSettingsGui.addPicture("x" 8 " y" 82 " w" cfg.curveAmount/3 " h" 62 " backgroundTrans","./img/custom/lightburst_left_bar_dark.png")
-	this.helpRight:=ui.gameSettingsGui.addPicture("hidden x" 250-(cfg.curveAmount/3) " y" 84 " w" cfg.curveAmount/3 " h" 56 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")
-	this.helpRight2:=ui.gameSettingsGui.addPicture("x" 240-(cfg.curveAmount/3) " y" 82 " w" cfg.curveAmount/3 " h" 60 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")
+	this.helpLeft:=ui.gameSettingsGui.addPicture("x" 6 " y" 8 " w" cfg.curveAmount/3 " h" 136 " backgroundTrans","./img/custom/lightburst_left_bar_dark.png")
+	this.helpRight:=ui.gameSettingsGui.addPicture("hidden x" 252-(cfg.curveAmount/3) " y" 8 " w" cfg.curveAmount/3 " h" 136 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")
+	this.helpRight2:=ui.gameSettingsGui.addPicture("x" 242-(cfg.curveAmount/3) " y" 82 " w" cfg.curveAmount/3 " h" 60 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")
+	this.statRight:=ui.gameSettingsGui.addPicture("x" 252+240-(cfg.curveAmount/3) " y" 8 " w" cfg.curveAmount/3 " h" 132 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")
 
 	wizPanel(wizPanelParams) {
 		this_guid:=newGuid()
@@ -197,7 +212,9 @@ this.helpBottom:=ui.gameSettingsGui.addPicture("x" 10 " y" 84+56-cfg.curveAmount
 		ui.wizPanelText2_%this_guid%:=this_gui.addText("x" this_X+47 " y" this_Y+22 " w" this_W-204 " h" 29 " backgroundTrans c" cfg.fontColor1,this_text2)
 		ui.wizPanelText2_%this_guid%.setFont("s8 c" cfg.fontColor1 " q5","Consolas")
 		ui.wizPanelButtonOutline_%this_guid%:=this_gui.addText("x" this_X+this_W-153 " y" this_Y+1 " w" 86 " h" 49 " background" cfg.tabColor2)
-		ui.wizPanelButton1_%this_guid%:=this_gui.addPicture("x" (this_X+this_W)-150  " y" this_Y+2 " w" 80 " h" 24 " backgroundTrans","./img/button_next.png")
+		ui.wizPanelButton1_%this_guid%:=this_gui.addPicture("x" (this_X+this_W)-150  " y" this_Y+2 " w" 80 " h" 24 " backgroundTrans",(this_page==3) ? "./img/button_start.png" : "./img/button_next.png")
+		if this_page==3
+			ui.vaultStartButton:=ui.wizPanelButton1_%this_guid%
 		ui.wizPanelButton2_%this_guid%:=this_gui.addPicture("x" (this_X+this_W)-150 " y" this_Y+25 " w" 80 " h" 24 " backgroundTrans","./img/button_cancel.png")
 		ui.wizPanelStep1Detail_%this_guid%:=this_gui.addPicture("x" this_X+1 " y" this_Y+1 " w" 40 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
 		ui.wizPanelStep1Detail2_%this_guid%:=this_gui.addPicture("x" this_X+43 " y" this_Y+1 " w" 284 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
@@ -245,7 +262,7 @@ this.helpBottom:=ui.gameSettingsGui.addPicture("x" 10 " y" 84+56-cfg.curveAmount
 				ui.wizPanelStep1Detail2_%this_guid%.opt("-hidden")
 				ui.wizPanelStep1Detail3_%this_guid%.opt("-hidden")
 				ui.wizPanelStep1Detail4_%this_guid%.opt("-hidden")
-				
+
 			} else {
 				ui.wizPanelOutline_%this_guid%.opt("hidden")
 				ui.wizPanelBg_%this_guid%.opt("hidden")
@@ -279,10 +296,12 @@ this.helpBottom:=ui.gameSettingsGui.addPicture("x" 10 " y" 84+56-cfg.curveAmount
 		switch ui.wizPage {
 			case 2:
 				vaultModeOn()
+				;ui.wizPanelButton1_%this_guid%.value:="./img/button_start.png"
 			case 3:
 				cleanVaultStart()
 				vaultModeOff()
 				ui.wizPage:=1
+				;ui.wizPanelButton1_%this_guid%.value:="./img/button_next.png"
 				wizPanelPageChange(ui.wizPage)
 				Return
 		}		
@@ -322,7 +341,6 @@ this.helpBottom:=ui.gameSettingsGui.addPicture("x" 10 " y" 84+56-cfg.curveAmount
 
 	vaultModeOn(*) {
 		;if isWindowedFullscreen() {
-		this.gameWin:="ahk_exe destiny2.exe"
 		if !winExist(this.gameWin) {
 			notifyOSD("Game window not found. Vault mode aborted.",2000,ui.gameSettingsGui)
 			vaultMode:=false
@@ -335,7 +353,7 @@ this.helpBottom:=ui.gameSettingsGui.addPicture("x" 10 " y" 84+56-cfg.curveAmount
 			this.d2LaunchVaultCleanerText.text:="Vault Mode: On`nClick to Toggle"
 			this.statBg.opt("background" cfg.TabColor2)
 			this.statBg.value:="./img/custom/lightburst_tl.png"
-			drawOutlineNamed("vaultCleanerButton",ui.gameSettingsGui,13,82,230,56,cfg.DisabledColor,cfg.DisabledColor,1)
+			;drawOutlineNamed("vaultCleanerButton",ui.gameSettingsGui,13,82,230,56,cfg.DisabledColor,cfg.DisabledColor,1)
 			this.d2LaunchVaultCleanerButton.value:="./img/button_vault_down.png"
 			; winMove((a_screenwidth/2)-640,(a_screenheight/2)-360,1280,720,this.gameWin)
 			; winActivate(ui.mainGui)
@@ -393,6 +411,9 @@ this.helpBottom:=ui.gameSettingsGui.addPicture("x" 10 " y" 84+56-cfg.curveAmount
 
 
 libVaultInit(*) {
+
+	this.gameWin:="ahk_exe destiny2.exe"
+	this.stopQueued:=false
 	ui.vaultCleanerOpen:=true
 	setting.gameExe := "destiny2.exe"
 	setting.xMargin:=306
@@ -513,7 +534,14 @@ vault_LBUTTONDOWN_callback(thisControl,info) {
 	;WM_LBUTTONDOWN(0,0,0,thisControl)	
 }
 stopCleaning(*) {
+	this.vcRunGui.hide()
+	this.stopQueued:=true
 	this.restartQueued:=false
+	ui.vaultStartButton.opt("-disabled")
+	ui.vaultStartButton.value:="./img/button_next.png"
+	ui.wizPage:=1
+	wizPanelPageChange(1)
+	this.vaultProgress.value:=0
 	this.mainButtonText.text:="Start"
 	this.statusText.text:="[Del] to start cleaning"
 	this.mainButton.opt("background" cfg.AlertColor "c" cfg.LabelColor1)
@@ -523,6 +551,8 @@ stopCleaning(*) {
 }	
 
 cleanVaultStart(*) {
+	winGetPos(&vpx,&vpy,&vpw,&vph,ui.gameSettingsGui)
+	this.vcRunGui.show("x" vpx+6 " y" vpy+4 " w" 484 " h" 80 " noActivate")
 	if opInt()
 		return
 	this.restartQueued:=true
@@ -534,8 +564,10 @@ cleanVaultStart(*) {
 		return	
 	winActivate(this.gameWin)
 	
-
-	this.statusText.text:="[End] to Stop"
+	ui.vaultStartButton.opt("disabled")
+	this.statusText.text:="[Esc] to Stop"
+	hotkey("Escape",stopCleaning)
+	
 	setTimer(timer,1000)
 	timer()
 	coordMode("mouse","client")
@@ -553,7 +585,9 @@ cleanVaultStart(*) {
 	if opInt()
 		return
 	loop {
-	;(this.restartQueued) ? stopCleaning() : 0
+		if opInt()
+			return	
+		;(this.restartQueued) ? stopCleaning() : 0
 		if subStr(pixelGetColor(970,170),3,1)<="4" {
 			mouseMove(955,170)
 			this.page+=1
@@ -594,6 +628,8 @@ cleanVaultStart(*) {
 				return
 			this.row:=setting.rowCount-a_index
 			loop setting.columnCount {
+				if opInt()
+					return	
 				;(this.restartQueued) ? stopCleaning() : 0
 				this.vaultProgress.value+=1  
 				this.col:=setting.columnCount-a_index
@@ -616,6 +652,7 @@ cleanVaultStart(*) {
 			
 	}
 	this.statusText.text:="Operation Complete"
+	hotkey("Escape","Off")
 	stopCleaning()
 }
 
@@ -643,7 +680,7 @@ dismantle(thisCol,thisRow) {
 	send("{f}")
 
 	loop 30 {
-		this.tileColor:=pixelGetColor((thisCol<6) ? x-(setting.tileSize/2)+1 : x+(setting.tileSize/2)-(6-(thisCol-5)),y)
+		this.tileColor:=pixelGetColor((thisCol<5) ? x-(setting.tileSize/2)+1 : x+(setting.tileSize/2)-(6-(thisCol-5)),y)
 		; (thisCol<6)
 			; ? logTxt:="Check Locked," formatTime("T12","yyMMddhhmmss") "," thisRow ":" thisCol "," x ":" y "," x-(setting.tileSize/2) ":" y "," this.tileColor
 			; : logTxt:="Check Locked," formatTime("T12","yyMMddhhmmss") "," thisRow ":" thisCol "," x ":" y "," x+(setting.tileSize/2) ":" y "," this.tileColor 

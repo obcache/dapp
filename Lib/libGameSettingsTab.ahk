@@ -77,6 +77,7 @@ refreshGameTabs(activeTabNum:=1) {
 			ui.gameTab%tabNum%Skin%a_index%.opt((a_index==activeTabNum) ? "-hidden" : "hidden")
 			ui.gameTab%tabNum%Skin%a_index%.redraw()
 			ui.gameTab%tabNum%Divider%a_index%.opt((a_index==activeTabNum) ? "-hidden" : "hidden")
+			
 		}	
 		ui.gameTab%tabNum%Divider%a_index%.redraw()
 	}
@@ -84,6 +85,10 @@ refreshGameTabs(activeTabNum:=1) {
 	ui.gameTab1BottomDetail.opt((activeTabNum==1) ? "y" 32-(cfg.curveAmount) : "y" 31-(cfg.curveAmount))
 	ui.gameTab1TopDetail.opt((activeTabNum==1) ? "hidden" : "-hidden")
 	ui.gameTab1SideDetail.opt((activeTabNum==1) ? "hidden" : "-hidden")
+	ui.gameTab1LeftDetail.opt((activeTabNum==1) ? "hidden" : "-hidden")
+	ui.gameTab1LeftTrans.opt((activeTabNum==1) ? "hidden" : "-hidden")
+	try
+		ui.gameTab1LeftTransMain.opt((activeTabNum==1) ? "hidden" : "-hidden")
 	ui.gameTab2BottomDetail.move(,(activeTabNum==2) ? 32-(cfg.curveAmount) : 31-(cfg.curveAmount))
 	ui.gameTab2TopDetail.opt((activeTabNum==2) ? "hidden" : "-hidden")
 	ui.gameTab2SideDetail.opt((activeTabNum==2) ? "hidden" : "-hidden")
@@ -101,16 +106,18 @@ ui.gameTab1Trans.opt((activeTabNum==1) ? "hidden" : "-hidden")
 	ui.gameTab2Label.onEvent("click",vaultTabClicked)
 }
 
-	gameTabClicked(this_ctrl,*) {
-		ui.gameTabs.choose("Gameplay")
-		refreshGameTabs(1)
-		
-	}
-	vaultTabClicked(*) {
-		ui.gameTabs.choose("Vault Cleaner")
-		refreshGameTabs(2)
-	}
-	drawGameTabs(tabNum := 1) {
+gameTabClicked(this_ctrl,*) {
+	ui.gameTabs.choose("Gameplay")
+	refreshGameTabs(1)
+	
+}
+
+vaultTabClicked(*) {
+	ui.gameTabs.choose("Vault Cleaner")
+	refreshGameTabs(2)
+}
+	
+drawGameTabs(tabNum := 1) {
 	ui.gameTabGui := gui()
 	ui.gameTabGui.opt("-caption toolWindow alwaysOnTop owner" ui.gameSettingsGui.hwnd)
 	ui.gameTabGui.backColor := ui.transparentColor
@@ -120,10 +127,10 @@ ui.gameTab1Trans.opt((activeTabNum==1) ? "hidden" : "-hidden")
 	drawOutlineNamed("gameTabOutline",ui.gameTabGui,0,0,498,2
 		,cfg.TrimColor1,cfg.TrimColor1,2)
 
-	ui.gameTab1SkinOutline2 := ui.gameTabGui.addText("x0 y1 w110 h29 background" cfg.TrimColor2,"")
+	ui.gameTab1SkinOutline2 := ui.gameTabGui.addText("x2 y1 w110 h29 background" cfg.TrimColor2,"")
 
 	ui.gameTab1SkinOutline1 := ui.gameTabGui.addText("x0 y0 w110 h32 background" cfg.TrimColor1,"" )
-	ui.gameTab1Skin2 := ui.gameTabGui.addText("y2 h26 x2 w106 background" cfg.TabColor2	" c" cfg.FontColor2,"")
+	ui.gameTab1Skin2 := ui.gameTabGui.addText("y2 h26 x4 w106 background" cfg.TabColor2	" c" cfg.FontColor2,"")
 	ui.gameTab1Skin1 := ui.gameTabGui.addText("y0 h30 x2 w106  background" cfg.TabColor1 " c" cfg.FontColor1,"")
 	ui.gameTab1Divider2:=ui.gameTabGui.addText("y2 x108 w2 h30 background" cfg.TrimColor1,"")
 	ui.gameTab1Divider1:=ui.gameTabGui.addText("y0 x108 w2 h30 background" cfg.TrimColor1,"")
@@ -148,7 +155,8 @@ ui.gameTab1Trans.opt((activeTabNum==1) ? "hidden" : "-hidden")
 	ui.gameTab1BottomDetail:=ui.gameTabGui.addPicture("-hidden x0 y" 32-(cfg.curveAmount) " w110 h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
 	ui.gameTab1TopDetail:=ui.gameTabGui.addPicture("hidden x0 y" 2 " w108 h" cfg.curveAmount/2 " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
 	ui.gameTab1SideDetail:=ui.gameTabGui.addPicture("hidden x" 109-(cfg.curveAmount/3) " y" 2 " w" cfg.curveAmount/3 " h" 28 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")	 
-
+	ui.gameTab1LeftDetail:=ui.gameTabGui.addPicture("hidden x" 0 " y" 2 " w" cfg.curveAmount/3 " h" 30 " backgroundTrans","./img/custom/lightburst_left_bar_dark.png")
+	ui.gameTab1LeftTrans:=ui.gameTabGui.addText("hidden x" 0 " y" 0 " w" 2 " h" 30 " background" ui.transparentColor)
 	ui.gameTab2BottomDetail:=ui.gameTabGui.addPicture("-hidden x110 y" 32-(cfg.curveAmount) " w130 h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")	 
 	ui.gameTab2TopDetail:=ui.gameTabGui.addPicture("hidden x112 y" 2 " w130 h" cfg.curveAmount/2 " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
 	ui.gameTab2SideDetail:=ui.gameTabGui.addPicture("hidden x110 y" 2 " w" cfg.curveAmount/3 " h" 29 " backgroundTrans","./img/custom/lightburst_left_bar_dark.png")	
