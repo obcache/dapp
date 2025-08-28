@@ -165,6 +165,7 @@ drawTabs(this_gui:=ui.mainTabGui,tabControl:=ui.mainGuiTabs,tabX:=0,tabY:=0,tabN
 }
 
 changeTabs(this_gui:=ui.mainTabGui,this_tabControl:=ui.mainGuiTabs) {
+refreshGameTabs(ui.gameTabNum)
 	if this_tabControl.value==1 {
 		ui.%this_Gui.name%Tab1BgOff.opt("hidden")
 		ui.%this_Gui.name%Tab1Off.opt("hidden")
@@ -192,6 +193,7 @@ changeTabs(this_gui:=ui.mainTabGui,this_tabControl:=ui.mainGuiTabs) {
 		ui.%this_Gui.name%Top2Detail.move(,2)
 		ui.gameSettingsGui.show()
 		ui.gameTabGui.show()
+		ui.gameTab1LeftTransMain.opt("-hidden")
 	} else {
 		ui.%this_Gui.name%Tab1BgOff.opt("-hidden")
 		ui.%this_Gui.name%Tab1Off.opt("-hidden")
@@ -217,7 +219,11 @@ changeTabs(this_gui:=ui.mainTabGui,this_tabControl:=ui.mainGuiTabs) {
 		ui.%this_gui.name%Tab2InactiveLeft.opt("hidden")
 		ui.%this_Gui.name%Top1Detail.move(,2)
 		ui.%this_Gui.name%Top2Detail.move(,0)		
-		}
+		if ui.gameTabNum==2
+			ui.gameTab1LeftTransMain.opt("hidden")
+		}	
+		
+		;ui.gameTab1LeftTransMain.opt("hidden")
 		
 }
 	
