@@ -370,9 +370,9 @@ dappToggleEnabledFunc(*) {
 		? dappToggleEnabledFuncOff()
 		: dappToggleEnabledFuncOn()
 }
-
+cfg.dappEnabled:=false
 dappToggleEnabledFuncOn() {
-;cfg.dappEnabled:=true
+	;cfg.dappEnabled:=true
 	cfg.dappEnabledToggle.Opt("Background" cfg.AlertColor)
 	cfg.dappEnabledToggle.redraw()
 	;cfg.dappEnabledToggle.value := "./img/toggle_vertical_trans_on.png"
@@ -407,12 +407,4 @@ d2ToggleAutoGameConfigOff() {
 	ui.d2ToggleAutoGameConfig.redraw()
 }
 
-if (cfg.d2AlwaysRunEnabled) {
-		dappToggleEnabledFuncOn()
-}
-
-
-
-
-
-
+dappToggleEnabledFuncOn()
