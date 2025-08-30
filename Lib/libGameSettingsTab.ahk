@@ -132,7 +132,7 @@ drawGameTabs(tabNum := 1) {
 	drawOutlineNamed("gameTabOutline",ui.gameTabGui,0,0,498,2
 		,cfg.TrimColor1,cfg.TrimColor1,2)
 
-	ui.gameTab1SkinOutline2 := ui.gameTabGui.addText("x2 y1 w110 h29 background" cfg.TrimColor2,"")
+	ui.gameTab1SkinOutline2 := ui.gameTabGui.addText("x2 y0 w110 h30 background" cfg.TrimColor2,"")
 
 	ui.gameTab1SkinOutline1 := ui.gameTabGui.addText("x0 y0 w110 h32 background" cfg.TrimColor1,"" )
 	ui.gameTab1Skin2 := ui.gameTabGui.addText("y2 h26 x4 w106 background" cfg.TabColor2	" c" cfg.FontColor2,"")
@@ -158,13 +158,13 @@ drawGameTabs(tabNum := 1) {
 	ui.gameTab1Active:=ui.gameTabGui.addText("x0 y0 w110 h2 background" cfg.trimColor1,"")
 
 	ui.gameTab1BottomDetail:=ui.gameTabGui.addPicture("-hidden x0 y" 32-(cfg.curveAmount) " w110 h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
-	ui.gameTab1TopDetail:=ui.gameTabGui.addPicture("hidden x0 y" 2 " w108 h" cfg.curveAmount/2 " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
+	ui.gameTab1TopDetail:=ui.gameTabGui.addPicture("hidden x2 y" 2 " w106 h" cfg.curveAmount/2 " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
 	ui.gameTab1SideDetail:=ui.gameTabGui.addPicture("hidden x" 109-(cfg.curveAmount/3) " y" 2 " w" cfg.curveAmount/3 " h" 28 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")	 
-	ui.gameTab1LeftDetail:=ui.gameTabGui.addPicture("hidden x" 0 " y" 2 " w" cfg.curveAmount/3 " h" 30 " backgroundTrans","./img/custom/lightburst_left_bar_dark.png")
+	ui.gameTab1LeftDetail:=ui.gameTabGui.addPicture("hidden x" 2000 " y" 0 " w" cfg.curveAmount/3 " h" 0 " backgroundTrans","./img/custom/lightburst_left_bar_dark.png")
 	ui.gameTab1LeftTrans:=ui.gameTabGui.addText("hidden x" 0 " y" 0 " w" 2 " h" 30 " background" ui.transparentColor)
 	ui.gameTab2BottomDetail:=ui.gameTabGui.addPicture("-hidden x110 y" 32-(cfg.curveAmount) " w130 h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")	 
-	ui.gameTab2TopDetail:=ui.gameTabGui.addPicture("hidden x112 y" 2 " w130 h" cfg.curveAmount/2 " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
-	ui.gameTab2SideDetail:=ui.gameTabGui.addPicture("hidden x110 y" 2 " w" cfg.curveAmount/3 " h" 29 " backgroundTrans","./img/custom/lightburst_left_bar_dark.png")	
+	ui.gameTab2TopDetail:=ui.gameTabGui.addPicture("hidden x110 y" 2 " w130 h" cfg.curveAmount/2 " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
+	ui.gameTab2SideDetail:=ui.gameTabGui.addPicture("hidden x110 y" 2 " w" cfg.curveAmount/3 " h" 28 " backgroundTrans","./img/custom/lightburst_left_bar_dark.png")	
 
 
 	

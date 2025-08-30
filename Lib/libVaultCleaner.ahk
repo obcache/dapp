@@ -148,10 +148,10 @@ this.mainButtonHotkeyDetail1:=ui.gameSettingsGui.addPicture("hidden left x10 y10
 	;this.vaultProgressLabelBg2:=ui.gameSettingsGui.addPicture("x10 y52 w96 h20 backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
 	this.d2LaunchVaultCleanerButton := ui.gameSettingsGui.addPicture("hidden x9 y76 w70 h70 backgroundTrans","./img/button_vault_up.png")
 	this.d2LaunchVaultCleanerButton.onEvent("click",toggleVaultMode)
-	this.d2LaunchVaultCleanerText:=ui.gameSettingsGui.addText("hidden x65 y85 w180 h50 center backgroundTrans c" cfg.fontColor2,'Vault Mode: Off`nClick to Toggle.')
+	this.d2LaunchVaultCleanerText:=ui.gameSettingsGui.addText("hidden x65 y85 w120 h50 center backgroundTrans c" cfg.fontColor2,'Vault Mode: Off`nClick to Toggle.')
 	this.d2LaunchVaultCleanerText.setFont("s14 c" cfg.fontColor2 " bold","Prototype")
-	this.vaultProgressLabel:=ui.gameSettingsGui.addText("x16 y63 w110 h15 backgroundTrans c" cfg.fontColor2,"Progress")
-	this.vaultProgressLabel.setFont("s10 c" cfg.fontColor2,"move-x")
+	this.vaultProgressLabel:=ui.gameSettingsGui.addText("center x16 y63 w80 h18 backgroundTrans c" cfg.fontColor2,"Progress")
+	this.vaultProgressLabel.setFont("s10 c" cfg.fontColor2,"Verdana")
 	drawOutlineNamed("vaultOutline",ui.gameSettingsGui,7,7,484,137,cfg.trimColor2,cfg.trimColor2,1)
 	
 	; this.vaultStepOutline
@@ -170,8 +170,8 @@ this.mainButtonHotkeyDetail1:=ui.gameSettingsGui.addPicture("hidden left x10 y10
 	this.helpOutline:=ui.gameSettingsGui.addText("x" 8 " y" 82 " w" 232 " h" 60 " background" cfg.trimColor2)
 	this.helpBg:=ui.gameSettingsGui.addText("x" 8 " y" 84 " w" 231 " h" 56 " background" cfg.tabColor2)
 	this.helpText:=ui.gameSettingsGui.addText("x" 15 " y" 87 " w" 223 " h" 52 " backgroundTrans")
-	this.helpText.setFont("s10 q5 c" cfg.fontColor2,"Consolas")
-	this.helpText.text:='    Destiny 2 must be manually`n   set to "Borderless Windowed"`n   to allow window resizing.'
+	this.helpText.setFont("s10 q5 c" cfg.fontColor2,"Inter")
+	this.helpText.text:='         For reliable game automation,`n         video mode must be manually`n changed to Borderless Windowed'
 	this.helpIcon:=ui.gameSettingsGui.addPicture("x16 y90 w20 h26 backgroundTrans","./img/icon_help.png")
 	this.helpTop:=ui.gameSettingsGui.addPicture("x" 10 " y" 84 " w" 229 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
 this.helpBottom:=ui.gameSettingsGui.addPicture("x" 10 " y" 84+56-cfg.curveAmount " w" 229 " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
@@ -208,9 +208,9 @@ this.helpBottom:=ui.gameSettingsGui.addPicture("x" 10 " y" 84+56-cfg.curveAmount
 		ui.wizPanelText1Bg_%this_guid%:=this_gui.addText("x" this_X+43 " y" this_Y+1 " w" this_W-198 " h" 17 " background" cfg.tabColor2)
 		ui.wizPanelText2Bg_%this_guid%:=this_gui.addText("x" this_X+43 " y" this_Y+20 " w" this_W-198 " h" 30 " background" cfg.tabColor1)
 		ui.wizPanelText1_%this_guid%:=this_gui.addText("x" this_X+47 " y" this_Y+2 " w" this_W-204 " h" 18 " backgroundTrans c" cfg.fontColor2,this_text1)
-		ui.wizPanelText1_%this_guid%.setFont("s10 c" cfg.fontColor2 " q5","Consolas")
+		ui.wizPanelText1_%this_guid%.setFont("s10 c" cfg.fontColor2 " q5","Arial")
 		ui.wizPanelText2_%this_guid%:=this_gui.addText("x" this_X+47 " y" this_Y+22 " w" this_W-204 " h" 29 " backgroundTrans c" cfg.fontColor1,this_text2)
-		ui.wizPanelText2_%this_guid%.setFont("s8 c" cfg.fontColor1 " q5","Consolas")
+		ui.wizPanelText2_%this_guid%.setFont("s8 c" cfg.fontColor1 " q5","Arial")
 		ui.wizPanelButtonOutline_%this_guid%:=this_gui.addText("x" this_X+this_W-153 " y" this_Y+1 " w" 86 " h" 49 " background" cfg.tabColor2)
 		ui.wizPanelButton1_%this_guid%:=this_gui.addPicture("x" (this_X+this_W)-150  " y" this_Y+2 " w" 80 " h" 24 " backgroundTrans",(this_page==3) ? "./img/button_start.png" : "./img/button_next.png")
 		if this_page==3

@@ -139,10 +139,10 @@ drawTabs(this_gui:=ui.mainTabGui,tabControl:=ui.mainGuiTabs,tabX:=0,tabY:=0,tabN
 	;ui.%this_gui.name%tab12Divider:=this_gui.addText("x" tabX+tabWidths[1]-2 " y" 0 " w" 2 " h" 26 " background" cfg.trimColor1)
 
 	ui.%this_gui.name%Tab1InactiveBottom:=this_gui.addPicture("hidden x" tabX+2 " y" 28-(cfg.curveAmount/2) " w" tabWidths[1]-2 " h" cfg.curveAmount/2 " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
-	ui.%this_gui.name%Tab1InactiveRight:=this_gui.addPicture("hidden x" tabX+tabWidths[1]-(cfg.curveAmount/3) " y" 4 " w" cfg.curveAmount/3 " h" 24 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")
+	ui.%this_gui.name%Tab1InactiveRight:=this_gui.addPicture("hidden x" tabX+2+tabWidths[1]-(cfg.curveAmount/3) " y" 4 " w" cfg.curveAmount/3 " h" 24 " backgroundTrans","./img/custom/lightburst_right_bar_dark.png")
 	ui.%this_gui.name%Tab2Inactive:=this_gui.addText("x" tabX+tabWidths[1]-2 " y" 28 " w" tabWidths[2] " h" 2 " background" cfg.trimColor1)
 	ui.%this_gui.name%Tab2InactiveBottom:=this_gui.addPicture("x" tabX+tabWidths[1] " y" 28-(cfg.curveAmount/2) " w" tabWidths[2] " h" cfg.curveAmount/2 " backgroundTrans","./img/custom/lightburst_bottom_bar_dark.png")
-	ui.%this_gui.name%Tab2InactiveLeft:=this_gui.addPicture("x" 2+tabX+tabWidths[1] " y" 4 " w" cfg.curveAmount/3 " h" 24 " backgroundTrans","./img/custom/lightburst_left_bar_dark.png")
+	ui.%this_gui.name%Tab2InactiveLeft:=this_gui.addPicture("x" tabX+tabWidths[1] " y" 2 " w" cfg.curveAmount/3 " h" 26 " backgroundTrans","./img/custom/lightburst_left_bar_dark.png")
 	ui.%this_gui.name%tab12Divider:=this_gui.addText("hidden x" tabX+tabWidths[1]-2 " y" 0 " w" 2 " h" 28 " background" cfg.trimColor1)
 	ui.%this_gui.name%Top1Detail:=this_gui.addPicture("x" tabX " y" tabY " w" tabWidths[1] " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
 	ui.%this_gui.name%Top2Detail:=this_gui.addPicture("x" tabX+tabWidths[1] " y" tabY+2 " w" tabWidths[2] " h" cfg.curveAmount " backgroundTrans","./img/custom/lightburst_top_bar_dark.png")
