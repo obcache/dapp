@@ -189,6 +189,11 @@ drawGameTabs(tabNum := 1) {
 	ui.gameTab1Trans:=ui.gameTabGui.addText("hidden x0 y30 w108 h2 background" ui.transparentColor)
 	ui.gameTab2Trans:=ui.gameTabGui.addText("hidden x110 y30 w130 h2 background" ui.transparentColor)
 
+	if !fileExist(cfg.titleBarImage)
+			cfg.titleBarImage:="./img/custom/lightburst_bottom_light.png"
+		ui.footerBar:=ui.gameTabGui.addPicture("x240 y4 w230 h26 left backgroundTrans",cfg.titleBarImage)
+		ui.footerBar.onEvent("click",wm_lbuttonDown_callback)
+
 
 	refreshGameTabs(1)
 	if !(mainGuiX==0 && mainGuiY==0) {
