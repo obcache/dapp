@@ -1,4 +1,4 @@
-A_FileVersion := "1.8.0.5"
+A_FileVersion := "1.8.0.6"
 A_SchemaVersion:="1.1.1.1"
 a_appName := "dapp"
 
@@ -120,7 +120,7 @@ advProgress(1)
 #include <libHelp>
 advProgress(1)
 #include <libVaultCleaner>
-
+#include <libCShift>
 advProgress(1)
 #include <libResourceBrowser>
 advProgress(2)
