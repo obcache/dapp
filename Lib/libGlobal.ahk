@@ -135,7 +135,7 @@ cfgLoad(&cfg, &ui) {
 	cfg.activeMainTab			:= IniRead(cfg.file,"Interface","activeMainTab",1)
 	cfg.activeGameTab  			:= IniRead(cfg.file,"Interface","ActiveGameTab",1)
 	cfg.AlwaysOnTopEnabled		:= IniRead(cfg.file,"Interface","AlwaysOnTopEnabled",true)
-	cfg.AnimationsEnabled		:= IniRead(cfg.file,"Interface","AnimationsEnabled",true)
+	cfg.CShiftEnabled		:= IniRead(cfg.file,"Interface","CShiftEnabled",true)
 	cfg.ColorPickerEnabled 		:= IniRead(cfg.file,"Interface","ColorPickerEnabled",true)
 	cfg.GuiX 					:= IniRead(cfg.file,"Interface","GuiX",200)
 	cfg.GuiY 					:= IniRead(cfg.file,"Interface","GuiY",200)

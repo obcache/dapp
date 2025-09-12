@@ -76,11 +76,11 @@ GuiSetupTab(&ui,&cfg) {
 		}
 	}
 	
-	cfg.animationsEnabled := iniRead(cfg.file,"Interface","AnimationsEnabled",true)
-	ui.toggleAnimations := ui.MainGui.AddPicture("xs w50 y+4 h22 section vAnimations " (cfg.AnimationsEnabled ? ("Background" cfg.OnColor) : ("Background" cfg.OffColor)),((cfg.AnimationsEnabled) ? (cfg.toggleOn) : (cfg.toggleOff)))
-	ui.toggleAnimations.OnEvent("Click", toggleChanged)
-	ui.toggleAnimations.ToolTip := "Interface the app's slide and fade animations."
-	ui.labelAnimations:= ui.MainGui.AddText("x+2 ys+3 backgroundTrans","  Animations")
+	cfg.CShiftEnabled := iniRead(cfg.file,"Interface","CShiftEnabled",true)
+	ui.toggleCShift := ui.MainGui.AddPicture("xs w50 y+4 h22 section vCShift " (cfg.CShiftEnabled ? ("Background" cfg.OnColor) : ("Background" cfg.OffColor)),((cfg.CShiftEnabled) ? (cfg.toggleOn) : (cfg.toggleOff)))
+	ui.toggleCShift.OnEvent("Click", toggleChanged)
+	ui.toggleCShift.ToolTip := "Interface the app's slide and fade CShift."
+	ui.labelCShift:= ui.MainGui.AddText("x+2 ys+3 backgroundTrans","  CShift")
 
 	ui.toggleAutoStart := ui.MainGui.AddPicture("xs y+4 w50 h22 section vAutoStart " (cfg.autoStartEnabled ? ("Background" cfg.OnColor) : ("Background" cfg.OffColor)),((cfg.autoStartEnabled) ? (cfg.toggleOn) : (cfg.toggleOff)))
 	ui.toggleAutoStart.OnEvent("Click", toggleChangedAutoStart)

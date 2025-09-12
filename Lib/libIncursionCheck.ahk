@@ -119,7 +119,7 @@ try {
 					} else {
 						incursionNoticeMonitor:=1
 					}
-					if cfg.animationsEnabled {
+					if cfg.CShiftEnabled {
 						guiVis(ui.incursionGui,false)
 						ui.incursionGui.show("x" incursionX " y150 w350 h51 noActivate")
 						while transLevel < 255 {

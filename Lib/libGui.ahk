@@ -462,7 +462,7 @@ isFading(*) {
 }
 
 fadeIn() {
-	if (cfg.AnimationsEnabled==3) {
+	if (cfg.CShiftEnabled==3) {
 		ui.isFading := true
 		;winGetPos(&mainGuiX,&mainGuiY,,,ui.mainGui)
 		transparency := 0
@@ -703,7 +703,7 @@ guiVis(guiName,isVisible:= true) {
 }
 
 fadeOut(*) {
-	if (cfg.AnimationsEnabled) {
+	if (cfg.CShiftEnabled) {
 		ui.disableMouseClick := true
 		activeTab := ui.mainGuiTabs.text
 		transValue := 255
