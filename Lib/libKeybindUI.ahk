@@ -8,6 +8,81 @@ if (InStr(A_LineFile,A_ScriptFullPath)) { ;run main app
 	Return
 }
 
+abbr(str) {
+    ; Ignore strings of 8 characters or less
+    if (StrLen(str) <= 8)
+        return str
+
+    ; Normalize: trim whitespace and collapse spaces
+    str := Trim(RegExReplace(str, "\s+", " "))
+
+    ; Split into words (use space, underscore, dash, or camel case)
+    parts := []
+    for word in StrSplit(RegExReplace(str, "([a-z])([A-Z])", "$1 $2"), [" ", "_", "-"])
+        if (word != "")
+            parts.Push(word)
+
+    ; If multiple words, build abbreviation from first letters or key chunks
+    if (parts.Length() > 1) {
+        abbr := ""
+        for word in parts {
+            ; Prioritize first 3 letters if short word, else first 2
+            len := (StrLen(word) <= 4) ? 3 : 2
+            abbr .= SubStr(word, 1, len)
+        }
+        ; Trim or pad to 8 chars
+        return SubStr(abbr, 1, 8)
+    }
+
+    ; Single long word: try to keep start + end (camel-style compression)
+    word := parts[1]
+    ; Try vowels removal for readability if needed
+    if (StrLen(word) > 8) {
+        shortened := RegExReplace(word, "[aeiouAEIOU]", "")
+        if (StrLen(shortened) >= 4 && StrLen(shortened) <= 8)
+            return shortened
+        if (StrLen(shortened) > 8)
+            return SubStr(shortened, 1, 8)
+    }
+    ; Otherwise, fallback to start+end split
+    half := Floor(8 / 2)
+    return SubStr(word, 1, half) . SubStr(word, -half + (8 - (2*half)))
+}
+
+
+transformBinding(inputBinding) {
+	switch inputBinding {
+		case "middle mouse button":
+			return "MButton"
+		case "extra mouse button 1":
+			return "XButton1"
+		case "extra mouse button 2":
+			return "XButton2"
+		case "left mouse button":
+			return "LButton"
+		case "right mouse button":
+			return "RButton"
+		case "scroll wheel up":
+			return "WheelUp"
+		case "scroll wheel down":
+			return "WheelDown"
+		case "caps lock":
+			return "CapsLock"
+		default:
+			return
+	}
+}
+assignBinding(currLine,varName) {
+	curr_key := strSplit(currLine,'"')[2]
+	curr_values := strSplit(strSplit(currLine,'"')[4],"!")
+	loop curr_values.length {
+		if curr_values[a_index] != "unused" {
+			curr_value := curr_values[a_index]
+			%varName% := transformBinding(curr_value)
+			break	
+		}
+	}
+}
 
 d2AutoGameConfigOverride(*) {
 	if (cfg.d2AutoGameConfigEnabled) {
@@ -21,122 +96,33 @@ d2AutoGameConfigOverride(*) {
 			switch curr_key {
 				case "push_to_talk":
 					try {
-						loop curr_values.length {
-							if curr_values[a_index] !="unused" {
-								curr_value := curr_values[a_index]
-								cfg.d2GamePTTKey:=curr_value
-							}
-						}
+						assignBinding(a_loopReadline,"cfg.d2GamePTTKey")
 					}
+					
 				case "grenade":
-				
 					try	{
-
-						loop curr_values.length {
-							if curr_values[a_index] != "unused" {
-								curr_value := curr_values[a_index]
-								if curr_value == "caps lock"
-									curr_value := "CapsLock"
-									break
-							}
-						}
-						
-						if curr_value == "none"
-							return
-						else {
-							;msgBox(curr_value)
-							cfg.d2GameGrenadeKey := curr_value
-							ui.d2GameGrenadeKeyData.text := strUpper(curr_value)
-							ui.d2GameGrenadeKeyData.redraw()
-						}
+						assignBinding(a_loopReadline,"cfg.GameGrenadeKey")
 					}
-			
+									
 				case "super":
 					try	{
-						curr_key := strSplit(a_loopReadline,'"')[2]
-						curr_values := strSplit(strSplit(a_loopReadline,'"')[4],"!")
-						loop curr_values.length {
-							if curr_values[a_index] != "unused" {
-								curr_value := curr_values[a_index]
-								if curr_value == "caps lock"
-									curr_value := "CapsLock"
-								break
-							}
-						}
-						
-						if curr_value == "none"
-							return
-						else {
-							cfg.d2GameSuperKey := curr_value
-							ui.d2GameSuperKeyData.text := strUpper(curr_value)
-							ui.d2GameSuperKeyData.redraw()
-						}
+						assignBinding(a_loopReadline,"cfg.d2GameSuperKey")
 					}
+
 				case "hold_crouch":
 					try	{
-						curr_key := strSplit(a_loopReadline,'"')[2]
-						curr_values := strSplit(strSplit(a_loopReadline,'"')[4],"!")
-						loop curr_values.length {
-							if curr_values[a_index] != "unused" {
-								curr_value := curr_values[a_index]
-								if curr_value == "caps lock"
-									curr_value := "CapsLock"
-								break
-							}
-						}
-						
-						if curr_value == "none"
-							return
-						else {
-							cfg.d2GameHoldToCrouchKey := curr_value
-							ui.d2GameHoldToCrouchKeyData.text := strUpper(curr_value)
-							ui.d2GameHoldToCrouchKeyData.redraw()
-						}
+						assignBinding(a_loopReadline,"cfg.GameHoldToCrouchKey")
 					}
 				case "reload":
 					try	{
-						curr_key := strSplit(a_loopReadline,'"')[2]
-						curr_values := strSplit(strSplit(a_loopReadline,'"')[4],"!")
-						loop curr_values.length {
-							if curr_values[a_index] != "unused" {
-								curr_value := curr_values[a_index]
-								if curr_value == "caps lock"
-									curr_value := "CapsLock"
-								break
-							}
-						}
-						
-						if curr_value == "none"
-							return
-						else {
-							cfg.d2GameReloadKey := curr_value
-							ui.d2GameReloadKeyData.text := strUpper(curr_value)
-							ui.d2GameReloadKeyData.redraw()
-						}
+						assignBinding(a_loopReadline,"cfg.GameReloadKey")
 					}
 				case "toggle_sprint":
 					try	{
-						curr_key := strSplit(a_loopReadline,'"')[2]
-						curr_values := strSplit(strSplit(a_loopReadline,'"')[4],"!")
-						loop curr_values.length {
-							if curr_values[a_index] != "unused" {
-								curr_value := curr_values[a_index]
-								if curr_value == "caps lock"
-									curr_value := "CapsLock"
-								break
-							}
-						}
-						
-						if curr_value == "none"
-							return
-						else {
-							cfg.d2GameAutoSprintKey := curr_value
-							ui.d2GameAutoSprintKeyData.text := strUpper(curr_value)
-							ui.d2GameAutoSprintKeyData.redraw()
-						}
+						assignBinding(a_loopReadline,"cfg.d2GameAutoSprintKey")
 					}
-				}
 			}
+		}
 	}
 }
 
@@ -451,11 +437,11 @@ drawKeybindBar(*) {
 	ui.dappEnabledDetail2:=ui.gameSettingsGui.addPicture("x18 y" 56-cfg.curveAmount " w30 backgroundTrans h" cfg.curveAmount,"./img/custom/lightburst_bottom_bar_dark.png")
 	ui.currKey 				:= cfg.dappEnabledKey
 	ui.dappEnabledKey			:= ui.gameSettingsGui.addPicture("x48 y24 w" 56 " h30 section backgroundTrans","./img/keyboard_key_up.png")
-	ui.dappEnabledKeyData 	:= ui.gameSettingsGui.addText("xs-1 y+-24 w" 56 " h21 center c" cfg.OffColor " backgroundTrans",subStr(strUpper(cfg.dappEnabledKey),1,6))
+	ui.dappEnabledKeyData 	:= ui.gameSettingsGui.addText("xs-1 y+-24 w" 56 " h21 center c" cfg.OffColor " backgroundTrans",subStr(strUpper(abbr(cfg.dappEnabledKey)),1,6))
 	if subStr(strUpper(cfg.dappEnabledKey),1,6) == "SCROLL"
 	ui.dappEnabledKeyData.text:="SCROLL"
 	else
-	ui.dappEnabledKeyData.text:=subStr(strUpper(cfg.dappEnabledKey),1,6)
+	ui.dappEnabledKeyData.text:=subStr(strUpper(abbr(cfg.dappEnabledKey)),1,6)
 	ui.dappEnabledKeyLabel	:= ui.gameSettingsGui.addText("xs-1 y+-34 w" 56 " h20 center c" cfg.LabelColor1 " backgroundTrans","Enable")
 	
 	ui.keybindSpacer		:= ui.gameSettingsGui.addText("x104 y16 w1 h40 background" cfg.trimColor1)		
@@ -468,7 +454,7 @@ drawKeybindBar(*) {
 	ui.dappAutoSprintKey		:= ui.gameSettingsGui.addPicture("x+0 y24 w" 76
 		" h30 section backgroundTrans","./img/keyboard_key_up.png")
 	ui.dappAutoSprintKeyData 	:= ui.gameSettingsGui.addText("xs-2 y+-24 w" 76 
-		" h21 center c" cfg.OffColor " backgroundTrans",subStr(strUpper(cfg.dappAutoSprintKey),1,8))
+		" h21 center c" cfg.OffColor " backgroundTrans",subStr(strUpper(abbr(cfg.dappAutoSprintKey)),1,8))
 	ui.dappAutoSprintKeyLabel	:= ui.gameSettingsGui.addText("xs-1 y+-34 w" 76 
 		" h20 center c" cfg.LabelColor1 " backgroundTrans","Sprint")
 	
@@ -476,7 +462,7 @@ drawKeybindBar(*) {
 	ui.dappHoldToCrouchKey		:= ui.gameSettingsGui.AddPicture("x+-2 ys w" 60 
 		" h30 section backgroundTrans","./img/keyboard_key_up.png")
 	ui.dappHoldToCrouchKeyData 	:= ui.gameSettingsGui.addText("xs-1 y+-24 w" 60 
-		" h21 center c" cfg.OffColor " backgroundTrans",subStr(strUpper(cfg.dappHoldToCrouchKey),1,8))
+		" h21 center c" cfg.OffColor " backgroundTrans",subStr(strUpper(abbr(cfg.dappHoldToCrouchKey)),1,8))
 	ui.dappHoldToCrouchKeyLabel	:= ui.gameSettingsGui.addText("xs-1 y+-34 w" 60 
 		" h20 center c" cfg.LabelColor1 " backgroundTrans","Crouch")
 
@@ -484,7 +470,7 @@ drawKeybindBar(*) {
 	ui.dappReloadKey			:= ui.gameSettingsGui.addPicture("x+0 ys w" 46 
 		" h30 section backgroundTrans","./img/keyboard_key_up.png")
 	ui.dappReloadKeyData 		:= ui.gameSettingsGui.addText("xs-1 y+-24 w" 46 
-		" h21 center c" cfg.OffColor " backgroundTrans",subStr(strUpper(cfg.dappReloadKey),1,8))
+		" h21 center c" cfg.OffColor " backgroundTrans",subStr(strUpper(abbr(cfg.dappReloadKey)),1,8))
 	ui.dappReloadKeyLabel		:= ui.gameSettingsGui.addText("xs-1 y+-34 w" 46 	
 	" h20 center c" cfg.LabelColor1 " backgroundTrans","Reload")
 
@@ -492,7 +478,7 @@ drawKeybindBar(*) {
 	ui.dappPTTKey			:= ui.gameSettingsGui.addPicture("x+0 ys w" 54
 		" h30 section backgroundTrans","./img/keyboard_key_up.png")
 	ui.dappPTTKeyData 		:= ui.gameSettingsGui.addText("xs-1 y+-24 w" 54 
-		" h21 center c" cfg.OffColor " backgroundTrans",subStr(strUpper(strReplace(cfg.dappPTTKey,"control","ctrl")),1,8))
+		" h21 center c" cfg.OffColor " backgroundTrans",subStr(strUpper(strReplace(abbr(cfg.dappPTTKey),"control","ctrl")),1,8))
 	ui.dappPTTKeyLabel		:= ui.gameSettingsGui.addText("xs-6 y+-34 w" 64 	
 	" h20 center c" cfg.LabelColor1 " backgroundTrans","Mic On")
 
@@ -500,14 +486,14 @@ drawKeybindBar(*) {
 	ui.dappLoadoutKey			:= ui.gameSettingsGui.addPicture("x+-5 ys w" 52 
 		"  h30 section backgroundTrans","./img/keyboard_key_up.png")
 	ui.dappLoadoutKeyData 		:= ui.gameSettingsGui.addText("xs-3 y+-24 w" 52 
-		"  h21 center c" cfg.OffColor " backgroundTrans",subStr(strUpper(cfg.dappLoadoutKey),1,8))
+		"  h21 center c" cfg.OffColor " backgroundTrans",subStr(strUpper(abbr(cfg.dappLoadoutKey)),1,8))
 	ui.dappLoadoutKeyLabel 		:= ui.gameSettingsGui.addText("xs+0 y+-34 w" 52 
 		"  h20 center c" cfg.LabelColor1 " backgroundTrans","Loadout")
 	
 	ui.currKey 					:= cfg.dappSwordFlyKey
 	ui.dappSwordFlyKey			:= ui.gameSettingsGui.addPicture("x+6 ys w42 h30 section backgroundTrans","./img/keyboard_key_up.png")
 	ui.dappSwordFlyKeyData 	:= ui.gameSettingsGui.addText("xs+0 y+-24 w42 h21 center c" cfg.OffColor " backgroundTrans"
-		,subStr(strUpper(cfg.dappSwordFlyKey),1,8))
+		,subStr(strUpper(abbr(cfg.dappSwordFlyKey)),1,8))
 	ui.dappSwordFlyKeyLabel 	:= ui.gameSettingsGui.addText("xs-2 y+-35 w42 h20 center c" cfg.LabelColor1 " backgroundTrans","Fly")
 	
 	
@@ -652,32 +638,32 @@ drawKeybindBar(*) {
 	
 		
 	ui.d2GameAutoSprintKey				:= ui.gameSettingsGui.AddPicture("x25 y22 w" 18+(ui.d2KeybindWidth + max(max(0,(strLen(ui.currKey)-6))*10,max(0,(strLen(ui.currKeyLabel)-12)*5))) " h30 section backgroundTrans","./img/keyboard_key_up.png")
-	ui.d2GameAutoSprintKeyData 			:= ui.gameSettingsGui.addText("xs-3 y+-24 w" 18+(ui.d2KeybindWidth + max(max(0,(strLen(ui.currKey)-6))*10,max(0,(strLen(ui.currKeyLabel)-12)*5))) " h21 center c" cfg.OffColor " backgroundTrans",subStr(strUpper(cfg.d2GameAutoSprintKey),1,8))
+	ui.d2GameAutoSprintKeyData 			:= ui.gameSettingsGui.addText("xs-3 y+-24 w" 18+(ui.d2KeybindWidth + max(max(0,(strLen(ui.currKey)-6))*10,max(0,(strLen(ui.currKeyLabel)-12)*5))) " h21 center c" cfg.OffColor " backgroundTrans",subStr(strUpper(abbr(cfg.d2GameAutoSprintKey)),1,8))
 	ui.d2GameAutoSprintKeyLabel			:= ui.gameSettingsGui.addText("xs-1 y+-34 w" 18+(ui.d2KeybindWidth + max(max(0,(strLen(ui.currKey)-6))*10,max(0,(strLen(ui.currKeyLabel)-12)*5))) " h20 center c" cfg.FontColor1 " backgroundTrans","Toggle Sprint")
 	
 	ui.currKey := cfg.d2GameHoldToCrouchKey
 	ui.currKeyLabel := "Hold Crouch"
 	ui.d2GameHoldToCrouchKey				:= ui.gameSettingsGui.AddPicture("x+2 ys w" 10+(ui.d2KeybindWidth + max(max(0,(strLen(ui.currKey)-6))*10,max(0,(strLen(ui.currKeyLabel)-8)*5))) " h30 section backgroundTrans","./img/keyboard_key_up.png")
-	ui.d2GameHoldToCrouchKeyData 			:= ui.gameSettingsGui.addText("xs-3 y+-24 w" 10+(ui.d2KeybindWidth + max(max(0,(strLen(ui.currKey)-6))*10,max(0,(strLen(ui.currKeyLabel)-8)*5))) " h21 center c" cfg.OffColor " backgroundTrans",subStr(strUpper(cfg.d2GameHoldToCrouchKey),1,8))
+	ui.d2GameHoldToCrouchKeyData 			:= ui.gameSettingsGui.addText("xs-3 y+-24 w" 10+(ui.d2KeybindWidth + max(max(0,(strLen(ui.currKey)-6))*10,max(0,(strLen(ui.currKeyLabel)-8)*5))) " h21 center c" cfg.OffColor " backgroundTrans",subStr(strUpper(abbr(cfg.d2GameHoldToCrouchKey)),1,8))
 	ui.d2GameHoldToCrouchKeyLabel			:= ui.gameSettingsGui.addText("xs-1 y+-34 w" 10+(ui.d2KeybindWidth + max(max(0,(strLen(ui.currKey)-6))*10,max(0,(strLen(ui.currKeyLabel)-8)*5))) " h20 center c" cfg.FontColor1 " backgroundTrans","Hold Crouch")
 
 	ui.currKey := cfg.d2GameReloadKey
 	ui.currKeyLabel := "Reload"
 	ui.d2GameReloadKey						:= ui.gameSettingsGui.addPicture("x+2 ys w" 20+(ui.d2KeybindWidth + max(max(0,(strLen(ui.currKey)-6))*10,max(0,(strLen(ui.currKeyLabel)-12)*5))) " h30 section backgroundTrans","./img/keyboard_key_up.png")
-	ui.d2GameReloadKeyData 					:= ui.gameSettingsGui.addText("xs-3 y+-24 w" 20+(ui.d2KeybindWidth + max(max(0,(strLen(ui.currKey)-6))*10,max(0,(strLen(ui.currKeyLabel)-12)*5))) " h21 center c" cfg.OffColor " backgroundTrans",subStr(strUpper(cfg.d2GameReloadKey),1,8))
+	ui.d2GameReloadKeyData 					:= ui.gameSettingsGui.addText("xs-3 y+-24 w" 20+(ui.d2KeybindWidth + max(max(0,(strLen(ui.currKey)-6))*10,max(0,(strLen(ui.currKeyLabel)-12)*5))) " h21 center c" cfg.OffColor " backgroundTrans",subStr(strUpper(abbr(cfg.d2GameReloadKey)),1,8))
 	ui.d2GameReloadKeyLabel					:= ui.gameSettingsGui.addText("xs-1 y+-34 w" 20+(ui.d2KeybindWidth + max(max(0,(strLen(ui.currKey)-6))*10,max(0,(strLen(ui.currKeyLabel)-12)*5))) " h20 center c" cfg.FontColor1 " backgroundTrans","Reload")		
 	
 	ui.currKey := cfg.d2GameGrenadeKey
 	ui.currKeyLabel := "Reload"
-	ui.d2GameGrenadeKey						:= ui.gameSettingsGui.addPicture("x+2 ys w85 h30 section backgroundTrans","./img/keyboard_key_up.png")
-	ui.d2GameGrenadeKeyData 					:= ui.gameSettingsGui.addText("xs-3 y+-24 w85 h21 center c" cfg.OffColor " backgroundTrans",subStr(strUpper(cfg.d2GameGrenadeKey),1,8))
-	ui.d2GameGrenadeKeyLabel					:= ui.gameSettingsGui.addText("xs-1 y+-34 w85 h20 center c" cfg.FontColor1 " backgroundTrans","Grenade")		
+	ui.d2GameGrenadeKey						:= ui.gameSettingsGui.addPicture("x+2 ys w90 h30 section backgroundTrans","./img/keyboard_key_up.png")
+	ui.d2GameGrenadeKeyData 					:= ui.gameSettingsGui.addText("xs-2 y+-24 w90 h21 center c" cfg.OffColor " backgroundTrans",subStr(strUpper(abbr(cfg.d2GameGrenadeKey)),1,8))
+	ui.d2GameGrenadeKeyLabel					:= ui.gameSettingsGui.addText("xs-1 y+-34 w90 h20 center c" cfg.FontColor1 " backgroundTrans","Grenade")		
 	
 	ui.currKey := cfg.d2GameSuperKey
 	ui.currKeyLabel := "Super"
-	ui.d2GameSuperKey						:= ui.gameSettingsGui.addPicture("x+2 ys w70 h30 section backgroundTrans","./img/keyboard_key_up.png")
-	ui.d2GameSuperKeyData 					:= ui.gameSettingsGui.addText("xs-3 y+-24 w70 h21 center c" cfg.OffColor " backgroundTrans",subStr(strUpper(cfg.d2GameSuperKey),1,8))
-	ui.d2GameSuperKeyLabel					:= ui.gameSettingsGui.addText("xs-1 y+-34 w70 h20 center c" cfg.FontColor1 " backgroundTrans","Super")		
+	ui.d2GameSuperKey						:= ui.gameSettingsGui.addPicture("x+2 ys w90 h30 section backgroundTrans","./img/keyboard_key_up.png")
+	ui.d2GameSuperKeyData 					:= ui.gameSettingsGui.addText("xs-2 y+-24 w90 h21 center c" cfg.OffColor " backgroundTrans",subStr(strUpper(abbr(cfg.d2GameSuperKey)),1,8))
+	ui.d2GameSuperKeyLabel					:= ui.gameSettingsGui.addText("xs-1 y+-34 w90 h20 center c" cfg.FontColor1 " backgroundTrans","Super")		
 	
 	;cfg.d2AutoGameConfigEnabled := true
 	ui.d2ToggleAutoGameConfig := ui.gameSettingsGui.addPicture("x462 y13 w20 h35 section "
